@@ -1,4 +1,4 @@
-package control.api;
+package control.servlets.operateur;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ClientApi")
-public class ClientApi extends API {
+@WebServlet(name = "OperateurServlet")
+public class OperateurServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

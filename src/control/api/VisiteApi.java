@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "VisiteApi")
-public class VisiteApi extends HttpServlet {
+public class VisiteApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

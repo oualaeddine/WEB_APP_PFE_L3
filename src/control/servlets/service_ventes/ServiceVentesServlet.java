@@ -9,10 +9,20 @@ import java.io.IOException;
 
 @WebServlet(name = "ServiceVentesServlet")
 public class ServiceVentesServlet extends HttpServlet {
+
+    @Override
+    public void init() throws ServletException {
+        //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
+        super.init();
+    }
+
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

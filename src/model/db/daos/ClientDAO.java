@@ -16,6 +16,7 @@ public class ClientDAO extends DAO implements DAOInterface{
             result = statement.executeQuery("SELECT * FROM client WHERE id="+id);
             if (result.next()){
                 Client client = new Client();
+                client.setId(result.getInt("id"));
                 client.setNom(result.getString("nom"));
                 client.setPrenom(result.getString("prenom"));
                 client.setDateNaissance(result.getDate("dateNaiss"));

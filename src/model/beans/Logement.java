@@ -1,15 +1,34 @@
 package model.beans;
 
+import model.enums.EtatLogement;
+
 import java.io.Serializable;
 
 public class Logement implements Serializable {
-    private int id, nbrPieces, nbrFacades;
+    private int id, nbrPieces, nbrFacades,etage;
     private Localite localite;
     private String titre, description, adresse;
     private boolean avecJardin;
     private double superficie;
+    private EtatLogement etat;
 
     public Logement() {
+    }
+
+    public int getEtage() {
+        return etage;
+    }
+
+    public void setEtage(int etage) {
+        this.etage = etage;
+    }
+
+    public EtatLogement getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatLogement etat) {
+        this.etat = etat;
     }
 
     public int getId() {

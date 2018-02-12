@@ -20,6 +20,7 @@ public class AgentsDAO extends DAO implements DAOInterface{
             result = statement.executeQuery("SELECT * FROM agent WHERE id="+id);
             if (result.next()){
                 Agent agent = new Agent();
+                agent.setId(result.getInt("id"));
                 agent.setNom(result.getString("nom"));
                 agent.setPrenom(result.getString("prenom"));
                 agent.setDateNaissance(result.getDate("dateNaiss"));
@@ -51,7 +52,7 @@ public class AgentsDAO extends DAO implements DAOInterface{
     public boolean add(Object object) {
         Agent agent = (Agent) object;
         try {
-            statement.execute("INSERT INTO admin (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`idregion`)"
+            statement.execute("INSERT INTO agent (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`idregion`)"
                     + " VALUES (" +
                     "'" + agent.getNom() + "'," +
                     "'" + agent.getPrenom() + "'," +

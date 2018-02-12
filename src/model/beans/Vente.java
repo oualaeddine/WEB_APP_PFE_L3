@@ -16,6 +16,7 @@ public class Vente implements Serializable {
     private Client client;
 
     public Vente() {
+
     }
 
     public int getId() {

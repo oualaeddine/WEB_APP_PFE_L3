@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="soc_imm@localhost" uuid="c1197ece-737f-4ba6-8c08-737c3e5b1416">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:soc_imm</introspection-schemas>
+    </data-source>
+  </component>
+</project>

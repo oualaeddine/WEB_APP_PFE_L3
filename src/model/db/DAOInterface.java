@@ -12,5 +12,9 @@ public interface DAOInterface {
 
     boolean add(Object object);
 
-    LinkedList<Object> getAll();
+    boolean delete(Object object);
+
+    boolean exists(Object object);
+
+    LinkedList getAll();
 }

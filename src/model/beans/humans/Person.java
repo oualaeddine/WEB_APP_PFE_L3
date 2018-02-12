@@ -7,8 +7,17 @@ public abstract class Person implements Serializable {
     private int id;
     private String nom, prenom, adresse, email, username, password, tel;
     private Date dateNaissance;
+    private boolean isSuspended;
 
     Person() {
+    }
+
+    public boolean isSuspended() {
+        return isSuspended;
+    }
+
+    public void setSuspended(boolean suspended) {
+        isSuspended = suspended;
     }
 
     public int getId() {

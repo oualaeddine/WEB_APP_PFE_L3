@@ -1,0 +1,11 @@
+1) Menu: File > Project Structure > Artifacts
+2) Click the green + icon and create a "Web Application: Archive", then OK
+3) Menu: Build > Build Artifacts ... > Web: war
+
+By default it should generate it under your classes/artifacts/web_app_web/web_app_web.war
+
+************deploying to heroku
+
+$ heroku login
+
+$ heroku war:deploy C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\classes\artifacts\web_app_Web\web_app_Web.war --app berrehal-pfe

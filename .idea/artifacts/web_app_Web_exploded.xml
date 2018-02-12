@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="web_app:Web exploded">
+  <artifact type="exploded-war" build-on-make="true" name="web_app:Web exploded">
     <output-path>$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="web_app/web/Web" />

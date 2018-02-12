@@ -34,8 +34,9 @@ public class AdminsDAO extends DAO implements DAOInterface{
                     admin.setRole(AdminRole.SUPER_USER);
                 else admin.setRole(AdminRole.ADMIN);
                 admin.setDateAdded(result.getDate("dateAdded"));
-                //TODO: addedBy
+                //TODO: addedBy + idRegion
                 admin.setSuspended(result.getBoolean("isSuspended"));
+
                 return admin;
             }
         }catch (SQLException e){

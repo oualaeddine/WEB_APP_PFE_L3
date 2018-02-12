@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="soc_imm@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="soc_imm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="airdb"/>
+    <schema id="4" parent="1" name="dbtest"/>
+    <schema id="5" parent="1" name="etudiantlicencegl"/>
+    <schema id="6" parent="1" name="gestion_voitures"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="in_db"/>
+    <schema id="9" parent="1" name="locationvoiture"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="sakila"/>
+    <schema id="13" parent="1" name="sys"/>
+    <schema id="14" parent="1" name="test"/>
+    <schema id="15" parent="1" name="test2"/>
+    <schema id="16" parent="1" name="testhibernate"/>
+    <schema id="17" parent="1" name="tp2"/>
+    <schema id="18" parent="1" name="tve_test"/>
+    <schema id="19" parent="1" name="world"/>
+    <table id="20" parent="2" name="admin"/>
+    <table id="21" parent="2" name="agent"/>
+    <table id="22" parent="2" name="client"/>
+    <table id="23" parent="2" name="localite"/>
+    <table id="24" parent="2" name="logement"/>
+    <table id="25" parent="2" name="operateur"/>
+    <table id="26" parent="2" name="responsable_vente"/>
+    <table id="27" parent="2" name="vente"/>
+    <table id="28" parent="2" name="visite"/>
+    <column id="29" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="30" parent="20" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="31" parent="20" name="prenom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="32" parent="20" name="dateNaiss">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="33" parent="20" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="34" parent="20" name="tel">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="35" parent="20" name="email">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="36" parent="20" name="username">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="37" parent="20" name="password">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="38" parent="20" name="role">
+      <Position>10</Position>
+      <DataType>enum(&apos;SU&apos;, &apos;admin&apos;)|0</DataType>
+    </column>
+    <column id="39" parent="20" name="dateAdded">
+      <Position>11</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="40" parent="20" name="addedBy">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="20" name="isSuspended">
+      <Position>13</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <key id="42" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="43" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="44" parent="21" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="45" parent="21" name="prenom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="46" parent="21" name="dateNaiss">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="47" parent="21" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="48" parent="21" name="tel">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="49" parent="21" name="email">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="50" parent="21" name="username">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="51" parent="21" name="password">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="52" parent="21" name="isSuspended">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="53" parent="21" name="idregion">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="54" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="22" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="57" parent="22" name="prenom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="58" parent="22" name="dateNaiss">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="59" parent="22" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="60" parent="22" name="tel">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="61" parent="22" name="email">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="62" parent="22" name="username">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="63" parent="22" name="password">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="64" parent="22" name="dateAdded">
+      <Position>10</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="65" parent="22" name="addedBy">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="66" parent="22" name="isBanned">
+      <Position>12</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <index id="67" parent="22" name="client_admin_id_fk">
+      <ColNames>addedBy</ColNames>
+    </index>
+    <key id="68" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="69" parent="22" name="client_admin_id_fk">
+      <ColNames>addedBy</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>admin</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="70" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="23" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="72" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="24" name="localisation">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="75" parent="24" name="titre">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="76" parent="24" name="description">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="77" parent="24" name="superficie">
+      <Position>5</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="78" parent="24" name="etat">
+      <Position>6</Position>
+      <DataType>enum(&apos;vendu&apos;, &apos;avendre&apos;)|0</DataType>
+      <DefaultExpression>&apos;avendre&apos;</DefaultExpression>
+    </column>
+    <column id="79" parent="24" name="region">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="80" parent="24" name="adresse">
+      <Position>8</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="81" parent="24" name="nbrPieces">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="82" parent="24" name="nbrFacades">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="24" name="avecJardin">
+      <Position>11</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="84" parent="24" name="etage">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="85" parent="24" name="logement_localite_id_fk">
+      <ColNames>region</ColNames>
+    </index>
+    <key id="86" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="87" parent="24" name="logement_localite_id_fk">
+      <ColNames>region</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>localite</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="88" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="25" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="90" parent="25" name="prenom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="91" parent="25" name="dateNaiss">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="92" parent="25" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="93" parent="25" name="tel">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="94" parent="25" name="emaim">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="95" parent="25" name="username">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="96" parent="25" name="password">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="97" parent="25" name="isSuspended">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="98" parent="25" name="validatedBy">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="99" parent="25" name="validationDate">
+      <Position>12</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="100" parent="25" name="operateur_admin_id_fk">
+      <ColNames>validatedBy</ColNames>
+    </index>
+    <key id="101" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="102" parent="25" name="operateur_admin_id_fk">
+      <ColNames>validatedBy</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>admin</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="103" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="26" name="nom">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="105" parent="26" name="prenom">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="106" parent="26" name="dateNaiss">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="107" parent="26" name="adresse">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="108" parent="26" name="tel">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="109" parent="26" name="emaim">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="110" parent="26" name="username">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="111" parent="26" name="password">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="112" parent="26" name="isSuspended">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="113" parent="26" name="dateAdded">
+      <Position>11</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <key id="114" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="115" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="116" parent="27" name="agentId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="117" parent="27" name="responsableId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="118" parent="27" name="clientId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="119" parent="27" name="logementId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="120" parent="27" name="date">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="121" parent="27" name="vente_agent_id_fk">
+      <ColNames>agentId</ColNames>
+    </index>
+    <index id="122" parent="27" name="vente_client_id_fk">
+      <ColNames>clientId</ColNames>
+    </index>
+    <index id="123" parent="27" name="vente_logement_id_fk">
+      <ColNames>logementId</ColNames>
+    </index>
+    <index id="124" parent="27" name="vente_responsable_vente_id_fk">
+      <ColNames>responsableId</ColNames>
+    </index>
+    <key id="125" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="126" parent="27" name="vente_agent_id_fk">
+      <ColNames>agentId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>agent</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="127" parent="27" name="vente_responsable_vente_id_fk">
+      <ColNames>responsableId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>responsable_vente</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="128" parent="27" name="vente_client_id_fk">
+      <ColNames>clientId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="129" parent="27" name="vente_logement_id_fk">
+      <ColNames>logementId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>logement</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="130" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="131" parent="28" name="logementId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="132" parent="28" name="agentId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="133" parent="28" name="clientId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="134" parent="28" name="timestamp">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="135" parent="28" name="etat">
+      <Position>6</Position>
+      <DataType>enum(&apos;prevue&apos;, &apos;avisNegatif&apos;, &apos;avisPositif&apos;, &apos;reportee&apos;)|0</DataType>
+    </column>
+    <index id="136" parent="28" name="visite_agent_id_fk">
+      <ColNames>agentId</ColNames>
+    </index>
+    <index id="137" parent="28" name="visite_client_id_fk">
+      <ColNames>clientId</ColNames>
+    </index>
+    <index id="138" parent="28" name="visite_logement_id_fk">
+      <ColNames>logementId</ColNames>
+    </index>
+    <key id="139" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="140" parent="28" name="visite_logement_id_fk">
+      <ColNames>logementId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>logement</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="141" parent="28" name="visite_agent_id_fk">
+      <ColNames>agentId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>agent</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="142" parent="28" name="visite_client_id_fk">
+      <ColNames>clientId</ColNames>
+      <RefSchemaName>soc_imm</RefSchemaName>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

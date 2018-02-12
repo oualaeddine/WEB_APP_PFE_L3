@@ -49,22 +49,20 @@ public class AgentsDAO extends DAO implements DAOInterface{
 
     @Override
     public boolean add(Object object) {
-        Agent agent = (Agent) object;
+        Agent myAdmin = (Agent) object;
         try {
-            statement.execute("INSERT INTO admin (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`idregion`)"
+            statement.execute("INSERT INTO admin (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`isSuspended`,`idregion`)"
                     + " VALUES (" +
-                    "'" + agent.getNom() + "'," +
-                    "'" + agent.getPrenom() + "'," +
-                    "'" + agent.getDateNaissance() + "',"+
-                    "'" + agent.getAdresse() +"',"+
-                    "'" + agent.getTel() +"',"+
-                    "'" + agent.getEmail() +"',"+
-                    "'" + agent.getUsername() +"',"+
-                    "'" + agent.getPassword() +"',"+
-                    "'" + agent.getDateAdded() +"',"+
-                    "'" + agent.getAddedBy() +"',"+
+                    "'" + myAdmin.getNom() + "'," +
+                    "'" + myAdmin.getPrenom() + "'," +
+                    "'" + myAdmin.getDateNaissance() + "',"+
+                    "'" + myAdmin.getAdresse() +"',"+
+                    "'" + myAdmin.getTel() +"',"+
+                    "'" + myAdmin.getEmail() +"',"+
+                    "'" + myAdmin.getUsername() +"',"+
+                    "'" + myAdmin.getPassword() +"',"+
                     "0,"+
-                    "0"+       /*TODO: id region ?*/
+                    "0"+ //TODO: id region ?
                     ");"
             );
             return true;

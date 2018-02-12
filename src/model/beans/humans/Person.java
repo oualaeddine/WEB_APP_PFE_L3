@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public abstract class Person implements Serializable {
-    private int id,addedBy;
+    private int id;
     private String nom, prenom, adresse, email, username, password, tel;
     private Date dateNaissance;
     private boolean isSuspended;
@@ -18,14 +18,6 @@ public abstract class Person implements Serializable {
 
     public void setSuspended(boolean suspended) {
         isSuspended = suspended;
-    }
-
-    public int getAddedBy() {
-        return addedBy;
-    }
-
-    public void setAddedBy(int addedBy) {
-        this.addedBy = addedBy;
     }
 
     public int getId() {

@@ -2,8 +2,17 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="soc_imm@localhost" uuid="c1197ece-737f-4ba6-8c08-737c3e5b1416">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="MySQL" version="5.7.17-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.44 ( Revision: b3cda4f864902ffdde495b9df93937c3e20009be )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <user-name>root</user-name>
       <introspection-schemas>*:soc_imm</introspection-schemas>
+    </data-source>
+    <data-source name="@localhost" uuid="1eb455eb-cedd-4e9a-b880-34a34749e0d4">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:airdb,soc_imm</introspection-schemas>
     </data-source>
   </component>
 </project>

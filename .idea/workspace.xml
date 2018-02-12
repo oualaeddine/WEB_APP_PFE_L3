@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/Vente.java" afterPath="$PROJECT_DIR$/src/model/beans/Vente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Admin.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Admin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Person.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DAO.java" afterPath="$PROJECT_DIR$/src/model/db/DAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DAOInterface.java" afterPath="$PROJECT_DIR$/src/model/db/DAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -42,88 +41,91 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
-        <item name="admin" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
         <item name="agent" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
-        <item name="client" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
-        <item name="operateur" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
-        <item name="responsable_vente" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdminsDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#1629#1630#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
-                <element signature="e#1739#1740#0" expanded="true" />
-                <element signature="e#1767#1768#0" expanded="true" />
-                <marker date="1518450837511" expanded="true" signature="453:484" ph="SELECT * FRO... admin" />
-                <marker date="1518450837511" expanded="true" signature="1909:2710" ph="INSERT INTO admin... " />
-                <marker date="1518450837511" expanded="true" signature="1909:2711" ph="INSERT INTO admin... " />
-                <marker date="1518450837511" expanded="true" signature="3041:3106" ph="DELETE FROM " />
-                <marker date="1518450837511" expanded="true" signature="3041:3241" ph="DELETE FROM " />
-                <marker date="1518450837511" expanded="true" signature="3600:3619" ph="SELECT * FRO... admin" />
-                <marker date="1518450837511" expanded="true" signature="4229:4248" ph="SELECT * FRO... admin" />
-                <marker date="1518450837511" expanded="true" signature="4229:4251" ph="SELECT * FRO... admin" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Admin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="23" column="60" lean-forward="false" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
-              <folding>
-                <element signature="e#226#227#0" expanded="true" />
-                <element signature="e#249#250#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Person.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="340">
+              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding>
                 <element signature="method#Person#0;class#Person#0" expanded="false" />
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
-                <element signature="e#475#476#0" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1357#1358#0" expanded="true" />
-                <element signature="e#1699#1700#0" expanded="true" />
-                <element signature="e#1749#1750#0" expanded="true" />
+                <element signature="e#359#360#0" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#444#445#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#544#545#0" expanded="true" />
+                <element signature="e#587#588#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
+                <element signature="e#1476#1477#0" expanded="true" />
+                <element signature="e#1507#1508#0" expanded="true" />
+                <element signature="e#1849#1850#0" expanded="true" />
+                <element signature="e#1899#1900#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientDAO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2090">
+              <caret line="127" column="19" lean-forward="false" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1472#1473#0" expanded="true" />
+                <element signature="e#1500#1501#0" expanded="true" />
+                <marker date="1518456349295" expanded="true" signature="392:422" ph="SELECT * FRO... client" />
+                <marker date="1518456349295" expanded="true" signature="1643:2258" ph="INSERT INTO admin... " />
+                <marker date="1518456349295" expanded="true" signature="1643:2391" ph="INSERT INTO admin... " />
+                <marker date="1518456349295" expanded="true" signature="1643:2392" ph="INSERT INTO admin... " />
+                <marker date="1518456349295" expanded="true" signature="2684:2712" ph="DELETE FROM " />
+                <marker date="1518456349295" expanded="true" signature="3044:3064" ph="SELECT * FRO... client" />
+                <marker date="1518456349295" expanded="true" signature="3044:3065" ph="SELECT * FRO... client" />
+                <marker date="1518456349295" expanded="true" signature="3651:3671" ph="SELECT * FRO... client" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminsDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-884">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <marker date="1518456087177" expanded="true" signature="453:484" ph="SELECT * FRO... admin" />
+                <marker date="1518456087177" expanded="true" signature="1921:2722" ph="INSERT INTO admin... " />
+                <marker date="1518456087177" expanded="true" signature="3053:3253" ph="DELETE FROM " />
+                <marker date="1518456087177" expanded="true" signature="3612:3631" ph="SELECT * FRO... admin" />
+                <marker date="1518456087177" expanded="true" signature="4241:4260" ph="SELECT * FRO... admin" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentsDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="94" column="12" lean-forward="false" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
+              <folding>
+                <element signature="method#getById#0;class#AgentsDAO#0" expanded="false" />
+                <element signature="method#delete#0;class#AgentsDAO#0" expanded="false" />
+                <element signature="method#getAll#0;class#AgentsDAO#0" expanded="false" />
+                <marker date="1518455241074" expanded="true" signature="424:453" ph="SELECT * FRO... agent" />
+                <marker date="1518455241074" expanded="true" signature="1648:2398" ph="INSERT INTO admin... " />
+                <marker date="1518455241074" expanded="true" signature="1648:2451" ph="INSERT INTO admin... " />
+                <marker date="1518455241074" expanded="true" signature="1648:2452" ph="INSERT INTO admin... " />
+                <marker date="1518455241074" expanded="true" signature="2740:2776" ph="DELETE FROM " />
+                <marker date="1518455241074" expanded="true" signature="2740:2841" ph="DELETE FROM " />
+                <marker date="1518455241074" expanded="true" signature="3153:3172" ph="SELECT * FRO... agent" />
+                <marker date="1518455241074" expanded="true" signature="3792:3811" ph="SELECT * FRO... agent" />
               </folding>
             </state>
           </provider>
@@ -153,6 +155,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>myAdmin</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -168,9 +175,11 @@
         <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
         <option value="$PROJECT_DIR$/src/model/db/DAO.java" />
         <option value="$PROJECT_DIR$/src/model/beans/humans/Admin.java" />
-        <option value="$PROJECT_DIR$/src/model/beans/humans/Person.java" />
         <option value="$PROJECT_DIR$/src/model/db/DAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/humans/Person.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" />
         <option value="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
       </list>
     </option>
   </component>
@@ -368,12 +377,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518442739125</updated>
-      <workItem from="1518442763270" duration="6784000" />
+      <workItem from="1518442763270" duration="11427000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6784000" />
+    <option name="totallyTimeSpent" value="11427000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,7 +413,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18305598" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -426,7 +435,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -485,24 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="method#Person#0;class#Person#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1357#1358#0" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1749#1750#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -521,23 +512,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="method#Person#0;class#Person#0" expanded="false" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+            <element signature="e#1507#1508#0" expanded="true" />
+            <element signature="e#1849#1850#0" expanded="true" />
+            <element signature="e#1899#1900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="94" column="12" lean-forward="false" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
+          <folding>
+            <element signature="method#getById#0;class#AgentsDAO#0" expanded="false" />
+            <element signature="method#delete#0;class#AgentsDAO#0" expanded="false" />
+            <element signature="method#getAll#0;class#AgentsDAO#0" expanded="false" />
+            <marker date="1518455241074" expanded="true" signature="424:453" ph="SELECT * FRO... agent" />
+            <marker date="1518455241074" expanded="true" signature="1648:2398" ph="INSERT INTO admin... " />
+            <marker date="1518455241074" expanded="true" signature="1648:2451" ph="INSERT INTO admin... " />
+            <marker date="1518455241074" expanded="true" signature="1648:2452" ph="INSERT INTO admin... " />
+            <marker date="1518455241074" expanded="true" signature="2740:2776" ph="DELETE FROM " />
+            <marker date="1518455241074" expanded="true" signature="2740:2841" ph="DELETE FROM " />
+            <marker date="1518455241074" expanded="true" signature="3153:3172" ph="SELECT * FRO... agent" />
+            <marker date="1518455241074" expanded="true" signature="3792:3811" ph="SELECT * FRO... agent" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="-884">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
-            <element signature="e#1767#1768#0" expanded="true" />
-            <marker date="1518450837511" expanded="true" signature="453:484" ph="SELECT * FRO... admin" />
-            <marker date="1518450837511" expanded="true" signature="1909:2710" ph="INSERT INTO admin... " />
-            <marker date="1518450837511" expanded="true" signature="1909:2711" ph="INSERT INTO admin... " />
-            <marker date="1518450837511" expanded="true" signature="3041:3106" ph="DELETE FROM " />
-            <marker date="1518450837511" expanded="true" signature="3041:3241" ph="DELETE FROM " />
-            <marker date="1518450837511" expanded="true" signature="3600:3619" ph="SELECT * FRO... admin" />
-            <marker date="1518450837511" expanded="true" signature="4229:4248" ph="SELECT * FRO... admin" />
-            <marker date="1518450837511" expanded="true" signature="4229:4251" ph="SELECT * FRO... admin" />
+            <marker date="1518456087177" expanded="true" signature="453:484" ph="SELECT * FRO... admin" />
+            <marker date="1518456087177" expanded="true" signature="1921:2722" ph="INSERT INTO admin... " />
+            <marker date="1518456087177" expanded="true" signature="3053:3253" ph="DELETE FROM " />
+            <marker date="1518456087177" expanded="true" signature="3612:3631" ph="SELECT * FRO... admin" />
+            <marker date="1518456087177" expanded="true" signature="4241:4260" ph="SELECT * FRO... admin" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2090">
+          <caret line="127" column="19" lean-forward="false" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <marker date="1518456349295" expanded="true" signature="392:422" ph="SELECT * FRO... client" />
+            <marker date="1518456349295" expanded="true" signature="1643:2258" ph="INSERT INTO admin... " />
+            <marker date="1518456349295" expanded="true" signature="1643:2391" ph="INSERT INTO admin... " />
+            <marker date="1518456349295" expanded="true" signature="1643:2392" ph="INSERT INTO admin... " />
+            <marker date="1518456349295" expanded="true" signature="2684:2712" ph="DELETE FROM " />
+            <marker date="1518456349295" expanded="true" signature="3044:3064" ph="SELECT * FRO... client" />
+            <marker date="1518456349295" expanded="true" signature="3044:3065" ph="SELECT * FRO... client" />
+            <marker date="1518456349295" expanded="true" signature="3651:3671" ph="SELECT * FRO... client" />
           </folding>
         </state>
       </provider>

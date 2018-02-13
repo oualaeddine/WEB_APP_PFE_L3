@@ -6,10 +6,19 @@ import java.util.Date;
 public abstract class Person implements Serializable {
     private int id;
     private String nom, prenom, adresse, email, username, password, tel;
-    private Date dateNaissance;
+    private Date dateNaissance,dateAdded;
     private boolean isSuspended;
 
+
     Person() {
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public boolean isSuspended() {

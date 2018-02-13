@@ -25,7 +25,7 @@ public class OperateurDAO extends DAO implements DAOInterface{
                 operateur.setUsername(result.getString("username"));
                 operateur.setPassword(result.getString("password"));
                 operateur.setDateAdded(result.getDate("dateAdded"));
-                operateur.setAddedBy(result.getInt("addedBy"));
+//                operateur.setAddedBy(result.getInt("addedBy")); TODO:hedi
                 operateur.setSuspended(result.getBoolean("isSuspended"));
 
                 return operateur;
@@ -59,7 +59,7 @@ public class OperateurDAO extends DAO implements DAOInterface{
                     "'"+operateur.getUsername()+"',"+
                     "'"+operateur.getPassword()+"',"+
                     operateur.getDateAdded()+","+
-                    operateur.getAddedBy()+","+
+                    0+","+ //TODO:addedBy
                     operateur.isSuspended()+","+
                     ");");
         }catch(SQLException e){
@@ -70,17 +70,56 @@ public class OperateurDAO extends DAO implements DAOInterface{
 
     @Override
     public boolean delete(Object object) {
+        Operateur operateur = (Operateur) object;
+        try {
+            statement.execute("DELETE FROM operateur WHERE username='"+operateur.getUsername()+"' AND password='"+operateur.getPassword()+"';");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean exists(Object object) {
+        Operateur operateur=(Operateur) object;
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM operateur");
+            while (result.next()){
+                String username=result.getString("username");
+                String password=result.getString("password");
+                if (operateur.getUsername().equals(username) && operateur.getPassword().equals(password)) return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public LinkedList getAll() {
-        return null;
+        LinkedList<Operateur> list = new LinkedList<>();
+        ResultSet result;
+        try {
+            result=statement.executeQuery("SELECT * FROM operateur");
+            Operateur operateur=new Operateur();
+            operateur.setId(result.getInt("id"));
+            operateur.setNom(result.getString("nom"));
+            operateur.setPrenom(result.getString("prenom"));
+            operateur.setDateNaissance(result.getDate("dateNaiss"));
+            operateur.setAdresse(result.getString("adresse"));
+            operateur.setEmail(result.getString("email"));
+            operateur.setUsername(result.getString("username"));
+            operateur.setPassword(result.getString("password"));
+            operateur.setDateAdded(result.getDate("dateAdded"));
+//            operateur.setAddedBy(result.getInt("addedBy")); TODO:hedi teni
+            operateur.setSuspended(result.getBoolean("isSuspended"));
+
+            list.add(operateur);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }

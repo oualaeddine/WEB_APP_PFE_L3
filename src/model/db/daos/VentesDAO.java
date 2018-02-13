@@ -8,6 +8,7 @@ import java.util.LinkedList;
 public class VentesDAO extends DAO implements DAOInterface{
     @Override
     public Object getById(int id) {
+
         return null;
     }
 

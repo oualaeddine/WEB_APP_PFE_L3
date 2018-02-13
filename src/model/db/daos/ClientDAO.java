@@ -37,13 +37,7 @@ public class ClientDAO extends DAO implements DAOInterface{
 
     @Override
     public boolean deleteById(int id) {
-        try{
-            statement.execute("DELETE FROM client WHERE id="+id);
-            return true;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
+        return super.deleteById(id, "client");
     }
 
     @Override

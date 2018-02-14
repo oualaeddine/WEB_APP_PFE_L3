@@ -2,14 +2,18 @@ package model.db.daos;
 
 import model.beans.humans.Admin;
 import model.db.DAO;
-import model.db.DAOInterface;
 import model.enums.AdminRole;
+import model.enums.UserType;
+import utils.Consts;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class AdminsDAO extends DAO implements DAOInterface{
+public class AdminsDAO extends DAO {
+    private static final String ADMINS_TABLE_NAME = "admin";
+    public static final String TABLE_NAME = "admin";
+
     public AdminsDAO() {
 
     }
@@ -17,9 +21,9 @@ public class AdminsDAO extends DAO implements DAOInterface{
     @Override
     public Object getById(int id) {
         ResultSet result;
-        try{
-            result = statement.executeQuery("SELECT * FROM admin WHERE id = "+id);
-            if (result.next()){
+        try {
+            result = statement.executeQuery("SELECT * FROM admin WHERE id = " + id);
+            if (result.next()) {
                 Admin admin = new Admin();
                 admin.setId(result.getInt("id"));
                 admin.setNom(result.getString("nom"));
@@ -30,7 +34,7 @@ public class AdminsDAO extends DAO implements DAOInterface{
                 admin.setEmail(result.getString("email"));
                 admin.setUsername(result.getString("username"));
                 admin.setPassword(result.getString("password"));
-                if(result.getString("role").equals("SU"))
+                if (result.getString("role").equals("SU"))
                     admin.setRole(AdminRole.SUPER_USER);
                 else admin.setRole(AdminRole.ADMIN);
                 admin.setDateAdded(result.getDate("dateAdded"));
@@ -39,7 +43,7 @@ public class AdminsDAO extends DAO implements DAOInterface{
 
                 return admin;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -62,16 +66,16 @@ public class AdminsDAO extends DAO implements DAOInterface{
                     + " VALUES (" +
                     "'" + myAdmin.getNom() + "'," +
                     "'" + myAdmin.getPrenom() + "'," +
-                    "'" + myAdmin.getDateNaissance() + "',"+
-                    "'" + myAdmin.getAdresse() +"',"+
-                    "'" + myAdmin.getTel() +"',"+
-                    "'" + myAdmin.getEmail() +"',"+
-                    "'" + myAdmin.getUsername() +"',"+
-                    "'" + myAdmin.getPassword() +"',"+
-                    "'" + myAdmin.getRole()+"',"+
-                    "CURRENT_DATE(),"+
-                    "0,"+ //TODO: mnine njibou addedBy ?
-                    "0"+
+                    "'" + myAdmin.getDateNaissance() + "'," +
+                    "'" + myAdmin.getAdresse() + "'," +
+                    "'" + myAdmin.getTel() + "'," +
+                    "'" + myAdmin.getEmail() + "'," +
+                    "'" + myAdmin.getUsername() + "'," +
+                    "'" + myAdmin.getPassword() + "'," +
+                    "'" + myAdmin.getRole() + "'," +
+                    "CURRENT_DATE()," +
+                    "0," + //TODO: mnine njibou addedBy ?
+                    "0" +
                     ");"
             );
             return true;
@@ -84,7 +88,7 @@ public class AdminsDAO extends DAO implements DAOInterface{
     @Override
     public boolean delete(Object object) {
         Admin myAdmin = (Admin) object;
-        if (exists(myAdmin)) {
+        if (new AuthDAO().exists(myAdmin, UserType.ADMIN)) {
             try {
                 statement.execute("DELETE FROM admin WHERE username = " +
                         "'" + myAdmin.getUsername() + "'"
@@ -100,30 +104,12 @@ public class AdminsDAO extends DAO implements DAOInterface{
     }
 
     @Override
-    public boolean exists(Object object){
-        Admin myAdmin = (Admin) object;
-        ResultSet result;
-        try{
-            result = statement.executeQuery("SELECT * FROM admin");
-            while (result.next()){
-                String username = result.getString("username");
-                String password = result.getString("password");
-                if (myAdmin.getUsername().equals(username) && myAdmin.getPassword().equals(password))
-                    return true;
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
     public LinkedList<Admin> getAll() {
         ResultSet result;
-        LinkedList<Admin> list=new LinkedList<>();
-        try{
-            result = statement.executeQuery("SELECT * FROM admin;");
-            while (result.next()){
+        LinkedList<Admin> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM " + ADMINS_TABLE_NAME + ";");
+            while (result.next()) {
                 Admin admin = new Admin();
                 admin.setId(result.getInt("id"));
                 admin.setNom(result.getString("nom"));
@@ -134,7 +120,7 @@ public class AdminsDAO extends DAO implements DAOInterface{
                 admin.setEmail(result.getString("email"));
                 admin.setUsername(result.getString("username"));
                 admin.setPassword(result.getString("password"));
-                if(result.getString("role").equals("SU"))
+                if (result.getString("role").equals("SU"))
                     admin.setRole(AdminRole.SUPER_USER);
                 else admin.setRole(AdminRole.ADMIN);
                 admin.setDateAdded(result.getDate("dateAdded"));
@@ -144,7 +130,7 @@ public class AdminsDAO extends DAO implements DAOInterface{
                 list.add(admin);
             }
             return list;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;

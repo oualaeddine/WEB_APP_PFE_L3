@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class AgentsDAO extends DAO implements DAOInterface{
+public class AgentsDAO extends DAO {
+
+    public static final String TABLE_NAME = "agent";
 
     public AgentsDAO() {
     }
@@ -17,8 +19,8 @@ public class AgentsDAO extends DAO implements DAOInterface{
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM agent WHERE id="+id);
-            if (result.next()){
+            result = statement.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE id=" + id);
+            if (result.next()) {
                 Agent agent = new Agent();
                 agent.setId(result.getInt("id"));
                 agent.setNom(result.getString("nom"));
@@ -33,7 +35,7 @@ public class AgentsDAO extends DAO implements DAOInterface{
                 //TODO:addedBy + idRegion
                 agent.setSuspended(result.getBoolean("isSuspended"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -52,22 +54,18 @@ public class AgentsDAO extends DAO implements DAOInterface{
     public boolean add(Object object) {
         Agent myAdmin = (Agent) object;
         try {
-<<<<<<< HEAD
             statement.execute("INSERT INTO agent (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`idregion`)"
-=======
-            statement.execute("INSERT INTO admin (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`isSuspended`,`idregion`)"
->>>>>>> a5cea49c980f8354a3fbd4c70ac38ecb8c9f3f5f
                     + " VALUES (" +
                     "'" + myAdmin.getNom() + "'," +
                     "'" + myAdmin.getPrenom() + "'," +
-                    "'" + myAdmin.getDateNaissance() + "',"+
-                    "'" + myAdmin.getAdresse() +"',"+
-                    "'" + myAdmin.getTel() +"',"+
-                    "'" + myAdmin.getEmail() +"',"+
-                    "'" + myAdmin.getUsername() +"',"+
-                    "'" + myAdmin.getPassword() +"',"+
-                    "0,"+
-                    "0"+ //TODO: id region ?
+                    "'" + myAdmin.getDateNaissance() + "'," +
+                    "'" + myAdmin.getAdresse() + "'," +
+                    "'" + myAdmin.getTel() + "'," +
+                    "'" + myAdmin.getEmail() + "'," +
+                    "'" + myAdmin.getUsername() + "'," +
+                    "'" + myAdmin.getPassword() + "'," +
+                    "0," +
+                    "0" + //TODO: id region ?
                     ");"
             );
             return true;
@@ -80,29 +78,10 @@ public class AgentsDAO extends DAO implements DAOInterface{
     @Override
     public boolean delete(Object object) {
         Agent agent = (Agent) object;
-        try{
-            statement.execute("DELETE FROM agent WHERE username = '"+agent.getUsername()+"' AND password = '"+agent.getPassword()+"'");
+        try {
+            statement.execute("DELETE FROM agent WHERE username = '" + agent.getUsername() + "' AND password = '" + agent.getPassword() + "'");
             return true;
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public boolean exists(Object object) {
-        Agent agent = (Agent) object;
-        ResultSet result;
-        try{
-            result = statement.executeQuery("SELECT * FROM agent");
-            while (result.next()){
-                String username = result.getString("username");
-                String password = result.getString("password");
-                if (agent.getUsername().equals(username) && agent.getPassword().equals(password)) {
-                    return true;
-                }
-            }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -110,11 +89,11 @@ public class AgentsDAO extends DAO implements DAOInterface{
 
     @Override
     public LinkedList getAll() {
-        LinkedList<Agent> list=new LinkedList<>();
+        LinkedList<Agent> list = new LinkedList<>();
         ResultSet result;
         try {
             result = statement.executeQuery("SELECT * FROM agent");
-            while (result.next()){
+            while (result.next()) {
                 Agent agent = new Agent();
                 agent.setNom(result.getString("nom"));
                 agent.setPrenom(result.getString("prenom"));
@@ -130,7 +109,7 @@ public class AgentsDAO extends DAO implements DAOInterface{
                 list.add(agent);
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;

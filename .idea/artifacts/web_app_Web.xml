@@ -3,6 +3,11 @@
     <output-path>$PROJECT_DIR$/classes/artifacts/web_app_Web</output-path>
     <root id="archive" name="web_app_Web.war">
       <element id="artifact" artifact-name="web_app:Web exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jackson-all-1.9.0" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

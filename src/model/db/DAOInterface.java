@@ -14,7 +14,5 @@ public interface DAOInterface {
 
     boolean delete(Object object);
 
-    boolean exists(Object object);
-
     LinkedList getAll();
 }

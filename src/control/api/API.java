@@ -1,6 +1,6 @@
 package control.api;
 
-import control.system.Auth;
+import control.managers.AuthManager;
 import model.enums.UserType;
 
 import javax.servlet.http.HttpServlet;
@@ -13,21 +13,8 @@ public class API extends HttpServlet {
             ACTION_ERROR = "wrong_action",
             REQUEST_TYPE_ERROR = "denied";
 
-    protected boolean checkLogin(UserType userType, int userId, String password) {
-        Auth auth = new Auth();
-        switch (userType) {
-            case CLIENT:
-                return auth.athenticateClient(userId, password);
-            case AGENT:
-                return auth.athenticateAgent(userId, password);
-            case OPERATEUR:
-                return auth.athenticateOperateur(userId, password);
-            case ADMIN:
-                return auth.athenticateAdmin(userId, password);
-            case RESPONSABLE_VENTES:
-                return auth.athenticateResponsableVentes(userId, password);
-            default:
-                return false;
-        }
+    protected boolean checkLogin(UserType userType, String userName, String password) {
+        AuthManager auth = new AuthManager();
+        return auth.authenticateByClientType(userName, password, userType);
     }
 }

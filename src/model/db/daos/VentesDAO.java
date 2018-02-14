@@ -5,7 +5,7 @@ import model.db.DAOInterface;
 
 import java.util.LinkedList;
 
-public class VentesDAO extends DAO implements DAOInterface{
+public class VentesDAO extends DAO {
     @Override
     public Object getById(int id) {
 
@@ -31,7 +31,6 @@ public class VentesDAO extends DAO implements DAOInterface{
         return false;
     }
 
-    @Override
     public boolean exists(Object object) {
         return false;
     }

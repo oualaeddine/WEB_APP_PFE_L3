@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class LogementDAO extends DAO implements DAOInterface{
+public class LogementDAO extends DAO {
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -87,7 +87,6 @@ public class LogementDAO extends DAO implements DAOInterface{
         return false;
     }
 
-    @Override
     public boolean exists(Object object) {
         Logement logement = (Logement) object;
         ResultSet result;

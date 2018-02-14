@@ -8,13 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class OperateurDAO extends DAO implements DAOInterface{
+public class OperateurDAO extends DAO {
+    public static final String TABLE_NAME = "operateur";
+
     @Override
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM operateur WHERE id="+id);
-            if (result.next()){
+            result = statement.executeQuery("SELECT * FROM operateur WHERE id=" + id);
+            if (result.next()) {
                 Operateur operateur = new Operateur();
                 operateur.setId(result.getInt("id"));
                 operateur.setNom(result.getString("nom"));
@@ -30,7 +32,7 @@ public class OperateurDAO extends DAO implements DAOInterface{
 
                 return operateur;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -50,19 +52,19 @@ public class OperateurDAO extends DAO implements DAOInterface{
         Operateur operateur = new Operateur();
         try {
             statement.execute("INSERT INTO admin (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended` VALUES(" +
-                    "'"+operateur.getNom()+"',"+
-                    "'"+operateur.getPrenom()+"',"+
-                    operateur.getDateNaissance()+","+
-                    "'"+operateur.getAdresse()+"',"+
-                    "'"+operateur.getTel()+"',"+
-                    "'"+operateur.getEmail()+"',"+
-                    "'"+operateur.getUsername()+"',"+
-                    "'"+operateur.getPassword()+"',"+
-                    operateur.getDateAdded()+","+
-                    0+","+ //TODO:addedBy
-                    operateur.isSuspended()+","+
+                    "'" + operateur.getNom() + "'," +
+                    "'" + operateur.getPrenom() + "'," +
+                    operateur.getDateNaissance() + "," +
+                    "'" + operateur.getAdresse() + "'," +
+                    "'" + operateur.getTel() + "'," +
+                    "'" + operateur.getEmail() + "'," +
+                    "'" + operateur.getUsername() + "'," +
+                    "'" + operateur.getPassword() + "'," +
+                    operateur.getDateAdded() + "," +
+                    0 + "," + //TODO:addedBy
+                    operateur.isSuspended() + "," +
                     ");");
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -72,25 +74,8 @@ public class OperateurDAO extends DAO implements DAOInterface{
     public boolean delete(Object object) {
         Operateur operateur = (Operateur) object;
         try {
-            statement.execute("DELETE FROM operateur WHERE username='"+operateur.getUsername()+"' AND password='"+operateur.getPassword()+"';");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public boolean exists(Object object) {
-        Operateur operateur=(Operateur) object;
-        ResultSet result;
-        try {
-            result = statement.executeQuery("SELECT * FROM operateur");
-            while (result.next()){
-                String username=result.getString("username");
-                String password=result.getString("password");
-                if (operateur.getUsername().equals(username) && operateur.getPassword().equals(password)) return true;
-            }
-        }catch (SQLException e){
+            statement.execute("DELETE FROM operateur WHERE username='" + operateur.getUsername() + "' AND password='" + operateur.getPassword() + "';");
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -101,8 +86,8 @@ public class OperateurDAO extends DAO implements DAOInterface{
         LinkedList<Operateur> list = new LinkedList<>();
         ResultSet result;
         try {
-            result=statement.executeQuery("SELECT * FROM operateur");
-            Operateur operateur=new Operateur();
+            result = statement.executeQuery("SELECT * FROM operateur");
+            Operateur operateur = new Operateur();
             operateur.setId(result.getInt("id"));
             operateur.setNom(result.getString("nom"));
             operateur.setPrenom(result.getString("prenom"));
@@ -116,7 +101,7 @@ public class OperateurDAO extends DAO implements DAOInterface{
             operateur.setSuspended(result.getBoolean("isSuspended"));
 
             list.add(operateur);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;

@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class LocaliteDAO extends DAO implements DAOInterface{
+public class LocaliteDAO extends DAO  {
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -59,7 +59,6 @@ public class LocaliteDAO extends DAO implements DAOInterface{
         return false;
     }
 
-    @Override
     public boolean exists(Object object) {
         Localite localite = (Localite) object;
         ResultSet result;

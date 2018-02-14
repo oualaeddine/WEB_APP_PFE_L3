@@ -31,7 +31,7 @@ public class LoginServlet extends MyServlet {
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
         } else {
-            String username = (String) request.getParameter(LOGGED_IN_USER_USERNAME);
+            String username = request.getParameter(LOGGED_IN_USER_USERNAME);
             String password = (String) request.getAttribute(LOGGED_IN_USER_PASSWORD);
             UserType type = (UserType) request.getAttribute(LOGGED_IN_USER_TYPE);
             if (username != null && password != null && type != null)

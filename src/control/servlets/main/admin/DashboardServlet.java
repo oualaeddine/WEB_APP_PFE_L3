@@ -1,6 +1,8 @@
-package control.servlets.operateur;
+package control.servlets.main.admin;
 
+import control.managers.AdminsManager;
 import control.servlets.MyServlet;
+import model.beans.humans.Admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "OperateurServlet")
-public class OperateurServlet extends MyServlet {
+@WebServlet(name = "DashboardServlet")
+public class DashboardServlet extends MyServlet {
+    private AdminsManager adminManager;
+
     @Override
     public void init() throws ServletException {
         //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
@@ -18,6 +22,8 @@ public class OperateurServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
+            Admin loggedInAdmin = new Admin();
+            this.adminManager = new AdminsManager(loggedInAdmin);
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }

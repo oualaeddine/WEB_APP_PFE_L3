@@ -1,4 +1,4 @@
-package control.servlets.service_ventes;
+package control.servlets.main.service_ventes;
 
 import control.servlets.MyServlet;
 

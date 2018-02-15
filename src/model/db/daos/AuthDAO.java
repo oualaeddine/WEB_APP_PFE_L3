@@ -13,7 +13,7 @@ public class AuthDAO extends DAO {
         Person person = (Person) object;
         ResultSet result;
         try {
-            String table = Util.getTableNameFromType(type);
+            String table = Util.getStringFromType(type);
             result = statement.executeQuery("SELECT * FROM " + table);
             while (result.next()) {
                 String username = result.getString("username");
@@ -30,7 +30,7 @@ public class AuthDAO extends DAO {
     public int getUserIdBy(String username, UserType type) {
         // TODO: 2/14/2018 jibili l userId
         ResultSet result;
-        String table = Util.getTableNameFromType(type);
+        String table = Util.getStringFromType(type);
         if (table != null) {
             try {
                 result = statement.executeQuery("SELECT id FROM " + table + " WHERE username = " + username);

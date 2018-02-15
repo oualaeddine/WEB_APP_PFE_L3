@@ -5,7 +5,8 @@
       <element id="artifact" artifact-name="web_app:Web exploded" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
-          <element id="library" level="project" name="jackson-all-1.9.0" />
+          <element id="library" level="project" name="gson-2.6.2" />
+          <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
         </element>
       </element>
     </root>

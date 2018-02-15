@@ -1,12 +1,9 @@
 package utils;
 
 
-import com.sun.org.omg.CORBA.OpDescriptionSeqHelper;
+import com.google.gson.Gson;
 import model.db.daos.*;
 import model.enums.UserType;
-import org.codehaus.jackson.map.ObjectMapper;
-
-import java.io.IOException;
 
 public class Util {
 
@@ -15,14 +12,9 @@ public class Util {
      * @return String containing the object in parameter formatted tto JSON
      */
     public static String objectToJson(Object object) {
-        String json = null;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            json = mapper.writeValueAsString(object);
-            System.out.println("JSON = " + json);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String json ;
+        json = new Gson().toJson(object);
+        System.out.println("JSON = " + json);
         return json;
     }
 
@@ -43,7 +35,7 @@ public class Util {
         }
     }
 
-    public static String getTableNameFromType(UserType type) {
+    public static String getStringFromType(UserType type) {
         switch (type) {
             case CLIENT:
                 return ClientDAO.TABLE_NAME;
@@ -60,16 +52,3 @@ public class Util {
         }
     }
 }
-
-/*    hedi galk mach affaire akhdem gson khir :3
-        public static String objectToJson(Object object) {
-        String json = null;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            json = mapper.writeValueAsString(object);
-            System.out.println("JSON = " + json);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }  */

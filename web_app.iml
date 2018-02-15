@@ -29,6 +29,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="jackson-all-1.9.0" level="project" />
+    <orderEntry type="library" name="gson-2.6.2" level="project" />
+    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
   </component>
 </module>

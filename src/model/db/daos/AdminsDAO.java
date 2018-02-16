@@ -17,7 +17,22 @@ public class AdminsDAO extends DAO {
     public AdminsDAO() {
 
     }
-
+    public boolean isSuper(int id){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT role FROM admin WHERE id = "+id);
+            if (result.next()){
+                if (result.getString("role").equals("SU")) return true;
+                else{
+                    System.out.println("Not a SU");
+                    return false;
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -48,7 +63,9 @@ public class AdminsDAO extends DAO {
         }
         return null;
     }
-
+    public boolean suspendById(int id){
+        return  super.suspendById(id,"admin");
+    }
     public boolean deleteById(int id) {
         return super.deleteById(id, "admin");
     }
@@ -72,9 +89,9 @@ public class AdminsDAO extends DAO {
                     "'" + myAdmin.getEmail() + "'," +
                     "'" + myAdmin.getUsername() + "'," +
                     "'" + myAdmin.getPassword() + "'," +
-                    "'" + myAdmin.getRole() + "'," +
+                    "'admin'," +
                     "CURRENT_DATE()," +
-                    "0," + //TODO: mnine njibou addedBy ?
+                    myAdmin.getAddedBy()+"," +
                     "0" +
                     ");"
             );

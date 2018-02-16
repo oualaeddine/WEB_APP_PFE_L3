@@ -15,6 +15,11 @@ public class AgentsDAO extends DAO {
     public AgentsDAO() {
     }
 
+
+    public boolean suspendById(int id){
+        return  super.suspendById(id,"agent");
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;

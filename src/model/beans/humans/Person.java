@@ -8,7 +8,11 @@ public abstract class Person implements Serializable {
     private String nom, prenom, adresse, email, username, password, tel;
     private Date dateNaissance,dateAdded;
     private boolean isSuspended;
+    private int addedBy;
 
+    public int getAddedBy() {
+        return addedBy;
+    }
 
     Person() {
     }
@@ -99,5 +103,9 @@ public abstract class Person implements Serializable {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    public void setAddedBy(int addedBy) {
+        this.addedBy = addedBy;
     }
 }

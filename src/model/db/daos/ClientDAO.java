@@ -10,8 +10,18 @@ import java.util.LinkedList;
 
 public class ClientDAO extends DAO {
     public static final String TABLE_NAME = "client";
-    public static final String[] COLUMN_NAMES = {};
+    public static final String[] COLUMN_NAMES = {
 
+    };
+    public boolean updatePassword(String pwd,int id){
+        try {
+            statement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -39,7 +49,16 @@ public class ClientDAO extends DAO {
         }
         return null;
     }
-
+    public boolean banById(int id){
+        try {
+            statement.execute("UPDATE client SET isBanned = 1" +
+                    "WHERE id="+id+" ;");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public boolean deleteById(int id) {
         return super.deleteById(id, "client");

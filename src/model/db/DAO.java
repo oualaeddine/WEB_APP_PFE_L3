@@ -11,6 +11,16 @@ public class DAO implements DAOInterface{
         this.statement = DbConnector.getStatment();
     }
 
+    protected boolean suspendById(int id,String table) {
+        try {
+            statement.execute("UPDATE "+table+" SET isSuspended = 1" +
+                    "WHERE id="+id+" ;");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     protected boolean deleteById(int id, String table) {
         try {
             statement.execute("DELETE FROM " + table + " WHERE id = " + id);

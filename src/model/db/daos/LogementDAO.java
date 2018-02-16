@@ -11,6 +11,16 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class LogementDAO extends DAO {
+    public boolean geler(Logement logement){
+        try {
+            statement.execute("UPDATE logement SET etat = 'gele' WHERE id="+logement.getId()+";");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -22,8 +32,12 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                if (result.getString("etat").equals("vendu")) logement.setEtat(EtatLogement.VENDU);
-                else logement.setEtat(EtatLogement.AVENDRE);
+                switch (result.getString("etat")){
+                    case "vendu": logement.setEtat(EtatLogement.VENDU); break;
+                    case "avendre": logement.setEtat(EtatLogement.AVENDRE); break;
+                    case "gele": logement.setEtat(EtatLogement.GELE); break;
+                }
+
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
                 logement.setNbrFacades(result.getInt("nbrFacades"));

@@ -11,6 +11,15 @@ import java.util.LinkedList;
 public class OperateurDAO extends DAO {
     public static final String TABLE_NAME = "operateur";
 
+    public boolean changePassword(String pwd,int id){
+        try {
+            statement.execute("UPDATE operateur SET password='"+pwd+"' WHERE id="+id);
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -36,6 +45,9 @@ public class OperateurDAO extends DAO {
             e.printStackTrace();
         }
         return null;
+    }
+    public boolean suspendById(int id){
+        return  super.suspendById(id,"operateur");
     }
 
     public boolean deleteById(int id) {

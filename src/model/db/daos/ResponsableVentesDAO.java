@@ -36,6 +36,9 @@ public class ResponsableVentesDAO extends DAO {
         }
         return null;
     }
+    public boolean suspendById(int id){
+        return  super.suspendById(id,"responsable_vente");
+    }
 
     public boolean deleteById(int id) {
         return super.deleteById(id, "responsable_vente");

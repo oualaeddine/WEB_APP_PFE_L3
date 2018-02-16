@@ -8,6 +8,7 @@ public class Agent extends Employe  {
     private Localite localite;
 
     public Agent() {
+        super();
     }
 
     public Localite getLocalite() {

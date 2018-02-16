@@ -26,4 +26,12 @@ public class VisitesDao extends DAO {
     public LinkedList<Visite> getAll() {
         return null;
     }
+
+    public LinkedList<Visite> getPassee() {
+        return null;
+    }
+
+    public LinkedList<Visite> getByAgent(int agentId) {
+        return null;
+    }
 }

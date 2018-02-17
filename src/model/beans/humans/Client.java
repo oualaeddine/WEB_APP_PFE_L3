@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Client extends Person  {
-    private Object creator;//todo can be admin or operator?
     private boolean isBanned;
     private Date dateAdded;
 
@@ -28,11 +27,5 @@ public class Client extends Person  {
         this.dateAdded = dateAdded;
     }
 
-    public Object getCreator() {
-        return creator;
-    }
 
-    public void setCreator(Object creator) {
-        this.creator = creator;
-    }
 }

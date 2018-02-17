@@ -17,6 +17,8 @@ public class AdminsDAO extends DAO {
     public AdminsDAO() {
 
     }
+
+    public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
     public boolean isSuper(int id){
         ResultSet result;
         try {
@@ -33,6 +35,7 @@ public class AdminsDAO extends DAO {
         }
         return false;
     }
+
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -63,6 +66,7 @@ public class AdminsDAO extends DAO {
         }
         return null;
     }
+
     public boolean suspendById(int id){
         return  super.suspendById(id,"admin");
     }

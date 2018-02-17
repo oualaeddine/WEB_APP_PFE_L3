@@ -11,6 +11,8 @@ import java.util.LinkedList;
 public class ResponsableVentesDAO extends DAO {
     public static final String TABLE_NAME = "responsable_vente";
 
+    public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
+
     @Override
     public Object getById(int id) {
         ResultSet result;

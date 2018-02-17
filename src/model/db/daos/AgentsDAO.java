@@ -16,6 +16,7 @@ public class AgentsDAO extends DAO {
     public AgentsDAO() {
     }
 
+    public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
     public boolean suspendById(int id){
         return  super.suspendById(id,"agent");
@@ -41,7 +42,7 @@ public class AgentsDAO extends DAO {
                 agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
                 agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
-                
+
                 return agent;
             }
         } catch (SQLException e) {
@@ -113,8 +114,10 @@ public class AgentsDAO extends DAO {
                 agent.setUsername(result.getString("username"));
                 agent.setPassword(result.getString("password"));
                 agent.setDateAdded(result.getDate("dateAdded"));
-                //TODO:addedBy + idRegion
+                agent.setLocalite((Localite) new AgentsDAO().getById(result.getInt("idRegion")));
+                agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
+
                 list.add(agent);
             }
 
@@ -124,11 +127,13 @@ public class AgentsDAO extends DAO {
         return list;
     }
 
-
-    public boolean changeAgentPassword(Agent agent, String newPassword) {
-        if (statement != null)
-            return false;
-        else
-            return false;
+    public boolean changePassword(String mdp, int id) {
+        try {
+            statement.execute("UPDATE agent SET password='"+mdp+"' WHERE id="+id+";");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }

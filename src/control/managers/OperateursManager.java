@@ -15,7 +15,6 @@ public class OperateursManager {
     }
 
     public boolean createClient(Client client){
-        client.setAddedBy(loggedInOperateur.getId());
         return new ClientDAO().add(client);
     }
     public boolean banClient(Client client){

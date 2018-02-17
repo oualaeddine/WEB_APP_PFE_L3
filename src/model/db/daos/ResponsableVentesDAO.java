@@ -11,6 +11,15 @@ import java.util.LinkedList;
 public class ResponsableVentesDAO extends DAO {
     public static final String TABLE_NAME = "responsable_vente";
 
+    public boolean changePassword(int id,String pwd){
+        try {
+            statement.execute("UPDATE responsable_vente SET password='"+pwd+"' WHERE id = "+id+";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
     @Override

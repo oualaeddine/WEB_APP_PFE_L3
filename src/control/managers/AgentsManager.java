@@ -1,9 +1,14 @@
 package control.managers;
 
 import model.beans.Localite;
+import model.beans.Vente;
+import model.beans.Visite;
 import model.beans.humans.Agent;
 import model.db.daos.AgentsDAO;
 import model.db.daos.LocaliteDAO;
+import model.db.daos.VentesDAO;
+import model.enums.EtatVente;
+import model.enums.EtatVisite;
 
 import java.sql.Date;
 
@@ -34,8 +39,15 @@ public class AgentsManager {
         return agent;
     }
 
-    public void envoyerRapport(){
-
+    public void envoyerRapport(Visite visite){
+        if(visite.getEtatVisite()== EtatVisite.VALIDEE) {
+            Vente vente = new Vente();
+            vente.setAgent(loggedInAgent);
+            vente.setClient(visite.getClient());
+            vente.setLogement(visite.getLogement());
+            vente.setEtatVente(EtatVente.NON_CONFIRMEE);
+            //TODO: njibou kech responsable de vente pour s'occuper de la vente qui vient d'être créée.
+            new VentesDAO().add(vente);
+        }
     }
-
 }

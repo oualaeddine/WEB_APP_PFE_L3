@@ -42,5 +42,5 @@ public class ClientsManager {
     public boolean supprimerCompte(Client client){
         return new ClientDAO().delete(client);
     }
-    
+
 }

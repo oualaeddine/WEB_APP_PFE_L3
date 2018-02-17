@@ -8,20 +8,50 @@ import model.beans.humans.Client;
 import model.beans.humans.ResponsableVente;
 import model.db.DAO;
 import model.db.DAOInterface;
+import model.enums.EtatVente;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VentesDAO extends DAO {
-    public boolean confirm(int id){
+    public boolean confirm(Vente vente){
         try {
-            statement.execute("UPDATE logement SET etat='vendu' WHERE id="+id);
+            statement.execute("UPDATE logement SET etat='vendu' WHERE id="
+                    +vente.getLogement().getId()+";");
+            statement.execute("UPDATE vente SET etat='confirmee' WHERE id="+vente.getId()+";");
+            statement.execute("UPDATE vente SET date=CURRENT_DATE WHERE id="+vente.getId()+";");
             return true;
         }catch (SQLException e){
             e.printStackTrace();
         }
         return false;
+    }
+    public Vente getByClientAndlogement(Client client,Logement logement){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() +
+                    " AND logementId=" + logement.getId() + ";");
+            if (result.next()){
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setAgent((Agent)new AgentsDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setDate(result.getDate("date"));
+                switch (result.getString("etat")) {
+                    case "confirmee": vente.setEtatVente(EtatVente.CONFIRMEE); break;
+                    case "non_confirmee": vente.setEtatVente(EtatVente.NON_CONFIRMEE); break;
+                    case "annulee": vente.setEtatVente(EtatVente.ANNULEE); break;
+                }
+                return vente;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     @Override
     public Object getById(int id) {
@@ -35,6 +65,10 @@ public class VentesDAO extends DAO {
                 vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                if (result.getString("etat").equals("confirmee"))
+                    vente.setEtatVente(EtatVente.CONFIRMEE);
+                else
+                    vente.setEtatVente(EtatVente.NON_CONFIRMEE);
                 vente.setDate(result.getDate("date"));
                 return vente;
             }
@@ -116,5 +150,15 @@ public class VentesDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public boolean cancelVente(Vente vente) {
+        try {
+            statement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Localite;
 import model.beans.humans.Agent;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -37,8 +38,11 @@ public class AgentsDAO extends DAO {
                 agent.setUsername(result.getString("username"));
                 agent.setPassword(result.getString("password"));
                 agent.setDateAdded(result.getDate("dateAdded"));
-                //TODO:addedBy + idRegion
+                agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
+                agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
+                
+                return agent;
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package model.beans;
 import model.beans.humans.Agent;
 import model.beans.humans.Client;
 import model.beans.humans.ResponsableVente;
+import model.enums.EtatVente;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,9 +15,18 @@ public class Vente implements Serializable {
     private Agent agent;
     private ResponsableVente responsableVente;
     private Client client;
+    private EtatVente etatVente;
 
     public Vente() {
 
+    }
+
+    public EtatVente getEtatVente() {
+        return etatVente;
+    }
+
+    public void setEtatVente(EtatVente etatVente) {
+        this.etatVente = etatVente;
     }
 
     public int getId() {

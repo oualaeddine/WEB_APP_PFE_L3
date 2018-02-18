@@ -39,7 +39,6 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                //TODO: addedBy
                 client.setSuspended(result.getBoolean("isBanned"));
 
                 return client;
@@ -73,7 +72,7 @@ public class ClientDAO extends DAO {
     public boolean add(Object object) {
         Client client = (Client) object;
         try {
-            statement.execute("INSERT INTO client(nom, prenom, dateNaiss, adresse, tel, email, username, password, dateAdded, addedBy, isBanned) VALUES (" +
+            statement.execute("INSERT INTO client(nom, prenom, dateNaiss, adresse, tel, email, username, password, dateAdded, isBanned) VALUES (" +
                     "'" + client.getNom() + "'," +
                     "'" + client.getPrenom() + "'," +
                     client.getDateNaissance() + "," +
@@ -83,7 +82,6 @@ public class ClientDAO extends DAO {
                     "'" + client.getUsername() + "'," +
                     "'" + client.getPassword() + "'," +
                     client.getDateAdded() + "," +
-                    0 + "," +
                     0 +
                     ");");
             return true;

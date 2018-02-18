@@ -7,6 +7,8 @@ import model.db.daos.*;
 import model.enums.AdminRole;
 import model.enums.UserType;
 
+import java.sql.Date;
+
 public class AdminsManager {
     private final Admin loggedInAdmin;
 
@@ -14,7 +16,50 @@ public class AdminsManager {
         this.loggedInAdmin = loggedInAdmin;
     }
 
-    public boolean suspendEmploye(UserType userType, int userId) {
+
+    public Admin creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended,AdminRole role){
+        Admin admin = new Admin();
+        admin.setNom(nom);
+        admin.setPrenom(prenom);
+        admin.setDateNaissance(dateNaiss);
+        admin.setAdresse(adresse);
+        admin.setTel(tel);
+        admin.setEmail(email);
+        admin.setUsername(username);
+        admin.setPassword(password);
+        admin.setAddedBy(addedBy);
+        admin.setSuspended(isSuspended);
+        switch (role){
+            case SUPER_USER:
+                admin.setRole(AdminRole.SUPER_USER); break;
+            case ADMIN:
+                admin.setRole(AdminRole.ADMIN); break;
+        }
+        return admin;
+    }
+    public boolean reintegrerEmploye(UserType userType, int userId){
+        switch (userType){
+            case ADMIN: {
+                if (new AdminsDAO().isSuper(loggedInAdmin.getId()))
+                    return new AdminsDAO().reintegrerById(userId);
+                else {
+                    System.out.println("Access denied: you do not know da wae");
+                    return false;
+                }
+            }
+            case AGENT:{
+                return new AgentsDAO().reintegrerById(userId);
+            }
+            case OPERATEUR:{
+                return new OperateurDAO().reintegrerById(userId);
+            }
+            case RESPONSABLE_VENTES:{
+                return new ResponsableVentesDAO().reintegrerById(userId);
+            }
+            default: return false;
+        }
+    }
+    public boolean suspendEmployee(UserType userType, int userId) {
         switch(userType){
             case ADMIN:{
                 if (loggedInAdmin.getRole()== AdminRole.SUPER_USER)
@@ -75,8 +120,12 @@ public class AdminsManager {
     public boolean deleteOperateur(Operateur operateur){
         return new OperateurDAO().delete(operateur);
     }
+
     public boolean createResponsableVente(ResponsableVente responsableVente){
         responsableVente.setAddedBy(loggedInAdmin.getId());
+        return new ResponsableVentesDAO().delete(responsableVente);
+    }
+    public boolean deleteResponsableVente(ResponsableVente responsableVente){
         return new ResponsableVentesDAO().delete(responsableVente);
     }
 
@@ -86,6 +135,7 @@ public class AdminsManager {
     public boolean deleteLogement(Logement logement){
         return new LogementDAO().delete(logement);
     }
+
     public boolean createLocalite(Localite localite){
         return new LocaliteDAO().add(localite);
     }

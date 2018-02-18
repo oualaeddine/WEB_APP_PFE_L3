@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 public class OperateurDAO extends DAO {
     public static final String TABLE_NAME = "operateur";
+    public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
     public boolean changePassword(String pwd,int id){
         try {

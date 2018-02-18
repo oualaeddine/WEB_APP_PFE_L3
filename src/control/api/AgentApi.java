@@ -67,7 +67,7 @@ public class AgentApi extends API {
                             agent.setId(userId);
                             String newPassword = request.getParameter("action");
                             if (newPassword != null)
-                                responseBody = objectToJson(agentsDAO.changeAgentPassword(agent, newPassword));
+                                responseBody = objectToJson(agentsDAO.changePassword(newPassword,agent.getId()));
                             break;
                         }
                         default: {

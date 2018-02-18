@@ -11,10 +11,20 @@ public class DAO implements DAOInterface{
         this.statement = DbConnector.getStatment();
     }
 
+    protected boolean reintegrerById(int id, String table){
+        try {
+            statement.execute("UPDATE "+table+" SET isSuspended = 0 " +
+                    "WHERE id="+id+";");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     protected boolean suspendById(int id,String table) {
         try {
             statement.execute("UPDATE "+table+" SET isSuspended = 1" +
-                    "WHERE id="+id+" ;");
+                    " WHERE id="+id+" ;");
             return true;
         }catch (SQLException e){
             e.printStackTrace();

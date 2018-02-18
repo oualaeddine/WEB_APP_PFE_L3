@@ -38,7 +38,6 @@ public class AdminsManager {
 
     public boolean createClient(Client client){
         client.setAddedBy(loggedInAdmin.getId());
-//        client.setDateAdded(new java.sql.Date(System.currentTimeMillis()));
         return new ClientDAO().add(client);
     }
     public boolean deleteClient(Client client){
@@ -47,10 +46,8 @@ public class AdminsManager {
 
     public boolean createAgent(Agent agent){
         agent.setAddedBy(loggedInAdmin.getId());
-//        agent.setDateAdded(new java.sql.Date(System.currentTimeMillis()));
         return new AgentsDAO().add(agent);
     }
-
     public boolean deleteAgent(Agent agent){
         return new AgentsDAO().delete(agent);
     }

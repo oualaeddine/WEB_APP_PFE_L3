@@ -7,14 +7,16 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VentesDAO extends DAO {
-    public boolean confirm(int id){
+    public boolean confirm(int id) {
         try {
-            statement.execute("UPDATE logement SET etat='vendu' WHERE id="+id);
+            statement.execute("UPDATE logement SET etat='vendu' WHERE id=" + id);
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
+
     @Override
     public Object getById(int id) {
 

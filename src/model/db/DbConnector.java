@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class DbConnector {
 
-    private static final String conn = "jdbc:mysql://localhost:124/soc_imm", user = "root", pass = "1234";
+    private static final String conn = "jdbc:mysql://localhost:3306/soc_imm", user = "root", pass = "1234";
 
     public DbConnector() {
     }

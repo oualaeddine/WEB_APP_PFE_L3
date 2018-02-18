@@ -18,8 +18,16 @@ public class Admin extends Person {
         return role;
     }
 
+    @Override
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
     public void setRole(AdminRole role) {
         this.role = role;
     }
-    public void setDateAdded(Date date){this.dateAdded=date;}
+
+    public void setDateAdded(Date date) {
+        this.dateAdded = date;
+    }
 }

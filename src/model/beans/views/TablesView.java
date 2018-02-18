@@ -1,51 +1,68 @@
 package model.beans.views;
 
+import model.enums.TablePage;
 import model.enums.UserType;
+import utils.Util;
+
+import java.util.LinkedList;
+
+import static utils.Util.getPageTitleFromPageType;
 
 public class TablesView {
 
-    public static String getNavForUser(UserType userType, String currentPage) {
-        return null;
+    private UserType loggedInUserType;
+    private int loggedInUserId;
+    private TablePage currentPage;
+    private Nav nav;
+    private DataTable dataTable;
+
+    public TablesView() {
     }
 
     public String getBreadcrumbTitle() {
-        return null;
+        return getPageTitleFromPageType(currentPage);
     }
 
-    public String getNav() {
-        return null;
-
+    public Nav getNav() {
+        setupNav();
+        return this.nav;
     }
 
-    public boolean getTableStructure() {
-        String s = "   <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n" +
-                "                        <thead>\n" +
-                "                        <tr>\n" +
-                "                            <th>id</th>\n" +
-                "                            <th>Client</th>\n" +
-                "                            <th>Logement</th>\n" +
-                "                            <th>Agent</th>\n" +
-                "                            <th>Start date</th>\n" +
-                "                        </tr>\n" +
-                "                        </thead>\n" +
-                "                        <tfoot>\n" +
-                "                        <tr>\n" +
-                "                            <th>id</th>\n" +
-                "                            <th>Client</th>\n" +
-                "                            <th>Logement</th>\n" +
-                "                            <th>Agent</th>\n" +
-                "                            <th>Start date</th>\n" +
-                "                        </tr>\n" +
-                "                        </tfoot>\n" +
-                "                    </table>";
-        return false;
+    private void setupNav() {
+        this.nav = new Nav();
+        nav.setUserId(loggedInUserId);
+        nav.setUserType(loggedInUserType);
+        nav.setCurrentPage(currentPage);
     }
 
-    public String getDataTableJsFillScript() {
-        return null;
+    public String getPageTitle() {
+        if (loggedInUserType != UserType.ADMIN)
+            return "Espace " + Util.getStringFromType(loggedInUserType) + "s";
+        else
+            return "Admin Panel";
     }
 
-    public String getDataTableTitle() {
-        return null;
+    public void setCurrentPage(String currentPage) {
+        this.currentPage = Util.getPageFromString(currentPage);
+    }
+
+    public void setLoggedInUserType(UserType loggedInUserType) {
+        this.loggedInUserType = loggedInUserType;
+    }
+
+    public void setLoggedInUserId(int loggedInUserId) {
+        this.loggedInUserId = loggedInUserId;
+    }
+
+    public DataTable getDataTable() {
+        setupDataTable();
+        return dataTable;
+    }
+
+    private void setupDataTable() {
+        dataTable = new DataTable();
+        dataTable.setUserId(loggedInUserId);
+        dataTable.setUserType(loggedInUserType);
+        dataTable.setCurrentPage(currentPage);
     }
 }

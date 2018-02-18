@@ -20,14 +20,16 @@ public class SignUpServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
-        } else {
+        } else {        // TODO: 2/18/2018
+
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
-        } else {
+        } else {        // TODO: 2/18/2018
+
         }
     }
 }

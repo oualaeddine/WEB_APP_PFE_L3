@@ -30,7 +30,8 @@ public class DashboardServlet extends MyServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
+        if (isLoggedIn(request)) {        // TODO: 2/18/2018
+
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }

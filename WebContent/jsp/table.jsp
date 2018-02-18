@@ -1,6 +1,10 @@
 <%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.beans.views.NavElement" %>
+<%@ page import="model.beans.views.DataTableRow" %>
+<%@ page import="static utils.Consts.FOOTER_COPYRIGHT" %>
+<%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.enums.UserType" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: berre
   Date: 2/17/2018
@@ -9,7 +13,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
+<%        // TODO: 2/18/2018  test this jsp
 
+    UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    String currentPage =  request.getParameter("page");
+    tablesView.setLoggedInUserId(userId);
+    tablesView.setLoggedInUserType(userType);
+    tablesView.setCurrentPage(currentPage);
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title><%out.print(tablesView.getPageTitle());%></title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -33,9 +45,10 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
-<%out.print(tablesView.getNav());%>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sidebar fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#">Espace Operateur</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark <%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top"
+     id="mainNav">
+    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -43,109 +56,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-home"></i>
-                    <span class="nav-link-text">Principale</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-calendar-plus"></i>
-                    <span class="nav-link-text">Programmer une visite</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#messageComp"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-envelope"></i>
-                    <span class="nav-link-text">Messages</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="messageComp">
-                    <li>
-                        <a href="#">Messages clients</a>
-                    </li>
-                    <li>
-                        <a href="#">Messages Administration</a>
-                    </li>
-                    <li>
-                        <a href="#">Archive</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-eye"></i>
-                    <span class="nav-link-text">Visites</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="#">Visites Programmées</a>
-                    </li>
-                    <li>
-                        <a href="#">Visites Passées</a>
-                    </li>
-                    <li>
-                        <a href="#">Cards</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseClients"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-users"></i>
-                    <span class="nav-link-text">Clients</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseClients">
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-bars"></i>
-                            <span class="nav-link-text">Liste des clients</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-gratipay"></i>
-                            <span class="nav-link-text">Mes Clients</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-ban"></i>
-                            <span class="nav-link-text">Signaler un client</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="buildings">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsebuildings"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-building"></i>
-                    <span class="nav-link-text">Logements</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapsebuildings">
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des Logements</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-check"></i>
-                            <span class="nav-link-text">Logements vendus</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-object-group"></i>
-                            <span class="nav-link-text">Mes Logements</span></a>
-                    </li>
-                </ul>
-
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link">
-                    <i class="fa fa-fw fa-user"></i>
-                    <span class="nav-link-text">Profile</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="login.html">
-                    <i class="fa fa-fw fa-sign-out"></i>
-                    <span class="nav-link-text">Deconnexion</span>
-                </a>
-            </li>
+            <% for (NavElement navElement : tablesView.getNav().getElements()) {
+                out.print(navElement.toString());
+            }
+            %>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -162,41 +76,37 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#"><%out.print(tablesView.getBreadcrumbTitle());%></a>
+                <a href="#"><%out.print(tablesView.getPageTitle());%></a>
             </li>
-            <li class="breadcrumb-item active">Tables</li>
+            <li class="breadcrumb-item active"><%out.print(tablesView.getBreadcrumbTitle());%></li>
         </ol>
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> <%out.print(tablesView.getDataTableTitle());%>
+                <i class="fa fa-table"></i> <%out.print(tablesView.getDataTable().getDataTableTitle());%>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <%out.print(tablesView.getTableStructure());%>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th>Client</th>
-                            <th>Logement</th>
-                            <th>Agent</th>
-                            <th>Start date</th>
+                            <%out.print(tablesView.getDataTable().getTableHeader());%>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>id</th>
-                            <th>Client</th>
-                            <th>Logement</th>
-                            <th>Agent</th>
-                            <th>Start date</th>
+                            <%out.print(tablesView.getDataTable().getTableHeader());%>
                         </tr>
                         </tfoot>
+                        <tbody>
+                        <% for (DataTableRow tableRow : tablesView.getDataTable().getTableData()) {
+                            out.print(tableRow.getHtml());
+                        }%>
+                        </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
         </div>
     </div>
     <!-- /.container-fluid-->
@@ -204,7 +114,7 @@
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
-                <small>Copyright © Your Website 2018</small>
+                <%out.print(FOOTER_COPYRIGHT); %>
             </div>
         </div>
     </footer>
@@ -243,8 +153,6 @@
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-
-    <script><%out.print(tablesView.getDataTableJsFillScript());%></script>
 </div>
 </body>
 

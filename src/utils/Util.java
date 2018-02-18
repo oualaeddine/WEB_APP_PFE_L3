@@ -3,7 +3,10 @@ package utils;
 
 import com.google.gson.Gson;
 import model.db.daos.*;
+import model.enums.TablePage;
 import model.enums.UserType;
+
+import static model.enums.TablePage.*;
 
 public class Util {
 
@@ -12,7 +15,7 @@ public class Util {
      * @return String containing the object in parameter formatted tto JSON
      */
     public static String objectToJson(Object object) {
-        String json ;
+        String json;
         json = new Gson().toJson(object);
         System.out.println("JSON = " + json);
         return json;
@@ -50,5 +53,113 @@ public class Util {
             default:
                 return null;
         }
+    }
+
+    public static String getPageTitleFromPageType(TablePage currentPage) {
+        switch (currentPage) {
+            case LOGEMENTS:
+                return "Logements";
+            case LOGEMENTS_FOR_USER:
+                return "Mes Logements";
+            case LOGEMENTS_VENDUS:
+                return "Logements vendus";
+            case FROZEN_LOGEMENTS:
+                return "Logements gelés";
+            case LOGEMENTS_NON_VENDUS:
+                return "Logements non vendus";
+            case AGENTS:
+                return "Agents";
+            case SUSPENDED_AGENTS:
+                return "Agents suspendus";
+            case OPERATEURS:
+                return "Operateurs";
+            case SUSPENDED_OPERATEURS:
+                return "Operateurs suspendus";
+            case RESPONSABLES_VENTES:
+                return "Responsables ventes";
+            case SUSPENDED_RESPONSABLES_VENTES:
+                return "Responsables ventes suspendus";
+            case VISITES:
+                return "Visites";
+            case REPORTED_VISITES:
+                return "Visites reportées";
+            case CANCELED_VISITES:
+                return "Visites Annulées";
+            case USER_VISITES:
+                return "Mes Visites";
+            case PROGRAMMED_VISITES:
+                return "Visites programmées";
+            case ADMINS:
+                return "Admins";
+            case LOCALITES:
+                return "Localites";
+            case CLIENTS:
+                return "Clients";
+            case CLIENTS_FOR_USER:
+                return "Mes Clients";
+            case BANNED_CLIENTS:
+                return "Clients bannis";
+            case MESSAGES:
+                return "Boite de reception";
+            case ADMINISTRATION_MESSAGES_FOR_USER:
+                return "Boite de reception Administration";
+            case CLIENTS_MESSAGES_FOR_USER:
+                return "Boite de reception clients";
+        }
+     return null;
+    }
+
+    public static TablePage getPageFromString(String tablePage) {
+        switch (tablePage) {
+            case "LOGEMENTS":
+                return LOGEMENTS;
+            case "LOGEMENTS_FOR_USER":
+                return LOGEMENTS_FOR_USER;
+            case "LOGEMENTS_VENDUS":
+                return LOGEMENTS_VENDUS;
+            case "FROZEN_LOGEMENTS":
+                return FROZEN_LOGEMENTS;
+            case "LOGEMENTS_NON_VENDUS":
+                return LOGEMENTS_NON_VENDUS;
+            case "AGENTS":
+                return AGENTS;
+            case "SUSPENDED_AGENTS":
+                return SUSPENDED_AGENTS;
+            case "OPERATEURS":
+                return OPERATEURS;
+            case "SUSPENDED_OPERATEURS":
+                return SUSPENDED_OPERATEURS;
+            case "RESPONSABLES_VENTES":
+                return RESPONSABLES_VENTES;
+            case "SUSPENDED_RESPONSABLES_VENTES":
+                return SUSPENDED_RESPONSABLES_VENTES;
+            case "VISITES":
+                return VISITES;
+            case "REPORTED_VISITES":
+                return REPORTED_VISITES;
+            case "CANCELED_VISITES":
+                return CANCELED_VISITES;
+            case "USER_VISITES":
+                return USER_VISITES;
+            case "PROGRAMMED_VISITES":
+                return PROGRAMMED_VISITES;
+            case "ADMINS":
+                return ADMINS;
+            case "LOCALITES":
+                return LOCALITES;
+            case "CLIENTS":
+                return CLIENTS;
+            case "CLIENTS_FOR_USER":
+                return CLIENTS_FOR_USER;
+            case "BANNED_CLIENTS":
+                return BANNED_CLIENTS;
+            case "MESSAGES":
+                return MESSAGES;
+            case "ADMINISTRATION_MESSAGES_FOR_USER":
+                return ADMINISTRATION_MESSAGES_FOR_USER;
+            case "CLIENTS_MESSAGES_FOR_USER":
+                return CLIENTS_MESSAGES_FOR_USER;
+        }
+        return null;
     }
 }

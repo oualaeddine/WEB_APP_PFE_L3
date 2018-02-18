@@ -1,0 +1,6 @@
+package model.enums;
+
+public enum DataTableRowFormat {
+    LOGEMENT,ADMIN,AGENT,OPERATEUR,CLIENT,MESSAGE,RESPONSABLE_VENTES,VENTE,VISITE,BANS,SIGNALS
+    // TODO: 2/18/2018
+}

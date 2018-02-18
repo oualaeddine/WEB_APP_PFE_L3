@@ -4,33 +4,35 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-public class DAO implements DAOInterface{
+public abstract class DAO {
     protected Statement statement;
 
     public DAO() {
         this.statement = DbConnector.getStatment();
     }
 
-    protected boolean reintegrerById(int id, String table){
+    protected boolean reintegrerById(int id, String table) {
         try {
-            statement.execute("UPDATE "+table+" SET isSuspended = 0 " +
-                    "WHERE id="+id+";");
+            statement.execute("UPDATE " + table + " SET isSuspended = 0 " +
+                    "WHERE id=" + id + ";");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-    protected boolean suspendById(int id,String table) {
+
+    protected boolean suspendById(int id, String table) {
         try {
-            statement.execute("UPDATE "+table+" SET isSuspended = 1" +
-                    " WHERE id="+id+" ;");
+            statement.execute("UPDATE " + table + " SET isSuspended = 1" +
+                    " WHERE id=" + id + " ;");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
     protected boolean deleteById(int id, String table) {
         try {
             statement.execute("DELETE FROM " + table + " WHERE id = " + id);
@@ -42,33 +44,15 @@ public class DAO implements DAOInterface{
     }
 
 
-    @Override
-    public Object getById(int id) {
-        return null;
-    }
+    public abstract Object getById(int id);
 
-    @Override
-    public boolean deleteById(int id) {
-        return false;
-    }
+    public abstract boolean deleteById(int id);
 
-    @Override
-    public boolean update(Object object) {
-        return false;
-    }
+    public abstract boolean update(Object object);
 
-    @Override
-    public boolean add(Object object) {
-        return false;
-    }
+    public abstract boolean add(Object object);
 
-    @Override
-    public boolean delete(Object object) {
-        return false;
-    }
+    public abstract boolean delete(Object object);
 
-    @Override
-    public LinkedList getAll() {
-        return null;
-    }
+    public abstract LinkedList getAll();
 }

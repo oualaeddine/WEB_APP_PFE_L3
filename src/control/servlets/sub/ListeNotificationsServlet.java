@@ -14,6 +14,7 @@ public class ListeNotificationsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO: 2/18/2018
 
     }
 }

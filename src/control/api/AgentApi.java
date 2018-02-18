@@ -42,9 +42,6 @@ public class AgentApi extends API {
                 // et selon cette action on effectue une operation
                 if (action != null)
                     switch (action) {
-                        /*todo njibou les parametres li lazm w
-                        n7atohom f l'objet agent f koul case
-                        kima f change password*/
                         case "add": {
                             responseBody = objectToJson(agentsDAO.add(agent));
                             break;

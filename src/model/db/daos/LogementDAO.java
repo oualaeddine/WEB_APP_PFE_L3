@@ -4,6 +4,7 @@ import model.beans.Logement;
 import model.db.DAO;
 import model.db.DAOInterface;
 import model.enums.EtatLogement;
+import model.enums.UserType;
 import sun.rmi.runtime.Log;
 
 import java.sql.ResultSet;
@@ -117,7 +118,7 @@ public class LogementDAO extends DAO {
     }
 
     @Override
-    public LinkedList getAll() {
+    public LinkedList<Logement> getAll() {
         LinkedList<Logement> list = new LinkedList<>();
         ResultSet result;
         try {
@@ -142,5 +143,15 @@ public class LogementDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public LinkedList<Logement> getLogementsForUser(UserType userType, int userId) {
+        // TODO: 2/18/2018  
+        return null;
+    }
+
+    public LinkedList<Logement> getLogementsVendus() {
+        // TODO: 2/18/2018
+        return null;
     }
 }

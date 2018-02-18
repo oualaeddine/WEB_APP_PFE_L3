@@ -30,4 +30,11 @@ public class Consts {
     HOME_SERVLET_URL = "/home";
 
 
+    public static final String
+            FOOTER_COPYRIGHT = "<small>Copyright © Berrehal-Benghezal-Rehab PFE GL L3 2018</small>",
+            OPERATEUR_NAV_CSS_CLASS = "",
+            AGENT_NAV_CSS_CLASS = "",
+            DEFAULT_NAV_CSS_CLASS = "",
+            RESPONSABLE_VENTES_NAV_CSS_CLASS = "",
+            ADMIN_NAV_CSS_CLASS = "";
 }

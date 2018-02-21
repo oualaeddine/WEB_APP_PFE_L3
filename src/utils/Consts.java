@@ -31,7 +31,7 @@ public class Consts {
 
 
     public static final String
-            FOOTER_COPYRIGHT = "<small>Copyright © Berrehal-Benghezal-Rehab PFE GL L3 2018</small>",
+            FOOTER_COPYRIGHT = "<small>Copyright © Berrehal-Benghezal-Rahab PFE GL L3 2018</small>",
             OPERATEUR_NAV_CSS_CLASS = "",
             AGENT_NAV_CSS_CLASS = "",
             DEFAULT_NAV_CSS_CLASS = "",

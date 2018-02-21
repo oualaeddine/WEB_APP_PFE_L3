@@ -18,7 +18,8 @@ public class LogoutServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
-
+            request.getSession().invalidate();
+            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
         } else {
             redirectToNotLoggedIn(request, response);
         }

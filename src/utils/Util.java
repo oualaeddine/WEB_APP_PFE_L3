@@ -6,6 +6,11 @@ import model.db.daos.*;
 import model.enums.TablePage;
 import model.enums.UserType;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import static model.enums.TablePage.*;
 
 public class Util {
@@ -14,10 +19,11 @@ public class Util {
      * @param object object we want to convert to JSON
      * @return String containing the object in parameter formatted tto JSON
      */
+
+
     public static String objectToJson(Object object) {
         String json;
         json = new Gson().toJson(object);
-        System.out.println("JSON = " + json);
         return json;
     }
 
@@ -161,5 +167,17 @@ public class Util {
                 return CLIENTS_MESSAGES_FOR_USER;
         }
         return null;
+    }
+    public static Date getDateFromString(String date) throws ParseException{
+//        Date r = null;
+//        r = new Date(0000,0,0);
+//        String[] tab = date.split("-");
+//        System.out.println(tab[0]+"-"+tab[1]+"-"+tab[2]);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsed = format.parse(date);
+        java.sql.Date sql = new java.sql.Date(parsed.getTime());
+        System.out.println(sql);
+
+        return sql;
     }
 }

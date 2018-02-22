@@ -12,6 +12,29 @@ public class OperateurDAO extends DAO {
     public static final String TABLE_NAME = "operateur";
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
+
+    public Operateur getByUsername(Operateur operateur){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM operateur WHERE username='" + operateur.getUsername() + "';");
+            if (result.next()) {
+                operateur.setNom(result.getString("nom"));
+                operateur.setPrenom(result.getString("prenom"));
+                operateur.setDateNaissance(result.getDate("dateNaiss"));
+                operateur.setAdresse(result.getString("adresse"));
+                operateur.setTel(result.getString("tel"));
+                operateur.setEmail(result.getString("email"));
+                operateur.setDateAdded(result.getDate("dateAdded"));
+                operateur.setAddedBy(result.getInt("addedBy"));
+                operateur.setSuspended(result.getBoolean("isSuspended"));
+                operateur.setId(result.getInt("id"));
+                return operateur;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean changePassword(String pwd,int id){
         try {
             statement.execute("UPDATE operateur SET password='"+pwd+"' WHERE id="+id);

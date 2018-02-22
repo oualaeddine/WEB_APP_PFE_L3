@@ -173,7 +173,7 @@ public class Util {
 //        r = new Date(0000,0,0);
 //        String[] tab = date.split("-");
 //        System.out.println(tab[0]+"-"+tab[1]+"-"+tab[2]);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
         java.util.Date parsed = format.parse(date);
         java.sql.Date sql = new java.sql.Date(parsed.getTime());
         System.out.println(sql);

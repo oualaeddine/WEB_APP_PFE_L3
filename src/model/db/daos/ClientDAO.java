@@ -18,8 +18,14 @@ public class ClientDAO extends DAO {
         try {
             result = statement.executeQuery("SELECT * FROM client WHERE username='" + client.getUsername() + "';");
             if (result.next()) {
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                client.setBanned(result.getBoolean("isBanned"));
+                client.setSuspended(result.getBoolean("isBanned"));
                 client.setId(result.getInt("id"));
                 return client;
             }
@@ -90,7 +96,7 @@ public class ClientDAO extends DAO {
             statement.execute("INSERT INTO client(`nom`, `prenom`, `dateNaiss`, `adresse`, `tel`, `email`, `username`, `password`, `dateAdded`, `isBanned`) VALUES (" +
                     "'" + client.getNom() + "'," +
                     "'" + client.getPrenom() + "'," +
-                    client.getDateNaissance() + "," +
+                    "'"+client.getDateNaissance()+"'" + "," +
                     "'" + client.getAdresse() + "'," +
                     "'" + client.getTel() + "'," +
                     "'" + client.getEmail() + "'," +

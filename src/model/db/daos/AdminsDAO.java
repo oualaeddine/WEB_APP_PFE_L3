@@ -36,6 +36,31 @@ public class AdminsDAO extends DAO {
         return false;
     }
 
+    public Admin getByUsername(Admin admin){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM admin WHERE username='" + admin.getUsername() + "';");
+            if (result.next()) {
+                admin.setNom(result.getString("nom"));
+                admin.setPrenom(result.getString("prenom"));
+                admin.setDateNaissance(result.getDate("dateNaiss"));
+                admin.setAdresse(result.getString("adresse"));
+                admin.setTel(result.getString("tel"));
+                admin.setEmail(result.getString("email"));
+                if (result.getString("role")=="SU") admin.setRole(AdminRole.SUPER_USER);
+                else admin.setRole(AdminRole.ADMIN);
+                admin.setDateAdded(result.getDate("dateAdded"));
+                admin.setAddedBy(result.getInt("addedBy"));
+                admin.setSuspended(result.getBoolean("isSuspended"));
+                admin.setId(result.getInt("id"));
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;

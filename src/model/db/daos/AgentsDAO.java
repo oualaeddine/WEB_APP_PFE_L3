@@ -50,7 +50,29 @@ public class AgentsDAO extends DAO {
         }
         return null;
     }
-
+    public Agent getByUsername(Agent admin){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM agent WHERE username='" + admin.getUsername() + "';");
+            if (result.next()) {
+                admin.setNom(result.getString("nom"));
+                admin.setPrenom(result.getString("prenom"));
+                admin.setDateNaissance(result.getDate("dateNaiss"));
+                admin.setAdresse(result.getString("adresse"));
+                admin.setTel(result.getString("tel"));
+                admin.setEmail(result.getString("email"));
+                admin.setDateAdded(result.getDate("dateAdded"));
+                admin.setAddedBy(result.getInt("addedBy"));
+                admin.setSuspended(result.getBoolean("isSuspended"));
+                admin.setId(result.getInt("id"));
+                admin.setLocalite((Localite)new LocaliteDAO().getById(result.getInt("idregion")));
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean deleteById(int agentId) {
         return super.deleteById(agentId, "agent");
     }

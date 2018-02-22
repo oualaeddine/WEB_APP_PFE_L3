@@ -39,7 +39,7 @@ public class MyServlet extends HttpServlet {
     }
 
     protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException {
-        response.sendRedirect(Consts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
+        response.sendRedirect(Consts.LOGIN_SERVLET_URL/* + "?" + LOGIN_NEEDED_ERROR_ID*/);
     }
 
     protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -6,6 +6,7 @@ import model.db.daos.ClientDAO;
 import utils.Consts;
 import utils.Util;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 //@WebServlet(name = "SignUpServlet", urlPatterns = Consts.SIGNUP_SERVLET_URL)
 @WebServlet({"/signup"})
@@ -28,6 +30,7 @@ public class SignUpServlet extends MyServlet {
 //        if (isLoggedIn(request)) {
 //            redirectToDashboard(request, response);
 //        } else {        // TODO: 2/18/2018
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/login");
             String prenom = request.getParameter("prenomInput");
             String nom = request.getParameter("nomInput");
             String email = request.getParameter("emailInput");
@@ -35,21 +38,35 @@ public class SignUpServlet extends MyServlet {
             String username = request.getParameter("usernameInput");
             String password = request.getParameter("passwordInput");
             String confirmPassword = request.getParameter("confirmPassword");
+            String adresse = request.getParameter("adresseInput");
             if (password.equals(confirmPassword)) {
                 Client client = new Client();
                 client.setPrenom(prenom);
                 client.setNom(nom);
+//                try {
+////                    Date dateNaissance = Util.getDateFromString(request.getParameter("dateNaissance"));
+////                    client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+//                }catch (ParseException e){
+//                    e.printStackTrace();
+//                }
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
                 try {
-                    Date dateNaissance = Util.getDateFromString(request.getParameter("dateNaissance"));
-                    client.setDateNaissance(dateNaissance);
-                }catch (ParseException e){
+                    java.util.Date date = sdf.parse(request.getParameter("dateNaissance"));
+                    Date date1 = new Date(date.getTime());
+                    client.setDateNaissance(date1);
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 client.setEmail(email);
                 client.setTel(tel);
                 client.setUsername(username);
                 client.setPassword(password);
-                System.out.println(new ClientDAO().add(client));
+                client.setAdresse(adresse);
+                if (new ClientDAO().add(client)) {
+                    dispatcher.forward(request,response);
+                }
+            }else{
+                System.out.println("Veuillez vérifier votre mot de passe");
             }
 
 //        }

@@ -10,11 +10,11 @@ public class Consts {
     /*Servlets urls*/
 
     /*ADMIN*/
-    ADMIN_DASHBOARD_SERVLET_URL = "",
+    ADMIN_DASHBOARD_SERVLET_URL = "/DashboardServlet",
 
     /*AUTH*/
     LOGIN_SERVLET_URL = "/login",
-            LOGOUT_SERVLET_URL = "",
+            LOGOUT_SERVLET_URL = "/logout",
             SIGNUP_SERVLET_URL = "/signup",
 
     /*CLIENT*/

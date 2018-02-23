@@ -146,7 +146,9 @@ public class ClientDAO extends DAO {
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
                 //TODO: addedBy
-                client.setSuspended(result.getBoolean("isBanned"));
+                String isBanned=result.getString("isBanned");
+                client.setBanned(isBanned.equals("1"));
+//                client.setSuspended(result.getBoolean("isBanned"));
 
                 list.add(client);
             }

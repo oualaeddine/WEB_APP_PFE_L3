@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DashboardServlet")
+@WebServlet(name = "DashboardServlet", value = {"/DashboardServlet"})
 public class DashboardServlet extends MyServlet {
     private AdminsManager adminManager;
 
@@ -31,7 +31,6 @@ public class DashboardServlet extends MyServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
-
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }

@@ -27,10 +27,10 @@ public class SignUpServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        if (isLoggedIn(request)) {
-//            redirectToDashboard(request, response);
-//        } else {        // TODO: 2/18/2018
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/login");
+        if (isLoggedIn(request)) {
+            redirectToDashboard(request, response);
+        } else {        // TODO: 2/18/2018
+            RequestDispatcher dispatcher=request.getRequestDispatcher("/login");
             String prenom = request.getParameter("prenomInput");
             String nom = request.getParameter("nomInput");
             String email = request.getParameter("emailInput");
@@ -43,12 +43,6 @@ public class SignUpServlet extends MyServlet {
                 Client client = new Client();
                 client.setPrenom(prenom);
                 client.setNom(nom);
-//                try {
-////                    Date dateNaissance = Util.getDateFromString(request.getParameter("dateNaissance"));
-////                    client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
-//                }catch (ParseException e){
-//                    e.printStackTrace();
-//                }
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
                 try {
                     java.util.Date date = sdf.parse(request.getParameter("dateNaissance"));
@@ -63,13 +57,13 @@ public class SignUpServlet extends MyServlet {
                 client.setPassword(password);
                 client.setAdresse(adresse);
                 if (new ClientDAO().add(client)) {
-                    dispatcher.forward(request,response);
+                    redirectToLogin(request,response,0);
                 }
             }else{
                 System.out.println("Veuillez vérifier votre mot de passe");
             }
 
-//        }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

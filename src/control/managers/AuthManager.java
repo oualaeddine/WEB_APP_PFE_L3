@@ -53,8 +53,7 @@ public class AuthManager {
 
     public void logout(HttpServletRequest request) {
         /* Récupération et destruction de la session en cours */
-        HttpSession session = request.getSession();
-        session.invalidate();
+        request.getSession().invalidate();
     }
 
     public boolean authenticate(String username, String password, UserType type) {

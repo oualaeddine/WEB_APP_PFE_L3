@@ -31,9 +31,9 @@ public class LoginServlet extends MyServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (isLoggedIn(request)) {
-//            redirectToDashboard(request, response);
-//        } else {
+        if (isLoggedIn(request)) {
+            redirectToDashboard(request, response);
+        } else {
             String username = request.getParameter("userId");
             String password = request.getParameter("password");
             UserType type = Util.getUserTypeFromString(request.getParameter("select")) ;
@@ -46,40 +46,40 @@ public class LoginServlet extends MyServlet {
                         Client client = new Client();
                         client.setUsername(username);
                         client.setPassword(password);
-                        session.setAttribute("loggedIn",new ClientDAO().getByUsername(client));
-                        session.setAttribute("userType",UserType.CLIENT);
+                        session.setAttribute(LOGGED_IN_USER,new ClientDAO().getByUsername(client));
+                        session.setAttribute(LOGGED_IN_USER_TYPE,UserType.CLIENT);
                         this.getServletContext().getRequestDispatcher("/ClientServlet").forward(request,response);
                         break;
                     case OPERATEUR:
                         Operateur operateur = new Operateur();
                         operateur.setUsername(username);
                         operateur.setPassword(password);
-                        session.setAttribute("loggedIn",new OperateurDAO().getByUsername(operateur));
-                        session.setAttribute("userType",UserType.OPERATEUR);
+                        session.setAttribute(LOGGED_IN_USER,new OperateurDAO().getByUsername(operateur));
+                        session.setAttribute(LOGGED_IN_USER_TYPE,UserType.OPERATEUR);
                         this.getServletContext().getRequestDispatcher("/OperateurServlet").forward(request,response);
                         break;
                     case ADMIN:
                         Admin admin = new Admin();
                         admin.setUsername(username);
                         admin.setPassword(password);
-                        session.setAttribute("loggedIn",new AdminsDAO().getByUsername(admin));
-                        session.setAttribute("userType",UserType.ADMIN);
+                        session.setAttribute(LOGGED_IN_USER,new AdminsDAO().getByUsername(admin));
+                        session.setAttribute(LOGGED_IN_USER_TYPE,UserType.ADMIN);
                         this.getServletContext().getRequestDispatcher("/Dashboard").forward(request,response);
                         break;
                     case AGENT:
                         Agent agent = new Agent();
                         agent.setUsername(username);
                         agent.setPassword(password);
-                        session.setAttribute("loggedIn",new AgentsDAO().getByUsername(agent));
-                        session.setAttribute("userType",UserType.AGENT);
+                        session.setAttribute(LOGGED_IN_USER,new AgentsDAO().getByUsername(agent));
+                        session.setAttribute(LOGGED_IN_USER_TYPE,UserType.AGENT);
                         this.getServletContext().getRequestDispatcher("/AgentServlet").forward(request,response);
                         break;
                     case RESPONSABLE_VENTES:
                         ResponsableVente responsableVente = new ResponsableVente();
                         responsableVente.setUsername(username);
                         responsableVente.setPassword(password);
-                        session.setAttribute("loggedIn",new ResponsableVentesDAO().getByUsername(responsableVente));
-                        session.setAttribute("userType",UserType.RESPONSABLE_VENTES);
+                        session.setAttribute(LOGGED_IN_USER,new ResponsableVentesDAO().getByUsername(responsableVente));
+                        session.setAttribute(LOGGED_IN_USER_TYPE,UserType.RESPONSABLE_VENTES);
                         this.getServletContext().getRequestDispatcher("/ServiceVentesServlet").forward(request,response);
                         break;
                 }
@@ -95,16 +95,15 @@ public class LoginServlet extends MyServlet {
 //                    redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
 //            else
 //                redirectToLogin(request, response, MISSING_CREDENTIALS_ERROR);
-//        }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (isLoggedIn(request)) {
-//            redirectToDashboard(request, response);
-//        } else {
-//            getServletContext().getRequestDispatcher("/html/login.html").forward(request, response);
-//        }
-        this.getServletContext().getRequestDispatcher("/html/login.html").forward(request,response);
+        if (isLoggedIn(request)) {
+            redirectToDashboard(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/html/login.html").forward(request, response);
+        }
     }
 
 

@@ -6,6 +6,7 @@ import model.beans.humans.Agent;
 import model.beans.humans.Client;
 import model.db.DAO;
 import model.enums.EtatVisite;
+import sun.rmi.runtime.Log;
 
 import javax.sql.rowset.serial.SerialException;
 import java.sql.ResultSet;
@@ -13,6 +14,53 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VisitesDao extends DAO {
+    public LinkedList<Visite> getVisitesByAgent(Agent agent) {
+        ResultSet result;
+        LinkedList<Visite> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM visite WHERE agentId=" +agent.getId()+ ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite = getById(result.getInt("id"));
+                list.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public LinkedList<Visite> getVisitesByClient(Client client) {
+        ResultSet result;
+        LinkedList<Visite> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM visite WHERE clientId=" +client.getId()+ ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite = getById(result.getInt("id"));
+                list.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public LinkedList<Visite> getVisitesByLogement(Logement logement) {
+        ResultSet result;
+        LinkedList<Visite> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM visite WHERE logementId=" +logement.getId()+ ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite = getById(result.getInt("id"));
+                list.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public boolean validerVisite(Visite visite) {
         try {
             statement.execute("UPDATE visite SET etat='avisPositif' WHERE id=" + visite.getId() + ";");
@@ -122,8 +170,17 @@ public class VisitesDao extends DAO {
     }
 
     public LinkedList<Visite> getByAgent(int agentId) {
-        return null;
+        ResultSet result;
+        LinkedList<Visite> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM visite WHERE agentId=" + agentId + ";");
+            while (result.next()) {
+                Visite visite = getById(result.getInt("id"));
+                list.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
-
-
 }

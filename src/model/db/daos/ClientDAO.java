@@ -146,10 +146,7 @@ public class ClientDAO extends DAO {
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
                 //TODO: addedBy
-                String isBanned=result.getString("isBanned");
-                client.setBanned(isBanned.equals("1"));
-//                client.setSuspended(result.getBoolean("isBanned"));
-
+                client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -158,6 +155,21 @@ public class ClientDAO extends DAO {
         return list;
     }
 
+    public LinkedList<Client> getBannedClients() {
+        ResultSet result;
+        LinkedList<Client> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM client WHERE isBanned=1;");
+            while (result.next()) {
+                Client client = new Client();
+                client =(Client) getById(result.getInt("id"));
+                list.add(client);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public boolean isBanned(Client client){
         ResultSet result;
         try {

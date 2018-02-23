@@ -13,6 +13,27 @@ public class ClientDAO extends DAO {
     public static final String[] COLUMN_NAMES = {
 
     };
+    public Client getByUsername(Client client){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM client WHERE username='" + client.getUsername() + "';");
+            if (result.next()) {
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setDateAdded(result.getDate("dateAdded"));
+                client.setSuspended(result.getBoolean("isBanned"));
+                client.setId(result.getInt("id"));
+                return client;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean updatePassword(String pwd,int id){
         try {
             statement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
@@ -72,16 +93,16 @@ public class ClientDAO extends DAO {
     public boolean add(Object object) {
         Client client = (Client) object;
         try {
-            statement.execute("INSERT INTO client(nom, prenom, dateNaiss, adresse, tel, email, username, password, dateAdded, isBanned) VALUES (" +
+            statement.execute("INSERT INTO client(`nom`, `prenom`, `dateNaiss`, `adresse`, `tel`, `email`, `username`, `password`, `dateAdded`, `isBanned`) VALUES (" +
                     "'" + client.getNom() + "'," +
                     "'" + client.getPrenom() + "'," +
-                    client.getDateNaissance() + "," +
+                    "'"+client.getDateNaissance()+"'" + "," +
                     "'" + client.getAdresse() + "'," +
                     "'" + client.getTel() + "'," +
                     "'" + client.getEmail() + "'," +
                     "'" + client.getUsername() + "'," +
                     "'" + client.getPassword() + "'," +
-                    client.getDateAdded() + "," +
+                    "CURRENT_DATE" + "," +
                     0 +
                     ");");
             return true;
@@ -125,7 +146,9 @@ public class ClientDAO extends DAO {
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
                 //TODO: addedBy
-                client.setSuspended(result.getBoolean("isBanned"));
+                String isBanned=result.getString("isBanned");
+                client.setBanned(isBanned.equals("1"));
+//                client.setSuspended(result.getBoolean("isBanned"));
 
                 list.add(client);
             }
@@ -133,5 +156,18 @@ public class ClientDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public boolean isBanned(Client client){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT isBanned FROM client WHERE username='" + client.getUsername() + "';");
+            if (result.next()) {
+                return (result.getBoolean("isBanned"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -16,35 +16,35 @@ public class AuthManager {
         authDAO = new AuthDAO();
     }
 
-    private boolean athenticateOperateur(String username, String password) {
+    private boolean authenticateOperateur(String username, String password) {
         Operateur operateur = new Operateur();
         operateur.setUsername(username);
         operateur.setPassword(password);
         return authDAO.exists(operateur, UserType.OPERATEUR);
     }
 
-    private boolean athenticateClient(String username, String password) {
+    private boolean authenticateClient(String username, String password) {
         Client client = new Client();
         client.setUsername(username);
         client.setPassword(password);
         return authDAO.exists(client, UserType.CLIENT);
     }
 
-    private boolean athenticateAgent(String username, String password) {
+    private boolean authenticateAgent(String username, String password) {
         Agent agent = new Agent();
         agent.setUsername(username);
         agent.setPassword(password);
         return authDAO.exists(agent, UserType.AGENT);
     }
 
-    private boolean athenticateAdmin(String username, String password) {
+    private boolean authenticateAdmin(String username, String password) {
         Admin admin = new Admin();
         admin.setUsername(username);
         admin.setPassword(password);
         return authDAO.exists(admin, UserType.ADMIN);
     }
 
-    private boolean athenticateResponsableVentes(String username, String password) {
+    private boolean authenticateResponsableVentes(String username, String password) {
         ResponsableVente responsableVente = new ResponsableVente();
         responsableVente.setUsername(username);
         responsableVente.setPassword(password);
@@ -53,8 +53,7 @@ public class AuthManager {
 
     public void logout(HttpServletRequest request) {
         /* Récupération et destruction de la session en cours */
-        HttpSession session = request.getSession();
-        session.invalidate();
+        request.getSession().invalidate();
     }
 
     public boolean authenticate(String username, String password, UserType type) {
@@ -65,15 +64,15 @@ public class AuthManager {
     public boolean authenticateByClientType(String username, String password, UserType type) {
         switch (type) {
             case CLIENT:
-                return athenticateClient(username, password);
+                return authenticateClient(username, password);
             case AGENT:
-                return athenticateAgent(username, password);
+                return authenticateAgent(username, password);
             case OPERATEUR:
-                return athenticateOperateur(username, password);
+                return authenticateOperateur(username, password);
             case ADMIN:
-                return athenticateAdmin(username, password);
+                return authenticateAdmin(username, password);
             case RESPONSABLE_VENTES:
-                return athenticateResponsableVentes(username, password);
+                return authenticateResponsableVentes(username, password);
             default:
                 return false;
         }

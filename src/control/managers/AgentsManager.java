@@ -4,9 +4,7 @@ import model.beans.Localite;
 import model.beans.Vente;
 import model.beans.Visite;
 import model.beans.humans.Agent;
-import model.db.daos.AgentsDAO;
-import model.db.daos.LocaliteDAO;
-import model.db.daos.VentesDAO;
+import model.db.daos.*;
 import model.enums.EtatVente;
 import model.enums.EtatVisite;
 
@@ -40,14 +38,23 @@ public class AgentsManager {
     }
 
     public void envoyerRapport(Visite visite){
-        if(visite.getEtatVisite()== EtatVisite.VALIDEE) {
-            Vente vente = new Vente();
-            vente.setAgent(loggedInAgent);
-            vente.setClient(visite.getClient());
-            vente.setLogement(visite.getLogement());
-            vente.setEtatVente(EtatVente.NON_CONFIRMEE);
-            //TODO: njibou kech responsable de vente pour s'occuper de la vente qui vient d'être créée.
-            new VentesDAO().add(vente);
+        switch (visite.getEtatVisite()) {
+            case VALIDEE:
+                Vente vente = new Vente();
+                vente.setAgent(loggedInAgent);
+                vente.setClient(visite.getClient());
+                vente.setLogement(visite.getLogement());
+                vente.setEtatVente(EtatVente.NON_CONFIRMEE);
+                //TODO: njibou kech responsable de vente pour s'occuper de la vente qui vient d'être créée.
+                new VentesDAO().add(vente);
+                new VisitesDao().validerVisite(visite);
+                break;
+            case NON_VALIDEE:
+                new VisitesDao().visiteNegative(visite);
+                break;
+            case ANNULEE:
+
+
         }
     }
 }

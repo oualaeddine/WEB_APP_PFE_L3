@@ -1,6 +1,7 @@
 package control.servlets;
 
 import control.managers.AuthManager;
+import model.beans.humans.Person;
 import model.enums.UserType;
 import utils.Consts;
 
@@ -18,7 +19,8 @@ public class MyServlet extends HttpServlet {
             LOGGED_IN_USER_USERNAME = "username",
             LOGGED_IN_USER_ID = "id",
             LOGGED_IN_USER_TYPE = "type",
-            LOGGED_IN_USER_PASSWORD = "password";
+            LOGGED_IN_USER_PASSWORD = "password",
+            LOGGED_IN_USER = "user";
     protected static final int
             LOGIN_NEEDED_ERROR_ID = 0,
             WRONG_CREDENTIALS_ERROR = 1,
@@ -26,24 +28,28 @@ public class MyServlet extends HttpServlet {
 
 
     protected boolean isLoggedIn(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        return (session == null || session.getAttribute(LOGGED_IN_USER_USERNAME) == null);
+//        HttpSession session = request.getSession();
+        return !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
     }
 
     protected String getLoggedInUsername(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (isLoggedIn(request))
-            return session.getAttribute(LOGGED_IN_USER_USERNAME).toString();
-        else
+        if (isLoggedIn(request)) {
+            Person person =(Person) session.getAttribute("loggedIn");
+            return person.getUsername();
+        } else {
             return null;
+        }
     }
 
-    protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException {
+    protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException, ServletException {
         response.sendRedirect(Consts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
+//        response.sendRedirect("/login");
     }
 
     protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        UserType userType = (UserType) request.getSession().getAttribute(LOGGED_IN_USER_TYPE);
+        Person person = (Person) request.getSession().getAttribute("loggedIn");
+        UserType userType = (UserType) request.getSession().getAttribute("userType");
         if (userType != null) {
             String dashboardUrl;
             switch (userType) {

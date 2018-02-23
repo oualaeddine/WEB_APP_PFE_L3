@@ -26,5 +26,5 @@ public class ResponsablesVentesManager {
     public boolean banirClient(int id){
         return new ClientDAO().banById(id);
     }
-    
+
 }

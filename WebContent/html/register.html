@@ -9,11 +9,11 @@
     <meta name="author" content="">
     <title>SB Admin - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -21,56 +21,75 @@
         <div class="card card-register mx-auto mt-5">
             <div class="card-header">Register an Account</div>
             <div class="card-body">
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="exampleInputName">First name</label>
-                                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+                                <label for="prenomInput">Prénom</label>
+                                <input class="form-control" id="prenomInput" name="prenomInput" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
                             </div>
                             <div class="col-md-6">
-                                <label for="exampleInputLastName">Last name</label>
-                                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+                                <label for="nomInput">Nom</label>
+                                <input class="form-control" id="nomInput" name="nomInput" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="inputTel">Numéro de téléphone</label>
+                                <input class="form-control" id="inputTel" name="inputTel" type="text" placeholder="Téléphone">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dateNaissance">Date de naissance</label>
+                                <input class="form-control" id="dateNaissance" name="dateNaissance" type="date" aria-describedby="dateHelp" placeholder="Enter birth date">
+                            </div>
                             <div class="col-md-6">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email" aria-describedby="emailHelp" placeholder="Enter email">
                             </div>
-                            <div class="col-md-6">
-                                <label for="usernameInput">Nom d'utilisateur</label>
-                                <input class="form-control" id="usernameInput" type="email" aria-describedby="nameHelp" placeholder="Entrez un nom d'utilisateur">
-                            </div>
+
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
+                                <label for="usernameInput">Nom d'utilisateur</label>
+                                <input class="form-control" id="usernameInput" name="usernameInput" type="text" aria-describedby="nameHelp" placeholder="Entrez un nom d'utilisateur">
+                            </div>
+                            <div class="col-md-6">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+                                <input class="form-control" id="exampleInputPassword1" name="passwordInput" type="password" placeholder="Password">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="adresseInput">Adresse</label>
+                                <input name="adresseInput" type="text" class="form-control" id="adresseInput" placeholder="Adresse">
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleConfirmPassword">Confirm password</label>
-                                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+                                <input class="form-control" id="exampleConfirmPassword" name="confirmPassword" type="password" placeholder="Confirm password">
                             </div>
+                            
+
                         </div>
+
                     </div>
-                    <a class="btn btn-primary btn-block" href="login.html">Register</a>
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="login.html">Login Page</a>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-block" type="submit" value="register">Register</button>
+
+                    <a class="d-block small mt-3" href="/login">Login Page</a>
                 </div>
+                    <!--<a class="btn btn-primary btn-block" href="login.html">Register</a>-->
+                </form>
+                
             </div>
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>

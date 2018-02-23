@@ -146,12 +146,34 @@ public class LogementDAO extends DAO {
     }
 
     public LinkedList<Logement> getLogementsForUser(UserType userType, int userId) {
-        // TODO: 2/18/2018  
-        return null;
+        ResultSet result;
+        LinkedList<Logement> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM logement WHERE client.id=vente.clientId AND vente.clientId="+userId+" AND logement.id=vente.logementId;");
+            while (result.next()) {
+                Logement logement = new Logement();
+                logement = (Logement) new LogementDAO().getById(result.getInt("id"));
+                list.add(logement);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public LinkedList<Logement> getLogementsVendus() {
-        // TODO: 2/18/2018
-        return null;
+        LinkedList list = new LinkedList();
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT logementId FROM vente WHERE etat='confirmee';");
+            while (result.next()) {
+                Logement logement = new Logement();
+                logement = (Logement) new LogementDAO().getById(result.getInt("id"));
+                list.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

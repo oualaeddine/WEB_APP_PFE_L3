@@ -13,6 +13,33 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VisitesDao extends DAO {
+    public boolean validerVisite(Visite visite) {
+        try {
+            statement.execute("UPDATE visite SET etat='avisPositif' WHERE id=" + visite.getId() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean annulerVisite(Visite visite) {
+        try {
+            statement.execute("UPDATE visite SET etat='annulee' WHERE id=" + visite.getId() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean visiteNegative(Visite visite){
+        try {
+            statement.execute("UPDATE visite SET etat = 'avisNegatif' WHERE id=" + visite.getId() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean reporter(int id){
         try {
             statement.execute("UPDATE visite SET etat='reportee' WHERE id="+id);
@@ -97,4 +124,6 @@ public class VisitesDao extends DAO {
     public LinkedList<Visite> getByAgent(int agentId) {
         return null;
     }
+
+
 }

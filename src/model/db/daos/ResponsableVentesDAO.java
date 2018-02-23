@@ -11,6 +11,29 @@ import java.util.LinkedList;
 public class ResponsableVentesDAO extends DAO {
     public static final String TABLE_NAME = "responsable_vente";
 
+
+    public ResponsableVente getByUsername(ResponsableVente responsableVente){
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM responsable_vente WHERE username='" + responsableVente.getUsername() + "';");
+            if (result.next()) {
+                responsableVente.setNom(result.getString("nom"));
+                responsableVente.setPrenom(result.getString("prenom"));
+                responsableVente.setDateNaissance(result.getDate("dateNaiss"));
+                responsableVente.setAdresse(result.getString("adresse"));
+                responsableVente.setTel(result.getString("tel"));
+                responsableVente.setEmail(result.getString("email"));
+                responsableVente.setDateAdded(result.getDate("dateAdded"));
+                responsableVente.setAddedBy(result.getInt("addedBy"));
+                responsableVente.setSuspended(result.getBoolean("isSuspended"));
+                responsableVente.setId(result.getInt("id"));
+                return responsableVente;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean changePassword(int id,String pwd){
         try {
             statement.execute("UPDATE responsable_vente SET password='"+pwd+"' WHERE id = "+id+";");

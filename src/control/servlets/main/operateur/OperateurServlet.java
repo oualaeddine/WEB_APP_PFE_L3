@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "OperateurServlet")
+//@WebServlet(name = "OperateurServlet",value = "/OperateurServlet")
+@WebServlet({"/OperateurServlet"})
 public class OperateurServlet extends MyServlet {
     @Override
     public void init() throws ServletException {
@@ -18,7 +19,8 @@ public class OperateurServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
-
+            System.out.println("ani hna");
+            this.getServletContext().getRequestDispatcher("/html/operateur.html").forward(request,response);
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }
@@ -26,7 +28,7 @@ public class OperateurServlet extends MyServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
-
+            this.getServletContext().getRequestDispatcher("/html/operateur.html");
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }

@@ -6,7 +6,21 @@ import java.sql.Statement;
 
 public class DbConnector {
 
-    private static final String conn = "jdbc:mysql://localhost:3306/soc_imm", user = "root", pass = "1234";
+    /*  private static final String
+                   db_name = "sql11220882",
+            host = "localhost",
+            port = "3306",
+            user = "root",
+            pass = "1234";
+             */
+    private static final String
+            db_name = "sql11220882",
+            host = "sql11.freemysqlhosting.net",
+            port = "3306",
+            user = "sql11220882",
+            pass = "kbtEFgU5Xi";
+
+    private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name;
 
     public DbConnector() {
     }

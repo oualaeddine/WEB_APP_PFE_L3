@@ -28,8 +28,8 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="gson-2.6.2" level="project" />
-    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.6.2" level="project" />
+    <orderEntry type="library" exported="" name="com.mysql.jdbc_5.1.5" level="project" />
+    <orderEntry type="library" exported="" name="javax.transaction" level="project" />
   </component>
 </module>

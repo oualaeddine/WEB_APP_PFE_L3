@@ -13,11 +13,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
-<%        // TODO: 2/18/2018  test this jsp
-
+<% // TODO: 2/18/2018  test this jsp
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
-    String currentPage =  request.getParameter("page");
+    String currentPage = request.getParameter("page");
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);

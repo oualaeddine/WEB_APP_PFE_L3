@@ -44,11 +44,11 @@ public class LoginServlet extends MyServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
-            redirectToDashboard(request, response);
-        } else {
+     //   if (isLoggedIn(request)) {
+           // redirectToDashboard(request, response);
+      //  } else {
             getServletContext().getRequestDispatcher("/html/login.html").forward(request, response);
-        }
+     //   }
     }
 
 

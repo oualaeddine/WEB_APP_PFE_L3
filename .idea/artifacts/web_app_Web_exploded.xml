@@ -8,7 +8,6 @@
           <element id="module-output" name="web_app" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="application" name="com.mysql.jdbc_5.1.5" />
           <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
           <element id="library" level="project" name="gson-2.6.2" />

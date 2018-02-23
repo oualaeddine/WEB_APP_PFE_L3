@@ -13,7 +13,7 @@ public class Consts {
     ADMIN_DASHBOARD_SERVLET_URL = "",
 
     /*AUTH*/
-    LOGIN_SERVLET_URL = "/login",
+    LOGIN_SERVLET_URL = "/authentification",
             LOGOUT_SERVLET_URL = "",
             SIGNUP_SERVLET_URL = "/signup",
 

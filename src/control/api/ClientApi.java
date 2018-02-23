@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ClientApi", urlPatterns = Consts.CLIENT_API_URL_PATTERN)
 public class ClientApi extends API {
+    // TODO: 2/20/2018 action getClientByPhoneNumber
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

@@ -7,6 +7,7 @@ import utils.Util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 public class AuthDAO extends DAO {
     public boolean exists(Object object, UserType type) {
@@ -43,5 +44,35 @@ public class AuthDAO extends DAO {
             }
         }
         return 0;
+    }
+
+    @Override
+    public Object getById(int id) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return false;
+    }
+
+    @Override
+    public boolean update(Object object) {
+        return false;
+    }
+
+    @Override
+    public boolean add(Object object) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Object object) {
+        return false;
+    }
+
+    @Override
+    public LinkedList getAll() {
+        return null;
     }
 }

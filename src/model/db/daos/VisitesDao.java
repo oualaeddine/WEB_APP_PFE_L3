@@ -51,6 +51,21 @@ public class VisitesDao extends DAO {
         return super.deleteById(id, "visite");
     }
 
+    @Override
+    public boolean update(Object object) {
+        return false;
+    }
+
+    @Override
+    public boolean add(Object object) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Object object) {
+        return false;
+    }
+
     public boolean update(Visite visite) {
         return false;
     }

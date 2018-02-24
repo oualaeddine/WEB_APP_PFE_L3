@@ -6,6 +6,7 @@ import model.db.daos.ClientDAO;
 import model.db.daos.VisitesDao;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ClientsManager {
     private final Client loggedInClient;
@@ -33,9 +34,9 @@ public class ClientsManager {
         visite.setClient(loggedInClient);
         return new VisitesDao().add(visite);
     }
-    public boolean reporterRDV(int id, Date newDate){
+    public boolean reporterRDV(int id, Timestamp newTime){
         Visite visite = new VisitesDao().getById(id);
-        visite.setDate(newDate);
+        visite.setTime(newTime);
         if (new VisitesDao().reporter(id) && reserverVisite(visite)) return true;
         return false;
     }

@@ -185,16 +185,25 @@
                         </tfoot>
                         <tbody>
                         <%  Agent agent = (Agent)request.getSession().getAttribute("user");
-                            LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent); %>
+                            String what = request.getParameter("what");
+                            LinkedList<Visite> list = new LinkedList<>();
+                            switch (what) {
+                                case "programmees": list=new VisitesDao().getProgrammee();break;
+                                case "passees": list=new VisitesDao().getPassee(); break;
+                                case "annulees": list=new VisitesDao().getAnnulee(); break;
+                            }
+                            %>
                         <%
-                            for (Visite visite: list) {
-                                out.print("<tr>\n" +
-                                        "<td>"+visite.getId()+"</td>\n" +
-                                        "<td>"+visite.getLogement().getTitre()+
-                                        "<td>"+visite.getClient().getNom()+" "+visite.getClient().getPrenom()+"</td>\n" +
-                                        "<td>"+visite.getTime()+"</td>\n" +
-                                        "<td>"+visite.getEtatVisite()+"</td>\n" +
-                                        "<td><a href=\"/NewRapport?visite="+visite.getId()+"\">Rapport</a></td>                        </tr>");
+                            if (!list.isEmpty()){
+                                for (Visite visite: list) {
+                                    out.print("<tr>\n" +
+                                            "<td>"+visite.getId()+"</td>\n" +
+                                            "<td>"+visite.getLogement().getTitre()+
+                                            "<td>"+visite.getClient().getNom()+" "+visite.getClient().getPrenom()+"</td>\n" +
+                                            "<td>"+visite.getTime()+"</td>\n" +
+                                            "<td>"+visite.getEtatVisite()+"</td>\n" +
+                                            "<td><a href=\"/NewRapport?visite="+visite.getId()+"\">Rapport</a></td>                        </tr>");
+                                }
                             }
 
                         %>

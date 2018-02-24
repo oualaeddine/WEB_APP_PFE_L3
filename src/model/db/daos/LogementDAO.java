@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Localite;
 import model.beans.Logement;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -12,14 +13,30 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class LogementDAO extends DAO {
+
     public LinkedList<Logement> getLogementsVendus() {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT id FROM logement WHERE etat='vendu';");
+            result = statement.executeQuery("SELECT * FROM logement WHERE etat='vendu';");
             while (result.next()) {
                 Logement logement = new Logement();
-                logement =(Logement) getById(result.getInt("id"));
+//                logement =(Logement) getById(result.getInt("id"));
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                switch (result.getString("etat")) {
+                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
+                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
+                    case "gele": logement.setEtat(EtatLogement.GELE);break;
+                }
+                logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setEtage(result.getInt("etage"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -27,6 +44,7 @@ public class LogementDAO extends DAO {
         }
         return list;
     }
+
     public boolean geler(Logement logement){
         try {
             statement.execute("UPDATE logement SET etat = 'gele' WHERE id="+logement.getId()+";");
@@ -152,21 +170,24 @@ public class LogementDAO extends DAO {
         LinkedList<Logement> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM logement");
+            result = statement.executeQuery("SELECT * FROM logement;");
             while (result.next()){
                 Logement logement = new Logement();
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                if (result.getString("etat").equals("vendu")) logement.setEtat(EtatLogement.VENDU);
-                else logement.setEtat(EtatLogement.AVENDRE);
+                switch (result.getString("etat")) {
+                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
+                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
+                    case "gele": logement.setEtat(EtatLogement.GELE);break;
+                }
+                logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
                 logement.setNbrFacades(result.getInt("nbrFacades"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
                 logement.setEtage(result.getInt("etage"));
-
                 list.add(logement);
             }
         }catch (SQLException e){
@@ -175,4 +196,33 @@ public class LogementDAO extends DAO {
         return list;
     }
 
+    public LinkedList<Logement> getGeles() {
+        ResultSet result;
+        LinkedList<Logement> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM logement WHERE etat='gele';");
+            while (result.next()) {
+                Logement logement = new Logement();
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                switch (result.getString("etat")) {
+                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
+                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
+                    case "gele": logement.setEtat(EtatLogement.GELE);break;
+                }
+                logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setEtage(result.getInt("etage"));
+                list.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

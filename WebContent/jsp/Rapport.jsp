@@ -1,7 +1,9 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="model.beans.humans.Agent" %><%--
+<%@ page import="model.beans.humans.Agent" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="model.db.daos.ClientDAO" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 23/02/2018
@@ -155,55 +157,44 @@
             </li>
             <li class="breadcrumb-item active">Principale</li>
         </ol>
-
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i> Liste des clients</div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-
-                        <tr>
-                            <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
-                            <th>Etat</th>
-                            <th>Rediger rapport</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
-                            <th>Etat</th>
-                            <th>Rediger rapport</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        <%  Agent agent = (Agent)request.getSession().getAttribute("user");
-                            LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent); %>
-                        <%
-                            for (Visite visite: list) {
-                                out.print("<tr>\n" +
-                                        "<td>"+visite.getId()+"</td>\n" +
-                                        "<td>"+visite.getLogement().getTitre()+
-                                        "<td>"+visite.getClient().getNom()+" "+visite.getClient().getPrenom()+"</td>\n" +
-                                        "<td>"+visite.getTime()+"</td>\n" +
-                                        "<td>"+visite.getEtatVisite()+"</td>\n" +
-                                        "<td><a href=\"/NewRapport?visite="+visite.getId()+"\">Rapport</a></td>                        </tr>");
-                            }
-
-                        %>
-                        </tbody>
-                    </table>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group">
+        <%Agent agent = (Agent) request.getSession().getAttribute("user");%>
+        <%Visite visite =new VisitesDao().getById(Integer.parseInt(request.getParameter("visite"))) ;%>
+        <%request.getSession().setAttribute("visite",visite);%>
+                    <label for="id">Visite Numéro: </label>
+                    <p class="form-control" id="id"><%out.print(request.getParameter("visite"));%></p>
                 </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="form-group">
+                    <label >Agent responsable de la visite: </label>
+                    <p class="form-control"><%out.print(agent.getNom()+" "+agent.getPrenom());%></p>
+                </div>
+                <div class="form-group">
+                    <label >Client visiteur: </label>
+                    <p class="form-control"><%out.print(visite.getClient().getNom()+" "+visite.getClient().getPrenom());%></p>
+                </div>
+                <div class="form-group">
+                    <label >Logement: </label>
+                    <p class="form-control"><%out.print(visite.getLogement().getAdresse());%></p>
+                </div>
+                <div class="form-group">
+                    <label >Date: </label>
+                    <p class="form-control"><%out.print(visite.getTime());%></p>
+                </div>
+                <div class="form-group">
+                    <label for="type">Selectionnez l'état de la visite</label>
+                    <select class="custom-select" name="etatVisite" id="type">
+                        <option value="validee">Validée</option>
+                        <option value="nonvalidee">Non validée</option>
+                        <option value="reportee">Reportée</option>
+                        <option value="annulee"> Annulée</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Soumettre</button>
+            </form>
         </div>
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

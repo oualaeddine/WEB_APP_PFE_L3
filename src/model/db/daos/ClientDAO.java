@@ -145,7 +145,6 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                //TODO: addedBy
                 client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }
@@ -159,10 +158,20 @@ public class ClientDAO extends DAO {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT id FROM client WHERE isBanned=1;");
+            result = statement.executeQuery("SELECT * FROM client WHERE isBanned=1;");
             while (result.next()) {
                 Client client = new Client();
-                client =(Client) getById(result.getInt("id"));
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setDateAdded(result.getDate("dateAdded"));
+                client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }
         } catch (SQLException e) {

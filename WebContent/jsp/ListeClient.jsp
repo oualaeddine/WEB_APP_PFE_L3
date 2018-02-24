@@ -1,7 +1,11 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="model.beans.humans.Agent" %><%--
+<%@ page import="model.beans.humans.Agent" %>
+<%@ page import="model.db.daos.LogementDAO" %>
+<%@ page import="model.beans.Logement" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="model.db.daos.ClientDAO" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 23/02/2018
@@ -166,35 +170,50 @@
 
                         <tr>
                             <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
-                            <th>Etat</th>
-                            <th>Rediger rapport</th>
+                            <th>Nom</th>
+                            <th>Date de naissance</th>
+                            <th>Adresse</th>
+                            <th>Telephone</th>
+                            <th>Banni</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
-                            <th>Etat</th>
-                            <th>Rediger rapport</th>
+                            <th>Nom</th>
+                            <th>Date de naissance</th>
+                            <th>Adresse</th>
+                            <th>Telephone</th>
+                            <th>Banni</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <%  Agent agent = (Agent)request.getSession().getAttribute("user");
-                            LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent); %>
                         <%
-                            for (Visite visite: list) {
-                                out.print("<tr>\n" +
-                                        "<td>"+visite.getId()+"</td>\n" +
-                                        "<td>"+visite.getLogement().getTitre()+
-                                        "<td>"+visite.getClient().getNom()+" "+visite.getClient().getPrenom()+"</td>\n" +
-                                        "<td>"+visite.getTime()+"</td>\n" +
-                                        "<td>"+visite.getEtatVisite()+"</td>\n" +
-                                        "<td><a href=\"/NewRapport?visite="+visite.getId()+"\">Rapport</a></td>                        </tr>");
+                            String what = request.getParameter("what");
+                            LinkedList<Client> list = new LinkedList<>();
+                            switch (what) {
+                                case "all": list=new ClientDAO().getAll();break;
+                                case "banned": list=new ClientDAO().getBannedClients(); break;
+                                case "ban": list=new ClientDAO().getAll();break;
+                            }
+                        %>
+                        <%
+                            if (!list.isEmpty()){
+                                for (Client client: list) {
+                                    out.print("<tr>\n" +
+                                            "<td>"+client.getId()+"</td>\n" +
+                                            "<td>"+client.getNom()+" "+client.getPrenom()+
+                                            "<td>"+client.getDateNaissance()+"</td>\n" +
+                                            "<td>"+client.getAdresse()+"</td>\n" +
+                                            "<td>"+client.getTel()+"</td>\n" );
+                                    if (what.equals("ban")) {
+                                        out.print(
+                                                "<td><a href=\"/Clients?\"" + client.getId() +"\">");
+                                        if (client.isBanned()) out.print("Rétablir");
+                                        else out.print("Bannir");
+                                                        out.print("</a></td></tr>");
+                                    }else out.print("<td>" + client.isBanned() + "</td></tr>");
+                                }
                             }
 
                         %>

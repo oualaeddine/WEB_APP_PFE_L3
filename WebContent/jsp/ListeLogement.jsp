@@ -1,7 +1,9 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="model.beans.humans.Agent" %><%--
+<%@ page import="model.beans.humans.Agent" %>
+<%@ page import="model.db.daos.LogementDAO" %>
+<%@ page import="model.beans.Logement" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 23/02/2018
@@ -166,35 +168,48 @@
 
                         <tr>
                             <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Superficie</th>
                             <th>Etat</th>
-                            <th>Rediger rapport</th>
+                            <th>Region</th>
+                            <th>Adresse</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>id</th>
-                            <th>Logement</th>
-                            <th>Client</th>
-                            <th>Date</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Superficie</th>
                             <th>Etat</th>
-                            <th>Rediger rapport</th>
+                            <th>Region</th>
+                            <th>Adresse</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <%  Agent agent = (Agent)request.getSession().getAttribute("user");
-                            LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent); %>
                         <%
-                            for (Visite visite: list) {
-                                out.print("<tr>\n" +
-                                        "<td>"+visite.getId()+"</td>\n" +
-                                        "<td>"+visite.getLogement().getTitre()+
-                                        "<td>"+visite.getClient().getNom()+" "+visite.getClient().getPrenom()+"</td>\n" +
-                                        "<td>"+visite.getTime()+"</td>\n" +
-                                        "<td>"+visite.getEtatVisite()+"</td>\n" +
-                                        "<td><a href=\"/NewRapport?visite="+visite.getId()+"\">Rapport</a></td>                        </tr>");
+                            String what = request.getParameter("what");
+                            LinkedList<Logement> list = new LinkedList<>();
+                            switch (what) {
+                                case "all": list=new LogementDAO().getAll();break;
+                                case "vendus": list=new LogementDAO().getLogementsVendus(); break;
+                                case "geles": list=new LogementDAO().getGeles(); break;
+                                default:
+                            }
+                        %>
+                        <%
+                            if (!list.isEmpty()){
+                                for (Logement logement: list) {
+                                    out.print("<tr>\n" +
+                                            "<td>"+logement.getId()+"</td>\n" +
+                                            "<td>"+logement.getTitre()+
+                                            "<td>"+logement.getDescription()+"</td>\n" +
+                                            "<td>"+logement.getSuperficie()+"</td>\n" +
+                                            "<td>"+logement.getEtat()+"</td>\n" +
+                                            "<td>"+logement.getLocalite().getNom()+"</td>\n"+
+                                            "<td>"+logement.getAdresse()+"</td></tr>");
+                                }
                             }
 
                         %>

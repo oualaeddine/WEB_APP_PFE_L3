@@ -5,11 +5,12 @@ import model.beans.humans.Client;
 import model.enums.EtatVisite;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Visite implements Serializable {
     private int id;
-    private Date date;
+    private Timestamp timestamp;
     private Logement logement;
     private Agent agent;
     private Client client;
@@ -26,12 +27,12 @@ public class Visite implements Serializable {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getTime() {
+        return timestamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTime(Timestamp time) {
+        this.timestamp = time;
     }
 
     public Logement getLogement() {

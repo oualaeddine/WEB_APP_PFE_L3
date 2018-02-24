@@ -91,15 +91,15 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseClients">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-bars"></i>
+                        <a href="/Clients?what=all"><i class="fa fa-fw fa-bars"></i>
                             <span class="nav-link-text">Liste des clients</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-gratipay"></i>
-                            <span class="nav-link-text">Mes Clients</span></a>
+                        <a href="/Clients?what=banned"><i class="fa fa-fw fa-gratipay"></i>
+                            <span class="nav-link-text">Clients bannis</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-ban"></i>
+                        <a href="/Clients?what=ban"><i class="fa fa-fw fa-ban"></i>
                             <span class="nav-link-text">Signaler un client</span></a>
                     </li>
                 </ul>

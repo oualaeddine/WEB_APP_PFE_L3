@@ -19,12 +19,17 @@ public class ListeClientServlet extends MyServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
-            if (request.getAttribute("banned") == null) {
-                this.getServletContext().getRequestDispatcher("/jsp/ListeClient.jsp").forward(request, response);
+            if (request.getParameter("what") != null) {
+                this.getServletContext().getRequestDispatcher("/jsp/ListeClient.jsp").forward(request,response);
+            } else if (request.getParameter("client") != null) {
+
+                Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("client")));
+                if (new ClientDAO().isBanned(client)) System.out.println("retablir:" + new ClientDAO().retablirById(client.getId()));
+                else System.out.println("banir: " + new ClientDAO().banById(client.getId()));
+
+                this.getServletContext().getRequestDispatcher("/Clients?what=ban").forward(request, response);
             } else {
-                Client client = (Client) request.getAttribute("banned");
-                System.out.println(new ClientDAO().banById(client.getId()));
-                request.setAttribute("banned",null);
+                this.getServletContext().getRequestDispatcher("/jsp/ListeClient.jsp").forward(request, response);
             }
         }else redirectToLogin(request,response,0);
     }

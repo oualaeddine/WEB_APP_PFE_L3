@@ -3,6 +3,8 @@ package control.servlets.sub;
 import control.managers.AdminsManager;
 import control.servlets.MyServlet;
 import model.beans.humans.Admin;
+import model.beans.humans.Agent;
+import model.db.daos.AgentsDAO;
 import model.db.daos.VisitesDao;
 
 import javax.servlet.ServletException;
@@ -47,7 +49,7 @@ public class ListeVisitesServlet extends MyServlet {
                         String _agentId = request.getParameter("agentId");
                         if (_agentId != null) {
                             int agentId = Integer.valueOf(_agentId);
-                            responseBody = objectToJson(visitesDAO.getByAgent(agentId));
+                            responseBody = objectToJson(visitesDAO.getVisitesByAgent((Agent)new AgentsDAO().getById(agentId)));
                         }
                         break;
                     }

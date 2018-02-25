@@ -50,6 +50,22 @@ public class AgentsDAO extends DAO {
         }
         return null;
     }
+
+    public LinkedList<Agent> getAgentByLocation(Localite localite) {
+        ResultSet result;
+        LinkedList<Agent> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT id FROM agent WHERE idregion=" + localite.getId() + ";");
+            while (result.next()) {
+                Agent agent = new Agent();
+                agent =(Agent) getById(result.getInt("id"));
+                list.add(agent);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public Agent getByUsername(Agent admin){
         ResultSet result;
         try {

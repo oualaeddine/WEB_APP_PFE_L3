@@ -25,7 +25,7 @@ public class ClientDAO extends DAO {
                 client.setTel(result.getString("tel"));
                 client.setEmail(result.getString("email"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                client.setSuspended(result.getBoolean("isBanned"));
+                client.setSuspended(result.getInt("isBanned")==1);
                 client.setId(result.getInt("id"));
                 return client;
             }
@@ -60,7 +60,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                client.setSuspended(result.getBoolean("isBanned"));
+                client.setSuspended(result.getInt("isBanned")==1);
 
                 return client;
             }
@@ -72,7 +72,18 @@ public class ClientDAO extends DAO {
     public boolean banById(int id){
         try {
             statement.execute("UPDATE client SET isBanned = 1" +
-                    "WHERE id="+id+" ;");
+                    " WHERE id="+id+" ;");
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean retablirById(int id) {
+        try {
+            statement.execute("UPDATE client SET isBanned = 0" +
+                    " WHERE id="+id+" ;");
             return true;
         }catch (SQLException e){
             e.printStackTrace();
@@ -145,11 +156,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                //TODO: addedBy
-                String isBanned=result.getString("isBanned");
-                client.setBanned(isBanned.equals("1"));
-//                client.setSuspended(result.getBoolean("isBanned"));
-
+                client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -158,6 +165,31 @@ public class ClientDAO extends DAO {
         return list;
     }
 
+    public LinkedList<Client> getBannedClients() {
+        ResultSet result;
+        LinkedList<Client> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM client WHERE isBanned=1;");
+            while (result.next()) {
+                Client client = new Client();
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setDateAdded(result.getDate("dateAdded"));
+                client.setBanned(result.getInt("isBanned")==1);
+                list.add(client);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public boolean isBanned(Client client){
         ResultSet result;
         try {

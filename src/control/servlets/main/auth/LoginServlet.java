@@ -1,6 +1,6 @@
 package control.servlets.main.auth;
 
-import control.managers.AuthManager;
+import control.system.managers.AuthManager;
 import control.servlets.MyServlet;
 import model.beans.humans.*;
 import model.db.daos.*;
@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-import static utils.Consts.LOGIN_SERVLET_URL;
 
 //@WebServlet(name = "LoginServlet", urlPatterns = LOGIN_SERVLET_URL)
 @WebServlet({"/login"})

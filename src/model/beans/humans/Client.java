@@ -3,7 +3,7 @@ package model.beans.humans;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Client extends Person  {
+public class Client extends Person {
     private boolean isBanned;
     private Date dateAdded;
 
@@ -28,4 +28,10 @@ public class Client extends Person  {
     }
 
 
+    public String isBannedString() {
+        if (isBanned)
+            return "banned";
+        else
+            return "not banned";
+    }
 }

@@ -1,16 +1,14 @@
 package control.servlets.main.Agent;
 
-import control.managers.AgentsManager;
+import control.system.managers.AgentsManager;
 import control.servlets.MyServlet;
 import model.beans.Visite;
 import model.beans.humans.Agent;
-import model.db.daos.VentesDAO;
 import model.db.daos.VisitesDao;
 import model.enums.EtatVisite;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

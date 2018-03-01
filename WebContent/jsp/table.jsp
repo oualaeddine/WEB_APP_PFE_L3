@@ -1,10 +1,11 @@
 <%@ page import="model.beans.views.TablesView" %>
-<%@ page import="model.beans.views.NavElement" %>
-<%@ page import="model.beans.views.DataTableRow" %>
-<%@ page import="static utils.Consts.FOOTER_COPYRIGHT" %>
+<%@ page import="model.beans.views.nav.NavElement" %>
+<%@ page import="model.beans.views.table.DataTableRow" %>
+<%@ page import="static utils.MyConsts.FOOTER_COPYRIGHT" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.humans.Person" %>
+<%@ page import="model.beans.views.MyView" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -14,14 +15,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
-<%        // TODO: 2/18/2018  test this jsp
-
-
-    UserType userType =(UserType) request.getSession().getAttribute("userType");
-//    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
-    Person person =(Person) request.getSession().getAttribute("loggedIn");
-    String currentPage =  request.getParameter("page");
-    tablesView.setLoggedInUserId(person.getId());
 <% // TODO: 2/18/2018  test this jsp
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
@@ -64,7 +57,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
-            <% for (NavElement navElement : tablesView.getNav().getElements()) {
+            <% for (MyView navElement : tablesView.getNav().getElements()) {
                 out.print(navElement.toString());
             }
             %>

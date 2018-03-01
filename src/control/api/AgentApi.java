@@ -4,7 +4,7 @@ package control.api;
 import model.beans.humans.Agent;
 import model.db.daos.AgentsDAO;
 import model.enums.UserType;
-import utils.Consts;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import static utils.Util.objectToJson;
  * name = now du servlet
  * urlPatterns = le nom du servlet sur le lien
  */
-@WebServlet(name = "AgentApi", urlPatterns = Consts.AGENT_API_URL_PATTERN)
+@WebServlet(name = "AgentApi", urlPatterns = MyConsts.AGENT_API_URL_PATTERN)
 public class AgentApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String responseBody = "null";

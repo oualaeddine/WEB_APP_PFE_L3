@@ -1,10 +1,10 @@
 package model.beans.views;
 
+import model.beans.views.nav.Nav;
+import model.beans.views.table.DataTable;
 import model.enums.TablePage;
 import model.enums.UserType;
 import utils.Util;
-
-import java.util.LinkedList;
 
 import static utils.Util.getPageTitleFromPageType;
 

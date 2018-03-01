@@ -3,8 +3,6 @@ package control.servlets.main.auth;
 import control.servlets.MyServlet;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
-import utils.Consts;
-import utils.Util;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +14,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-//@WebServlet(name = "SignUpServlet", urlPatterns = Consts.SIGNUP_SERVLET_URL)
+//@WebServlet(name = "SignUpServlet", urlPatterns = MyConsts.SIGNUP_SERVLET_URL)
 @WebServlet({"/signup"})
 public class SignUpServlet extends MyServlet {
     @Override

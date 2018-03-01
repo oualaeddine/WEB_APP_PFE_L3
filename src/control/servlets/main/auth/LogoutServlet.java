@@ -1,8 +1,8 @@
 package control.servlets.main.auth;
 
-import control.managers.AuthManager;
+import control.system.managers.AuthManager;
 import control.servlets.MyServlet;
-import utils.Consts;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebServlet(name = "LogoutServlet")
-@WebServlet({Consts.LOGOUT_SERVLET_URL})
+@WebServlet({MyConsts.LOGOUT_SERVLET_URL})
 public class LogoutServlet extends MyServlet {
     @Override
     public void init() throws ServletException {
@@ -24,7 +24,7 @@ public class LogoutServlet extends MyServlet {
 //            request.getSession().invalidate();
 //            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
             new AuthManager().logout(request);
-            this.getServletContext().getRequestDispatcher(Consts.LOGIN_SERVLET_URL);
+            this.getServletContext().getRequestDispatcher(MyConsts.LOGIN_SERVLET_URL);
         } else {
             redirectToNotLoggedIn(request, response);
         }

@@ -1,15 +1,13 @@
 package control.servlets.sub;
 
-import control.managers.AdminsManager;
+import control.system.managers.AdminsManager;
 import control.servlets.MyServlet;
-import model.beans.humans.Admin;
 import model.beans.humans.Agent;
 import model.db.daos.AgentsDAO;
 import model.db.daos.VisitesDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

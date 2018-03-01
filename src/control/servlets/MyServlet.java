@@ -1,9 +1,9 @@
 package control.servlets;
 
-import control.managers.AuthManager;
+import control.system.managers.AuthManager;
 import model.beans.humans.Person;
 import model.enums.UserType;
-import utils.Consts;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +43,7 @@ public class MyServlet extends HttpServlet {
     }
 
     protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException, ServletException {
-        response.sendRedirect(Consts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
+        response.sendRedirect(MyConsts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
 //        response.sendRedirect("/login");
     }
 
@@ -54,25 +54,25 @@ public class MyServlet extends HttpServlet {
             String dashboardUrl;
             switch (userType) {
                 case CLIENT:
-                    dashboardUrl = Consts.CLIENT_SERVLET_URL;
+                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
                     break;
                 case AGENT:
-                    dashboardUrl = Consts.CLIENT_SERVLET_URL;
+                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
 
                     break;
                 case OPERATEUR:
-                    dashboardUrl = Consts.CLIENT_SERVLET_URL;
+                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
 
                     break;
                 case ADMIN:
-                    dashboardUrl = Consts.CLIENT_SERVLET_URL;
+                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
 
                     break;
                 case RESPONSABLE_VENTES:
-                    dashboardUrl = Consts.CLIENT_SERVLET_URL;
+                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
                     break;
                 default:
-                    dashboardUrl = Consts.HOME_SERVLET_URL;
+                    dashboardUrl = MyConsts.HOME_SERVLET_URL;
             }
             getServletContext().getRequestDispatcher(dashboardUrl).forward(request, response);
         } else {

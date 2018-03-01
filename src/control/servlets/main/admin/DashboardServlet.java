@@ -1,6 +1,6 @@
 package control.servlets.main.admin;
 
-import control.managers.AdminsManager;
+import control.system.managers.AdminsManager;
 import control.servlets.MyServlet;
 import model.beans.humans.Admin;
 

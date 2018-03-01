@@ -35,4 +35,9 @@ public class Employe extends Person {
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
     }
+
+    public String isSuspendedString() {
+        if (isSuspended) return "suspended";
+        return "not Suspended";
+    }
 }

@@ -4,7 +4,6 @@ import model.beans.humans.Admin;
 import model.db.DAO;
 import model.enums.AdminRole;
 import model.enums.UserType;
-import utils.Consts;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

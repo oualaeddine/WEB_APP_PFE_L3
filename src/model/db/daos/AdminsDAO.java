@@ -18,6 +18,7 @@ public class AdminsDAO extends DAO {
     }
 
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
+
     public boolean isSuper(int id){
         ResultSet result;
         try {

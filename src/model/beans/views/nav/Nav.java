@@ -13,6 +13,7 @@ public class Nav {
     private UserType userType;
     private TablePage currentPage;
     private LinkedList<MyView> navElements;
+    private int userId;
 
     public int getUserId() {
         return UserId;
@@ -207,5 +208,9 @@ public class Nav {
 
     public void setCurrentPage(TablePage currentPage) {
         this.currentPage = currentPage;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

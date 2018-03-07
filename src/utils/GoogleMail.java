@@ -10,7 +10,6 @@ import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.MessagingException;
 
 /**
  *

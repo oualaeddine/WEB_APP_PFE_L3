@@ -12,7 +12,15 @@ public class OperateurDAO extends DAO {
     public static final String TABLE_NAME = "operateur";
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
-
+    public boolean changePassword(int id, String pwd){
+        try {
+            statement.execute("UPDATE operateur SET password='"+pwd+"' WHERE id = "+id+";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public Operateur getByUsername(Operateur operateur){
         ResultSet result;
         try {

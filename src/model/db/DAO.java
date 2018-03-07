@@ -11,6 +11,7 @@ public abstract class DAO {
         this.statement = DbConnector.getStatment();
     }
 
+
     protected boolean reintegrerById(int id, String table) {
         try {
             statement.execute("UPDATE " + table + " SET isSuspended = 0 " +

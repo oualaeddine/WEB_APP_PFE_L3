@@ -16,6 +16,15 @@ public class AdminsDAO extends DAO {
     public AdminsDAO() {
 
     }
+    public boolean changePassword(int id, String pwd){
+        try {
+            statement.execute("UPDATE admin SET password='"+pwd+"' WHERE id = "+id+";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 

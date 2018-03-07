@@ -210,7 +210,7 @@ public class Nav {
         this.currentPage = currentPage;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
 }

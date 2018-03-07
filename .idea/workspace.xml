@@ -6,21 +6,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="hwayj">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/html/code-password.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/html/forgot-password.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/GoogleMail.java" />
+    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/jsp/changePassword.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/ChangePasswordServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/html/login.html" afterPath="$PROJECT_DIR$/WebContent/html/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/enums/TablePage.java" afterPath="$PROJECT_DIR$/src/model/enums/TablePage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/MyConsts.java" afterPath="$PROJECT_DIR$/src/utils/MyConsts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_app.iml" afterPath="$PROJECT_DIR$/web_app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DAO.java" afterPath="$PROJECT_DIR$/src/model/db/DAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/OperateurDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/OperateurDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/GoogleMail.java" afterPath="$PROJECT_DIR$/src/utils/GoogleMail.java" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -49,112 +48,36 @@
         <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
       </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
-        <item name="ott" type="e3449647:DbNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/html/login.html">
+      <file leaf-file-name="changePassword.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/jsp/changePassword.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="7" />
+            <state relative-caret-position="391">
+              <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forgot-password.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/html/forgot-password.html">
+      <file leaf-file-name="ChangePasswordServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ChangePasswordServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="102" selection-end-line="13" selection-end-column="102" />
+            <state relative-caret-position="595">
+              <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="code-password.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/html/code-password.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForgotPasswordServlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ForgotPasswordServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoogleMail.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyConsts.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/MyConsts.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="60" column="68" lean-forward="false" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListeClientServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/servlets/main/Agent/ListeClientServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TablesView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/TablesView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NavElement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/NavElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/ivs/menu.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="391">
+              <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -166,10 +89,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="Jsp File" />
         <option value="Enum" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -194,14 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeLocaliteServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeLogementsServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeMessagesServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeNotificationsServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeResponsablesVentesServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeOperateursServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeVentesServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/main/admin/DashboardServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/main/auth/LogoutServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/main/auth/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/main/client/ClientServlet.java" />
@@ -239,12 +154,20 @@
         <option value="$PROJECT_DIR$/src/control/ivs/menu.txt" />
         <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
         <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
-        <option value="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
         <option value="$PROJECT_DIR$/WebContent/html/login.html" />
         <option value="$PROJECT_DIR$/WebContent/html/code-password.html" />
         <option value="$PROJECT_DIR$/WebContent/html/forgot-password.html" />
-        <option value="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
         <option value="$PROJECT_DIR$/src/utils/GoogleMail.java" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/changePassword.jsp" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/ResponsableVentesDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/DAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/OperateurDAO.java" />
+        <option value="$PROJECT_DIR$/src/control/servlets/main/auth/ChangePasswordServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
       </list>
     </option>
   </component>
@@ -305,7 +228,31 @@
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
@@ -337,7 +284,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20663266" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mail.jar" />
@@ -359,6 +306,117 @@
       <recent name="model.db.daos" />
       <recent name="" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/nav/Nav.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -395,11 +453,6 @@
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
-        <file path="$PROJECT_DIR$/lib/mail.jar">
-          <settings>
-            <option name="CONTEXT_PATH" value="" />
-          </settings>
-        </file>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_web_app_2" />
@@ -594,7 +647,7 @@
       <workItem from="1519915044485" duration="258000" />
       <workItem from="1519988652443" duration="6112000" />
       <workItem from="1520165675041" duration="1124000" />
-      <workItem from="1520444246687" duration="9388000" />
+      <workItem from="1520444246687" duration="13395000" />
     </task>
     <task id="LOCAL-00001" summary="parmis lhwayj li tnahaw gbil -__-&#10;essayes tjr de decocher workspace.xml">
       <created>1518644625640</created>
@@ -638,11 +691,25 @@
       <option name="project" value="LOCAL" />
       <updated>1519390248336</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="hek">
+      <created>1520456404834</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520456404834</updated>
+    </task>
+    <task id="LOCAL-00008" summary="hek">
+      <created>1520456797076</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1520456797076</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82727000" />
+    <option name="totallyTimeSpent" value="86734000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -655,6 +722,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -666,13 +734,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5216" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.67901236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52006173" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5308642" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.4716981" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2322239" sideWeight="0.5283019" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.46604937" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2322239" sideWeight="0.5339506" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20121029" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25379938" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -710,11 +778,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5216" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6728395" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52006173" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5308642" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.4716981" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.5283019" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2322239" sideWeight="0.5283019" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -768,2017 +836,17 @@
     <MESSAGE value="parmis lhwayj li tnahaw gbil -__-&#10;essayes tjr de decocher workspace.xml" />
     <MESSAGE value="tables view whwayjha" />
     <MESSAGE value="hwayj" />
-    <option name="LAST_COMMIT_MESSAGE" value="hwayj" />
+    <MESSAGE value="hek" />
+    <MESSAGE value="trayef" />
+    <option name="LAST_COMMIT_MESSAGE" value="trayef" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/sub/ListeLocaliteServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/sub/ListeMessagesServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/sub/ListeNotificationsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/LogoutServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/admin/DashboardServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/sub/ListeResponsablesVentesServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/ClientApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/control.servlets.sub.ListeAgentsServlet">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>control.servlets.sub.ListeAgentsServlet</OriginalElement>
-          <nodes>
-            <node x="3031.792573685929" y="999.0">model.db.DbConnector</node>
-            <node x="919.1353070175428" y="5376.0">control.managers.ClientsManager</node>
-            <node x="2061.5566093263456" y="4024.5">model.beans.Vente</node>
-            <node x="9873.701681675679" y="6715.5">control.servlets.sub.ListeAgentsServlet</node>
-            <node x="668.8658625730986" y="3053.0">model.enums.EtatVisite</node>
-            <node x="1652.4372911445275" y="4666.5">model.db.daos.VentesDAO</node>
-            <node x="4483.6491175731135" y="1836.5">model.beans.humans.Operateur</node>
-            <node x="6026.701681675679" y="6704.5">control.servlets.main.service_ventes.ServiceVentesServlet</node>
-            <node x="4613.8366175731135" y="121.0">java.lang.Enum</node>
-            <node x="12080.795431675679" y="3992.0">model.enums.DataTableRowFormat</node>
-            <node x="6762.055848342346" y="5256.0">utils.Consts</node>
-            <node x="6667.764689070544" y="6015.0">control.api.API</node>
-            <node x="10249.701681675679" y="6715.5">control.servlets.sub.ListeResponsablesVentesServlet</node>
-            <node x="8369.701681675679" y="6715.5">control.servlets.sub.ListeNotificationsServlet</node>
-            <node x="12029.982931675679" y="5354.0">model.beans.views.DataTableData</node>
-            <node x="884.1934580506977" y="1825.0">model.beans.humans.Agent</node>
-            <node x="3007.292573685929" y="1306.0">model.db.DAO</node>
-            <node x="4007.242573685928" y="4534.0">control.managers.AdminsManager</node>
-            <node x="2446.195546144543" y="2975.0">model.db.daos.ClientDAO</node>
-            <node x="11537.282931675678" y="5443.0">model.beans.views.NavElement</node>
-            <node x="855.8658625730986" y="2974.5">model.db.daos.AgentsDAO</node>
-            <node x="11001.701681675679" y="6715.5">control.servlets.sub.ListeOperateursServlet</node>
-            <node x="9121.701681675679" y="6715.5">control.servlets.sub.ListeLogementsServlet</node>
-            <node x="1848.4108115416652" y="3075.0">model.enums.EtatVente</node>
-            <node x="11059.812416343271" y="3063.5">javax.servlet.ServletConfig</node>
-            <node x="9201.201681675679" y="5189.0">javax.servlet.http.HttpServlet</node>
-            <node x="2992.60792692628" y="2975.5">model.beans.Logement</node>
-            <node x="11529.945431675678" y="4057.5">javax.servlet.Servlet</node>
-            <node x="7617.701681675679" y="6715.5">control.api.VisiteApi</node>
-            <node x="8745.701681675679" y="6715.5">control.servlets.sub.ListeMessagesServlet</node>
-            <node x="3136.2741175731144" y="11.0">java.io.Serializable</node>
-            <node x="4182.649117573114" y="2986.0">model.db.daos.OperateurDAO</node>
-            <node x="1355.1991959064321" y="6704.5">control.servlets.main.auth.SignUpServlet</node>
-            <node x="3268.0092403525955" y="1836.5">model.beans.humans.ResponsableVente</node>
-            <node x="2762.3241175731146" y="5387.0">control.managers.ResponsablesVentesManager</node>
-            <node x="12430.520431675679" y="3991.0">model.beans.views.DataTableHeader</node>
-            <node x="11384.882931675678" y="4599.5">javax.servlet.GenericServlet</node>
-            <node x="12199.095431675678" y="5970.5">model.beans.views.DataTable</node>
-            <node x="10625.701681675679" y="6715.5">control.servlets.sub.ListeVentesServlet</node>
-            <node x="11436.845431675678" y="5948.5">model.beans.views.Nav</node>
-            <node x="0.0" y="6715.5">control.api.AgentApi</node>
-            <node x="9497.701681675679" y="6715.5">control.servlets.sub.ListeClientsServlet</node>
-            <node x="12357.920431675679" y="2844.0">model.enums.TablePage</node>
-            <node x="5276.582891377627" y="4688.5">model.db.daos.AuthDAO</node>
-            <node x="127.0" y="5398.0">control.managers.AgentsManager</node>
-            <node x="5416.332891377627" y="4047.0">utils.Util</node>
-            <node x="861.9712358284751" y="1395.0">model.beans.Localite</node>
-            <node x="4923.424117573114" y="573.0">model.beans.humans.Person</node>
-            <node x="4541.466291634646" y="6693.0">control.servlets.main.admin.DashboardServlet</node>
-            <node x="798.060307017543" y="4622.5">model.db.daos.VisitesDao</node>
-            <node x="3211.60792692628" y="2986.0">model.db.daos.ResponsableVentesDAO</node>
-            <node x="7241.701681675679" y="6715.5">control.api.ClientApi</node>
-            <node x="5197.562058044294" y="5938.0">control.servlets.MyServlet</node>
-            <node x="0.0" y="6945.0">model.db.DAOInterface</node>
-            <node x="810.2603070175428" y="6715.5">control.servlets.sub.ListeVisitesServlet</node>
-            <node x="3163.5305141571084" y="6693.0">control.servlets.main.auth.LoginServlet</node>
-            <node x="4772.405042310895" y="1065.5">model.beans.humans.Admin</node>
-            <node x="6865.701681675679" y="6715.5">control.api.LogementApi</node>
-            <node x="4637.6491175731135" y="2963.5">model.db.daos.AdminsDAO</node>
-            <node x="5650.701681675679" y="6704.5">control.servlets.main.operateur.OperateurServlet</node>
-            <node x="6156.019737231234" y="1044.0">model.beans.Message</node>
-            <node x="3021.8925736859287" y="1814.5">model.enums.EtatLogement</node>
-            <node x="2479.3241175731146" y="5387.0">control.managers.OperateursManager</node>
-            <node x="600.0763888888887" y="1770.0">model.db.daos.LocaliteDAO</node>
-            <node x="5374.092277824513" y="5332.0">control.managers.AuthManager</node>
-            <node x="6391.569737231233" y="1792.5">model.enums.UserType</node>
-            <node x="3239.3241175731146" y="4002.5">model.db.daos.LogementDAO</node>
-            <node x="6402.701681675679" y="6693.5">control.servlets.main.auth.LogoutServlet</node>
-            <node x="865.393640350876" y="4035.5">model.beans.Visite</node>
-            <node x="7291.508736689591" y="5971.5">javax.servlet.annotation.WebServlet</node>
-            <node x="5274.701681675679" y="6704.5">control.servlets.main.client.ClientServlet</node>
-            <node x="11890.945431675678" y="4632.5">model.beans.views.DataTableRow</node>
-            <node x="7993.701681675679" y="6715.5">control.servlets.sub.ListeLocaliteServlet</node>
-            <node x="3420.1592403525956" y="1384.0">model.beans.humans.Employe</node>
-            <node x="4728.5866175731135" y="0.0">java.lang.Comparable</node>
-            <node x="12131.584638565493" y="6604.0">model.beans.views.TablesView</node>
-            <node x="4528.1079583013125" y="694.5">model.enums.AdminRole</node>
-            <node x="2262.0316093263455" y="1814.0">model.beans.humans.Client</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.AdminsDAO">
-              <point x="105.34999999999991" y="-257.5" />
-              <point x="4413.592573685928" y="4454.0" />
-              <point x="4749.6491175731135" y="4454.0" />
-              <point x="4749.6491175731135" y="3961.0" />
-              <point x="4708.1491175731135" y="3961.0" />
-              <point x="-47.0" y="159.0" />
-            </edge>
-            <edge source="model.db.daos.AuthDAO" target="utils.Util">
-              <point x="97.20000000000005" y="-103.0" />
-              <point x="5495.282891377627" y="4514.0" />
-              <point x="5455.332891377627" y="4514.0" />
-              <point x="-117.0" y="80.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeNotificationsServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="8458.701681675679" y="6344.0" />
-              <point x="7432.294450975306" y="6344.0" />
-              <point x="31.285714285714675" y="124.5" />
-            </edge>
-            <edge source="model.beans.humans.Employe" target="model.beans.humans.Person">
-              <point x="-52.0" y="-59.0" />
-              <point x="3446.1592403525956" y="1226.0" />
-              <point x="3678.9491175731146" y="1226.0" />
-              <point x="3678.9491175731146" y="959.0" />
-              <point x="4952.674117573114" y="959.0" />
-              <point x="-48.75" y="158.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="utils.Util">
-              <point x="101.71428571428532" y="-59.0" />
-              <point x="3443.2447998713938" y="6404.0" />
-              <point x="4223.322180823774" y="6404.0" />
-              <point x="4223.322180823774" y="5169.0" />
-              <point x="5533.332891377627" y="5169.0" />
-              <point x="-39.0" y="80.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.humans.ResponsableVente">
-              <point x="15.550000000000182" y="-159.0" />
-              <point x="12061.995431675678" y="4514.0" />
-              <point x="12037.295431675679" y="4514.0" />
-              <point x="12037.295431675679" y="2054.0" />
-              <point x="3437.2400095833646" y="2054.0" />
-              <point x="81.23076923076928" y="25.5" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.db.daos.ClientDAO">
-              <point x="0.0" y="-81.5" />
-              <point x="2610.3241175731146" y="5089.0" />
-              <point x="2576.695546144543" y="5089.0" />
-              <point x="0.0" y="147.5" />
-            </edge>
-            <edge source="model.db.daos.AuthDAO" target="model.beans.humans.Person">
-              <point x="0.0" y="-103.0" />
-              <point x="5398.082891377627" y="4514.0" />
-              <point x="5379.282891377627" y="4514.0" />
-              <point x="5379.282891377627" y="969.0" />
-              <point x="5030.674117573114" y="969.0" />
-              <point x="29.25" y="158.0" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.beans.humans.Client">
-              <point x="-37.42857142857156" y="-81.5" />
-              <point x="2572.895546144543" y="5099.0" />
-              <point x="2435.695546144543" y="5099.0" />
-              <point x="2435.695546144543" y="2604.0" />
-              <point x="2348.9066093263455" y="2604.0" />
-              <point x="17.375" y="48.0" />
-            </edge>
-            <edge source="model.beans.humans.Admin" target="model.enums.AdminRole">
-              <point x="0.0" y="-37.0" />
-              <point x="4839.905042310895" y="909.0" />
-              <point x="4621.7329583013125" y="909.0" />
-              <point x="40.125" y="36.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeResponsablesVentesServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="10338.701681675679" y="6294.0" />
-              <point x="7484.437308118163" y="6294.0" />
-              <point x="83.42857142857156" y="124.5" />
-            </edge>
-            <edge source="control.api.API" target="model.enums.UserType">
-              <point x="38.375" y="-81.0" />
-              <point x="6859.639689070544" y="5868.0" />
-              <point x="7210.743348342346" y="5868.0" />
-              <point x="7210.743348342346" y="2824.0" />
-              <point x="6476.541959453456" y="2824.0" />
-              <point x="4.472222222222172" y="69.5" />
-            </edge>
-            <edge source="model.beans.humans.Operateur" target="model.beans.humans.Employe">
-              <point x="0.0" y="-25.5" />
-              <point x="4550.1491175731135" y="1620.0" />
-              <point x="3550.1592403525956" y="1620.0" />
-              <point x="52.0" y="59.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeAgentsServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="10140.701681675679" y="5908.0" />
-              <point x="9456.883499857497" y="5908.0" />
-              <point x="68.18181818181802" y="279.5" />
-            </edge>
-            <edge source="javax.servlet.GenericServlet" target="javax.servlet.ServletConfig">
-              <point x="0.0" y="-192.0" />
-              <point x="11538.382931675678" y="4514.0" />
-              <point x="11508.445431675678" y="4514.0" />
-              <point x="11508.445431675678" y="3911.0" />
-              <point x="11164.437416343271" y="3911.0" />
-              <point x="-34.875" y="59.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.beans.Vente">
-              <point x="115.20833333333303" y="-70.5" />
-              <point x="518.708333333333" y="5139.0" />
-              <point x="639.4528152643124" y="5139.0" />
-              <point x="639.4528152643124" y="4424.0" />
-              <point x="2081.973275993012" y="4424.0" />
-              <point x="-102.08333333333348" y="103.0" />
-            </edge>
-            <edge source="model.beans.views.DataTable" target="model.enums.TablePage">
-              <point x="111.55555555555566" y="-125.5" />
-              <point x="12436.150987231234" y="5918.0" />
-              <point x="12727.020431675679" y="5918.0" />
-              <point x="12727.020431675679" y="3951.0" />
-              <point x="12576.370431675678" y="3951.0" />
-              <point x="89.94999999999982" y="278.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.SignUpServlet" target="control.servlets.MyServlet">
-              <point x="71.19999999999982" y="-47.5" />
-              <point x="1604.399195906432" y="6444.0" />
-              <point x="5278.187058044294" y="6444.0" />
-              <point x="-134.375" y="158.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.beans.humans.ResponsableVente">
-              <point x="-33.90476190476238" y="-59.0" />
-              <point x="3307.625752252346" y="6324.0" />
-              <point x="3648.8241175731146" y="6324.0" />
-              <point x="3648.8241175731146" y="3881.0" />
-              <point x="3997.10792692628" y="3881.0" />
-              <point x="3997.10792692628" y="2204.0" />
-              <point x="3383.086163429519" y="2204.0" />
-              <point x="27.076923076923094" y="25.5" />
-            </edge>
-            <edge source="model.db.daos.ResponsableVentesDAO" target="model.db.DAO">
-              <point x="-118.33333333333348" y="-136.5" />
-              <point x="3270.7745935929465" y="2614.0" />
-              <point x="3257.5092403525955" y="2614.0" />
-              <point x="3257.5092403525955" y="1720.0" />
-              <point x="3143.692573685929" y="1720.0" />
-              <point x="12.400000000000091" y="137.0" />
-            </edge>
-            <edge source="model.beans.Visite" target="model.beans.humans.Client">
-              <point x="17.888888888888687" y="-92.0" />
-              <point x="963.7825292397647" y="3601.0" />
-              <point x="1151.3658625730986" y="3601.0" />
-              <point x="1151.3658625730986" y="2524.0" />
-              <point x="2272.4566093263456" y="2524.0" />
-              <point x="-59.07499999999982" y="48.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.db.daos.ClientDAO">
-              <point x="-101.71428571428623" y="-59.0" />
-              <point x="3239.816228442822" y="6384.0" />
-              <point x="2751.8241175731146" y="6384.0" />
-              <point x="2751.8241175731146" y="4454.0" />
-              <point x="2715.2169747159714" y="4454.0" />
-              <point x="2715.2169747159714" y="3691.0" />
-              <point x="2605.695546144543" y="3691.0" />
-              <point x="29.0" y="147.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.beans.views.DataTableRow">
-              <point x="-38.25" y="-114.5" />
-              <point x="12119.232931675679" y="5109.0" />
-              <point x="12163.070431675678" y="5109.0" />
-              <point x="116.625" y="159.0" />
-            </edge>
-            <edge source="model.beans.views.DataTableHeader" target="model.enums.TablePage">
-              <point x="-68.75" y="-136.5" />
-              <point x="12.849999999999909" y="278.5" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="control.servlets.MyServlet">
-              <point x="0.0" y="136.5" />
-              <point x="5576.092277824513" y="5818.0" />
-              <point x="5448.395391377627" y="5818.0" />
-              <point x="35.83333333333303" y="-158.0" />
-            </edge>
-            <edge source="model.beans.Logement" target="java.io.Serializable">
-              <point x="0.0" y="-147.0" />
-              <point x="3069.60792692628" y="2254.0" />
-              <point x="2912.6425736859287" y="2254.0" />
-              <point x="2912.6425736859287" y="101.0" />
-              <point x="3182.6491175731144" y="101.0" />
-              <point x="-6.625" y="14.5" />
-            </edge>
-            <edge source="model.db.daos.LogementDAO" target="model.enums.UserType">
-              <point x="155.20000000000005" y="-125.0" />
-              <point x="3588.5241175731144" y="3931.0" />
-              <point x="4090.60792692628" y="3931.0" />
-              <point x="4090.60792692628" y="2754.0" />
-              <point x="6404.9864038979" y="2754.0" />
-              <point x="-67.08333333333326" y="69.5" />
-            </edge>
-            <edge source="model.enums.AdminRole" target="java.lang.Enum">
-              <point x="0.0" y="-36.5" />
-              <point x="4581.6079583013125" y="553.0" />
-              <point x="4760.6491175731135" y="553.0" />
-              <point x="16.3125" y="181.0" />
-            </edge>
-            <edge source="control.api.LogementApi" target="javax.servlet.annotation.WebServlet">
-              <point x="118.66666666666652" y="-36.5" />
-              <point x="7162.368348342345" y="6584.0" />
-              <point x="7390.58016526102" y="6584.0" />
-              <point x="-10.428571428571558" y="124.5" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.beans.Visite">
-              <point x="69.125" y="-70.5" />
-              <point x="472.625" y="5129.0" />
-              <point x="628.4528152643124" y="5129.0" />
-              <point x="628.4528152643124" y="4414.0" />
-              <point x="878.8103070175421" y="4414.0" />
-              <point x="-67.08333333333394" y="92.0" />
-            </edge>
-            <edge source="model.db.DAO" target="model.db.DbConnector">
-              <point x="0.0" y="-137.0" />
-              <point x="0.0" y="103.5" />
-            </edge>
-            <edge source="utils.Util" target="model.db.daos.ResponsableVentesDAO">
-              <point x="-44.57142857142844" y="-80.5" />
-              <point x="5527.761462806198" y="3471.0" />
-              <point x="3531.10792692628" y="3471.0" />
-              <point x="142.0" y="136.5" />
-            </edge>
-            <edge source="control.api.AgentApi" target="utils.Consts">
-              <point x="66.75" y="-36.5" />
-              <point x="244.75" y="6554.0" />
-              <point x="150.64809175494975" y="6554.0" />
-              <point x="150.64809175494975" y="5828.0" />
-              <point x="6784.84156262806" y="5828.0" />
-              <point x="-136.71428571428578" y="212.5" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.db.daos.VisitesDao">
-              <point x="161.29166666666663" y="-70.5" />
-              <point x="564.791666666667" y="5149.0" />
-              <point x="823.3603070175432" y="5149.0" />
-              <point x="-101.20000000000005" y="169.0" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.db.daos.LogementDAO">
-              <point x="-114.75" y="-114.5" />
-              <point x="12042.732931675679" y="5079.0" />
-              <point x="3402.6787247109605" y="5079.0" />
-              <point x="3402.6787247109605" y="4504.0" />
-              <point x="3481.8241175731146" y="4504.0" />
-              <point x="48.5" y="125.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.beans.Visite">
-              <point x="63.25" y="-169.0" />
-              <point x="987.810307017543" y="4334.0" />
-              <point x="932.47697368421" y="4334.0" />
-              <point x="-13.416666666666515" y="92.0" />
-            </edge>
-            <edge source="control.servlets.MyServlet" target="utils.Consts">
-              <point x="107.5" y="-158.0" />
-              <point x="5520.062058044294" y="5838.0" />
-              <point x="6830.412991199488" y="5838.0" />
-              <point x="-91.14285714285734" y="212.5" />
-            </edge>
-            <edge source="model.beans.views.DataTable" target="model.beans.views.DataTableData">
-              <point x="-55.77777777777783" y="-125.5" />
-              <point x="12268.8176538979" y="5898.0" />
-              <point x="12221.232931675679" y="5898.0" />
-              <point x="63.75" y="114.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.beans.humans.Client">
-              <point x="-84.76190476190459" y="-59.0" />
-              <point x="3256.768609395204" y="6374.0" />
-              <point x="3101.8241175731146" y="6374.0" />
-              <point x="3101.8241175731146" y="4454.0" />
-              <point x="3002.3241175731146" y="4454.0" />
-              <point x="3002.3241175731146" y="3781.0" />
-              <point x="3179.10792692628" y="3781.0" />
-              <point x="3179.10792692628" y="2224.0" />
-              <point x="2369.7566093263454" y="2224.0" />
-              <point x="38.22499999999991" y="48.0" />
-            </edge>
-            <edge source="control.servlets.main.client.ClientServlet" target="control.servlets.MyServlet">
-              <point x="-89.0" y="-47.5" />
-              <point x="5363.701681675679" y="6474.0" />
-              <point x="5439.437058044294" y="6474.0" />
-              <point x="26.875" y="158.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeLogementsServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="9210.701681675679" y="6324.0" />
-              <point x="7453.151593832448" y="6324.0" />
-              <point x="52.14285714285688" y="124.5" />
-            </edge>
-            <edge source="model.db.daos.LogementDAO" target="model.db.DAO">
-              <point x="77.59999999999991" y="-125.0" />
-              <point x="3510.9241175731145" y="3861.0" />
-              <point x="3787.10792692628" y="3861.0" />
-              <point x="3787.10792692628" y="1710.0" />
-              <point x="3168.4925736859286" y="1710.0" />
-              <point x="37.200000000000045" y="137.0" />
-            </edge>
-            <edge source="control.servlets.main.admin.DashboardServlet" target="control.managers.AdminsManager">
-              <point x="-148.33333333333303" y="-59.0" />
-              <point x="4571.132958301313" y="6424.0" />
-              <point x="4314.822180823774" y="6424.0" />
-              <point x="4314.822180823774" y="5159.0" />
-              <point x="4157.742573685928" y="5159.0" />
-              <point x="-150.5" y="257.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.Agent">
-              <point x="-105.35000000000036" y="-257.5" />
-              <point x="4202.892573685927" y="4444.0" />
-              <point x="4140.10792692628" y="4444.0" />
-              <point x="4140.10792692628" y="2194.0" />
-              <point x="994.325036998066" y="2194.0" />
-              <point x="42.631578947368325" y="37.0" />
-            </edge>
-            <edge source="control.servlets.main.service_ventes.ServiceVentesServlet" target="control.servlets.MyServlet">
-              <point x="-89.0" y="-47.5" />
-              <point x="6115.701681675679" y="6464.0" />
-              <point x="5546.937058044294" y="6464.0" />
-              <point x="134.375" y="158.0" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.beans.Visite">
-              <point x="-74.85714285714266" y="-81.5" />
-              <point x="2535.466974715972" y="5109.0" />
-              <point x="2424.695546144543" y="5109.0" />
-              <point x="2424.695546144543" y="4314.0" />
-              <point x="986.143640350876" y="4314.0" />
-              <point x="40.25" y="92.0" />
-            </edge>
-            <edge source="model.beans.views.DataTable" target="model.enums.UserType">
-              <point x="0.0" y="-125.5" />
-              <point x="12324.595431675678" y="5918.0" />
-              <point x="12347.420431675679" y="5918.0" />
-              <point x="12347.420431675679" y="1994.0" />
-              <point x="6530.208626120122" y="1994.0" />
-              <point x="58.138888888888914" y="69.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.db.daos.OperateurDAO">
-              <point x="50.85714285714312" y="-59.0" />
-              <point x="3392.3876570142515" y="6374.0" />
-              <point x="3703.8241175731146" y="6374.0" />
-              <point x="3703.8241175731146" y="3951.0" />
-              <point x="4283.524117573114" y="3951.0" />
-              <point x="-33.625" y="136.5" />
-            </edge>
-            <edge source="control.api.API" target="control.managers.AuthManager">
-              <point x="-38.375" y="-81.0" />
-              <point x="6782.889689070544" y="5798.0" />
-              <point x="5749.23513496737" y="5798.0" />
-              <point x="173.1428571428571" y="136.5" />
-            </edge>
-            <edge source="model.db.daos.AgentsDAO" target="model.beans.humans.Agent">
-              <point x="105.20000000000005" y="-148.0" />
-              <point x="1092.5658625730985" y="2364.0" />
-              <point x="937.4829317349086" y="2364.0" />
-              <point x="-14.210526315789593" y="37.0" />
-            </edge>
-            <edge source="model.beans.Vente" target="model.beans.humans.ResponsableVente">
-              <point x="111.36363636363649" y="-103.0" />
-              <point x="2295.420245689982" y="3761.0" />
-              <point x="3157.10792692628" y="3761.0" />
-              <point x="3157.10792692628" y="2644.0" />
-              <point x="3301.8553941987493" y="2644.0" />
-              <point x="-54.15384615384619" y="25.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeLocaliteServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="8260.701681675679" y="5898.0" />
-              <point x="9286.428954402953" y="5898.0" />
-              <point x="-102.27272727272702" y="279.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeClientsServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="9764.701681675679" y="5918.0" />
-              <point x="9422.792590766589" y="5918.0" />
-              <point x="34.09090909090901" y="279.5" />
-            </edge>
-            <edge source="model.db.daos.AgentsDAO" target="model.db.DAO">
-              <point x="0.0" y="-148.0" />
-              <point x="987.3658625730986" y="2384.0" />
-              <point x="816.5763888888887" y="2384.0" />
-              <point x="816.5763888888887" y="1700.0" />
-              <point x="3069.292573685929" y="1700.0" />
-              <point x="-62.0" y="137.0" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.db.daos.OperateurDAO">
-              <point x="112.28571428571422" y="-81.5" />
-              <point x="2722.609831858829" y="5169.0" />
-              <point x="2721.5384032874" y="5169.0" />
-              <point x="2721.5384032874" y="4514.0" />
-              <point x="3637.8241175731146" y="4514.0" />
-              <point x="3637.8241175731146" y="3941.0" />
-              <point x="4216.274117573114" y="3941.0" />
-              <point x="-100.875" y="136.5" />
-            </edge>
-            <edge source="model.beans.humans.Client" target="model.beans.humans.Person">
-              <point x="0.0" y="-48.0" />
-              <point x="2331.5316093263455" y="949.0" />
-              <point x="4933.174117573114" y="949.0" />
-              <point x="-68.25" y="158.0" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.beans.humans.Operateur">
-              <point x="62.15384615384619" y="-136.5" />
-              <point x="5638.246123978359" y="5129.0" />
-              <point x="5738.832891377626" y="5129.0" />
-              <point x="5738.832891377626" y="2104.0" />
-              <point x="4583.3991175731135" y="2104.0" />
-              <point x="33.25" y="25.5" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.beans.humans.Client">
-              <point x="-63.25" y="-169.0" />
-              <point x="861.310307017543" y="4384.0" />
-              <point x="440.872807017543" y="4384.0" />
-              <point x="440.872807017543" y="2514.0" />
-              <point x="2265.5066093263454" y="2514.0" />
-              <point x="-66.02500000000009" y="48.0" />
-            </edge>
-            <edge source="model.beans.views.Nav" target="utils.Consts">
-              <point x="-139.5625" y="-147.5" />
-              <point x="11456.782931675678" y="5838.0" />
-              <point x="7058.270134056631" y="5838.0" />
-              <point x="136.71428571428578" y="212.5" />
-            </edge>
-            <edge source="model.db.daos.LocaliteDAO" target="model.db.DAO">
-              <point x="65.0" y="-92.0" />
-              <point x="762.5763888888887" y="1680.0" />
-              <point x="3019.692573685929" y="1680.0" />
-              <point x="-111.59999999999991" y="137.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.enums.UserType">
-              <point x="285.9499999999998" y="-257.5" />
-              <point x="4594.192573685928" y="4514.0" />
-              <point x="4965.5204269262795" y="4514.0" />
-              <point x="4965.5204269262795" y="2784.0" />
-              <point x="6431.819737231233" y="2784.0" />
-              <point x="-40.25" y="69.5" />
-            </edge>
-            <edge source="model.db.daos.LogementDAO" target="model.beans.Logement">
-              <point x="-155.20000000000005" y="-125.0" />
-              <point x="3278.1241175731147" y="3751.0" />
-              <point x="3083.60792692628" y="3751.0" />
-              <point x="14.0" y="147.0" />
-            </edge>
-            <edge source="control.api.ClientApi" target="control.api.API">
-              <point x="-118.66666666666652" y="-36.5" />
-              <point x="7301.035015009013" y="6404.0" />
-              <point x="6859.639689070544" y="6404.0" />
-              <point x="38.375" y="81.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.beans.humans.Agent">
-              <point x="-125.625" y="-125.0" />
-              <point x="1694.3122911445275" y="4404.0" />
-              <point x="1676.166457811194" y="4404.0" />
-              <point x="1676.166457811194" y="2334.0" />
-              <point x="958.7987212085927" y="2334.0" />
-              <point x="7.105263157895024" y="37.0" />
-            </edge>
-            <edge source="model.beans.Vente" target="model.beans.humans.Agent">
-              <point x="-44.545454545454504" y="-103.0" />
-              <point x="2139.511154780891" y="3561.0" />
-              <point x="2036.4372911445275" y="3561.0" />
-              <point x="2036.4372911445275" y="2304.0" />
-              <point x="980.1145106822769" y="2304.0" />
-              <point x="28.421052631579187" y="37.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.db.daos.ResponsableVentesDAO">
-              <point x="-67.80952380952385" y="-59.0" />
-              <point x="3273.7209903475846" y="6364.0" />
-              <point x="3129.3241175731146" y="6364.0" />
-              <point x="3129.3241175731146" y="3831.0" />
-              <point x="3389.10792692628" y="3831.0" />
-              <point x="0.0" y="136.5" />
-            </edge>
-            <edge source="control.servlets.main.service_ventes.ServiceVentesServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="89.0" y="-47.5" />
-              <point x="6293.701681675679" y="6564.0" />
-              <point x="7369.723022403877" y="6564.0" />
-              <point x="-31.285714285714675" y="124.5" />
-            </edge>
-            <edge source="control.servlets.main.admin.DashboardServlet" target="model.beans.humans.Admin">
-              <point x="29.66666666666697" y="-59.0" />
-              <point x="4749.132958301313" y="6424.0" />
-              <point x="4994.795426926279" y="6424.0" />
-              <point x="4994.795426926279" y="1246.0" />
-              <point x="4881.443503849356" y="1246.0" />
-              <point x="41.53846153846143" y="37.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.db.daos.LogementDAO">
-              <point x="113.84999999999991" y="-169.0" />
-              <point x="1038.4103070175424" y="4494.0" />
-              <point x="3287.8241175731146" y="4494.0" />
-              <point x="-145.5" y="125.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.beans.humans.ResponsableVente">
-              <point x="-13.958333333333485" y="-125.0" />
-              <point x="1805.978957811194" y="4364.0" />
-              <point x="1769.187291144527" y="4364.0" />
-              <point x="1769.187291144527" y="3641.0" />
-              <point x="2319.6468448458418" y="3641.0" />
-              <point x="2319.6468448458418" y="2624.0" />
-              <point x="3274.7784711218264" y="2624.0" />
-              <point x="-81.23076923076928" y="25.5" />
-            </edge>
-            <edge source="javax.servlet.Servlet" target="javax.servlet.ServletConfig">
-              <point x="0.0" y="-70.0" />
-              <point x="11683.445431675678" y="3891.0" />
-              <point x="11303.937416343271" y="3891.0" />
-              <point x="104.625" y="59.0" />
-            </edge>
-            <edge source="model.db.daos.OperateurDAO" target="model.db.DAO">
-              <point x="-89.66666666666652" y="-136.5" />
-              <point x="4227.482450906447" y="2664.0" />
-              <point x="4473.149117573114" y="2664.0" />
-              <point x="4473.149117573114" y="1630.0" />
-              <point x="3193.292573685929" y="1630.0" />
-              <point x="62.0" y="137.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.enums.EtatVente">
-              <point x="23.04166666666697" y="-70.5" />
-              <point x="426.54166666666697" y="5169.0" />
-              <point x="451.872807017543" y="5169.0" />
-              <point x="451.872807017543" y="3621.0" />
-              <point x="1865.2858115416652" y="3621.0" />
-              <point x="-50.625" y="47.5" />
-            </edge>
-            <edge source="model.beans.views.TablesView" target="model.enums.UserType">
-              <point x="90.44999999999982" y="-148.0" />
-              <point x="12322.534638565492" y="6584.0" />
-              <point x="12766.742653897902" y="6584.0" />
-              <point x="12766.742653897902" y="1974.0" />
-              <point x="6548.097515009011" y="1974.0" />
-              <point x="76.02777777777783" y="69.5" />
-            </edge>
-            <edge source="control.servlets.main.client.ClientServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="89.0" y="-47.5" />
-              <point x="5541.701681675679" y="6544.0" />
-              <point x="7348.8658795467345" y="6544.0" />
-              <point x="-52.14285714285688" y="124.5" />
-            </edge>
-            <edge source="model.beans.Logement" target="model.enums.EtatLogement">
-              <point x="61.59999999999991" y="-147.0" />
-              <point x="3131.20792692628" y="2234.0" />
-              <point x="3082.8925736859287" y="2234.0" />
-              <point x="-7.105427357601002E-15" y="47.5" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.db.DAO">
-              <point x="-97.70833333333348" y="-125.0" />
-              <point x="1722.228957811194" y="4394.0" />
-              <point x="1687.166457811194" y="4394.0" />
-              <point x="1687.166457811194" y="1710.0" />
-              <point x="3094.092573685929" y="1710.0" />
-              <point x="-37.19999999999982" y="137.0" />
-            </edge>
-            <edge source="control.managers.ResponsablesVentesManager" target="model.beans.Vente">
-              <point x="-82.25" y="-81.5" />
-              <point x="2844.5741175731146" y="5169.0" />
-              <point x="2862.6991175731146" y="5169.0" />
-              <point x="2862.6991175731146" y="4304.0" />
-              <point x="2245.3066093263456" y="4304.0" />
-              <point x="61.25" y="103.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.db.daos.ClientDAO">
-              <point x="13.958333333333485" y="-125.0" />
-              <point x="1833.895624477861" y="4354.0" />
-              <point x="1780.187291144527" y="4354.0" />
-              <point x="1780.187291144527" y="3691.0" />
-              <point x="2547.695546144543" y="3691.0" />
-              <point x="-29.0" y="147.5" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.beans.humans.Client">
-              <point x="-93.23076923076928" y="-136.5" />
-              <point x="5482.861508593744" y="5129.0" />
-              <point x="5244.082891377627" y="5129.0" />
-              <point x="5244.082891377627" y="2134.0" />
-              <point x="2390.6066093263453" y="2134.0" />
-              <point x="59.07499999999982" y="48.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.db.daos.ClientDAO">
-              <point x="12.650000000000546" y="-169.0" />
-              <point x="937.2103070175435" y="4354.0" />
-              <point x="796.9082236842096" y="4354.0" />
-              <point x="796.9082236842096" y="3661.0" />
-              <point x="2460.695546144543" y="3661.0" />
-              <point x="-116.0" y="147.5" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.db.DAO">
-              <point x="-113.85000000000036" y="-169.0" />
-              <point x="810.7103070175426" y="4404.0" />
-              <point x="292.7499999999991" y="4404.0" />
-              <point x="292.7499999999991" y="2444.0" />
-              <point x="805.5763888888887" y="2444.0" />
-              <point x="805.5763888888887" y="1690.0" />
-              <point x="3044.4925736859286" y="1690.0" />
-              <point x="-86.80000000000018" y="137.0" />
-            </edge>
-            <edge source="control.api.LogementApi" target="utils.Consts">
-              <point x="-118.66666666666652" y="-36.5" />
-              <point x="6925.035015009013" y="6424.0" />
-              <point x="6657.264689070544" y="6424.0" />
-              <point x="6657.264689070544" y="5858.0" />
-              <point x="6921.555848342346" y="5858.0" />
-              <point x="0.0" y="212.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.Visite">
-              <point x="-139.9500000000001" y="-159.0" />
-              <point x="11906.495431675678" y="4294.0" />
-              <point x="1012.97697368421" y="4294.0" />
-              <point x="67.08333333333348" y="92.0" />
-            </edge>
-            <edge source="model.beans.Visite" target="java.io.Serializable">
-              <point x="-35.777777777777374" y="-92.0" />
-              <point x="910.1158625730986" y="3511.0" />
-              <point x="797.3658625730986" y="3511.0" />
-              <point x="797.3658625730986" y="2414.0" />
-              <point x="568.7430555555547" y="2414.0" />
-              <point x="568.7430555555547" y="71.0" />
-              <point x="3142.8991175731144" y="71.0" />
-              <point x="-46.375" y="14.5" />
-            </edge>
-            <edge source="model.beans.Logement" target="model.beans.Localite">
-              <point x="-30.800000000000182" y="-147.0" />
-              <point x="3038.80792692628" y="2264.0" />
-              <point x="2901.6425736859287" y="2264.0" />
-              <point x="2901.6425736859287" y="1650.0" />
-              <point x="962.8045691618081" y="1650.0" />
-              <point x="40.33333333333303" y="48.0" />
-            </edge>
-            <edge source="java.lang.Enum" target="java.lang.Enum">
-              <point x="-114.1875" y="181.0" />
-              <point x="4630.1491175731135" y="503.0" />
-              <point x="4593.8366175731135" y="503.0" />
-              <point x="4593.8366175731135" y="302.0" />
-              <point x="-130.5" y="-0.0" />
-            </edge>
-            <edge source="model.db.daos.AdminsDAO" target="model.db.DAO">
-              <point x="-94.0" y="-159.0" />
-              <point x="4661.1491175731135" y="2724.0" />
-              <point x="4708.5204269262795" y="2724.0" />
-              <point x="4708.5204269262795" y="1610.0" />
-              <point x="3218.092573685929" y="1610.0" />
-              <point x="86.80000000000018" y="137.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeMessagesServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="9012.701681675679" y="5918.0" />
-              <point x="9354.610772584769" y="5918.0" />
-              <point x="-34.09090909090901" y="279.5" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.beans.humans.Client">
-              <point x="-69.79166666666652" y="-125.0" />
-              <point x="1750.145624477861" y="4384.0" />
-              <point x="1709.166457811194" y="4384.0" />
-              <point x="1709.166457811194" y="3611.0" />
-              <point x="1837.9108115416652" y="3611.0" />
-              <point x="1837.9108115416652" y="2594.0" />
-              <point x="2321.1066093263453" y="2594.0" />
-              <point x="-10.425000000000182" y="48.0" />
-            </edge>
-            <edge source="model.enums.EtatVente" target="java.lang.Enum">
-              <point x="0.0" y="-47.5" />
-              <point x="1915.9108115416652" y="533.0" />
-              <point x="4695.3991175731135" y="533.0" />
-              <point x="-48.9375" y="181.0" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.beans.humans.Agent">
-              <point x="-186.46153846153857" y="-136.5" />
-              <point x="5389.630739362974" y="5159.0" />
-              <point x="5211.082891377627" y="5159.0" />
-              <point x="5211.082891377627" y="2164.0" />
-              <point x="1001.430300155961" y="2164.0" />
-              <point x="49.73684210526335" y="37.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.AgentsDAO">
-              <point x="-255.85000000000036" y="-257.5" />
-              <point x="4052.392573685928" y="4494.0" />
-              <point x="3759.1491175731144" y="4494.0" />
-              <point x="3759.1491175731144" y="3541.0" />
-              <point x="1069.5533625730986" y="3541.0" />
-              <point x="82.1875" y="148.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.beans.Localite">
-              <point x="-253.45833333333394" y="-70.5" />
-              <point x="150.04166666666606" y="5149.0" />
-              <point x="226.7499999999991" y="5149.0" />
-              <point x="226.7499999999991" y="1630.0" />
-              <point x="868.6934580506968" y="1630.0" />
-              <point x="-53.77777777777828" y="48.0" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.humans.Agent">
-              <point x="-46.649999999999636" y="-159.0" />
-              <point x="11999.795431675679" y="4514.0" />
-              <point x="11993.052157695513" y="4514.0" />
-              <point x="11993.052157695513" y="2084.0" />
-              <point x="1015.6408264717502" y="2084.0" />
-              <point x="63.94736842105249" y="37.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.SignUpServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="142.39999999999964" y="-47.5" />
-              <point x="1675.5991959064318" y="6514.0" />
-              <point x="7317.58016526102" y="6514.0" />
-              <point x="-83.42857142857156" y="124.5" />
-            </edge>
-            <edge source="control.api.AgentApi" target="javax.servlet.annotation.WebServlet">
-              <point x="155.75" y="-36.5" />
-              <point x="333.75" y="6494.0" />
-              <point x="7296.723022403877" y="6494.0" />
-              <point x="-104.28571428571468" y="124.5" />
-            </edge>
-            <edge source="model.beans.humans.Agent" target="model.beans.humans.Employe">
-              <point x="45.0" y="-37.0" />
-              <point x="996.6934580506977" y="1740.0" />
-              <point x="3446.1592403525956" y="1740.0" />
-              <point x="-52.0" y="59.0" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.beans.humans.Admin">
-              <point x="124.30769230769238" y="-136.5" />
-              <point x="5700.399970132205" y="5149.0" />
-              <point x="5760.832891377626" y="5149.0" />
-              <point x="5760.832891377626" y="1236.0" />
-              <point x="4891.828119233972" y="1236.0" />
-              <point x="51.923076923076906" y="37.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeLogementsServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="0.0" y="279.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeClientsServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="9586.701681675679" y="6314.0" />
-              <point x="7463.58016526102" y="6314.0" />
-              <point x="62.57142857142844" y="124.5" />
-            </edge>
-            <edge source="control.api.VisiteApi" target="utils.Consts">
-              <point x="118.66666666666652" y="-36.5" />
-              <point x="7914.368348342345" y="6584.0" />
-              <point x="7821.223022403878" y="6584.0" />
-              <point x="7821.223022403878" y="5848.0" />
-              <point x="7012.698705485203" y="5848.0" />
-              <point x="91.14285714285734" y="212.5" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.db.daos.AuthDAO">
-              <point x="0.0" y="-136.5" />
-              <point x="5576.092277824513" y="5099.0" />
-              <point x="5337.332891377627" y="5099.0" />
-              <point x="-60.75" y="103.0" />
-            </edge>
-            <edge source="model.beans.views.DataTable" target="model.beans.views.DataTableRow">
-              <point x="-111.55555555555566" y="-125.5" />
-              <point x="12213.039876120121" y="5918.0" />
-              <point x="11985.795431675679" y="5918.0" />
-              <point x="11985.795431675679" y="5169.0" />
-              <point x="11929.820431675678" y="5169.0" />
-              <point x="-116.625" y="159.0" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.Vente">
-              <point x="-108.85000000000008" y="-159.0" />
-              <point x="11937.595431675678" y="4284.0" />
-              <point x="2286.139942659679" y="4284.0" />
-              <point x="102.08333333333348" y="103.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.Client">
-              <point x="-75.25" y="-257.5" />
-              <point x="4232.992573685928" y="4434.0" />
-              <point x="4151.10792692628" y="4434.0" />
-              <point x="4151.10792692628" y="2184.0" />
-              <point x="2376.7066093263456" y="2184.0" />
-              <point x="45.17500000000018" y="48.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="169.52380952380918" y="-59.0" />
-              <point x="3511.0543236809176" y="6524.0" />
-              <point x="7328.008736689591" y="6524.0" />
-              <point x="-73.0" y="124.5" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.db.daos.VentesDAO">
-              <point x="207.375" y="-70.5" />
-              <point x="610.875" y="5159.0" />
-              <point x="1736.1872911445275" y="5159.0" />
-              <point x="-83.75" y="125.0" />
-            </edge>
-            <edge source="control.api.VisiteApi" target="javax.servlet.annotation.WebServlet">
-              <point x="0.0" y="-36.5" />
-              <point x="7795.701681675679" y="6364.0" />
-              <point x="7411.437308118163" y="6364.0" />
-              <point x="10.428571428571558" y="124.5" />
-            </edge>
-            <edge source="model.beans.views.DataTable" target="model.beans.views.DataTableHeader">
-              <point x="55.777777777777374" y="-125.5" />
-              <point x="12380.373209453455" y="5898.0" />
-              <point x="12573.520431675679" y="5898.0" />
-              <point x="12573.520431675679" y="4514.0" />
-              <point x="12636.770431675679" y="4514.0" />
-              <point x="68.75" y="136.5" />
-            </edge>
-            <edge source="model.db.daos.AgentsDAO" target="model.db.daos.LocaliteDAO">
-              <point x="-52.60000000000002" y="-148.0" />
-              <point x="934.7658625730983" y="2394.0" />
-              <point x="697.5763888888887" y="2394.0" />
-              <point x="0.0" y="92.0" />
-            </edge>
-            <edge source="java.lang.Enum" target="java.io.Serializable">
-              <point x="-65.25" y="-181.0" />
-              <point x="4679.0866175731135" y="101.0" />
-              <point x="3195.8991175731144" y="101.0" />
-              <point x="6.625" y="14.5" />
-            </edge>
-            <edge source="model.beans.Localite" target="java.io.Serializable">
-              <point x="0.0" y="-48.0" />
-              <point x="922.4712358284751" y="81.0" />
-              <point x="3156.1491175731144" y="81.0" />
-              <point x="-33.125" y="14.5" />
-            </edge>
-            <edge source="control.servlets.MyServlet" target="control.managers.AuthManager">
-              <point x="-35.83333333333303" y="-158.0" />
-              <point x="5376.728724710961" y="5808.0" />
-              <point x="5518.377992110227" y="5808.0" />
-              <point x="-57.71428571428578" y="136.5" />
-            </edge>
-            <edge source="control.managers.ClientsManager" target="model.db.daos.ClientDAO">
-              <point x="197.91666666666652" y="-92.5" />
-              <point x="1354.5519736842093" y="5149.0" />
-              <point x="1312.7075292397653" y="5149.0" />
-              <point x="1312.7075292397653" y="4404.0" />
-              <point x="1456.4991959064323" y="4404.0" />
-              <point x="1456.4991959064323" y="3671.0" />
-              <point x="2489.695546144543" y="3671.0" />
-              <point x="-87.0" y="147.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.humans.Client">
-              <point x="-15.550000000000182" y="-159.0" />
-              <point x="12030.895431675679" y="4514.0" />
-              <point x="12026.295431675679" y="4514.0" />
-              <point x="12026.295431675679" y="2064.0" />
-              <point x="2397.5566093263456" y="2064.0" />
-              <point x="66.02500000000009" y="48.0" />
-            </edge>
-            <edge source="model.beans.humans.Agent" target="model.beans.Localite">
-              <point x="0.0" y="-37.0" />
-              <point x="951.6934580506977" y="1670.0" />
-              <point x="935.9156802729194" y="1670.0" />
-              <point x="13.444444444444343" y="48.0" />
-            </edge>
-            <edge source="javax.servlet.GenericServlet" target="javax.servlet.Servlet">
-              <point x="122.80000000000018" y="-192.0" />
-              <point x="11661.182931675678" y="4514.0" />
-              <point x="11683.445431675678" y="4514.0" />
-              <point x="0.0" y="70.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.OperateurDAO">
-              <point x="-15.050000000000182" y="-257.5" />
-              <point x="4293.192573685928" y="4414.0" />
-              <point x="4350.774117573114" y="4414.0" />
-              <point x="33.625" y="136.5" />
-            </edge>
-            <edge source="model.beans.Message" target="model.beans.humans.Person">
-              <point x="33.25" y="-58.5" />
-              <point x="6255.769737231234" y="949.0" />
-              <point x="5069.674117573114" y="949.0" />
-              <point x="68.25" y="158.0" />
-            </edge>
-            <edge source="model.beans.Vente" target="model.beans.humans.Client">
-              <point x="0.0" y="-103.0" />
-              <point x="2184.0566093263456" y="3621.0" />
-              <point x="2297.6468448458418" y="3621.0" />
-              <point x="2297.6468448458418" y="2604.0" />
-              <point x="2328.0566093263456" y="2604.0" />
-              <point x="-3.474999999999909" y="48.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.beans.humans.Operateur">
-              <point x="33.90476190476147" y="-59.0" />
-              <point x="3375.43527606187" y="6364.0" />
-              <point x="3692.8241175731146" y="6364.0" />
-              <point x="3692.8241175731146" y="3921.0" />
-              <point x="4041.10792692628" y="3921.0" />
-              <point x="4041.10792692628" y="2704.0" />
-              <point x="4530.199117573114" y="2704.0" />
-              <point x="-19.950000000000045" y="25.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.LocaliteDAO">
-              <point x="-195.6500000000001" y="-257.5" />
-              <point x="4112.592573685928" y="4474.0" />
-              <point x="3781.1491175731144" y="4474.0" />
-              <point x="3781.1491175731144" y="3521.0" />
-              <point x="2982.10792692628" y="3521.0" />
-              <point x="2982.10792692628" y="2284.0" />
-              <point x="762.5763888888887" y="2284.0" />
-              <point x="65.0" y="92.0" />
-            </edge>
-            <edge source="utils.Util" target="model.db.daos.ClientDAO">
-              <point x="-89.14285714285734" y="-80.5" />
-              <point x="5483.190034234769" y="3481.0" />
-              <point x="2692.695546144543" y="3481.0" />
-              <point x="116.0" y="147.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.Admin">
-              <point x="195.6500000000001" y="-257.5" />
-              <point x="4503.892573685928" y="4484.0" />
-              <point x="4927.6491175731135" y="4484.0" />
-              <point x="4927.6491175731135" y="1276.0" />
-              <point x="4850.28965769551" y="1276.0" />
-              <point x="10.384615384615472" y="37.0" />
-            </edge>
-            <edge source="model.db.daos.LocaliteDAO" target="model.beans.Localite">
-              <point x="-65.0" y="-92.0" />
-              <point x="632.5763888888887" y="1650.0" />
-              <point x="895.5823469395864" y="1650.0" />
-              <point x="-26.888888888888687" y="48.0" />
-            </edge>
-            <edge source="javax.servlet.GenericServlet" target="java.io.Serializable">
-              <point x="-122.80000000000018" y="-192.0" />
-              <point x="11415.582931675679" y="4494.0" />
-              <point x="10861.249916343271" y="4494.0" />
-              <point x="10861.249916343271" y="71.0" />
-              <point x="3235.6491175731144" y="71.0" />
-              <point x="46.375" y="14.5" />
-            </edge>
-            <edge source="model.db.daos.AdminsDAO" target="model.enums.AdminRole">
-              <point x="-47.0" y="-159.0" />
-              <point x="4708.1491175731135" y="2734.0" />
-              <point x="4719.5204269262795" y="2734.0" />
-              <point x="4719.5204269262795" y="929.0" />
-              <point x="4568.2329583013125" y="929.0" />
-              <point x="-13.375" y="36.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeVisitesServlet" target="control.servlets.MyServlet">
-              <point x="44.5" y="-36.5" />
-              <point x="1032.7603070175428" y="6434.0" />
-              <point x="5224.437058044294" y="6434.0" />
-              <point x="-188.125" y="158.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeResponsablesVentesServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="10516.701681675679" y="5898.0" />
-              <point x="9490.974408948405" y="5898.0" />
-              <point x="102.27272727272702" y="279.5" />
-            </edge>
-            <edge source="control.api.ClientApi" target="utils.Consts">
-              <point x="0.0" y="-36.5" />
-              <point x="7419.701681675679" y="6394.0" />
-              <point x="7158.223022403878" y="6394.0" />
-              <point x="7158.223022403878" y="5858.0" />
-              <point x="6967.127276913774" y="5858.0" />
-              <point x="45.57142857142844" y="212.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.enums.TablePage">
-              <point x="114.75" y="-114.5" />
-              <point x="12272.232931675679" y="5169.0" />
-              <point x="12308.295431675679" y="5169.0" />
-              <point x="12308.295431675679" y="3971.0" />
-              <point x="12473.570431675678" y="3971.0" />
-              <point x="-12.850000000000364" y="278.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LogoutServlet" target="control.servlets.MyServlet">
-              <point x="-166.125" y="-58.5" />
-              <point x="6458.076681675679" y="6454.0" />
-              <point x="5600.687058044294" y="6454.0" />
-              <point x="188.125" y="158.0" />
-            </edge>
-            <edge source="control.managers.ClientsManager" target="model.db.daos.VisitesDao">
-              <point x="-197.91666666666652" y="-92.5" />
-              <point x="958.7186403508767" y="5149.0" />
-              <point x="975.1603070175424" y="5149.0" />
-              <point x="50.59999999999991" y="169.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.enums.EtatVente">
-              <point x="-41.875" y="-125.0" />
-              <point x="1778.0622911445275" y="4374.0" />
-              <point x="1750.728957811194" y="4374.0" />
-              <point x="1750.728957811194" y="3631.0" />
-              <point x="1899.0358115416652" y="3631.0" />
-              <point x="-16.875" y="47.5" />
-            </edge>
-            <edge source="model.db.daos.AdminsDAO" target="model.beans.humans.Admin">
-              <point x="47.0" y="-159.0" />
-              <point x="4802.1491175731135" y="2724.0" />
-              <point x="4748.1491175731135" y="2724.0" />
-              <point x="4748.1491175731135" y="1286.0" />
-              <point x="4829.5204269262795" y="1286.0" />
-              <point x="-10.384615384615472" y="37.0" />
-            </edge>
-            <edge source="control.managers.ResponsablesVentesManager" target="model.db.daos.ClientDAO">
-              <point x="-27.416666666666515" y="-81.5" />
-              <point x="2899.407450906448" y="5169.0" />
-              <point x="2873.6991175731146" y="5169.0" />
-              <point x="2873.6991175731146" y="3681.0" />
-              <point x="2634.695546144543" y="3681.0" />
-              <point x="58.0" y="147.5" />
-            </edge>
-            <edge source="control.servlets.main.operateur.OperateurServlet" target="control.servlets.MyServlet">
-              <point x="-89.0" y="-47.5" />
-              <point x="5739.701681675679" y="6474.0" />
-              <point x="5493.187058044294" y="6474.0" />
-              <point x="80.625" y="158.0" />
-            </edge>
-            <edge source="control.managers.ClientsManager" target="model.beans.Visite">
-              <point x="-118.75" y="-92.5" />
-              <point x="1037.8853070175428" y="5149.0" />
-              <point x="1061.560307017543" y="5149.0" />
-              <point x="1061.560307017543" y="4324.0" />
-              <point x="959.3103070175421" y="4324.0" />
-              <point x="13.41666666666606" y="92.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeNotificationsServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="8636.701681675679" y="5908.0" />
-              <point x="9320.51986349386" y="5908.0" />
-              <point x="-68.18181818181802" y="279.5" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.beans.Vente">
-              <point x="69.79166666666674" y="-125.0" />
-              <point x="1889.728957811194" y="4434.0" />
-              <point x="2122.8066093263456" y="4434.0" />
-              <point x="-61.25" y="103.0" />
-            </edge>
-            <edge source="model.beans.Vente" target="model.enums.EtatVente">
-              <point x="-89.09090909090901" y="-103.0" />
-              <point x="2094.9657002354365" y="3581.0" />
-              <point x="1966.5358115416652" y="3581.0" />
-              <point x="50.625" y="47.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeAgentsServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="9962.701681675679" y="6304.0" />
-              <point x="7474.008736689591" y="6304.0" />
-              <point x="73.0" y="124.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.enums.UserType">
-              <point x="63.75" y="-114.5" />
-              <point x="12221.232931675679" y="5149.0" />
-              <point x="12286.295431675679" y="5149.0" />
-              <point x="12286.295431675679" y="2014.0" />
-              <point x="6512.319737231233" y="2014.0" />
-              <point x="40.25" y="69.5" />
-            </edge>
-            <edge source="model.beans.views.TablesView" target="model.beans.views.DataTable">
-              <point x="10.050000000000011" y="-148.0" />
-              <point x="12242.134638565494" y="6544.0" />
-              <point x="12324.595431675678" y="6544.0" />
-              <point x="0.0" y="125.5" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.beans.humans.ResponsableVente">
-              <point x="-62.15384615384619" y="-136.5" />
-              <point x="5513.938431670667" y="5119.0" />
-              <point x="5255.082891377627" y="5119.0" />
-              <point x="5255.082891377627" y="2124.0" />
-              <point x="3410.1630865064417" y="2124.0" />
-              <point x="54.15384615384619" y="25.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.SignUpServlet" target="model.db.daos.ClientDAO">
-              <point x="0.0" y="-47.5" />
-              <point x="1533.1991959064321" y="6424.0" />
-              <point x="1478.4991959064323" y="6424.0" />
-              <point x="1478.4991959064323" y="4404.0" />
-              <point x="1652.9372911445275" y="4404.0" />
-              <point x="1652.9372911445275" y="3681.0" />
-              <point x="2518.695546144543" y="3681.0" />
-              <point x="-58.0" y="147.5" />
-            </edge>
-            <edge source="model.beans.views.TablesView" target="model.beans.views.Nav">
-              <point x="-50.25" y="-148.0" />
-              <point x="12181.834638565493" y="6564.0" />
-              <point x="11596.345431675678" y="6564.0" />
-              <point x="0.0" y="147.5" />
-            </edge>
-            <edge source="model.enums.TablePage" target="java.lang.Enum">
-              <point x="0.0" y="-278.5" />
-              <point x="12486.420431675679" y="533.0" />
-              <point x="4858.5241175731135" y="533.0" />
-              <point x="114.1875" y="181.0" />
-            </edge>
-            <edge source="control.servlets.MyServlet" target="javax.servlet.http.HttpServlet">
-              <point x="179.16666666666697" y="-158.0" />
-              <point x="5591.728724710961" y="5878.0" />
-              <point x="9218.247136221133" y="5878.0" />
-              <point x="-170.45454545454504" y="279.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.db.daos.AgentsDAO">
-              <point x="-169.52380952380918" y="-59.0" />
-              <point x="3172.0067046332993" y="6424.0" />
-              <point x="1641.9372911445275" y="6424.0" />
-              <point x="1641.9372911445275" y="3571.0" />
-              <point x="1003.8033625730986" y="3571.0" />
-              <point x="16.4375" y="148.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="control.servlets.MyServlet">
-              <point x="152.57142857142844" y="-59.0" />
-              <point x="3494.101942728537" y="6454.0" />
-              <point x="5331.937058044294" y="6454.0" />
-              <point x="-80.625" y="158.0" />
-            </edge>
-            <edge source="model.enums.EtatVisite" target="java.lang.Enum">
-              <point x="0.0" y="-69.5" />
-              <point x="727.8658625730986" y="2424.0" />
-              <point x="215.7499999999991" y="2424.0" />
-              <point x="215.7499999999991" y="523.0" />
-              <point x="4662.7741175731135" y="523.0" />
-              <point x="-81.5625" y="181.0" />
-            </edge>
-            <edge source="control.servlets.MyServlet" target="model.beans.humans.Person">
-              <point x="-179.16666666666697" y="-158.0" />
-              <point x="5233.395391377627" y="5778.0" />
-              <point x="5189.082891377627" y="5778.0" />
-              <point x="5189.082891377627" y="979.0" />
-              <point x="5011.174117573114" y="979.0" />
-              <point x="9.75" y="158.0" />
-            </edge>
-            <edge source="control.servlets.main.admin.DashboardServlet" target="control.servlets.MyServlet">
-              <point x="89.0" y="-59.0" />
-              <point x="4808.466291634646" y="6464.0" />
-              <point x="5385.687058044294" y="6464.0" />
-              <point x="-26.875" y="158.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.SignUpServlet" target="model.beans.humans.Client">
-              <point x="-142.39999999999964" y="-47.5" />
-              <point x="1390.7991959064325" y="6424.0" />
-              <point x="1445.4991959064323" y="6424.0" />
-              <point x="1445.4991959064323" y="2574.0" />
-              <point x="2307.2066093263456" y="2574.0" />
-              <point x="-24.324999999999818" y="48.0" />
-            </edge>
-            <edge source="model.beans.Vente" target="java.io.Serializable">
-              <point x="-22.27272727272748" y="-103.0" />
-              <point x="2161.783882053618" y="3551.0" />
-              <point x="2047.4372911445275" y="3551.0" />
-              <point x="2047.4372911445275" y="91.0" />
-              <point x="3169.3991175731144" y="91.0" />
-              <point x="-19.875" y="14.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LogoutServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="166.125" y="-58.5" />
-              <point x="6790.326681675679" y="6574.0" />
-              <point x="7380.151593832448" y="6574.0" />
-              <point x="-20.857142857143117" y="124.5" />
-            </edge>
-            <edge source="control.servlets.main.operateur.OperateurServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="89.0" y="-47.5" />
-              <point x="5917.701681675679" y="6554.0" />
-              <point x="7359.294450975306" y="6554.0" />
-              <point x="-41.714285714285325" y="124.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LogoutServlet" target="control.managers.AuthManager">
-              <point x="-55.375" y="-58.5" />
-              <point x="6568.826681675679" y="6444.0" />
-              <point x="6407.764689070544" y="6444.0" />
-              <point x="6407.764689070544" y="5818.0" />
-              <point x="5633.806563538799" y="5818.0" />
-              <point x="57.71428571428578" y="136.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.humans.Operateur">
-              <point x="46.649999999999636" y="-159.0" />
-              <point x="12093.095431675678" y="4504.0" />
-              <point x="12059.295431675679" y="4504.0" />
-              <point x="12059.295431675679" y="2034.0" />
-              <point x="4609.999117573114" y="2034.0" />
-              <point x="59.84999999999991" y="25.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.Operateur">
-              <point x="45.15000000000009" y="-257.5" />
-              <point x="4353.392573685928" y="4434.0" />
-              <point x="4544.6491175731135" y="4434.0" />
-              <point x="4544.6491175731135" y="2734.0" />
-              <point x="4570.099117573114" y="2734.0" />
-              <point x="19.950000000000045" y="25.5" />
-            </edge>
-            <edge source="model.db.daos.ClientDAO" target="model.beans.humans.Client">
-              <point x="-87.0" y="-147.5" />
-              <point x="2489.695546144543" y="2594.0" />
-              <point x="2355.8566093263453" y="2594.0" />
-              <point x="24.325000000000045" y="48.0" />
-            </edge>
-            <edge source="model.beans.views.TablesView" target="utils.Util">
-              <point x="-90.44999999999982" y="-148.0" />
-              <point x="12141.634638565494" y="6584.0" />
-              <point x="11333.726681675678" y="6584.0" />
-              <point x="11333.726681675678" y="4514.0" />
-              <point x="5611.332891377627" y="4514.0" />
-              <point x="39.0" y="80.5" />
-            </edge>
-            <edge source="model.enums.EtatLogement" target="java.lang.Enum">
-              <point x="0.0" y="-47.5" />
-              <point x="3082.8925736859287" y="1730.0" />
-              <point x="3265.792573685929" y="1730.0" />
-              <point x="3265.792573685929" y="543.0" />
-              <point x="4728.0241175731135" y="543.0" />
-              <point x="-16.3125" y="181.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeLocaliteServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="8082.701681675679" y="6354.0" />
-              <point x="7421.8658795467345" y="6354.0" />
-              <point x="20.857142857143117" y="124.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.enums.DataTableRowFormat">
-              <point x="-12.75" y="-114.5" />
-              <point x="12144.732931675679" y="5119.0" />
-              <point x="12239.670431675679" y="5119.0" />
-              <point x="12239.670431675679" y="4514.0" />
-              <point x="12215.795431675679" y="4514.0" />
-              <point x="54.0" y="135.5" />
-            </edge>
-            <edge source="model.beans.views.Nav" target="utils.Util">
-              <point x="-99.6875" y="-147.5" />
-              <point x="11496.657931675678" y="5828.0" />
-              <point x="11374.382931675678" y="5828.0" />
-              <point x="11374.382931675678" y="4504.0" />
-              <point x="5689.332891377627" y="4504.0" />
-              <point x="117.0" y="80.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.Logement">
-              <point x="-77.75" y="-159.0" />
-              <point x="11968.695431675678" y="4514.0" />
-              <point x="11982.052157695513" y="4514.0" />
-              <point x="11982.052157695513" y="3431.0" />
-              <point x="3125.60792692628" y="3431.0" />
-              <point x="56.0" y="147.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.enums.EtatVisite">
-              <point x="-37.94999999999982" y="-169.0" />
-              <point x="886.6103070175432" y="4374.0" />
-              <point x="663.2103070175435" y="4374.0" />
-              <point x="663.2103070175435" y="3531.0" />
-              <point x="688.5325292397656" y="3531.0" />
-              <point x="-39.33333333333303" y="69.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="control.managers.AuthManager">
-              <point x="118.66666666666697" y="-59.0" />
-              <point x="3460.1971808237754" y="6414.0" />
-              <point x="4234.322180823774" y="6414.0" />
-              <point x="4234.322180823774" y="5788.0" />
-              <point x="5402.949420681656" y="5788.0" />
-              <point x="-173.1428571428571" y="136.5" />
-            </edge>
-            <edge source="control.managers.AuthManager" target="model.enums.UserType">
-              <point x="186.46153846153857" y="-136.5" />
-              <point x="5762.553816286052" y="5169.0" />
-              <point x="5858.360669155404" y="5169.0" />
-              <point x="5858.360669155404" y="2824.0" />
-              <point x="6467.597515009011" y="2824.0" />
-              <point x="-4.472222222222172" y="69.5" />
-            </edge>
-            <edge source="model.db.daos.AuthDAO" target="model.enums.UserType">
-              <point x="48.60000000000002" y="-103.0" />
-              <point x="5446.682891377627" y="4504.0" />
-              <point x="5390.282891377627" y="4504.0" />
-              <point x="5390.282891377627" y="2804.0" />
-              <point x="6449.708626120122" y="2804.0" />
-              <point x="-22.361111111111086" y="69.5" />
-            </edge>
-            <edge source="control.api.ClientApi" target="javax.servlet.annotation.WebServlet">
-              <point x="118.66666666666652" y="-36.5" />
-              <point x="7538.368348342345" y="6384.0" />
-              <point x="7401.008736689591" y="6384.0" />
-              <point x="0.0" y="124.5" />
-            </edge>
-            <edge source="model.beans.views.Nav" target="model.enums.UserType">
-              <point x="19.9375" y="-147.5" />
-              <point x="11616.282931675678" y="5888.0" />
-              <point x="11847.445431675678" y="5888.0" />
-              <point x="11847.445431675678" y="3911.0" />
-              <point x="12004.052157695513" y="3911.0" />
-              <point x="12004.052157695513" y="2074.0" />
-              <point x="6485.4864038979" y="2074.0" />
-              <point x="13.416666666666742" y="69.5" />
-            </edge>
-            <edge source="model.db.daos.ResponsableVentesDAO" target="model.beans.humans.ResponsableVente">
-              <point x="0.0" y="-136.5" />
-              <point x="3389.10792692628" y="2664.0" />
-              <point x="3342.470778814134" y="2664.0" />
-              <point x="-13.538461538461434" y="25.5" />
-            </edge>
-            <edge source="model.db.daos.AuthDAO" target="model.db.DAO">
-              <point x="-48.59999999999991" y="-103.0" />
-              <point x="5349.482891377627" y="4514.0" />
-              <point x="5313.282891377627" y="4514.0" />
-              <point x="5313.282891377627" y="1600.0" />
-              <point x="3242.892573685929" y="1600.0" />
-              <point x="111.60000000000014" y="137.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeVentesServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="10892.701681675679" y="5888.0" />
-              <point x="9525.065318039315" y="5888.0" />
-              <point x="136.36363636363603" y="279.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.enums.AdminRole">
-              <point x="75.25" y="-257.5" />
-              <point x="4383.492573685928" y="4444.0" />
-              <point x="4627.1491175731135" y="4444.0" />
-              <point x="4627.1491175731135" y="939.0" />
-              <point x="4541.4829583013125" y="939.0" />
-              <point x="-40.125" y="36.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeMessagesServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="8834.701681675679" y="6334.0" />
-              <point x="7442.723022403877" y="6334.0" />
-              <point x="41.714285714285325" y="124.5" />
-            </edge>
-            <edge source="control.managers.ClientsManager" target="model.beans.humans.Client">
-              <point x="118.75" y="-92.5" />
-              <point x="1275.3853070175428" y="5149.0" />
-              <point x="1301.7075292397653" y="5149.0" />
-              <point x="1301.7075292397653" y="2564.0" />
-              <point x="2300.2566093263454" y="2564.0" />
-              <point x="-31.27500000000009" y="48.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.db.daos.AgentsDAO">
-              <point x="-153.54166666666652" y="-125.0" />
-              <point x="1666.395624477861" y="4404.0" />
-              <point x="1665.166457811194" y="4404.0" />
-              <point x="1665.166457811194" y="3561.0" />
-              <point x="1036.6783625730986" y="3561.0" />
-              <point x="49.3125" y="148.0" />
-            </edge>
-            <edge source="model.beans.Visite" target="model.beans.Logement">
-              <point x="71.55555555555566" y="-92.0" />
-              <point x="1017.4491959064317" y="3711.0" />
-              <point x="3013.60792692628" y="3711.0" />
-              <point x="-56.0" y="147.0" />
-            </edge>
-            <edge source="model.db.daos.OperateurDAO" target="model.beans.humans.Operateur">
-              <point x="0.0" y="-136.5" />
-              <point x="4317.149117573114" y="2714.0" />
-              <point x="4543.499117573114" y="2714.0" />
-              <point x="-6.650000000000091" y="25.5" />
-            </edge>
-            <edge source="model.beans.Visite" target="model.enums.EtatVisite">
-              <point x="-53.666666666666515" y="-92.0" />
-              <point x="892.22697368421" y="3521.0" />
-              <point x="767.1991959064317" y="3521.0" />
-              <point x="39.33333333333337" y="69.5" />
-            </edge>
-            <edge source="model.enums.UserType" target="java.lang.Enum">
-              <point x="0.0" y="-69.5" />
-              <point x="6472.069737231233" y="553.0" />
-              <point x="4793.2741175731135" y="553.0" />
-              <point x="48.9375" y="181.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.ResponsableVentesDAO">
-              <point x="-135.45000000000027" y="-257.5" />
-              <point x="4172.792573685928" y="4454.0" />
-              <point x="3875.2425736859286" y="4454.0" />
-              <point x="3875.2425736859286" y="3501.0" />
-              <point x="3460.10792692628" y="3501.0" />
-              <point x="71.0" y="136.5" />
-            </edge>
-            <edge source="control.api.API" target="javax.servlet.http.HttpServlet">
-              <point x="115.125" y="-81.0" />
-              <point x="6936.389689070544" y="5888.0" />
-              <point x="9252.338045312043" y="5888.0" />
-              <point x="-136.36363636363603" y="279.5" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.beans.Logement">
-              <point x="88.55000000000018" y="-169.0" />
-              <point x="1013.1103070175432" y="4414.0" />
-              <point x="1698.166457811194" y="4414.0" />
-              <point x="1698.166457811194" y="3721.0" />
-              <point x="3027.60792692628" y="3721.0" />
-              <point x="-42.0" y="147.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.Person">
-              <point x="255.8499999999999" y="-257.5" />
-              <point x="4564.092573685928" y="4504.0" />
-              <point x="4954.5204269262795" y="4504.0" />
-              <point x="4954.5204269262795" y="979.0" />
-              <point x="4991.674117573114" y="979.0" />
-              <point x="-9.75" y="158.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeVisitesServlet" target="model.db.daos.VisitesDao">
-              <point x="-44.5" y="-36.5" />
-              <point x="943.7603070175428" y="6474.0" />
-              <point x="904.7603070175428" y="6474.0" />
-              <point x="904.7603070175428" y="5149.0" />
-              <point x="924.560307017543" y="5149.0" />
-              <point x="0.0" y="169.0" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.beans.Logement">
-              <point x="41.875" y="-125.0" />
-              <point x="1861.8122911445275" y="4344.0" />
-              <point x="1791.187291144527" y="4344.0" />
-              <point x="1791.187291144527" y="3731.0" />
-              <point x="3041.60792692628" y="3731.0" />
-              <point x="-28.0" y="147.0" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.beans.humans.Operateur">
-              <point x="74.85714285714266" y="-81.5" />
-              <point x="2685.181260430257" y="5169.0" />
-              <point x="2710.5384032874" y="5169.0" />
-              <point x="2710.5384032874" y="4484.0" />
-              <point x="2748.2169747159714" y="4484.0" />
-              <point x="2748.2169747159714" y="3871.0" />
-              <point x="3798.10792692628" y="3871.0" />
-              <point x="3798.10792692628" y="2684.0" />
-              <point x="4503.599117573114" y="2684.0" />
-              <point x="-46.549999999999955" y="25.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.db.daos.AdminsDAO">
-              <point x="67.80952380952385" y="-59.0" />
-              <point x="3409.3400379666323" y="6384.0" />
-              <point x="3714.8241175731146" y="6384.0" />
-              <point x="3714.8241175731146" y="3961.0" />
-              <point x="4661.1491175731135" y="3961.0" />
-              <point x="-94.0" y="159.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.beans.humans.Admin">
-              <point x="0.0" y="-59.0" />
-              <point x="3341.5305141571084" y="6344.0" />
-              <point x="3670.8241175731146" y="6344.0" />
-              <point x="3670.8241175731146" y="3901.0" />
-              <point x="4019.10792692628" y="3901.0" />
-              <point x="4019.10792692628" y="1266.0" />
-              <point x="4808.751196157049" y="1266.0" />
-              <point x="-31.15384615384619" y="37.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.Localite">
-              <point x="15.050000000000182" y="-257.5" />
-              <point x="4323.292573685929" y="4424.0" />
-              <point x="4462.149117573114" y="4424.0" />
-              <point x="4462.149117573114" y="1640.0" />
-              <point x="976.2490136062534" y="1640.0" />
-              <point x="53.77777777777828" y="48.0" />
-            </edge>
-            <edge source="model.beans.views.Nav" target="model.beans.views.NavElement">
-              <point x="-59.8125" y="-147.5" />
-              <point x="11536.532931675678" y="5918.0" />
-              <point x="11568.532931675678" y="5918.0" />
-              <point x="-31.25" y="25.5" />
-            </edge>
-            <edge source="model.beans.humans.Employe" target="model.beans.humans.Admin">
-              <point x="0.0" y="-59.0" />
-              <point x="3498.1592403525956" y="1236.0" />
-              <point x="4777.597350003202" y="1236.0" />
-              <point x="-62.30769230769238" y="37.0" />
-            </edge>
-            <edge source="model.beans.humans.Person" target="java.io.Serializable">
-              <point x="0.0" y="-158.0" />
-              <point x="5001.424117573114" y="91.0" />
-              <point x="3209.1491175731144" y="91.0" />
-              <point x="19.875" y="14.5" />
-            </edge>
-            <edge source="model.beans.Vente" target="model.beans.Logement">
-              <point x="66.81818181818198" y="-103.0" />
-              <point x="2250.8747911445275" y="3741.0" />
-              <point x="3055.60792692628" y="3741.0" />
-              <point x="-14.0" y="147.0" />
-            </edge>
-            <edge source="control.servlets.sub.ListeVentesServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="10714.701681675679" y="6284.0" />
-              <point x="7494.8658795467345" y="6284.0" />
-              <point x="93.85714285714312" y="124.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeOperateursServlet" target="javax.servlet.http.HttpServlet">
-              <point x="89.0" y="-36.5" />
-              <point x="11268.701681675679" y="5878.0" />
-              <point x="9559.156227130225" y="5878.0" />
-              <point x="170.45454545454595" y="279.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeOperateursServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="-89.0" y="-36.5" />
-              <point x="11090.701681675679" y="6274.0" />
-              <point x="7505.294450975305" y="6274.0" />
-              <point x="104.28571428571377" y="124.5" />
-            </edge>
-            <edge source="utils.Util" target="model.db.daos.OperateurDAO">
-              <point x="0.0" y="-80.5" />
-              <point x="5572.332891377627" y="3461.0" />
-              <point x="4418.024117573114" y="3461.0" />
-              <point x="100.875" y="136.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.beans.Message">
-              <point x="77.75" y="-159.0" />
-              <point x="12124.195431675678" y="4494.0" />
-              <point x="12070.295431675679" y="4494.0" />
-              <point x="12070.295431675679" y="3911.0" />
-              <point x="12275.295431675679" y="3911.0" />
-              <point x="12275.295431675679" y="1286.0" />
-              <point x="6222.519737231234" y="1286.0" />
-              <point x="0.0" y="58.5" />
-            </edge>
-            <edge source="model.beans.humans.Admin" target="model.beans.humans.Person">
-              <point x="45.0" y="-37.0" />
-              <point x="4884.905042310895" y="969.0" />
-              <point x="4972.174117573114" y="969.0" />
-              <point x="-29.25" y="158.0" />
-            </edge>
-            <edge source="control.api.LogementApi" target="control.api.API">
-              <point x="0.0" y="-36.5" />
-              <point x="7043.701681675679" y="6414.0" />
-              <point x="6782.889689070544" y="6414.0" />
-              <point x="-38.375" y="81.0" />
-            </edge>
-            <edge source="java.lang.Enum" target="java.lang.Comparable">
-              <point x="65.25" y="-181.0" />
-              <point x="0.0" y="25.5" />
-            </edge>
-            <edge source="utils.Util" target="model.enums.UserType">
-              <point x="89.14285714285688" y="-80.5" />
-              <point x="5661.475748520484" y="3441.0" />
-              <point x="5538.126542171278" y="3441.0" />
-              <point x="5538.126542171278" y="2814.0" />
-              <point x="6458.653070564566" y="2814.0" />
-              <point x="-13.416666666666742" y="69.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.humans.ResponsableVente">
-              <point x="-45.15000000000009" y="-257.5" />
-              <point x="4263.092573685928" y="4424.0" />
-              <point x="4162.10792692628" y="4424.0" />
-              <point x="4162.10792692628" y="2174.0" />
-              <point x="3396.62462496798" y="2174.0" />
-              <point x="40.61538461538453" y="25.5" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.beans.Logement">
-              <point x="-165.55000000000018" y="-257.5" />
-              <point x="4142.692573685928" y="4464.0" />
-              <point x="3864.2425736859286" y="4464.0" />
-              <point x="3864.2425736859286" y="3511.0" />
-              <point x="3111.60792692628" y="3511.0" />
-              <point x="42.0" y="147.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.ClientDAO">
-              <point x="-225.75" y="-257.5" />
-              <point x="4082.492573685928" y="4484.0" />
-              <point x="3770.1491175731144" y="4484.0" />
-              <point x="3770.1491175731144" y="3531.0" />
-              <point x="2663.695546144543" y="3531.0" />
-              <point x="87.0" y="147.5" />
-            </edge>
-            <edge source="control.servlets.MyServlet" target="model.enums.UserType">
-              <point x="-107.5" y="-158.0" />
-              <point x="5305.062058044294" y="5768.0" />
-              <point x="5200.082891377627" y="5768.0" />
-              <point x="5200.082891377627" y="2794.0" />
-              <point x="6440.764181675678" y="2794.0" />
-              <point x="-31.305555555555657" y="69.5" />
-            </edge>
-            <edge source="model.beans.humans.ResponsableVente" target="model.beans.humans.Employe">
-              <point x="0.0" y="-25.5" />
-              <point x="3356.0092403525955" y="1750.0" />
-              <point x="3498.1592403525956" y="1750.0" />
-              <point x="0.0" y="59.0" />
-            </edge>
-            <edge source="control.api.AgentApi" target="model.enums.UserType">
-              <point x="-66.75" y="-36.5" />
-              <point x="111.25" y="6584.0" />
-              <point x="94.5" y="6584.0" />
-              <point x="94.5" y="2744.0" />
-              <point x="6396.041959453456" y="2744.0" />
-              <point x="-76.02777777777783" y="69.5" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.db.daos.ResponsableVentesDAO">
-              <point x="125.625" y="-125.0" />
-              <point x="1945.5622911445275" y="4464.0" />
-              <point x="2726.2169747159714" y="4464.0" />
-              <point x="2726.2169747159714" y="3811.0" />
-              <point x="3247.10792692628" y="3811.0" />
-              <point x="-142.0" y="136.5" />
-            </edge>
-            <edge source="model.db.daos.AdminsDAO" target="model.db.daos.AuthDAO">
-              <point x="47.0" y="159.0" />
-              <point x="4802.1491175731135" y="3961.0" />
-              <point x="4771.6491175731135" y="3961.0" />
-              <point x="4771.6491175731135" y="4464.0" />
-              <point x="5300.882891377627" y="4464.0" />
-              <point x="-97.19999999999993" y="-103.0" />
-            </edge>
-            <edge source="model.enums.DataTableRowFormat" target="java.lang.Enum">
-              <point x="0.0" y="-135.5" />
-              <point x="12161.795431675679" y="3921.0" />
-              <point x="12336.420431675679" y="3921.0" />
-              <point x="12336.420431675679" y="543.0" />
-              <point x="4825.8991175731135" y="543.0" />
-              <point x="81.5625" y="181.0" />
-            </edge>
-            <edge source="control.managers.ResponsablesVentesManager" target="model.db.daos.ResponsableVentesDAO">
-              <point x="137.08333333333348" y="-81.5" />
-              <point x="3063.907450906448" y="5139.0" />
-              <point x="2976.2407842397815" y="5139.0" />
-              <point x="2976.2407842397815" y="4484.0" />
-              <point x="3099.3657842397815" y="4484.0" />
-              <point x="3099.3657842397815" y="3821.0" />
-              <point x="3318.10792692628" y="3821.0" />
-              <point x="-71.0" y="136.5" />
-            </edge>
-            <edge source="control.servlets.sub.ListeVisitesServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="133.5" y="-36.5" />
-              <point x="1121.7603070175428" y="6504.0" />
-              <point x="7307.151593832448" y="6504.0" />
-              <point x="-93.85714285714312" y="124.5" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.beans.humans.Agent">
-              <point x="-152.57142857142844" y="-59.0" />
-              <point x="3188.95908558568" y="6414.0" />
-              <point x="2008.9372911445275" y="6414.0" />
-              <point x="2008.9372911445275" y="3601.0" />
-              <point x="1826.9108115416652" y="3601.0" />
-              <point x="1826.9108115416652" y="2324.0" />
-              <point x="965.9039843664868" y="2324.0" />
-              <point x="14.210526315789139" y="37.0" />
-            </edge>
-            <edge source="model.beans.views.DataTableRow" target="model.enums.DataTableRowFormat">
-              <point x="108.85000000000002" y="-159.0" />
-              <point x="12155.295431675679" y="4484.0" />
-              <point x="12107.795431675679" y="4484.0" />
-              <point x="-54.0" y="135.5" />
-            </edge>
-            <edge source="javax.servlet.http.HttpServlet" target="java.io.Serializable">
-              <point x="-93.75" y="-279.5" />
-              <point x="9294.951681675679" y="81.0" />
-              <point x="3222.3991175731144" y="81.0" />
-              <point x="33.125" y="14.5" />
-            </edge>
-            <edge source="model.beans.views.DataTableData" target="model.beans.Logement">
-              <point x="12.75" y="-114.5" />
-              <point x="12170.232931675679" y="5129.0" />
-              <point x="12253.295431675679" y="5129.0" />
-              <point x="12253.295431675679" y="3421.0" />
-              <point x="3139.60792692628" y="3421.0" />
-              <point x="70.0" y="147.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.db.daos.AgentsDAO">
-              <point x="-12.650000000000546" y="-169.0" />
-              <point x="911.9103070175424" y="4364.0" />
-              <point x="785.9082236842096" y="4364.0" />
-              <point x="785.9082236842096" y="3571.0" />
-              <point x="970.9283625730986" y="3571.0" />
-              <point x="-16.4375" y="148.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.db.daos.AgentsDAO">
-              <point x="-23.04166666666697" y="-70.5" />
-              <point x="380.45833333333303" y="5149.0" />
-              <point x="303.7499999999991" y="5149.0" />
-              <point x="303.7499999999991" y="3561.0" />
-              <point x="938.0533625730986" y="3561.0" />
-              <point x="-49.3125" y="148.0" />
-            </edge>
-            <edge source="model.db.daos.ClientDAO" target="model.db.DAO">
-              <point x="87.0" y="-147.5" />
-              <point x="2663.695546144543" y="1720.0" />
-              <point x="3118.8925736859287" y="1720.0" />
-              <point x="-12.400000000000091" y="137.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LogoutServlet" target="utils.Consts">
-              <point x="55.375" y="-58.5" />
-              <point x="6679.576681675679" y="6434.0" />
-              <point x="6418.764689070544" y="6434.0" />
-              <point x="6418.764689070544" y="5848.0" />
-              <point x="6875.984419770917" y="5848.0" />
-              <point x="-45.57142857142844" y="212.5" />
-            </edge>
-            <edge source="model.db.daos.AdminsDAO" target="model.enums.UserType">
-              <point x="94.0" y="-159.0" />
-              <point x="4849.1491175731135" y="2764.0" />
-              <point x="6413.930848342345" y="2764.0" />
-              <point x="-58.138888888888914" y="69.5" />
-            </edge>
-            <edge source="control.managers.ResponsablesVentesManager" target="model.beans.humans.ResponsableVente">
-              <point x="27.416666666666515" y="-81.5" />
-              <point x="2954.240784239781" y="5159.0" />
-              <point x="2890.1991175731146" y="5159.0" />
-              <point x="2890.1991175731146" y="4464.0" />
-              <point x="3013.3241175731146" y="4464.0" />
-              <point x="3013.3241175731146" y="3791.0" />
-              <point x="3190.10792692628" y="3791.0" />
-              <point x="3190.10792692628" y="2654.0" />
-              <point x="3315.393855737211" y="2654.0" />
-              <point x="-40.61538461538453" y="25.5" />
-            </edge>
-            <edge source="model.beans.views.Nav" target="model.enums.TablePage">
-              <point x="99.6875" y="-147.5" />
-              <point x="11696.032931675678" y="5908.0" />
-              <point x="11869.445431675678" y="5908.0" />
-              <point x="11869.445431675678" y="3941.0" />
-              <point x="12396.47043167568" y="3941.0" />
-              <point x="-89.94999999999982" y="278.5" />
-            </edge>
-            <edge source="control.api.VisiteApi" target="control.api.API">
-              <point x="-118.66666666666652" y="-36.5" />
-              <point x="7677.035015009013" y="6374.0" />
-              <point x="6936.389689070544" y="6374.0" />
-              <point x="115.125" y="81.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.db.daos.LocaliteDAO">
-              <point x="-207.375" y="-70.5" />
-              <point x="196.125" y="5159.0" />
-              <point x="237.7499999999991" y="5159.0" />
-              <point x="237.7499999999991" y="2434.0" />
-              <point x="632.5763888888887" y="2434.0" />
-              <point x="-65.0" y="92.0" />
-            </edge>
-            <edge source="model.beans.views.TablesView" target="model.enums.TablePage">
-              <point x="50.25" y="-148.0" />
-              <point x="12282.334638565493" y="6564.0" />
-              <point x="12744.742653897902" y="6564.0" />
-              <point x="12744.742653897902" y="3941.0" />
-              <point x="12602.070431675678" y="3941.0" />
-              <point x="115.64999999999964" y="278.5" />
-            </edge>
-            <edge source="control.managers.OperateursManager" target="model.db.daos.VisitesDao">
-              <point x="-112.28571428571422" y="-81.5" />
-              <point x="2498.0384032874003" y="5119.0" />
-              <point x="1025.7603070175428" y="5119.0" />
-              <point x="101.20000000000005" y="169.0" />
-            </edge>
-            <edge source="control.servlets.main.admin.DashboardServlet" target="javax.servlet.annotation.WebServlet">
-              <point x="148.33333333333303" y="-59.0" />
-              <point x="4867.799624967979" y="6534.0" />
-              <point x="7338.437308118163" y="6534.0" />
-              <point x="-62.57142857142844" y="124.5" />
-            </edge>
-            <edge source="model.db.daos.VentesDAO" target="model.db.daos.LogementDAO">
-              <point x="153.54166666666674" y="-125.0" />
-              <point x="1973.478957811194" y="4504.0" />
-              <point x="3384.8241175731146" y="4504.0" />
-              <point x="-48.5" y="125.0" />
-            </edge>
-            <edge source="model.beans.Visite" target="model.beans.humans.Agent">
-              <point x="0.0" y="-92.0" />
-              <point x="945.893640350876" y="3591.0" />
-              <point x="1140.3658625730986" y="3591.0" />
-              <point x="1140.3658625730986" y="2344.0" />
-              <point x="951.6934580506977" y="2344.0" />
-              <point x="0.0" y="37.0" />
-            </edge>
-            <edge source="control.managers.AdminsManager" target="model.db.daos.LogementDAO">
-              <point x="-285.9500000000003" y="-257.5" />
-              <point x="4022.292573685928" y="4504.0" />
-              <point x="3578.8241175731146" y="4504.0" />
-              <point x="145.5" y="125.0" />
-            </edge>
-            <edge source="model.db.daos.VisitesDao" target="model.beans.humans.Agent">
-              <point x="-88.55000000000018" y="-169.0" />
-              <point x="836.0103070175428" y="4394.0" />
-              <point x="429.872807017543" y="4394.0" />
-              <point x="429.872807017543" y="2504.0" />
-              <point x="923.2724054191185" y="2504.0" />
-              <point x="-28.421052631579187" y="37.0" />
-            </edge>
-            <edge source="control.managers.AgentsManager" target="model.beans.humans.Agent">
-              <point x="-69.125" y="-70.5" />
-              <point x="334.375" y="5159.0" />
-              <point x="281.7499999999991" y="5159.0" />
-              <point x="281.7499999999991" y="2494.0" />
-              <point x="916.1671422612235" y="2494.0" />
-              <point x="-35.52631578947421" y="37.0" />
-            </edge>
-            <edge source="control.servlets.main.auth.LoginServlet" target="model.enums.UserType">
-              <point x="84.76190476190459" y="-59.0" />
-              <point x="3426.292418919013" y="6394.0" />
-              <point x="3725.8241175731146" y="6394.0" />
-              <point x="3725.8241175731146" y="3971.0" />
-              <point x="4883.1491175731135" y="3971.0" />
-              <point x="4883.1491175731135" y="2774.0" />
-              <point x="6422.875292786789" y="2774.0" />
-              <point x="-49.19444444444434" y="69.5" />
-            </edge>
-            <edge source="utils.Util" target="model.enums.TablePage">
-              <point x="133.71428571428532" y="-80.5" />
-              <point x="5706.047177091912" y="3931.0" />
-              <point x="12370.770431675679" y="3931.0" />
-              <point x="-115.64999999999998" y="278.5" />
-            </edge>
-            <edge source="utils.Util" target="model.db.daos.AdminsDAO">
-              <point x="44.57142857142844" y="-80.5" />
-              <point x="5616.904319949055" y="3451.0" />
-              <point x="4849.1491175731135" y="3451.0" />
-              <point x="94.0" y="159.0" />
-            </edge>
-            <edge source="control.api.AgentApi" target="model.db.daos.AgentsDAO">
-              <point x="-22.25" y="-36.5" />
-              <point x="155.75" y="6574.0" />
-              <point x="105.5" y="6574.0" />
-              <point x="105.5" y="3541.0" />
-              <point x="872.3033625730986" y="3541.0" />
-              <point x="-115.0625" y="148.0" />
-            </edge>
-            <edge source="utils.Util" target="model.db.daos.AgentsDAO">
-              <point x="-133.71428571428578" y="-80.5" />
-              <point x="5438.618605663341" y="3491.0" />
-              <point x="1102.4283625730986" y="3491.0" />
-              <point x="115.0625" y="148.0" />
-            </edge>
-            <edge source="model.db.daos.AgentsDAO" target="model.beans.Localite">
-              <point x="-105.19999999999982" y="-148.0" />
-              <point x="882.1658625730988" y="2404.0" />
-              <point x="589.5763888888887" y="2404.0" />
-              <point x="589.5763888888887" y="1640.0" />
-              <point x="882.137902495142" y="1640.0" />
-              <point x="-40.33333333333303" y="48.0" />
-            </edge>
-            <edge source="control.managers.ResponsablesVentesManager" target="model.db.daos.VentesDAO">
-              <point x="-137.08333333333348" y="-81.5" />
-              <point x="2789.740784239781" y="5079.0" />
-              <point x="1903.6872911445275" y="5079.0" />
-              <point x="83.75" y="125.0" />
-            </edge>
-            <edge source="control.api.AgentApi" target="model.beans.humans.Agent">
-              <point x="-111.25" y="-36.5" />
-              <point x="66.75" y="6584.0" />
-              <point x="83.5" y="6584.0" />
-              <point x="83.5" y="2464.0" />
-              <point x="894.8513527875402" y="2464.0" />
-              <point x="-56.842105263157464" y="37.0" />
-            </edge>
-            <edge source="model.db.daos.LogementDAO" target="model.enums.EtatLogement">
-              <point x="0.0" y="-125.0" />
-              <point x="3433.3241175731146" y="3851.0" />
-              <point x="3776.10792692628" y="3851.0" />
-              <point x="3776.10792692628" y="2214.0" />
-              <point x="3123.559240352595" y="2214.0" />
-              <point x="40.66666666666674" y="47.5" />
-            </edge>
-            <edge source="control.api.AgentApi" target="control.api.API">
-              <point x="111.25" y="-36.5" />
-              <point x="289.25" y="6484.0" />
-              <point x="6706.139689070544" y="6484.0" />
-              <point x="-115.125" y="81.0" />
-            </edge>
-            <edge source="javax.servlet.http.HttpServlet" target="javax.servlet.GenericServlet">
-              <point x="93.75" y="-279.5" />
-              <point x="9482.451681675679" y="5169.0" />
-              <point x="11538.382931675678" y="5169.0" />
-              <point x="0.0" y="192.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.08039848463589168" x="6384.0" y="3554.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Inner Classes</Category>
-            <Category>Constructors</Category>
-            <Category>Properties</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="39" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -3086,17 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/Nav.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="185" column="20" lean-forward="false" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="20" />
-          <folding>
-            <element signature="e#9128#9129#0" expanded="false" />
-            <element signature="e#9173#9174#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -3177,26 +1234,186 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/html/forgot-password.html">
+    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/Nav.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="102" selection-end-line="13" selection-end-column="102" />
+        <state relative-caret-position="-420">
+          <caret line="202" column="5" lean-forward="false" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java">
+    <entry file="jar://$PROJECT_DIR$/lib/mail.jar!/javax/mail/Service.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="-731">
+          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        <state relative-caret-position="430">
+          <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/html/forgot-password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" column="46" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ResponsableVentesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="method#getByUsername#0;class#ResponsableVentesDAO#0" expanded="false" />
+            <marker date="1520460428380" expanded="true" signature="485:572" ph="SELECT * FRO... responsable_vente" />
+            <marker date="1520460428380" expanded="true" signature="1586:1645" ph="UPDATE respo... " />
+            <marker date="1520460428380" expanded="true" signature="2010:2051" ph="SELECT * FRO... responsable_vente" />
+            <marker date="1520460428380" expanded="true" signature="3594:4380" ph="INSERT INTO responsable_vente... " />
+            <marker date="1520460428380" expanded="true" signature="4690:4878" ph="DELETE FROM " />
+            <marker date="1520460428380" expanded="true" signature="5187:5218" ph="SELECT * FRO... responsable_vente" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding>
+            <marker date="1520460669257" expanded="true" signature="446:494" ph="UPDATE clien... " />
+            <marker date="1520460669257" expanded="true" signature="769:835" ph="SELECT * FRO... client" />
+            <marker date="1520460669257" expanded="true" signature="1674:1721" ph="UPDATE clien... " />
+            <marker date="1520460669257" expanded="true" signature="1992:2022" ph="SELECT * FRO... client" />
+            <marker date="1520460669257" expanded="true" signature="3026:3091" ph="UPDATE clien... " />
+            <marker date="1520460669257" expanded="true" signature="3320:3385" ph="UPDATE clien... " />
+            <marker date="1520460669257" expanded="true" signature="3860:4524" ph="INSERT INTO client... " />
+            <marker date="1520460669257" expanded="true" signature="4913:4997" ph="DELETE FROM " />
+            <marker date="1520460669257" expanded="true" signature="5321:5341" ph="SELECT * FRO... client" />
+            <marker date="1520460669257" expanded="true" signature="6452:6489" ph="SELECT * FRO... client" />
+            <marker date="1520460669257" expanded="true" signature="7539:7612" ph="SELECT isBan... client" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="method#isSuper#0;class#AdminsDAO#0" expanded="false" />
+            <element signature="method#getByUsername#0;class#AdminsDAO#0" expanded="false" />
+            <element signature="method#getById#0;class#AdminsDAO#0" expanded="false" />
+            <element signature="method#add#0;class#AdminsDAO#0" expanded="false" />
+            <element signature="method#delete#0;class#AdminsDAO#0" expanded="false" />
+            <element signature="method#getAll#0;class#AdminsDAO#0" expanded="false" />
+            <marker date="1520460777325" expanded="true" signature="509:556" ph="UPDATE admin... " />
+            <marker date="1520460777325" expanded="true" signature="908:942" ph="SELECT role admin" />
+            <marker date="1520460777325" expanded="true" signature="1428:1492" ph="SELECT * FRO... admin" />
+            <marker date="1520460777325" expanded="true" signature="2564:2595" ph="SELECT * FRO... admin" />
+            <marker date="1520460777325" expanded="true" signature="4131:4918" ph="INSERT INTO admin... " />
+            <marker date="1520460777325" expanded="true" signature="5279:5479" ph="DELETE FROM " />
+            <marker date="1520460777325" expanded="true" signature="5850:5864" ph="SELECT * FRO... admin" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/OperateurDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding>
+            <marker date="1520460777510" expanded="true" signature="485:536" ph="UPDATE opera... " />
+            <marker date="1520460777510" expanded="true" signature="820:892" ph="SELECT * FRO... operateur" />
+            <marker date="1520460777510" expanded="true" signature="1829:1878" ph="UPDATE opera... " />
+            <marker date="1520460777510" expanded="true" signature="2149:2182" ph="SELECT * FRO... operateur" />
+            <marker date="1520460777510" expanded="true" signature="3598:4364" ph="INSERT INTO admin... " />
+            <marker date="1520460777510" expanded="true" signature="4628:4745" ph="DELETE FROM " />
+            <marker date="1520460777510" expanded="true" signature="5046:5069" ph="SELECT * FRO... operateur" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <marker date="1520460428287" expanded="true" signature="355:430" ph="UPDATE missi... " />
+            <marker date="1520460428287" expanded="true" signature="680:755" ph="UPDATE missi... " />
+            <marker date="1520460428287" expanded="true" signature="1005:1042" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/MyServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/AgentsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <marker date="1520460777447" expanded="true" signature="448:495" ph="UPDATE agent... " />
+            <marker date="1520460777447" expanded="true" signature="954:996" ph="SELECT * FRO... agent" />
+            <marker date="1520460777447" expanded="true" signature="2276:2312" ph="SELECT id FR... agent" />
+            <marker date="1520460777447" expanded="true" signature="2763:2827" ph="SELECT * FRO... agent" />
+            <marker date="1520460777447" expanded="true" signature="4048:4766" ph="INSERT INTO agent... " />
+            <marker date="1520460777447" expanded="true" signature="5056:5165" ph="DELETE FROM " />
+            <marker date="1520460777447" expanded="true" signature="5486:5505" ph="SELECT * FRO... agent" />
+            <marker date="1520460777447" expanded="true" signature="6629:6674" ph="UPDATE agent... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/changePassword.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/7ae12c5f/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.agent">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="46" column="59" lean-forward="false" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ChangePasswordServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
           <folding />
         </state>
       </provider>

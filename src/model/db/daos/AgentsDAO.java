@@ -15,7 +15,15 @@ public class AgentsDAO extends DAO {
 
     public AgentsDAO() {
     }
-
+    public boolean changePassword(int id, String pwd){
+        try {
+            statement.execute("UPDATE agent SET password='"+pwd+"' WHERE id = "+id+";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean reintegrerById(int id){return super.reintegrerById(id,TABLE_NAME);}
 
     public boolean suspendById(int id){

@@ -12,6 +12,7 @@
           <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
           <element id="library" level="project" name="gson-2.6.2" />
           <element id="library" level="project" name="twilio-java-sdk-7.0.0-rc-10-jar-with-dependencies" />
+          <element id="library" level="project" name="mail" />
         </element>
       </element>
     </root>

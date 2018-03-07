@@ -13,6 +13,15 @@ public class ClientDAO extends DAO {
     public static final String[] COLUMN_NAMES = {
 
     };
+    public boolean changePassword(int id, String pwd){
+        try {
+            statement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public Client getByUsername(Client client){
         ResultSet result;
         try {

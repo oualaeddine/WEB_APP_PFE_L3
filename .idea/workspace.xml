@@ -7,98 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="hwayj">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/twilio-java-sdk-7.0.0-rc-10-jar-with-dependencies.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/twilio_java_sdk_7_0_0_rc_10_jar_with_dependencies.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/GoodbyeServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/logement/VisiteServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/logement/additional/EtageServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RegionServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RoomsNumberServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/beans/views/MyView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/ExpendableNavElement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/NavElement.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web/web_app_Web.war" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/api/API.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/api/AgentApi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/api/ClientApi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/api/LogementApi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/api/VisiteApi.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/managers/AuthManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/managers/AuthManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/servlets/MyServlet$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/control/servlets/MyServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/Localite.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/Logement.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/Vente.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/Visite.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Admin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Agent.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Employe.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Operateur.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/Person.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/beans/humans/ResponsableVente.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/DAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/DAOInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/DbConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/AdminsDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/AgentsDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/AuthDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/ClientDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/LocaliteDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/LogementDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/OperateurDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/ResponsableVentesDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/VentesDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/db/daos/VisitesDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/enums/AdminRole.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/enums/EtatLogement.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/enums/EtatVisite.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/model/enums/UserType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/utils/Consts.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/utils/Util$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/classes/utils/Util.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/model/beans/views/NavElement.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/AdminsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AdminsManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/AgentsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AgentsManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/AuthManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AuthManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/ClientsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/ClientsManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/OperateursManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/OperateursManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/control/managers/ResponsablesVentesManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/ResponsablesVentesManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/beans/views/DataTable.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/beans/views/DataTableData.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/beans/views/DataTableHeader.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTableHeader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/beans/views/DataTableRow.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/beans/views/Nav.java" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/utils/Consts.java" afterPath="$PROJECT_DIR$/src/utils/MyConsts.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mail.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/html/code-password.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/html/forgot-password.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/GoogleMail.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/jsp/table.jsp" afterPath="$PROJECT_DIR$/WebContent/jsp/table.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/API.java" afterPath="$PROJECT_DIR$/src/control/api/API.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/AgentApi.java" afterPath="$PROJECT_DIR$/src/control/api/AgentApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/ClientApi.java" afterPath="$PROJECT_DIR$/src/control/api/ClientApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/LogementApi.java" afterPath="$PROJECT_DIR$/src/control/api/LogementApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/VisiteApi.java" afterPath="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/MyServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/MyServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/Agent/EnvoyerRapportServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/Agent/EnvoyerRapportServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/admin/DashboardServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/admin/DashboardServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/auth/LoginServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/LoginServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/auth/LogoutServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/LogoutServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/main/auth/SignUpServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/main/auth/SignUpServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/sub/ListeVisitesServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/sub/ListeVisitesServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Client.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Employe.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Employe.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/TablesView.java" afterPath="$PROJECT_DIR$/src/model/beans/views/TablesView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/AdminsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/html/login.html" afterPath="$PROJECT_DIR$/WebContent/html/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/enums/TablePage.java" afterPath="$PROJECT_DIR$/src/model/enums/TablePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/MyConsts.java" afterPath="$PROJECT_DIR$/src/utils/MyConsts.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_app.iml" afterPath="$PROJECT_DIR$/web_app.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -123,46 +44,107 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
       </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="soc_imm@localhost" type="e3449647:DbNodeDescriptor" />
+        <item name="soc_imm" type="e3449647:DbNodeDescriptor" />
+        <item name="ott" type="e3449647:DbNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Nav.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/Nav.java">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/html/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+            <state relative-caret-position="136">
+              <caret line="9" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/table/DataTable.java">
+      <file leaf-file-name="forgot-password.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/html/forgot-password.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="102" selection-end-line="13" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="code-password.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/html/code-password.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForgotPasswordServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoogleMail.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTableData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java">
+      <file leaf-file-name="MyConsts.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/MyConsts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="1020">
+              <caret line="60" column="68" lean-forward="false" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTableHeader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/table/DataTableHeader.java">
+      <file leaf-file-name="ListeClientServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/servlets/main/Agent/ListeClientServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="85">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TablesView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/beans/views/TablesView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NavElement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/NavElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -178,19 +160,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTableRow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-              <folding>
-                <element signature="e#2773#2774#0" expanded="true" />
-                <element signature="e#2823#2824#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -199,6 +168,7 @@
         <option value="package-info" />
         <option value="Jsp File" />
         <option value="Enum" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -224,10 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/beans/views/DataTable.java" />
-        <option value="$PROJECT_DIR$/src/model/beans/views/DataTableHeader.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeAgentsServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeClientsServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeLocaliteServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeLogementsServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/sub/ListeMessagesServlet.java" />
@@ -250,8 +216,6 @@
         <option value="$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/control/servlets/main/auth/LoginServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/html/login.html" />
-        <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
         <option value="$PROJECT_DIR$/src/control/api/ClientApi.java" />
         <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
         <option value="$PROJECT_DIR$/src/utils/Consts.java" />
@@ -265,16 +229,22 @@
         <option value="$PROJECT_DIR$/src/model/beans/views/MyView.java" />
         <option value="$PROJECT_DIR$/src/model/beans/views/ExpendableNavElement.java" />
         <option value="$PROJECT_DIR$/src/model/beans/views/NavElement.java" />
-        <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
         <option value="$PROJECT_DIR$/WebContent/jsp/table.jsp" />
         <option value="$PROJECT_DIR$/src/model/beans/views/Nav.java" />
         <option value="$PROJECT_DIR$/src/model/beans/humans/Employe.java" />
-        <option value="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
         <option value="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" />
         <option value="$PROJECT_DIR$/src/model/beans/humans/Client.java" />
         <option value="$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java" />
         <option value="$PROJECT_DIR$/src/model/beans/views/table/DataTableHeader.java" />
         <option value="$PROJECT_DIR$/src/control/ivs/menu.txt" />
+        <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
+        <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
+        <option value="$PROJECT_DIR$/WebContent/html/login.html" />
+        <option value="$PROJECT_DIR$/WebContent/html/code-password.html" />
+        <option value="$PROJECT_DIR$/WebContent/html/forgot-password.html" />
+        <option value="$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java" />
+        <option value="$PROJECT_DIR$/src/utils/GoogleMail.java" />
       </list>
     </option>
   </component>
@@ -319,59 +289,38 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP_PFE_L3" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -380,17 +329,19 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20663266" />
-    <property name="last_opened_file_path" value="D:/Cloud/java_libs/gson-2.6.2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mail.jar" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -444,6 +395,11 @@
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
+        <file path="$PROJECT_DIR$/lib/mail.jar">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </file>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_web_app_2" />
@@ -636,6 +592,9 @@
       <workItem from="1519584203005" duration="56000" />
       <workItem from="1519891971472" duration="11858000" />
       <workItem from="1519915044485" duration="258000" />
+      <workItem from="1519988652443" duration="6112000" />
+      <workItem from="1520165675041" duration="1124000" />
+      <workItem from="1520444246687" duration="9388000" />
     </task>
     <task id="LOCAL-00001" summary="parmis lhwayj li tnahaw gbil -__-&#10;essayes tjr de decocher workspace.xml">
       <created>1518644625640</created>
@@ -683,7 +642,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66103000" />
+    <option name="totallyTimeSpent" value="82727000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -695,11 +654,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -708,13 +667,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5216" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6736" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.67901236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2218845" sideWeight="0.488" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27279636" sideWeight="0.512" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20136778" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.4716981" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2322239" sideWeight="0.5283019" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20121029" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25379938" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -725,10 +684,41 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20121029" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25379938" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5216" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6728395" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.4716981" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2322239" sideWeight="0.5283019" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -787,63 +777,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/enums/TablePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/enums/UserType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/html/agent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VisitesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/AuthDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="30" column="67" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/artifacts/web_app_Web_exploded/WEB-INF/web.xml" />
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -897,20 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="14" column="66" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/html/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -2881,20 +2800,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2940,7 +2849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2965,14 +2873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/MyConsts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/jsp/table.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -2985,7 +2885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3000,7 +2899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3011,30 +2909,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/NavElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/ExpendableNavElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3042,7 +2920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3050,7 +2927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3058,14 +2934,221 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="20" column="34" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/Agent/ListeLogementServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="60" lean-forward="false" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/model.beans.humans.Employe">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>model.beans.humans.Employe</OriginalElement>
+          <nodes>
+            <node x="260.3572222222222" y="521.0">model.beans.Localite</node>
+            <node x="244.95986111111114" y="0.0">model.beans.humans.Person</node>
+            <node x="159.00000000000003" y="655.0">model.beans.Logement</node>
+            <node x="290.9411111111111" y="1016.0">model.beans.Vente</node>
+            <node x="109.94111111111113" y="1027.0">model.beans.Visite</node>
+            <node x="519.6666666666667" y="776.0">model.beans.humans.ResponsableVente</node>
+            <node x="683.6666666666667" y="776.0">model.beans.humans.Operateur</node>
+            <node x="535.2104166666667" y="510.0">model.beans.humans.Employe</node>
+            <node x="515.3786111111111" y="376.0">model.beans.humans.Admin</node>
+            <node x="223.20986111111114" y="343.0">model.beans.Message</node>
+            <node x="344.3786111111111" y="765.0">model.beans.humans.Agent</node>
+            <node x="0.0" y="754.0">model.beans.humans.Client</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="model.beans.Visite" target="model.beans.humans.Agent">
+              <point x="40.25" y="-80.5" />
+              <point x="230.69111111111113" y="986.0" />
+              <point x="361.2536111111111" y="986.0" />
+              <point x="-50.625" y="25.5" />
+            </edge>
+            <edge source="model.beans.humans.Agent" target="model.beans.humans.Employe">
+              <point x="45.0" y="-25.5" />
+              <point x="456.8786111111111" y="635.0" />
+              <point x="561.2104166666667" y="635.0" />
+              <point x="-52.0" y="47.5" />
+            </edge>
+            <edge source="model.beans.Message" target="model.beans.humans.Person">
+              <point x="33.25" y="-58.5" />
+              <point x="0.0" y="146.5" />
+            </edge>
+            <edge source="model.beans.humans.Employe" target="model.beans.humans.Person">
+              <point x="51.99999999999997" y="-47.5" />
+              <point x="665.2104166666667" y="485.0" />
+              <point x="660.8786111111111" y="485.0" />
+              <point x="660.8786111111111" y="313.0" />
+              <point x="385.3598611111111" y="313.0" />
+              <point x="62.39999999999998" y="146.5" />
+            </edge>
+            <edge source="model.beans.humans.Client" target="model.beans.humans.Person">
+              <point x="0.0" y="-36.5" />
+              <point x="69.5" y="313.0" />
+              <point x="260.55986111111116" y="313.0" />
+              <point x="-62.39999999999998" y="146.5" />
+            </edge>
+            <edge source="model.beans.humans.Admin" target="model.beans.humans.Person">
+              <point x="0.0" y="-25.5" />
+              <point x="582.8786111111111" y="323.0" />
+              <point x="354.1598611111111" y="323.0" />
+              <point x="31.19999999999999" y="146.5" />
+            </edge>
+            <edge source="model.beans.Vente" target="model.beans.humans.Client">
+              <point x="-76.5625" y="-91.5" />
+              <point x="336.8786111111111" y="966.0" />
+              <point x="121.625" y="966.0" />
+              <point x="52.125" y="36.5" />
+            </edge>
+            <edge source="model.beans.Visite" target="model.beans.humans.Client">
+              <point x="-67.08333333333331" y="-80.5" />
+              <point x="123.35777777777781" y="996.0" />
+              <point x="17.375" y="996.0" />
+              <point x="-52.125" y="36.5" />
+            </edge>
+            <edge source="model.beans.Vente" target="model.beans.humans.Agent">
+              <point x="45.9375" y="-91.5" />
+              <point x="459.3786111111111" y="996.0" />
+              <point x="462.5036111111111" y="996.0" />
+              <point x="50.625" y="25.5" />
+            </edge>
+            <edge source="model.beans.humans.Employe" target="model.beans.humans.Admin">
+              <point x="-52.00000000000003" y="-47.5" />
+              <point x="561.2104166666667" y="485.0" />
+              <point x="549.1286111111111" y="485.0" />
+              <point x="-33.75" y="25.5" />
+            </edge>
+            <edge source="model.beans.humans.ResponsableVente" target="model.beans.humans.Employe">
+              <point x="0.0" y="-14.5" />
+              <point x="591.6666666666667" y="635.0" />
+              <point x="613.2104166666667" y="635.0" />
+              <point x="0.0" y="47.5" />
+            </edge>
+            <edge source="model.beans.humans.Operateur" target="model.beans.humans.Employe">
+              <point x="-2.8421709430404007E-14" y="-14.5" />
+              <point x="734.1666666666667" y="635.0" />
+              <point x="665.2104166666667" y="635.0" />
+              <point x="51.99999999999997" y="47.5" />
+            </edge>
+            <edge source="model.beans.Vente" target="model.beans.humans.ResponsableVente">
+              <point x="76.5625" y="-91.5" />
+              <point x="490.0036111111111" y="986.0" />
+              <point x="555.6666666666667" y="986.0" />
+              <point x="-36.0" y="14.5" />
+            </edge>
+            <edge source="model.beans.Vente" target="model.beans.Logement">
+              <point x="-15.3125" y="-91.5" />
+              <point x="398.1286111111111" y="946.0" />
+              <point x="293.75" y="946.0" />
+              <point x="57.75" y="135.5" />
+            </edge>
+            <edge source="model.beans.Visite" target="model.beans.Logement">
+              <point x="-13.416666666666629" y="-80.5" />
+              <point x="177.0244444444445" y="996.0" />
+              <point x="178.25000000000003" y="996.0" />
+              <point x="-57.75" y="135.5" />
+            </edge>
+            <edge source="model.beans.humans.Agent" target="model.beans.Localite">
+              <point x="0.0" y="-25.5" />
+              <point x="411.8786111111111" y="625.0" />
+              <point x="358.3572222222222" y="625.0" />
+              <point x="42.0" y="36.5" />
+            </edge>
+            <edge source="model.beans.Logement" target="model.beans.Localite">
+              <point x="38.5" y="-135.5" />
+              <point x="274.5" y="635.0" />
+              <point x="302.3572222222222" y="635.0" />
+              <point x="-14.0" y="36.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9" x="307.0" y="968.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/Nav.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        <state relative-caret-position="124">
+          <caret line="185" column="20" lean-forward="false" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="20" />
+          <folding>
+            <element signature="e#9128#9129#0" expanded="false" />
+            <element signature="e#9173#9174#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="80" column="61" lean-forward="false" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/ExpendableNavElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="60" column="4" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/enums/TablePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="88" lean-forward="false" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/MyConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="68" lean-forward="false" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/Agent/ListeClientServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/views/TablesView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/views/nav/NavElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -3074,6 +3157,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/html/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/html/code-password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/html/forgot-password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="102" lean-forward="false" selection-start-line="13" selection-start-column="102" selection-end-line="13" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/main/auth/ForgotPasswordServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -3138,6 +3261,7 @@
             <option name="proportions">
               <list>
                 <option value="0.20663266" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -3145,7 +3269,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>javax.transaction</last-edited>
+          <last-edited>mail</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

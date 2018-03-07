@@ -32,5 +32,6 @@
     <orderEntry type="library" exported="" name="com.mysql.jdbc_5.1.5" level="project" />
     <orderEntry type="library" exported="" name="javax.transaction" level="project" />
     <orderEntry type="library" name="twilio-java-sdk-7.0.0-rc-10-jar-with-dependencies" level="project" />
+    <orderEntry type="library" name="mail" level="project" />
   </component>
 </module>

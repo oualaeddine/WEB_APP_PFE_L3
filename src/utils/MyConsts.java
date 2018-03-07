@@ -2,6 +2,7 @@ package utils;
 
 public class MyConsts {
     public static final String
+
     /*APIs urls*/
             AGENT_API_URL_PATTERN = "/AgentApi",
             CLIENT_API_URL_PATTERN = "/clientApi",
@@ -55,10 +56,15 @@ public class MyConsts {
     public static final String ROOMS_NUMBER_SERVLET_URL = "/rooms";
     public static final String REGION_SERVLET_URL = "/region";
     public static final String FOURCHETE_PRIX_SERVLET_URL = "/prix";
-    public static final String GET_VISIT_SERVLET_URL = "/visite";
+    public static final String GET_VISIT_SERVLET_URL = "/Visites";
+    public static final String GET_LOGEMENT_SERVLET_URL = "/Logement";
+    public static final String GET_CLIENTS_SERVLET_URL = "/Clients";
     public static final String PRIX_MP3_URL = "";
     public static final String DASHBOARD_NAV_ELEMENT_TITLE = "Acceuil";
     public static final String ETABLIR_RAPPORT_NAV_TITLE = "Etablir Rapport";
     public static final String MESSAGES_NAV_ELEMENT_TITLE = "Messages";
     public static final String ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE = "";
+    public static final String VISITES_TITLE = "Visites"; // :)
+    public static final String LOGEMENT_TITLE = "Logements";
+    public static final String CLIENTS_TITLE = "Clients";
 }

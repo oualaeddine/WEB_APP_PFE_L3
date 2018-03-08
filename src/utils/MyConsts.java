@@ -14,8 +14,8 @@ public class MyConsts {
     ADMIN_DASHBOARD_SERVLET_URL = "/DashboardServlet",
 
     /*AUTH*/
-    LOGIN_SERVLET_URL = "/authentification",
-            LOGOUT_SERVLET_URL = "",
+    LOGIN_SERVLET_URL = "/login",
+            LOGOUT_SERVLET_URL = "/logout",
             SIGNUP_SERVLET_URL = "/signup",
 
     /*CLIENT*/

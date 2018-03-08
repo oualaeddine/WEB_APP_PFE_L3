@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebServlet(name = "LogoutServlet")
-@WebServlet({MyConsts.LOGOUT_SERVLET_URL})
+@WebServlet(name = "LogoutServlet",value = "/logout")
 public class LogoutServlet extends MyServlet {
     @Override
     public void init() throws ServletException {
@@ -21,18 +20,17 @@ public class LogoutServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
-//            request.getSession().invalidate();
-//            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
-            new AuthManager().logout(request);
-            this.getServletContext().getRequestDispatcher(MyConsts.LOGIN_SERVLET_URL);
+            request.getSession().invalidate();
+            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
         } else {
             redirectToNotLoggedIn(request, response);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {        // TODO: 2/18/2018
-
+        if (isLoggedIn(request)) {
+            request.getSession().invalidate();
+            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
         } else {
             redirectToNotLoggedIn(request, response);
         }

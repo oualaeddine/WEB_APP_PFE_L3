@@ -122,13 +122,26 @@
 
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                    <a class="nav-link" >
+                    <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseprofile" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-user"></i>
-                        <span class="nav-link-text">Profile</span>
+                        <span class="nav-link-text">Mon profil</span>
                     </a>
+                    <ul class="sidenav-second-level collapse" id="collapseprofile">
+                        <li>
+                            <a href="/ChangePassword"><i class="fa fa-fw fa-user"></i>
+                                <span class="nav-link-text">Changer mot de passe</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-fw fa-user"></i>
+                                <span class="nav-link-text">Modifier informations</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                    <a class="nav-link" href="login.html">
+                    <a class="nav-link" href="/logout">
                         <i class="fa fa-fw fa-sign-out"></i>
                         <span class="nav-link-text">Deconnexion</span>
                     </a>

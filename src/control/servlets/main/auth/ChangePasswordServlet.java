@@ -46,6 +46,7 @@ public class ChangePasswordServlet extends HttpServlet {
                     break;
             }
         }
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

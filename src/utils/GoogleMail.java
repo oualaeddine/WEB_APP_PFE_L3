@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -69,7 +70,11 @@ public class GoogleMail {
         */
         props.put("mail.smtps.quitwait", "false");
 
-        Session session = Session.getInstance(props, null);
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username + "@gmail.com", password);
+            }
+        });
 
         // -- Create a new message --
         final MimeMessage msg = new MimeMessage(session);
@@ -77,18 +82,20 @@ public class GoogleMail {
         // -- Set the FROM and TO fields --
         msg.setFrom(new InternetAddress(username + "@gmail.com"));
         msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail, false));
+        msg.setContent(message, "text/html; charset=utf-8");
+
 
         if (ccEmail.length() > 0) {
             msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(ccEmail, false));
         }
 
         msg.setSubject(title);
-        msg.setText(message, "utf-8");
+     //   msg.setText(message, "utf-8");
         msg.setSentDate(new Date());
 
         SMTPTransport t = (SMTPTransport)session.getTransport("smtps");
 
-        t.connect("smtp.gmail.com", username, password);
+        t.connect("smtp.gmail.com", username + "@gmail.com", password);
         t.sendMessage(msg, msg.getAllRecipients());
         t.close();
     }

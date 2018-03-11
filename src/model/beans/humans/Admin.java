@@ -5,7 +5,7 @@ import model.enums.AdminRole;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Admin extends Person {
+public class Admin extends Employe {
     private AdminRole role;
 
 

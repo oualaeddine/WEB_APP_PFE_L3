@@ -16,6 +16,36 @@ public class AdminsDAO extends DAO {
     public AdminsDAO() {
 
     }
+    @Override
+    public Admin getByEmail(String email) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "';");
+            if (result.next()) {
+                Admin admin = new Admin();
+                admin.setId(result.getInt("id"));
+                admin.setNom(result.getString("nom"));
+                admin.setPrenom(result.getString("prenom"));
+                admin.setDateNaissance(result.getDate("dateNaiss"));
+                admin.setAdresse(result.getString("adresse"));
+                admin.setTel(result.getString("tel"));
+                admin.setEmail(result.getString("email"));
+                admin.setUsername(result.getString("username"));
+                admin.setPassword(result.getString("password"));
+                if (result.getString("role").equals("SU"))
+                    admin.setRole(AdminRole.SUPER_USER);
+                else admin.setRole(AdminRole.ADMIN);
+                admin.setDateAdded(result.getDate("dateAdded"));
+                //TODO: addedBy + idRegion
+                admin.setSuspended(result.getBoolean("isSuspended"));
+
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean changePassword(int id, String pwd){
         try {
             statement.execute("UPDATE admin SET password='"+pwd+"' WHERE id = "+id+";");

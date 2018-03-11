@@ -1,6 +1,8 @@
 package control.servlets.main.auth;
 
+import model.enums.UserType;
 import utils.GoogleMail;
+import utils.Util;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -15,14 +17,16 @@ import java.util.Random;
 public class ForgotPasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("code") == null) {
-            String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
             String code = "";
             for (int i = 0; i < 6; i++) {
                 code = code + candidateChars.charAt((int) (Math.random() * candidateChars.length()));
             }
             String adress = request.getParameter("emailAdress");
+            UserType userType = Util.getUserTypeFromString(request.getParameter("selectType"));
+
             try {
-                new GoogleMail().Send("hchimmobilier", "HchImmobilier1234", adress, "", "Récuperation du mot de passe", "Votre code de confirmation est: " + code);
+                new GoogleMail().Send("hchimmobilier", "HchImmobilier1234", adress, "", "Récuperation du mot de passe", Util.getForgotPasswordEmail(adress,userType,code) );
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

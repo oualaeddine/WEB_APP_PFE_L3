@@ -59,6 +59,10 @@ public class GoogleMail {
         props.setProperty("mail.smtp.port", "465");
         props.setProperty("mail.smtp.socketFactory.port", "465");
         props.setProperty("mail.smtps.auth", "true");
+        props.put("mail.smtp.starttls.enable","true");
+
+        props.setProperty("mail.smtps.localhost","localhost");
+
 
         /*
         If set to false, the QUIT command is sent and the connection is immediately closed. If set
@@ -69,7 +73,6 @@ public class GoogleMail {
                 smtpsend.java - demo program from javamail
         */
         props.put("mail.smtps.quitwait", "false");
-
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username + "@gmail.com", password);

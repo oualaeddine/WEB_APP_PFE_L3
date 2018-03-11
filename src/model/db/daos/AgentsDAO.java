@@ -15,6 +15,36 @@ public class AgentsDAO extends DAO {
 
     public AgentsDAO() {
     }
+
+    @Override
+    public Agent getByEmail(String email) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "';");
+            if (result.next()) {
+                Agent agent = new Agent();
+                agent.setId(result.getInt("id"));
+                agent.setNom(result.getString("nom"));
+                agent.setPrenom(result.getString("prenom"));
+                agent.setDateNaissance(result.getDate("dateNaiss"));
+                agent.setAdresse(result.getString("adresse"));
+                agent.setTel(result.getString("tel"));
+                agent.setEmail(result.getString("email"));
+                agent.setUsername(result.getString("username"));
+                agent.setPassword(result.getString("password"));
+                agent.setDateAdded(result.getDate("dateAdded"));
+                agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
+                agent.setAddedBy(result.getInt("addedBy"));
+                agent.setSuspended(result.getBoolean("isSuspended"));
+
+                return agent;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean changePassword(int id, String pwd){
         try {
             statement.execute("UPDATE agent SET password='"+pwd+"' WHERE id = "+id+";");

@@ -22,7 +22,7 @@
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);
-%>
+%>tablesView
 <!DOCTYPE html>
 <html lang="en">
 

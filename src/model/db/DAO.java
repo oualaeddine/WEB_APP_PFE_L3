@@ -1,5 +1,7 @@
 package model.db;
 
+import model.beans.humans.Employe;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
@@ -11,7 +13,7 @@ public abstract class DAO {
         this.statement = DbConnector.getStatment();
     }
 
-
+    public abstract Employe getByEmail(String email);
     protected boolean reintegrerById(int id, String table) {
         try {
             statement.execute("UPDATE " + table + " SET isSuspended = 0 " +

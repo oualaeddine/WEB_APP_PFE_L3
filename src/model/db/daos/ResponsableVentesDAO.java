@@ -11,7 +11,31 @@ import java.util.LinkedList;
 public class ResponsableVentesDAO extends DAO {
     public static final String TABLE_NAME = "responsable_vente";
 
-
+    @Override
+    public ResponsableVente getByEmail(String email) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "';");
+            if (result.next()) {
+                ResponsableVente responsableVente = new ResponsableVente();
+                responsableVente.setId(result.getInt("id"));
+                responsableVente.setNom(result.getString("nom"));
+                responsableVente.setPrenom(result.getString("prenom"));
+                responsableVente.setDateNaissance(result.getDate("dateNaiss"));
+                responsableVente.setAdresse(result.getString("adresse"));
+                responsableVente.setTel(result.getString("tel"));
+                responsableVente.setEmail(result.getString("email"));
+                responsableVente.setUsername(result.getString("username"));
+                responsableVente.setPassword(result.getString("password"));
+                responsableVente.setDateAdded(result.getDate("dateAdded"));
+                responsableVente.setSuspended(result.getBoolean("isSuspended"));
+                return responsableVente;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public ResponsableVente getByUsername(ResponsableVente responsableVente){
         ResultSet result;
         try {

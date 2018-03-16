@@ -30,7 +30,6 @@ public class AgentsManager {
         agent.setEmail(email);
         agent.setUsername(username);
         agent.setPassword(password);
-        agent.setAddedBy(addedBy);
         agent.setSuspended(isSuspended);
         agent.setLocalite((Localite)new LocaliteDAO().getById(idRegion));
         return agent;

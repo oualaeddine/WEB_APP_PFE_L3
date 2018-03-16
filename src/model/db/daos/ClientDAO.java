@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.DAO;
 import model.db.DAOInterface;
 
@@ -34,7 +35,7 @@ public class ClientDAO extends DAO {
                 client.setTel(result.getString("tel"));
                 client.setEmail(result.getString("email"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                client.setSuspended(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned")==1);
                 client.setId(result.getInt("id"));
                 return client;
             }
@@ -52,6 +53,12 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
+
+    @Override
+    public Employe getByEmail(String email) {
+        return null;
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;
@@ -69,7 +76,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setDateAdded(result.getDate("dateAdded"));
-                client.setSuspended(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned")==1);
 
                 return client;
             }

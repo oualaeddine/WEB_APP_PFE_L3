@@ -34,7 +34,6 @@ public class AgentsDAO extends DAO {
                 agent.setPassword(result.getString("password"));
                 agent.setDateAdded(result.getDate("dateAdded"));
                 agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
-                agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
 
                 return agent;
@@ -78,7 +77,6 @@ public class AgentsDAO extends DAO {
                 agent.setPassword(result.getString("password"));
                 agent.setDateAdded(result.getDate("dateAdded"));
                 agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
-                agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
 
                 return agent;
@@ -104,6 +102,30 @@ public class AgentsDAO extends DAO {
         }
         return list;
     }
+
+    public Agent getByUsername(String username) {
+        ResultSet result;
+        try {
+            Agent admin = new Agent();
+            result = statement.executeQuery("SELECT * FROM agent WHERE username='" + username + "';");
+            if (result.next()) {
+                admin.setNom(result.getString("nom"));
+                admin.setPrenom(result.getString("prenom"));
+                admin.setDateNaissance(result.getDate("dateNaiss"));
+                admin.setAdresse(result.getString("adresse"));
+                admin.setTel(result.getString("tel"));
+                admin.setEmail(result.getString("email"));
+                admin.setDateAdded(result.getDate("dateAdded"));
+                admin.setSuspended(result.getBoolean("isSuspended"));
+                admin.setId(result.getInt("id"));
+                admin.setLocalite((Localite)new LocaliteDAO().getById(result.getInt("idregion")));
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public Agent getByUsername(Agent admin){
         ResultSet result;
         try {
@@ -116,7 +138,6 @@ public class AgentsDAO extends DAO {
                 admin.setTel(result.getString("tel"));
                 admin.setEmail(result.getString("email"));
                 admin.setDateAdded(result.getDate("dateAdded"));
-                admin.setAddedBy(result.getInt("addedBy"));
                 admin.setSuspended(result.getBoolean("isSuspended"));
                 admin.setId(result.getInt("id"));
                 admin.setLocalite((Localite)new LocaliteDAO().getById(result.getInt("idregion")));
@@ -191,7 +212,6 @@ public class AgentsDAO extends DAO {
                 agent.setPassword(result.getString("password"));
                 agent.setDateAdded(result.getDate("dateAdded"));
                 agent.setLocalite((Localite) new AgentsDAO().getById(result.getInt("idRegion")));
-                agent.setAddedBy(result.getInt("addedBy"));
                 agent.setSuspended(result.getBoolean("isSuspended"));
 
                 list.add(agent);
@@ -211,5 +231,33 @@ public class AgentsDAO extends DAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public LinkedList<Agent> getSuspendedAgents() {
+        LinkedList<Agent> list = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM agent WHERE isSuspended=1;");
+            while (result.next()) {
+                Agent agent = new Agent();
+                agent.setId(result.getInt("id"));
+                agent.setNom(result.getString("nom"));
+                agent.setPrenom(result.getString("prenom"));
+                agent.setDateNaissance(result.getDate("dateNaiss"));
+                agent.setAdresse(result.getString("adresse"));
+                agent.setTel(result.getString("tel"));
+                agent.setEmail(result.getString("email"));
+                agent.setUsername(result.getString("username"));
+                agent.setPassword(result.getString("password"));
+                agent.setDateAdded(result.getDate("dateAdded"));
+                agent.setLocalite((Localite) new AgentsDAO().getById(result.getInt("idRegion")));
+                agent.setSuspended(result.getBoolean("isSuspended"));
+                list.add(agent);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

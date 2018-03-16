@@ -61,6 +61,9 @@ public class DataTableHeader {
             case PROGRAMMED_VISITES:
                 setupTableHeaderForVisites();
                 break;
+            case PASSED_VISITS:
+                setupTableHeaderForVisites();
+                break;
             case ADMINS:
                 setupTableHeaderForAdmins();
                 break;
@@ -89,47 +92,75 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForMessages() {
-        html = "";        // TODO: 2/18/2018
+        html = "";
 
     }
 
     private void setupTableHeaderForClients() {
-        // TODO: 2/18/2018
+        html =  "<td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Prenom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>";
 
     }
 
     private void setupTableHeaderForLocalite() {
-        // TODO: 2/18/2018
+        html =  "<td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>";
 
     }
 
     private void setupTableHeaderForAdmins() {
-        // TODO: 2/18/2018
+        html = "<td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Prenom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>" +
+                "<td><b>Role</b></td>";
 
     }
 
     private void setupTableHeaderForVisites() {
-        // TODO: 2/18/2018
+        html = "<td><b>ID</b></td>" +
+                "<td><b>Logement</b></td>" +
+                "<td><b>Agent</b></td>" +
+                "<td><b>Client</b></td>" +
+                "<td><b>Horaire</b></td>" +
+                "<td><b>Etat</b></td>" ;
 
     }
 
     private void setupTableHeaderForEmployees() {
-        // TODO: 2/18/2018
-        html = "<td>ID</td>" +
-                "<td>Nom</td>" +
-                "<td>Prenom</td>" +
-                "<td>Telephone</td>" +
-                "<td>Adresse</td>" +
-                "<td>email</td>" +
-                "<td>Date n</td>" +
-                "<td>Etat</td>" +
-                "<td>Approuver par</td>"+
-                "<td>Date d'ajout</td>";
+        html = "<td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Prenom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>" +
+                "<td><b>Etat</b></td>" +
+                "<td><b>Approuver par</b></td>"+
+                "<td><b>Date d'ajout</b></td>";
     }
 
     private void setupTableHeaderForLogements() {
-        // TODO: 2/18/2018
-
+        html =
+                "                        <tr>\n" +
+                "                            <th>ID</th>\n" +
+                "                            <th>Titre</th>\n" +
+                "                            <th>Description</th>\n" +
+                "                            <th>Superficie</th>\n" +
+                "                            <th>Adresse</th>\n" +
+                "                            <th>Localité</th>\n" +
+                "                            <th>Prix</th>\n" +
+                "                            <th>Etage</th>\n" +
+                "                            <th>Etat</th>\n" +
+                "                        </tr>";
     }
 
     public void setCurrentPage(TablePage currentPage) {

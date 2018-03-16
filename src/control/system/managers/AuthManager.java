@@ -77,13 +77,12 @@ public class AuthManager {
         }
     }
 
-    public void createSession(String username, String password, UserType type, HttpServletRequest request) {
+    public void createSession(String username, UserType type, HttpServletRequest request) {
         /* Création ou récupération de la session */
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
 
         /* Mise en session des attributs de l'utilisateur */
-        session.setAttribute(MyServlet.LOGGED_IN_USER_USERNAME, username);
-        session.setAttribute(MyServlet.LOGGED_IN_USER_PASSWORD, password);
+        session.setAttribute(MyServlet.LOGGED_IN_USER, new EmployeDAO().getByUsername(username, type));
         session.setAttribute(MyServlet.LOGGED_IN_USER_TYPE, type);
         try {
             session.setAttribute(MyServlet.LOGGED_IN_USER_ID, new AuthDAO().getUserIdBy(username, type));

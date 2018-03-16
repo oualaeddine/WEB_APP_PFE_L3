@@ -4,6 +4,7 @@ import model.beans.Logement;
 import model.beans.Visite;
 import model.beans.humans.Agent;
 import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
 import sun.rmi.runtime.Log;
@@ -108,6 +109,12 @@ public class VisitesDao extends DAO {
         }
         return false;
     }
+
+    @Override
+    public Employe getByEmail(String email) {
+        return null;
+    }
+
     public Visite getById(int id) {
         ResultSet result;
         try {
@@ -172,8 +179,28 @@ public class VisitesDao extends DAO {
 
     public LinkedList<Visite> getAll() {
         LinkedList<Visite> list = new LinkedList<>();
-
-        return null;
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM visite");
+            while (result.next()){
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement)new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTime(result.getTimestamp("timestamp"));
+                switch (result.getString("etat")){
+                    case "prevue": visite.setEtatVisite(EtatVisite.PROGRAMMEE); break;
+                    case "avisNegatif": visite.setEtatVisite(EtatVisite.NON_VALIDEE); break;
+                    case "avisPositif": visite.setEtatVisite(EtatVisite.VALIDEE);break;
+                    case "reportee": visite.setEtatVisite(EtatVisite.REPORTEE);break;
+                }
+                list.add(visite);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public LinkedList<Visite> getPassee() {
@@ -258,4 +285,30 @@ public class VisitesDao extends DAO {
     }
 
 
+    public LinkedList<Visite> getReportee() {
+        ResultSet result;
+        LinkedList<Visite> visites=new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM visite WHERE etat='reportee';");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTime(result.getTimestamp("timestamp"));
+                switch (result.getString("etat")) {
+                    case "prevue": visite.setEtatVisite(EtatVisite.PROGRAMMEE); break;
+                    case "avisNegatif": visite.setEtatVisite(EtatVisite.NON_VALIDEE); break;
+                    case "avisPositif": visite.setEtatVisite(EtatVisite.VALIDEE); break;
+                    case "reportee": visite.setEtatVisite(EtatVisite.REPORTEE); break;
+                    case "annulee": visite.setEtatVisite(EtatVisite.ANNULEE); break;
+                }
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
 }

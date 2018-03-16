@@ -53,7 +53,7 @@ public class DataTableRow {
 
     private void setupHtmlForEmployee() {
         Employe operateur = (Employe) object;
-        html = "<td>" + operateur.getId() + "</td>" +
+        html = "<td><b>" + operateur.getId() + "</td>" +
                 "<td>" + operateur.getNom() + "</td>" +
                 "<td>" + operateur.getPrenom() + "</td>" +
                 "<td>" + operateur.getTel() + "</td>" +
@@ -62,12 +62,13 @@ public class DataTableRow {
                 "<td>" + operateur.getDateNaissance() + "</td>" +
                 "<td>" + operateur.isSuspendedString() + "</td>" +
                 "<td>" + operateur.getCreator().getNom() + " " + operateur.getCreator().getPrenom() + "</td>" +
-                "<td>" + operateur.getDateAdded() + "</td>";
+                "<td>" + operateur.getDateAdded() + "</b></td>";
     }
 
     private void setupHtmlForClient() {
         Client client = (Client) object;
-        html = "<td>" + client.getId() + "</td>" +
+        html = "<tr>" +
+                "<td>" + client.getId() + "</td>" +
                 "<td>" + client.getNom() + "</td>" +
                 "<td>" + client.getPrenom() + "</td>" +
                 "<td>" + client.getTel() + "</td>" +
@@ -75,7 +76,9 @@ public class DataTableRow {
                 "<td>" + client.getEmail() + "</td>" +
                 "<td>" + client.getDateNaissance() + "</td>" +
                 "<td>" + client.isBannedString() + "</td>" +
-                "<td>" + client.getDateAdded() + "</td>";
+                "<td>" + client.getDateAdded() + "</td>" +
+                "</tr>";
+
     }
 
     private void setupHtmlForMessage() {
@@ -89,10 +92,30 @@ public class DataTableRow {
 
     private void setupHtmlForVisite() {
         Visite visite = (Visite) object;
+        html ="<tr>" +
+                "<td>" + visite.getId() + "</td>" +
+                "<td>" + visite.getLogement().getTitre() + "</td>" +
+                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getTime() + "</td>" +
+                "<td>" + visite.getEtatVisite() + "</td>" +
+                "</tr>";
     }
 
     private void setupHtmlForLogement() {
         Logement logement = (Logement) object;
+
+        html= "<tr>" +
+                "<td>" + logement.getId() + "</td>" +
+                "<td>" + logement.getTitre() + "</td>" +
+                "<td>" + logement.getDescription() + "</td>" +
+                "<td>" + logement.getSuperficie() + " m2</td>" +
+                "<td>" + logement.getAdresse() + "</td>" +
+                "<td>" + logement.getLocalite().getNom() + "</td>" +
+                "<td>" + logement.getPrix() + "</td>" +
+                "<td>" + logement.getEtage() + "</td>" +
+                "<td>" + logement.getEtat() + "</td>" +
+                "</tr>";
     }
 
     public String getHtml() {

@@ -9,7 +9,16 @@ public class Logement implements Serializable {
     private Localite localite;
     private String titre, description, adresse;
     private boolean avecJardin;
-    private double superficie;
+    private double superficie,prix;
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
     private EtatLogement etat;
 
     public Logement() {

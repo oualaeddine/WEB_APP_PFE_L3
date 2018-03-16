@@ -27,7 +27,6 @@ public class AdminsManager {
         admin.setEmail(email);
         admin.setUsername(username);
         admin.setPassword(password);
-        admin.setAddedBy(addedBy);
         admin.setSuspended(isSuspended);
         switch (role){
             case SUPER_USER:
@@ -82,7 +81,7 @@ public class AdminsManager {
     }
 
     public boolean createClient(Client client){
-        client.setAddedBy(loggedInAdmin.getId());
+//        client.setAddedBy(loggedInAdmin.getId());
         return new ClientDAO().add(client);
     }
     public boolean deleteClient(Client client){
@@ -90,7 +89,7 @@ public class AdminsManager {
     }
 
     public boolean createAgent(Agent agent){
-        agent.setAddedBy(loggedInAdmin.getId());
+//        agent.setAddedBy(loggedInAdmin.getId());
         return new AgentsDAO().add(agent);
     }
     public boolean deleteAgent(Agent agent){
@@ -100,7 +99,7 @@ public class AdminsManager {
     public boolean createAdmin(Admin admin){
         AdminsDAO adminsDAO = new AdminsDAO();
         if (adminsDAO.isSuper(loggedInAdmin.getId())){
-            admin.setAddedBy(loggedInAdmin.getId());
+//            admin.setAddedBy(loggedInAdmin.getId());
             return adminsDAO.add(admin);
         }
         return false;
@@ -114,7 +113,7 @@ public class AdminsManager {
     }
 
     public boolean createOperateur(Operateur operateur){
-        operateur.setAddedBy(loggedInAdmin.getId());
+//        operateur.setAddedBy(loggedInAdmin.getId());
         return new OperateurDAO().add(operateur);
     }
     public boolean deleteOperateur(Operateur operateur){
@@ -122,7 +121,7 @@ public class AdminsManager {
     }
 
     public boolean createResponsableVente(ResponsableVente responsableVente){
-        responsableVente.setAddedBy(loggedInAdmin.getId());
+//        responsableVente.setAddedBy(loggedInAdmin.getId());
         return new ResponsableVentesDAO().delete(responsableVente);
     }
     public boolean deleteResponsableVente(ResponsableVente responsableVente){

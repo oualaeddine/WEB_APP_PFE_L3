@@ -1,7 +1,6 @@
-package control.servlets.main.Agent;
+package control.servlets.main.admin;
 
 import control.servlets.MyServlet;
-import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AgentServlet",value = "/AgentServlet")
-public class AgentServlet extends MyServlet {
+@WebServlet(name = "AdminServlet",value = "/AdminServlet")
+public class AdminServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -20,15 +19,11 @@ public class AgentServlet extends MyServlet {
         if (isLoggedIn(request)) {
             String what = request.getParameter("what");
             if (what == null) {
-                this.getServletContext().getRequestDispatcher("/html/agent.html").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/html/admin.html").forward(request, response);
             } else {
                 switch (what) {
-                    case "etablirRapport":{
-                        this.getServletContext().getRequestDispatcher("/jsp/EtablirRapport.jsp").forward(request,response);
-                        break;
-                    }
-                    case "AdminsMessages":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINISTRATION_MESSAGES_FOR_EMPLOYEES").forward(request,response);
+                    case "messages":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request,response);
                         break;
                     }
                     case "newMessage":{

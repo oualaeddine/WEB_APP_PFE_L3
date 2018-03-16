@@ -89,7 +89,6 @@ public class AdminsDAO extends DAO {
                 if (result.getString("role")=="SU") admin.setRole(AdminRole.SUPER_USER);
                 else admin.setRole(AdminRole.ADMIN);
                 admin.setDateAdded(result.getDate("dateAdded"));
-                admin.setAddedBy(result.getInt("addedBy"));
                 admin.setSuspended(result.getBoolean("isSuspended"));
                 admin.setId(result.getInt("id"));
                 return admin;
@@ -159,7 +158,6 @@ public class AdminsDAO extends DAO {
                     "'" + myAdmin.getPassword() + "'," +
                     "'admin'," +
                     "CURRENT_DATE()," +
-                    myAdmin.getAddedBy()+"," +
                     "0" +
                     ");"
             );

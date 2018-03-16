@@ -490,6 +490,10 @@ footer.sticky-footer {
 
 /* navbar */
 
+.navbar-admin{
+    background-color: #1d2124;
+    border-color: white;
+}
 .navbar-My {
     background-color: #4caf50;
     border-color: #E7E7E7;

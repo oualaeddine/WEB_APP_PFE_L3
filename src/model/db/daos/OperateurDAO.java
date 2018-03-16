@@ -59,7 +59,6 @@ public class OperateurDAO extends DAO {
                 operateur.setTel(result.getString("tel"));
                 operateur.setEmail(result.getString("email"));
                 operateur.setDateAdded(result.getDate("dateAdded"));
-                operateur.setAddedBy(result.getInt("addedBy"));
                 operateur.setSuspended(result.getBoolean("isSuspended"));
                 operateur.setId(result.getInt("id"));
                 return operateur;
@@ -177,4 +176,30 @@ public class OperateurDAO extends DAO {
         return list;
     }
 
+    public LinkedList<Operateur> getSuspendedOperateurs() {
+        LinkedList<Operateur> list = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM operateur WHERE isSuspended=1;");
+            while (result.next()) {
+                Operateur operateur = new Operateur();
+                operateur.setId(result.getInt("id"));
+                operateur.setNom(result.getString("nom"));
+                operateur.setPrenom(result.getString("prenom"));
+                operateur.setDateNaissance(result.getDate("dateNaiss"));
+                operateur.setAdresse(result.getString("adresse"));
+                operateur.setTel(result.getString("tel"));
+                operateur.setEmail(result.getString("email"));
+                operateur.setUsername(result.getString("username"));
+                operateur.setPassword(result.getString("password"));
+                operateur.setDateAdded(result.getDate("dateAdded"));
+                operateur.setSuspended(result.getBoolean("isSuspended"));
+                list.add(operateur);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

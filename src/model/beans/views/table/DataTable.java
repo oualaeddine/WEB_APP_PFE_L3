@@ -13,7 +13,6 @@ public class DataTable {
     private int userId;
     private UserType userType;
     private TablePage currentPage;
-
     public String getDataTableTitle() {
         return "Liste des " + getPageTitleFromPageType(currentPage);
     }
@@ -24,6 +23,7 @@ public class DataTable {
     }
 
     public LinkedList<DataTableRow> getTableData() {
+
         setupTableData();
         return tableData.getData();
     }

@@ -6,6 +6,7 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.humans.Person" %>
 <%@ page import="model.beans.views.MyView" %>
+<%@ page import="java.util.LinkedList" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -15,14 +16,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
-<% // TODO: 2/18/2018  test this jsp
+<%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     String currentPage = request.getParameter("page");
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);
-%>tablesView
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +48,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 
-<nav class="navbar navbar-expand-lg navbar-dark <%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top"
+<nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
     <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -58,7 +59,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
             <% for (MyView navElement : tablesView.getNav().getElements()) {
-                out.print(navElement.toString());
+                out.print(navElement.getHtml());
             }
             %>
         </ul>
@@ -100,7 +101,9 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <% for (DataTableRow tableRow : tablesView.getDataTable().getTableData()) {
+
+                        <% LinkedList<DataTableRow> list = tablesView.getDataTable().getTableData();
+                            for (DataTableRow tableRow :list) {
                             out.print(tableRow.getHtml());
                         }%>
                         </tbody>

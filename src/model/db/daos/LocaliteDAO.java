@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Localite;
+import model.beans.humans.Employe;
 import model.db.DAO;
 import model.db.DAOInterface;
 
@@ -9,6 +10,11 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class LocaliteDAO extends DAO  {
+    @Override
+    public Employe getByEmail(String email) {
+        return null;
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;

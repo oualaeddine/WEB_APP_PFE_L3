@@ -5,6 +5,7 @@ import model.beans.Vente;
 import model.beans.Visite;
 import model.beans.humans.Agent;
 import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.beans.humans.ResponsableVente;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -53,6 +54,12 @@ public class VentesDAO extends DAO {
         }
         return null;
     }
+
+    @Override
+    public Employe getByEmail(String email) {
+        return null;
+    }
+
     @Override
     public Object getById(int id) {
         ResultSet result;

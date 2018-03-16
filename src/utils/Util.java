@@ -20,40 +20,41 @@ public class Util {
 
     public static String getForgotPasswordEmail(String email, UserType userType, String code) {
         String name; Employe employe = null;
-        switch (userType) {
-
-            case AGENT: {
-                AgentsDAO dao = new AgentsDAO();
-                if (dao.getByEmail(email) != null) {
-                    employe = dao.getByEmail(email);
-                }
-
-                break;
-            }
-            case OPERATEUR: {
-                OperateurDAO dao = new OperateurDAO();
-                if (dao.getByEmail(email) != null) {
-                    employe = dao.getByEmail(email);
-                }
-                break;
-            }
-            case ADMIN: {
-                AdminsDAO dao = new AdminsDAO();
-                if (dao.getByEmail(email) != null) {
-                    employe = dao.getByEmail(email);
-                }
-                break;
-            }
-            case RESPONSABLE_VENTES:{
-                ResponsableVentesDAO dao = new ResponsableVentesDAO();
-                if (dao.getByEmail(email) != null) {
-                    employe = dao.getByEmail(email);
-                }
-                break;
-            } default: return null;
-        }
+//        switch (userType) {
+//
+//            case AGENT: {
+//                AgentsDAO dao = new AgentsDAO();
+//                if (dao.getByEmail(email) != null) {
+//                    employe = dao.getByEmail(email);
+//                }
+//
+//                break;
+//            }
+//            case OPERATEUR: {
+//                OperateurDAO dao = new OperateurDAO();
+//                if (dao.getByEmail(email) != null) {
+//                    employe = dao.getByEmail(email);
+//                }
+//                break;
+//            }
+//            case ADMIN: {
+//                AdminsDAO dao = new AdminsDAO();
+//                if (dao.getByEmail(email) != null) {
+//                    employe = dao.getByEmail(email);
+//                }
+//                break;
+//            }
+//            case RESPONSABLE_VENTES:{
+//                ResponsableVentesDAO dao = new ResponsableVentesDAO();
+//                if (dao.getByEmail(email) != null) {
+//                    employe = dao.getByEmail(email);
+//                }
+//                break;
+//            } default: return null;
+//        }
+        employe = new EmployeDAO().getByEmail(email,userType);
         name = employe.getNom()+" "+employe.getPrenom();
-        String actionUrl = "/ChangePassword?username="+employe.getUsername()+"&code="+code;
+        String actionUrl = "/ForgotPassword?linsa="+employe.getUsername()+"&code="+code+"&wech="+getStringFromType(userType);
 
 
 
@@ -212,6 +213,8 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case PASSED_VISITS:
+                return "Visites passées";
             case LOGEMENTS:
                 return "Logements";
             case LOGEMENTS_FOR_USER:
@@ -298,6 +301,8 @@ public class Util {
                 return USER_VISITES;
             case "PROGRAMMED_VISITES":
                 return PROGRAMMED_VISITES;
+            case "PASSED_VISITS":
+                return PASSED_VISITS;
             case "ADMINS":
                 return ADMINS;
             case "LOCALITES":
@@ -315,7 +320,7 @@ public class Util {
             case "CLIENTS_MESSAGES_FOR_USER":
                 return CLIENTS_MESSAGES_FOR_USER;
         }
-        return null;
+        return VISITES;
     }
     public static Date getDateFromString(String date) throws ParseException{
 //        Date r = null;

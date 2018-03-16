@@ -48,7 +48,6 @@ public class ResponsableVentesDAO extends DAO {
                 responsableVente.setTel(result.getString("tel"));
                 responsableVente.setEmail(result.getString("email"));
                 responsableVente.setDateAdded(result.getDate("dateAdded"));
-                responsableVente.setAddedBy(result.getInt("addedBy"));
                 responsableVente.setSuspended(result.getBoolean("isSuspended"));
                 responsableVente.setId(result.getInt("id"));
                 return responsableVente;
@@ -165,6 +164,33 @@ public class ResponsableVentesDAO extends DAO {
                 responsableVente.setDateAdded(result.getDate("dateAdded"));
                 responsableVente.setSuspended(result.getBoolean("isSuspended"));
 
+                list.add(responsableVente);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public LinkedList<ResponsableVente> getSuspendedResVente() {
+        LinkedList<ResponsableVente> list = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM responsable_vente WHERE isSuspended=1;");
+            while (result.next()) {
+                ResponsableVente responsableVente = new ResponsableVente();
+                responsableVente.setId(result.getInt("id"));
+                responsableVente.setNom(result.getString("nom"));
+                responsableVente.setPrenom(result.getString("prenom"));
+                responsableVente.setDateNaissance(result.getDate("dateNaiss"));
+                responsableVente.setAdresse(result.getString("adresse"));
+                responsableVente.setTel(result.getString("tel"));
+                responsableVente.setEmail(result.getString("email"));
+                responsableVente.setUsername(result.getString("username"));
+                responsableVente.setPassword(result.getString("password"));
+                responsableVente.setDateAdded(result.getDate("dateAdded"));
+                responsableVente.setSuspended(result.getBoolean("isSuspended"));
                 list.add(responsableVente);
             }
 

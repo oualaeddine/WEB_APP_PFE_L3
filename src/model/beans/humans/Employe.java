@@ -36,6 +36,7 @@ public class Employe extends Person {
         this.dateAdded = dateAdded;
     }
 
+
     public String isSuspendedString() {
         if (isSuspended) return "suspended";
         return "not Suspended";

@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.humans.Employe;
 import model.beans.humans.Person;
 import model.db.DAO;
 import model.enums.UserType;
@@ -29,12 +30,11 @@ public class AuthDAO extends DAO {
     }
 
     public int getUserIdBy(String username, UserType type) {
-        // TODO: 2/14/2018 jibili l userId
         ResultSet result;
         String table = Util.getStringFromType(type);
         if (table != null) {
             try {
-                result = statement.executeQuery("SELECT id FROM " + table + " WHERE username = " + username);
+                result = statement.executeQuery("SELECT id FROM " + table + " WHERE username = '" + username+"';");
                 if (result.next()) {
                     return result.getInt("id");
 
@@ -44,6 +44,11 @@ public class AuthDAO extends DAO {
             }
         }
         return 0;
+    }
+
+    @Override
+    public Employe getByEmail(String email) {
+        return null;
     }
 
     @Override

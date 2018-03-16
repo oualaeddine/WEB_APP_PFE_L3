@@ -20,16 +20,33 @@ public class ExpendableNavElement extends MyView {
         this.isPage = isPage;
     }
 
+    private String getCssClass() {
+        if (isPage)
+            return " nav-item nav-item-selected";
+        else
+            return " nav-item ";
+    }
+
     @Override
-    protected String getHtml() {
-        return " <li class=\"nav-item " + isSelected() + "\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"" + getTitle() + "\">\n" +
+    public String getHtml() {
+//        String html = "            <li class=\"" + getCssClass() + "\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"" + getTitle() + "\">\n" +
+//                "                <a class=\"nav-link nav-link-collapse collapsed \" data-toggle=\"collapse\" href=\"#colapseComponents\" data-parent=\"#exampleAccordion\">\n" +
+//                "                    <i class=\"fa fa-fw " + getIcon() + "\"></i>\n" +
+//                "                    <span class=\"nav-link-text\">" + getTitle() + "</span>\n" +
+//                "                </a>\n";
+//        for (NavElement navElement: getSubElementsList()) {
+//            html=html+navElement.getHtml();
+//        }
+//        html
+////                "            </li>";
+        return "<li class=\"nav-item " + isSelected() + "\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"" + getTitle() + "\">\n" +
                 "                <a class=\"nav-link nav-link-collapse " + isCollapsed() + "\" data-toggle=\"collapse\" href=\"#" + getSubElementsListId() + "\" data-parent=\"#exampleAccordion\">\n" +
                 "                    <i class=\"fa fa-fw " + getIcon() + "\"></i>\n" +
                 "                    <span class=\"nav-link-text\">" + getTitle() + "</span>\n" +
                 "                </a>\n" +
                 "                <ul class=\"sidenav-second-level collapse\" id=\"" + getSubElementsListId() + "\">\n" +
                 getSubElementsHtml() +
-                "            </li>";
+                "            </ul></li>";
     }
 
     private String isSelected() {
@@ -46,7 +63,8 @@ public class ExpendableNavElement extends MyView {
     private String getSubElementsHtml() {
         String subElementsHtml = "";
         for (NavElement navElement : subElementsList)
-            subElementsHtml.concat(navElement.getHtml());
+            subElementsHtml = subElementsHtml+navElement.getHtml();
+//            subElementsHtml.concat(navElement.getHtml());
         return subElementsHtml;
     }
 

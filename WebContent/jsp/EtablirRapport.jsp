@@ -47,20 +47,30 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="/AgentServlet">
                     <i class="fa fa-fw fa-home"></i>
-                    <span class="nav-link-text">Principale</span>
+                    <span class="nav-link-text">Accueil</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="../jsp/EtablirRapport.jsp">
+                <a class="nav-link" href="/AgentServlet?what=etablirRapport">
                     <i class="fa fa-fw fa-edit"></i>
                     <span class="nav-link-text">Etablir un rapport</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTables" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-envelope"></i>
                     <span class="nav-link-text">Messages</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="collapseTables">
+                    <li>
+                        <a href="/AgentServlet?what=AdminsMessages"><i class="fa fa-fw fa-envelope"></i>
+                            <span class="nav-link-text">Administration</span></a>
+                    </li>
+                    <li>
+                        <a href="/AgentServlet?what=newMessage"><i class="fa fa-fw fa-pencil"></i>
+                            <span class="nav-link-text">Messages</span></a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -69,15 +79,15 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="/Visites?what=programmees"><i class="fa fa-fw fa-calendar"></i>
+                        <a href="/AgentServlet?what=visitesProgrammees"><i class="fa fa-fw fa-calendar"></i>
                             <span class="nav-link-text">Visites Programmées</span></a>
                     </li>
                     <li>
-                        <a href="/Visites?what=passees"><i class="fa fa-fw fa-calendar-check"></i>
+                        <a href="/AgentServlet?what=visitesPassees"><i class="fa fa-fw fa-calendar-check"></i>
                             <span class="nav-link-text">Visites Passées</span></a>
                     </li>
                     <li>
-                        <a href="/Visites?what=annulees"><i class="fa fa-fw fa-calendar-times"></i>
+                        <a href="/AgentServlet?what=visitesAnnulees"><i class="fa fa-fw fa-calendar-times"></i>
                             <span class="nav-link-text">Visites annulées</span></a>
                     </li>
                 </ul>
@@ -89,15 +99,15 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseClients">
                     <li>
-                        <a href="/Clients?what=all"><i class="fa fa-fw fa-bars"></i>
+                        <a href="/AgentServlet?what=listeClients"><i class="fa fa-fw fa-bars"></i>
                             <span class="nav-link-text">Liste des clients</span></a>
                     </li>
                     <li>
-                        <a href="/Clients?what=banned"><i class="fa fa-fw fa-gratipay"></i>
+                        <a href="/AgentServlet?what=myClients"><i class="fa fa-fw fa-gratipay"></i>
                             <span class="nav-link-text">Clients bannis</span></a>
                     </li>
                     <li>
-                        <a href="/Clients?what=ban"><i class="fa fa-fw fa-ban"></i>
+                        <a href="/AgentServlet?what=signalerClient"><i class="fa fa-fw fa-ban"></i>
                             <span class="nav-link-text">Signaler un client</span></a>
                     </li>
                 </ul>
@@ -109,15 +119,15 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapsebuildings">
                     <li>
-                        <a href="/Logement?what=all"><i class="fa fa-fw fa-list"></i>
+                        <a href="/AgentServlet?what=allLogements"><i class="fa fa-fw fa-list"></i>
                             <span class="nav-link-text">Liste des Logements</span></a>
                     </li>
                     <li>
-                        <a href="/Logement?what=vendus"><i class="fa fa-fw fa-check"></i>
+                        <a href="/AgentServlet?what=logementsVendus"><i class="fa fa-fw fa-check"></i>
                             <span class="nav-link-text">Logements vendus</span></a>
                     </li>
                     <li>
-                        <a href="/Logement?what=geles"><i class="fa fa-fw fa-object-group"></i>
+                        <a href="/AgentServlet?what=logementsGeles"><i class="fa fa-fw fa-object-group"></i>
                             <span class="nav-link-text">Logements gelés</span></a>
                     </li>
                 </ul>
@@ -130,13 +140,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseprofile">
                     <li>
-                        <a href="/ChangePassword"><i class="fa fa-fw fa-user"></i>
-                            <span class="nav-link-text">Changer mot de passe</span>
+                        <a href="/AgentServlet?what=modifierProfil"><i class="fa fa-fw fa-user-circle"></i>
+                            <span class="nav-link-text">Modifier profil</span>
                         </a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-fw fa-user"></i>
-                            <span class="nav-link-text">Modifier informations</span>
+                        <a href="/AgentServlet?what=changePassword"><i class="fa fa-fw fa-lock"></i>
+                            <span class="nav-link-text">Changer mot de passe</span>
                         </a>
                     </li>
 

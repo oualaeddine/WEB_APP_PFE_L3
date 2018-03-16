@@ -11,6 +11,7 @@ public class MyConsts {
     /*Servlets urls*/
 
     /*ADMIN*/
+    ADMIN_SERVLET_URL = "/AdminServlet",
     ADMIN_DASHBOARD_SERVLET_URL = "/DashboardServlet",
 
     /*AUTH*/
@@ -22,7 +23,7 @@ public class MyConsts {
     CLIENT_SERVLET_URL = "/espaceClients",
 
     /*AGENT*/
-    AGENT_SERVLET_URL = "",
+    AGENT_SERVLET_URL = "/AgentServlet",
 
     /*OPERATEUR*/
     OPERATEUR_SERVLET_URL = "",
@@ -37,10 +38,10 @@ public class MyConsts {
     public static final String
             FOOTER_COPYRIGHT = "<small>Copyright © Berrehal-Benghezal-Rahab PFE GL L3 2018</small>",
             OPERATEUR_NAV_CSS_CLASS = "",
-            AGENT_NAV_CSS_CLASS = "",
+            AGENT_NAV_CSS_CLASS = "My",
             DEFAULT_NAV_CSS_CLASS = "",
             RESPONSABLE_VENTES_NAV_CSS_CLASS = "",
-            ADMIN_NAV_CSS_CLASS = "";
+            ADMIN_NAV_CSS_CLASS = "admin";
 
 
 
@@ -60,11 +61,39 @@ public class MyConsts {
     public static final String GET_LOGEMENT_SERVLET_URL = "/Logement";
     public static final String GET_CLIENTS_SERVLET_URL = "/Clients";
     public static final String PRIX_MP3_URL = "";
-    public static final String DASHBOARD_NAV_ELEMENT_TITLE = "Acceuil";
+    public static final String DASHBOARD_NAV_ELEMENT_TITLE = "Accueil";
     public static final String ETABLIR_RAPPORT_NAV_TITLE = "Etablir Rapport";
+
+    /*Regions*/
+    public static final String AJOUTER_REGION_NAV = "Ajouter localité";
+    /*Messages nav titles*/
     public static final String MESSAGES_NAV_ELEMENT_TITLE = "Messages";
-    public static final String ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE = "";
-    public static final String VISITES_TITLE = "Visites"; // :)
+    public static final String ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE = "Administration";
+    public static final String SEND_MESSAGE_NAV_ELEMENT_TITLE = "Envoyer un message";
+
+    /* Visites nav titles*/
+    public static final String VISITES_TITLE = "Visites";
+    public static final String VISITES_PROGRAMMEES_TITLE = "Visites programmées";
+    public static final String VISITES_PASSEES_TITLE = "Visites passées";
+    public static final String VISITES_ANNULEES_TITLE = "Visites annulées";
+
+    /*Logements nav titles*/
     public static final String LOGEMENT_TITLE = "Logements";
+    public static final String ALL_LOGEMENTS_TITLE = "Liste logements";
+    public static final String LOGEMENTS_VENDUS_TITLE = "Logements vendus";
+    public static final String LOGEMENTS_GELES_TITLE = "Logements gelés";
+
+
+
+    /*Clients nav titles*/
     public static final String CLIENTS_TITLE = "Clients";
+    public static final String LISTE_CLIENTS = "Liste des clients";
+    public static final String CLIENTS_MES_CLIENTS = "Mes clients";
+    public static final String CLIENTS_SIGNALER_CLIENT = "Signaler client";
+    /*Profil nav titles*/
+    public static final String MODIFIER_PROFIL = "Modifier profil";
+    public static final String CHANGE_PASSWORD = "Changer mot de passe";
+
+
+    public static final String LOGOUT_PAGE_TITILE = "Deconnexion";
 }

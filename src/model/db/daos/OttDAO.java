@@ -8,6 +8,17 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class OttDAO extends DAO{
+    public String generateNewToken(int userId) {
+        String code="";
+        do {
+            String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+            for (int i = 0; i < 6; i++) {
+                code = code + candidateChars.charAt((int) (Math.random() * candidateChars.length()));
+            }
+        }while (exists(code));
+        System.out.println("Attribution du code: "+add(code, userId));
+        return code;
+    }
     public boolean exists(String token) {
         ResultSet result;
         try {
@@ -20,6 +31,8 @@ public class OttDAO extends DAO{
         }
         return false;
     }
+
+
     public int getUserBytoken(String token) {
         ResultSet result;
         try {

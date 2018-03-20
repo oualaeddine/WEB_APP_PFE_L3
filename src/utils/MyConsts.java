@@ -26,7 +26,7 @@ public class MyConsts {
     AGENT_SERVLET_URL = "/AgentServlet",
 
     /*OPERATEUR*/
-    OPERATEUR_SERVLET_URL = "",
+    OPERATEUR_SERVLET_URL = "/OperateurServlet",
 
     /*RESPONSABLE VENTES*/
     RESONSABLE_VENTES_SERVLET_URL = "",
@@ -63,6 +63,7 @@ public class MyConsts {
     public static final String PRIX_MP3_URL = "";
     public static final String DASHBOARD_NAV_ELEMENT_TITLE = "Accueil";
     public static final String ETABLIR_RAPPORT_NAV_TITLE = "Etablir Rapport";
+    public static final String PROGRAMMER_VISITE_NAV_TITLE = "Programmer visite";
 
     /*Regions*/
     public static final String AJOUTER_REGION_NAV = "Ajouter localité";

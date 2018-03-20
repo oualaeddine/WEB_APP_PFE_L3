@@ -1,7 +1,22 @@
 <%@ page import="model.enums.UserType" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.enums.TablePage" %>
+<%@ page import="model.beans.humans.Employe" %>
 <!DOCTYPE html>
 <html lang="en">
+<%! private TablesView tablesView = new TablesView(); %>
+<%
+    UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
+    String currentPage = "CHANGER_MOT_DE_PASSE";
+    tablesView.setLoggedInUserId(userId);
+    tablesView.setLoggedInUserType(userType);
+    tablesView.setCurrentPage(currentPage);
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,268 +41,31 @@
 </head>
 
 <body class="bg-light">
-<%
-    switch ((UserType) request.getSession().getAttribute("type")) {
-        case AGENT:
-            out.print("<nav class=\"navbar navbar-expand-lg navbar-dark navbar-My fixed-top\" id=\"mainNav\">\n" +
-                    "    <a class=\"navbar-brand\" href=\"#\">Espace Agent</a>\n" +
-                    "    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
-                    "        <span class=\"navbar-toggler-icon\"></span>\n" +
-                    "    </button>\n" +
-                    "    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n" +
-                    "        <ul class=\"navbar-nav scroll-nav navbar-sidenav\" id=\"exampleAccordion\">\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Dashboard\">\n" +
-                    "                <a class=\"nav-link\" href=\"/AgentServlet\">\n" +
-                    "                    <i class=\"fa fa-fw fa-home\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Principale</span>\n" +
-                    "                </a>\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Charts\">\n" +
-                    "                <a class=\"nav-link\" href=\"../jsp/EtablirRapport.jsp\">\n" +
-                    "                    <i class=\"fa fa-fw fa-edit\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Etablir un rapport</span>\n" +
-                    "                </a>\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Tables\">\n" +
-                    "                <a class=\"nav-link\">\n" +
-                    "                    <i class=\"fa fa-fw fa-envelope\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Messages</span>\n" +
-                    "                </a>\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Components\">\n" +
-                    "                <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapseComponents\" data-parent=\"#exampleAccordion\">\n" +
-                    "                    <i class=\"fa fa-fw fa-eye\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Visites</span>\n" +
-                    "                </a>\n" +
-                    "                <ul class=\"sidenav-second-level collapse\" id=\"collapseComponents\">\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Visites?what=programmees\"><i class=\"fa fa-fw fa-calendar\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Visites Programmées</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Visites?what=passees\"><i class=\"fa fa-fw fa-calendar-check\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Visites Passées</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Visites?what=annulees\"><i class=\"fa fa-fw fa-calendar-times\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Visites annulées</span></a>\n" +
-                    "                    </li>\n" +
-                    "                </ul>\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Example Pages\">\n" +
-                    "                <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapseClients\" data-parent=\"#exampleAccordion\">\n" +
-                    "                    <i class=\"fa fa-fw fa-users\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Clients</span>\n" +
-                    "                </a>\n" +
-                    "                <ul class=\"sidenav-second-level collapse\" id=\"collapseClients\">\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Clients?what=all\"><i class=\"fa fa-fw fa-bars\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Liste des clients</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Clients?what=banned\"><i class=\"fa fa-fw fa-gratipay\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Clients bannis</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Clients?what=ban\"><i class=\"fa fa-fw fa-ban\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Signaler un client</span></a>\n" +
-                    "                    </li>\n" +
-                    "                </ul>\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"buildings\">\n" +
-                    "                <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapsebuildings\" data-parent=\"#exampleAccordion\">\n" +
-                    "                    <i class=\"fa fa-fw fa-building\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Logements</span>\n" +
-                    "                </a>\n" +
-                    "                <ul class=\"sidenav-second-level collapse\" id=\"collapsebuildings\">\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Logement?what=all\"><i class=\"fa fa-fw fa-list\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Liste des Logements</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Logement?what=vendus\"><i class=\"fa fa-fw fa-check\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Logements vendus</span></a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/Logement?what=geles\"><i class=\"fa fa-fw fa-object-group\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Logements gelés</span></a>\n" +
-                    "                    </li>\n" +
-                    "                </ul>\n" +
-                    "\n" +
-                    "            </li>\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Menu Levels\">\n" +
-                    "                <a class=\"nav-link nav-link-collapse\" data-toggle=\"collapse\" href=\"#collapseprofile\" data-parent=\"#exampleAccordion\">\n" +
-                    "                    <i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Mon profil</span>\n" +
-                    "                </a>\n" +
-                    "                <ul class=\"sidenav-second-level collapse\" id=\"collapseprofile\">\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"/ChangePassword\"><i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Changer mot de passe</span>\n" +
-                    "                        </a>\n" +
-                    "                    </li>\n" +
-                    "                    <li>\n" +
-                    "                        <a href=\"\"><i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                            <span class=\"nav-link-text\">Modifier informations</span>\n" +
-                    "                        </a>\n" +
-                    "                    </li>\n" +
-                    "\n" +
-                    "                </ul>\n" +
-                    "            </li>\n" +
-                    "\n" +
-                    "            <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Link\">\n" +
-                    "                <a class=\"nav-link\" href=\"/logout\">\n" +
-                    "                    <i class=\"fa fa-fw fa-sign-out\"></i>\n" +
-                    "                    <span class=\"nav-link-text\">Deconnexion</span>\n" +
-                    "                </a>\n" +
-                    "            </li>\n" +
-                    "        </ul>\n" +
-                    "        <ul class=\"navbar-nav sidenav-toggler\">\n" +
-                    "            <li class=\"nav-item\">\n" +
-                    "                <a class=\"nav-link text-center\" id=\"sidenavToggler\">\n" +
-                    "                    <i class=\"fa fa-fw fa-angle-left\"></i>\n" +
-                    "                </a>\n" +
-                    "            </li>\n" +
-                    "        </ul>\n" +
-                    "\n" +
-                    "    </div>\n" +
-                    "</nav>");
-            break;
-        case OPERATEUR:
-            out.print("<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary sidebar fixed-top\" id=\"mainNav\">\n" +
-                    "        <a class=\"navbar-brand\" href=\"#\">Espace Operateur</a>\n" +
-                    "        <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
-                    "      <span class=\"navbar-toggler-icon\"></span>\n" +
-                    "    </button>\n" +
-                    "        <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n" +
-                    "            <ul class=\"navbar-nav scroll-nav  navbar-sidenav\" id=\"exampleAccordion\">\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Dashboard\">\n" +
-                    "                    <a class=\"nav-link\" href=\"#\">\n" +
-                    "                        <i class=\"fa fa-fw fa-home\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Principale</span>\n" +
-                    "                    </a>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Charts\">\n" +
-                    "                    <a class=\"nav-link\" href=\"/ProgrammerVisite\">\n" +
-                    "                        <i class=\"fa fa-fw fa-calendar-plus\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Programmer une visite</span>\n" +
-                    "                    </a>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Tables\">\n" +
-                    "                    <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#messageComp\" data-parent=\"#exampleAccordion\">\n" +
-                    "                        <i class=\"fa fa-fw fa-envelope\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Messages</span>\n" +
-                    "                    </a>\n" +
-                    "                    <ul class=\"sidenav-second-level collapse\" id=\"messageComp\">\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Messages clients</a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Messages Administration</a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Archive</a>\n" +
-                    "                        </li>\n" +
-                    "                    </ul>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Components\">\n" +
-                    "                    <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapseComponents\" data-parent=\"#exampleAccordion\">\n" +
-                    "                        <i class=\"fa fa-fw fa-eye\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Visites</span>\n" +
-                    "                    </a>\n" +
-                    "                    <ul class=\"sidenav-second-level collapse\" id=\"collapseComponents\">\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Visites Programmées</a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Visites Passées</a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\">Cards</a>\n" +
-                    "                        </li>\n" +
-                    "                    </ul>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Example Pages\">\n" +
-                    "                    <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapseClients\" data-parent=\"#exampleAccordion\">\n" +
-                    "                        <i class=\"fa fa-fw fa-users\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Clients</span>\n" +
-                    "                    </a>\n" +
-                    "                    <ul class=\"sidenav-second-level collapse\" id=\"collapseClients\">\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-bars\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Liste des clients</span></a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-gratipay\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Mes Clients</span></a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-ban\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Signaler un client</span></a>\n" +
-                    "                        </li>\n" +
-                    "                    </ul>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"buildings\">\n" +
-                    "                    <a class=\"nav-link nav-link-collapse collapsed\" data-toggle=\"collapse\" href=\"#collapsebuildings\" data-parent=\"#exampleAccordion\">\n" +
-                    "                        <i class=\"fa fa-fw fa-building\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Logements</span>\n" +
-                    "                    </a>\n" +
-                    "                    <ul class=\"sidenav-second-level collapse\" id=\"collapsebuildings\">\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-list\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Liste des Logements</span></a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-check\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Logements vendus</span></a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"#\"><i class=\"fa fa-fw fa-object-group\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Mes Logements</span></a>\n" +
-                    "                        </li>\n" +
-                    "                    </ul>\n" +
-                    "\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Menu Levels\">\n" +
-                    "                    <a class=\"nav-link nav-link-collapse\" data-toggle=\"collapse\" href=\"#collapseprofile\" data-parent=\"#exampleAccordion\">\n" +
-                    "                        <i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Mon profil</span>\n" +
-                    "                    </a>\n" +
-                    "                    <ul class=\"sidenav-second-level collapse\" id=\"collapseprofile\">\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"/ChangePassword\"><i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Changer mot de passe</span>\n" +
-                    "                            </a>\n" +
-                    "                        </li>\n" +
-                    "                        <li>\n" +
-                    "                            <a href=\"\"><i class=\"fa fa-fw fa-user\"></i>\n" +
-                    "                                <span class=\"nav-link-text\">Modifier informations</span>\n" +
-                    "                            </a>\n" +
-                    "                        </li>\n" +
-                    "\n" +
-                    "                    </ul>\n" +
-                    "                </li>\n" +
-                    "                <li class=\"nav-item\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Link\">\n" +
-                    "                    <a class=\"nav-link\" href=\"/logout\">\n" +
-                    "                        <i class=\"fa fa-fw fa-sign-out\"></i>\n" +
-                    "                        <span class=\"nav-link-text\">Deconnexion</span>\n" +
-                    "                    </a>\n" +
-                    "                </li>\n" +
-                    "            </ul>\n" +
-                    "            <ul class=\"navbar-nav sidenav-toggler\">\n" +
-                    "                <li class=\"nav-item\">\n" +
-                    "                    <a class=\"nav-link text-center\" id=\"sidenavToggler\">\n" +
-                    "                        <i class=\"fa fa-fw fa-angle-left\"></i>\n" +
-                    "                    </a>\n" +
-                    "                </li>\n" +
-                    "            </ul>\n" +
-                    "\n" +
-                    "        </div>\n" +
-                    "    </nav>");
-            break;
+<nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
+     id="mainNav">
+    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom()));%></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
+            <% for (MyView navElement : tablesView.getNav().getElements()) {
+                out.print(navElement.getHtml());
+            }
+            %>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
 
-    }
-%>
+    </div>
+</nav>
 
 <div class="container">
     <ol class="breadcrumb">

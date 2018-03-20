@@ -1,6 +1,6 @@
 package model.beans.views.nav;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import control.servlets.MyServlet;
 import model.beans.views.MyView;
 import model.enums.TablePage;
 import model.enums.UserType;
@@ -14,7 +14,6 @@ public class Nav {
     private UserType userType;
     private TablePage currentPage;
     private LinkedList<MyView> navElements;
-    private int userId;
 
     public int getUserId() {
         return UserId;
@@ -26,9 +25,9 @@ public class Nav {
 
     public String getTitle() {
         if (userType != UserType.ADMIN)
-            return "Espace " + Util.getStringFromType(userType) + "s";
+            return "Espace " + Util.getStringFromType(userType)+ "s " ;
         else
-            return "Admin Panel";
+            return "Espace admins ";
     }
 
     public LinkedList<MyView> getElements() {
@@ -43,10 +42,10 @@ public class Nav {
                 setupNavElementsForAgent();
                 break;
             case OPERATEUR:
-                setupNavElementsForAOperateur();
+                setupNavElementsForOperateur();
                 break;
             case ADMIN:
-                setupNavElementsForADmin();
+                setupNavElementsForAdmin();
                 break;
             case RESPONSABLE_VENTES:
                 setupNavElementsForResponsableVentes();
@@ -54,7 +53,7 @@ public class Nav {
         }
     }
 
-    private void setupNavElementsForADmin() {
+    private void setupNavElementsForAdmin() {
         String urlBase = MyConsts.ADMIN_SERVLET_URL;
 
         /*dashboard*/
@@ -155,9 +154,7 @@ public class Nav {
 
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage, TablePage.CANCELED_VISITES), "Visites annulées", urlBase + "?what=visitesAnnulees", "fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
-
-        NavElement ajouterVisite = new NavElement(false, "Ajouter visite", urlBase + "?what=ajouterVisite", "fa-plus");
-        visitesSubNavElementList.add(ajouterVisite);
+        
 
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav", "fa-eye", "Visites", visitesSubNavElementList, isPage(currentPage, TablePage.VISITES));
         navElements.add(visitesExpendableNavElement);
@@ -215,27 +212,82 @@ public class Nav {
 
     }
 
-    private void setupNavElementsForAOperateur() {
+    private void setupNavElementsForOperateur() {
         String urlBase = MyConsts.OPERATEUR_SERVLET_URL;
-
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-        /*programmer visite*/
-        /*ajouter client*/
-        /*messages*/// TODO: 3/1/2018 complete
+        /*Programmer visite*/
+
+        NavElement programmerVisiteNavElement = new NavElement(false, MyConsts.PROGRAMMER_VISITE_NAV_TITLE, urlBase + "?what=programmerVisite", "fa-edit");
+        navElements.add(programmerVisiteNavElement);
+
+        /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES), MyConsts.ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=AdminsMessages", "");// TODO: 3/1/2018 add icon
+        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.ADMINISTRATION_MESSAGES_FOR_EMPLOYEES), MyConsts.ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=AdminsMessages", "fa-envelope");
         messagesSubNavElementList.add(administrationMessagesNavElement);
+        NavElement envoyerMessage = new NavElement(isPage(currentPage,TablePage.NEW_MESSAGE),"Envoyer un message",urlBase + "?what=newMessage","fa fa-pencil");
+        messagesSubNavElementList.add(envoyerMessage);
         ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
         navElements.add(messagesExpendableNavElement);
         /*visites*/
-        /*logements*/
+        LinkedList<NavElement> visitesSubNavElementList = new LinkedList<>();
+        NavElement visitesProgrammeesNavElement = new NavElement(isPage(currentPage,TablePage.PROGRAMMED_VISITES),MyConsts.VISITES_PROGRAMMEES_TITLE,MyConsts.AGENT_SERVLET_URL + "?what=visitesProgrammees","fa-calendar");
+        visitesSubNavElementList.add(visitesProgrammeesNavElement);
+
+        NavElement visitesPasseesNavElement = new NavElement((isPage(currentPage, TablePage.PASSED_VISITS)), MyConsts.VISITES_PASSEES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=visitesPassees", "fa-calendar-check");
+        visitesSubNavElementList.add(visitesPasseesNavElement);
+
+        NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage,TablePage.CANCELED_VISITES),MyConsts.VISITES_ANNULEES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=visitesAnnulees","fa-calendar-times");
+        visitesSubNavElementList.add(visitesAnnuleesNavElement);
+
+        ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav","fa-eye","Visites",visitesSubNavElementList,isPage(currentPage,TablePage.VISITES));
+        navElements.add(visitesExpendableNavElement);
         /*clients*/
-        /*agents*/
+        LinkedList<NavElement> clientsSubNavElement = new LinkedList<>();
+
+        NavElement listeClientNavElement = new NavElement(isPage(currentPage,TablePage.CLIENTS),MyConsts.LISTE_CLIENTS,MyConsts.AGENT_SERVLET_URL+"?what=listeClients","fa fa-list");
+        clientsSubNavElement.add(listeClientNavElement);
+
+        NavElement mesClientsNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS_FOR_USER), MyConsts.CLIENTS_MES_CLIENTS, MyConsts.AGENT_SERVLET_URL + "?what=myClients", "fa fa-fw fa-gratipay");
+        clientsSubNavElement.add(mesClientsNavElement);
+
+        NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.CLIENTS_SIGNALER_CLIENT, MyConsts.AGENT_SERVLET_URL + "?what=signalerClient", "fa fa-fw fa-ban");
+        clientsSubNavElement.add(signalerClientNavElement);
+
+        ExpendableNavElement clientsExpendableNavElement = new ExpendableNavElement("clientsNav","fa fa-fw fa-users","Client",clientsSubNavElement,isPage(currentPage,TablePage.CLIENTS));
+        navElements.add(clientsExpendableNavElement);
+
+        /*logements*/
+        LinkedList<NavElement> logementsSubNavElement = new LinkedList<>();
+
+        NavElement listeLogementsNavElement = new NavElement(isPage(currentPage,TablePage.LOGEMENTS),MyConsts.LOGEMENT_TITLE,MyConsts.AGENT_SERVLET_URL + "?what=allLogements","fa fa-list");
+        logementsSubNavElement.add(listeLogementsNavElement);
+
+        NavElement logementsVendusNavElement = new NavElement(isPage(currentPage,TablePage.LOGEMENTS_VENDUS),MyConsts.LOGEMENTS_VENDUS_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=logementVendus","fa fa-check");
+        logementsSubNavElement.add(logementsVendusNavElement);
+
+        NavElement logementsGelesNavElement = new NavElement(isPage(currentPage,TablePage.FROZEN_LOGEMENTS),MyConsts.LOGEMENTS_GELES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=logementGeles","fa fa-fw fa-object-group");
+        logementsSubNavElement.add(logementsGelesNavElement);
+
+        ExpendableNavElement logementsExpendableNavElement = new ExpendableNavElement("logementsNav","fa fa-building","Logements",logementsSubNavElement,isPage(currentPage,TablePage.LOGEMENTS));
+        navElements.add(logementsExpendableNavElement);
         /*profile*/
+        LinkedList<NavElement> profilSubNavElement = new LinkedList<>();
+
+        NavElement modifierProfilNavElement = new NavElement(isPage(currentPage, TablePage.MODIFIER_PROFIL), MyConsts.MODIFIER_PROFIL, MyConsts.AGENT_SERVLET_URL + "?what=modifierProfil", "fa fa-user-circle");
+        profilSubNavElement.add(modifierProfilNavElement);
+
+        NavElement changerMdpNavElement = new NavElement(isPage(currentPage, TablePage.CHANGER_MOT_DE_PASSE), MyConsts.CHANGE_PASSWORD, MyConsts.AGENT_SERVLET_URL + "?what=changePassword","fa fa-lock");
+        profilSubNavElement.add(changerMdpNavElement);
+
+        ExpendableNavElement profilExpendableNavElement = new ExpendableNavElement("profilNav", "fa fa-fw fa-user","Profil", profilSubNavElement, isPage(currentPage, TablePage.MODIFIER_PROFIL));
+        navElements.add(profilExpendableNavElement);
+
         /*logout*/
+        NavElement logoutNavElement = new NavElement(isPage(currentPage, TablePage.LOGOUT), MyConsts.LOGOUT_PAGE_TITILE, MyConsts.LOGOUT_SERVLET_URL, "fa fa-fw fa-sign-out");
+        navElements.add(logoutNavElement);
     }
 
     private void setupNavElementsForAgent() {
@@ -342,7 +394,5 @@ public class Nav {
         this.currentPage = currentPage;
     }
 
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
+
 }

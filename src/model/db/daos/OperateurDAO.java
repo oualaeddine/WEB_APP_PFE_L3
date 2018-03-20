@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.humans.Admin;
 import model.beans.humans.Operateur;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -156,20 +157,24 @@ public class OperateurDAO extends DAO {
         ResultSet result;
         try {
             result = statement.executeQuery("SELECT * FROM operateur");
-            Operateur operateur = new Operateur();
-            operateur.setId(result.getInt("id"));
-            operateur.setNom(result.getString("nom"));
-            operateur.setPrenom(result.getString("prenom"));
-            operateur.setDateNaissance(result.getDate("dateNaiss"));
-            operateur.setAdresse(result.getString("adresse"));
-            operateur.setEmail(result.getString("email"));
-            operateur.setUsername(result.getString("username"));
-            operateur.setPassword(result.getString("password"));
-            operateur.setDateAdded(result.getDate("dateAdded"));
-//            operateur.setAddedBy(result.getInt("addedBy")); TODO:hedi teni
-            operateur.setSuspended(result.getBoolean("isSuspended"));
+            while (result.next()) {
+                Operateur operateur = new Operateur();
+                operateur.setId(result.getInt("id"));
+                operateur.setNom(result.getString("nom"));
+                operateur.setPrenom(result.getString("prenom"));
+                operateur.setDateNaissance(result.getDate("dateNaiss"));
+                operateur.setTel(result.getString("tel"));
+                operateur.setAdresse(result.getString("adresse"));
+                operateur.setEmail(result.getString("email"));
+                operateur.setUsername(result.getString("username"));
+                operateur.setPassword(result.getString("password"));
+                operateur.setDateAdded(result.getDate("dateAdded"));
+                operateur.setCreator((Admin) new AdminsDAO().getById(result.getInt("addedBy")));
+                operateur.setSuspended(result.getBoolean("isSuspended"));
 
-            list.add(operateur);
+                list.add(operateur);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

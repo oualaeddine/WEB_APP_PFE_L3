@@ -7,6 +7,7 @@
 <%@ page import="model.beans.humans.Person" %>
 <%@ page import="model.beans.views.MyView" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.beans.humans.Employe" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -18,6 +19,7 @@
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+    Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     String currentPage = request.getParameter("page");
     tablesView.setLoggedInUserId(userId);
@@ -50,7 +52,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle());%></a>
+    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">

@@ -1,9 +1,6 @@
 package model.beans.views.table;
 
-import model.beans.Logement;
-import model.beans.Message;
-import model.beans.Vente;
-import model.beans.Visite;
+import model.beans.*;
 import model.beans.humans.*;
 import model.enums.DataTableRowFormat;
 
@@ -21,14 +18,17 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case LOCALITE:
+                setupHtmlForLocalite();
+                break;
             case LOGEMENT:
                 setupHtmlForLogement();
                 break;
             case ADMIN:
-                setupHtmlForLogement();
+                setupHtmlForAdmin();
                 break;
             case AGENT:
-                setupHtmlForEmployee();
+                setupHtmlForAgent();
                 break;
             case OPERATEUR:
                 setupHtmlForEmployee();
@@ -51,9 +51,40 @@ public class DataTableRow {
         }
     }
 
+    private void setupHtmlForAgent() {
+        Agent agent= (Agent) object;
+        html = "<tr>" +
+                "<td><b>"
+                       + agent.getId() + "</td>" +
+                "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
+                "<td>" + agent.getTel() + "</td>" +
+                "<td>" + agent.getAdresse() + "</td>" +
+                "<td>" + agent.getEmail() + "</td>" +
+                "<td>" + agent.getDateNaissance() + "</td>" +
+                "<td>" + agent.getLocalite().getNom() + "</td></tr>" ;
+    }
+
+    private void setupHtmlForAdmin() {
+        Admin admin = (Admin) object;
+        html = "<tr>" +
+                "<td><b>" + admin.getId() + "</td>" +
+                "<td>" + admin.getNom() + " "+ admin.getPrenom()+"</td>" +
+                "<td>" + admin.getTel() + "</td>" +
+                "<td>" + admin.getAdresse() + "</td>" +
+                "<td>" + admin.getEmail() + "</td>" +
+                "<td>" + admin.getDateNaissance() + "</td>" +
+                "<td>" + admin.getRole() + "</td>" ;
+    }
+
+    private void setupHtmlForLocalite() {
+        Localite localite = (Localite) object;
+        html= "<tr><td><b>" + localite.getId() + "</td>" +
+              "<td>" + localite.getNom() + "</td></tr>";
+    }
+
     private void setupHtmlForEmployee() {
         Employe operateur = (Employe) object;
-        html = "<td><b>" + operateur.getId() + "</td>" +
+        html = "<tr><td><b>" + operateur.getId() + "</td>" +
                 "<td>" + operateur.getNom() + "</td>" +
                 "<td>" + operateur.getPrenom() + "</td>" +
                 "<td>" + operateur.getTel() + "</td>" +
@@ -62,7 +93,7 @@ public class DataTableRow {
                 "<td>" + operateur.getDateNaissance() + "</td>" +
                 "<td>" + operateur.isSuspendedString() + "</td>" +
                 "<td>" + operateur.getCreator().getNom() + " " + operateur.getCreator().getPrenom() + "</td>" +
-                "<td>" + operateur.getDateAdded() + "</b></td>";
+                "<td>" + operateur.getDateAdded() + "</b></td></tr>";
     }
 
     private void setupHtmlForClient() {
@@ -76,7 +107,6 @@ public class DataTableRow {
                 "<td>" + client.getEmail() + "</td>" +
                 "<td>" + client.getDateNaissance() + "</td>" +
                 "<td>" + client.isBannedString() + "</td>" +
-                "<td>" + client.getDateAdded() + "</td>" +
                 "</tr>";
 
     }
@@ -88,6 +118,17 @@ public class DataTableRow {
 
     private void setupHtmlForVente() {
         Vente vente = (Vente) object;
+        html="<tr>" +
+                "<td>"+vente.getId()+"</td>"+
+                "<td>"+vente.getAgent().getNom()+" "+vente.getAgent().getPrenom()+"</td>"+
+                "<td>"+vente.getResponsableVente().getNom()+" "+vente.getResponsableVente().getPrenom() +"</td>"+
+                "<td>"+vente.getClient().getNom()+" "+vente.getClient().getPrenom() +"</td>"+
+                "<td>"+vente.getLogement().getTitre()+"</td>"+
+                "<td>"+vente.getDate()+"</td>"+
+                "<td>"+vente.getEtatVente()+"</td>"+
+
+            "</tr>";
+
     }
 
     private void setupHtmlForVisite() {

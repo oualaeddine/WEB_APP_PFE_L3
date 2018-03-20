@@ -1,6 +1,8 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="java.util.LinkedList" %><%--
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="model.beans.humans.ResponsableVente" %>
+<%@ page import="model.db.daos.ResponsableVentesDAO" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 16/03/2018
@@ -14,9 +16,9 @@
 </head>
 <body>
     <%
-        LinkedList<Visite> allVisits = new VisitesDao().getPassee();
-        for (Visite visite : allVisits){
-        out.print("id: " + visite.getId() + " logement: " + visite.getLogement().getTitre() + " agent: " + visite.getAgent().getUsername() + " client: " + visite.getClient().getUsername() + " timestamp: " + visite.getTime() + " Etat: " + visite.getEtatVisite());
+        LinkedList<ResponsableVente> all = new ResponsableVentesDAO().getAll();
+        for (ResponsableVente responsableVente : all){
+        out.print("id: " + responsableVente.getId() + " nom: " + responsableVente.getNom()+ " addedBy: "+responsableVente.getCreator().getNom());
 
     }%>
 

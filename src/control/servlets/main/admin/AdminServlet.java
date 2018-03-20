@@ -19,7 +19,7 @@ public class AdminServlet extends MyServlet {
         if (isLoggedIn(request)) {
             String what = request.getParameter("what");
             if (what == null) {
-                this.getServletContext().getRequestDispatcher("/html/admin.html").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
             } else {
                 switch (what) {
                     case "messages":{
@@ -27,10 +27,49 @@ public class AdminServlet extends MyServlet {
                         break;
                     }
                     case "newMessage":{
-                        this.getServletContext().getRequestDispatcher("/html/newMessage.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request, response);
                         break;
                     }
-
+                    case "listeAdmins":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINS").forward(request, response);
+                        break;
+                    }
+                    case "listeAgents":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENTS").forward(request, response);
+                        break;
+                    }
+                    case "listeOperateurs":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=OPERATEURS").forward(request, response);
+                        break;
+                    }
+                    case "listeResVente":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=RESPONSABLES_VENTES").forward(request, response);
+                        break;
+                    }
+                    case "ajouterEmploye":{
+                        this.getServletContext().getRequestDispatcher("/html/ajouterEmploye.html").forward(request, response);
+                        break;
+                    }
+                    case "approuverEmploye":{
+                        this.getServletContext().getRequestDispatcher("/html/ajouterEmploye.html").forward(request, response);
+                        break;
+                    }
+                    case "suspendreEmploye":{
+                        this.getServletContext().getRequestDispatcher("/html/suspendreEmploye.html").forward(request, response);
+                        break;
+                    }
+                    case "listeRegions":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=LOCALITES").forward(request,response);
+                        break;
+                    }
+                    case "ajouterRegion":{
+                        this.getServletContext().getRequestDispatcher("/html/ajouterRegion.html").forward(request,response);
+                        break;
+                    }
+                    case "listeVisites":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=VISITES").forward(request, response);
+                        break;
+                    }
                     case "visitesProgrammees":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PROGRAMMED_VISITES").forward(request,response);
                         break;
@@ -47,8 +86,16 @@ public class AdminServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS").forward(request, response);
                         break;
                     }
-                    case "myClients":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS_FOR_USER").forward(request, response);
+                    case "listePlaintes":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PLAINTES").forward(request, response);
+                        break;
+                    }
+                    case "bannirClient":{
+                        this.getServletContext().getRequestDispatcher("/html/bannirClient.html").forward(request, response);
+                        break;
+                    }
+                    case "clientsBannis":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=BANNED_CLIENTS").forward(request, response);
                         break;
                     }
                     case "signalerClient":{
@@ -67,6 +114,10 @@ public class AdminServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=FROZEN_LOGEMENTS").forward(request, response);
                         break;
                     }
+                    case "ajouterLogement":{
+                        this.getServletContext().getRequestDispatcher("/jsp/ajouterLogement.jsp").forward(request,response);
+                        break;
+                    }
                     case "modifierProfil":{
                         this.getServletContext().getRequestDispatcher("/modifierProfil.html").forward(request, response);
                         break;
@@ -75,8 +126,24 @@ public class AdminServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/ChangePassword").forward(request, response);
                         break;
                     }
+                    case "listeVentes":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=VENTES").forward(request, response);
+                        break;
+                    }
+                    case "ventesConfirmees":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CONFIRMED_VENTES").forward(request, response);
+                        break;
+                    }
+                    case "ajouterVente":{
+                        this.getServletContext().getRequestDispatcher("/html/ajouterVente.html").forward(request, response);
+                        break;
+                    }
+                    case "modifierInfosContact":{
+                        this.getServletContext().getRequestDispatcher("/html/modifierInfosContact.html").forward(request, response);
+                        break;
+                    }
                     default:
-                        this.getServletContext().getRequestDispatcher("//html/agent.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
                         break;
                 }
 

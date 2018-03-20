@@ -2,13 +2,15 @@ package model.db.daos;
 
 import model.beans.humans.Employe;
 import model.db.DAO;
+import model.enums.UserType;
+import utils.Util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class OttDAO extends DAO{
-    public String generateNewToken(int userId) {
+    public String generateNewToken(int userId,UserType userType) {
         String code="";
         do {
             String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
@@ -16,7 +18,7 @@ public class OttDAO extends DAO{
                 code = code + candidateChars.charAt((int) (Math.random() * candidateChars.length()));
             }
         }while (exists(code));
-        System.out.println("Attribution du code: "+add(code, userId));
+        System.out.println("Attribution du code: "+add(code, userId,userType));
         return code;
     }
     public boolean exists(String token) {
@@ -32,6 +34,19 @@ public class OttDAO extends DAO{
         return false;
     }
 
+    public boolean verifyToken(String token, int userId, UserType userType) {
+        ResultSet result;
+        boolean exists=false;
+        try {
+            result = statement.executeQuery("SELECT id FROM ott WHERE token='" + token + "' AND userId=" + userId + " AND userType='" + Util.getStringFromType(userType) + "';");
+            if (result.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public int getUserBytoken(String token) {
         ResultSet result;
@@ -45,10 +60,10 @@ public class OttDAO extends DAO{
         }
         return 0;
     }
-    public boolean add(String code, int userId) {
+    public boolean add(String code, int userId, UserType userType) {
         try {
-            statement.execute("INSERT INTO ott (token, userId, timestamp) VALUES (" +
-                    "'" + code + "', " + userId + ", CURRENT_TIMESTAMP);");
+            statement.execute("INSERT INTO ott (token, userId,userType, timestamp) VALUES (" +
+                    "'" + code + "', " + userId +", '"+ Util.getStringFromType(userType) + "', CURRENT_TIMESTAMP);");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -168,4 +168,37 @@ public class VentesDAO extends DAO {
         }
         return false;
     }
+
+    public LinkedList<Vente> getConfirmed() {
+        ResultSet result;
+        LinkedList<Vente> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM vente WHERE etat='confirmee';");
+            while (result.next()) {
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                switch (result.getString("etat")) {
+                    case "confirmee":
+                        vente.setEtatVente(EtatVente.CONFIRMEE);
+                        break;
+                    case "non_confirmee":
+                        vente.setEtatVente(EtatVente.NON_CONFIRMEE);
+                        break;
+                    case "annulee":
+                        vente.setEtatVente(EtatVente.ANNULEE);
+                        break;
+                }
+                vente.setDate(result.getDate("date"));
+
+                list.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

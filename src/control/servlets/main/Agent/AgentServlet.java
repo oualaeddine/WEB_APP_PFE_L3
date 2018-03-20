@@ -20,7 +20,7 @@ public class AgentServlet extends MyServlet {
         if (isLoggedIn(request)) {
             String what = request.getParameter("what");
             if (what == null) {
-                this.getServletContext().getRequestDispatcher("/html/agent.html").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/jsp/agent.jsp").forward(request, response);
             } else {
                 switch (what) {
                     case "etablirRapport":{
@@ -81,7 +81,7 @@ public class AgentServlet extends MyServlet {
                         break;
                     }
                     default:
-                        this.getServletContext().getRequestDispatcher("//html/agent.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/agent.jsp").forward(request, response);
                         break;
                 }
 

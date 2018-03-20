@@ -124,17 +124,16 @@ public class LogementDAO extends DAO {
                 jardin=1;
             else
                 jardin=0;
-            statement.execute("INSERT INTO logement (titre, description, superficie, etat, region, adresse, nbrPieces, nbrFacades, avecJardin, etage) VALUES ("+
-                    "'"+logement.getTitre()+"',"+
-                    "'"+logement.getDescription()+"',"+
-                    logement.getSuperficie()+","+
-                    "'"+logement.getEtat()+"',"+
-                    "0,"+ /*TODO: idRegion*/
-                    "'"+logement.getAdresse()+"',"+
-                    logement.getNbrPieces()+","+
-                    logement.getNbrFacades()+","+
-                    jardin+","+
+            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrFacades, etage,avecJardin) VALUES ("+
+                    "'"+logement.getTitre()+"', \n"+
+                    "'"+logement.getDescription()+"',\n "+
+                    logement.getSuperficie()+",\n "+
+                    logement.getLocalite().getId() +", \n"+
+                    "'"+logement.getAdresse()+"',\n "+
+                    logement.getNbrPieces()+", \n"+
+                    logement.getNbrFacades()+", \n"+
                     logement.getEtage()+
+                    ","+jardin+
                     ");");
             return true;
         }catch (SQLException e){
@@ -148,7 +147,7 @@ public class LogementDAO extends DAO {
         Logement logement = (Logement) object;
         try {
             statement.execute("DELETE FROM logement " +
-                    "WHERE titre='"+logement.getTitre()+"';");
+                    "WHERE id='"+logement.getId()+"';");
             return true;
         }catch (SQLException e){
             e.printStackTrace();

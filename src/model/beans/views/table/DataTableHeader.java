@@ -29,7 +29,7 @@ public class DataTableHeader {
                 setupTableHeaderForLogements();
                 break;
             case AGENTS:
-                setupTableHeaderForEmployees();
+                setupTableHeaderForAgents();
                 break;
             case SUSPENDED_AGENTS:
                 setupTableHeaderForEmployees();
@@ -88,7 +88,33 @@ public class DataTableHeader {
             case CLIENTS_MESSAGES_FOR_USER:
                 setupTableHeaderForMessages();
                 break;
+            case VENTES:
+                setupTableHeaderForVentes();
+                break;
         }
+    }
+
+    private void setupTableHeaderForVentes() {
+        html =
+                "                        <tr>\n" +
+                        "                            <th>ID</th>\n" +
+                        "                            <th>Agent</th>\n" +
+                        "                            <th>Responsable vente</th>\n" +
+                        "                            <th>Client</th>\n" +
+                        "                            <th>Logement</th>\n" +
+                        "                            <th>Date</th>\n" +
+                        "                            <th>Etat</th>\n" +
+                        "                        </tr>";
+    }
+
+    private void setupTableHeaderForAgents() {
+        html =  "<tr><td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>" +
+                "<td><b>Localité</b></td></tr>" ;
     }
 
     private void setupTableHeaderForMessages() {
@@ -97,46 +123,45 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForClients() {
-        html =  "<td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Prenom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>";
-
-    }
-
-    private void setupTableHeaderForLocalite() {
-        html =  "<td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>";
-
-    }
-
-    private void setupTableHeaderForAdmins() {
-        html = "<td><b>ID</b></td>" +
+        html =  "<tr><td><b>ID</b></td>" +
                 "<td><b>Nom</b></td>" +
                 "<td><b>Prenom</b></td>" +
                 "<td><b>Telephone</b></td>" +
                 "<td><b>Adresse</b></td>" +
                 "<td><b>email</b></td>" +
                 "<td><b>Date de naissance</b></td>" +
-                "<td><b>Role</b></td>";
+                "<td><b>Etat</b></td></tr>" ;
+    }
+
+    private void setupTableHeaderForLocalite() {
+        html =  "<tr><td><b>ID</b></td>" +
+                "<td><b>Nom</b></td></tr>";
+
+    }
+
+    private void setupTableHeaderForAdmins() {
+        html = "<tr><td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>" +
+                "<td><b>Role</b></td></tr>";
 
     }
 
     private void setupTableHeaderForVisites() {
-        html = "<td><b>ID</b></td>" +
+        html = "<tr><td><b>ID</b></td>" +
                 "<td><b>Logement</b></td>" +
                 "<td><b>Agent</b></td>" +
                 "<td><b>Client</b></td>" +
                 "<td><b>Horaire</b></td>" +
-                "<td><b>Etat</b></td>" ;
+                "<td><b>Etat</b></td></tr>" ;
 
     }
 
     private void setupTableHeaderForEmployees() {
-        html = "<td><b>ID</b></td>" +
+        html = "<tr><td><b>ID</b></td>" +
                 "<td><b>Nom</b></td>" +
                 "<td><b>Prenom</b></td>" +
                 "<td><b>Telephone</b></td>" +
@@ -144,8 +169,8 @@ public class DataTableHeader {
                 "<td><b>email</b></td>" +
                 "<td><b>Date de naissance</b></td>" +
                 "<td><b>Etat</b></td>" +
-                "<td><b>Approuver par</b></td>"+
-                "<td><b>Date d'ajout</b></td>";
+                "<td><b>Approuvé par</b></td>"+
+                "<td><b>Date d'ajout</b></td></tr>";
     }
 
     private void setupTableHeaderForLogements() {

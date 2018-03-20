@@ -48,6 +48,7 @@ public class LocaliteDAO extends DAO  {
             statement.execute("INSERT INTO localite(nom) VALUES (" +
                     "'"+localite.getNom()+"'"+
                     ");");
+            return true;
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -85,7 +86,7 @@ public class LocaliteDAO extends DAO  {
         LinkedList<Localite> list = new LinkedList<>();
         ResultSet result;
         try{
-            result = statement.executeQuery("SELECT * FROM localite");
+            result = statement.executeQuery("SELECT * FROM localite;");
             while (result.next()){
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));

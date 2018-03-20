@@ -54,7 +54,7 @@ public class Util {
 //        }
         employe = new EmployeDAO().getByEmail(email,userType);
         name = employe.getNom()+" "+employe.getPrenom();
-        String actionUrl = "/ForgotPassword?linsa="+employe.getUsername()+"&code="+code+"&wech="+getStringFromType(userType);
+        String actionUrl = "/ForgotPassword?linsa="+employe.getId()+"&code="+code+"&wech="+getStringFromType(userType);
 
 
 
@@ -213,6 +213,8 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case VENTES:
+                return "Ventes";
             case PASSED_VISITS:
                 return "Visites passées";
             case LOGEMENTS:
@@ -269,6 +271,8 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "VENTES":
+                return VENTES;
             case "LOGEMENTS":
                 return LOGEMENTS;
             case "LOGEMENTS_FOR_USER":

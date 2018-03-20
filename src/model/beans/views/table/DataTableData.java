@@ -2,6 +2,7 @@ package model.beans.views.table;
 
 import model.beans.Localite;
 import model.beans.Logement;
+import model.beans.Vente;
 import model.beans.Visite;
 import model.beans.humans.*;
 import model.db.daos.*;
@@ -29,7 +30,6 @@ public class DataTableData {
     private void setupData() {
         switch (currentPage) {
             case LOGEMENTS:
-                // TODO: 2/18/2018 selon la page on affecte les données depuis le dao like this
                 setupDataAllLogements();
                 break;
             case LOGEMENTS_FOR_USER:
@@ -86,6 +86,12 @@ public class DataTableData {
             case LOCALITES:
                 setupDataLocaliteList();
                 break;
+            case VENTES:
+                setupDataVentes();
+                break;
+            case CONFIRMED_VENTES:
+                setupDataConfirmedVentes();
+                break;
             case CLIENTS:
                 setupDataClientsList();
                 break;
@@ -101,6 +107,21 @@ public class DataTableData {
                 break;
             case CLIENTS_MESSAGES_FOR_USER:
                 break;
+            
+        }
+    }
+
+    private void setupDataConfirmedVentes() {
+        LinkedList<Vente> list = new VentesDAO().getConfirmed();
+        for (Vente vente : list) {
+            data.add(new DataTableRow(DataTableRowFormat.VENTE, vente));
+        }
+    }
+
+    private void setupDataVentes() {
+        LinkedList<Vente> list = new VentesDAO().getAll();
+        for (Vente vente : list) {
+            data.add(new DataTableRow(DataTableRowFormat.VENTE, vente));
         }
     }
 

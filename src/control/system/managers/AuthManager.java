@@ -84,6 +84,7 @@ public class AuthManager {
         /* Mise en session des attributs de l'utilisateur */
         session.setAttribute(MyServlet.LOGGED_IN_USER, new EmployeDAO().getByUsername(username, type));
         session.setAttribute(MyServlet.LOGGED_IN_USER_TYPE, type);
+        session.setAttribute(MyServlet.LOGGED_IN_USER_USERNAME, username);
         try {
             session.setAttribute(MyServlet.LOGGED_IN_USER_ID, new AuthDAO().getUserIdBy(username, type));
         } catch (Exception e) {

@@ -57,6 +57,20 @@ public class EmployeDAO extends DAO {
         }
     }
 
+    public Employe getById(int id, UserType userType) {
+        switch (userType) {
+            case AGENT:
+                return (Employe) new AgentsDAO().getById(id);
+            case OPERATEUR:
+                return (Employe) new OperateurDAO().getById(id);
+            case RESPONSABLE_VENTES:
+                return (Employe) new ResponsableVentesDAO().getById(id);
+            case ADMIN:
+                return (Employe) new AdminsDAO().getById(id);
+            default:
+                return null;
+        }
+    }
     @Override
     public Employe getByEmail(String email) {
         return null;

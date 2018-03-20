@@ -35,16 +35,19 @@ public class ForgotPasswordServlet extends MyServlet {
             UserType userType = Util.getUserTypeFromString(request.getParameter("selectType"));
             Employe employe = new EmployeDAO().getByEmail(adress, userType);
 
-            String code = new OttDAO().generateNewToken(employe.getId());
+            String code = new OttDAO().generateNewToken(employe.getId(),userType);
             try {
                 new GoogleMail().Send("hchimmobilier", "HchImmobilier1234", adress, "", "Récuperation du mot de passe", Util.getForgotPasswordEmail(adress,userType,code) );
 
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
+            this.getServletContext().getRequestDispatcher("/html/forgot-password.html").forward(request,response);
             System.out.println(code);
         } else { //todo: test if token is valid
-            
+            int userId = Integer.parseInt(request.getParameter("linsa"));
+            UserType userType = Util.getUserTypeFromString(request.getParameter("wech"));
+            System.out.println(new OttDAO().verifyToken(token, userId, userType));
         }
     }
 
@@ -54,17 +57,15 @@ public class ForgotPasswordServlet extends MyServlet {
         if (request.getParameter("linsa") == null) {
             this.getServletContext().getRequestDispatcher("/html/forgot-password.html").forward(request, response);
         } else {
-            HttpSession session = request.getSession(true);
-            if (Util.getUserTypeFromString(request.getParameter("wech"))!=null) {
-                UserType userType = Util.getUserTypeFromString(request.getParameter("wech"));
-                String username = request.getParameter("linsa");
+            System.out.println("ani f l'else taa doGet");
+            String token = request.getParameter("code");
+            int userId = Integer.parseInt(request.getParameter("linsa"));
+            UserType userType = Util.getUserTypeFromString(request.getParameter("wech"));
+            if (new OttDAO().verifyToken(token, userId, userType)) {
+                String username = new EmployeDAO().getById(userId, userType).getUsername();
                 new AuthManager().createSession(username,userType,request);
-                redirectToDashboard(request,response);
+                this.getServletContext().getRequestDispatcher("/ChangePassword").forward(request,response);
+                }
             }
-
-            session.setAttribute(LOGGED_IN_USER_TYPE,"");
-            this.getServletContext().getRequestDispatcher("/changePassword").forward(request,response);
-        }
-
     }
 }

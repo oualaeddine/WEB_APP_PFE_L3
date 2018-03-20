@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Localite;
+import model.beans.humans.Admin;
 import model.beans.humans.Agent;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -199,9 +200,10 @@ public class AgentsDAO extends DAO {
         LinkedList<Agent> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM agent");
+            result = statement.executeQuery("SELECT * FROM agent;");
             while (result.next()) {
                 Agent agent = new Agent();
+                agent.setId(result.getInt("id"));
                 agent.setNom(result.getString("nom"));
                 agent.setPrenom(result.getString("prenom"));
                 agent.setDateNaissance(result.getDate("dateNaiss"));
@@ -210,8 +212,9 @@ public class AgentsDAO extends DAO {
                 agent.setEmail(result.getString("email"));
                 agent.setUsername(result.getString("username"));
                 agent.setPassword(result.getString("password"));
+                agent.setCreator((Admin) new AdminsDAO().getById(result.getInt("addedBy")));
                 agent.setDateAdded(result.getDate("dateAdded"));
-                agent.setLocalite((Localite) new AgentsDAO().getById(result.getInt("idRegion")));
+                agent.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("idRegion")));
                 agent.setSuspended(result.getBoolean("isSuspended"));
 
                 list.add(agent);

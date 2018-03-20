@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.humans.Admin;
 import model.beans.humans.ResponsableVente;
 import model.db.DAO;
 import model.db.DAOInterface;
@@ -149,7 +150,7 @@ public class ResponsableVentesDAO extends DAO {
         LinkedList<ResponsableVente> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM responsable_vente");
+            result = statement.executeQuery("SELECT * FROM responsable_vente;");
             while (result.next()) {
                 ResponsableVente responsableVente = new ResponsableVente();
                 responsableVente.setId(result.getInt("id"));
@@ -161,6 +162,7 @@ public class ResponsableVentesDAO extends DAO {
                 responsableVente.setEmail(result.getString("email"));
                 responsableVente.setUsername(result.getString("username"));
                 responsableVente.setPassword(result.getString("password"));
+                responsableVente.setCreator((Admin) new AdminsDAO().getById(result.getInt("addedBy")));
                 responsableVente.setDateAdded(result.getDate("dateAdded"));
                 responsableVente.setSuspended(result.getBoolean("isSuspended"));
 

@@ -221,7 +221,7 @@
                                             "<td>"+client.getTel()+"</td>\n" );
                                     if (what.equals("ban")) {
                                         out.print(
-                                                "<td><a href=\"/Clients?client=" + client.getId() +"\">");
+                                                "<td><a href=\"/Clients?personal=" + client.getId() +"\">");
                                         if (client.isBanned()) out.print("Rétablir");
                                         else out.print("Bannir");
                                                         out.print("</a></td></tr>");

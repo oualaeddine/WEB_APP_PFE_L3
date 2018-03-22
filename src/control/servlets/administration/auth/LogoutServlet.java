@@ -1,8 +1,6 @@
-package control.servlets.main.auth;
+package control.servlets.administration.auth;
 
-import control.system.managers.AuthManager;
 import control.servlets.MyServlet;
-import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

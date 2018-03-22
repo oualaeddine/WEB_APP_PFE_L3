@@ -1,4 +1,4 @@
-package control.servlets.main.auth;
+package control.servlets.administration.auth;
 
 import control.servlets.MyServlet;
 import model.beans.humans.Client;

@@ -1,4 +1,4 @@
-package control.servlets.main.Agent;
+package control.servlets.administration.Agent;
 
 import control.servlets.MyServlet;
 import model.beans.Visite;

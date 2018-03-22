@@ -1,4 +1,4 @@
-package control.servlets.main;
+package control.servlets.administration;
 
 import control.servlets.MyServlet;
 import control.system.managers.AdminsManager;
@@ -11,16 +11,12 @@ import model.beans.humans.Employe;
 import model.db.daos.EmployeDAO;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
-import model.enums.UserType;
-import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package control.servlets.main.client;
+package control.servlets.administration.client;
 
 import control.servlets.MyServlet;
 

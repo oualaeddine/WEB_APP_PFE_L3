@@ -1,4 +1,4 @@
-package control.servlets.main.auth;
+package control.servlets.administration.auth;
 
 import control.servlets.MyServlet;
 import control.system.managers.AuthManager;
@@ -6,7 +6,6 @@ import model.beans.humans.Employe;
 import model.db.daos.EmployeDAO;
 import model.db.daos.OttDAO;
 import model.enums.UserType;
-import org.apache.http.auth.AUTH;
 import utils.GoogleMail;
 import utils.Util;
 

@@ -91,7 +91,7 @@ public class MyConsts {
     public static final String CLIENTS_TITLE = "Clients";
     public static final String LISTE_CLIENTS = "Liste des clients";
     public static final String CLIENTS_MES_CLIENTS = "Mes clients";
-    public static final String CLIENTS_SIGNALER_CLIENT = "Signaler client";
+    public static final String CLIENTS_SIGNALER_CLIENT = "Signaler personal";
     /*Profil nav titles*/
     public static final String MODIFIER_PROFIL = "Modifier profil";
     public static final String CHANGE_PASSWORD = "Changer mot de passe";

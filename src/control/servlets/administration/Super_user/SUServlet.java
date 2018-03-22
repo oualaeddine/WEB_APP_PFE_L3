@@ -1,25 +1,24 @@
-package control.servlets.main.admin;
+package control.servlets.administration.Super_user;
 
 import control.servlets.MyServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AdminServlet",value = "/AdminServlet")
-public class AdminServlet extends MyServlet {
+@WebServlet(name = "SUServlet", value = "/SUServlet")
+public class SUServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             String what = request.getParameter("what");
             if (what == null) {
-                this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/jsp/superuser.jsp").forward(request, response);
             } else {
                 switch (what) {
                     case "assignerRegion":{
@@ -32,6 +31,13 @@ public class AdminServlet extends MyServlet {
                     case "newMessage":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request, response);
                         break;
+                    }
+                    case "listeAdmins":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINS").forward(request, response);
+                        break;
+                    }
+                    case "suspendreAdmin":{
+                        this.getServletContext().getRequestDispatcher("/jsp/suspendreAdmin.jsp").forward(request, response);
                     }
                     case "listeAgents":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENTS").forward(request, response);
@@ -142,7 +148,7 @@ public class AdminServlet extends MyServlet {
                         break;
                     }
                     default:
-                        this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/superuser.jsp").forward(request, response);
                         break;
                 }
 

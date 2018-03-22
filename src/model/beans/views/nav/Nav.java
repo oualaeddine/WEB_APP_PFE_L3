@@ -143,7 +143,7 @@ public class Nav {
         NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what?listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
-        NavElement bannirClient = new NavElement(false, "Bannir/rétablir client", urlBase + "?what=bannirClient", "fa fa-user-times");
+        NavElement bannirClient = new NavElement(false, "Bannir/rétablir personal", urlBase + "?what=bannirClient", "fa fa-user-times");
         clientsSubNavElementList.add(bannirClient);
 
         ExpendableNavElement clientExpendableNavElement = new ExpendableNavElement("clientsNav", "fa fa-users", "Clients", clientsSubNavElementList, isPage(currentPage, TablePage.CLIENTS));
@@ -283,7 +283,7 @@ public class Nav {
         NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what?listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
-        NavElement bannirClient = new NavElement(false, "Bannir/rétablir client", urlBase + "?what=bannirClient", "fa fa-user-times");
+        NavElement bannirClient = new NavElement(false, "Bannir/rétablir personal", urlBase + "?what=bannirClient", "fa fa-user-times");
         clientsSubNavElementList.add(bannirClient);
 
         ExpendableNavElement clientExpendableNavElement = new ExpendableNavElement("clientsNav", "fa fa-users", "Clients", clientsSubNavElementList, isPage(currentPage, TablePage.CLIENTS));

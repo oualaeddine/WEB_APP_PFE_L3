@@ -1,4 +1,4 @@
-package control.servlets.main.admin;
+package control.servlets.administration.admin;
 
 import control.system.managers.AdminsManager;
 import control.servlets.MyServlet;

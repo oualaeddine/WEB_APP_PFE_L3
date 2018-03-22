@@ -177,7 +177,7 @@ public class Util {
 
     public static UserType getUserTypeFromString(String type) {
         switch (type) {
-            case "client":
+            case "personal":
                 return UserType.CLIENT;
             case "admin":
                 return UserType.ADMIN;

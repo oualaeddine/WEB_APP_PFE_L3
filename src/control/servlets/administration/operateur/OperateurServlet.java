@@ -1,4 +1,4 @@
-package control.servlets.main.operateur;
+package control.servlets.administration.operateur;
 
 import control.servlets.MyServlet;
 

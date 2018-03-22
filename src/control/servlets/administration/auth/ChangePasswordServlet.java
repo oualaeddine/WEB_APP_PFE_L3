@@ -1,4 +1,4 @@
-package control.servlets.main.auth;
+package control.servlets.administration.auth;
 
 import model.beans.humans.Person;
 import model.db.daos.*;

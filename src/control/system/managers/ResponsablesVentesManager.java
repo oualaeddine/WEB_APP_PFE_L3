@@ -1,15 +1,15 @@
 package control.system.managers;
 
 import model.beans.Vente;
-import model.beans.humans.ResponsableVente;
+import model.beans.humans.Employe;
 import model.db.daos.ClientDAO;
-import model.db.daos.ResponsableVentesDAO;
+import model.db.daos.EmployeDAO;
 import model.db.daos.VentesDAO;
 
 public class ResponsablesVentesManager {
-    private final ResponsableVente responsableVente;
+    private final Employe responsableVente;
 
-    public ResponsablesVentesManager(ResponsableVente responsableVente) {
+    public ResponsablesVentesManager(Employe responsableVente) {
         this.responsableVente = responsableVente;
     }
 
@@ -21,7 +21,7 @@ public class ResponsablesVentesManager {
     }
 
     public boolean changePassword(String mdp) {
-        return new ResponsableVentesDAO().changePassword(responsableVente.getId(),mdp);
+        return new EmployeDAO().changePassword(responsableVente.getId(),mdp);
     }
     public boolean banirClient(int id){
         return new ClientDAO().banById(id);

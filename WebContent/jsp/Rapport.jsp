@@ -193,7 +193,7 @@
                         <%
                             LinkedList<Visite> list = new VisitesDao().getAll();
                             for (Visite visite : list){
-                                out.print("<option value=\""+visite.id+"\">"+visite.getTime()+"</option>");
+                                out.print("<option value=\""+visite.getId()+"\">"+visite.getTime()+"</option>");
                             }%>
                         <option value="validee">Validée</option>
                         <option value="nonvalidee">Non validée</option>

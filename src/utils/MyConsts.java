@@ -12,7 +12,7 @@ public class MyConsts {
 
     /*ADMIN*/
     ADMIN_SERVLET_URL = "/AdminServlet",
-    ADMIN_DASHBOARD_SERVLET_URL = "/DashboardServlet",
+    SUPER_USER_SERVLET_URL = "/SUServlet",
 
     /*AUTH*/
     LOGIN_SERVLET_URL = "/login",
@@ -37,11 +37,12 @@ public class MyConsts {
 
     public static final String
             FOOTER_COPYRIGHT = "<small>Copyright © Berrehal-Benghezal-Rahab PFE GL L3 2018</small>",
-            OPERATEUR_NAV_CSS_CLASS = "",
+            OPERATEUR_NAV_CSS_CLASS = "operateur",
             AGENT_NAV_CSS_CLASS = "My",
             DEFAULT_NAV_CSS_CLASS = "",
             RESPONSABLE_VENTES_NAV_CSS_CLASS = "",
-            ADMIN_NAV_CSS_CLASS = "admin";
+            ADMIN_NAV_CSS_CLASS = "admin",
+            SUPER_USER_NAV_CSS_CLASS = "superuser";
 
 
 

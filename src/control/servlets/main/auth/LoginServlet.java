@@ -34,33 +34,23 @@ public class LoginServlet extends MyServlet {
         } else {
             String username = request.getParameter("userId");
             String password = request.getParameter("password");
-            UserType type = Util.getUserTypeFromString(request.getParameter("select")) ;
-        if (username != null && password != null && type != null) {
-            if (authManager.authenticateByClientType(username, password, type)) {
-                System.out.println(true);
-                authManager.createSession(username,type,request);
-                redirectToDashboard(request,response);
-            }else {
-                redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
+            if (username != null && password != null) {
+                if (authManager.authenticateEmploye(username,password)) {
+                    System.out.println(true);
+                    authManager.createSessionForEmploye(username,request);
+                    redirectToDashboard(request,response);
+                }else
+                    redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
             }
-
-        }
-//            if (username != null && password != null && type != null)
-//                if (authManager.authenticate(username, password, type))
-//                    authManager.createSession(username, password, type, request);
-//                else
-//                    redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
-//            else
-//                redirectToLogin(request, response, MISSING_CREDENTIALS_ERROR);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //   if (isLoggedIn(request)) {
-           // redirectToDashboard(request, response);
-      //  } else {
+        if (isLoggedIn(request)) {
+            redirectToDashboard(request, response);
+        } else {
             getServletContext().getRequestDispatcher("/html/login.html").forward(request, response);
-     //   }
+        }
     }
 
 

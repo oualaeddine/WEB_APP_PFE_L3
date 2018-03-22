@@ -1,8 +1,8 @@
 package control.api;
 /*  todo heda howa le model des API kaml */
 
-import model.beans.humans.Agent;
-import model.db.daos.AgentsDAO;
+import model.beans.humans.Employe;
+import model.db.daos.EmployeDAO;
 import model.enums.UserType;
 import utils.MyConsts;
 
@@ -33,9 +33,9 @@ public class AgentApi extends API {
         //on verifie si les parametres ne sont pas vides
         if (password != null && userId != 0 && username != null) {
             //on verifie si il a le droit d'acces
-            if (checkLogin(UserType.AGENT, username, password)) {
-                AgentsDAO agentsDAO = new AgentsDAO();
-                Agent agent = new Agent();
+            if (checkLogin(username, password)) {
+                EmployeDAO agentsDAO = new EmployeDAO();
+                Employe agent = new Employe();
                 //on recupere l'action voulu
                 String action = request.getParameter("action");
                 //on verifie si l'action n'est pas vide
@@ -64,7 +64,7 @@ public class AgentApi extends API {
                             agent.setId(userId);
                             String newPassword = request.getParameter("action");
                             if (newPassword != null)
-                                responseBody = objectToJson(agentsDAO.changePassword(newPassword,agent.getId()));
+                                responseBody = objectToJson(agentsDAO.changePassword(agent.getId(),newPassword));
                             break;
                         }
                         default: {

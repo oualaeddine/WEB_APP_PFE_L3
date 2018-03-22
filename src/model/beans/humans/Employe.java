@@ -1,22 +1,33 @@
 package model.beans.humans;
 
+import model.enums.UserType;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Employe extends Person {
-    private Admin creator;
+    private Employe creator;
     private boolean isSuspended;
     private Date dateAdded;
+    private UserType userType;
 
-    Employe() {
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public Employe() {
         super();
     }
 
-    public Admin getCreator() {
+    public Employe getCreator() {
         return creator;
     }
 
-    public void setCreator(Admin creator) {
+    public void setCreator(Employe creator) {
         this.creator = creator;
     }
 

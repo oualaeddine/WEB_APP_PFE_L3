@@ -1,9 +1,8 @@
 package control.servlets.main.Agent;
 
-import control.system.managers.AgentsManager;
 import control.servlets.MyServlet;
 import model.beans.Visite;
-import model.beans.humans.Agent;
+import model.beans.humans.Employe;
 import model.db.daos.VisitesDao;
 import model.enums.EtatVisite;
 
@@ -19,7 +18,7 @@ public class EnvoyerRapportServlet extends MyServlet {
         if (isLoggedIn(request)) {
             Visite visite = (Visite) request.getSession().getAttribute("visite");
             System.out.println("EnvoyerRapportServlet visite: "+visite);
-            Agent agent = (Agent) request.getSession().getAttribute("user");
+            Employe agent = (Employe) request.getSession().getAttribute("user");
             switch (request.getParameter("etatVisite")) {
                 case "validee":
                     visite.setEtatVisite(EtatVisite.VALIDEE);
@@ -45,7 +44,7 @@ public class EnvoyerRapportServlet extends MyServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             int visiteId =Integer.parseInt(request.getParameter("visite"));
-            Agent logged = (Agent) request.getSession().getAttribute(LOGGED_IN_USER);
+            Employe logged = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
             System.out.println("logged In agent: "+logged.getNom()+" "+logged.getPrenom());
             System.out.println("visite id: "+visiteId);
             this.getServletContext().getRequestDispatcher("/jsp/Rapport.jsp").forward(request,response);

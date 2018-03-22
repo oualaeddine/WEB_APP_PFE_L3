@@ -498,3 +498,11 @@ footer.sticky-footer {
     background-color: #4caf50;
     border-color: #E7E7E7;
 }
+.navbar-operateur {
+    background-color: #005cbf;
+    border-color: white;
+}
+.navbar-superuser{
+    background-color: #66512c;
+    border-color: white;
+}

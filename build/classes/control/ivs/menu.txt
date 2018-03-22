@@ -1,0 +1,37 @@
+
+1.WELCOME_MENU->LOGEMENT_MENU->APPARTEMENT_MENU->REGION_MENU->LUX_MENU->FOURNITURE_MENU->PRIX_MENU->DISPO_MENU
+                               VILLA_MENU->REGION_MENU->LUX_MENU->FOURNITURE_MENU->PRIX_MENU->DISPO_MENU
+              ->REDIRECT_CALL_MENU
+              ->CHANGE_LANGUAGE_MENU
+
+
+A.WELCOME_MENU:
+    "bienvenue au service clients"
+    si client {
+        "@clientName"
+        1."pour reserver un logement appuyez sur 1" -> LOGEMENT_MENU
+        2."pour parler a un operateur appuyez sur 2" -> REDIRECT_CALL_MENU
+        3."pour changer de langue appuyez sur 3" -> CHANGE_LANGUAGE_MENU
+    }
+    sinon{
+        " vous n'etes pas inscris sur notre systeme ,
+        veuillez vous inscrire pour pouvoir effectuer des operations"
+        1."pour parler a un opearteur appuyez sur 1" -> REDIRECT_CALL_MENU
+        2."pour changer de langue appuyez sur 3" -> CHANGE_LANGUAGE_MENU
+    }
+
+B.CHANGE_LANGUAGE_MENU:
+    1."pour la langue ar appuyez sur 1" -> WELCOME_MENU(ar)
+    2."pour le fr appuyez sur 2" -> WELCOME_MENU(fr)
+
+C.REDIRECT_CALL_MENU:
+    "votre appel va etre trasferer vers un operateur veuillez patienter svp"
+
+D.LOGEMENT_MENU:
+    "Veuillez choisir le Type de logement que vous voulez"
+    1."pour un appartement appuyez sur 1" -> APPARTEMENT_MENU
+    2."pour une villa appuyez sur 2" -> VILLA_MENU
+
+E.APPARTEMENT_MENU:
+    "vous avez choisis un logement de type appartement "
+    n."veuillez introduire le nombre de pieces que vous voulez dans votre appartement" ->REGION_MENU

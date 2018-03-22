@@ -3,25 +3,25 @@ package control.system.managers;
 import model.beans.Localite;
 import model.beans.Vente;
 import model.beans.Visite;
-import model.beans.humans.Agent;
+import model.beans.humans.Employe;
 import model.db.daos.*;
 import model.enums.EtatVente;
 
 import java.sql.Date;
 
 public class AgentsManager {
-    private final Agent loggedInAgent;
+    private final Employe loggedInAgent;
 
 
-    public AgentsManager(Agent loggedInAgent) {
+    public AgentsManager(Employe loggedInAgent) {
         this.loggedInAgent = loggedInAgent;
     }
     public boolean changerMotDePasse(String mdp){
-        return new AgentsDAO().changePassword(mdp,loggedInAgent.getId());
+        return new EmployeDAO().changePassword(loggedInAgent.getId(),mdp);
     }
 
-    public Agent creerCompte(String nom, String prenom, Date dateNaiss,String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended,int idRegion){
-        Agent agent = new Agent();
+    public Employe creerCompte(String nom, String prenom, Date dateNaiss,String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended,int idRegion){
+        Employe agent = new Employe();
         agent.setNom(nom);
         agent.setPrenom(prenom);
         agent.setDateNaissance(dateNaiss);
@@ -31,7 +31,6 @@ public class AgentsManager {
         agent.setUsername(username);
         agent.setPassword(password);
         agent.setSuspended(isSuspended);
-        agent.setLocalite((Localite)new LocaliteDAO().getById(idRegion));
         return agent;
     }
 

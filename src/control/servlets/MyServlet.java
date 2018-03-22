@@ -65,7 +65,9 @@ public class MyServlet extends HttpServlet {
                     break;
                 case ADMIN:
                     dashboardUrl = MyConsts.ADMIN_SERVLET_URL;
-
+                    break;
+                case SU:
+                    dashboardUrl = MyConsts.SUPER_USER_SERVLET_URL;
                     break;
                 case RESPONSABLE_VENTES:
                     dashboardUrl = MyConsts.RESONSABLE_VENTES_SERVLET_URL;

@@ -2,7 +2,6 @@ package utils;
 
 
 import com.google.gson.Gson;
-import model.beans.humans.Agent;
 import model.beans.humans.Employe;
 import model.db.daos.*;
 import model.enums.TablePage;
@@ -11,7 +10,6 @@ import model.enums.UserType;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import static model.enums.TablePage.*;
 import static model.enums.UserType.OPERATEUR;
@@ -52,9 +50,9 @@ public class Util {
 //                break;
 //            } default: return null;
 //        }
-        employe = new EmployeDAO().getByEmail(email,userType);
+        employe = new EmployeDAO().getByEmail(email);
         name = employe.getNom()+" "+employe.getPrenom();
-        String actionUrl = "/ForgotPassword?linsa="+employe.getId()+"&code="+code+"&wech="+getStringFromType(userType);
+        String actionUrl = "localhost:8080/ForgotPassword?linsa="+employe.getId()+"&code="+code+"&wech="+getStringFromType(userType);
 
 
 
@@ -189,6 +187,8 @@ public class Util {
                 return OPERATEUR;
             case "responsable_ventes":
                 return UserType.RESPONSABLE_VENTES;
+            case "SU":
+                return UserType.SU;
             default:
                 return null;
         }
@@ -199,13 +199,15 @@ public class Util {
             case CLIENT:
                 return ClientDAO.TABLE_NAME;
             case AGENT:
-                return AgentsDAO.TABLE_NAME;
+                return "agent";
             case OPERATEUR:
-                return OperateurDAO.TABLE_NAME;
+                return "operateur";
             case ADMIN:
-                return AdminsDAO.TABLE_NAME;
+                return "admin";
+            case SU:
+                return "SU";
             case RESPONSABLE_VENTES:
-                return ResponsableVentesDAO.TABLE_NAME;
+                return "responsable_vente";
             default:
                 return null;
         }
@@ -245,7 +247,7 @@ public class Util {
                 return "Visites reportées";
             case CANCELED_VISITES:
                 return "Visites Annulées";
-            case USER_VISITES:
+            case AGENT_VISITES:
                 return "Mes Visites";
             case PROGRAMMED_VISITES:
                 return "Visites programmées";
@@ -301,8 +303,8 @@ public class Util {
                 return REPORTED_VISITES;
             case "CANCELED_VISITES":
                 return CANCELED_VISITES;
-            case "USER_VISITES":
-                return USER_VISITES;
+            case "AGENT_VISITES":
+                return AGENT_VISITES;
             case "PROGRAMMED_VISITES":
                 return PROGRAMMED_VISITES;
             case "PASSED_VISITS":

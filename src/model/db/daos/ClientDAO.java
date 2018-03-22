@@ -34,7 +34,6 @@ public class ClientDAO extends DAO {
                 client.setAdresse(result.getString("adresse"));
                 client.setTel(result.getString("tel"));
                 client.setEmail(result.getString("email"));
-                client.setDateAdded(result.getDate("dateAdded"));
                 client.setBanned(result.getInt("isBanned")==1);
                 client.setId(result.getInt("id"));
                 return client;
@@ -75,7 +74,6 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setDateAdded(result.getDate("dateAdded"));
                 client.setBanned(result.getInt("isBanned")==1);
 
                 return client;
@@ -171,7 +169,6 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setDateAdded(result.getDate("dateAdded"));
                 client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }
@@ -197,7 +194,6 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setDateAdded(result.getDate("dateAdded"));
                 client.setBanned(result.getInt("isBanned")==1);
                 list.add(client);
             }

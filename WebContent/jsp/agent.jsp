@@ -2,7 +2,7 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.humans.Agent" %>
+<%@ page import="model.beans.humans.Employe" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,7 +14,7 @@
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);
-    Agent agent = (Agent) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+    Employe agent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
 %>
 <head>

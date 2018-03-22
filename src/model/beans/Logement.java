@@ -2,13 +2,48 @@ package model.beans;
 
 import model.enums.EtatLogement;
 
+import java.awt.*;
 import java.io.Serializable;
 
 public class Logement implements Serializable {
-    private int id, nbrPieces, nbrFacades,etage;
+    private int id, nbrPieces, nbrSdb,etage;
     private Localite localite;
     private String titre, description, adresse;
-    private boolean avecJardin;
+    private boolean avecJardin,avecGarage,avecSousSol;
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public int getNbrSdb() {
+        return nbrSdb;
+    }
+
+    public void setNbrSdb(int nbrSdb) {
+        this.nbrSdb = nbrSdb;
+    }
+
+    public boolean isAvecGarage() {
+        return avecGarage;
+    }
+
+    public void setAvecGarage(boolean avecGarage) {
+        this.avecGarage = avecGarage;
+    }
+
+    public boolean isAvecSousSol() {
+        return avecSousSol;
+    }
+
+    public void setAvecSousSol(boolean avecSousSol) {
+        this.avecSousSol = avecSousSol;
+    }
+
     private double superficie,prix;
 
     public double getPrix() {
@@ -54,14 +89,6 @@ public class Logement implements Serializable {
 
     public void setNbrPieces(int nbrPieces) {
         this.nbrPieces = nbrPieces;
-    }
-
-    public int getNbrFacades() {
-        return nbrFacades;
-    }
-
-    public void setNbrFacades(int nbrFacades) {
-        this.nbrFacades = nbrFacades;
     }
 
     public Localite getLocalite() {

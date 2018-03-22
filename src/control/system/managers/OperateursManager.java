@@ -2,15 +2,15 @@ package control.system.managers;
 
 import model.beans.Visite;
 import model.beans.humans.Client;
-import model.beans.humans.Operateur;
+import model.beans.humans.Employe;
 import model.db.daos.ClientDAO;
-import model.db.daos.OperateurDAO;
+import model.db.daos.EmployeDAO;
 import model.db.daos.VisitesDao;
 
 public class OperateursManager {
-    private final Operateur loggedInOperateur;
+    private final Employe loggedInOperateur;
 
-    public OperateursManager(Operateur loggedInOperateur) {
+    public OperateursManager(Employe loggedInOperateur) {
         this.loggedInOperateur = loggedInOperateur;
     }
 
@@ -25,7 +25,7 @@ public class OperateursManager {
     }
 
     public boolean changerMotDePasse(String mdp){
-        return new OperateurDAO().changePassword(mdp,loggedInOperateur.getId());
+        return new EmployeDAO().changePassword(loggedInOperateur.getId(),mdp);
     }
 
 }

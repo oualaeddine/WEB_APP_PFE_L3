@@ -22,16 +22,15 @@ public class AdminServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "assignerRegion":{
+                        this.getServletContext().getRequestDispatcher("/jsp/assignerRegion.jsp").forward(request, response);
+                    }
                     case "messages":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request,response);
                         break;
                     }
                     case "newMessage":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request, response);
-                        break;
-                    }
-                    case "listeAdmins":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINS").forward(request, response);
                         break;
                     }
                     case "listeAgents":{

@@ -7,10 +7,11 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 public abstract class DAO {
-    protected Statement statement;
+    protected Statement statement,anotherStatement;
 
     public DAO() {
         this.statement = DbConnector.getStatment();
+        this.anotherStatement = DbConnector.getStatment();
     }
 
     public abstract Employe getByEmail(String email);
@@ -58,4 +59,5 @@ public abstract class DAO {
     public abstract boolean delete(Object object);
 
     public abstract LinkedList getAll();
+
 }

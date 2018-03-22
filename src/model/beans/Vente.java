@@ -1,8 +1,7 @@
 package model.beans;
 
-import model.beans.humans.Agent;
 import model.beans.humans.Client;
-import model.beans.humans.ResponsableVente;
+import model.beans.humans.Employe;
 import model.enums.EtatVente;
 
 import java.io.Serializable;
@@ -12,8 +11,8 @@ public class Vente implements Serializable {
     private int id;
     private Date date;
     private Logement logement;
-    private Agent agent;
-    private ResponsableVente responsableVente;
+    private Employe agent;
+    private Employe responsableVente;
     private Client client;
     private EtatVente etatVente;
 
@@ -53,19 +52,19 @@ public class Vente implements Serializable {
         this.logement = logement;
     }
 
-    public Agent getAgent() {
+    public Employe getAgent() {
         return agent;
     }
 
-    public void setAgent(Agent agent) {
+    public void setAgent(Employe agent) {
         this.agent = agent;
     }
 
-    public ResponsableVente getResponsableVente() {
+    public Employe getResponsableVente() {
         return responsableVente;
     }
 
-    public void setResponsableVente(ResponsableVente responsableVente) {
+    public void setResponsableVente(Employe responsableVente) {
         this.responsableVente = responsableVente;
     }
 

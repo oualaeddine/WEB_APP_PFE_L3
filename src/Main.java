@@ -1,8 +1,4 @@
-import model.beans.humans.Admin;
-import model.db.daos.AdminsDAO;
 import utils.GoogleMail;
-import utils.Util;
-import model.beans.Logement;
 
 import javax.mail.MessagingException;
 

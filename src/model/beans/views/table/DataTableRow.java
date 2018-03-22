@@ -52,7 +52,7 @@ public class DataTableRow {
     }
 
     private void setupHtmlForAgent() {
-        Agent agent= (Agent) object;
+        Employe agent= (Employe) object;
         html = "<tr>" +
                 "<td><b>"
                        + agent.getId() + "</td>" +
@@ -60,12 +60,13 @@ public class DataTableRow {
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
                 "<td>" + agent.getEmail() + "</td>" +
-                "<td>" + agent.getDateNaissance() + "</td>" +
-                "<td>" + agent.getLocalite().getNom() + "</td></tr>" ;
+                "<td>" + agent.getDateNaissance() + "</td>" ;
+//                "<td>" + agent.getLocalite().getNom() + "</td></tr>" ;
+        //todo: hedi
     }
 
     private void setupHtmlForAdmin() {
-        Admin admin = (Admin) object;
+        Employe admin = (Employe) object;
         html = "<tr>" +
                 "<td><b>" + admin.getId() + "</td>" +
                 "<td>" + admin.getNom() + " "+ admin.getPrenom()+"</td>" +
@@ -73,7 +74,7 @@ public class DataTableRow {
                 "<td>" + admin.getAdresse() + "</td>" +
                 "<td>" + admin.getEmail() + "</td>" +
                 "<td>" + admin.getDateNaissance() + "</td>" +
-                "<td>" + admin.getRole() + "</td>" ;
+                "<td>" + admin.getUserType() + "</td>" ;
     }
 
     private void setupHtmlForLocalite() {

@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Localite;
+import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Employe;
 import model.db.DAO;
@@ -22,7 +23,7 @@ public class LogementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM logement WHERE etat='vendu';");
             while (result.next()) {
                 Logement logement = new Logement();
-//                logement =(Logement) getById(result.getInt("id"));
+
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
@@ -35,9 +36,15 @@ public class LogementDAO extends DAO {
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
-                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setEtage(result.getInt("etage"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -83,21 +90,27 @@ public class LogementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM logement WHERE id="+id);
             if (result.next()){
                 Logement logement = new Logement();
+
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")){
-                    case "vendu": logement.setEtat(EtatLogement.VENDU); break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE); break;
-                    case "gele": logement.setEtat(EtatLogement.GELE); break;
+                switch (result.getString("etat")) {
+                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
+                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
+                    case "gele": logement.setEtat(EtatLogement.GELE);break;
                 }
-
+                logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
-                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setEtage(result.getInt("etage"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
                 return logement;
             }
         }catch (SQLException e){
@@ -119,21 +132,25 @@ public class LogementDAO extends DAO {
     public boolean add(Object object) {
         Logement logement = (Logement) object;
         try {
-            int jardin;
-            if (logement.isAvecJardin())
-                jardin=1;
-            else
-                jardin=0;
-            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrFacades, etage,avecJardin) VALUES ("+
+            int
+                    jardin = logement.isAvecJardin() ? 1 : 0,
+                    garage = logement.isAvecGarage() ? 1 : 0,
+                    sousSol = logement.isAvecSousSol() ? 1 : 0;
+
+            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,latitude,longitude) VALUES ("+
                     "'"+logement.getTitre()+"', \n"+
                     "'"+logement.getDescription()+"',\n "+
                     logement.getSuperficie()+",\n "+
                     logement.getLocalite().getId() +", \n"+
                     "'"+logement.getAdresse()+"',\n "+
                     logement.getNbrPieces()+", \n"+
-                    logement.getNbrFacades()+", \n"+
+                    logement.getNbrSdb()+", \n"+
                     logement.getEtage()+
                     ","+jardin+
+                    ","+garage+
+                    ","+sousSol+","+
+                    logement.getLocation().getLatitude()+"," +
+                    logement.getLocation().getLongitude()+
                     ");");
             return true;
         }catch (SQLException e){
@@ -178,6 +195,7 @@ public class LogementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM logement;");
             while (result.next()){
                 Logement logement = new Logement();
+
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
@@ -190,9 +208,14 @@ public class LogementDAO extends DAO {
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
-                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setEtage(result.getInt("etage"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
                 list.add(logement);
             }
         }catch (SQLException e){
@@ -201,6 +224,8 @@ public class LogementDAO extends DAO {
         return list;
     }
 
+
+
     public LinkedList<Logement> getGeles() {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
@@ -208,6 +233,7 @@ public class LogementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM logement WHERE etat='gele';");
             while (result.next()) {
                 Logement logement = new Logement();
+
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
@@ -220,9 +246,14 @@ public class LogementDAO extends DAO {
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
-                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setEtage(result.getInt("etage"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -239,6 +270,7 @@ public class LogementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
             while (result.next()) {
                 Logement logement = new Logement();
+
                 logement.setId(result.getInt("id"));
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
@@ -251,9 +283,14 @@ public class LogementDAO extends DAO {
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
-                logement.setNbrFacades(result.getInt("nbrFacades"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
                 logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setEtage(result.getInt("etage"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
                 list.add(logement);
             }
         } catch (SQLException e) {

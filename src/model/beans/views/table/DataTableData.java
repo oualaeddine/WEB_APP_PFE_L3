@@ -74,8 +74,8 @@ public class DataTableData {
             case PASSED_VISITS:
                 setupDataPassedVisits();
                 break;
-            case USER_VISITES:
-                //todo: hedi
+            case AGENT_VISITES:
+                setupDataAgentVisites();
                 break;
             case PROGRAMMED_VISITES:
                 setupDataProgrammedVisits();
@@ -108,6 +108,14 @@ public class DataTableData {
             case CLIENTS_MESSAGES_FOR_USER:
                 break;
             
+        }
+    }
+
+    private void setupDataAgentVisites() {
+        Employe agent =(Employe) new EmployeDAO().getById(userId);
+        LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent);
+        for (Visite visite : list) {
+            data.add(new DataTableRow(DataTableRowFormat.VISITE, visite));
         }
     }
 
@@ -151,7 +159,7 @@ public class DataTableData {
     }
 
     private void setupDataAdminsList() {
-        for (Admin admin : new AdminsDAO().getAll()) {
+        for (Employe admin : new EmployeDAO().getAllAdmins()) {
             data.add(new DataTableRow(DataTableRowFormat.ADMIN, admin));
         }
     }
@@ -182,38 +190,38 @@ public class DataTableData {
     }
 
     private void setupDataSuspendedResVente() {
-        for (ResponsableVente responsableVente : new ResponsableVentesDAO().getSuspendedResVente()) {
+        for (Employe responsableVente : new EmployeDAO().getSuspendedResVente()) {
             data.add(new DataTableRow(DataTableRowFormat.RESPONSABLE_VENTES, responsableVente));
         }
     }
 
     private void setupDataResVenteListe() {
-        for (Object resvente : new ResponsableVentesDAO().getAll()) {
-            data.add(new DataTableRow(DataTableRowFormat.RESPONSABLE_VENTES, (ResponsableVente) resvente));
+        for (Object resvente : new EmployeDAO().getAllResVentes()) {
+            data.add(new DataTableRow(DataTableRowFormat.RESPONSABLE_VENTES, resvente));
         }
     }
 
     private void setupDataSuspendedOperateurs() {
-        for (Operateur operateur : new OperateurDAO().getSuspendedOperateurs()) {
+        for (Employe operateur : new EmployeDAO().getSuspendedOperateurs()) {
             data.add(new DataTableRow(DataTableRowFormat.OPERATEUR, operateur));
         }
     }
 
     private void setupDataOperateurList() {
-        for (Object operateur : new OperateurDAO().getAll()) {
-            data.add(new DataTableRow(DataTableRowFormat.OPERATEUR, (Operateur) operateur));
+        for (Object operateur : new EmployeDAO().getAllOperateurs()) {
+            data.add(new DataTableRow(DataTableRowFormat.OPERATEUR, operateur));
         }
     }
 
     private void setupDataSuspendedAgents() {
-        for (Agent agent : new AgentsDAO().getSuspendedAgents()) {
+        for (Employe agent : new EmployeDAO().getSuspendedAgents()) {
             data.add(new DataTableRow(DataTableRowFormat.AGENT,agent));
         }
     }
 
     private void setupDataAgentList() {
-        for (Object agent : new AgentsDAO().getAll()) {
-            data.add(new DataTableRow(DataTableRowFormat.AGENT, (Agent) agent));
+        for (Employe agent : new EmployeDAO().getAllAgents()) {
+            data.add(new DataTableRow(DataTableRowFormat.AGENT, agent));
         }
     }
 

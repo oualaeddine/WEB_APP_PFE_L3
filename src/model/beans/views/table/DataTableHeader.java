@@ -55,7 +55,7 @@ public class DataTableHeader {
             case CANCELED_VISITES:
                 setupTableHeaderForVisites();
                 break;
-            case USER_VISITES:
+            case AGENT_VISITES:
                 setupTableHeaderForVisites();
                 break;
             case PROGRAMMED_VISITES:

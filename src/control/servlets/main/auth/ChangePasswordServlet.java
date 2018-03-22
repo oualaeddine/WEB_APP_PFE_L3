@@ -24,23 +24,13 @@ public class ChangePasswordServlet extends HttpServlet {
                         System.out.println("Password changed successfully");
                     }else System.out.println("Error changing password");
                     break;
-                case AGENT:
-                    if (new AgentsDAO().changePassword(person.getId(), mdp)) {
-                        System.out.println("Password changed successfully");
-                    }else System.out.println("Error changing password");
-                    break;
-                case OPERATEUR:
-                    if (new OperateurDAO().changePassword(person.getId(), mdp)) {
-                        System.out.println("Password changed successfully");
-                    }else System.out.println("Error changing password");
-                    break;
                 case ADMIN:
-                    if (new AdminsDAO().changePassword(person.getId(), mdp)) {
+                    if (new EmployeDAO().changePassword(person.getId(), mdp)) {
                         System.out.println("Password changed successfully");
                     }else System.out.println("Error changing password");
                     break;
-                case RESPONSABLE_VENTES:
-                    if (new ResponsableVentesDAO().changePassword(person.getId(), mdp)) {
+                default:
+                    if (new EmployeDAO().changePassword(person.getId(), mdp)) {
                         System.out.println("Password changed successfully");
                     }else System.out.println("Error changing password");
                     break;

@@ -26,11 +26,11 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="prenomInput">Prénom</label>
-                                <input class="form-control" id="prenomInput" name="prenomInput" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+                                <input class="form-control" id="prenomInput" name="prenomInput" type="text" placeholder="Enter first name">
                             </div>
                             <div class="col-md-6">
                                 <label for="nomInput">Nom</label>
-                                <input class="form-control" id="nomInput" name="nomInput" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+                                <input class="form-control" id="nomInput" name="nomInput" type="text" placeholder="Enter last name">
                             </div>
                         </div>
                     </div>
@@ -42,20 +42,28 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="dateNaissance">Date de naissance</label>
-                                <input class="form-control" id="dateNaissance" name="dateNaissance" type="date" aria-describedby="dateHelp" placeholder="Enter birth date">
+                                <input class="form-control" id="dateNaissance" name="dateNaissance" type="date" >
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email" placeholder="Entrez votre adresse email">
                             </div>
-
+                            <div class="col-md-6">
+                                <label for="userType">Type de compte</label>
+                                <select class="custom-select" id="userType" name="userType">
+                                    <option value="agent">Agent</option>
+                                    <option value="operateur">Operateur</option>
+                                    <option value="responsable_ventes">Responsable ventes</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="usernameInput">Nom d'utilisateur</label>
-                                <input class="form-control" id="usernameInput" name="usernameInput" type="text" aria-describedby="nameHelp" placeholder="Entrez un nom d'utilisateur">
+                                <input class="form-control" id="usernameInput" name="usernameInput" type="text" placeholder="Entrez un nom d'utilisateur">
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleInputPassword1">Password</label>
@@ -69,10 +77,7 @@
                                 <label for="exampleConfirmPassword">Confirm password</label>
                                 <input class="form-control" id="exampleConfirmPassword" name="confirmPassword" type="password" placeholder="Confirm password">
                             </div>
-                            
-
                         </div>
-
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary btn-block" type="submit" value="register">Register</button>

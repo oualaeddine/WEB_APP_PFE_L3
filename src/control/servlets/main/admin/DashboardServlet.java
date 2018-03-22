@@ -2,7 +2,7 @@ package control.servlets.main.admin;
 
 import control.system.managers.AdminsManager;
 import control.servlets.MyServlet;
-import model.beans.humans.Admin;
+import model.beans.humans.Employe;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class DashboardServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
-            Admin loggedInAdmin = new Admin();
+            Employe loggedInAdmin = new Employe();
             this.adminManager = new AdminsManager(loggedInAdmin);
         } else {
             redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);

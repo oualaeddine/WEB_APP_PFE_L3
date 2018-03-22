@@ -2,20 +2,17 @@ package model.db.daos;
 
 import model.beans.Logement;
 import model.beans.Visite;
-import model.beans.humans.Agent;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
-import sun.rmi.runtime.Log;
 
-import javax.sql.rowset.serial.SerialException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VisitesDao extends DAO {
-    public LinkedList<Visite> getVisitesByAgent(Agent agent) {
+    public LinkedList<Visite> getVisitesByAgent(Employe agent) {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
@@ -24,7 +21,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")) {
@@ -123,7 +120,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement)new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")){
@@ -186,7 +183,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement)new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")){
@@ -212,7 +209,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")) {
@@ -239,7 +236,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")) {
@@ -266,7 +263,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")) {
@@ -294,7 +291,7 @@ public class VisitesDao extends DAO {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                visite.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 visite.setTime(result.getTimestamp("timestamp"));
                 switch (result.getString("etat")) {

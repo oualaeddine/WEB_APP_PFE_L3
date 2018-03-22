@@ -2,16 +2,11 @@ package model.db.daos;
 
 import model.beans.Logement;
 import model.beans.Vente;
-import model.beans.Visite;
-import model.beans.humans.Agent;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
-import model.beans.humans.ResponsableVente;
 import model.db.DAO;
-import model.db.DAOInterface;
 import model.enums.EtatVente;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -37,8 +32,8 @@ public class VentesDAO extends DAO {
             if (result.next()){
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Agent)new AgentsDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setDate(result.getDate("date"));
@@ -68,8 +63,8 @@ public class VentesDAO extends DAO {
             if (result.next()){
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Agent)new AgentsDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 if (result.getString("etat").equals("confirmee"))
@@ -145,8 +140,8 @@ public class VentesDAO extends DAO {
             while (result.next()){
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Agent)new AgentsDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setDate(result.getDate("date"));
@@ -177,8 +172,8 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Agent) new AgentsDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((ResponsableVente) new ResponsableVentesDAO().getById(result.getInt("responsableId")));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 switch (result.getString("etat")) {

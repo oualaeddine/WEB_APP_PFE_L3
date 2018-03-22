@@ -13,8 +13,8 @@ public class API extends HttpServlet {
             ACTION_ERROR = "wrong_action",
             REQUEST_TYPE_ERROR = "denied";
 
-    protected boolean checkLogin(UserType userType, String userName, String password) {
+    protected boolean checkLogin(String userName, String password) {
         AuthManager auth = new AuthManager();
-        return auth.authenticateByClientType(userName, password, userType);
+        return auth.authenticateEmploye(userName, password);
     }
 }

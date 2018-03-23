@@ -17,6 +17,7 @@
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
+
 %>
 <head>
     <meta charset="utf-8">
@@ -69,8 +70,7 @@
                         <label for="agent">Agent</label>
                         <select class="custom-select" id="agent" name="agent">
                             <%
-                                LinkedList<Employe> list = new EmployeDAO().getAllAgents();
-                                for (Employe agent : list) {
+                                for (Employe agent : employes) {
                                     out.print("<option value=\""+agent.getId()+"\">"+agent.getNom()+" "+agent.getPrenom()+"</option>\n");
                                 }
                             %>
@@ -80,8 +80,7 @@
                         <label for="localite">Localite</label>
                         <select class="custom-select" id="localite" name="localite">
                             <%
-                                LinkedList<Localite> liste = new LocaliteDAO().getAll();
-                                for (Localite localite : liste) {
+                                for (Localite localite : localites) {
                                     out.print("<option value=\""+localite.getId()+"\">"+localite.getNom()+"</option>\n");
                                 }
                             %>

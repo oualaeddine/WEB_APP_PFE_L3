@@ -29,6 +29,9 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case ASSIGNER_REGION:
+                setupDataAgentList();
+                break;
             case LOGEMENTS:
                 setupDataAllLogements();
                 break;
@@ -110,6 +113,8 @@ public class DataTableData {
             
         }
     }
+
+
 
     private void setupDataAgentVisites() {
         Employe agent =(Employe) new EmployeDAO().getById(userId);
@@ -221,7 +226,7 @@ public class DataTableData {
 
     private void setupDataAgentList() {
         for (Employe agent : new EmployeDAO().getAllAgents()) {
-            data.add(new DataTableRow(DataTableRowFormat.AGENT, agent));
+            data.add(new DataTableRow(DataTableRowFormat.ASSIGNER_REGION, agent));
         }
     }
 

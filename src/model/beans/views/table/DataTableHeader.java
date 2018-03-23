@@ -13,6 +13,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case ASSIGNER_REGION:
+                setupTableHeaderForAssignerRegion();
+                break;
             case LOGEMENTS:
                 setupTableHeaderForLogements();
                 break;
@@ -92,6 +95,18 @@ public class DataTableHeader {
                 setupTableHeaderForVentes();
                 break;
         }
+    }
+
+    private void setupTableHeaderForAssignerRegion() {
+        html =  "<tr><td><b>ID</b></td>" +
+                "<td><b>Nom</b></td>" +
+                "<td><b>Telephone</b></td>" +
+                "<td><b>Adresse</b></td>" +
+                "<td><b>email</b></td>" +
+                "<td><b>Date de naissance</b></td>" +
+                "<td><b>Région</b></td>" +
+                "<td><b> Assigner </b></td>" +
+                "</tr>" ;
     }
 
     private void setupTableHeaderForVentes() {

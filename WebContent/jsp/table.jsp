@@ -8,6 +8,8 @@
 <%@ page import="model.beans.views.MyView" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -147,6 +149,43 @@
             </div>
         </div>
     </div>
+
+    <%--Modal assigner region--%>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sélectionner la région</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" method="post" action="/AjoutServlet?ajouter=assignation">
+
+                        <input id="agentId" name="agentInput" type="hidden">
+
+                        <label for="selectRegion">Sélectionner région</label>
+                        <select class="custom-select"  id="selectRegion" name="selectRegion">
+                            <%LinkedList<Localite> localites = new LocaliteDAO().getAll();%>
+                            <%
+                                for (Localite localite : localites) {
+                                    out.print("<option value=\""+localite.getId()+"\">"+localite.getNom()+"</option>\n");
+                                }
+
+                            %>
+                        </select>
+                        <button class="btn btn-info btn-lg"  type="submit" >Confirmer</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -159,6 +198,13 @@
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
+
+    <script>
+        function getAgentId(idTaaLagent) {
+            document.getElementById("agentId").value = idTaaLagent;
+        }
+
+    </script>
 </div>
 </body>
 

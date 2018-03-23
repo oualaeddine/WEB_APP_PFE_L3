@@ -57,7 +57,7 @@ public class Nav {
     }
 
     private void setupNavElementsForSU() {
-        String urlBase = MyConsts.ADMIN_SERVLET_URL;
+        String urlBase = MyConsts.SUPER_USER_SERVLET_URL;
 
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");

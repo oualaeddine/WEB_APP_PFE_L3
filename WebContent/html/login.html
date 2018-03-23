@@ -21,7 +21,7 @@
         <div class="card card-login mx-auto mt-5">
             <div class="card-header">Authentification</div>
             <div class="card-body">
-                <form method="post">
+                <form method="post" id="loginForm">
                     <div class="form-group">
                         <label for="id">Username</label>
                         <input class="form-control" id="id" name="userId" type="text" placeholder="Entrez votre nom d'utilisateur">
@@ -48,9 +48,31 @@
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <script src="../vendor/bootstrap/css/bootstrap.min.css"></script>
     <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!--<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>-->
+
+
+    <script src="../js/bootstrapValidator.js"></script>
+    <script type="text/javascript">
+        $('loginForm').bootstrapValidator({
+
+            fields:{
+                userId:{
+                    validators: {
+                        stringLength: {
+                            min: 5,
+                            message: 'Please Enter your Full name with minimum 5 letters length'
+                        },
+                        notEmpty: {
+                            message: 'Please Enter your Full name'
+                        }
+                    }
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>

@@ -22,7 +22,7 @@ public class SUServlet extends MyServlet {
             } else {
                 switch (what) {
                     case "assignerRegion":{
-                        this.getServletContext().getRequestDispatcher("/jsp/assignerRegion.jsp").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ASSIGNER_REGION").forward(request, response);
                     }
                     case "messages":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request,response);

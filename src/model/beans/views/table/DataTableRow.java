@@ -2,6 +2,7 @@ package model.beans.views.table;
 
 import model.beans.*;
 import model.beans.humans.*;
+import model.db.daos.AssignationDAO;
 import model.enums.DataTableRowFormat;
 
 public class DataTableRow {
@@ -18,6 +19,9 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case ASSIGNER_REGION:
+                setupHtmlForAssignerRegion();
+                break;
             case LOCALITE:
                 setupHtmlForLocalite();
                 break;
@@ -51,6 +55,27 @@ public class DataTableRow {
         }
     }
 
+    private void setupHtmlForAssignerRegion() {
+        Employe agent = (Employe) object;
+        Localite localite = new AssignationDAO().getLocaliteByAgent(agent.getId());
+        if (localite == null) {
+            localite = new Localite();
+            localite.setNom("Aucune région assignée");
+        }
+        html = "<tr>" +
+                "<td>"
+                + agent.getId() + "</td>" +
+                "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
+                "<td>" + agent.getTel() + "</td>" +
+                "<td>" + agent.getAdresse() + "</td>" +
+                "<td>" + agent.getEmail() + "</td>" +
+                "<td>" + agent.getDateNaissance() + "</td>" +
+                "<td>" + localite.getNom() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getAgentId("+agent.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" value=\""+agent.getId()+"\"> Modifier</td>" +
+                "</tr>";
+
+    }
+
     private void setupHtmlForAgent() {
         Employe agent= (Employe) object;
         html = "<tr>" +
@@ -60,7 +85,7 @@ public class DataTableRow {
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
                 "<td>" + agent.getEmail() + "</td>" +
-                "<td>" + agent.getDateNaissance() + "</td>" ;
+                "<td>" + agent.getDateNaissance() + "</td></tr>" ;
 //                "<td>" + agent.getLocalite().getNom() + "</td></tr>" ;
         //todo: hedi
     }

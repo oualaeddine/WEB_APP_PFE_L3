@@ -284,7 +284,7 @@ public class EmployeDAO extends DAO {
                 employe.setDateAdded(result.getDate("dateAdded"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                list.add((Employe) getById(result.getInt("id")));
+                list.add(employe);
             }
         } catch (SQLException e) {
             e.printStackTrace();

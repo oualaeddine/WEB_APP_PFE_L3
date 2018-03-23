@@ -8,6 +8,7 @@ import control.system.managers.SuManager;
 import model.beans.Localite;
 import model.beans.Logement;
 import model.beans.humans.Employe;
+import model.db.daos.AssignationDAO;
 import model.db.daos.EmployeDAO;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
@@ -93,9 +94,14 @@ public class AjoutServlet extends MyServlet {
                         }
                         break;
                     case "assignation":
-                        int agent = Integer.parseInt(request.getParameter("agent"));
-                        int region = Integer.parseInt(request.getParameter("localite"));
-                        System.out.println("Assignation: "+ new AdminsManager(employe).assigner(agent,region));
+                        System.out.println(Integer.parseInt(request.getParameter("agentInput")));
+                        int agent = Integer.parseInt(request.getParameter("agentInput"));
+                        int region = Integer.parseInt(request.getParameter("selectRegion"));
+                        int assignationId = new AssignationDAO().isAffected(agent);
+                        if (assignationId != 0) {
+                            System.out.println("Agent déjà assigné, suppression de la 1ere assignation: "+new AssignationDAO().deleteById(assignationId));
+                        }
+                        System.out.println("Nouvelle assignation: "+ new AdminsManager(employe).assigner(agent,region));
                         break;
                 }
             }

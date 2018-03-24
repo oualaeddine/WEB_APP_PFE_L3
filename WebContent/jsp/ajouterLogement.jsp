@@ -1,9 +1,22 @@
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.MyView" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%! private TablesView tablesView = new TablesView(); %>
+<%
+    UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+    Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    tablesView.setLoggedInUserId(userId);
+    tablesView.setLoggedInUserType(userType);
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,214 +33,20 @@
 </head>
 
 <body class="bg-white">
-<nav class="navbar navbar-expand-lg navbar-dark navbar-admin fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#">Espace Admin</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
+     id="mainNav">
+    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav scroll-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="/AdminServlet">
-                    <i class="fa fa-fw fa-home"></i>
-                    <span class="nav-link-text">Accueil</span>
-                </a>
-            </li>
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTables" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-envelope"></i>
-                    <span class="nav-link-text">Messages</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseTables">
-                    <li>
-                        <a href="/AdminServlet?what=messages"><i class="fa fa-fw fa-envelope"></i>
-                            <span class="nav-link-text">Mes messages</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=newMessage"><i class="fa fa-fw fa-pencil"></i>
-                            <span class="nav-link-text">Nouveau message</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseEmployees" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa fa-vcard"></i>
-                    <span class="nav-link-text">Employés</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseEmployees">
-                    <li>
-                        <a href="/AdminServlet?what=listeAdmins"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des administrateurs</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=listeAgents"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des agents</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=listeOperateurs"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des opérateurs</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=listeResVente"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des responsables de ventes</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ajouterEmploye"><i class="fa fa-fw fa fa-plus"></i>
-                            <span class="nav-link-text">Ajouter un employé</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=approuverEmploye"><i class="fa fa-fw fa fa-check"></i>
-                            <span class="nav-link-text">Approuver un employé</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=suspendreEmploye"><i class="fa fa-fw fa-ban"></i>
-                            <span class="nav-link-text">Suspendre/réintegrer un employé</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRegions" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-location-arrow"></i>
-                    <span class="nav-link-text">Régions</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseRegions">
-                    <li>
-                        <a href="/AdminServlet?what=listeRegions"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des regions</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ajouterRegion"><i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Ajouter region</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="buildings">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsebuildings" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-building"></i>
-                    <span class="nav-link-text">Logements</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapsebuildings">
-                    <li>
-                        <a href="/AdminServlet?what=allLogements"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des Logements</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=logementsVendus"><i class="fa fa-fw fa-check"></i>
-                            <span class="nav-link-text">Logements vendus</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=logementsGeles"><i class="fa fa-fw fa-object-group"></i>
-                            <span class="nav-link-text">Logements gelés</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ajouterLogement"><i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Ajouter logement</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=gelerLogement"><i class="fa fa-fw fa-hand-stop-o"></i>
-                            <span class="nav-link-text">Geler logement</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseClients" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-users"></i>
-                    <span class="nav-link-text">Clients</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseClients">
-                    <li>
-                        <a href="/AdminServlet?what=listeClients"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des clients</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=clientsBannis"><i class="fa fa-fw fa-ban"></i>
-                            <span class="nav-link-text">Clients bannis</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=listePlaintes"><i class="fa fa-fw fa-warning"></i>
-                            <span class="nav-link-text">Liste des plaintes</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=bannirClient"><i class="fa fa-fw fa-user-times"></i>
-                            <span class="nav-link-text">Bannir/rétablir client</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-eye"></i>
-                    <span class="nav-link-text">Visites</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="/AdminServlet?what=listeVisites"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des visites</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=visitesProgrammees"><i class="fa fa-fw fa-calendar"></i>
-                            <span class="nav-link-text">Visites Programmées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=visitesPassees"><i class="fa fa-fw fa-calendar-check"></i>
-                            <span class="nav-link-text">Visites Passées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=visitesAnnulees"><i class="fa fa-fw fa-calendar-times"></i>
-                            <span class="nav-link-text">Visites annulées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ajouterVisite"><i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Ajouter visite</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseVentes" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-dollar"></i>
-                    <span class="nav-link-text">Ventes</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseVentes">
-                    <li>
-                        <a href="/AdminServlet?what=listeVentes"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des ventes</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ventesConfirmees"><i class="fa fa-fw fa-check"></i>
-                            <span class="nav-link-text">Ventes confirmées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=ajouterVente"><i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Ajouter vente</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseprofile" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-user"></i>
-                    <span class="nav-link-text">Mon profil</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseprofile">
-                    <li>
-                        <a href="/AdminServlet?what=modifierProfil"><i class="fa fa-fw fa-user-circle"></i>
-                            <span class="nav-link-text">Modifier profil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/AdminServlet?what=changePassword"><i class="fa fa-fw fa-lock"></i>
-                            <span class="nav-link-text">Changer mot de passe</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="/logout">
-                    <i class="fa fa-fw fa-sign-out"></i>
-                    <span class="nav-link-text">Deconnexion</span>
-                </a>
-            </li>
+        <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
+            <% for (MyView navElement : tablesView.getNav().getElements()) {
+                out.print(navElement.getHtml());
+            }
+            %>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">

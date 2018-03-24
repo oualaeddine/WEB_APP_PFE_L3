@@ -13,6 +13,15 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case SIGNALEMENT:
+                setupTableHeaderForPlainte();
+                break;
+            case PLAINTES:
+                setupTableHeaderForPlainte();
+                break;
+            case SIGNALER_CLIENT:
+                setupTableHeaderForSignalerClient();
+                break;
             case ASSIGNER_REGION:
                 setupTableHeaderForAssignerRegion();
                 break;
@@ -76,6 +85,9 @@ public class DataTableHeader {
             case CLIENTS:
                 setupTableHeaderForClients();
                 break;
+            case CLIENTS_FOR_AGENT:
+                setupTableHeaderForClientsForAgent();
+                break;
             case CLIENTS_FOR_USER:
                 setupTableHeaderForClients();
                 break;
@@ -97,15 +109,47 @@ public class DataTableHeader {
         }
     }
 
+    private void setupTableHeaderForPlainte() {
+        html = "<tr>" +
+                "<th>Plaignant</th>" +
+                "<th>Sujet de la plainte</th>" +
+                "<th>Motif</th>" +
+                "</tr>";
+    }
+
+    private void setupTableHeaderForSignalerClient() {
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom   </th>" +
+                "<th>Prenom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Action</th>" +
+                "</tr>";
+    }
+
+    private void setupTableHeaderForClientsForAgent() {
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom   </th>" +
+                "<th>Prenom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Etat</th>" +
+                "<tr>";
+    }
+
     private void setupTableHeaderForAssignerRegion() {
-        html =  "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>" +
-                "<td><b>Région</b></td>" +
-                "<td><b> Assigner </b></td>" +
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom              </th>" +
+                "<th>Telephone        </th>" +
+                "<th>Adresse          </th>" +
+                "<th>email            </th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Région           </th>" +
+                "<th> Assigner        </th>" +
                 "</tr>" ;
     }
 
@@ -123,13 +167,13 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForAgents() {
-        html =  "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>" +
-                "<td><b>Localité</b></td></tr>" ;
+        html =  "<tr><th>ID</th>" +
+                "<th>Nom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Localité</th></tr>" ;
     }
 
     private void setupTableHeaderForMessages() {
@@ -138,54 +182,55 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForClients() {
-        html =  "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Prenom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>" +
-                "<td><b>Etat</b></td></tr>" ;
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom</th>" +
+                "<th>Prenom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Etat</th></tr>" ;
     }
 
     private void setupTableHeaderForLocalite() {
-        html =  "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td></tr>";
+        html =  "<tr>" +
+                "<th>ID</th>" +
+                "<th>Nom</th></tr>";
 
     }
 
     private void setupTableHeaderForAdmins() {
-        html = "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>" +
-                "<td><b>Role</b></td></tr>";
+        html = "<tr><td><b>ID</b></th>" +
+                "<th>Nom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Role</th></tr>";
 
     }
 
     private void setupTableHeaderForVisites() {
-        html = "<tr><td><b>ID</b></td>" +
-                "<td><b>Logement</b></td>" +
-                "<td><b>Agent</b></td>" +
-                "<td><b>Client</b></td>" +
-                "<td><b>Horaire</b></td>" +
-                "<td><b>Etat</b></td></tr>" ;
+        html = "<tr><th>ID</th>" +
+                "<th>Logement</th>" +
+                "<th>Agent</th>" +
+                "<th>Client</th>" +
+                "<th>Horaire</th>" +
+                "<th>Etat</th></tr>" ;
 
     }
 
     private void setupTableHeaderForEmployees() {
-        html = "<tr><td><b>ID</b></td>" +
-                "<td><b>Nom</b></td>" +
-                "<td><b>Prenom</b></td>" +
-                "<td><b>Telephone</b></td>" +
-                "<td><b>Adresse</b></td>" +
-                "<td><b>email</b></td>" +
-                "<td><b>Date de naissance</b></td>" +
-                "<td><b>Etat</b></td>" +
-                "<td><b>Approuvé par</b></td>"+
-                "<td><b>Date d'ajout</b></td></tr>";
+        html = "<tr><th>ID</th>" +
+                "<th>Nom</th>" +
+                "<th>Prenom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Etat</th>" +
+                "<th>Approuvé par</th>"+
+                "<th>Date d'ajout</th></tr>";
     }
 
     private void setupTableHeaderForLogements() {

@@ -1,9 +1,6 @@
 package model.beans.views.table;
 
-import model.beans.Localite;
-import model.beans.Logement;
-import model.beans.Vente;
-import model.beans.Visite;
+import model.beans.*;
 import model.beans.humans.*;
 import model.db.daos.*;
 import model.enums.DataTableRowFormat;
@@ -29,8 +26,17 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case SIGNALEMENT:
+                setupDataSignalementList();
+                break;
+            case SIGNALER_CLIENT:
+                setupDataNotBannedClientList();
+                break;
+            case CLIENTS_FOR_AGENT:
+                setupDataClientsForAgent();
+                break;
             case ASSIGNER_REGION:
-                setupDataAgentList();
+                setupDataAssignerRegion();
                 break;
             case LOGEMENTS:
                 setupDataAllLogements();
@@ -98,9 +104,6 @@ public class DataTableData {
             case CLIENTS:
                 setupDataClientsList();
                 break;
-            case CLIENTS_FOR_USER:
-                //todo: hedi teni
-                break;
             case BANNED_CLIENTS:
                 setupDataBannedClients();
                 break;
@@ -114,6 +117,33 @@ public class DataTableData {
         }
     }
 
+    private void setupDataSignalementList() {
+        LinkedList<Signalement> list = new SignalementDAO().getAll();
+        for (Signalement signalement : list) {
+            data.add(new DataTableRow(DataTableRowFormat.SIGNALS, signalement));
+        }
+    }
+
+    private void setupDataNotBannedClientList() {
+        LinkedList<Client> list = new ClientDAO().getNotBannedClients();
+        for (Client client : list) {
+            data.add(new DataTableRow(DataTableRowFormat.SIGNALER, client));
+        }
+    }
+
+    private void setupDataClientsForAgent() {
+        LinkedList<Client> clients = new ClientDAO().getClientsForAgent(userId);
+        for (Client client : clients) {
+            data.add(new DataTableRow(DataTableRowFormat.CLIENT, client));
+        }
+    }
+
+
+    private void setupDataAssignerRegion() {
+        for (Employe agent : new EmployeDAO().getAllAgents()) {
+            data.add(new DataTableRow(DataTableRowFormat.ASSIGNER_REGION, agent));
+        }
+    }
 
 
     private void setupDataAgentVisites() {
@@ -224,9 +254,10 @@ public class DataTableData {
         }
     }
 
+
     private void setupDataAgentList() {
         for (Employe agent : new EmployeDAO().getAllAgents()) {
-            data.add(new DataTableRow(DataTableRowFormat.ASSIGNER_REGION, agent));
+            data.add(new DataTableRow(DataTableRowFormat.AGENT, agent));
         }
     }
 

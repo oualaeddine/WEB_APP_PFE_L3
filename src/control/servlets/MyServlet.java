@@ -32,14 +32,19 @@ public class MyServlet extends HttpServlet {
         return !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
     }
 
+    protected int getLoggedInId(HttpServletRequest request) {
+        return (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
+    }
     protected String getLoggedInUsername(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (isLoggedIn(request)) {
-            Person person =(Person) session.getAttribute("loggedIn");
-            return person.getUsername();
-        } else {
-            return null;
-        }
+        Person person =(Person) request.getSession().getAttribute(LOGGED_IN_USER);
+        return person.getUsername();
+//        HttpSession session = request.getSession(false);
+//        if (isLoggedIn(request)) {
+//            Person person =(Person) session.getAttribute("loggedIn");
+//            return person.getUsername();
+//        } else {
+//            return null;
+//        }
     }
 
     protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException, ServletException {

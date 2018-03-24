@@ -50,11 +50,11 @@ public class AgentServlet extends MyServlet {
                         break;
                     }
                     case "myClients":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS_FOR_USER").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS_FOR_AGENT").forward(request, response);
                         break;
                     }
                     case "signalerClient":{
-                        this.getServletContext().getRequestDispatcher("/html/signalerClient.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALER_CLIENT").forward(request, response);
                         break;
                     }
                     case "allLogements":{

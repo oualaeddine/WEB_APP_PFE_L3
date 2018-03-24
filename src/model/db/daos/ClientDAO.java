@@ -214,4 +214,53 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
+
+    public LinkedList<Client> getNotBannedClients() {
+        ResultSet result;
+        LinkedList<Client> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM client WHERE isBanned=0;");
+            while (result.next()) {
+                Client client = new Client();
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setBanned(result.getInt("isBanned")==1);
+                list.add(client);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public LinkedList<Client> getClientsForAgent(int agentId) {
+        ResultSet result;
+        LinkedList<Client> list = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT client.* FROM visite,employe,client WHERE employe.id="+agentId+" AND visite.agentId=employe.id AND client.id=visite.clientId;");
+            while (result.next()) {
+                Client client = new Client();
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setBanned(result.getInt("isBanned")==1);
+                list.add(client);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

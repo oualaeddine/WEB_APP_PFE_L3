@@ -215,6 +215,14 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case SIGNALEMENT:
+                return "Signalement";
+            case PLAINTES:
+                return "Plaintes";
+            case SIGNALER_CLIENT:
+                return "Clients";
+            case CLIENTS_FOR_AGENT:
+                return "Clients";
             case ASSIGNER_REGION:
                 return "Agents";
             case VENTES:
@@ -275,6 +283,12 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "SIGNALEMENT":
+                return SIGNALEMENT;
+            case "SIGNALER_CLIENT":
+                return SIGNALER_CLIENT;
+            case "CLIENTS_FOR_AGENT":
+                return CLIENTS_FOR_AGENT;
             case "ASSIGNER_REGION":
                 return ASSIGNER_REGION;
             case "VENTES":

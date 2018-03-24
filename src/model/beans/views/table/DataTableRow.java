@@ -19,6 +19,12 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case SIGNALS:
+                setupHtmlForSignals();
+                break;
+            case SIGNALER:
+                setupHtmlForSignalerClient();
+                break;
             case ASSIGNER_REGION:
                 setupHtmlForAssignerRegion();
                 break;
@@ -55,6 +61,29 @@ public class DataTableRow {
         }
     }
 
+    private void setupHtmlForSignals() {
+        Signalement signalement = (Signalement) object;
+        html = "<tr>" +
+                "<td>" + signalement.getPlaignant().getNom() + " " + signalement.getPlaignant().getPrenom() + "</td>" +
+                "<td>" + signalement.getClient().getNom() + " " + signalement.getClient().getPrenom() + "</td>" +
+                "<td>" + signalement.getMotif() + "</td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForSignalerClient() {
+        Client client = (Client) object;
+        html = "<tr>" +
+                "<td>" + client.getId() + "</td>" +
+                "<td>" + client.getNom() + "</td>" +
+                "<td>" + client.getPrenom() + "</td>" +
+                "<td>" + client.getTel() + "</td>" +
+                "<td>" + client.getAdresse() + "</td>" +
+                "<td>" + client.getEmail() + "</td>" +
+                "<td>" + client.getDateNaissance() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getClientId("+client.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#signalerModal\" value=\""+client.getId()+"\"> Signaler</td>" +
+                "</tr>";
+    }
+
     private void setupHtmlForAssignerRegion() {
         Employe agent = (Employe) object;
         Localite localite = new AssignationDAO().getLocaliteByAgent(agent.getId());
@@ -78,6 +107,11 @@ public class DataTableRow {
 
     private void setupHtmlForAgent() {
         Employe agent= (Employe) object;
+        Localite localite = new AssignationDAO().getLocaliteByAgent(agent.getId());
+        if (localite == null) {
+            localite = new Localite();
+            localite.setNom("Aucune région assignée");
+        }
         html = "<tr>" +
                 "<td><b>"
                        + agent.getId() + "</td>" +
@@ -85,9 +119,9 @@ public class DataTableRow {
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
                 "<td>" + agent.getEmail() + "</td>" +
-                "<td>" + agent.getDateNaissance() + "</td></tr>" ;
-//                "<td>" + agent.getLocalite().getNom() + "</td></tr>" ;
-        //todo: hedi
+                "<td>" + agent.getDateNaissance() + "</td>" +
+                "<td>" + localite.getNom() + "</td>" +
+                "</tr>" ;
     }
 
     private void setupHtmlForAdmin() {

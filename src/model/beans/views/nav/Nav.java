@@ -89,6 +89,9 @@ public class Nav {
         NavElement ajouterEmployeNavElement = new NavElement(false,"Ajouter employé", urlBase+"?what=ajouterEmploye","fa fa-plus");
         employeesSubNavElement.add(ajouterEmployeNavElement);
 
+        NavElement listeSignalementNavElement = new NavElement(isPage(currentPage, TablePage.SIGNALEMENT), "Liste des signalement", urlBase + "?what=listeSignals", "fa fa-warning");
+        employeesSubNavElement.add(listeSignalementNavElement);
+
         NavElement approuverEmploye = new NavElement(false, "Approuver un employé", urlBase + "?what=approuverEmploye", "fa-check");
         employeesSubNavElement.add(approuverEmploye);
 
@@ -216,9 +219,7 @@ public class Nav {
         navElements.add(messagesExpendableNavElement);
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
-            /*Admins*/
-        NavElement listeAdminsNavElement = new NavElement(isPage(currentPage, TablePage.ADMINS), "Liste des administrateurs", urlBase + "?what=listeAdmins", "fa fa-list");
-        employeesSubNavElement.add(listeAdminsNavElement);
+
             /*Agents*/
         NavElement listeAgentsNavElement = new NavElement(isPage(currentPage,TablePage.AGENTS),"Liste des agents",urlBase+"?what=listeAgents","fa fa-list");
         employeesSubNavElement.add(listeAgentsNavElement);
@@ -228,6 +229,9 @@ public class Nav {
             /*Responsables Ventes*/
         NavElement listeResVenteNavElement = new NavElement(isPage(currentPage, TablePage.RESPONSABLES_VENTES), "Liste des responsable de ventes", urlBase + "?what=listeResVente", "fa fa-list");
         employeesSubNavElement.add(listeResVenteNavElement);
+
+        NavElement listeSignalementNavElement = new NavElement(isPage(currentPage, TablePage.SIGNALEMENT), "Liste des signalement", urlBase + "?what=listeSignals", "fa fa-warning");
+        employeesSubNavElement.add(listeSignalementNavElement);
 
         NavElement ajouterEmployeNavElement = new NavElement(false,"Ajouter employé", urlBase+"?what=ajouterEmploye","fa fa-plus");
         employeesSubNavElement.add(ajouterEmployeNavElement);
@@ -283,7 +287,7 @@ public class Nav {
         NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what?listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
-        NavElement bannirClient = new NavElement(false, "Bannir/rétablir personal", urlBase + "?what=bannirClient", "fa fa-user-times");
+        NavElement bannirClient = new NavElement(false, "Bannir/rétablir client", urlBase + "?what=bannirClient", "fa fa-user-times");
         clientsSubNavElementList.add(bannirClient);
 
         ExpendableNavElement clientExpendableNavElement = new ExpendableNavElement("clientsNav", "fa fa-users", "Clients", clientsSubNavElementList, isPage(currentPage, TablePage.CLIENTS));
@@ -401,7 +405,7 @@ public class Nav {
         NavElement mesClientsNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS_FOR_USER), MyConsts.CLIENTS_MES_CLIENTS, MyConsts.AGENT_SERVLET_URL + "?what=myClients", "fa fa-fw fa-gratipay");
         clientsSubNavElement.add(mesClientsNavElement);
 
-        NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.CLIENTS_SIGNALER_CLIENT, MyConsts.AGENT_SERVLET_URL + "?what=signalerClient", "fa fa-fw fa-ban");
+        NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.EMPLOYE_SIGNALER_CLIENT, MyConsts.AGENT_SERVLET_URL + "?what=signalerClient", "fa fa-fw fa-ban");
         clientsSubNavElement.add(signalerClientNavElement);
 
         ExpendableNavElement clientsExpendableNavElement = new ExpendableNavElement("clientsNav","fa fa-fw fa-users","Client",clientsSubNavElement,isPage(currentPage,TablePage.CLIENTS));
@@ -480,7 +484,7 @@ public class Nav {
         NavElement mesClientsNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS_FOR_USER), MyConsts.CLIENTS_MES_CLIENTS, MyConsts.AGENT_SERVLET_URL + "?what=myClients", "fa fa-fw fa-gratipay");
         clientsSubNavElement.add(mesClientsNavElement);
 
-        NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.CLIENTS_SIGNALER_CLIENT, MyConsts.AGENT_SERVLET_URL + "?what=signalerClient", "fa fa-fw fa-ban");
+        NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.EMPLOYE_SIGNALER_CLIENT, MyConsts.AGENT_SERVLET_URL + "?what=signalerClient", "fa fa-fw fa-ban");
         clientsSubNavElement.add(signalerClientNavElement);
 
         ExpendableNavElement clientsExpendableNavElement = new ExpendableNavElement("clientsNav","fa fa-fw fa-users","Client",clientsSubNavElement,isPage(currentPage,TablePage.CLIENTS));

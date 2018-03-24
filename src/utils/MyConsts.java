@@ -98,4 +98,6 @@ public class MyConsts {
 
 
     public static final String LOGOUT_PAGE_TITILE = "Deconnexion";
+
+    public static final String EMPLOYE_SIGNALER_CLIENT = "Signaler client";
 }

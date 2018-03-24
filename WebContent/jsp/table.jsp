@@ -186,6 +186,38 @@
 
         </div>
     </div>
+
+    <%--Modal signaler client--%>
+    <div id="signalerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Motif</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=signalement" id="signalerForm">
+
+                        <input id="clientSignale" name="clientInput" type="hidden">
+                        <div class="form-group">
+                            <label for="motif">Veuillez entrer le motif de votre signalement</label>
+                            <textarea id="motif" rows="4" cols="50" name="comment" form="signalerForm" size="100" >
+
+                            </textarea>
+                        </div>
+                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -202,6 +234,10 @@
     <script>
         function getAgentId(idTaaLagent) {
             document.getElementById("agentId").value = idTaaLagent;
+        }
+        function getClientId(idTaaLClient) {
+            document.getElementById("clientSignale").value = idTaaLClient;
+
         }
 
     </script>

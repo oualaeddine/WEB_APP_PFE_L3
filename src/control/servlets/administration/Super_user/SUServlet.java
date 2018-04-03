@@ -55,11 +55,11 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "ajouterEmploye":{
-                        this.getServletContext().getRequestDispatcher("/html/ajouterEmploye.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/ajouterEmploye.jsp").forward(request, response);
                         break;
                     }
                     case "approuverEmploye":{
-                        this.getServletContext().getRequestDispatcher("/html/ajouterEmploye.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/ajouterEmploye.jsp").forward(request, response);
                         break;
                     }
                     case "suspendreEmploye":{

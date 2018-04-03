@@ -8,9 +8,17 @@ import java.util.Date;
 public class Employe extends Person {
     private Employe creator;
     private boolean isSuspended;
+    private boolean isApproved;
     private Date dateAdded;
     private UserType userType;
 
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
     public UserType getUserType() {
         return userType;
     }

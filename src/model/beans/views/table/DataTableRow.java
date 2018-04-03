@@ -41,7 +41,7 @@ public class DataTableRow {
                 setupHtmlForAgent();
                 break;
             case OPERATEUR:
-                setupHtmlForEmployee();
+                setupHtmlForOperateur();
                 break;
             case CLIENT:
                 setupHtmlForClient();
@@ -59,6 +59,18 @@ public class DataTableRow {
                 setupHtmlForVisite();
                 break;
         }
+    }
+
+    private void setupHtmlForOperateur() {
+        Employe operateur = (Employe) object;
+        html = "<tr>" +
+                "<td>" + operateur.getId() + "</td>" +
+                "<td>" + operateur.getNom() + " "+ operateur.getPrenom()+"</td>" +
+                "<td>" + operateur.getTel() + "</td>" +
+                "<td>" + operateur.getAdresse() + "</td>" +
+                "<td>" + operateur.getEmail() + "</td>" +
+                "<td>" + operateur.getDateNaissance() + "</td>" +
+                "</tr>" ;
     }
 
     private void setupHtmlForSignals() {
@@ -92,8 +104,7 @@ public class DataTableRow {
             localite.setNom("Aucune région assignée");
         }
         html = "<tr>" +
-                "<td>"
-                + agent.getId() + "</td>" +
+                "<td>" + agent.getId() + "</td>" +
                 "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
@@ -144,7 +155,8 @@ public class DataTableRow {
 
     private void setupHtmlForEmployee() {
         Employe operateur = (Employe) object;
-        html = "<tr><td><b>" + operateur.getId() + "</td>" +
+        html = "<tr>" +
+                "<td>" + operateur.getId() + "</td>" +
                 "<td>" + operateur.getNom() + "</td>" +
                 "<td>" + operateur.getPrenom() + "</td>" +
                 "<td>" + operateur.getTel() + "</td>" +
@@ -153,7 +165,8 @@ public class DataTableRow {
                 "<td>" + operateur.getDateNaissance() + "</td>" +
                 "<td>" + operateur.isSuspendedString() + "</td>" +
                 "<td>" + operateur.getCreator().getNom() + " " + operateur.getCreator().getPrenom() + "</td>" +
-                "<td>" + operateur.getDateAdded() + "</b></td></tr>";
+                "<td>" + operateur.getDateAdded() + "</td>" +
+                "</tr>";
     }
 
     private void setupHtmlForClient() {

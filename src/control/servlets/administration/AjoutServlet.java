@@ -9,6 +9,8 @@ import model.beans.Localite;
 import model.beans.Logement;
 import model.beans.humans.Employe;
 import model.db.daos.*;
+import model.enums.UserType;
+import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,22 +26,22 @@ public class AjoutServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             Object manager = null;
-            Employe employe = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
-            switch (employe.getUserType()) {
+            Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
+            switch (loggedInEmploye.getUserType()) {
                 case ADMIN:
-                    manager = new AdminsManager(employe);
+                    manager = new AdminsManager(loggedInEmploye);
                     break;
                 case AGENT:
-                    manager = new AgentsManager(employe);
+                    manager = new AgentsManager(loggedInEmploye);
                     break;
                 case OPERATEUR:
-                    manager = new OperateursManager(employe);
+                    manager = new OperateursManager(loggedInEmploye);
                     break;
                 case RESPONSABLE_VENTES:
-                    manager = new OperateursManager(employe);
+                    manager = new OperateursManager(loggedInEmploye);
                     break;
                 case SU:
-                    manager = new SuManager(employe);
+                    manager = new SuManager(loggedInEmploye);
             }
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
@@ -77,7 +79,8 @@ public class AjoutServlet extends MyServlet {
                             employee.setTel(request.getParameter("inputTel"));
                             employee.setUsername(request.getParameter("usernameInput"));
                             employee.setPassword(password);
-                            employee.setAdresse(request.getParameter("adresse"));
+                            employee.setUserType(Util.getUserTypeFromString(request.getParameter("select")));
+                            employee.setAdresse(request.getParameter("adresseInput"));
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
                             try {
                                 java.util.Date date = sdf.parse(request.getParameter("dateNaissance"));
@@ -87,6 +90,7 @@ public class AjoutServlet extends MyServlet {
                                 e.printStackTrace();
                             }
                             employee.setEmail(request.getParameter("emailInput"));
+                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInEmploye.getId()));
                             System.out.println(new EmployeDAO().add(employee));
                         }
                         break;
@@ -97,7 +101,7 @@ public class AjoutServlet extends MyServlet {
                         if (assignationId != 0) {
                             System.out.println("Agent déjà assigné, suppression de la 1ere assignation: "+new AssignationDAO().deleteById(assignationId));
                         }
-                        System.out.println("Nouvelle assignation: "+ new AdminsManager(employe).assigner(agent,region));
+                        System.out.println("Nouvelle assignation: "+ new AdminsManager(loggedInEmploye).assigner(agent,region));
                         break;
                     case "signalement":
                         System.out.println("Client: "+request.getParameter("clientInput")+" Employe: "+getLoggedInUsername(request));

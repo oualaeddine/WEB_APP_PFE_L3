@@ -47,7 +47,7 @@ public class DataTableHeader {
                 setupTableHeaderForEmployees();
                 break;
             case OPERATEURS:
-                setupTableHeaderForEmployees();
+                setupTableHeaderForOperateurs();
                 break;
             case SUSPENDED_OPERATEURS:
                 setupTableHeaderForEmployees();
@@ -107,6 +107,16 @@ public class DataTableHeader {
                 setupTableHeaderForVentes();
                 break;
         }
+    }
+
+    private void setupTableHeaderForOperateurs() {
+        html = "<tr><td>ID</th>" +
+                "<th>Nom</th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>email</th>" +
+                "<th>Date de naissance</th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForPlainte() {
@@ -221,7 +231,8 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForEmployees() {
-        html = "<tr><th>ID</th>" +
+        html = "<tr>" +
+                "<th>ID</th>" +
                 "<th>Nom</th>" +
                 "<th>Prenom</th>" +
                 "<th>Telephone</th>" +

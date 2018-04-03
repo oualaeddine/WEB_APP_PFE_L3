@@ -11,6 +11,38 @@ import java.util.LinkedList;
 
 public class EmployeDAO extends DAO {
 
+    public boolean inscriptionEmploye(Employe employe) {
+        try {
+            statement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isApproved`,`isSuspended`,`userType` ) VALUES(" +
+                    "'" + employe.getNom() + "'," +
+                    "'" + employe.getPrenom() + "'," +
+                    employe.getDateNaissance() + "," +
+                    "'" + employe.getAdresse() + "'," +
+                    "'" + employe.getTel() + "'," +
+                    "'" + employe.getEmail() + "'," +
+                    "'" + employe.getUsername() + "'," +
+                    "'" + employe.getPassword() + "'," +
+                    employe.getDateAdded() + "," +
+                    employe.getCreator().getId() + "," +
+                    "0, " +
+                    employe.isSuspended() + "," +
+                    "'"+Util.getStringFromType(employe.getUserType())+"'"+
+                    ");");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean approuverEmploye(int id) {
+        try {
+            statement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean changePassword(int id, String pass) {
         try {
             statement.execute("UPDATE employe SET password='" + pass + "' WHERE id=" + id);
@@ -36,6 +68,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
 
@@ -64,6 +97,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
 
@@ -92,6 +126,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 return employe;
@@ -101,6 +136,7 @@ public class EmployeDAO extends DAO {
         }
         return null;
     }
+
 
     @Override
     public boolean deleteById(int id) {
@@ -120,22 +156,23 @@ public class EmployeDAO extends DAO {
 
     @Override
     public boolean add(Object object) {
-        Employe employe = new Employe();
+        Employe employe = (Employe) object;
         try {
             statement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`userType` ) VALUES(" +
                     "'" + employe.getNom() + "'," +
                     "'" + employe.getPrenom() + "'," +
-                    employe.getDateNaissance() + "," +
+                    "'"+employe.getDateNaissance() +"'"+ "," +
                     "'" + employe.getAdresse() + "'," +
                     "'" + employe.getTel() + "'," +
                     "'" + employe.getEmail() + "'," +
                     "'" + employe.getUsername() + "'," +
                     "'" + employe.getPassword() + "'," +
-                    employe.getDateAdded() + "," +
+                    "CURRENT_DATE" + "," +
                     employe.getCreator().getId() + "," +
                     employe.isSuspended() + "," +
                     "'"+Util.getStringFromType(employe.getUserType())+"'"+
                     ");");
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -213,6 +250,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);
@@ -240,6 +278,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);
@@ -267,9 +306,25 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT id FROM employe WHERE userType='operateur';");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='operateur';");
             while (result.next()) {
-                list.add((Employe) getById(result.getInt("id")));
+
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setDateNaissance(result.getDate("dateNaiss"));
+                employe.setAdresse(result.getString("adresse"));
+                employe.setTel(result.getString("tel"));
+                employe.setEmail(result.getString("email"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
+                employe.setSuspended(result.getBoolean("isSuspended"));
+                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+
+                list.add(employe);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -308,6 +363,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);
@@ -335,6 +391,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);
@@ -362,6 +419,7 @@ public class EmployeDAO extends DAO {
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
                 employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
                 employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);

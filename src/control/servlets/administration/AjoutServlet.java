@@ -6,6 +6,7 @@ import control.system.managers.AgentsManager;
 import control.system.managers.OperateursManager;
 import control.system.managers.SuManager;
 import model.beans.Localite;
+import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Employe;
 import model.db.daos.*;
@@ -27,6 +28,7 @@ public class AjoutServlet extends MyServlet {
         if (isLoggedIn(request)) {
             Object manager = null;
             Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
+            int loggedInUserId = (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
             switch (loggedInEmploye.getUserType()) {
                 case ADMIN:
                     manager = new AdminsManager(loggedInEmploye);
@@ -46,6 +48,9 @@ public class AjoutServlet extends MyServlet {
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
                 switch (ajouter) {
+                    case "approuvement":
+                        System.out.println(new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")),loggedInEmploye.getId()));
+                        break;
                     case "localite":
                         Localite localite = new Localite();
                         localite.setNom(request.getParameter("nomInput"));
@@ -61,12 +66,14 @@ public class AjoutServlet extends MyServlet {
                         logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
                         logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
                         logement.setAvecJardin(!(request.getParameter("jardin")==null));
-                        logement.setAvecGarage(!(request.getParameter("garade") == null));
+                        logement.setAvecGarage(!(request.getParameter("garage") == null));
                         logement.setAvecSousSol(!(request.getParameter("soussol") == null));
-                        System.out.println(request.getParameter("jardin").equals("jardin"));
-
                         logement.setEtage(Integer.parseInt(request.getParameter("etage")));
                         logement.setPrix(Double.parseDouble(request.getParameter("prix")));
+                        Location location = new Location();
+                        location.setLatitude(Double.parseDouble(request.getParameter("latitude")));
+                        location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
+                        logement.setLocation(location);
                         System.out.println("Ajout: "+new LogementDAO().add(logement));
                         break;
                     case "employe":
@@ -90,7 +97,7 @@ public class AjoutServlet extends MyServlet {
                                 e.printStackTrace();
                             }
                             employee.setEmail(request.getParameter("emailInput"));
-                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInEmploye.getId()));
+                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInUserId));
                             System.out.println(new EmployeDAO().add(employee));
                         }
                         break;
@@ -106,6 +113,10 @@ public class AjoutServlet extends MyServlet {
                     case "signalement":
                         System.out.println("Client: "+request.getParameter("clientInput")+" Employe: "+getLoggedInUsername(request));
                         System.out.println(new SignalementDAO().add(getLoggedInId(request), Integer.parseInt(request.getParameter("clientInput")), request.getParameter("comment")));
+                        break;
+                    case "suspend":
+                        int employeId = Integer.parseInt(request.getParameter("employeSuspendu"));
+                        System.out.println(new EmployeDAO().suspendById(employeId));
                         break;
                 }
             }

@@ -10,6 +10,7 @@
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.db.daos.EmployeDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -218,6 +219,60 @@
 
         </div>
     </div>
+    <%--Modal approuver employe--%>
+    <div id="approuverModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=approuvement" id="approuverForm">
+
+                        <input id="employeApprouve" name="employeApprouve" type="hidden">
+                        <div class="form-group">
+                            <label>Êtes vous sur de vouloir approuver cet employé ?</label>
+                        </div>
+                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--Modal suspendre/réintegrer employé--%>
+    <div id="suspendreModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=suspend" id="suspendreForm">
+
+                        <input id="employeSuspendu" name="employeSuspendu" type="hidden">
+                        <div class="form-group">
+                            <label>Êtes vous sur de vouloir suspendre/réintegrer cet employé ?</label>
+                        </div>
+                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -238,6 +293,12 @@
         function getClientId(idTaaLClient) {
             document.getElementById("clientSignale").value = idTaaLClient;
 
+        }
+        function getApprovedId(idTaaLEmploye) {
+            document.getElementById("employeApprouve").value = idTaaLEmploye;
+        }
+        function getSuspendedId(idTaaLemploye) {
+            document.getElementById("employeSuspendu").value = idTaaLemploye;
         }
 
     </script>

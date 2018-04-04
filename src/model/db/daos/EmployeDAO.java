@@ -34,9 +34,10 @@ public class EmployeDAO extends DAO {
         }
         return false;
     }
-    public boolean approuverEmploye(int id) {
+    public boolean approuverEmploye(int id, int myId) {
         try {
             statement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
+            statement.execute("UPDATE employe SET addedBy = "+ myId +" WHERE id="+ id +";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -215,9 +216,10 @@ public class EmployeDAO extends DAO {
     public boolean authenticate(String username, String password) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM employe WHERE username='" + username + "' AND password='" + password + "';");
+            result = statement.executeQuery("SELECT id,isSuspended FROM employe WHERE username='" + username + "' AND password='" + password + "';");
             if (result.next()) {
-                return true;
+                if (!(result.getBoolean("isSuspended")))
+                    return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -237,7 +239,7 @@ public class EmployeDAO extends DAO {
         LinkedList<Employe> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='responsable_vente' AND isSuspended=1;");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='responsable_vente' AND isSuspended=1 AND isApproved=1;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));
@@ -265,7 +267,7 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='responsable_vente';");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='responsable_ventes' AND isApproved=1;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));
@@ -293,7 +295,7 @@ public class EmployeDAO extends DAO {
         LinkedList<Employe> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM employe WHERE userType='operateur' AND isSuspended=1;");
+            result = statement.executeQuery("SELECT id FROM employe WHERE userType='operateur' AND isSuspended=1 AND isApproved=1;");
             while (result.next()) {
                 list.add((Employe) getById(result.getInt("id")));
             }
@@ -306,7 +308,7 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='operateur';");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='operateur' AND isApproved=1;");
             while (result.next()) {
 
                 Employe employe = new Employe();
@@ -336,7 +338,7 @@ public class EmployeDAO extends DAO {
         LinkedList<Employe> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM employe WHERE userType='agent' AND isSuspended=1;");
+            result = statement.executeQuery("SELECT id FROM employe WHERE userType='agent' AND isSuspended=1 AND isApproved=1;");
             while (result.next()) {
                 list.add((Employe) getById(result.getInt("id")));
             }
@@ -350,7 +352,7 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='agent';");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='agent' AND isApproved=1;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));
@@ -378,7 +380,7 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='admin' OR userType='SU';");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='admin' OR userType='SU' AND isApproved=1;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));
@@ -406,7 +408,35 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='admin' AND isSuspended=1;");
+            result = statement.executeQuery("SELECT * FROM employe WHERE userType='admin' AND isSuspended=1 AND isApproved=1;");
+            while (result.next()) {
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setDateNaissance(result.getDate("dateNaiss"));
+                employe.setAdresse(result.getString("adresse"));
+                employe.setTel(result.getString("tel"));
+                employe.setEmail(result.getString("email"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                employe.setDateAdded(result.getDate("dateAdded"));
+                employe.setApproved(result.getBoolean("isApproved"));
+                employe.setSuspended(result.getBoolean("isSuspended"));
+                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                list.add(employe);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public LinkedList<Employe> getNotApprovedEmployees() {
+        LinkedList<Employe> list = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM employe WHERE isApproved=0;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));

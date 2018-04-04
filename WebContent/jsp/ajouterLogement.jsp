@@ -62,7 +62,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter un logement</div>
         <div class="card-body">
-            <form method="post" action="/AjoutServlet?ajouter=logement">
+            <form method="post" action="/AjoutServlet?ajouter=logement" id="formfield">
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
@@ -99,30 +99,68 @@
                     <div class="form-row">
                         <div class="col-md">
                             <label for="nbrPcs">Pièces</label>
-                            <input class="form-control" id="nbrPcs" name="nbrPcs" type="number" aria-describedby="emailHelp" placeholder="Nombre de pièces">
+                            <input class="form-control" id="nbrPcs" name="nbrPcs" type="number" placeholder="Nombre de pièces">
                         </div>
                         <div class="col-md">
-                            <label for="nbrFcds">Façades</label>
-                            <input class="form-control" id="nbrFcds" name="nbrFcds" type="number" aria-describedby="emailHelp" placeholder="Nombre de façades">
+                            <label for="nbrSdb">Salles de bain</label>
+                            <input class="form-control" id="nbrSdb" name="nbrSdb" type="number" placeholder="Nombre de sdb">
                         </div>
                         <div class="col-md">
                             <label for="etage">Etage</label>
                             <input class="form-control" id="etage" name="etage" type="number" aria-describedby="emailHelp" placeholder="Etage">
                         </div>
-                        <div class="col-md-1">
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md">
                             <label for="jardin">Avec jardin</label>
                             <input name="jardin" type="checkbox" class="form-control" id="jardin" value="jardin" placeholder="Avec jardin">
+                        </div>
+                        <div class="col-md">
+                            <label for="garage">Avec garage</label>
+                            <input name="garage" type="checkbox" class="form-control" id="garage" value="garage" placeholder="Avec garage">
+                        </div>
+                        <div class="col-md">
+                            <label for="soussol">Avec sous-sol</label>
+                            <input name="soussol" type="checkbox" class="form-control" id="soussol" value="soussol" placeholder="Avec sous-sol">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md">
                             <label for="prix">Prix</label>
-                            <input class="form-control" id="prix" name="prix" type="number" aria-describedby="emailHelp" placeholder="Prix">
+                            <input class="form-control" id="prix" name="prix" type="text" placeholder="Prix">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md">
+                            <label for="latitude">Latitude</label>
+                            <input class="form-control" id="latitude" name="latitude" type="text"  placeholder="Latitude">
+                        </div>
+                        <div class="col-md">
+                            <label for="longitude">Longitude</label>
+                            <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Longitude">
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary btn-block" type="submit" value="register">Ajouter</button>
+                    <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" />
+                </div>
+
+                <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                Confirm Submit
+                            </div>
+                            <div class="modal-body">
+                                <h4>Are you sure you want to submit the following details?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <a href="#" id="submit" class="btn btn-success success">Submit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -133,6 +171,18 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script>
+    $('#submitBtn').click(function() {
+        /* when the button in the form, display the entered values in the modal */
+        $('#lname').text($('#lastname').val());
+        $('#fname').text($('#firstname').val());
+    });
+
+    $('#submit').click(function(){
+        /* when the submit button in the modal is clicked, submit the form */
+        $('#formfield').submit();
+    });
+</script>
 </body>
 
 </html>

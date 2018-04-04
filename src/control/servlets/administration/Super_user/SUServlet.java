@@ -59,11 +59,11 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "approuverEmploye":{
-                        this.getServletContext().getRequestDispatcher("/jsp/ajouterEmploye.jsp").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPROUVER_EMPLOYE").forward(request, response);
                         break;
                     }
                     case "suspendreEmploye":{
-                        this.getServletContext().getRequestDispatcher("/html/suspendreEmploye.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SUSPENDRE_EMPLOYE").forward(request, response);
                         break;
                     }
                     case "listeRegions":{

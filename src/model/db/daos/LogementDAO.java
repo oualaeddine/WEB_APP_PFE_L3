@@ -137,20 +137,21 @@ public class LogementDAO extends DAO {
                     garage = logement.isAvecGarage() ? 1 : 0,
                     sousSol = logement.isAvecSousSol() ? 1 : 0;
 
-            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,latitude,longitude) VALUES ("+
-                    "'"+logement.getTitre()+"', \n"+
-                    "'"+logement.getDescription()+"',\n "+
-                    logement.getSuperficie()+",\n "+
-                    logement.getLocalite().getId() +", \n"+
-                    "'"+logement.getAdresse()+"',\n "+
-                    logement.getNbrPieces()+", \n"+
-                    logement.getNbrSdb()+", \n"+
-                    logement.getEtage()+
-                    ","+jardin+
-                    ","+garage+
-                    ","+sousSol+","+
-                    logement.getLocation().getLatitude()+"," +
-                    logement.getLocation().getLongitude()+
+            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,latitude,longitude,prix) VALUES (" +
+                            "'" + logement.getTitre() + "', \n" +
+                            "'" + logement.getDescription() + "',\n " +
+                            logement.getSuperficie() + ",\n " +
+                            logement.getLocalite().getId() + ", \n" +
+                            "'" + logement.getAdresse() + "',\n " +
+                            logement.getNbrPieces() + ", \n" +
+                            logement.getNbrSdb() + ", \n" +
+                            logement.getEtage() +
+                            "," + jardin +
+                            "," + garage +
+                            "," + sousSol + "," +
+                            logement.getLocation().getLatitude() + "," +
+                            logement.getLocation().getLongitude() + "," +
+                            logement.getPrix()+
                     ");");
             return true;
         }catch (SQLException e){

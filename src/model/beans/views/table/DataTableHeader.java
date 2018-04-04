@@ -106,7 +106,37 @@ public class DataTableHeader {
             case VENTES:
                 setupTableHeaderForVentes();
                 break;
+            case APPROUVER_EMPLOYE:
+                setupTableHeaderForApprouverEmploye();
+                break;
+            case SUSPENDRE_EMPLOYE:
+                setupTableHeaderForSuspendreEmploye();
+                break;
         }
+    }
+
+    private void setupTableHeaderForSuspendreEmploye() {
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom et prénom </th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>Email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Type</th>" +
+                "<th>Action</th>" +
+                "</tr>";
+    }
+
+    private void setupTableHeaderForApprouverEmploye() {
+        html =  "<tr><td>ID</th>" +
+                "<th>Nom et prénom </th>" +
+                "<th>Telephone</th>" +
+                "<th>Adresse</th>" +
+                "<th>Email</th>" +
+                "<th>Date de naissance</th>" +
+                "<th>Type</th>" +
+                "<th>Action</th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForOperateurs() {

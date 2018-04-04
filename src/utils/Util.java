@@ -277,12 +277,20 @@ public class Util {
                 return "Boite de reception Administration";
             case CLIENTS_MESSAGES_FOR_USER:
                 return "Boite de reception clients";
+            case APPROUVER_EMPLOYE:
+                return "Employés non approuvés";
+            case SUSPENDRE_EMPLOYE:
+                return "Employés";
         }
      return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "SUSPENDRE_EMPLOYE":
+                return SUSPENDRE_EMPLOYE;
+            case "APPROUVER_EMPLOYE":
+                return APPROUVER_EMPLOYE;
             case "SIGNALEMENT":
                 return SIGNALEMENT;
             case "SIGNALER_CLIENT":

@@ -58,7 +58,43 @@ public class DataTableRow {
             case VISITE:
                 setupHtmlForVisite();
                 break;
+            case APPROUVER_EMPLOYE:
+                setupHtmlForApprouverEmploye();
+                break;
+            case SUSPENDRE_EMPLOYE:
+                setupHtmlForSuspendreEmploye();
+                break;
+
         }
+    }
+
+    private void setupHtmlForSuspendreEmploye() {
+        Employe employe = (Employe) object;
+        String action = employe.isSuspended() ? "Réintegrer" : "Suspendre";
+        html = "<tr>" +
+                "<td>" + employe.getId() + "</td>" +
+                "<td>" + employe.getNom() + " " + employe.getPrenom() + "</td>" +
+                "<td>" + employe.getTel() + "</td>" +
+                "<td>" + employe.getAdresse() + "</td>" +
+                "<td>" + employe.getEmail() + "</td>" +
+                "<td>" + employe.getDateNaissance() + "</td>" +
+                "<td>" + employe.getUserType() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getSuspendedId(" + employe.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#suspendreModal\" value=\"" + employe.getId() + "\">" + action + "</td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForApprouverEmploye() {
+        Employe employe = (Employe) object;
+        html = "<tr>" +
+                "<td>" + employe.getId() + "</td>" +
+                "<td>" + employe.getNom() + " "+ employe.getPrenom() + "</td>" +
+                "<td>" + employe.getTel() + "</td>" +
+                "<td>" + employe.getAdresse() + "</td>" +
+                "<td>" + employe.getEmail() + "</td>" +
+                "<td>" + employe.getDateNaissance() + "</td>" +
+                "<td>" + employe.getUserType() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getApprovedId("+employe.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#approuverModal\" value=\""+employe.getId()+"\"> Approuver</td>" +
+                "</tr>";
     }
 
     private void setupHtmlForOperateur() {

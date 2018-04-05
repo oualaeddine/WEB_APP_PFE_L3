@@ -127,7 +127,7 @@ public class Nav {
         NavElement ajouterLogement = new NavElement(false,"Ajouter logement",urlBase+"?what=ajouterLogement","fa fa-plus");
         logementsSubNavElementList.add(ajouterLogement);
 
-        NavElement gelerLogement = new NavElement(false, "Geler logement", urlBase + "gelerLogement", "fa fa-hand-stop-o");
+        NavElement gelerLogement = new NavElement(false, "Geler logement", urlBase + "?what=gelerLogement", "fa fa-hand-stop-o");
         logementsSubNavElementList.add(gelerLogement);
 
         ExpendableNavElement logementsExpendableNavElement = new ExpendableNavElement("logementsNav","fa fa-building","Logements",logementsSubNavElementList,isPage(currentPage,TablePage.LOGEMENTS));
@@ -143,7 +143,7 @@ public class Nav {
         NavElement clientsBannis = new NavElement(isPage(currentPage, TablePage.BANNED_CLIENTS), "Clients bannis", urlBase + "?what=clientsBannis", "fa fa-ban");
         clientsSubNavElementList.add(clientsBannis);
 
-        NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what?listePlaintes", "fa fa-warning");
+        NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what=listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
         NavElement bannirClient = new NavElement(false, "Bannir/rétablir personal", urlBase + "?what=bannirClient", "fa fa-user-times");
@@ -268,7 +268,7 @@ public class Nav {
         NavElement ajouterLogement = new NavElement(false,"Ajouter logement",urlBase+"?what=ajouterLogement","fa fa-plus");
         logementsSubNavElementList.add(ajouterLogement);
 
-        NavElement gelerLogement = new NavElement(false, "Geler logement", urlBase + "gelerLogement", "fa fa-hand-stop-o");
+        NavElement gelerLogement = new NavElement(false, "Geler logement", urlBase + "?what=gelerLogement", "fa fa-hand-stop-o");
         logementsSubNavElementList.add(gelerLogement);
 
         ExpendableNavElement logementsExpendableNavElement = new ExpendableNavElement("logementsNav","fa fa-building","Logements",logementsSubNavElementList,isPage(currentPage,TablePage.LOGEMENTS));
@@ -284,7 +284,7 @@ public class Nav {
         NavElement clientsBannis = new NavElement(isPage(currentPage, TablePage.BANNED_CLIENTS), "Clients bannis", urlBase + "?what=clientsBannis", "fa fa-ban");
         clientsSubNavElementList.add(clientsBannis);
 
-        NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what?listePlaintes", "fa fa-warning");
+        NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what=listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
         NavElement bannirClient = new NavElement(false, "Bannir/rétablir client", urlBase + "?what=bannirClient", "fa fa-user-times");

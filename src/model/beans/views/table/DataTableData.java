@@ -113,7 +113,54 @@ public class DataTableData {
                 break;
             case CLIENTS_MESSAGES_FOR_USER:
                 break;
-            
+            case APPROUVER_EMPLOYE:
+                setupDataApprouverEmploye();
+                break;
+            case SUSPENDRE_EMPLOYE:
+                setupDataGetAllEmployees();
+                break;
+            case SUSPENDRE_ADMIN:
+                setupDataSuspendreAdmin();
+                break;
+            case GELER_LOGEMENT:
+                setupDataGelerLogement();
+                break;
+        }
+    }
+
+    private void setupDataGelerLogement() {
+        LinkedList<Logement> list = new LogementDAO().getNonVendus();
+        for (Logement logement : list) {
+            data.add(new DataTableRow(DataTableRowFormat.GELER_LOGEMENT, logement));
+        }
+    }
+
+    private void setupDataSuspendreAdmin() {
+        LinkedList<Employe> list = new EmployeDAO().getAllAdmins();
+        for (Employe employe : list) {
+            data.add(new DataTableRow(DataTableRowFormat.SUSPENDRE_EMPLOYE, employe));
+        }
+    }
+
+    private void setupDataGetAllEmployees() {
+        LinkedList<Employe> agents = new EmployeDAO().getAllAgents();
+        LinkedList<Employe> operateurs = new EmployeDAO().getAllOperateurs();
+        LinkedList<Employe> resventes = new EmployeDAO().getAllResVentes();
+        for (Employe employe : agents) {
+            data.add(new DataTableRow(DataTableRowFormat.SUSPENDRE_EMPLOYE, employe));
+        }
+        for (Employe employe : operateurs) {
+            data.add(new DataTableRow(DataTableRowFormat.SUSPENDRE_EMPLOYE, employe));
+        }
+        for (Employe employe : resventes) {
+            data.add(new DataTableRow(DataTableRowFormat.SUSPENDRE_EMPLOYE, employe));
+        }
+    }
+
+    private void setupDataApprouverEmploye() {
+        LinkedList<Employe> list = new EmployeDAO().getNotApprovedEmployees();
+        for (Employe employe : list) {
+            data.add(new DataTableRow(DataTableRowFormat.APPROUVER_EMPLOYE, employe));
         }
     }
 

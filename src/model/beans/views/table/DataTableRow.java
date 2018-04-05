@@ -4,6 +4,7 @@ import model.beans.*;
 import model.beans.humans.*;
 import model.db.daos.AssignationDAO;
 import model.enums.DataTableRowFormat;
+import model.enums.EtatLogement;
 
 public class DataTableRow {
 
@@ -64,8 +65,27 @@ public class DataTableRow {
             case SUSPENDRE_EMPLOYE:
                 setupHtmlForSuspendreEmploye();
                 break;
-
+            case GELER_LOGEMENT:
+                setupHtmlForGelerLogement();
+                break;
         }
+    }
+
+    private void setupHtmlForGelerLogement() {
+        Logement logement = (Logement) object;
+        String action = logement.getEtat() == EtatLogement.GELE ? "Dégeler" : "Geler";
+        html = "<tr>" +
+                "<td>"+ logement.getId() +"</td>"+
+                "<td>"+ logement.getTitre() +"</td>"+
+                "<td>"+ logement.getDescription() +"</td>"+
+                "<td>"+ logement.getSuperficie() +"</td>"+
+                "<td>"+ logement.getAdresse() +"</td>"+
+                "<td>"+ logement.getLocalite().getNom() +"</td>"+
+                "<td>"+ logement.getPrix() +" DZD</td>"+
+                "<td>"+ logement.getEtage() +"</td>"+
+                "<td>"+ logement.getEtat() +"</td>"+
+                "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + logement.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#gelerModal\" value=\"" + logement.getId() + "\">"+action+"</td>" +
+                "</tr>";
     }
 
     private void setupHtmlForSuspendreEmploye() {

@@ -18,38 +18,6 @@ public class Util {
 
     public static String getForgotPasswordEmail(String email, UserType userType, String code) {
         String name; Employe employe = null;
-//        switch (userType) {
-//
-//            case AGENT: {
-//                AgentsDAO dao = new AgentsDAO();
-//                if (dao.getByEmail(email) != null) {
-//                    employe = dao.getByEmail(email);
-//                }
-//
-//                break;
-//            }
-//            case OPERATEUR: {
-//                OperateurDAO dao = new OperateurDAO();
-//                if (dao.getByEmail(email) != null) {
-//                    employe = dao.getByEmail(email);
-//                }
-//                break;
-//            }
-//            case ADMIN: {
-//                AdminsDAO dao = new AdminsDAO();
-//                if (dao.getByEmail(email) != null) {
-//                    employe = dao.getByEmail(email);
-//                }
-//                break;
-//            }
-//            case RESPONSABLE_VENTES:{
-//                ResponsableVentesDAO dao = new ResponsableVentesDAO();
-//                if (dao.getByEmail(email) != null) {
-//                    employe = dao.getByEmail(email);
-//                }
-//                break;
-//            } default: return null;
-//        }
         employe = new EmployeDAO().getByEmail(email);
         name = employe.getNom()+" "+employe.getPrenom();
         String actionUrl = "localhost:8080/ForgotPassword?linsa="+employe.getId()+"&code="+code+"&wech="+getStringFromType(userType);
@@ -215,6 +183,8 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case SUSPENDRE_ADMIN:
+                return "Administrateurs";
             case SIGNALEMENT:
                 return "Signalement";
             case PLAINTES:
@@ -281,12 +251,18 @@ public class Util {
                 return "Employés non approuvés";
             case SUSPENDRE_EMPLOYE:
                 return "Employés";
+            case GELER_LOGEMENT:
+                return "Logements non vendus";
         }
      return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "GELER_LOGEMENT":
+                return GELER_LOGEMENT;
+            case "SUSPENDRE_ADMIN":
+                return SUSPENDRE_ADMIN;
             case "SUSPENDRE_EMPLOYE":
                 return SUSPENDRE_EMPLOYE;
             case "APPROUVER_EMPLOYE":

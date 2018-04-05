@@ -380,7 +380,7 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM employe WHERE userType='admin' OR userType='SU' AND isApproved=1;");
+            result = statement.executeQuery("SELECT * FROM employe WHERE (userType='admin' OR userType='SU') AND isApproved=1;");
             while (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));

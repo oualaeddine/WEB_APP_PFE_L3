@@ -83,7 +83,7 @@ public class SuManager {
     }
 
     public boolean gelerLogement(Logement logement){
-        return new LogementDAO().geler(logement);
+        return new LogementDAO().geler(logement.getId());
     }
     public boolean approuverEmploye(Employe employe){
         //en supposant que l'employé ki ydir l'inscription ma yetzadch f la bd heta yaqblou l'admin

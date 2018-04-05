@@ -40,7 +40,7 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "suspendreAdmin":{
-                        this.getServletContext().getRequestDispatcher("/jsp/suspendreAdmin.jsp").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SUSPENDRE_ADMIN").forward(request, response);
                     }
                     case "listeAgents":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENTS").forward(request, response);

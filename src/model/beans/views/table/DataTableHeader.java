@@ -13,6 +13,12 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case GELER_LOGEMENT:
+                setupTableHeaderForGelerLogement();
+                break;
+            case SUSPENDRE_ADMIN:
+                setupTableHeaderForSuspendreEmploye();
+                break;
             case SIGNALEMENT:
                 setupTableHeaderForPlainte();
                 break;
@@ -114,6 +120,23 @@ public class DataTableHeader {
                 break;
         }
     }
+
+    private void setupTableHeaderForGelerLogement() {
+        html =
+                "<tr>\n" +
+                "    <th>ID</th>\n" +
+                "    <th>Titre</th>\n" +
+                "    <th>Description</th>\n" +
+                "    <th>Superficie</th>\n" +
+                "    <th>Adresse</th>\n" +
+                "    <th>Localité</th>\n" +
+                "    <th>Prix</th>\n" +
+                "    <th>Etage</th>\n" +
+                "    <th>Etat</th>\n" +
+                "    <th>Action</th>" +
+                "</tr>";
+    }
+
 
     private void setupTableHeaderForSuspendreEmploye() {
         html =  "<tr><td>ID</th>" +

@@ -273,6 +273,32 @@
             </div>
         </div>
     </div>
+    <%--Modal Geler/Dégeler logement--%>
+    <div id="gelerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=gel" id="gelerForm">
+
+                        <input id="logementGele" name="logementGele" type="hidden">
+                        <div class="form-group">
+                            <label>Êtes vous sur de vouloir geler/dégeler ce logement ?</label>
+                        </div>
+                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -299,6 +325,9 @@
         }
         function getSuspendedId(idTaaLemploye) {
             document.getElementById("employeSuspendu").value = idTaaLemploye;
+        }
+        function getLogementGeleId(idTaaLeLogement) {
+            document.getElementById("logementGele").value = idTaaLeLogement;
         }
 
     </script>

@@ -53,9 +53,18 @@ public class LogementDAO extends DAO {
         return list;
     }
 
-    public boolean geler(Logement logement){
+    public boolean degeler(int id) {
         try {
-            statement.execute("UPDATE logement SET etat = 'gele' WHERE id="+logement.getId()+";");
+            statement.execute("UPDATE logement SET etat = 'avendre' WHERE id=" + id + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean geler(int id){
+        try {
+            statement.execute("UPDATE logement SET etat = 'gele' WHERE id="+id+";");
             return true;
         }catch (SQLException e){
             e.printStackTrace();
@@ -217,6 +226,7 @@ public class LogementDAO extends DAO {
                 Location location = new Location();
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
+                logement.setPrix(Double.parseDouble(result.getString("prix")));
                 list.add(logement);
             }
         }catch (SQLException e){
@@ -255,6 +265,7 @@ public class LogementDAO extends DAO {
                 Location location = new Location();
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
+                logement.setPrix(Double.parseDouble(result.getString("prix")));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -268,7 +279,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
+            result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre' OR etat='gele';");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -292,6 +303,7 @@ public class LogementDAO extends DAO {
                 Location location = new Location();
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
+                logement.setPrix(Double.parseDouble(result.getString("prix")));
                 list.add(logement);
             }
         } catch (SQLException e) {

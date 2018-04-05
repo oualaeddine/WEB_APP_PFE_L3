@@ -10,6 +10,7 @@ import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Employe;
 import model.db.daos.*;
+import model.enums.EtatLogement;
 import model.enums.UserType;
 import utils.Util;
 
@@ -118,6 +119,13 @@ public class AjoutServlet extends MyServlet {
                         int employeId = Integer.parseInt(request.getParameter("employeSuspendu"));
                         System.out.println(new EmployeDAO().suspendById(employeId));
                         break;
+                    case "gel":
+                        int logementId = Integer.parseInt(request.getParameter("logementGele"));
+                        Logement logementGele =(Logement) new LogementDAO().getById(logementId);
+                        if (logementGele.getEtat()== EtatLogement.GELE)
+                            System.out.println(new LogementDAO().degeler(logementId));
+                        else
+                            System.out.println(new LogementDAO().geler(logementId));
                 }
             }
         }

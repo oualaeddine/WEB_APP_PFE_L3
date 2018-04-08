@@ -16,6 +16,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +30,7 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/bootstrapValidator.min.css" rel="stylesheet"/>
 </head>
 
 <body class="bg-white">
@@ -61,7 +63,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter un employé</div>
         <div class="card-body">
-            <form method="post" action="/AjoutServlet?ajouter=employe">
+            <form method="post" action="/AjoutServlet?ajouter=employe" id="ajouterEmployeForm">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
@@ -108,6 +110,10 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
+                            <label for="adresseInput">Adresse</label>
+                            <input name="adresseInput" type="text" class="form-control" id="adresseInput" placeholder="Adresse">
+                        </div>
+                        <div class="col-md-6">
                             <label for="usernameInput">Nom d'utilisateur</label>
                             <input class="form-control" id="usernameInput" name="usernameInput" type="text" aria-describedby="nameHelp" placeholder="Entrez un nom d'utilisateur">
                         </div>
@@ -115,13 +121,10 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input class="form-control" id="exampleInputPassword1" name="passwordInput" type="password" placeholder="Password">
                         </div>
+
                         <div class="col-md-6">
-                            <label for="adresseInput">Adresse</label>
-                            <input name="adresseInput" type="text" class="form-control" id="adresseInput" placeholder="Adresse">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="exampleConfirmPassword">Confirm password</label>
-                            <input class="form-control" id="exampleConfirmPassword" name="confirmPassword" type="password" placeholder="Confirm password">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password">
                         </div>
                     </div>
                 </div>
@@ -137,6 +140,104 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../js/bootstrapValidator.min.js"></script>
 </body>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        var validator = $("#ajouterEmployeForm").bootstrapValidator({
+            fields:{
+                prenomInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le prénom"
+                        }
+                    }
+                },
+                nomInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le nom"
+                        }
+                    }
+                },
+                inputTel:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le numéro de téléphone"
+                        },
+//                        stringLength:{
+//                            min:10,
+//                            message:"Veuillez entrer un numéro de téléphone valide"
+//                        },
+                        phone:{
+                            message:"Veuillez entrer un numéro de téléphone valide"
+                        }
+                    }
+                },
+                dateNaissance:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer la date de naissance"
+                        }
+                    }
+                },
+                emailInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer l'adresse email"
+                        },
+                        stringLength:{
+                            min:6,
+                            max:35,
+                            message:"L'adresse email doit contenir 6-35 caractères"
+                        },
+                        emailAddress:{
+                            message:"\nVeuillez entrer une adresse email valide (exemple: johnsmith@gmail.com)"
+                        }
+                    }
+                },
+                usernameInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer un nom d'utilisateur"
+                        }
+                    }
+                },
+                passwordInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer un mot de passe"
+                        },
+                        different:{
+                            field:"emailInput",
+                            message:"Le mot de passe doit être différent de l'email"
+                        },
+                        stringLength:{
+                            min:6,
+                            message:"Le mot de passe doit contenir au moins 6 caractères"
+                        }
+                    }
+                },
+                confirmPassword:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez confirmer le mot de passe"
+                        },
+                        identical:{
+                            field:"passwordInput",
+                            message:"Veuillez verifier que les 2 mots de passes sont identiques"
+                        }
+                    }
+                },
+                adresseInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer l'adresse"
+                        }
+                    }
+                }
+            }
+        })
+    });
+</script>
 </html>

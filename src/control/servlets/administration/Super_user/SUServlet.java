@@ -122,6 +122,10 @@ public class SUServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=FROZEN_LOGEMENTS").forward(request, response);
                         break;
                     }
+                    case "gelerLogement":{
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=GELER_LOGEMENT").forward(request, response);
+                        break;
+                    }
                     case "ajouterLogement":{
                         this.getServletContext().getRequestDispatcher("/jsp/ajouterLogement.jsp").forward(request,response);
                         break;

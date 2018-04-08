@@ -27,6 +27,8 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-white">
@@ -59,7 +61,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter une localité</div>
         <div class="card-body">
-            <form method="post" action="/AjoutServlet?ajouter=localite">
+            <form method="post" action="/AjoutServlet?ajouter=localite" id="regionAdd">
                 <div class="form-group">
                     <div class="form-row">
                         <label for="nomInput">Nom</label>
@@ -78,6 +80,22 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../js/bootstrapValidator.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var validator = $("#regionAdd").bootstrapValidator({
+            fields:{
+                nomInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le nom de la localité"
+                        }
+                    }
+                }
+            }
+        });
+    })
+</script>
 </body>
 
 </html>

@@ -30,6 +30,7 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/bootstrapValidator.min.css" rel="stylesheet"/>
 </head>
 
 <body class="bg-white">
@@ -62,7 +63,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter un logement</div>
         <div class="card-body">
-            <form method="post" action="/AjoutServlet?ajouter=logement" id="formfield">
+            <form method="post" action="/AjoutServlet?ajouter=logement" id="ajouterLogementForm">
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
@@ -157,7 +158,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <a href="#" id="submit" class="btn btn-success success">Submit</a>
+                                <button type="submit" id="submit" class="btn btn-success success">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -171,17 +172,105 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../js/bootstrapValidator.min.js"></script>
 <script>
-    $('#submitBtn').click(function() {
-        /* when the button in the form, display the entered values in the modal */
-        $('#lname').text($('#lastname').val());
-        $('#fname').text($('#firstname').val());
+//    $('#submitBtn').click(function() {
+//        /* when the button in the form, display the entered values in the modal */
+//        $('#lname').text($('#lastname').val());
+//        $('#fname').text($('#firstname').val());
+//    });
+
+
+    $(document).ready(function () {
+        var validator = $("#ajouterLogementForm").bootstrapValidator({
+            fields:{
+                titreInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer un titre"
+                        }
+                    }
+                },
+                description:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer une description"
+                        }
+                    }
+                },
+                adresse:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer une adresse"
+                        }
+                    }
+                },
+                superficie:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer une adresse"
+                        }
+                    }
+                },
+                nbrPcs:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le nombre de pièces"
+                        },
+                        integer:{
+                            message:"Veuillez entrer un nombre entier"
+                        }
+                    }
+                },
+                nbrSdb:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le nombre de salles de bain"
+                        },
+                        integer:{
+                            message:"Veuillez entrer un nombre entier"
+                        }
+                    }
+                },
+                etage:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer l'étage"
+                        },
+                        integer:{
+                            message:"Veuillez entrer un nombre entier"
+                        }
+                    }
+                },
+                prix:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer le prix"
+                        }
+                    }
+                },
+                latitude:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer la latitude"
+                        }
+                    }
+                },
+                longitude:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer la longitutde"
+                        }
+                    }
+                }
+            }
+        })
     });
 
-    $('#submit').click(function(){
-        /* when the submit button in the modal is clicked, submit the form */
-        $('#formfield').submit();
-    });
+$('#submit').click(function(){
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#ajouterLogementForm").submit();
+});
 </script>
 </body>
 

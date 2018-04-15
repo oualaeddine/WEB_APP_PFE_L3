@@ -112,7 +112,6 @@ public class DataTableRow {
                 "<td>" + employe.getAdresse() + "</td>" +
                 "<td>" + employe.getEmail() + "</td>" +
                 "<td>" + employe.getDateNaissance() + "</td>" +
-                "<td>" + employe.getUserType() + "</td>" +
                 "<td><button type=\"button\"  onclick=\"getApprovedId("+employe.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#approuverModal\" value=\""+employe.getId()+"\"> Approuver</td>" +
                 "</tr>";
     }

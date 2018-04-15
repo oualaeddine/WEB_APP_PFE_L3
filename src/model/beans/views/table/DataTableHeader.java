@@ -157,7 +157,6 @@ public class DataTableHeader {
                 "<th>Adresse</th>" +
                 "<th>Email</th>" +
                 "<th>Date de naissance</th>" +
-                "<th>Type</th>" +
                 "<th>Action</th>" +
                 "</tr>";
     }

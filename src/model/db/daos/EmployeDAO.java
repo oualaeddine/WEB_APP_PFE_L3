@@ -16,14 +16,14 @@ public class EmployeDAO extends DAO {
             statement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`isApproved`,`isSuspended` ) VALUES(" +
                     "'" + employe.getNom() + "'," +
                     "'" + employe.getPrenom() + "'," +
-                    employe.getDateNaissance() + "," +
+                    "'" + employe.getDateNaissance() + "'," +
                     "'" + employe.getAdresse() + "'," +
                     "'" + employe.getTel() + "'," +
                     "'" + employe.getEmail() + "'," +
                     "'" + employe.getUsername() + "'," +
                     "'" + employe.getPassword() + "'," +
                     "0, " +
-                    "0," +
+                    "0" +
                     ");");
             return true;
         } catch (SQLException e) {
@@ -448,7 +448,6 @@ public class EmployeDAO extends DAO {
                 employe.setDateAdded(result.getDate("dateAdded"));
                 employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
                 list.add(employe);
             }
         } catch (SQLException e) {

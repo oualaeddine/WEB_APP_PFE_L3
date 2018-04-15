@@ -9,11 +9,9 @@ import java.sql.Date;
 import java.text.ParseException;
 
 public class EmployeManager {
-    private final Employe loggedInEmploye;
     private final EmployeDAO employeDAO;
 
-    public EmployeManager(Employe loggedInEmploye) {
-        this.loggedInEmploye = loggedInEmploye;
+    public EmployeManager() {
         this.employeDAO = new EmployeDAO();
     }
 

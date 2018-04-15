@@ -23,9 +23,9 @@ import java.text.SimpleDateFormat;
 @WebServlet(name = "AjoutServlet", value = "/AjoutServlet")
 public class AjoutServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
             Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
             Object manager = new AdminsManager(loggedInEmploye);
+        if (isLoggedIn(request)) {
             int loggedInUserId = (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
             switch (loggedInEmploye.getUserType()) {
                 case ADMIN:
@@ -34,18 +34,21 @@ public class AjoutServlet extends MyServlet {
                 case SU:
                     manager = new SuManager(loggedInEmploye);
                     break;
-                default:
-                    manager = new EmployeManager(loggedInEmploye);
             }
+        }
+
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
                 switch (ajouter) {
                     case "inscriptionEmploye":
+                        System.out.println("wsalt hna");
                         try {
-                            System.out.println("Inscription:" + ((EmployeManager) manager).register(request));
+                            EmployeManager employeManager = new EmployeManager();
+                            System.out.println("Inscription:" + employeManager.register(request) );
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        break;
                     case "approuvement":
                         System.out.println(((AdminsManager) manager).approuverEmploye(request));
                         break;
@@ -76,7 +79,7 @@ public class AjoutServlet extends MyServlet {
                                 e.printStackTrace();
                             }
                             employee.setEmail(request.getParameter("emailInput"));
-                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInUserId));
+//                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInUserId));
                             System.out.println(new EmployeDAO().add(employee));
                         }
                         break;
@@ -106,7 +109,6 @@ public class AjoutServlet extends MyServlet {
                             System.out.println(new LogementDAO().geler(logementId));
                 }
             }
-        }
         redirectToDashboard(request,response);
     }
 

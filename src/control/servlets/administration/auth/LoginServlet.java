@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebServlet(name = "LoginServlet", urlPatterns = LOGIN_SERVLET_URL)
-@WebServlet({"/login"})
+import static utils.MyConsts.LOGIN_SERVLET_URL;
+
+@WebServlet(name = "ClientLoginServlet", urlPatterns = {LOGIN_SERVLET_URL,"/authentification"})
+//@WebServlet({"/login"})
 public class LoginServlet extends MyServlet {
 
     private AuthManager authManager;

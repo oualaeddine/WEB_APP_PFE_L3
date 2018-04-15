@@ -57,7 +57,7 @@ public class Nav {
     }
 
     private void setupNavElementsForSU() {
-        String urlBase = MyConsts.SUPER_USER_SERVLET_URL;
+        String urlBase = "/DashboardServlet";
 
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
@@ -177,8 +177,6 @@ public class Nav {
         NavElement ventesConfirmeesNavElement = new NavElement(isPage(currentPage, TablePage.CONFIRMED_VENTES), "Ventes confirmées", urlBase + "?what=ventesConfirmees", "fa-check");
         ventesSubNavElementList.add(ventesConfirmeesNavElement);
 
-        NavElement ajouterVentesNavElement = new NavElement(false, "Ajouter vente", urlBase + "?what=ajouterVente", "fa-plus");
-        ventesSubNavElementList.add(ajouterVentesNavElement);
 
         ExpendableNavElement ventesExpendableNavElement = new ExpendableNavElement("ventesNav", "fa-dollar", "Ventes",ventesSubNavElementList, isPage(currentPage, TablePage.VENTES));
         navElements.add(ventesExpendableNavElement);
@@ -318,8 +316,6 @@ public class Nav {
         NavElement ventesConfirmeesNavElement = new NavElement(isPage(currentPage, TablePage.CONFIRMED_VENTES), "Ventes confirmées", urlBase + "?what=ventesConfirmees", "fa-check");
         ventesSubNavElementList.add(ventesConfirmeesNavElement);
 
-        NavElement ajouterVentesNavElement = new NavElement(false, "Ajouter vente", urlBase + "?what=ajouterVente", "fa-plus");
-        ventesSubNavElementList.add(ajouterVentesNavElement);
 
         ExpendableNavElement ventesExpendableNavElement = new ExpendableNavElement("ventesNav", "fa-dollar", "Ventes",ventesSubNavElementList, isPage(currentPage, TablePage.VENTES));
         navElements.add(ventesExpendableNavElement);

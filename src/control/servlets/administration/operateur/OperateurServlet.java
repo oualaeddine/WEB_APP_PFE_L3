@@ -78,7 +78,7 @@ public class OperateurServlet extends MyServlet {
                         break;
                     }
                     case "modifierProfil":{
-                        this.getServletContext().getRequestDispatcher("/modifierProfil.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/modifierProfil.jsp").forward(request, response);
                         break;
                     }
                     case "changePassword":{

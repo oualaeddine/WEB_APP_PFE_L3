@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebServlet(name = "LoginServlet", urlPatterns = LOGIN_SERVLET_URL)
 @WebServlet({"/login"})
 public class LoginServlet extends MyServlet {
 
@@ -33,7 +32,7 @@ public class LoginServlet extends MyServlet {
                 if (authManager.authenticateEmploye(username,password)) {
                     System.out.println(true);
                     authManager.createSessionForEmploye(username,request);
-                    redirectToDashboard(request,response);
+                    redirectToDashboard(request, response);
                 }else
                     redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
             }

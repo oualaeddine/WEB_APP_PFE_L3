@@ -1,12 +1,17 @@
 package control.system.managers;
 
 import model.beans.Localite;
+import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.*;
 import model.db.daos.*;
 import model.enums.AdminRole;
 import model.enums.UserType;
+import org.apache.http.HttpRequest;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 
 public class AdminsManager {
@@ -64,8 +69,25 @@ public class AdminsManager {
         return false;
     }
 
-    public boolean createLogement(Logement logement){
-        return new LogementDAO().add(logement);
+    public boolean createLogement(ServletRequest request){
+        Logement logement = new Logement();
+        logement.setTitre(request.getParameter("titreInput"));
+        logement.setDescription(request.getParameter("description"));
+        logement.setAdresse(request.getParameter("adresse"));
+        logement.setSuperficie(Double.parseDouble(request.getParameter("superficie")));
+        logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region"))));
+        logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
+        logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
+        logement.setAvecJardin(!(request.getParameter("jardin")==null));
+        logement.setAvecGarage(!(request.getParameter("garage") == null));
+        logement.setAvecSousSol(!(request.getParameter("soussol") == null));
+        logement.setEtage(Integer.parseInt(request.getParameter("etage")));
+        logement.setPrix(Double.parseDouble(request.getParameter("prix")));
+        Location location = new Location();
+        location.setLatitude(Double.parseDouble(request.getParameter("latitude")));
+        location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
+        logement.setLocation(location);
+       return new LogementDAO().add(logement);
     }
     public boolean deleteLogement(Logement logement){
         return new LogementDAO().delete(logement);
@@ -81,9 +103,8 @@ public class AdminsManager {
     public boolean gelerLogement(Logement logement){
         return new LogementDAO().geler(logement.getId());
     }
-    public boolean approuverEmploye(Employe employe){
-        //en supposant que l'employé ki ydir l'inscription ma yetzadch f la bd heta yaqblou l'admin
-        return new EmployeDAO().add(employe);
+    public boolean approuverEmploye(ServletRequest request){
+        return new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")), loggedInAdmin.getId());
     }
 
     public void imprimerFacture(int numVente){
@@ -93,5 +114,9 @@ public class AdminsManager {
 
     public boolean assigner(int agent, int region) {
         return new AssignationDAO().add(agent, region);
+    }
+
+    public boolean ajouterLocalite(HttpServletRequest request) {
+        return false;
     }
 }

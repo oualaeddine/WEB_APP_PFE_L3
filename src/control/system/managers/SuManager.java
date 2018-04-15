@@ -13,11 +13,10 @@ import model.enums.UserType;
 
 import java.sql.Date;
 
-public class SuManager {
-    private final Employe loggedInAdmin;
+public class SuManager extends AdminsManager{
 
     public SuManager(Employe loggedInAdmin) {
-        this.loggedInAdmin = loggedInAdmin;
+        super(loggedInAdmin);
     }
 
 
@@ -55,18 +54,17 @@ public class SuManager {
     }
 
 
-    public boolean createEmploye(Employe employe) {
-        if (employe.getUserType() == UserType.ADMIN) {
-            if (loggedInAdmin.getUserType() == UserType.SU) {
-                Employe admin = employe;
-                admin.setUserType(UserType.ADMIN);
-                return new EmployeDAO().add(admin);
-            }
-        } else {
-            return new EmployeDAO().add(employe);
-        }
-        return false;
-    }
+//    public boolean createAdmin(Employe employe) {
+//        if (employe.getUserType() == UserType.ADMIN) {
+//                Employe admin = employe;
+//                admin.setUserType(UserType.ADMIN);
+//                return new EmployeDAO().add(admin);
+//            }
+//        } else {
+//            return new EmployeDAO().add(employe);
+//        }
+//        return false;
+//    }
 
     public boolean createLogement(Logement logement){
         return new LogementDAO().add(logement);

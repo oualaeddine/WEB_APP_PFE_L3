@@ -71,7 +71,7 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "ajouterRegion":{
-                        this.getServletContext().getRequestDispatcher("/html/ajouterRegion.html").forward(request,response);
+                        this.getServletContext().getRequestDispatcher("/jsp/ajouterRegion.jsp").forward(request,response);
                         break;
                     }
                     case "listeVisites":{
@@ -131,7 +131,7 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "modifierProfil":{
-                        this.getServletContext().getRequestDispatcher("/modifierProfil.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/modifierProfil.jsp").forward(request, response);
                         break;
                     }
                     case "changePassword":{

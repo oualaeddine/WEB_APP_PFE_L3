@@ -27,8 +27,8 @@ import java.text.SimpleDateFormat;
 public class AjoutServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
-            Object manager = null;
             Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
+            Object manager = new AdminsManager(loggedInEmploye);
             int loggedInUserId = (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
             switch (loggedInEmploye.getUserType()) {
                 case ADMIN:
@@ -50,32 +50,13 @@ public class AjoutServlet extends MyServlet {
             if (ajouter != null) {
                 switch (ajouter) {
                     case "approuvement":
-                        System.out.println(new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")),loggedInEmploye.getId()));
+                        System.out.println(((AdminsManager) manager).approuverEmploye(request));
                         break;
                     case "localite":
-                        Localite localite = new Localite();
-                        localite.setNom(request.getParameter("nomInput"));
-                        System.out.println("Ajout: "+new LocaliteDAO().add(localite));
+                        System.out.println(((AdminsManager) manager).ajouterLocalite(request));
                         break;
                     case "logement":
-                        Logement logement = new Logement();
-                        logement.setTitre(request.getParameter("titreInput"));
-                        logement.setDescription(request.getParameter("description"));
-                        logement.setAdresse(request.getParameter("adresse"));
-                        logement.setSuperficie(Double.parseDouble(request.getParameter("superficie")));
-                        logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region"))));
-                        logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
-                        logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
-                        logement.setAvecJardin(!(request.getParameter("jardin")==null));
-                        logement.setAvecGarage(!(request.getParameter("garage") == null));
-                        logement.setAvecSousSol(!(request.getParameter("soussol") == null));
-                        logement.setEtage(Integer.parseInt(request.getParameter("etage")));
-                        logement.setPrix(Double.parseDouble(request.getParameter("prix")));
-                        Location location = new Location();
-                        location.setLatitude(Double.parseDouble(request.getParameter("latitude")));
-                        location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
-                        logement.setLocation(location);
-                        System.out.println("Ajout: "+new LogementDAO().add(logement));
+                        System.out.println(((AdminsManager) manager).createLogement(request));
                         break;
                     case "employe":
                         String password = request.getParameter("passwordInput");

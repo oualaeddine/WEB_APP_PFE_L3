@@ -51,39 +51,7 @@ public class MyServlet extends HttpServlet {
         response.sendRedirect(MyConsts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
 //        response.sendRedirect("/login");
     }
-
     protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        UserType userType = (UserType) request.getSession().getAttribute(LOGGED_IN_USER_TYPE);
-        if (userType != null) {
-            String dashboardUrl;
-            switch (userType) {
-                case CLIENT:
-                    dashboardUrl = MyConsts.CLIENT_SERVLET_URL;
-                    break;
-                case AGENT:
-                    dashboardUrl = MyConsts.AGENT_SERVLET_URL;
-
-                    break;
-                case OPERATEUR:
-                    dashboardUrl = MyConsts.OPERATEUR_SERVLET_URL;
-
-                    break;
-                case ADMIN:
-                    dashboardUrl = MyConsts.ADMIN_SERVLET_URL;
-                    break;
-                case SU:
-                    dashboardUrl = MyConsts.SUPER_USER_SERVLET_URL;
-                    break;
-                case RESPONSABLE_VENTES:
-                    dashboardUrl = MyConsts.RESONSABLE_VENTES_SERVLET_URL;
-                    break;
-                default:
-                    dashboardUrl = MyConsts.HOME_SERVLET_URL;
-            }
-            this.getServletContext().getRequestDispatcher(dashboardUrl).forward(request, response);
-        } else {
-            new AuthManager().logout(request);
-            redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
-        }
+        response.sendRedirect("/DashboardServlet");
     }
 }

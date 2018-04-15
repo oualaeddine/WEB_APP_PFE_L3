@@ -2,10 +2,9 @@
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.views.MyView" %>
-<%@ page import="model.enums.TablePage" %>
 <%@ page import="model.beans.humans.Employe" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
@@ -23,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Modifier mot de passe</title>
+    <title>Modifier profil</title>
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -77,19 +76,56 @@
         <li class="breadcrumb-item active">Principale</li>
     </ol>
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Modifier mot de passe</div>
+        <div class="card-header">Modifier profil</div>
         <div class="card-body">
-            <form method="post" id="changePasswordForm">
+            <form method="post" id="modifierProfilForm">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="prenomInput">Prenom</label>
+                            <input class="form-control" id="prenomInput" name="prenomInput" type="text" value="<%out.print(employe.getPrenom());%>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nomInput">Nom</label>
+                            <input class="form-control" id="nomInput" name="nomInput" type="text" value="<%out.print(employe.getNom());%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="inputTel">Telephone</label>
+                            <input class="form-control" id="inputTel" name="inputTel" type="text" value="<%out.print(employe.getTel());%>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input class="form-control" id="dateNaissance" name="dateNaissance" type="date" value="<%out.print(employe.getDateNaissance());%>">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <label for="adresseInput">Adresse</label>
+                            <input name="adresseInput" type="text" class="form-control" id="adresseInput" value="<%out.print(employe.getAdresse());%>">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email" value="<%out.print(employe.getEmail());%>">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="usernameInput">Username</label>
+                            <input class="form-control" id="usernameInput" name="usernameInput" type="text" value="<%out.print(employe.getUsername());%>">
+                        </div>
+                    </div>
+                </div>
+                <%--<div class="form-group">--%>
 
-                <div class="form-group" align="center">
-                    <label for="id">Veuillez entrer le nouveau mot de passe</label>
-                    <input class="form-control" id="id" name="newMdp" type="password" placeholder="Nouveau mot de passe">
+                <%--</div>--%>
+
+                <div class="text-center">
+                    <button class="btn btn-primary btn-block" type="submit" value="register">Sauvegarder</button>
                 </div>
-                <div class="form-group" align="center">
-                    <label for="confirm_new_mdp">Veuillez confirmer le mot de passe</label>
-                    <input class="form-control" id="confirm_new_mdp" name="confirm_new_mdp" type="password" placeholder="Confirmez nouveau mot de passe">
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Changer mot de passe</button>
             </form>
 
         </div>
@@ -133,27 +169,62 @@
 </body>
 <script>
     $(document).ready(function () {
-        var validator = $("#changePasswordForm").bootstrapValidator({
+        var validator = $("#modifierProfilForm").bootstrapValidator({
             fields: {
-                newMdp: {
+                nomInput: {
                     validators: {
                         notEmpty: {
-                            message: "Veuillez entrer le nouveau mot de passe"
-                        },
-                        stringLength: {
-                            min: 6,
-                            message: "Le mot de passe doit contenir au moins 6 caractères"
+                            message: "Veuillez entrer votre nom"
                         }
                     }
                 },
-                confirm_new_mdp: {
+                prenomInput: {
                     validators: {
                         notEmpty: {
-                            message: "Veuillez confirmer votre nouveau mot de passe"
+                            message: "Veuillez entrer votre prénom"
+                        }
+                    }
+                },
+                inputTel:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer votre numéro de téléphone"
                         },
-                        identical:{
-                            field:"newMdp",
-                            message:"Les deux mots de passe ne sont pas identiques"
+                        stringLength:{
+                            min:10,
+                            max:20,
+                            message:"Veuillez entrer votre numéro de téléphone"
+                        }
+                    }
+                },
+                dateNaissance:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer votre date de naissance"
+                        }
+                    }
+                },
+                adresseInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer votre adresse"
+                        }
+                    }
+                },
+                emailInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer votre adresse email"
+                        },
+                        emailAddress:{
+                            message:"Veuillez entrer une adresse valide (eg. john@gmail.com)"
+                        }
+                    }
+                },
+                usernameInput:{
+                    validators:{
+                        notEmpty:{
+                            message:"Veuillez entrer votre nom d'utilisateur"
                         }
                     }
                 }

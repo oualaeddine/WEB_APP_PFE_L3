@@ -37,7 +37,7 @@ public class SignUpServlet extends MyServlet {
             String password = request.getParameter("passwordInput");
             String confirmPassword = request.getParameter("confirmPassword");
             String adresse = request.getParameter("adresseInput");
-            if (password.equals(confirmPassword)) {
+            if (password.equals(confirmPassword)) {// TODO: 4/15/2018 what the fuck is this oO
                 Client client = new Client();
                 client.setPrenom(prenom);
                 client.setNom(nom);

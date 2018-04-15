@@ -35,8 +35,9 @@ public class MyServlet extends HttpServlet {
     protected int getLoggedInId(HttpServletRequest request) {
         return (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
     }
+
     protected String getLoggedInUsername(HttpServletRequest request) {
-        Person person =(Person) request.getSession().getAttribute(LOGGED_IN_USER);
+        Person person = (Person) request.getSession().getAttribute(LOGGED_IN_USER);
         return person.getUsername();
 //        HttpSession session = request.getSession(false);
 //        if (isLoggedIn(request)) {
@@ -48,10 +49,12 @@ public class MyServlet extends HttpServlet {
     }
 
     protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException, ServletException {
-        response.sendRedirect(MyConsts.LOGIN_SERVLET_URL + "?" + LOGIN_NEEDED_ERROR_ID);
+        response.sendRedirect(MyConsts.LOGIN_SERVLET_URL + "?error=" + LOGIN_NEEDED_ERROR_ID);
 //        response.sendRedirect("/login");
     }
     protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.sendRedirect("/DashboardServlet");
     }
+
+
 }

@@ -13,7 +13,7 @@ public class EmployeDAO extends DAO {
 
     public boolean inscriptionEmploye(Employe employe) {
         try {
-            statement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isApproved`,`isSuspended`,`userType` ) VALUES(" +
+            statement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`isApproved`,`isSuspended` ) VALUES(" +
                     "'" + employe.getNom() + "'," +
                     "'" + employe.getPrenom() + "'," +
                     employe.getDateNaissance() + "," +
@@ -22,11 +22,8 @@ public class EmployeDAO extends DAO {
                     "'" + employe.getEmail() + "'," +
                     "'" + employe.getUsername() + "'," +
                     "'" + employe.getPassword() + "'," +
-                    employe.getDateAdded() + "," +
-                    employe.getCreator().getId() + "," +
                     "0, " +
-                    employe.isSuspended() + "," +
-                    "'"+Util.getStringFromType(employe.getUserType())+"'"+
+                    "0," +
                     ");");
             return true;
         } catch (SQLException e) {

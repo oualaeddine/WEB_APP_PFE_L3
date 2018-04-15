@@ -330,16 +330,16 @@ public class Util {
         }
         return VISITES;
     }
-    public static Date getDateFromString(String date) throws ParseException{
-//        Date r = null;
-//        r = new Date(0000,0,0);
-//        String[] tab = date.split("-");
-//        System.out.println(tab[0]+"-"+tab[1]+"-"+tab[2]);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-        java.util.Date parsed = format.parse(date);
-        java.sql.Date sql = new java.sql.Date(parsed.getTime());
-        System.out.println(sql);
+    public static Date getDateFromString(String dateString) throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Date date1 = null;
+        try {
+            java.util.Date date = sdf.parse(dateString);
+            date1 = new Date(date.getTime());
 
-        return sql;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date1;
     }
 }

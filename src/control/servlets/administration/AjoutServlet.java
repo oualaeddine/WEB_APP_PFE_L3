@@ -1,10 +1,7 @@
 package control.servlets.administration;
 
 import control.servlets.MyServlet;
-import control.system.managers.AdminsManager;
-import control.system.managers.AgentsManager;
-import control.system.managers.OperateursManager;
-import control.system.managers.SuManager;
+import control.system.managers.*;
 import model.beans.Localite;
 import model.beans.Location;
 import model.beans.Logement;
@@ -34,21 +31,21 @@ public class AjoutServlet extends MyServlet {
                 case ADMIN:
                     manager = new AdminsManager(loggedInEmploye);
                     break;
-                case AGENT:
-                    manager = new AgentsManager(loggedInEmploye);
-                    break;
-                case OPERATEUR:
-                    manager = new OperateursManager(loggedInEmploye);
-                    break;
-                case RESPONSABLE_VENTES:
-                    manager = new OperateursManager(loggedInEmploye);
-                    break;
                 case SU:
                     manager = new SuManager(loggedInEmploye);
+                    break;
+                default:
+                    manager = new EmployeManager(loggedInEmploye);
             }
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
                 switch (ajouter) {
+                    case "inscriptionEmploye":
+                        try {
+                            System.out.println("Inscription:" + ((EmployeManager) manager).register(request));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     case "approuvement":
                         System.out.println(((AdminsManager) manager).approuverEmploye(request));
                         break;

@@ -1,6 +1,7 @@
 package control.servlets.client;
 
 import control.servlets.MyServlet;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,7 @@ public class MyClientServlet extends MyServlet {
 
     @Override
     protected void redirectToLogin(HttpServletRequest request, HttpServletResponse response, int wrongCredentialsError) throws IOException, ServletException {
-        super.redirectToLogin(request, response, wrongCredentialsError);
+        response.sendRedirect(MyConsts.CLIENT_LOGIN_SERVLET_URL + "?error=" + LOGIN_NEEDED_ERROR_ID);
     }
 
 

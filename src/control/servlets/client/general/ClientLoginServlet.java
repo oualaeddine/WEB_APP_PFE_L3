@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@WebServlet(name = "ClientLoginServlet", urlPatterns = "/auth")
+@WebServlet(name = "ClientLoginServlet", urlPatterns = "/loginsignup")
 public class ClientLoginServlet extends MyClientServlet {
     private AuthManager authManager;
 
@@ -32,9 +32,9 @@ public class ClientLoginServlet extends MyClientServlet {
                 switch (tag) {
                     case "login": {
                         try {
-                            int retryTime = Integer.parseInt(request.getParameter("retryNbr"));
-                            if (retryTime != 3)
-                                doLogin(request, response);
+                            //  int retryTime = Integer.parseInt(request.getParameter("retryNbr"));
+                            //   if (retryTime != 3)
+                            doLogin(request, response);
                         } catch (Exception e) {
                             e.printStackTrace();
                             response.getWriter().append("retry time mknch");
@@ -109,7 +109,11 @@ public class ClientLoginServlet extends MyClientServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        if (isLoggedIn(request)) {
+            redirectToDashboard(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/html/client/register.html").forward(request, response);
+        }
     }
 
 

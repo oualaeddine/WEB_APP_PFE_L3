@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class ClientDAO extends DAO {
-    public static final String TABLE_NAME = "personal";
+    public static final String TABLE_NAME = "client";
     public static final String[] COLUMN_NAMES = {
 
     };

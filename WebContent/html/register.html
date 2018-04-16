@@ -18,6 +18,11 @@
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
     <link href="../css/bootstrapValidator.min.css" rel="stylesheet">
+    <style>
+        .has-error .help-block {
+            color: red;
+        }
+    </style>
 </head>
 
 <body class="bg-dark">
@@ -26,6 +31,7 @@
             <div class="card-header">Inscription</div>
             <div class="card-body">
                 <form method="post" action="/AjoutServlet?ajouter=inscriptionEmploye" id="registerForm" >
+
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
@@ -77,11 +83,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary btn-block" style="background-color:#ED8D00;    border-color: #ED8D00;"type="submit">Inscription</button>
-                    <!--<div class="text-center">-->
-
-
-                    <!--<a class="d-block small mt-3" href="/login">Login Page</a>-->
-                    <!--</div>-->
+                    <a class="btn btn-secondary btn-block" href="/login">Retour</a>
                 </form>
 
             </div>
@@ -190,4 +192,13 @@
         })
     });
 </script>
+
+<style>
+    .has-error .help-block {
+        color: red;
+    }
+    small.help-block {
+        color: #F44336 !important;
+    }
+</style>
 </html>

@@ -4,9 +4,13 @@ import control.servlets.MyServlet;
 import model.beans.humans.*;
 import model.db.daos.*;
 import model.enums.UserType;
+import utils.Util;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.text.ParseException;
 
 public class AuthManager {
     private final AuthDAO authDAO;
@@ -15,6 +19,21 @@ public class AuthManager {
         authDAO = new AuthDAO();
     }
 
+    public boolean registerEmploye(ServletRequest request) throws ParseException {
+        Employe employe = new Employe();
+        EmployeDAO employeDAO = new EmployeDAO();
+        employe.setPrenom(request.getParameter("prenomInput"));
+        employe.setNom(request.getParameter("nomInput"));
+        employe.setTel(request.getParameter("inputTel"));
+        Date dateNaiss = Util.getDateFromString(request.getParameter("dateNaissance"));
+        employe.setDateNaissance(dateNaiss);
+        employe.setAdresse(request.getParameter("adresseInput"));
+        employe.setEmail(request.getParameter("emailInput"));
+        employe.setUsername(request.getParameter("usernameInput"));
+        employe.setPassword(request.getParameter("passwordInput"));
+
+        return employeDAO.inscriptionEmploye(employe);
+    }
 
     public boolean authenticateClient(String username, String password) {
         Client client = new Client();
@@ -36,19 +55,31 @@ public class AuthManager {
         /* Création ou récupération de la session */
         HttpSession session = request.getSession(true);
 
-        /* Mise en session des attributs de l'utilisateur */
-        Employe employe = new EmployeDAO().getByUsername(username);
+        Employe employe;
+        EmployeDAO employeDAO = new EmployeDAO();
+        if (employeDAO.getByUsername(username) != null) {
+            employe = employeDAO.getByUsername(username);
+        } else {
+            employe = employeDAO.getByEmail(username);
+        }
         session.setAttribute(MyServlet.LOGGED_IN_USER, employe);
         session.setAttribute(MyServlet.LOGGED_IN_USER_TYPE, employe.getUserType());
         session.setAttribute(MyServlet.LOGGED_IN_USER_USERNAME, username);
         session.setAttribute(MyServlet.LOGGED_IN_USER_ID, employe.getId());
-
     }
 
     public void createSessionForClient(String username, HttpServletRequest request) {
         // TODO: 4/15/2018 ines implement this method
             /* Création ou récupération de la session */
         HttpSession session = request.getSession(true);
+
+        Client client;
+        ClientDAO clientDAO = new ClientDAO();
+        if (clientDAO.getByUsername(username) != null) {
+            client = clientDAO.getByUsername(username);
+        } else {
+            client = clientDAO.getByEmail(username);
+        }
 
 
     }

@@ -232,9 +232,20 @@
                 <div class="modal-body">
                     <form method="post" action="/AjoutServlet?ajouter=approuvement" id="approuverForm">
 
+
                         <input id="employeApprouve" name="employeApprouve" type="hidden">
                         <div class="form-group">
-                            <label>Êtes vous sur de vouloir approuver cet employé ?</label>
+                            <label for="userTypeInput">Type d'employé</label>
+                            <select class="custom-select" name="userTypeInput" id="userTypeInput">
+                                <option value="agent">Agent</option>
+                                <option value="operateur">Operateur</option>
+                                <option value="responsableVentes">Responsable ventes</option>
+                                <%
+                                    if (userType == UserType.SU) {
+                                        out.print("<option value=\"admin\">Admin</option>");
+                                    }
+                                %>
+                            </select>
                         </div>
                         <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
                     </form>

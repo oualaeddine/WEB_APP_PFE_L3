@@ -15,6 +15,12 @@ import static model.enums.TablePage.*;
 import static model.enums.UserType.OPERATEUR;
 
 public class Util {
+    public static String getApprobationEmail(Employe employe) {
+        String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +
+                "Votre compte a été approuvé par " + employe.getCreator().getNom() + " " + employe.getCreator().getPrenom() + " qui vous a attribué le poste: " +
+                employe.getUserType() + " \n Vous pouvez désormais vous connecter à votre compte avec vos identifiants";
+        return email;
+    }
 
     public static String getForgotPasswordEmail(String email, UserType userType, String code) {
         String name; Employe employe = null;

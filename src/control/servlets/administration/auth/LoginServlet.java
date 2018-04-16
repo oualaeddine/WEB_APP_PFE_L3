@@ -30,7 +30,7 @@ public class LoginServlet extends MyServlet {
             String password = request.getParameter("password");
             if (username != null && password != null) {
                 if (authManager.authenticateEmploye(username,password)) {
-                    System.out.println(true);
+                    System.out.println("Authentification: "+true);
                     authManager.createSessionForEmploye(username,request);
                     redirectToDashboard(request, response);
                 }else

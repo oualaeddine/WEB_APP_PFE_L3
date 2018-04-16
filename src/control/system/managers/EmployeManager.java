@@ -15,18 +15,5 @@ public class EmployeManager {
         this.employeDAO = new EmployeDAO();
     }
 
-    public boolean register(ServletRequest request) throws ParseException {
-        Employe employe = new Employe();
-        employe.setPrenom(request.getParameter("prenomInput"));
-        employe.setNom(request.getParameter("nomInput"));
-        employe.setTel(request.getParameter("inputTel"));
-        Date dateNaiss = Util.getDateFromString(request.getParameter("dateNaissance"));
-        employe.setDateNaissance(dateNaiss);
-        employe.setAdresse(request.getParameter("adresseInput"));
-        employe.setEmail(request.getParameter("emailInput"));
-        employe.setUsername(request.getParameter("usernameInput"));
-        employe.setPassword(request.getParameter("passwordInput"));
 
-        return employeDAO.inscriptionEmploye(employe);
-    }
 }

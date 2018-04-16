@@ -9,8 +9,10 @@ import model.beans.humans.Employe;
 import model.db.daos.*;
 import model.enums.EtatLogement;
 import model.enums.UserType;
+import utils.GoogleMail;
 import utils.Util;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +26,7 @@ import java.text.SimpleDateFormat;
 public class AjoutServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
-            Object manager = new AdminsManager(loggedInEmploye);
+            Object manager = null;
         if (isLoggedIn(request)) {
             int loggedInUserId = (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
             switch (loggedInEmploye.getUserType()) {
@@ -34,8 +36,20 @@ public class AjoutServlet extends MyServlet {
                 case SU:
                     manager = new SuManager(loggedInEmploye);
                     break;
+                case RESPONSABLE_VENTES:
+                    manager = new ResponsablesVentesManager(loggedInEmploye);
+                    break;
+                case AGENT:
+                    manager = new AgentsManager(loggedInEmploye);
+                    break;
+                case OPERATEUR:
+                    manager = new OperateursManager(loggedInEmploye);
+                    break;
+                default:
+                    manager = new AuthManager();
+                    break;
             }
-        }
+        } else manager = new AuthManager();
 
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
@@ -43,14 +57,25 @@ public class AjoutServlet extends MyServlet {
                     case "inscriptionEmploye":
                         System.out.println("wsalt hna");
                         try {
-                            EmployeManager employeManager = new EmployeManager();
-                            System.out.println("Inscription:" + employeManager.register(request) );
+
+                            System.out.println("Inscription:" + ((AuthManager) manager).registerEmploye(request));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         break;
                     case "approuvement":
-                        System.out.println(((AdminsManager) manager).approuverEmploye(request));
+                        if (((AdminsManager) manager).approuverEmploye(request)) {
+                            int approvedId = Integer.parseInt(request.getParameter("employeApprouve"));
+                            Employe approvedEmploye = (Employe) new EmployeDAO().getById(approvedId);
+                            try {
+                                GoogleMail.Send("hchimmobilier", "HchImmobilier1234", approvedEmploye.getEmail(), "", "Approbation du compte", Util.getApprobationEmail(approvedEmploye));
+                                System.out.println("Sent");
+
+                            } catch (MessagingException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        System.out.println();
                         break;
                     case "localite":
                         System.out.println(((AdminsManager) manager).ajouterLocalite(request));

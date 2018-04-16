@@ -104,7 +104,7 @@ public class AdminsManager {
         return new LogementDAO().geler(logement.getId());
     }
     public boolean approuverEmploye(ServletRequest request){
-        return new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")), loggedInAdmin.getId());
+        return new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")), loggedInAdmin.getId(), request.getParameter("userTypeInput"));
     }
 
     public void imprimerFacture(int numVente){

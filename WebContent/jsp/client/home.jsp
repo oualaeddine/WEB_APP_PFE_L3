@@ -56,7 +56,7 @@
                 <div class="header-half header-call">
                     <p>
                         <span><i class="pe-7s-call"></i> +213 696 689 498</span>
-                        <span><i class="pe-7s-mail"></i> HCH@gmail.com</span>
+                        <span><i class="pe-7s-mail"></i> hchimmobilier@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -879,7 +879,7 @@
                 <div class="bottom-menu pull-right">
                     <ul>
                         <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                        <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
+                        <li><a class="wow fadeInUp animated" href="/login" data-wow-delay="0.3s">Employé</a></li>
                         <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
                         <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
                     </ul>

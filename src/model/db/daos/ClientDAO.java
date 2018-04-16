@@ -23,11 +23,14 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
-    public Client getByUsername(Client client){
+    public Client getByUsername(String username){
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE username='" + client.getUsername() + "';");
+            result = statement.executeQuery("SELECT * FROM client WHERE username='" + username + "';");
             if (result.next()) {
+                Client client = new Client();
+                client.setUsername(username);
+                client.setPassword(result.getString("password"));
                 client.setNom(result.getString("nom"));
                 client.setPrenom(result.getString("prenom"));
                 client.setDateNaissance(result.getDate("dateNaiss"));
@@ -54,7 +57,28 @@ public class ClientDAO extends DAO {
     }
 
     @Override
-    public Employe getByEmail(String email) {
+    public Client getByEmail(String email) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM client WHERE email='" + email + "';");
+            if (result.next()) {
+                Client client = new Client();
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setBanned(result.getInt("isBanned")==1);
+
+                return client;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -62,7 +86,7 @@ public class ClientDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE id=" + id);
+            result = statement.executeQuery("SELECT * FROM client WHERE id=" + id +";");
             if (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));

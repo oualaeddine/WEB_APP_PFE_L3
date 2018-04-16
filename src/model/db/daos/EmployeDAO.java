@@ -31,10 +31,12 @@ public class EmployeDAO extends DAO {
         }
         return false;
     }
-    public boolean approuverEmploye(int id, int myId) {
+    public boolean approuverEmploye(int id, int myId, String userType) {
         try {
-            statement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
-            statement.execute("UPDATE employe SET addedBy = "+ myId +" WHERE id="+ id +";");
+            statement.execute("UPDATE employe SET isApproved = 1, addedBy = "+myId+",userType='"+userType+"' WHERE id="+id+";");
+//            statement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
+//            statement.execute("UPDATE employe SET addedBy = "+ myId +" WHERE id="+ id +";");
+//            statement.execute("UPDATE employe SET userType = '" + userType + "' WHERE id=" + id + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,11 +96,14 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
                 return employe;
             }
         } catch (SQLException e) {
@@ -123,10 +128,14 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
                 return employe;
             }
         } catch (SQLException e) {
@@ -213,11 +222,8 @@ public class EmployeDAO extends DAO {
     public boolean authenticate(String username, String password) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id,isSuspended FROM employe WHERE username='" + username + "' AND password='" + password + "';");
-            if (result.next()) {
-                if (!(result.getBoolean("isSuspended")))
-                    return true;
-            }
+            result = statement.executeQuery("SELECT id,isSuspended FROM employe WHERE ((username='" + username + "' AND password='" + password + "') OR (email='"+username+"' AND password='"+password+"')) AND isSuspended=0");
+            return (result.next());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -248,10 +254,14 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
                 list.add(employe);
             }
         } catch (SQLException e) {
@@ -276,10 +286,14 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
                 list.add(employe);
             }
         } catch (SQLException e) {
@@ -294,7 +308,25 @@ public class EmployeDAO extends DAO {
         try {
             result = statement.executeQuery("SELECT id FROM employe WHERE userType='operateur' AND isSuspended=1 AND isApproved=1;");
             while (result.next()) {
-                list.add((Employe) getById(result.getInt("id")));
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setDateNaissance(result.getDate("dateNaiss"));
+                employe.setAdresse(result.getString("adresse"));
+                employe.setTel(result.getString("tel"));
+                employe.setEmail(result.getString("email"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                employe.setSuspended(result.getBoolean("isSuspended"));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+                list.add(employe);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -318,10 +350,14 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
 
                 list.add(employe);
             }
@@ -337,7 +373,26 @@ public class EmployeDAO extends DAO {
         try {
             result = statement.executeQuery("SELECT id FROM employe WHERE userType='agent' AND isSuspended=1 AND isApproved=1;");
             while (result.next()) {
-                list.add((Employe) getById(result.getInt("id")));
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setDateNaissance(result.getDate("dateNaiss"));
+                employe.setAdresse(result.getString("adresse"));
+                employe.setTel(result.getString("tel"));
+                employe.setEmail(result.getString("email"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                employe.setSuspended(result.getBoolean("isSuspended"));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+
+                list.add(employe);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -361,10 +416,15 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+
                 list.add(employe);
             }
         } catch (SQLException e) {
@@ -389,10 +449,15 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+
                 list.add(employe);
             }
         } catch (SQLException e) {
@@ -417,10 +482,15 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
-                employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+
                 list.add(employe);
             }
         } catch (SQLException e) {
@@ -445,9 +515,15 @@ public class EmployeDAO extends DAO {
                 employe.setEmail(result.getString("email"));
                 employe.setUsername(result.getString("username"));
                 employe.setPassword(result.getString("password"));
-                employe.setDateAdded(result.getDate("dateAdded"));
-                employe.setApproved(result.getBoolean("isApproved"));
                 employe.setSuspended(result.getBoolean("isSuspended"));
+                employe.setApproved(result.getBoolean("isApproved"));
+                if (employe.isApproved()) {
+                    employe.setDateAdded(result.getDate("dateAdded"));
+                    employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
+                    int creatorId = result.getInt("addedBy");
+                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                }
+
                 list.add(employe);
             }
         } catch (SQLException e) {

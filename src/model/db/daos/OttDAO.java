@@ -24,7 +24,7 @@ public class OttDAO extends DAO{
     public boolean exists(String token) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM ott WHERE token='"+token+"';");
+            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='"+token+"';");
             if (result.next()) {
                 return true;
             }
@@ -37,7 +37,7 @@ public class OttDAO extends DAO{
     public boolean verifyToken(String token, int userId, UserType userType) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM ott WHERE token='" + token + "' AND userId=" + userId + " AND userType='" + Util.getStringFromType(userType) + "' AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
+            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='" + token + "' AND userId=" + userId + " AND userType='" + Util.getStringFromType(userType) + "' AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
             if (result.next()) {
                 return true;
             }
@@ -51,7 +51,7 @@ public class OttDAO extends DAO{
     public int getUserBytoken(String token) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT userId FROM ott WHERE token='" + token + "';");
+            result = statement.executeQuery("SELECT userId FROM ottEmploye WHERE token='" + token + "';");
             if (result.next()) {
                 return result.getInt("userId");
             }
@@ -62,7 +62,7 @@ public class OttDAO extends DAO{
     }
     public boolean add(String code, int userId, UserType userType) {
         try {
-            statement.execute("INSERT INTO ott (token, userId,userType, timestamp) VALUES (" +
+            statement.execute("INSERT INTO ottEmploye (token, userId,userType, timestamp) VALUES (" +
                     "'" + code + "', " + userId +", '"+ Util.getStringFromType(userType) + "', CURRENT_TIMESTAMP);");
             return true;
         } catch (SQLException e) {

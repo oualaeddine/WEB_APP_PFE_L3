@@ -6,12 +6,25 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
+import sun.management.Agent;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VisitesDao extends DAO {
+    public int getFreeAgentsForVisite(Date date) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT id FROM agent NOT IN (SELECT agentId FROM visite WHERE timestamp > '"+date+"' AND timestamp<"+(date+"0000-00-01")+");)");
+            if (result.next()) {
+                return result.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public LinkedList<Visite> getVisitesByAgent(Employe agent) {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();

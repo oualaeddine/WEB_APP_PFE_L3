@@ -165,13 +165,11 @@
                         notEmpty:{
                             message:"Veuillez entrer le numéro de téléphone"
                         },
-//                        stringLength:{
-//                            min:10,
-//                            message:"Veuillez entrer un numéro de téléphone valide"
-//                        },
-                        phone:{
+                        stringLength:{
+                            min:10,
                             message:"Veuillez entrer un numéro de téléphone valide"
-                        }
+                        },
+
                     }
                 },
                 dateNaissance:{
@@ -240,4 +238,12 @@
         })
     });
 </script>
+<style>
+    .has-error .help-block {
+        color: red;
+    }
+    small.help-block {
+        color: #F44336 !important;
+    }
+</style>
 </html>

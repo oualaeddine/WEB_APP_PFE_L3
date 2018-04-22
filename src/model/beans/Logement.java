@@ -1,6 +1,7 @@
 package model.beans;
 
 import model.enums.EtatLogement;
+import model.enums.TypeLogement;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -9,7 +10,28 @@ public class Logement implements Serializable {
     private int id, nbrPieces, nbrSdb,etage;
     private Localite localite;
     private String titre, description, adresse;
-    private boolean avecJardin,avecGarage,avecSousSol;
+    private boolean avecJardin;
+    private boolean avecGarage;
+    private boolean avecSousSol;
+    private TypeLogement typeLogement;
+
+    public TypeLogement getTypeLogement() {
+        return typeLogement;
+    }
+
+    public void setTypeLogement(TypeLogement typeLogement) {
+        this.typeLogement = typeLogement;
+    }
+
+    public boolean isMeubles() {
+        return meubles;
+    }
+
+    public void setMeubles(boolean meubles) {
+        this.meubles = meubles;
+    }
+
+    private boolean meubles;
     private Location location;
 
     public Location getLocation() {

@@ -118,7 +118,21 @@ public class DataTableHeader {
             case SUSPENDRE_EMPLOYE:
                 setupTableHeaderForSuspendreEmploye();
                 break;
+            case MODIFIER_VISITE:
+                setupTableHeaderForModifierVisite();
+                break;
         }
+    }
+
+    private void setupTableHeaderForModifierVisite() {
+        html = "<tr><th>ID</th>" +
+                "<th>Logement </th>" +
+                "<th>Agent    </th>" +
+                "<th>Client   </th>" +
+                "<th>Horaire  </th>" +
+                "<th>Etat     </th>" +
+                "<th>Action   </th>" +
+                "</tr>" ;
     }
 
     private void setupTableHeaderForGelerLogement() {
@@ -279,7 +293,6 @@ public class DataTableHeader {
                 "<th>Client</th>" +
                 "<th>Horaire</th>" +
                 "<th>Etat</th></tr>" ;
-
     }
 
     private void setupTableHeaderForEmployees() {

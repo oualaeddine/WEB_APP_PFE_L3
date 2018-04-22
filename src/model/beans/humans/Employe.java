@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Employe extends Person {
-    private Employe creator;
+    private int creator;
     private boolean isSuspended;
     private boolean isApproved;
     private Date dateAdded;
@@ -31,11 +31,11 @@ public class Employe extends Person {
         super();
     }
 
-    public Employe getCreator() {
+    public int getCreator() {
         return creator;
     }
 
-    public void setCreator(Employe creator) {
+    public void setCreator(int creator) {
         this.creator = creator;
     }
 

@@ -81,11 +81,18 @@
                 </div>
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label for="typeLogement">Type</label>
+                            <select class="custom-select" id="typeLogement" name="typeLogement">
+                                <option value="villa">Villa</option>
+                                <option value="appartement">Appartement</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <label for="superficie">Superficie</label>
                             <input class="form-control" id="superficie" name="superficie" type="number" placeholder="Superficie">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="region">Region</label>
                             <select class="custom-select" name="region" id="region">
                                 <%
@@ -124,6 +131,10 @@
                         <div class="col-md">
                             <label for="soussol">Avec sous-sol</label>
                             <input name="soussol" type="checkbox" class="form-control" id="soussol" value="soussol" placeholder="Avec sous-sol">
+                        </div>
+                        <div class="col-md">
+                            <label for="meubles">Meublé</label>
+                            <input name="meubles" id="meubles" type="checkbox" class="form-control" value="meublespapapa">
                         </div>
                     </div>
                     <div class="form-row">
@@ -272,6 +283,14 @@ $('#submit').click(function(){
     $("#ajouterLogementForm").submit();
 });
 </script>
+<style>
+    .has-error .help-block {
+        color: red;
+    }
+    small.help-block {
+        color: #F44336 !important;
+    }
+</style>
 </body>
 
 </html>

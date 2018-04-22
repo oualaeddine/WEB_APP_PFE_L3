@@ -97,5 +97,12 @@
     })
 </script>
 </body>
-
+<style>
+    .has-error .help-block {
+        color: red;
+    }
+    small.help-block {
+        color: #F44336 !important;
+    }
+</style>
 </html>

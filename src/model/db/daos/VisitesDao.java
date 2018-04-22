@@ -46,7 +46,18 @@ public class VisitesDao extends DAO {
             result = statement.executeQuery("SELECT id FROM visite WHERE clientId=" +client.getId()+ ";");
             while (result.next()) {
                 Visite visite = new Visite();
-                visite = getById(result.getInt("id"));
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTime(result.getTimestamp("timestamp"));
+                switch (result.getString("etat")) {
+                    case "prevue": visite.setEtatVisite(EtatVisite.PROGRAMMEE); break;
+                    case "avisNegatif": visite.setEtatVisite(EtatVisite.NON_VALIDEE); break;
+                    case "avisPositif": visite.setEtatVisite(EtatVisite.VALIDEE); break;
+                    case "reportee": visite.setEtatVisite(EtatVisite.REPORTEE); break;
+                    case "annulee": visite.setEtatVisite(EtatVisite.ANNULEE); break;
+                }
                 list.add(visite);
             }
         } catch (SQLException e) {
@@ -62,7 +73,18 @@ public class VisitesDao extends DAO {
             result = statement.executeQuery("SELECT id FROM visite WHERE logementId=" +logement.getId()+ ";");
             while (result.next()) {
                 Visite visite = new Visite();
-                visite = getById(result.getInt("id"));
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTime(result.getTimestamp("timestamp"));
+                switch (result.getString("etat")) {
+                    case "prevue": visite.setEtatVisite(EtatVisite.PROGRAMMEE); break;
+                    case "avisNegatif": visite.setEtatVisite(EtatVisite.NON_VALIDEE); break;
+                    case "avisPositif": visite.setEtatVisite(EtatVisite.VALIDEE); break;
+                    case "reportee": visite.setEtatVisite(EtatVisite.REPORTEE); break;
+                    case "annulee": visite.setEtatVisite(EtatVisite.ANNULEE); break;
+                }
                 list.add(visite);
             }
         } catch (SQLException e) {

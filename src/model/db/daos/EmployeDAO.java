@@ -33,7 +33,7 @@ public class EmployeDAO extends DAO {
     }
     public boolean approuverEmploye(int id, int myId, String userType) {
         try {
-            statement.execute("UPDATE employe SET isApproved = 1, addedBy = "+myId+",userType='"+userType+"' WHERE id="+id+";");
+            statement.execute("UPDATE employe SET isApproved = 1, addedBy = "+myId+",userType='"+userType+"',dateAdded=CURRENT_DATE WHERE id="+id+";");
 //            statement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
 //            statement.execute("UPDATE employe SET addedBy = "+ myId +" WHERE id="+ id +";");
 //            statement.execute("UPDATE employe SET userType = '" + userType + "' WHERE id=" + id + ";");
@@ -101,8 +101,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
                 return employe;
             }
@@ -133,8 +132,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
                 return employe;
             }
@@ -175,7 +173,7 @@ public class EmployeDAO extends DAO {
                     "'" + employe.getUsername() + "'," +
                     "'" + employe.getPassword() + "'," +
                     "CURRENT_DATE" + "," +
-                    employe.getCreator().getId() + "," +
+                    employe.getCreator() + "," +
                     employe.isSuspended() + "," +
                     "'"+Util.getStringFromType(employe.getUserType())+"'"+
                     ");");
@@ -259,8 +257,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
                 list.add(employe);
             }
@@ -291,8 +288,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
                 list.add(employe);
             }
@@ -323,8 +319,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
                 list.add(employe);
             }
@@ -355,8 +350,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);
@@ -388,8 +382,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);
@@ -421,8 +414,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);
@@ -454,8 +446,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);
@@ -487,8 +478,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);
@@ -520,8 +510,7 @@ public class EmployeDAO extends DAO {
                 if (employe.isApproved()) {
                     employe.setDateAdded(result.getDate("dateAdded"));
                     employe.setUserType(Util.getUserTypeFromString(result.getString("userType")));
-                    int creatorId = result.getInt("addedBy");
-                    employe.setCreator((Employe) new EmployeDAO().getById(creatorId));
+                    employe.setCreator(result.getInt("addedBy"));
                 }
 
                 list.add(employe);

@@ -3,6 +3,7 @@ package model.beans.views.table;
 import model.beans.*;
 import model.beans.humans.*;
 import model.db.daos.AssignationDAO;
+import model.db.daos.EmployeDAO;
 import model.enums.DataTableRowFormat;
 import model.enums.EtatLogement;
 
@@ -68,7 +69,23 @@ public class DataTableRow {
             case GELER_LOGEMENT:
                 setupHtmlForGelerLogement();
                 break;
+            case MODIFIER_VISITE:
+                setupHtmlForModifierVisite();
+                break;
         }
+    }
+
+    private void setupHtmlForModifierVisite() {
+        Visite visite = (Visite) object;
+        html ="<tr>" +
+                "<td>" + visite.getId() + "</td>" +
+                "<td>" + visite.getLogement().getTitre() + "</td>" +
+                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getTime() + "</td>" +
+                "<td>" + visite.getEtatVisite() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\" value=\"" + visite.getId() + "\">Modifier</td>"+
+                "</tr>";
     }
 
     private void setupHtmlForGelerLogement() {
@@ -210,6 +227,7 @@ public class DataTableRow {
 
     private void setupHtmlForEmployee() {
         Employe operateur = (Employe) object;
+        Employe creator = (Employe) new EmployeDAO().getById(operateur.getCreator());
         html = "<tr>" +
                 "<td>" + operateur.getId() + "</td>" +
                 "<td>" + operateur.getNom() + "</td>" +
@@ -219,7 +237,7 @@ public class DataTableRow {
                 "<td>" + operateur.getEmail() + "</td>" +
                 "<td>" + operateur.getDateNaissance() + "</td>" +
                 "<td>" + operateur.isSuspendedString() + "</td>" +
-                "<td>" + operateur.getCreator().getNom() + " " + operateur.getCreator().getPrenom() + "</td>" +
+                "<td>" + creator.getNom() + " " + creator.getPrenom() + "</td>" +
                 "<td>" + operateur.getDateAdded() + "</td>" +
                 "</tr>";
     }

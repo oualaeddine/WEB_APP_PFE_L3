@@ -84,28 +84,10 @@ public class AjoutServlet extends MyServlet {
                         System.out.println(((AdminsManager) manager).createLogement(request));
                         break;
                     case "employe":
-                        String password = request.getParameter("passwordInput");
-                        String confirm = request.getParameter("confirmPassword");
-                        if (password.equals(confirm)) {
-                            Employe employee = new Employe();
-                            employee.setNom(request.getParameter("nomInput"));
-                            employee.setPrenom(request.getParameter("prenomInput"));
-                            employee.setTel(request.getParameter("inputTel"));
-                            employee.setUsername(request.getParameter("usernameInput"));
-                            employee.setPassword(password);
-                            employee.setUserType(Util.getUserTypeFromString(request.getParameter("select")));
-                            employee.setAdresse(request.getParameter("adresseInput"));
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-                            try {
-                                java.util.Date date = sdf.parse(request.getParameter("dateNaissance"));
-                                Date date1 = new Date(date.getTime());
-                                employee.setDateNaissance(date1);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            employee.setEmail(request.getParameter("emailInput"));
-//                            employee.setCreator((Employe) new EmployeDAO().getById(loggedInUserId));
-                            System.out.println(new EmployeDAO().add(employee));
+                        try {
+                            System.out.println(((AdminsManager) manager).ajouterEmploye(request));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
                         break;
                     case "assignation":

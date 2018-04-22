@@ -16,9 +16,12 @@ import static model.enums.UserType.OPERATEUR;
 
 public class Util {
     public static String getApprobationEmail(Employe employe) {
+        Employe creator = (Employe) new EmployeDAO().getById(employe.getCreator());
         String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +
-                "Votre compte a été approuvé par " + employe.getCreator().getNom() + " " + employe.getCreator().getPrenom() + " qui vous a attribué le poste: " +
-                employe.getUserType() + " \n Vous pouvez désormais vous connecter à votre compte avec vos identifiants";
+                "Votre compte a été approuvé par " + creator.getNom() + " " + creator.getPrenom() + " qui vous a attribué le poste: " +
+                employe.getUserType() + " \n Vous pouvez désormais vous connecter à votre compte avec vos identifiants: " +
+                "\n Nom d'utilisateur: "+employe.getUsername()+"" +
+                "\n Mot de passe: "+employe.getPassword();
         return email;
     }
 

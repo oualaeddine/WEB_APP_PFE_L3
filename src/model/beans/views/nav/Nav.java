@@ -146,7 +146,7 @@ public class Nav {
         NavElement listePlaintes = new NavElement(isPage(currentPage, TablePage.PLAINTES), "Liste des plaintes", urlBase + "?what=listePlaintes", "fa fa-warning");
         clientsSubNavElementList.add(listePlaintes);
 
-        NavElement bannirClient = new NavElement(false, "Bannir/rétablir personal", urlBase + "?what=bannirClient", "fa fa-user-times");
+        NavElement bannirClient = new NavElement(false, "Bannir/rétablir client", urlBase + "?what=bannirClient", "fa fa-user-times");
         clientsSubNavElementList.add(bannirClient);
 
         ExpendableNavElement clientExpendableNavElement = new ExpendableNavElement("clientsNav", "fa fa-users", "Clients", clientsSubNavElementList, isPage(currentPage, TablePage.CLIENTS));
@@ -200,8 +200,9 @@ public class Nav {
         NavElement logoutNavElement = new NavElement(isPage(currentPage, TablePage.LOGOUT), MyConsts.LOGOUT_PAGE_TITILE, MyConsts.LOGOUT_SERVLET_URL, "fa fa-fw fa-sign-out");
         navElements.add(logoutNavElement);
     }
+
     private void setupNavElementsForAdmin() {
-        String urlBase = MyConsts.ADMIN_SERVLET_URL;
+        String urlBase = "/DashboardServlet";
 
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
@@ -341,7 +342,7 @@ public class Nav {
     }
 
     private void setupNavElementsForResponsableVentes() {        // TODO: 2/18/2018
-        String urlBase = MyConsts.RESONSABLE_VENTES_SERVLET_URL;
+        String urlBase = "/DashboardServlet";
 
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
@@ -361,7 +362,7 @@ public class Nav {
     }
 
     private void setupNavElementsForOperateur() {
-        String urlBase = MyConsts.OPERATEUR_SERVLET_URL;
+        String urlBase = "/DashboardServlet";
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
@@ -439,7 +440,7 @@ public class Nav {
     }
 
     private void setupNavElementsForAgent() {
-        String urlBase = MyConsts.AGENT_SERVLET_URL;
+        String urlBase = "/DashboardServlet";
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
@@ -463,13 +464,16 @@ public class Nav {
         visitesSubNavElementList.add(mesVisitesNavElement);
 
 
-        NavElement visitesPasseesNavElement = new NavElement((isPage(currentPage, TablePage.PASSED_VISITS)), MyConsts.VISITES_PASSEES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=visitesPassees", "fa-calendar-check");
+        NavElement visitesPasseesNavElement = new NavElement((isPage(currentPage, TablePage.PASSED_VISITS)), MyConsts.VISITES_PASSEES_TITLE, urlBase + "?what=visitesPassees", "fa-calendar-check");
         visitesSubNavElementList.add(visitesPasseesNavElement);
 
-        NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage,TablePage.CANCELED_VISITES),MyConsts.VISITES_ANNULEES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=visitesAnnulees","fa-calendar-times");
+        NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage,TablePage.CANCELED_VISITES),MyConsts.VISITES_ANNULEES_TITLE, urlBase + "?what=visitesAnnulees","fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
 
-        ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav","fa-eye","Visites",visitesSubNavElementList,isPage(currentPage,TablePage.VISITES));
+        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
+        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
+
+        ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav","fa-eye","Mes visites",visitesSubNavElementList,isPage(currentPage,TablePage.VISITES));
         navElements.add(visitesExpendableNavElement);
         /*clients*/
         LinkedList<NavElement> clientsSubNavElement = new LinkedList<>();
@@ -544,6 +548,4 @@ public class Nav {
     public void setCurrentPage(TablePage currentPage) {
         this.currentPage = currentPage;
     }
-
-
 }

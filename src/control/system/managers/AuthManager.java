@@ -69,7 +69,6 @@ public class AuthManager {
     }
 
     public void createSessionForClient(String username, HttpServletRequest request) {
-        // TODO: 4/15/2018 ines implement this method
             /* Création ou récupération de la session */
         HttpSession session = request.getSession(true);
 
@@ -80,6 +79,7 @@ public class AuthManager {
         } else {
             client = clientDAO.getByEmail(username);
         }
+        session.setAttribute(MyServlet.LOGGED_IN_USER, client);
 
 
     }

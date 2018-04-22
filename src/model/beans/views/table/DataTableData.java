@@ -15,6 +15,7 @@ public class DataTableData {
     private int userId;
     private UserType userType;
 
+
     public LinkedList<DataTableRow> getData() {
         setupData();
         return data;
@@ -26,6 +27,9 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case MODIFIER_VISITE:
+                setupDataModifierVisite();
+                break;
             case SIGNALEMENT:
                 setupDataSignalementList();
                 break;
@@ -125,6 +129,14 @@ public class DataTableData {
             case GELER_LOGEMENT:
                 setupDataGelerLogement();
                 break;
+        }
+    }
+
+    private void setupDataModifierVisite() {
+        Employe agent = (Employe) new EmployeDAO().getById(userId);
+        LinkedList<Visite> visites = new VisitesDao().getVisitesByAgent(agent);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.MODIFIER_VISITE, visite));
         }
     }
 

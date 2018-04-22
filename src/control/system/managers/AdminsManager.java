@@ -6,13 +6,17 @@ import model.beans.Logement;
 import model.beans.humans.*;
 import model.db.daos.*;
 import model.enums.AdminRole;
+import model.enums.TypeLogement;
 import model.enums.UserType;
 import org.apache.http.HttpRequest;
+import utils.Util;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class AdminsManager {
     private final Employe loggedInAdmin;
@@ -81,12 +85,14 @@ public class AdminsManager {
         logement.setAvecJardin(!(request.getParameter("jardin")==null));
         logement.setAvecGarage(!(request.getParameter("garage") == null));
         logement.setAvecSousSol(!(request.getParameter("soussol") == null));
+        logement.setMeubles(!(request.getParameter("meubles") == null));
         logement.setEtage(Integer.parseInt(request.getParameter("etage")));
         logement.setPrix(Double.parseDouble(request.getParameter("prix")));
         Location location = new Location();
         location.setLatitude(Double.parseDouble(request.getParameter("latitude")));
         location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
         logement.setLocation(location);
+        logement.setTypeLogement(request.getParameter("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
        return new LogementDAO().add(logement);
     }
     public boolean deleteLogement(Logement logement){
@@ -117,6 +123,22 @@ public class AdminsManager {
     }
 
     public boolean ajouterLocalite(HttpServletRequest request) {
+
         return false;
+    }
+
+    public boolean ajouterEmploye(HttpServletRequest request) throws ParseException {
+        Employe employee = new Employe();
+        employee.setNom(request.getParameter("nomInput"));
+        employee.setPrenom(request.getParameter("prenomInput"));
+        employee.setTel(request.getParameter("inputTel"));
+        employee.setUsername(request.getParameter("usernameInput"));
+        employee.setPassword(request.getParameter("passwordInput"));
+        employee.setUserType(Util.getUserTypeFromString(request.getParameter("select")));
+        employee.setAdresse(request.getParameter("adresseInput"));
+        employee.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+        employee.setEmail(request.getParameter("emailInput"));
+        employee.setCreator(loggedInAdmin.getId());
+        return new EmployeDAO().add(employee);
     }
 }

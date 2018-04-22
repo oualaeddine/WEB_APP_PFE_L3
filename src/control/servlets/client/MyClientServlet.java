@@ -22,6 +22,14 @@ public class MyClientServlet extends MyServlet {
 
     protected void redirectToHome(HttpServletRequest request, HttpServletResponse response) {
 
+        try {
+            this.getServletContext().getRequestDispatcher("/jsp/client/test.jsp").forward(request,response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

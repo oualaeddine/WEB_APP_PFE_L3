@@ -4,15 +4,15 @@ public class MyConsts {
     public static final String
 
     /*APIs urls*/
-            AGENT_API_URL_PATTERN = "/AgentApi",
-            CLIENT_API_URL_PATTERN = "/clientApi",
-            LOGEMENT_API_URL_PATTERN = "/logementApi",
-            VISITE_API_URL_PATTERN = "/visiteApi",
+            AGENT_API_URL_PATTERN = "/api/AgentApi",
+            CLIENT_API_URL_PATTERN = "/api/clientApi",
+            LOGEMENT_API_URL_PATTERN = "/api/logementApi",
+            VISITE_API_URL_PATTERN = "/api/visiteApi",
     /*Servlets urls*/
 
     /*ADMIN*/
     ADMIN_SERVLET_URL = "/AdminServlet",
-    SUPER_USER_SERVLET_URL = "/SUServlet",
+            SUPER_USER_SERVLET_URL = "/SUServlet",
 
     /*AUTH*/
     LOGIN_SERVLET_URL = "/login",
@@ -84,7 +84,6 @@ public class MyConsts {
     public static final String ALL_LOGEMENTS_TITLE = "Liste logements";
     public static final String LOGEMENTS_VENDUS_TITLE = "Logements vendus";
     public static final String LOGEMENTS_GELES_TITLE = "Logements gelés";
-
 
 
     /*Clients nav titles*/

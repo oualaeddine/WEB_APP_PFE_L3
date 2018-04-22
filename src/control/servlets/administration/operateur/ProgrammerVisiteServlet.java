@@ -14,6 +14,6 @@ public class ProgrammerVisiteServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/jsp/ProgrammerVisite.jsp").forward(request,response);
+        this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request,response);
     }
 }

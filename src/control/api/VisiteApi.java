@@ -11,7 +11,6 @@ import java.io.IOException;
 @WebServlet(name = "VisiteApi", urlPatterns = MyConsts.VISITE_API_URL_PATTERN)
 public class VisiteApi extends API {
 
-    // TODO: 2/20/2018 action : getNearestVisitForLogement(nbrPieces,region,prix,etage)
     // TODO: 2/20/2018 action : addVisit
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -19,5 +18,7 @@ public class VisiteApi extends API {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // TODO: 4/21/2018 return liste of possible
+        // visites for logementId {id(autoInc),start(dateTtime),end(dateTtime),idAgent
     }
 }

@@ -84,7 +84,7 @@ public class DataTableRow {
                 "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\" value=\"" + visite.getId() + "\">Modifier</td>"+
+                "<td><button type=\"button\"  onclick=\"getVisiteModifieeId(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\" value=\"" + visite.getId() + "\">Modifier</td>"+
                 "</tr>";
     }
 

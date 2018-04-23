@@ -204,7 +204,8 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                String type = result.getString("typeLogement");
+//                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT); //TODO: ki yaamar ramzy la bd rodiha keyna
                 return logement;
             }
         }catch (SQLException e){

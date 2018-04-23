@@ -21,6 +21,9 @@ public class AdminServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "modifierVisite":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?what=MODIFIER_VISITE").forward(request, response);
+                        break;
                     case "gelerLogement":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=GELER_LOGEMENT").forward(request, response);
                     case "listeSignals":{

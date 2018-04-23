@@ -166,6 +166,8 @@ public class Nav {
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage, TablePage.CANCELED_VISITES), "Visites annulées", urlBase + "?what=visitesAnnulees", "fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
 
+        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
+        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
 
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav", "fa-eye", "Visites", visitesSubNavElementList, isPage(currentPage, TablePage.VISITES));
         navElements.add(visitesExpendableNavElement);
@@ -305,6 +307,9 @@ public class Nav {
 
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage, TablePage.CANCELED_VISITES), "Visites annulées", urlBase + "?what=visitesAnnulees", "fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
+
+        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
+        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
         
 
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav", "fa-eye", "Visites", visitesSubNavElementList, isPage(currentPage, TablePage.VISITES));
@@ -391,6 +396,9 @@ public class Nav {
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage,TablePage.CANCELED_VISITES),MyConsts.VISITES_ANNULEES_TITLE, MyConsts.AGENT_SERVLET_URL + "?what=visitesAnnulees","fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
 
+        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
+        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
+
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav","fa-eye","Visites",visitesSubNavElementList,isPage(currentPage,TablePage.VISITES));
         navElements.add(visitesExpendableNavElement);
         /*clients*/
@@ -469,9 +477,6 @@ public class Nav {
 
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage,TablePage.CANCELED_VISITES),MyConsts.VISITES_ANNULEES_TITLE, urlBase + "?what=visitesAnnulees","fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
-
-        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
-        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
 
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav","fa-eye","Mes visites",visitesSubNavElementList,isPage(currentPage,TablePage.VISITES));
         navElements.add(visitesExpendableNavElement);

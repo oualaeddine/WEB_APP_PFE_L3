@@ -1,4 +1,6 @@
 import model.beans.RDV;
+import model.beans.Visite;
+import model.beans.humans.Employe;
 import model.db.daos.VisitesDao;
 import utils.GoogleMail;
 
@@ -8,9 +10,11 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList list = new VisitesDao().getTakenRDVForAgents(3);
-        for (Object rdv : list) {
-            System.out.println(((RDV) rdv).toString());
+        Employe agent = new Employe();
+        agent.setId(2);
+        LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent);
+        for (Visite visite : list) {
+            System.out.println(visite.getTimestamp());
         }
     }
 }

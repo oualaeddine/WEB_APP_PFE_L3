@@ -47,12 +47,17 @@ public class VisitesDao extends DAO {
         return 0;
     }
 
+    public LinkedList<RDV> getReportPossible() {
+
+    }
     public LinkedList<Visite> getVisitesByAgent(Employe agent) {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE agentId=" + agent.getId() + ";");
+            result = statement.executeQuery("SELECT * FROM visite WHERE agentId = " + agent.getId() + ";");
+            System.out.println("ani qbel l while");
             while (result.next()) {
+                System.out.println("ani dkhelt f l'while");
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));

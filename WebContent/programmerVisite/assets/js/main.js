@@ -56,11 +56,11 @@ $(document).ready(function () {
                 return false;
             }
 
-            if (index === 2) initLogementsTable();
-            console.log("next : next = " + index + "navigation = " + navigation + "tab = " + tab);
-            if (index === 5) {
+            if (index === 2)
+                initLogementsTable();
+            if (index === 5)
                 fillDetails();
-            }
+
         },
 
         onInit: function (tab, navigation, index) {
@@ -152,76 +152,90 @@ function readURL(input) {
 $("#prix").slider({});
 $("#superficie").slider({});
 
+var myType = "villa";
+if ($('#appartement').checked) myType = "appartement";
+var region = $('#maregion').val();
+var pricee = $('#prix').val();
+var superficie = $('#superficie').val();
+var nbrPieces = $('#nbrPieces').val();
+var nbrSdb = $('#nbrSdb').val();
+var nbrEtages = $('#nbrEtages').val();
+var meuble = $('#meuble').val();
+var garage = $('#garage').val();
+var jardin = $('#jardin').val();
+var soussol = $('#soussol').val();
+
+
+var logementsTable = $('#logementsTable').DataTable({
+    'paging': true,
+    'lengthChange': false,
+    'searching': true,
+    'ordering': true,
+    'info': true,
+    'autoWidth': false,
+    select: {
+        style: 'single'
+    },
+
+    ajax: {
+        url: 'http://localhost:8080/api/logementApi?' +
+        'action=search' +
+        '&type=' + myType +
+        '&region=' + region +
+        '&prix=' + pricee +
+        '&superficie=' + superficie +
+        '&nbrPieces=' + nbrPieces +
+        '&nbrSdb=' + nbrSdb +
+        '&nbrEtages=' + nbrEtages +
+        '&meuble=' + meuble +
+        '&garage=' + garage +
+        '&jardin=' + jardin +
+        '&soussol=' + soussol,
+        dataSrc: ''
+    },
+    columns: [
+        {"data": "id"},
+        {"data": "nom"},
+        {"data": "prenom"},
+        {"data": "telephone"},
+        {"data": "dateDeNaissance"},
+        {"data": "isBanned"}
+    ]
+});
+
+logementsTable.on('select', function (e, dt, type, indexes) {
+    var rowData = logementsTable.rows(indexes).data().toArray();
+    $('#selectedlogementId').val(rowData[0][0]);
+    $('#selectedlogementadresse').val(rowData[0][1]);
+    $('#selectedLogementSuperficie').val(rowData[0][3]);
+    $('#selectedlogementprice').val(rowData[0][4]);
+
+    document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
+    document.getElementById("superficieDetails").innerHTML = rowData[0][3];
+    document.getElementById("prixDetails").innerHTML = rowData[0][4];
+
+    initCalendar();
+});
 
 function initLogementsTable() {
 
-    var myType = "villa";
+    myType = "villa";
 
     if ($('#appartement').checked)
         myType = "appartement";
 
-    var region = $('#region').val();
-    var pricee = $('#prix').val();
-    var superficie = $('#superficie').val();
-    var nbrPieces = $('#nbrPieces').val();
-    var nbrSdb = $('#nbrSdb').val();
-    var nbrEtages = $('#nbrEtages').val();
-    var meuble = $('#meuble').val();
-    var garage = $('#garage').val();
-    var jardin = $('#jardin').val();
-    var soussol = $('#soussol').val();
+    region = $('#maregion').val();
+    pricee = $('#prix').val();
+    superficie = $('#superficie').val();
+    nbrPieces = $('#nbrPieces').val();
+    nbrSdb = $('#nbrSdb').val();
+    nbrEtages = $('#nbrEtages').val();
+    meuble = $('#meuble').val();
+    garage = $('#garage').val();
+    jardin = $('#jardin').val();
+    soussol = $('#soussol').val();
 
-
-    var logementsTable = $('#logementsTable').DataTable({
-        'paging': true,
-        'lengthChange': false,
-        'searching': true,
-        'ordering': true,
-        'info': true,
-        'autoWidth': false,
-        select: {
-            style: 'single'
-        },
-
-        ajax: {
-            url: 'http://localhost:8080/api/logementApi?' +
-            'action=search' +
-            '&type=' + myType +
-            '&region=' + region +
-            '&prix=' + pricee +
-            '&superficie=' + superficie +
-            '&nbrPieces=' + nbrPieces +
-            '&nbrSdb=' + nbrSdb +
-            '&nbrEtages=' + nbrEtages +
-            '&meuble=' + meuble +
-            '&garage=' + garage +
-            '&jardin=' + jardin +
-            '&soussol=' + soussol,
-            dataSrc: ''
-        },
-        columns: [
-            {"data": "id"},
-            {"data": "nom"},
-            {"data": "prenom"},
-            {"data": "telephone"},
-            {"data": "dateDeNaissance"},
-            {"data": "isBanned"}
-        ]
-    });
-
-    logementsTable.on('select', function (e, dt, type, indexes) {
-        var rowData = logementsTable.rows(indexes).data().toArray();
-        $('#selectedlogementId').val(rowData[0][0]);
-        $('#selectedlogementadresse').val(rowData[0][1]);
-        $('#selectedLogementSuperficie').val(rowData[0][3]);
-        $('#selectedlogementprice').val(rowData[0][4]);
-
-        document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
-        document.getElementById("superficieDetails").innerHTML = rowData[0][3];
-        document.getElementById("prixDetails").innerHTML = rowData[0][4];
-
-        initCalendar();
-    });
+    logementsTable.ajax.reload();
 }
 
 $(function () {

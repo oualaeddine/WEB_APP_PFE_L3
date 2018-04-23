@@ -470,4 +470,8 @@ public class VisitesDao extends DAO {
         }
         return visites;
     }
+
+    public Employe getFreeAgentForDate(RDV myRdv, int region) {
+        return null;
+    }
 }

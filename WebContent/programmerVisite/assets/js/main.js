@@ -21,6 +21,7 @@ transparent = true;
 
 $(document).ready(function () {
 
+
     /*  Activate the tooltips      */
     $('[rel="tooltip"]').tooltip();
 
@@ -187,7 +188,6 @@ $(function () {
         document.getElementById("numeroTelephoneClient").innerHTML = rowData[0][5];
         document.getElementById("nomCompletClient").innerHTML = rowData[0][1] + " " + rowData[0][2];
         document.getElementById("dateNaissClient").innerHTML = rowData[0][4];
-
     });
 
     logementsTable.on('select', function (e, dt, type, indexes) {
@@ -272,51 +272,67 @@ function getVisites() {
 }
 
 var calendar = $('#calendar').fullCalendar({
-    themeSystem: 'standard',
-    defaultView: 'agendaWeek',
+        themeSystem: 'standard',
+        defaultView: 'agendaWeek',
 
-    header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'agendaWeek,month'
-    },
-    title: "choisissez une date",
-    // defaultDate: '2018-03-12',
-    weekNumbers: false,
-    navLinks: false, // can click day/week names to navigate views
-    editable: false,
-    eventLimit: true, // allow "more" link when too many events
-    hiddenDays: [6, 7], // hide Tuesdays and Thursdays
-    selectable: true,
-    unselectAuto: false,
-    businessHours: {
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaWeek,month'
+        },
+        title: "choisissez une date",
+        // defaultDate: '2018-03-12',
+        weekNumbers: false,
+        navLinks: false, // can click day/week names to navigate views
+        editable: false,
+        eventLimit: true, // allow "more" link when too many events
+        hiddenDays: [6, 7], // hide Tuesdays and Thursdays
+        selectable: true,
+        unselectAuto: false,
+        businessHours: {
+            // days of week. an array of zero-based day of week integers (0=Sunday)
+            dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
+
+            start: '8:00', // a start time (10am in this example)
+            end: '16:00' // an end time (6pm in this example)
+        },
         // days of week. an array of zero-based day of week integers (0=Sunday)
         dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
-
         start: '8:00', // a start time (10am in this example)
-        end: '16:00' // an end time (6pm in this example)
-    },
-    // days of week. an array of zero-based day of week integers (0=Sunday)
-    dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
-    start: '8:00', // a start time (10am in this example)
-    end: '16:00', // an end time (6pm in this example)
-    events: getVisites(),
-    eventColor: '#378006',
-    displayEventTime: false,
-    eventClick: function (calEvent, jsEvent, view) {
+        end: '16:00', // an end time (6pm in this example)
+        events: [
+            {
+                start: "2018-04-22T13:00:00",
+                end: "2018-04-22T15:00:00"
+            },
+            {
+                start: "2018-04-22T10:00:00",
+                end: "2018-04-22T11:30:00"
+            }, {
+                start: "2018-04-22T13:00:00",
+                end: "2018-04-22T15:00:00"
+            }
+        ],
+        eventColor: '#378006',
+        displayEventTime:
+            false,
+        eventClick:
 
-        // change the border color just for fun
-        $(this).css('background', 'red');
+            function (calEvent, jsEvent, view) {
 
-        console.log('Event: ' + calEvent.start.format() + 'to ' + calEvent.end.format());
-        console.log(calEvent.id);
-        //$('#idVisite').val(calEvent.id);
-        fillOtherInputs(calEvent.id);
-        return false;
+                // change the border color just for fun
+                $(this).css('background', 'red');
 
-        // addInputToDocument('selectedEventId', calEvent.id);
-    }
-});
+                console.log('Event: ' + calEvent.start.format() + 'to ' + calEvent.end.format());
+                console.log(calEvent.id);
+                //$('#idVisite').val(calEvent.id);
+                fillOtherInputs(calEvent.id);
+                return false;
+
+                // addInputToDocument('selectedEventId', calEvent.id);
+            }
+    })
+;
 
 
 function confirmerVisite() {

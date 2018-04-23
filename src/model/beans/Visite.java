@@ -16,6 +16,8 @@ public class Visite implements Serializable {
     private Employe agent;
     private Client client;
     private EtatVisite etatVisite;
+    private Date date;
+    private int horaire;
 
     public Visite() {
     }
@@ -74,5 +76,13 @@ public class Visite implements Serializable {
 
     public void setEtatVisite(EtatVisite etatVisite) {
         this.etatVisite = etatVisite;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getHoraire() {
+        return horaire;
     }
 }

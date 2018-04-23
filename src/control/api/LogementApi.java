@@ -31,8 +31,8 @@ public class LogementApi extends API {
                 case "search":
                     Logement logement = new Logement();
                     String type = request.getParameter("type");
-                    TypeLogement typeLogement = type.equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT;
-                    logement.setTypeLogement(typeLogement);
+//                    TypeLogement typeLogement = type.equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT;
+//                    logement.setTypeLogement(typeLogement);
                     int idLocal = 0;
                     if (!request.getParameter("region").equals("null"))
                         idLocal = Integer.parseInt(request.getParameter("region"));

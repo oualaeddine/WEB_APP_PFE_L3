@@ -34,9 +34,9 @@ public class ClientsManager {
         visite.setClient(loggedInClient);
         return new VisitesDao().add(visite);
     }
-    public boolean reporterRDV(int id, Timestamp newTime){
+    public boolean reporterRDV(int id, Date newTime){
         Visite visite = new VisitesDao().getById(id);
-        visite.setTime(newTime);
+        visite.setTimestamp(newTime);
         if (new VisitesDao().reporter(id) && reserverVisite(visite)) return true;
         return false;
     }

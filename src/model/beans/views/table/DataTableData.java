@@ -17,6 +17,7 @@ public class DataTableData {
 
 
     public LinkedList<DataTableRow> getData() {
+
         setupData();
         return data;
     }
@@ -134,6 +135,7 @@ public class DataTableData {
 
     private void setupDataModifierVisite() {
         Employe agent = (Employe) new EmployeDAO().getById(userId);
+        System.out.println(agent.getUsername());
         LinkedList<Visite> visites = new VisitesDao().getVisitesByAgent(agent);
         for (Visite visite : visites) {
             data.add(new DataTableRow(DataTableRowFormat.MODIFIER_VISITE, visite));

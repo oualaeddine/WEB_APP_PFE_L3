@@ -23,7 +23,7 @@
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    int userId = employe.getId();
     String currentPage = request.getParameter("page");
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);

@@ -125,7 +125,8 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForModifierVisite() {
-        html = "<tr><th>ID</th>" +
+        html = "<tr>" +
+                "<th>ID</th>" +
                 "<th>Logement </th>" +
                 "<th>Agent    </th>" +
                 "<th>Client   </th>" +

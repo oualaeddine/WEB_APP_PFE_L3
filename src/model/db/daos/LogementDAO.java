@@ -20,22 +20,22 @@ public class LogementDAO extends DAO {
     public LinkedList<Logement> getLogementsSelonCriteres(Logement criteres, Double prixMax, Double prixMin, Double supMax, Double supMin) {
         ResultSet result;
         LinkedList<Logement> logements = new LinkedList<>();
-        String avecJardin = criteres.isAvecJardin() ? " AND avecJardin = 1" : "";
-        String avecGarage = criteres.isAvecGarage() ? " AND avecGarage = 1" : "";
-        String avecSousSol = criteres.isAvecSousSol() ? " AND avecSousSol = 1" : "";
-        String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1" : "";
+        String avecJardin = criteres.isAvecJardin() ? " AND avecJardin = 1 " : "";
+        String avecGarage = criteres.isAvecGarage() ? " AND avecGarage = 1 " : "";
+        String avecSousSol = criteres.isAvecSousSol() ? " AND avecSousSol = 1 " : "";
+        String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1 " : "";
 
         try {
             result = statement.executeQuery("SELECT * FROM logement WHERE " +
-                    "(superficie < "+supMax+", AND superficie > "+supMin+") " +
+                    "(superficie < "+supMax+" AND superficie > "+supMin+") " +
                     "AND (prix < "+prixMax+" AND prix > "+prixMin+") " +
                     "AND  etat='avendre'" +
                     "AND region = "+criteres.getLocalite().getId()+" " +
                     "AND nbrPieces = "+criteres.getNbrPieces()+" " +
                     "AND nbrSdb = "+criteres.getNbrSdb()+" " +
-                    avecGarage + "," +
-                    avecJardin + "," +
-                    avecSousSol + "," +
+                    avecGarage +
+                    avecJardin +
+                    avecSousSol +
                     avecMeubles +
                     ";");
             while (result.next()) {
@@ -63,7 +63,7 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 logements.add(logement);
             }
@@ -103,7 +103,7 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 list.add(logement);
             }
@@ -374,7 +374,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre' OR etat='gele';");
+            result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -396,11 +396,12 @@ public class LogementDAO extends DAO {
                 logement.setAvecSousSol(result.getBoolean("avecSousSol"));
                 logement.setMeubles(result.getBoolean("avecMeubles"));
                 logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
                 Location location = new Location();
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+//                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         } catch (SQLException e) {

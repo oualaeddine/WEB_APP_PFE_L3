@@ -11,10 +11,41 @@ import model.enums.EtatVisite;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
 public class VisitesDao extends DAO {
+
+    public LinkedList<RDV> getFreeRdvForNext2months(int regionId) {
+        LinkedList<RDV> libres = new LinkedList<>();
+        ResultSet result;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime today = LocalDateTime.now();
+        Date sqlDate = Date.valueOf(today.toLocalDate());
+        LinkedList<Visite> prochainesVisites = getProgrammeeFor2months();
+        for (int i = 0; i <= 60; i++) {
+            for (Visite v : prochainesVisites) {
+                int region = new AssignationDAO().getLocaliteByAgent(v.getAgent().getId()).getId();
+                if (v.getTimestamp().equals(sqlDate + "0000-00-" + i)) {
+                    for (int j = 1; j <= 4; j++) {
+                        if (v.getHorraire() != j && region==regionId) {
+                            RDV rdv = new RDV();
+                            rdv.setHorraire(v.getHorraire());
+                            rdv.setDate(v.getTimestamp());
+                            libres.add(rdv);
+                        }
+                    }
+                }
+            }
+
+
+        }
+        return libres;
+    }
+
     public LinkedList<RDV> getTakenRDVForAgents(int regionId) {
         //Dates et horraires ou tout les agents de la region sont occupés
         ResultSet result;
@@ -48,9 +79,7 @@ public class VisitesDao extends DAO {
         return 0;
     }
 
-    public LinkedList<RDV> getReportPossible() {
 
-    }
     public LinkedList<Visite> getVisitesByAgent(Employe agent) {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
@@ -332,6 +361,44 @@ public class VisitesDao extends DAO {
         LinkedList<Visite> visites = new LinkedList<>();
         try {
             result = statement.executeQuery("SELECT * FROM visite WHERE timestamp<current_timestamp;");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(Integer.parseInt(result.getString("horraire")));
+                switch (result.getString("etat")) {
+                    case "prevue":
+                        visite.setEtatVisite(EtatVisite.PROGRAMMEE);
+                        break;
+                    case "avisNegatif":
+                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
+                        break;
+                    case "avisPositif":
+                        visite.setEtatVisite(EtatVisite.VALIDEE);
+                        break;
+                    case "reportee":
+                        visite.setEtatVisite(EtatVisite.REPORTEE);
+                        break;
+                    case "annulee":
+                        visite.setEtatVisite(EtatVisite.ANNULEE);
+                        break;
+                }
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
+
+    public LinkedList<Visite> getProgrammeeFor2months() {
+        ResultSet result;
+        LinkedList<Visite> visites = new LinkedList<>();
+        try {
+            result = statement.executeQuery("SELECT * FROM visite WHERE timestamp>=current_date AND timestamp<=(current_date+'0000-02-00');");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

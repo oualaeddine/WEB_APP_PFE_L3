@@ -16,7 +16,6 @@ public class LoginServlet extends MyServlet {
 
     @Override
     public void init() throws ServletException {
-        //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
         super.init();
         this.authManager = new AuthManager();
     }

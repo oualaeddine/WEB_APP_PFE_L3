@@ -11,6 +11,8 @@
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="model.db.daos.EmployeDAO" %>
+<%@ page import="model.beans.Visite" %>
+<%@ page import="model.db.daos.VisitesDao" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -23,7 +25,7 @@
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-    int userId = employe.getId();
+    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     String currentPage = request.getParameter("page");
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
@@ -308,6 +310,38 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <%--Modal Modifier/Annuler visite--%>
+    <div id="modifierVisiteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier visite</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/ModifierServlet?ajouter=visite" id="modifierVisiteForm">
+
+                        <input id="visiteModifiee" name="visiteInput" type="hidden">
+                        <div class="form-group">
+                            <label for="motif">Veuillez entrer le motif de votre signalement</label>
+                            <select id="newDate" name="newDate" form="modifierVisiteForm">
+                                <%%>
+                            </select>
+                        </div>
+                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->

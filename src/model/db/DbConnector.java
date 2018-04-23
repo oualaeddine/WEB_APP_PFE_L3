@@ -9,9 +9,9 @@ public class DbConnector {
       private static final String
            db_name = "soc_imm",
             host = "localhost",
-            port = "3306",
+            port = "124",
             user = "root",
-            pass = "";
+            pass = "1234";
 
   /*  private static final String
             db_name = "soc_imm",

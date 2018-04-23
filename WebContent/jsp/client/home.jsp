@@ -1,5 +1,10 @@
 <%@ page import="control.system.managers.AuthManager" %>
-<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %><%--
+<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
+<%@ page import="model.beans.Logement" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="model.db.daos.LogementDAO" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="model.db.daos.LocaliteDAO" %><%--
   Created by IntelliJ IDEA.
   User: berre
   Date: 4/3/2018
@@ -229,12 +234,11 @@
                         <div class="col-md-4">
                             <select id="lunchBegins" class="selectpicker" data-live-search="true"
                                     data-live-search-style="begins" title="Select your city">
-                                <option>New york, CA</option>
-                                <option>Paris</option>
-                                <option>Casablanca</option>
-                                <option>Tokyo</option>
-                                <option>Marraekch</option>
-                                <option>kyoto , shibua</option>
+                                <%LinkedList<Localite> localites = new LocaliteDAO().getAll();%>
+                                <%for (Localite l : localites){
+                                    out.print("<option>"+l.getNom()+"</option>");
+                                }%>
+
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -393,109 +397,27 @@
                     . </p>
             </div>
         </div>
-
         <div class="row">
             <div class="proerty-th">
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-1.html"><img src="../../assets_client/img/demo/property-1.jpg"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-1.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
+            <%
+                LinkedList<Logement> logements = new LogementDAO().getNonVendus();
+                for (Logement logement : logements) {
+                    out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
+                            "                    <div class=\"box-two proerty-item\">\n" +
+                            "                        <div class=\"item-thumb\">\n" +
+                            "                            <a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"item-entry overflow\">\n" +
+                            "                            <h5><a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\">"+logement.getTitre()+" </a></h5>\n" +
+                            "                            <div class=\"dot-hr\"></div>\n" +
+                            "                            <span class=\"pull-left\"><b>Area :</b> "+logement.getSuperficie()+"m2</span>\n" +
+                            "                            <span class=\"proerty-price pull-right\">"+logement.getPrix()+" DZD</span>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </div>");
+                }
+            %>
 
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-2.html"><img src="../../assets_client/img/demo/property-2.jpg"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-2.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-3.html"><img src="../../assets_client/img/demo/property-3.jpg"></a>
-
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-3.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-1.html"><img src="../../assets_client/img/demo/property-4.jpg"></a>
-
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-1.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-3.html"><img src="../../assets_client/img/demo/property-2.jpg"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-3.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-2.html"><img src="../../assets_client/img/demo/property-4.jpg"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-2.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="property-1.html"><img src="../../assets_client/img/demo/property-3.jpg"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-1.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-sm-6 col-md-3 p0">
                     <div class="box-tree more-proerty text-center">
@@ -908,6 +830,52 @@
 <script src="../../assets_client/js/price-range.js"></script>
 
 <script src="../../assets_client/js/main.js"></script>
+
+
+
+<div id="programmerVisiteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Programmer une visite</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/AjoutServlet?ajouter=visite" id="newVisitForm">
+
+
+                    <input id="logementChoisi" name="logementChoisi" type="hidden">
+                    <div class="form-group">
+                        <label for="userTypeInput">Choisissez une date</label>
+                        <select class="custom-select" name="userTypeInput" id="userTypeInput">
+                            <option value="responsableVentes">Choisir une date</option>
+                        </select>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default"  type="submit" >Valider</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    function getLogementId(idTaaLogement) {
+        document.getElementById("logementChoisi").value = idTaaLogement;
+    }
+
+</script>
+
 
 </body>
 

@@ -125,6 +125,7 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForModifierVisite() {
+        System.out.println("eni fi setupTable header");
         html = "<tr>" +
                 "<th>ID</th>" +
                 "<th>Logement </th>" +

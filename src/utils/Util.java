@@ -262,12 +262,16 @@ public class Util {
                 return "Employés";
             case GELER_LOGEMENT:
                 return "Logements non vendus";
+            case MODIFIER_PROFIL:
+                return "Visites à venir";
         }
      return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "MODIFIER_VISITE":
+                return MODIFIER_VISITE;
             case "GELER_LOGEMENT":
                 return GELER_LOGEMENT;
             case "SUSPENDRE_ADMIN":

@@ -16,8 +16,7 @@ public class Visite implements Serializable {
     private Employe agent;
     private Client client;
     private EtatVisite etatVisite;
-    private Date date;
-    private int horaire;
+
 
     public Visite() {
     }
@@ -78,11 +77,17 @@ public class Visite implements Serializable {
         this.etatVisite = etatVisite;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public int getHoraire() {
-        return horaire;
+    @Override
+    public String toString() {
+        return "Visite{" +
+                "id=" + id +
+                ", timestamp=" + timestamp +
+                ", horraire=" + horraire +
+                ", logement=" + logement +
+                ", agent=" + agent +
+                ", client=" + client +
+                ", etatVisite=" + etatVisite +
+                '}';
     }
 }

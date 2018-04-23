@@ -43,45 +43,73 @@ public class VisiteApi extends API {
             for (RDV rdv : rdvs) {
                 JsonObject jsonObject = new JsonObject();
                 String dateTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
+                String endTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
                 jsonObject.addProperty("start", dateTime);
+                jsonObject.addProperty("end", endTime);
 
                 rdvsToReturn.add(jsonObject);
             }
             response.getWriter().append(rdvsToReturn.toString());
-
         }
+
         if (request.getParameter("action").equals("getFreeAgentForDate")) {
-            Date date = new Date();
-            try {
-                date = Util.getDateFromString(request.getParameter("date"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            int rdv = Integer.parseInt(request.getParameter("rdv"));
+            String date;
+            date = request.getParameter("date");
+
+            int rdv = getHorraireFromStringDate(date);
             int logementId = Integer.parseInt(request.getParameter("logementId"));
             Logement logement = (Logement) new LogementDAO().getById(logementId);
             int region = logement.getLocalite().getId();
+
             RDV myRdv = new RDV();
-            myRdv.setDate((java.sql.Date) date);
+            myRdv.setDate((java.sql.Date) getDateFromString(date));
             myRdv.setHorraire(rdv);
-            response.getWriter().append(Util.objectToJson(new VisitesDao().getFreeAgentForDate(myRdv, region)));
+
+            System.out.println(myRdv);
+
+            response.getWriter().append(Util.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
         }
 
+    }
+
+    private static Date getDateFromString(String date) {
+        return Util.getDateFromString(date.substring(0, 10));
+    }
+
+    private static int getHorraireFromStringDate(String date) {
+        String time = date.substring(11, 13);
+        System.out.println("time = " + time);
+        switch (time) {
+            case "08": {
+                return 1;
+            }
+            case "10": {
+                return 1;
+            }
+            case "12": {
+                return 1;
+            }
+            case "14": {
+                return 1;
+            }
+            default:
+                return 0;
+        }
     }
 
     private String getTimeForRdv(int horraire) {
         switch (horraire) {
             case 1: {
-                return "08:00:00";
-            }
-            case 2: {
                 return "10:00:00";
             }
-            case 3: {
+            case 2: {
                 return "12:00:00";
             }
-            case 4: {
+            case 3: {
                 return "14:00:00";
+            }
+            case 4: {
+                return "16:00:00";
             }
             default: {
                 return "00:00:00";
@@ -92,17 +120,18 @@ public class VisiteApi extends API {
     private LinkedList<RDV> getTakenDatesForLogement(int logementId) {
 
         LinkedList<RDV> takenRdv = new LinkedList<>();
-
-        for (Visite visite : getVisitesForLogement(logementId)) {
+        LinkedList<Visite> l = getVisitesForLogement(logementId);
+        for (Visite visite : l) {
 
             RDV newRdv = new RDV();
-            newRdv.setDate(visite.getDate());
-            newRdv.setHorraire(visite.getHoraire());
-
+            newRdv.setDate(visite.getTimestamp());
+            newRdv.setHorraire(visite.getHorraire());
+            //System.out.println("getTakenDatesForLogement " + newRdv.toString());
             takenRdv.add(newRdv);
         }
 
-        for (RDV newRdv : getTakenVisitesForAgents(logementId)) {
+        LinkedList<RDV> l2 = getTakenVisitesForAgents(logementId);
+        for (RDV newRdv : l2) {
             if (!takenRdv.contains(newRdv))
                 takenRdv.add(newRdv);
         }

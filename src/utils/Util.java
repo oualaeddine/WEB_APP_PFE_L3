@@ -343,7 +343,7 @@ public class Util {
         }
         return VISITES;
     }
-    public static Date getDateFromString(String dateString) throws ParseException{
+    public static Date getDateFromString(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date date1 = null;
         try {

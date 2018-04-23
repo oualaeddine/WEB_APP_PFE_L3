@@ -20,9 +20,9 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<RDV> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT timestamp, horraire FROM visite v WHERE (SELECT count(employe.id) FROM employe,assignation_region WHERE employe.userType='agent' AND employe.id = assignation_region.agentId AND assignation_region.localiteId="+regionId+") = (SELECT count(agentId) FROM visite vv WHERE v.timestamp=vv.timestamp AND vv.horraire=v.horraire);");
+            result = statement.executeQuery("SELECT timestamp, horraire FROM visite v WHERE (SELECT count(employe.id) FROM employe,assignation_region WHERE employe.userType='agent' AND employe.id = assignation_region.agentId AND assignation_region.localiteId=" + regionId + ") = (SELECT count(agentId) FROM visite vv WHERE v.timestamp=vv.timestamp AND vv.horraire=v.horraire);");
             while (result.next()) {
-                RDV rdv =  new RDV();
+                RDV rdv = new RDV();
                 rdv.setDate(result.getDate("timestamp"));
                 rdv.setHorraire(Integer.parseInt(result.getString("horraire")));
 
@@ -34,10 +34,11 @@ public class VisitesDao extends DAO {
         }
         return null;
     }
+
     public int getFreeAgentsForVisite(RDV rdv, int regionId) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT e.id FROM employe e,visite,assignation_region ar WHERE e.id=visite.agentId AND ar.agentId=e.id AND ar.localiteId="+regionId+" AND (SELECT count(visite.id) FROM visite WHERE agentId=e.id AND timestamp='"+rdv.getDate()+"' AND horraire='"+rdv.getHorraire()+"');");
+            result = statement.executeQuery("SELECT e.id FROM employe e,visite,assignation_region ar WHERE e.id=visite.agentId AND ar.agentId=e.id AND ar.localiteId=" + regionId + " AND (SELECT count(visite.id) FROM visite WHERE agentId=e.id AND timestamp='" + rdv.getDate() + "' AND horraire='" + rdv.getHorraire() + "');");
             if (result.next()) {
                 return result.getInt("id");
             }
@@ -132,13 +133,14 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT id FROM visite WHERE logementId=" + logement.getId() + " AND date >= current_date AND date <= (current_date + '0000-02-00')  ;");
+            result = statement.executeQuery("SELECT * FROM visite WHERE logementId=" + logement.getId()+" AND visite.etat = 'PREVUE' ");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
-                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+               /* visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+         */
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
@@ -158,6 +160,8 @@ public class VisitesDao extends DAO {
                         visite.setEtatVisite(EtatVisite.ANNULEE);
                         break;
                 }
+
+               // System.out.println("getVisite" + visite.toString());
                 list.add(visite);
             }
         } catch (SQLException e) {
@@ -476,7 +480,4 @@ public class VisitesDao extends DAO {
         return visites;
     }
 
-    public Employe getFreeAgentForDate(RDV myRdv, int region) {
-        return null;
-    }
 }

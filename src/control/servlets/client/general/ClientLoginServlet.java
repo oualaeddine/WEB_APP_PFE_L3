@@ -77,12 +77,7 @@ public class ClientLoginServlet extends MyClientServlet {
         client.setUsername(username);
         client.setPassword(password);
         client.setAdresse(adresse);
-        try {
             client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         if (authManager.signupClient(client)) {
             redirectToLogin(request, response, 0);
         } else {

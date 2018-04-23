@@ -55,6 +55,9 @@ $(document).ready(function () {
                 $validator.focusInvalid();
                 return false;
             }
+
+            if (index === 2) initLogementsTable();
+            console.log("next : next = " + index + "navigation = " + navigation + "tab = " + tab);
             if (index === 5) {
                 fillDetails();
             }
@@ -72,6 +75,8 @@ $(document).ready(function () {
 
         onTabClick: function (tab, navigation, index) {
             fillDetails();
+            if (index === 2) initLogementsTable();
+
             return $('.wizard-card form').valid();
 
         },
@@ -146,7 +151,26 @@ function readURL(input) {
 
 $("#prix").slider({});
 $("#superficie").slider({});
-$(function () {
+
+
+function initLogementsTable() {
+
+    var myType = "villa";
+
+    if ($('#appartement').checked)
+        myType = "appartement";
+
+    var region = $('#region').val();
+    var pricee = $('#prix').val();
+    var superficie = $('#superficie').val();
+    var nbrPieces = $('#nbrPieces').val();
+    var nbrSdb = $('#nbrSdb').val();
+    var nbrEtages = $('#nbrEtages').val();
+    var meuble = $('#meuble').val();
+    var garage = $('#garage').val();
+    var jardin = $('#jardin').val();
+    var soussol = $('#soussol').val();
+
 
     var logementsTable = $('#logementsTable').DataTable({
         'paging': true,
@@ -157,8 +181,52 @@ $(function () {
         'autoWidth': false,
         select: {
             style: 'single'
-        }
+        },
+
+        ajax: {
+            url: 'http://localhost:8080/api/logementApi?' +
+            'action=search' +
+            '&type=' + myType +
+            '&region=' + region +
+            '&prix=' + pricee +
+            '&superficie=' + superficie +
+            '&nbrPieces=' + nbrPieces +
+            '&nbrSdb=' + nbrSdb +
+            '&nbrEtages=' + nbrEtages +
+            '&meuble=' + meuble +
+            '&garage=' + garage +
+            '&jardin=' + jardin +
+            '&soussol=' + soussol,
+            dataSrc: ''
+        },
+        columns: [
+            {"data": "id"},
+            {"data": "nom"},
+            {"data": "prenom"},
+            {"data": "telephone"},
+            {"data": "dateDeNaissance"},
+            {"data": "isBanned"}
+        ]
     });
+
+    logementsTable.on('select', function (e, dt, type, indexes) {
+        var rowData = logementsTable.rows(indexes).data().toArray();
+        $('#selectedlogementId').val(rowData[0][0]);
+        $('#selectedlogementadresse').val(rowData[0][1]);
+        $('#selectedLogementSuperficie').val(rowData[0][3]);
+        $('#selectedlogementprice').val(rowData[0][4]);
+
+        document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
+        document.getElementById("superficieDetails").innerHTML = rowData[0][3];
+        document.getElementById("prixDetails").innerHTML = rowData[0][4];
+
+        initCalendar();
+    });
+}
+
+$(function () {
+
+
     var table = $('#clientsTab').DataTable({
             'paging': true,
             'lengthChange': false,
@@ -175,9 +243,17 @@ $(function () {
             "processing": true,
             "serverSide": true,
             ajax: {
-                "url": '/api/clientApi?action=getAllClients',
-                "dataSrc": ""
-            }
+                url: 'http://localhost:8080/api/clientApi?action=getAllClients',
+                dataSrc: ''
+            },
+            columns: [
+                {"data": "id"},
+                {"data": "nom"},
+                {"data": "prenom"},
+                {"data": "telephone"},
+                {"data": "dateDeNaissance"},
+                {"data": "isBanned"}
+            ]
         })
     ;
 
@@ -190,17 +266,7 @@ $(function () {
         document.getElementById("dateNaissClient").innerHTML = rowData[0][4];
     });
 
-    logementsTable.on('select', function (e, dt, type, indexes) {
-        var rowData = logementsTable.rows(indexes).data().toArray();
-        $('#selectedlogementId').val(rowData[0][0]);
-        $('#selectedlogementadresse').val(rowData[0][1]);
-        $('#selectedLogementSuperficie').val(rowData[0][3]);
-        $('#selectedlogementprice').val(rowData[0][4]);
 
-        document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
-        document.getElementById("superficieDetails").innerHTML = rowData[0][3];
-        document.getElementById("prixDetails").innerHTML = rowData[0][4];
-    });
 });
 
 
@@ -236,24 +302,25 @@ function fillDetails() {
 
 }
 
-function fillOtherInputs(id) {
-    visites.forEach(function (entry) {
-        if (entry['id'] === id) {
-            var agent = Ext.util.JSON.decode(entry['url']);
-            $('#idAgent').val(agent['id']);
+function fillOtherInputs(startDate, endDate) {
 
-            $('#heureDebutVisite').val(entry['start']);
-            $('#heureFinVisite').val(entry['end']);
 
+    $.ajax({
+        url: "http://localhost:8080/api/visiteApi?action=getFreeAgentForDate&date=" + startDate + "&region=" + $('#region').val(),
+        success: function (result) {
+            var agent = Ext.util.JSON.decode(result);
+            $('#idAgent').val(idAgent);
+
+            $('#heureDebutVisite').val(startDate.substring(9, 16));
+            $('#heureFinVisite').val(endDate.substring(9, 16));
 
             document.getElementById("idAgentDetails").innerHTML = agent['id'];
             document.getElementById("nomAgentDetails").innerHTML = agent['name'];
             document.getElementById("sexeAgentDetails").innerHTML = agent['sexe'];
 
-            document.getElementById("dateVisiteDetails").innerHTML = entry['start'];
-            document.getElementById("heureDetails").innerHTML = entry['start'];
-            document.getElementById("dureeVisiteDetails").innerHTML = "" + (entry['end'] - entry['start']);
-
+            document.getElementById("dateVisiteDetails").innerHTML = startDate.substring(0, 8);
+            document.getElementById("heureDetails").innerHTML = date.substring(9, 16);
+            document.getElementById("dureeVisiteDetails").innerHTML = "2h";
         }
     });
 }
@@ -271,69 +338,65 @@ function getVisites() {
     return visites;
 }
 
-var calendar = $('#calendar').fullCalendar({
-        themeSystem: 'standard',
-        defaultView: 'agendaWeek',
+function initCalendar() {
 
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'agendaWeek,month'
-        },
-        title: "choisissez une date",
-        // defaultDate: '2018-03-12',
-        weekNumbers: false,
-        navLinks: false, // can click day/week names to navigate views
-        editable: false,
-        eventLimit: true, // allow "more" link when too many events
-        hiddenDays: [6, 7], // hide Tuesdays and Thursdays
-        selectable: true,
-        unselectAuto: false,
-        businessHours: {
+
+    var idLogement = $('#selectedlogementId').val();
+
+    var calendar = $('#calendar').fullCalendar({
+
+            themeSystem: 'standard',
+            defaultView: 'agendaWeek',
+
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'agendaWeek,month'
+            },
+            title: "choisissez une date",
+            // defaultDate: '2018-03-12',
+            weekNumbers: false,
+            navLinks: false, // can click day/week names to navigate views
+            editable: false,
+            eventLimit: true, // allow "more" link when too many events
+            hiddenDays: [6, 7], // hide Tuesdays and Thursdays
+            selectable: true,
+            unselectAuto: false,
+            businessHours: {
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
+
+                start: '8:00', // a start time (10am in this example)
+                end: '16:00' // an end time (6pm in this example)
+            },
             // days of week. an array of zero-based day of week integers (0=Sunday)
             dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
-
             start: '8:00', // a start time (10am in this example)
-            end: '16:00' // an end time (6pm in this example)
-        },
-        // days of week. an array of zero-based day of week integers (0=Sunday)
-        dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
-        start: '8:00', // a start time (10am in this example)
-        end: '16:00', // an end time (6pm in this example)
-        events: [
-            {
-                start: "2018-04-22T13:00:00",
-                end: "2018-04-22T15:00:00"
-            },
-            {
-                start: "2018-04-22T10:00:00",
-                end: "2018-04-22T11:30:00"
-            }, {
-                start: "2018-04-22T13:00:00",
-                end: "2018-04-22T15:00:00"
-            }
-        ],
-        eventColor: '#378006',
-        displayEventTime:
-            false,
-        eventClick:
+            end: '16:00', // an end time (6pm in this example)
+            eventSources: [
 
-            function (calEvent, jsEvent, view) {
+                // your event source
+                {
+                    url: 'http://localhost:8080/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+                    color: 'red',    // an option!
+                    textColor: 'black'  // an option!
+                }
 
-                // change the border color just for fun
-                $(this).css('background', 'red');
+                // any other sources...
 
-                console.log('Event: ' + calEvent.start.format() + 'to ' + calEvent.end.format());
-                console.log(calEvent.id);
-                //$('#idVisite').val(calEvent.id);
-                fillOtherInputs(calEvent.id);
+            ],
+            eventColor: '#378006',
+            displayEventTime: false,
+            eventClick: function (calEvent, jsEvent, view) {
                 return false;
-
-                // addInputToDocument('selectedEventId', calEvent.id);
+            },
+            select: function (startDate, endDate) {
+                fillOtherInputs(startDate, endDate);
             }
-    })
-;
+        })
+    ;
 
+}
 
 function confirmerVisite() {
 

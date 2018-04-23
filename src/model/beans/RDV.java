@@ -33,6 +33,14 @@ public class RDV {
     }
 
     @Override
+    public String toString() {
+        return "RDV{" +
+                "date=" + date +
+                ", horraire=" + horraire +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = date != null ? date.hashCode() : 0;
         result = 31 * result + horraire;

@@ -1,6 +1,5 @@
+import control.api.VisiteApi;
 import model.beans.RDV;
-import model.beans.Visite;
-import model.beans.humans.Employe;
 import model.db.daos.VisitesDao;
 import utils.GoogleMail;
 
@@ -10,11 +9,6 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        Employe agent = new Employe();
-        agent.setId(2);
-        LinkedList<Visite> list = new VisitesDao().getVisitesByAgent(agent);
-        for (Visite visite : list) {
-            System.out.println(visite.getTimestamp());
-        }
+        // System.out.println(VisiteApi.getHorraireFromStringDate("2018-04-05T08:00:00"));
     }
 }

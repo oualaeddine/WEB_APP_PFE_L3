@@ -1,5 +1,8 @@
 package control.api;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import model.beans.RDV;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
 import utils.MyConsts;
@@ -23,23 +26,28 @@ public class ClientApi extends API {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LinkedList listeDesClients = new ClientDAO().getAll();
-        LinkedList<HashMap> returnList = new LinkedList<>();
 
 
+        JsonArray clientsToReturn = new JsonArray();
         for (Object client : listeDesClients) {
-            Client _client = (Client) client;
-            HashMap<String, String> clientHM = new HashMap<>();
+            JsonObject jsonObject = new JsonObject();
+            String nom = ((Client) client).getNom();
+            String prenom = ((Client) client).getPrenom();
+            String id = ((Client) client).getId() + "";
+            String telephone = ((Client) client).getTel();
+            String isBanned = ((Client) client).isBannedString();
+            String dateDeNaissance = ((Client) client).getDateNaissance().toString();
 
-            clientHM.put("id", "" + _client.getId());
-            clientHM.put("nom", "" + _client.getNom());
-            clientHM.put("prenom", "" + _client.getPrenom());
-            clientHM.put("date", "" + _client.getDateNaissance());
-            clientHM.put("telephone", "" + _client.getTel());
-            clientHM.put("isBanned", "" + _client.isBannedString());
+            jsonObject.addProperty("id", id);
+            jsonObject.addProperty("nom", nom);
+            jsonObject.addProperty("prenom", prenom);
+            jsonObject.addProperty("telephone", telephone);
+            jsonObject.addProperty("isBanned", isBanned);
+            jsonObject.addProperty("dateDeNaissance", dateDeNaissance);
 
-
-            returnList.add(clientHM);
+            clientsToReturn.add(jsonObject);
         }
-        response.getWriter().append(objectToJson(returnList));
+
+        response.getWriter().append(clientsToReturn.toString());
     }
 }

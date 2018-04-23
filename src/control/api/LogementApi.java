@@ -18,6 +18,11 @@ import static utils.Util.objectToJson;
 @WebServlet(name = "LogementApi",urlPatterns = MyConsts.LOGEMENT_API_URL_PATTERN)
 public class LogementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String responseBody = "null";
         String action = request.getParameter("action");
         if (action != null) {
@@ -39,13 +44,13 @@ public class LogementApi extends API {
                     logement.setNbrSdb(nbrSdb);
                     int nbrEtages = Integer.parseInt(request.getParameter("nbrEtages"));
                     logement.setEtage(nbrEtages);
-                    boolean meuble = request.getParameter("meuble").equals("1");
+                    boolean meuble = request.getParameter("meuble").equals("true");
                     logement.setMeubles(meuble);
-                    boolean garage = request.getParameter("garage").equals("1");
+                    boolean garage = request.getParameter("garage").equals("true");
                     logement.setAvecGarage(garage);
-                    boolean jardin = request.getParameter("jardin").equals("1");
+                    boolean jardin = request.getParameter("jardin").equals("true");
                     logement.setAvecJardin(jardin);
-                    boolean soussol = request.getParameter("soussol").equals("1");
+                    boolean soussol = request.getParameter("soussol").equals("true");
                     logement.setAvecSousSol(soussol);
 
                     responseBody = objectToJson(new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin));
@@ -53,10 +58,5 @@ public class LogementApi extends API {
 
             response.getWriter().append(responseBody);
         }
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

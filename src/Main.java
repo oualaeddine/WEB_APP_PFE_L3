@@ -1,3 +1,4 @@
+import control.api.VisiteApi;
 import model.beans.RDV;
 import model.db.daos.VisitesDao;
 import utils.GoogleMail;
@@ -8,9 +9,6 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList list = new VisitesDao().getTakenRDVForAgents(3);
-        for (Object rdv : list) {
-            System.out.println(((RDV) rdv).toString());
-        }
+        // System.out.println(VisiteApi.getHorraireFromStringDate("2018-04-05T08:00:00"));
     }
 }

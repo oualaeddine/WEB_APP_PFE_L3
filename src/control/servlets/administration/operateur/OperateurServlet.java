@@ -32,7 +32,7 @@ public class OperateurServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?what=MODIFIER_VISITE").forward(request, response);
                         break;
                     case "programmerVisite":{
-                        this.getServletContext().getRequestDispatcher("/jsp/programmerVisite.jsp").forward(request,response);
+                        this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request,response);
                         break;
                     }
                     case "AdminsMessages":{

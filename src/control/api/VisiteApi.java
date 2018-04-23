@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -72,11 +71,11 @@ public class VisiteApi extends API {
 
     }
 
-    private static Date getDateFromString(String date) {
+    public static java.sql.Date getDateFromString(String date) {
         return Util.getDateFromString(date.substring(0, 10));
     }
 
-    private static int getHorraireFromStringDate(String date) {
+    public static int getHorraireFromStringDate(String date) {
         String time = date.substring(11, 13);
         System.out.println("time = " + time);
         switch (time) {
@@ -84,13 +83,13 @@ public class VisiteApi extends API {
                 return 1;
             }
             case "10": {
-                return 1;
+                return 2;
             }
             case "12": {
-                return 1;
+                return 3;
             }
             case "14": {
-                return 1;
+                return 4;
             }
             default:
                 return 0;

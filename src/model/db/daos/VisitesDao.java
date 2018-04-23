@@ -34,10 +34,10 @@ public class VisitesDao extends DAO {
         }
         return null;
     }
-    public int getFreeAgentsForVisite(Date date) {
+    public int getFreeAgentsForVisite(RDV rdv, int regionId) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM agent NOT IN (SELECT agentId FROM visite WHERE timestamp > '" + date + "' AND timestamp<" + (date + "0000-00-01") + ");)");
+            result = statement.executeQuery("SELECT e.id FROM employe e,visite,assignation_region ar WHERE e.id=visite.agentId AND ar.agentId=e.id AND ar.localiteId="+regionId+" AND (SELECT count(visite.id) FROM visite WHERE agentId=e.id AND timestamp='"+rdv.getDate()+"' AND horraire='"+rdv.getHorraire()+"');");
             if (result.next()) {
                 return result.getInt("id");
             }

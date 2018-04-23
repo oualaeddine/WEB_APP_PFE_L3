@@ -155,7 +155,11 @@ $("#superficie").slider({});
 
 function initLogementsTable() {
 
-    var myType = $('#type').val();
+    var myType = "villa";
+
+    if ($('#appartement').checked)
+        myType = "appartement";
+
     var region = $('#region').val();
     var pricee = $('#prix').val();
     var superficie = $('#superficie').val();
@@ -180,7 +184,7 @@ function initLogementsTable() {
         },
 
         ajax: {
-            url: '/api/logementApi?' +
+            url: 'http://localhost:8080/api/logementApi?' +
             'action=search' +
             '&type=' + myType +
             '&region=' + region +
@@ -239,7 +243,7 @@ $(function () {
             "processing": true,
             "serverSide": true,
             ajax: {
-                url: '/api/clientApi?action=getAllClients',
+                url: 'http://localhost:8080/api/clientApi?action=getAllClients',
                 dataSrc: ''
             },
             columns: [
@@ -302,7 +306,7 @@ function fillOtherInputs(startDate, endDate) {
 
 
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate + "&region=" + $('#region').val(),
+        url: "http://localhost:8080/api/visiteApi?action=getFreeAgentForDate&date=" + startDate + "&region=" + $('#region').val(),
         success: function (result) {
             var agent = Ext.util.JSON.decode(result);
             $('#idAgent').val(idAgent);
@@ -373,7 +377,7 @@ function initCalendar() {
 
                 // your event source
                 {
-                    url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+                    url: 'http://localhost:8080/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
                     color: 'red',    // an option!
                     textColor: 'black'  // an option!
                 }

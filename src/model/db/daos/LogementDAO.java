@@ -27,7 +27,7 @@ public class LogementDAO extends DAO {
 
         try {
             result = statement.executeQuery("SELECT * FROM logement WHERE " +
-                    "(superficie < "+supMax+", AND superficie > "+supMin+") " +
+                    "(superficie < "+supMax+" AND superficie > "+supMin+") " +
                     "AND (prix < "+prixMax+" AND prix > "+prixMin+") " +
                     "AND  etat='avendre'" +
                     "AND region = "+criteres.getLocalite().getId()+" " +
@@ -38,6 +38,8 @@ public class LogementDAO extends DAO {
                     avecSousSol + "," +
                     avecMeubles +
                     ";");
+
+
             while (result.next()) {
                 Logement logement = new Logement();
 

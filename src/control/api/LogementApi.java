@@ -34,9 +34,9 @@ public class LogementApi extends API {
                     logement.setTypeLogement(typeLogement);
                     Localite localite = (Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region")));
                     logement.setLocalite(localite);
-                    String[] prix = (request.getParameter("prix")).split(":");
+                    String[] prix = (request.getParameter("prix")).split(",");
                     double pMin = Double.parseDouble(prix[0]), pMax = Double.parseDouble(prix[1]);
-                    String[] superficies = (request.getParameter("superficie")).split(":");
+                    String[] superficies = (request.getParameter("superficie")).split(",");
                     double sMin = Double.parseDouble(superficies[0]), sMax = Double.parseDouble(superficies[1]);
                     int nbrPieces = Integer.parseInt(request.getParameter("nbrPieces"));
                     logement.setNbrPieces(nbrPieces);

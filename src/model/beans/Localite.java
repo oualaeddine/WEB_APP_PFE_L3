@@ -24,4 +24,12 @@ public class Localite implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    @Override
+    public String toString() {
+        return "Localite{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }

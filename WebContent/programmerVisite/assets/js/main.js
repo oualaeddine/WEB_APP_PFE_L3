@@ -154,16 +154,31 @@ $("#superficie").slider({});
 
 var myType = "villa";
 if ($('#appartement').checked) myType = "appartement";
-var region = $('#maregion').val();
+var region = $('#maregion option:selected').val();
 var pricee = $('#prix').val();
 var superficie = $('#superficie').val();
 var nbrPieces = $('#nbrPieces').val();
 var nbrSdb = $('#nbrSdb').val();
 var nbrEtages = $('#nbrEtages').val();
-var meuble = $('#meuble').val();
-var garage = $('#garage').val();
-var jardin = $('#jardin').val();
-var soussol = $('#soussol').val();
+
+var meuble = "false";
+var garage = "false";
+var jardin = "false";
+var soussol = "false";
+
+if ($('#soussol').is(":checked"))
+    soussol = "true";
+
+
+if ($('#jardin').is(":checked"))
+    jardin = "true";
+
+
+if ($('#meuble').is(":checked"))
+    meuble = "true";
+
+if ($('#garage').is(":checked"))
+    garage = "true";
 
 
 var logementsTable = $('#logementsTable').DataTable({
@@ -173,12 +188,13 @@ var logementsTable = $('#logementsTable').DataTable({
     'ordering': true,
     'info': true,
     'autoWidth': false,
+    responsive: true,
     select: {
         style: 'single'
     },
 
     ajax: {
-        url: 'http://localhost:8080/api/logementApi?' +
+        url: '/api/logementApi?' +
         'action=search' +
         '&type=' + myType +
         '&region=' + region +
@@ -195,26 +211,26 @@ var logementsTable = $('#logementsTable').DataTable({
     },
     columns: [
         {"data": "id"},
-        {"data": "nom"},
-        {"data": "prenom"},
-        {"data": "telephone"},
-        {"data": "dateDeNaissance"},
-        {"data": "isBanned"}
+        {"data": "titre"},
+        {"data": "price"},
+        {"data": "superficie"},
+        {"data": "adresse"},
+        {"data": "description"}
     ]
 });
 
 logementsTable.on('select', function (e, dt, type, indexes) {
     var rowData = logementsTable.rows(indexes).data().toArray();
-    $('#selectedlogementId').val(rowData[0][0]);
-    $('#selectedlogementadresse').val(rowData[0][1]);
-    $('#selectedLogementSuperficie').val(rowData[0][3]);
-    $('#selectedlogementprice').val(rowData[0][4]);
+    $('#selectedlogementId').val(rowData[0]["id"]);
+    $('#selectedlogementadresse').val(rowData[0]["adresse"]);
+    $('#selectedLogementSuperficie').val(rowData[0]["superficie"]);
+    $('#selectedlogementprice').val(rowData[0]["price"]);
 
-    document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
-    document.getElementById("superficieDetails").innerHTML = rowData[0][3];
-    document.getElementById("prixDetails").innerHTML = rowData[0][4];
+    document.getElementById("idLogementDetails").innerHTML = rowData[0]["id"];
+    document.getElementById("superficieDetails").innerHTML = rowData[0]["superficie"];
+    document.getElementById("prixDetails").innerHTML = rowData[0]["price"];
 
-    initCalendar();
+    initCalendar(rowData[0]["id"]);
 });
 
 function initLogementsTable() {
@@ -224,18 +240,31 @@ function initLogementsTable() {
     if ($('#appartement').checked)
         myType = "appartement";
 
-    region = $('#maregion').val();
+    region = $('#maregion option:selected').val();
     pricee = $('#prix').val();
     superficie = $('#superficie').val();
     nbrPieces = $('#nbrPieces').val();
     nbrSdb = $('#nbrSdb').val();
     nbrEtages = $('#nbrEtages').val();
-    meuble = $('#meuble').val();
-    garage = $('#garage').val();
-    jardin = $('#jardin').val();
-    soussol = $('#soussol').val();
+    if ($('#soussol').is(":checked")) soussol = "true"; else soussol = "false";
+    if ($('#jardin').is(":checked")) jardin = "true"; else jardin = "false";
+    if ($('#meuble').is(":checked")) meuble = "true"; else meuble = "false";
+    if ($('#garage').is(":checked")) garage = "true"; else garage = "false";
 
-    logementsTable.ajax.reload();
+
+    logementsTable.ajax.url('/api/logementApi?' +
+        'action=search' +
+        '&type=' + myType +
+        '&region=' + region +
+        '&prix=' + pricee +
+        '&superficie=' + superficie +
+        '&nbrPieces=' + nbrPieces +
+        '&nbrSdb=' + nbrSdb +
+        '&nbrEtages=' + nbrEtages +
+        '&meuble=' + meuble +
+        '&garage=' + garage +
+        '&jardin=' + jardin +
+        '&soussol=' + soussol).load();
 }
 
 $(function () {
@@ -257,7 +286,7 @@ $(function () {
             "processing": true,
             "serverSide": true,
             ajax: {
-                url: 'http://localhost:8080/api/clientApi?action=getAllClients',
+                url: '/api/clientApi?action=getAllClients',
                 dataSrc: ''
             },
             columns: [
@@ -274,10 +303,10 @@ $(function () {
     table.on('select', function (e, dt, type, indexes) {
         var rowData = table.rows(indexes).data().toArray();
         $('#clientId').val(rowData[0][0]);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0][0];
-        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0][5];
-        document.getElementById("nomCompletClient").innerHTML = rowData[0][1] + " " + rowData[0][2];
-        document.getElementById("dateNaissClient").innerHTML = rowData[0][4];
+        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
+        document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
+        document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
     });
 
 
@@ -285,7 +314,7 @@ $(function () {
 
 
 function fillDetails() {
-    document.getElementById("regionDetails").innerHTML = $('#region').children("option").filter(":selected").text();
+    document.getElementById("regionDetails").innerHTML = $('#maregion').children("option").filter(":selected").text();
     document.getElementById("nbrPiecesDetails").innerHTML = $('#nbrPieces').val();
     document.getElementById("nbrEtagesDetails").innerHTML = $('#nbrEtages').val();
     document.getElementById("nbrSDBDetails").innerHTML = $('#nbrSdb').val();
@@ -320,20 +349,20 @@ function fillOtherInputs(startDate, endDate) {
 
 
     $.ajax({
-        url: "http://localhost:8080/api/visiteApi?action=getFreeAgentForDate&date=" + startDate + "&region=" + $('#region').val(),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
         success: function (result) {
-            var agent = Ext.util.JSON.decode(result);
+            var agent = JSON.parse(result);
             $('#idAgent').val(idAgent);
 
-            $('#heureDebutVisite').val(startDate.substring(9, 16));
-            $('#heureFinVisite').val(endDate.substring(9, 16));
+            $('#heureDebutVisite').val(startDate.format().substring(11,16));
+            $('#heureFinVisite').val(endDate.format().substring(11,16));
 
-            document.getElementById("idAgentDetails").innerHTML = agent['id'];
-            document.getElementById("nomAgentDetails").innerHTML = agent['name'];
+            document.getElementById("idAgentDetails").innerHTML = agent.id;
+            document.getElementById("nomAgentDetails").innerHTML = agent.name+" "+agent.name;
             document.getElementById("sexeAgentDetails").innerHTML = agent['sexe'];
 
-            document.getElementById("dateVisiteDetails").innerHTML = startDate.substring(0, 8);
-            document.getElementById("heureDetails").innerHTML = date.substring(9, 16);
+            document.getElementById("dateVisiteDetails").innerHTML = startDate.format().substring(0, 10);
+            document.getElementById("heureDetails").innerHTML = endDate.format().substring(11,16);
             document.getElementById("dureeVisiteDetails").innerHTML = "2h";
         }
     });
@@ -346,16 +375,16 @@ function getVisites() {
     var url = "/visitesApi?+action=possibleVisites&logementId=" + logementId;
     $.ajax({
         url: url, async: false, success: function (result) {
-            visites = Ext.util.JSON.decode(result);
+            visites = JSON.parse(result);
         }
     });
     return visites;
 }
 
-function initCalendar() {
+function initCalendar(idLogement) {
 
 
-    var idLogement = $('#selectedlogementId').val();
+    //  var idLogement = $('#selectedlogementId').val();
 
     var calendar = $('#calendar').fullCalendar({
 
@@ -391,7 +420,7 @@ function initCalendar() {
 
                 // your event source
                 {
-                    url: 'http://localhost:8080/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+                    url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
                     color: 'red',    // an option!
                     textColor: 'black'  // an option!
                 }

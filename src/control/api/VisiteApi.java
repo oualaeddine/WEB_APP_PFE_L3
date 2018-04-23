@@ -53,16 +53,15 @@ public class VisiteApi extends API {
 
         if (request.getParameter("action").equals("getFreeAgentForDate")) {
             String date;
+
             date = request.getParameter("date");
 
-            int rdv = getHorraireFromStringDate(date);
-            int logementId = Integer.parseInt(request.getParameter("logementId"));
-            Logement logement = (Logement) new LogementDAO().getById(logementId);
-            int region = logement.getLocalite().getId();
+
+            int region = Integer.parseInt(request.getParameter("region"));
 
             RDV myRdv = new RDV();
-            myRdv.setDate((java.sql.Date) getDateFromString(date));
-            myRdv.setHorraire(rdv);
+            myRdv.setDate(getDateFromString(date));
+            myRdv.setHorraire(getHorraireFromStringDate(date));
 
             System.out.println(myRdv);
 

@@ -22,7 +22,7 @@ import java.sql.Date;
 @WebServlet(name = "ProgrammerVisiteServlet",value = "/ProgrammerVisite")
 public class ProgrammerVisiteServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
+       // if (isLoggedIn(request)) {
             Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
             Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
             Employe agent = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("idAgent")));
@@ -37,17 +37,18 @@ public class ProgrammerVisiteServlet extends MyServlet {
             visite.setTimestamp(timestamp);
 
             System.out.println("Ajout de la visite: "+new VisitesDao().add(visite));
-        } else {
-            redirectToLogin(request, response, 0);
-        }
+       // } else {
+       //     redirectToLogin(request, response, 0);
+       // }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
+/*        if (isLoggedIn(request)) {
             this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request, response);
         } else {
             redirectToLogin(request,response,0);
-        }
+        }*/
+        this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request, response);
 
     }
 }

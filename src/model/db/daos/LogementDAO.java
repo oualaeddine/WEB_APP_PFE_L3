@@ -73,6 +73,8 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+
 //                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 System.out.println("Lguit: "+logement.getTitre());
@@ -331,7 +333,8 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                // TODO: 4/23/2018 absar leh ygoli makanch column typr
+//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         }catch (SQLException e){

@@ -1,7 +1,10 @@
 package control.api;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import model.beans.Localite;
 import model.beans.Logement;
+import model.beans.RDV;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import static utils.Util.objectToJson;
 
@@ -59,7 +63,31 @@ public class LogementApi extends API {
                     boolean soussol = request.getParameter("soussol").equals("true");
                     logement.setAvecSousSol(soussol);
 
-                    responseBody = objectToJson(new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin));
+                    LinkedList<Logement> logements = new LogementDAO().getAll();
+
+                    // LinkedList<Logement> rdvs = new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin);
+
+                    JsonArray rdvsToReturn = new JsonArray();
+                    for (Logement myLogement : logements) {
+                        JsonObject jsonObject = new JsonObject();
+                        String id = "" + myLogement.getId();
+                        String titre = myLogement.getTitre();
+                        String description = myLogement.getDescription();
+                        String adresse = myLogement.getAdresse();
+                        String price = "" + myLogement.getPrix();
+                        String superficie = "" + myLogement.getSuperficie();
+
+                        jsonObject.addProperty("id", id);
+                        jsonObject.addProperty("titre", titre);
+                        jsonObject.addProperty("description", description);
+                        jsonObject.addProperty("adresse", adresse);
+                        jsonObject.addProperty("price", price);
+                        jsonObject.addProperty("superficie", superficie);
+
+                        rdvsToReturn.add(jsonObject);
+
+                    }
+                    responseBody = rdvsToReturn.toString();
             }
 
             response.getWriter().append(responseBody);

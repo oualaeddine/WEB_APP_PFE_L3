@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Logement implements Serializable {
-    private int id, nbrPieces, nbrSdb,etage;
+    private int id, nbrPieces, nbrSdb, etage;
     private Localite localite;
     private String titre, description, adresse;
     private boolean avecJardin;
@@ -66,7 +66,7 @@ public class Logement implements Serializable {
         this.avecSousSol = avecSousSol;
     }
 
-    private double superficie,prix;
+    private double superficie, prix;
 
     public double getPrix() {
         return prix;
@@ -159,5 +159,28 @@ public class Logement implements Serializable {
 
     public void setSuperficie(double superficie) {
         this.superficie = superficie;
+    }
+
+    @Override
+    public String toString() {
+        return "Logement{" +
+                "id=" + id +
+                ", nbrPieces=" + nbrPieces +
+                ", nbrSdb=" + nbrSdb +
+                ", etage=" + etage +
+                ", localite=" + localite +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", avecJardin=" + avecJardin +
+                ", avecGarage=" + avecGarage +
+                ", avecSousSol=" + avecSousSol +
+                ", typeLogement=" + typeLogement +
+                ", meubles=" + meubles +
+                ", location=" + location +
+                ", superficie=" + superficie +
+                ", prix=" + prix +
+                ", etat=" + etat +
+                '}';
     }
 }

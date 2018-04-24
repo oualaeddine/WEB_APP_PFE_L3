@@ -5,10 +5,12 @@ import com.google.gson.JsonObject;
 import model.beans.Localite;
 import model.beans.Logement;
 import model.beans.RDV;
+import model.db.daos.ClientDAO;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
 import utils.MyConsts;
+import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +33,10 @@ public class LogementApi extends API {
         String responseBody = "null";
         String action = request.getParameter("action");
         if (action != null) {
+            if (request.getParameter("action") != null && request.getParameter("action").equals("getRegions")) {
+
+                response.getWriter().append(Util.objectToJson(new LocaliteDAO().getAll()));
+            }
             switch (action) {
                 case "search":
                     Logement logement = new Logement();

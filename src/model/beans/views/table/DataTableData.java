@@ -130,6 +130,17 @@ public class DataTableData {
             case GELER_LOGEMENT:
                 setupDataGelerLogement();
                 break;
+            case ETABLIR_RAPPORT:
+                setupDataEtablirRapport();
+                break;
+        }
+    }
+
+    private void setupDataEtablirRapport() {
+        Employe employe = (Employe) new EmployeDAO().getById(userId);
+        LinkedList<Visite> visites = new VisitesDao().getVisitesByAgent(employe);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.ETABLIR_RAPPORT, visite));
         }
     }
 

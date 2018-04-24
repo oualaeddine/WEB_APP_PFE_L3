@@ -354,6 +354,42 @@
 
         </div>
     </div>
+
+
+    <%--Modal Etablir Rapport--%>
+    <div id="etablirRapportModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier visite</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/NewRapport" id="etablirRapportForm">
+
+                        <input id="visiteRapport" name="visiteRapport" type="hidden">
+                        <div class="form-group">
+                            <label for="motif">Veuillez entrer le motif de votre signalement</label>
+                            <select name="etatVisite" id="etatVisite" class="form-control">
+                                <option value="validee"> Validée</option>
+                                <option value="nonvalidee"> Non validée</option>
+                                <option value="reportee">Reportée</option>
+                                <option value="annulee">Annulée</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -368,6 +404,10 @@
     <script src="../js/sb-admin-datatables.min.js"></script>
 
     <script>
+        function getVisiteTaaLrapport(idTaaLaVisite) {
+            document.getElementById("visiteRapport").value = idTaaLaVisite;
+
+        }
         function getAgentId(idTaaLagent) {
             document.getElementById("agentId").value = idTaaLagent;
         }

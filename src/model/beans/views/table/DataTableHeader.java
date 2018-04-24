@@ -121,11 +121,25 @@ public class DataTableHeader {
             case MODIFIER_VISITE:
                 setupTableHeaderForModifierVisite();
                 break;
+            case ETABLIR_RAPPORT:
+                setupTableHeaderForEtablirRapport();
+                break;
         }
     }
 
+    private void setupTableHeaderForEtablirRapport() {
+        html = "<tr>" +
+                "<th>ID</th>" +
+                "<th>Logement </th>" +
+                "<th>Agent    </th>" +
+                "<th>Client   </th>" +
+                "<th>Horaire  </th>" +
+                "<th>Etat     </th>" +
+                "<th>Action   </th>" +
+                "</tr>" ;
+    }
+
     private void setupTableHeaderForModifierVisite() {
-        System.out.println("eni fi setupTable header");
         html = "<tr>" +
                 "<th>ID</th>" +
                 "<th>Logement </th>" +

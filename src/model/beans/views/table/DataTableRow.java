@@ -72,7 +72,23 @@ public class DataTableRow {
             case MODIFIER_VISITE:
                 setupHtmlForModifierVisite();
                 break;
+            case ETABLIR_RAPPORT:
+                setupHtmlForEtablirRapport();
+                break;
         }
+    }
+
+    private void setupHtmlForEtablirRapport() {
+        Visite visite = (Visite) object;
+        html ="<tr>" +
+                "<td>" + visite.getId() + "</td>" +
+                "<td>" + visite.getLogement().getTitre() + "</td>" +
+                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getTimestamp() + "</td>" +
+                "<td>" + visite.getEtatVisite() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getVisiteTaaLrapport(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#etablirRapportModal\" value=\"" + visite.getId() + "\">Rapport</td>"+
+                "</tr>";
     }
 
     private void setupHtmlForModifierVisite() {

@@ -1,8 +1,12 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="model.beans.humans.Agent" %><%--
-  Created by IntelliJ IDEA.
+<%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.beans.views.MyView" %>
+Created by IntelliJ IDEA.
   User: hp
   Date: 23/02/2018
   Time: 22:32
@@ -11,7 +15,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%! private TablesView tablesView = new TablesView(); %>
+<%
+    UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+    Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    String currentPage = request.getParameter("page");
+    tablesView.setLoggedInUserId(userId);
+    tablesView.setLoggedInUserType(userType);
+    tablesView.setCurrentPage(currentPage);
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,130 +48,21 @@
         }
     </style>
 </head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-My fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#">Espace Agent</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
+     id="mainNav">
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + employe.getNom() + " " + employe.getPrenom());%></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav scroll-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="/AgentServlet">
-                    <i class="fa fa-fw fa-home"></i>
-                    <span class="nav-link-text">Accueil</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="/AgentServlet?what=etablirRapport">
-                    <i class="fa fa-fw fa-edit"></i>
-                    <span class="nav-link-text">Etablir un rapport</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTables" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-envelope"></i>
-                    <span class="nav-link-text">Messages</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseTables">
-                    <li>
-                        <a href="/AgentServlet?what=AdminsMessages"><i class="fa fa-fw fa-envelope"></i>
-                            <span class="nav-link-text">Administration</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=newMessage"><i class="fa fa-fw fa-pencil"></i>
-                            <span class="nav-link-text">Messages</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-eye"></i>
-                    <span class="nav-link-text">Visites</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="/AgentServlet?what=visitesProgrammees"><i class="fa fa-fw fa-calendar"></i>
-                            <span class="nav-link-text">Visites Programmées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=visitesPassees"><i class="fa fa-fw fa-calendar-check"></i>
-                            <span class="nav-link-text">Visites Passées</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=visitesAnnulees"><i class="fa fa-fw fa-calendar-times"></i>
-                            <span class="nav-link-text">Visites annulées</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseClients" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-users"></i>
-                    <span class="nav-link-text">Clients</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseClients">
-                    <li>
-                        <a href="/AgentServlet?what=listeClients"><i class="fa fa-fw fa-bars"></i>
-                            <span class="nav-link-text">Liste des clients</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=myClients"><i class="fa fa-fw fa-gratipay"></i>
-                            <span class="nav-link-text">Clients bannis</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=signalerClient"><i class="fa fa-fw fa-ban"></i>
-                            <span class="nav-link-text">Signaler un client</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="buildings">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsebuildings" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-building"></i>
-                    <span class="nav-link-text">Logements</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapsebuildings">
-                    <li>
-                        <a href="/AgentServlet?what=allLogements"><i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Liste des Logements</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=logementsVendus"><i class="fa fa-fw fa-check"></i>
-                            <span class="nav-link-text">Logements vendus</span></a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=logementsGeles"><i class="fa fa-fw fa-object-group"></i>
-                            <span class="nav-link-text">Logements gelés</span></a>
-                    </li>
-                </ul>
-
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseprofile" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-user"></i>
-                    <span class="nav-link-text">Mon profil</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseprofile">
-                    <li>
-                        <a href="/AgentServlet?what=modifierProfil"><i class="fa fa-fw fa-user-circle"></i>
-                            <span class="nav-link-text">Modifier profil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/AgentServlet?what=changePassword"><i class="fa fa-fw fa-lock"></i>
-                            <span class="nav-link-text">Changer mot de passe</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="/logout">
-                    <i class="fa fa-fw fa-sign-out"></i>
-                    <span class="nav-link-text">Deconnexion</span>
-                </a>
-            </li>
+        <ul class="navbar-nav scroll-nav  navbar-sidenav" id="exampleAccordion">
+            <% for (MyView navElement : tablesView.getNav().getElements()) {
+                out.print(navElement.getHtml());
+            }
+            %>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -169,6 +74,9 @@
 
     </div>
 </nav>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->

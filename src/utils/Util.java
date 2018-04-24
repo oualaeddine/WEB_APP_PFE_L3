@@ -264,12 +264,16 @@ public class Util {
                 return "Logements non vendus";
             case MODIFIER_PROFIL:
                 return "Visites à venir";
+            case ETABLIR_RAPPORT:
+                return "Visites";
         }
      return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "ETABLIR_RAPPORT":
+                return ETABLIR_RAPPORT;
             case "MODIFIER_VISITE":
                 return MODIFIER_VISITE;
             case "GELER_LOGEMENT":

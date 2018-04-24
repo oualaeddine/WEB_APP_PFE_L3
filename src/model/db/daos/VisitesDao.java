@@ -69,7 +69,7 @@ public class VisitesDao extends DAO {
     public int getFreeAgentsForVisite(RDV rdv, int regionId) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT e.id FROM employe e,visite,assignation_region ar WHERE e.id=visite.agentId AND ar.agentId=e.id AND ar.localiteId=" + regionId + " AND (SELECT count(visite.id) FROM visite WHERE agentId=e.id AND timestamp='" + rdv.getDate() + "' AND horraire='" + rdv.getHorraire() + "');");
+            result = statement.executeQuery("SELECT DISTINCT e.id FROM employe e, assignation_region ar WHERE e.id=ar.agentId AND localiteId="+regionId+" AND ((SELECT count(visite.id) FROM visite WHERE timestamp='"+rdv.getDate()+"' AND horraire="+rdv.getHorraire()+") =0);");
             if (result.next()) {
                 return result.getInt("id");
             }

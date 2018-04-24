@@ -328,10 +328,10 @@ public class VisitesDao extends DAO {
 
     public boolean add(Visite visite) {
         try {
-            statement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,soc_imm.visite.timestamp) VALUES (" +
-                    visite.getLogement().getId() + "," +
-                    visite.getAgent().getId() + "," +
-                    visite.getClient().getId() + ",  'prevue' , now()" +
+            statement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,timestamp) VALUES (" +
+                            visite.getLogement().getId() + "," +
+                            visite.getAgent().getId() + "," +
+                            visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire()+
 
                     ");");
             return true;

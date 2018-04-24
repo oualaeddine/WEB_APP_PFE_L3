@@ -1,4 +1,4 @@
-package control.servlets.administration.operateur;
+package control.servlets.administration.client;
 
 import control.api.VisiteApi;
 import control.servlets.MyServlet;
@@ -13,14 +13,13 @@ import model.db.daos.VisitesDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(name = "ProgrammerVisiteServlet", urlPatterns = "/ProgrammerVisite")
-public class ProgrammerVisiteServlet extends MyServlet {
+@WebServlet(name = "ProgrammerVisiteClientServlet", value = "/ProgrammerVisiteClient")
+public class ProgrammerVisiteClientServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // if (isLoggedIn(request)) {
 
@@ -50,9 +49,9 @@ public class ProgrammerVisiteServlet extends MyServlet {
             visite.setTimestamp(timestamp);
 
             System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
         } else
-            this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/programmerVisite/programmer_visite_client.html").forward(request, response);
 
     }
 }

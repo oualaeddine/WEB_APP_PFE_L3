@@ -402,7 +402,10 @@ public class LogementDAO extends DAO {
                     case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
                     case "gele": logement.setEtat(EtatLogement.GELE);break;
                 }
-                logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
+                Localite localite = new Localite();
+                localite.setId(result.getInt("region"));
+                logement.setLocalite(localite);
+
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
                 logement.setNbrSdb(result.getInt("nbrSdb"));

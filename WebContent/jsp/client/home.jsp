@@ -236,10 +236,7 @@
                         <div class="col-md-4">
                             <select id="lunchBegins" class="selectpicker" data-live-search="true"
                                     data-live-search-style="begins" title="Select your city">
-                                <%LinkedList<Localite> localites = new LocaliteDAO().getAll();%>
-                                <%for (Localite l : localites){
-                                    out.print("<option>"+l.getNom()+"</option>");
-                                }%>
+
 
                             </select>
                         </div>
@@ -403,12 +400,16 @@
             <div class="proerty-th">
             <%
                 LinkedList<Logement> logements = new LogementDAO().getNonVendus();
-                Client loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+                Client loggedIdClient=new Client();
+                if (isLoggedIn) {
+                    loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+
+                }
                 for (Logement logement : logements) {
                     out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
                             "                    <div class=\"box-two proerty-item\">\n" +
                             "                        <div class=\"item-thumb\">\n" +
-                            "                            <a href=\"/ProgrammerVisiteClient?logementId="+logement.getId()+"&regionId="+logement.getLocalite().getId()+"&clientId="+loggedIdClient.getId()+"\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                            "                            <a href=\"/ProgrammerVisiteClient?logementId="+logement.getId()+"&region="+logement.getLocalite().getId()+"&clientId="+loggedIdClient.getId()+"\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"item-entry overflow\">\n" +
                             "                            <h5><a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\">"+logement.getTitre()+" </a></h5>\n" +

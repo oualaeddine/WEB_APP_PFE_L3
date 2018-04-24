@@ -19,6 +19,7 @@ public class Employe extends Person {
     public void setApproved(boolean approved) {
         isApproved = approved;
     }
+
     public UserType getUserType() {
         return userType;
     }
@@ -59,5 +60,16 @@ public class Employe extends Person {
     public String isSuspendedString() {
         if (isSuspended) return "suspended";
         return "not Suspended";
+    }
+
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "creator=" + creator +
+                ", isSuspended=" + isSuspended +
+                ", isApproved=" + isApproved +
+                ", dateAdded=" + dateAdded +
+                ", userType=" + userType +
+                "} " + super.toString();
     }
 }

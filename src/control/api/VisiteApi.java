@@ -64,6 +64,7 @@ public class VisiteApi extends API {
             myRdv.setHorraire(getHorraireFromStringDate(date));
 
             System.out.println(myRdv);
+            System.out.println("region" + region);
 
             response.getWriter().append(Util.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
         }

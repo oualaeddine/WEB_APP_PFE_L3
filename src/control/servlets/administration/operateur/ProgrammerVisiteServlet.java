@@ -19,27 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(name = "ProgrammerVisiteServlet",value = "/ProgrammerVisite")
+@WebServlet(name = "ProgrammerVisiteServlet", value = "/ProgrammerVisite")
 public class ProgrammerVisiteServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // if (isLoggedIn(request)) {
-            Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
-            Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
-            Employe agent = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("idAgent")));
-            int horraire = new VisiteApi().getHorraireFromStringDate(request.getParameter("heureDebut"));
-            Date timestamp = new VisiteApi().getDateFromString(request.getParameter("heureDebut"));
+        // if (isLoggedIn(request)) {
 
-            Visite visite = new Visite();
-            visite.setLogement(logement);
-            visite.setClient(client);
-            visite.setAgent(agent);
-            visite.setHorraire(horraire);
-            visite.setTimestamp(timestamp);
-
-            System.out.println("Ajout de la visite: "+new VisitesDao().add(visite));
-       // } else {
-       //     redirectToLogin(request, response, 0);
-       // }
+        // } else {
+        //     redirectToLogin(request, response, 0);
+        // }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +35,24 @@ public class ProgrammerVisiteServlet extends MyServlet {
         } else {
             redirectToLogin(request,response,0);
         }*/
-        this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request, response);
+        if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
+            Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
+            Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
+            Employe agent = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("idAgent")));
+            int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
+            Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
+
+            Visite visite = new Visite();
+            visite.setLogement(logement);
+            visite.setClient(client);
+            visite.setAgent(agent);
+            visite.setHorraire(horraire);
+            visite.setTimestamp(timestamp);
+
+            System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
+            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
+        } else
+            this.getServletContext().getRequestDispatcher("/programmerVisite/programmer_visite_client.html").forward(request, response);
 
     }
 }

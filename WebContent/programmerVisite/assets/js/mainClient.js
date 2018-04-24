@@ -149,198 +149,10 @@ function readURL(input) {
     }
 }
 
-$("#prix").slider({});
-$("#superficie").slider({});
-
-var myType = "villa";
-if ($('#appartement').checked) myType = "appartement";
-var region = $('#maregion option:selected').val();
-var pricee = $('#prix').val();
-var superficie = $('#superficie').val();
-var nbrPieces = $('#nbrPieces').val();
-var nbrSdb = $('#nbrSdb').val();
-var nbrEtages = $('#nbrEtages').val();
-
-var meuble = "false";
-var garage = "false";
-var jardin = "false";
-var soussol = "false";
-
-if ($('#soussol').is(":checked")) soussol = "true";
-if ($('#jardin').is(":checked")) jardin = "true";
-if ($('#meuble').is(":checked")) meuble = "true";
-if ($('#garage').is(":checked")) garage = "true";
-
-
-var logementsTable = $('#logementsTable').DataTable({
-    'paging': true,
-    'lengthChange': false,
-    'searching': true,
-    'ordering': true,
-    'info': true,
-    'autoWidth': false,
-    responsive: true,
-    select: {
-        style: 'single'
-    },
-
-    ajax: {
-        url: '/api/logementApi?' +
-        'action=search' +
-        '&type=' + myType +
-        '&region=' + region +
-        '&prix=' + pricee +
-        '&superficie=' + superficie +
-        '&nbrPieces=' + nbrPieces +
-        '&nbrSdb=' + nbrSdb +
-        '&nbrEtages=' + nbrEtages +
-        '&meuble=' + meuble +
-        '&garage=' + garage +
-        '&jardin=' + jardin +
-        '&soussol=' + soussol,
-        dataSrc: ''
-    },
-    columns: [
-        {"data": "id"},
-        {"data": "titre"},
-        {"data": "price"},
-        {"data": "superficie"},
-        {"data": "adresse"},
-        {"data": "description"}
-    ]
-});
-
-logementsTable.on('select', function (e, dt, type, indexes) {
-    var rowData = logementsTable.rows(indexes).data().toArray();
-    $('#selectedlogementId').val(rowData[0]["id"]);
-    $('#selectedlogementadresse').val(rowData[0]["adresse"]);
-    $('#selectedLogementSuperficie').val(rowData[0]["superficie"]);
-    $('#selectedlogementprice').val(rowData[0]["price"]);
-
-    document.getElementById("idLogementDetails").innerHTML = rowData[0]["id"];
-    document.getElementById("superficieDetails").innerHTML = rowData[0]["superficie"];
-    document.getElementById("prixDetails").innerHTML = rowData[0]["price"];
-
-    initCalendar(rowData[0]["id"]);
-});
-
-function initLogementsTable() {
-
-    myType = "villa";
-
-    if ($('#appartement').checked)
-        myType = "appartement";
-
-    region = $('#maregion option:selected').val();
-    pricee = $('#prix').val();
-    superficie = $('#superficie').val();
-    nbrPieces = $('#nbrPieces').val();
-    nbrSdb = $('#nbrSdb').val();
-    nbrEtages = $('#nbrEtages').val();
-    if ($('#soussol').is(":checked")) soussol = "true"; else soussol = "false";
-    if ($('#jardin').is(":checked")) jardin = "true"; else jardin = "false";
-    if ($('#meuble').is(":checked")) meuble = "true"; else meuble = "false";
-    if ($('#garage').is(":checked")) garage = "true"; else garage = "false";
-
-
-    logementsTable.ajax.url('/api/logementApi?' +
-        'action=search' +
-        '&type=' + myType +
-        '&region=' + region +
-        '&prix=' + pricee +
-        '&superficie=' + superficie +
-        '&nbrPieces=' + nbrPieces +
-        '&nbrSdb=' + nbrSdb +
-        '&nbrEtages=' + nbrEtages +
-        '&meuble=' + meuble +
-        '&garage=' + garage +
-        '&jardin=' + jardin +
-        '&soussol=' + soussol).load();
-}
-
-$(function () {
-
-
-    var table = $('#clientsTab').DataTable({
-            'paging': true,
-            'lengthChange': false,
-            'searching': true,
-            //'ordering': true,
-            'info': true,
-            'autoWidth': false,
-            //  'aDataSort': false,
-            //"order": [[ 3, "asc" ]],
-            select: {
-                style: 'single'
-            }
-            ,
-            "processing": true,
-            "serverSide": true,
-            ajax: {
-                url: '/api/clientApi?action=getAllClients',
-                dataSrc: ''
-            },
-            columns: [
-                {"data": "id"},
-                {"data": "nom"},
-                {"data": "prenom"},
-                {"data": "telephone"},
-                {"data": "dateDeNaissance"},
-                {"data": "isBanned"}
-            ]
-        })
-    ;
-
-    table.on('select', function (e, dt, type, indexes) {
-        var rowData = table.rows(indexes).data().toArray();
-        $('#clientId').val(rowData[0]['id']);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
-        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
-        document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
-        document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
-    });
-
-
-});
-
-
-function fillDetails() {
-    document.getElementById("regionDetails").innerHTML = $('#maregion').children("option").filter(":selected").text();
-    document.getElementById("nbrPiecesDetails").innerHTML = $('#nbrPieces').val();
-    document.getElementById("nbrEtagesDetails").innerHTML = $('#nbrEtages').val();
-    document.getElementById("nbrSDBDetails").innerHTML = $('#nbrSdb').val();
-
-    if ($('#villa').is(":checked"))
-        document.getElementById("typeDetails").innerHTML = "villa";
-    else
-        document.getElementById("typeDetails").innerHTML = "appartement";
-
-    if ($('#soussol').is(":checked"))
-        document.getElementById("sousSolDetails").innerHTML = "oui";
-    else
-        document.getElementById("sousSolDetails").innerHTML = "non";
-
-    if ($('#jardin').is(":checked"))
-        document.getElementById("jardinDetails").innerHTML = "oui";
-    else
-        document.getElementById("jardinDetails").innerHTML = "non";
-
-    if ($('#meuble').is(":checked"))
-        document.getElementById("meubleDetails").innerHTML = "oui";
-    else
-        document.getElementById("meubleDetails").innerHTML = "non";
-    if ($('#garage').is(":checked"))
-        document.getElementById("garageDetails").innerHTML = "oui";
-    else
-        document.getElementById("garageDetails").innerHTML = "non";
-
-}
-
 function fillOtherInputs(startDate, endDate) {
 
-
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + findGetParameter("region"),
         success: function (result) {
             var agent = JSON.parse(result);
 
@@ -359,19 +171,6 @@ function fillOtherInputs(startDate, endDate) {
             document.getElementById("dureeVisiteDetails").innerHTML = "2h";
         }
     });
-}
-
-var visites;
-
-function getVisites() {
-    var logementId = $('#selectedLogementId').val();
-    var url = "/visitesApi?+action=possibleVisites&logementId=" + logementId;
-    $.ajax({
-        url: url, async: false, success: function (result) {
-            visites = JSON.parse(result);
-        }
-    });
-    return visites;
 }
 
 var calendar = $('#calendar').fullCalendar({
@@ -428,21 +227,22 @@ var calendar = $('#calendar').fullCalendar({
     })
 ;
 
-function initCalendar(idLogement) {
-    var events = {
-        url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
-        color: 'red',    // an option!
-        textColor: 'black'  // an option!
-    };
-    calendar.fullCalendar('removeEventSources');
-    calendar.fullCalendar('addEventSource', events);
-    calendar.fullCalendar('refetchEvents');
-}
+
+var events = {
+    url: '/api/visiteApi?action=getTakenDates&logementId=' + findGetParameter("logementId"), // use the `url` property
+    color: 'red',    // an option!
+    textColor: 'black'  // an option!
+};
+
+calendar.fullCalendar('removeEventSources');
+calendar.fullCalendar('addEventSource', events);
+calendar.fullCalendar('refetchEvents');
+
 
 function confirmerVisite() {
 
-    var idLogement = $('#selectedlogementId').val();
-    var idClient = $('#clientId').val();
+    var idLogement = findGetParameter("logementId")
+    var idClient = findGetParameter("clientId")
     var idAgent = document.getElementById("idAgentDetails").innerHTML;
     var heureDebut = $('#heureDebutVisite').val();
     var heureFin = $('#heureFinVisite').val();
@@ -458,6 +258,18 @@ function confirmerVisite() {
     post("#", params, "GET");
 }
 
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
 
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.

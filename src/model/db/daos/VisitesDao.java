@@ -7,11 +7,11 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
+import utils.Util;
 
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -31,7 +31,7 @@ public class VisitesDao extends DAO {
                 int region = new AssignationDAO().getLocaliteByAgent(v.getAgent().getId()).getId();
                 if (v.getTimestamp().equals(sqlDate + "0000-00-" + i)) {
                     for (int j = 1; j <= 4; j++) {
-                        if (v.getHorraire() != j && region==regionId) {
+                        if (v.getHorraire() != j && region == regionId) {
                             RDV rdv = new RDV();
                             rdv.setHorraire(v.getHorraire());
                             rdv.setDate(v.getTimestamp());
@@ -66,17 +66,39 @@ public class VisitesDao extends DAO {
         return null;
     }
 
-    public int getFreeAgentsForVisite(RDV rdv, int regionId) {
+    public Employe getFreeAgentsForVisite(RDV rdv, int regionId) {
+
+        System.out.println("rdv = [" + rdv + "], regionId = [" + regionId + "]");
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT DISTINCT e.id FROM employe e, assignation_region ar WHERE e.id=ar.agentId AND localiteId="+regionId+" AND ((SELECT count(visite.id) FROM visite WHERE timestamp='"+rdv.getDate()+"' AND horraire="+rdv.getHorraire()+") =0);");
-            if (result.next()) {
-                return result.getInt("id");
+            result = statement.executeQuery("" +
+                    "SELECT " +
+                    "  employe.id, " +
+                    "  nom, " +
+                    "  prenom, " +
+                    "  tel " +
+                    "FROM employe " +
+                    "  JOIN assignation_region ON id = assignation_region.agentId AND localiteId =" + regionId + " AND userType = 'agent' " +
+                    "  , visite " +
+                    "WHERE employe.id NOT IN (SELECT agentId " +
+                    "                         FROM visite " +
+                    "                         WHERE horraire = '" + rdv.getHorraire() + "' " +
+                    "AND timestamp = '" + rdv.getDate().toString() + "')LIMIT 1");
+
+            while (result.next()) {
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setTel(result.getString("tel"));
+                System.out.println("hada resultaaatttttttttt " + employe);
+                return employe;
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
 
@@ -162,7 +184,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE logementId=" + logement.getId()+" AND visite.etat = 'PREVUE' ");
+            result = statement.executeQuery("SELECT * FROM visite WHERE logementId=" + logement.getId() + " AND visite.etat = 'PREVUE' ");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -190,7 +212,7 @@ public class VisitesDao extends DAO {
                         break;
                 }
 
-               // System.out.println("getVisite" + visite.toString());
+                // System.out.println("getVisite" + visite.toString());
                 list.add(visite);
             }
         } catch (SQLException e) {
@@ -306,10 +328,11 @@ public class VisitesDao extends DAO {
 
     public boolean add(Visite visite) {
         try {
-            statement.execute("INSERT INTO visite(logementId, agentId, clientId, etat) VALUES (" +
+            statement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,soc_imm.visite.timestamp) VALUES (" +
                     visite.getLogement().getId() + "," +
                     visite.getAgent().getId() + "," +
-                    visite.getClient().getId() +
+                    visite.getClient().getId() + ",  'prevue' , now()" +
+
                     ");");
             return true;
         } catch (SQLException e) {

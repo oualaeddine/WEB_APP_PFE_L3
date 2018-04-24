@@ -50,6 +50,12 @@
     <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
+
+
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.print.min.css" media="print">
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -57,7 +63,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + employe.getNom() + " " + employe.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -110,9 +117,9 @@
                         <tbody>
 
                         <% LinkedList<DataTableRow> list = tablesView.getDataTable().getTableData();
-                            for (DataTableRow tableRow :list) {
-                            out.print(tableRow.getHtml());
-                        }%>
+                            for (DataTableRow tableRow : list) {
+                                out.print(tableRow.getHtml());
+                            }%>
                         </tbody>
                     </table>
                 </div>
@@ -169,16 +176,16 @@
                         <input id="agentId" name="agentInput" type="hidden">
                         <div class="form-group">
                             <label for="selectRegion">Sélectionner région</label>
-                            <select class="custom-select"  id="selectRegion" name="selectRegion">
+                            <select class="custom-select" id="selectRegion" name="selectRegion">
                                 <%LinkedList<Localite> localites = new LocaliteDAO().getAll();%>
                                 <%
                                     for (Localite localite : localites) {
-                                        out.print("<option value=\""+localite.getId()+"\">"+localite.getNom()+"</option>\n");
+                                        out.print("<option value=\"" + localite.getId() + "\">" + localite.getNom() + "</option>\n");
                                     }
                                 %>
                             </select>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Confirmer</button>
+                        <button class="btn btn-info btn-lg" type="submit">Confirmer</button>
                     </form>
 
                 </div>
@@ -206,11 +213,11 @@
                         <input id="clientSignale" name="clientInput" type="hidden">
                         <div class="form-group">
                             <label for="motif">Veuillez entrer le motif de votre signalement</label>
-                            <textarea id="motif" rows="4" cols="50" name="comment" form="signalerForm" size="100" >
+                            <textarea id="motif" rows="4" cols="50" name="comment" form="signalerForm" size="100">
 
                             </textarea>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
@@ -249,7 +256,7 @@
                                 %>
                             </select>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
@@ -276,7 +283,7 @@
                         <div class="form-group">
                             <label>Êtes vous sur de vouloir suspendre/réintegrer cet employé ?</label>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
@@ -303,7 +310,7 @@
                         <div class="form-group">
                             <label>Êtes vous sur de vouloir geler/dégeler ce logement ?</label>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -324,16 +331,19 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/ModifierServlet?ajouter=visite" id="modifierVisiteForm">
+                    <form method="get" action="/ModifierServlet?ajouter=visite" id="modifierVisiteForm">
 
-                        <input id="visiteModifiee" name="visiteInput" type="hidden">
+                        <input id="visiteModifiee" name="nouvelleDate" type="hidden">
                         <div class="form-group">
                             <label for="motif">Veuillez entrer le motif de votre signalement</label>
-                            <select id="newDate" name="newDate" form="modifierVisiteForm">
-                                <%%>
+                            <select name="action" id="action" class="form-control">
+                                <option value="0" disabled="" selected="">- action -</option>
+                                <option value="1"> cancel</option>
+                                <option value="2"> reporter</option>
                             </select>
+                            <div id='calendar'></div>
                         </div>
-                        <button class="btn btn-info btn-lg"  type="submit" >Valider</button>
+                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
@@ -361,20 +371,97 @@
         function getAgentId(idTaaLagent) {
             document.getElementById("agentId").value = idTaaLagent;
         }
+
         function getClientId(idTaaLClient) {
             document.getElementById("clientSignale").value = idTaaLClient;
 
         }
+
         function getApprovedId(idTaaLEmploye) {
             document.getElementById("employeApprouve").value = idTaaLEmploye;
         }
+
         function getSuspendedId(idTaaLemploye) {
             document.getElementById("employeSuspendu").value = idTaaLemploye;
         }
+
         function getLogementGeleId(idTaaLeLogement) {
             document.getElementById("logementGele").value = idTaaLeLogement;
         }
 
+    </script>
+
+    <!-- fullCalendar -->
+    <script src="./programmerVisite/assets/moment/moment.js"></script>
+    <script src="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="./programmerVisite/assets/fullcalendar/dist/locale/fr.js"></script>
+    <script>
+
+
+        var calendar = $('#calendar').fullCalendar({
+
+                themeSystem: 'standard',
+                defaultView: 'agendaWeek',
+
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                title: "choisissez une date",
+                // defaultDate: '2018-03-12',
+                weekNumbers: false,
+                navLinks: false, // can click day/week names to navigate views
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                hiddenDays: [6, 7], // hide Tuesdays and Thursdays
+                selectable: true,
+                unselectAuto: false,
+                businessHours: {
+                    // days of week. an array of zero-based day of week integers (0=Sunday)
+                    dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
+
+                    start: '8:00', // a start time (10am in this example)
+                    end: '16:00' // an end time (6pm in this example)
+                },
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
+                start: '8:00:00', // a start time (10am in this example)
+                end: '16:00:00', // an end time (6pm in this example)
+                minTime: '08:00:00',
+                maxTime: '16:00:00',
+                eventSources: [
+                    /*    // your event source
+                        {
+                            url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+                            color: 'red',    // an option!
+                            textColor: 'black'  // an option!
+                        }*/
+
+                    // any other sources...
+                ],
+                eventColor: '#378006',
+                displayEventTime: false,
+                slotDuration: "02:00:00",
+                eventClick: function (calEvent, jsEvent, view) {
+                    return false;
+                },
+                select: function (startDate, endDate) {
+                    $('#dateVisite').val(startDate.format());
+                }
+            })
+        ;
+
+        function initCalendar(idLogement) {
+            var events = {
+                url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+                color: 'red',    // an option!
+                textColor: 'black'  // an option!
+            };
+            calendar.fullCalendar('removeEventSources');
+            calendar.fullCalendar('addEventSource', events);
+            calendar.fullCalendar('refetchEvents');
+        }
     </script>
 </div>
 </body>

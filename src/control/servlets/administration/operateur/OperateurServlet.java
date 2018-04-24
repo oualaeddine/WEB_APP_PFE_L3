@@ -29,10 +29,10 @@ public class OperateurServlet extends MyServlet {
             } else {
                 switch (what) {
                     case "modifierVisite":
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?what=MODIFIER_VISITE").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MODIFIER_VISITE").forward(request, response);
                         break;
                     case "programmerVisite":{
-                        this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request,response);
+                        this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request,response);
                         break;
                     }
                     case "AdminsMessages":{

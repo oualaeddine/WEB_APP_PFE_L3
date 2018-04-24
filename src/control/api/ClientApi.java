@@ -6,6 +6,7 @@ import model.beans.RDV;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
 import utils.MyConsts;
+import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +26,13 @@ public class ClientApi extends API {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LinkedList listeDesClients = new ClientDAO().getAll();
 
+        if (request.getParameter("action") != null && request.getParameter("action").equals("getById")) {
+            int clientId = Integer.parseInt(request.getParameter("clientId"));
+            response.getWriter().append(Util.objectToJson(new ClientDAO().banById(clientId)));
+        }
+
+        LinkedList listeDesClients = new ClientDAO().getAll();
 
         JsonArray clientsToReturn = new JsonArray();
         for (Object client : listeDesClients) {

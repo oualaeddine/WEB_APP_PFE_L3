@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) {
         RDV rdv = new RDV();
-        rdv.setDate(Date.valueOf("2018-04-26"));
+        rdv.setDate(Date.valueOf("2018-04-28"));
         rdv.setHorraire(1);
 
         System.out.println(new VisitesDao().getFreeAgentsForVisite(rdv,3));

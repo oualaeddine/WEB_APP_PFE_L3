@@ -4,7 +4,9 @@
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.LogementDAO" %>
 <%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %><%--
+<%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="control.servlets.MyServlet" %><%--
   Created by IntelliJ IDEA.
   User: berre
   Date: 4/3/2018
@@ -401,11 +403,12 @@
             <div class="proerty-th">
             <%
                 LinkedList<Logement> logements = new LogementDAO().getNonVendus();
+                Client loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
                 for (Logement logement : logements) {
                     out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
                             "                    <div class=\"box-two proerty-item\">\n" +
                             "                        <div class=\"item-thumb\">\n" +
-                            "                            <a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                            "                            <a href=\"/ProgrammerVisiteClient?logementId="+logement.getId()+"&regionId="+logement.getLocalite().getId()+"&clientId="+loggedIdClient.getId()+"\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"item-entry overflow\">\n" +
                             "                            <h5><a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\">"+logement.getTitre()+" </a></h5>\n" +

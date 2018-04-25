@@ -41,7 +41,7 @@ public class AgentsManager {
                 vente.setAgent(loggedInAgent);
                 vente.setClient(visite.getClient());
                 vente.setLogement(visite.getLogement());
-                vente.setEtatVente(EtatVente.NON_CONFIRMEE);
+                vente.setEtatVente(EtatVente.EN_COURS);
                 //TODO: njibou kech responsable de vente pour s'occuper de la vente qui vient d'être créée.
                 new VentesDAO().add(vente);
                 new VisitesDao().validerVisite(visite);

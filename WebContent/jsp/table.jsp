@@ -374,23 +374,28 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modifier visite</h4>
+                    <h4 class="modal-title">Envoyer rapport</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <form method="post" action="/NewRapport" id="etablirRapportForm">
 
                         <input id="visiteRapport" name="visiteRapport" type="hidden">
-                        <div class="form-group">
-                            <label for="motif">Veuillez entrer le motif de votre signalement</label>
-                            <select name="etatVisite" id="etatVisite" class="form-control">
-                                <option value="validee"> Validée</option>
-                                <option value="nonvalidee"> Non validée</option>
-                                <option value="reportee">Reportée</option>
-                                <option value="annulee">Annulée</option>
-                            </select>
+                        <input type="checkbox" name="etatClient" id="etatClient" value="0">
+                        <div class="form-group" id="ifPresent" style="display:none">
+                            <div class="form-group">
+                                <label for="avis">Avis du client</label>
+                                <select name="avis" id="avis" class="form-control">
+                                    <option value="positif"> Positif</option>
+                                    <option value="negatif"> Négatif</option>
+                                </select>
+
+                                <label for="commentaire">Commentaire</label>
+                                <textarea name="commentaire" id="commentaire" size="200" placeholder="Entrez le commentaire ici"></textarea>
+                            </div>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
+
+                        <button class="btn btn-info btn-lg" type="submit">Soumettre</button>
                     </form>
 
                 </div>
@@ -415,6 +420,9 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
     <script src="../js/sb-admin-datatables.min.js"></script>
 
     <script>
+        $('#etatClient').change(function () {
+            $(this).next('#ifPresent').toggle();
+        });
         function getVisiteTaaLrapport(idTaaLaVisite) {
             document.getElementById("visiteRapport").value = idTaaLaVisite;
 

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class AssignationDAO extends DAO{
     public boolean add(int agent, int region) {
         try {
-            anotherStatement.execute("INSERT INTO assignation_region(agentId, localiteId) VALUES (" +agent+", "+
+            statement.execute("INSERT INTO assignation_region(agentId, localiteId) VALUES (" +agent+", "+
             region+
                     ");");
             return true;
@@ -26,7 +26,7 @@ public class AssignationDAO extends DAO{
         LinkedList<Employe> list = new LinkedList<>();
         try {
             LinkedList<Integer> ids = new LinkedList<>();
-            result = anotherStatement.executeQuery("SELECT employe.id FROM employe,assignation_region WHERE localiteId=" + id + " AND agentId=employe.id;");
+            result = statement.executeQuery("SELECT employe.id FROM employe,assignation_region WHERE localiteId=" + id + " AND agentId=employe.id;");
             while (result.next()) {
                 ids.add(result.getInt("id"));
             }
@@ -41,7 +41,7 @@ public class AssignationDAO extends DAO{
     public Localite getLocaliteByAgent(int id) {
         ResultSet result;
         try {
-            result = anotherStatement.executeQuery("SELECT localite.* FROM assignation_region,localite WHERE assignation_region.agentId="+id+" AND assignation_region.localiteId=localite.id;");
+            result = statement.executeQuery("SELECT localite.* FROM assignation_region,localite WHERE assignation_region.agentId="+id+" AND assignation_region.localiteId=localite.id;");
             if (result.next()) {
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));

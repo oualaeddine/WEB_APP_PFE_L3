@@ -4,6 +4,7 @@ package utils;
 import com.google.gson.Gson;
 import model.beans.humans.Employe;
 import model.db.daos.*;
+import model.enums.EtatVente;
 import model.enums.TablePage;
 import model.enums.UserType;
 
@@ -15,6 +16,17 @@ import static model.enums.TablePage.*;
 import static model.enums.UserType.OPERATEUR;
 
 public class Util {
+    public static EtatVente getEtatVenteFromString(String etat) {
+        switch (etat) {
+            case "confirmee":
+                return EtatVente.CONFIRMEE;
+            case "annulee":
+                return EtatVente.ANNULEE;
+            case "encours":
+                return EtatVente.EN_COURS;
+        }
+        return null;
+    }
     public static String getApprobationEmail(Employe employe) {
         Employe creator = (Employe) new EmployeDAO().getById(employe.getCreator());
         String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +

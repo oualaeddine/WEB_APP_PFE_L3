@@ -1,5 +1,5 @@
 package model.enums;
 
 public enum EtatVente {
-    CONFIRMEE,NON_CONFIRMEE,ANNULEE
+    CONFIRMEE,EN_COURS,ANNULEE
 }

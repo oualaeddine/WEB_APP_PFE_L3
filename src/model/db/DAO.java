@@ -8,11 +8,17 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 public abstract class DAO {
-    protected Statement statement,anotherStatement;
+    protected Statement
+            rapportStatement,statement,clientStatement, employeStatement,localiteStatement,logementStatement,venteStatement,versementStatement,visiteStatement;
 
     public DAO() {
-        this.statement = DbConnector.getStatment();
-        this.anotherStatement = DbConnector.getStatment();
+        this.clientStatement = DbConnector.getStatment();
+        this.employeStatement = DbConnector.getStatment();
+        this.localiteStatement = DbConnector.getStatment();
+        this.logementStatement = DbConnector.getStatment();
+        this.venteStatement = DbConnector.getStatment();
+        this.versementStatement = DbConnector.getStatment();
+        this.visiteStatement = DbConnector.getStatment();
     }
 
     public abstract Person getByEmail(String email);

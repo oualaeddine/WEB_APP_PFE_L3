@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class LogementDAO extends DAO {
 
     public LinkedList<Logement> getLogementsSelonCriteres(Logement criteres, Double prixMax, Double prixMin, Double supMax, Double supMin) {
@@ -31,7 +32,7 @@ public class LogementDAO extends DAO {
         String avecSousSol = criteres.isAvecSousSol() ? " AND avecSousSol = 1 " : "";
         String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1 " : "";
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE " +
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE " +
                     "(superficie <= "+supMax+" AND superficie >= "+supMin+") " +
                     "AND (prix <= "+prixMax+" AND prix >= "+prixMin+") " +
                     "AND  etat='avendre'" +
@@ -91,7 +92,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE etat='vendu';");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='vendu';");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -129,7 +130,7 @@ public class LogementDAO extends DAO {
 
     public boolean degeler(int id) {
         try {
-            statement.execute("UPDATE logement SET etat = 'avendre' WHERE id=" + id + ";");
+            logementStatement.execute("UPDATE logement SET etat = 'avendre' WHERE id=" + id + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,7 +139,7 @@ public class LogementDAO extends DAO {
     }
     public boolean geler(int id){
         try {
-            statement.execute("UPDATE logement SET etat = 'gele' WHERE id="+id+";");
+            logementStatement.execute("UPDATE logement SET etat = 'gele' WHERE id="+id+";");
             return true;
         }catch (SQLException e){
             e.printStackTrace();
@@ -149,7 +150,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE client.id=vente.clientId AND vente.clientId="+userId+" AND logement.id=vente.logementId;");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE client.id=vente.clientId AND vente.clientId="+userId+" AND logement.id=vente.logementId;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -192,7 +193,7 @@ public class LogementDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE id="+id);
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE id="+id);
             if (result.next()){
                 Logement logement = new Logement();
 
@@ -249,7 +250,7 @@ public class LogementDAO extends DAO {
             String type = logement.getTypeLogement() == TypeLogement.VILLA ? "villa" : "appartement";
 
 
-            statement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,avecMeubles,latitude,longitude,prix,type) VALUES (" +
+            logementStatement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,avecMeubles,latitude,longitude,prix,type) VALUES (" +
                             "'" + logement.getTitre() + "', \n" +
                             "'" + logement.getDescription() + "',\n " +
                             logement.getSuperficie() + ",\n " +
@@ -278,7 +279,7 @@ public class LogementDAO extends DAO {
     public boolean delete(Object object) {
         Logement logement = (Logement) object;
         try {
-            statement.execute("DELETE FROM logement " +
+            logementStatement.execute("DELETE FROM logement " +
                     "WHERE id='"+logement.getId()+"';");
             return true;
         }catch (SQLException e){
@@ -291,7 +292,7 @@ public class LogementDAO extends DAO {
         Logement logement = (Logement) object;
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM logement");
+            result = logementStatement.executeQuery("SELECT * FROM logement");
             while (result.next()){
                 String adresse = result.getString("adresse");
                 if (logement.getAdresse().equals(adresse)) return true;
@@ -307,7 +308,7 @@ public class LogementDAO extends DAO {
         LinkedList<Logement> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM logement;");
+            result = logementStatement.executeQuery("SELECT * FROM logement;");
             while (result.next()){
                 Logement logement = new Logement();
 
@@ -349,7 +350,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE etat='gele';");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='gele';");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -389,7 +390,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
             while (result.next()) {
                 Logement logement = new Logement();
 

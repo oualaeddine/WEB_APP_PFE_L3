@@ -19,7 +19,7 @@ public class LocaliteDAO extends DAO  {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM localite WHERE id="+id);
+            result = localiteStatement.executeQuery("SELECT * FROM localite WHERE id="+id);
             if (result.next()){
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));
@@ -45,7 +45,7 @@ public class LocaliteDAO extends DAO  {
     public boolean add(Object object) {
         Localite localite = (Localite) object;
         try {
-            statement.execute("INSERT INTO localite(nom) VALUES (" +
+            localiteStatement.execute("INSERT INTO localite(nom) VALUES (" +
                     "'"+localite.getNom()+"'"+
                     ");");
             return true;
@@ -59,7 +59,7 @@ public class LocaliteDAO extends DAO  {
     public boolean delete(Object object) {
         Localite localite = (Localite) object;
         try {
-            statement.execute("DELETE FROM localite WHERE nom="+localite.getNom());
+            localiteStatement.execute("DELETE FROM localite WHERE nom="+localite.getNom());
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -70,7 +70,7 @@ public class LocaliteDAO extends DAO  {
         Localite localite = (Localite) object;
         ResultSet result;
         try{
-            result = statement.executeQuery("SELECT * FROM localite");
+            result = localiteStatement.executeQuery("SELECT * FROM localite");
             while (result.next()){
                 String nom = result.getString("nom");
                 if (localite.getNom().equals(nom)) return true;
@@ -86,7 +86,7 @@ public class LocaliteDAO extends DAO  {
         LinkedList<Localite> list = new LinkedList<>();
         ResultSet result;
         try{
-            result = statement.executeQuery("SELECT * FROM localite;");
+            result = localiteStatement.executeQuery("SELECT * FROM localite;");
             while (result.next()){
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));

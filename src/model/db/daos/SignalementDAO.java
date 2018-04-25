@@ -56,7 +56,7 @@ public class SignalementDAO extends DAO {
         LinkedList<Signalement> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = anotherStatement.executeQuery("SELECT * FROM signalement;");
+            result = statement.executeQuery("SELECT * FROM signalement;");
             while (result.next()) {
                 Signalement signalement = new Signalement();
                 signalement.setPlaignant((Employe) new EmployeDAO().getById(result.getInt("idPlaignant")));

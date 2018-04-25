@@ -51,7 +51,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<RDV> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT timestamp, horraire FROM visite v WHERE (SELECT count(employe.id) FROM employe,assignation_region WHERE employe.userType='agent' AND employe.id = assignation_region.agentId AND assignation_region.localiteId=" + regionId + ") = (SELECT count(agentId) FROM visite vv WHERE v.timestamp=vv.timestamp AND vv.horraire=v.horraire);");
+            result = visiteStatement.executeQuery("SELECT timestamp, horraire FROM visite v WHERE (SELECT count(employe.id) FROM employe,assignation_region WHERE employe.userType='agent' AND employe.id = assignation_region.agentId AND assignation_region.localiteId=" + regionId + ") = (SELECT count(agentId) FROM visite vv WHERE v.timestamp=vv.timestamp AND vv.horraire=v.horraire);");
             while (result.next()) {
                 RDV rdv = new RDV();
                 rdv.setDate(result.getDate("timestamp"));
@@ -71,7 +71,7 @@ public class VisitesDao extends DAO {
         System.out.println("rdv = [" + rdv + "], regionId = [" + regionId + "]");
         ResultSet result;
         try {
-            result = statement.executeQuery("" +
+            result = visiteStatement.executeQuery("" +
                     "SELECT " +
                     "  employe.id, " +
                     "  nom, " +
@@ -91,7 +91,7 @@ public class VisitesDao extends DAO {
                 employe.setNom(result.getString("nom"));
                 employe.setPrenom(result.getString("prenom"));
                 employe.setTel(result.getString("tel"));
-                System.out.println("hada resultaaatttttttttt " + employe);
+                System.out.println("Resultat " + employe);
                 return employe;
             }
         } catch (SQLException e) {
@@ -106,7 +106,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE agentId = " + agent.getId() + ";");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE agentId = " + agent.getId() + ";");
             System.out.println("ani qbel l while");
             while (result.next()) {
                 System.out.println("ani dkhelt f l'while");
@@ -146,7 +146,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT id FROM visite WHERE clientId=" + client.getId() + ";");
+            result = visiteStatement.executeQuery("SELECT id FROM visite WHERE clientId=" + client.getId() + ";");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -184,7 +184,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE logementId=" + logement.getId() + " AND visite.etat = 'PREVUE' ");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE logementId=" + logement.getId() + " AND visite.etat = 'PREVUE' ");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -223,7 +223,7 @@ public class VisitesDao extends DAO {
 
     public boolean validerVisite(Visite visite) {
         try {
-            statement.execute("UPDATE visite SET etat='avisPositif' WHERE id=" + visite.getId() + ";");
+            visiteStatement.execute("UPDATE visite SET etat='avisPositif' WHERE id=" + visite.getId() + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -233,7 +233,7 @@ public class VisitesDao extends DAO {
 
     public boolean annulerVisite(Visite visite) {
         try {
-            statement.execute("UPDATE visite SET etat='annulee' WHERE id=" + visite.getId() + ";");
+            visiteStatement.execute("UPDATE visite SET etat='annulee' WHERE id=" + visite.getId() + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -243,7 +243,7 @@ public class VisitesDao extends DAO {
 
     public boolean visiteNegative(Visite visite) {
         try {
-            statement.execute("UPDATE visite SET etat = 'avisNegatif' WHERE id=" + visite.getId() + ";");
+            visiteStatement.execute("UPDATE visite SET etat = 'avisNegatif' WHERE id=" + visite.getId() + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -253,7 +253,7 @@ public class VisitesDao extends DAO {
 
     public boolean reporter(int id) {
         try {
-            statement.execute("UPDATE visite SET etat='reportee' WHERE id=" + id);
+            visiteStatement.execute("UPDATE visite SET etat='reportee' WHERE id=" + id);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -269,7 +269,7 @@ public class VisitesDao extends DAO {
     public Visite getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE id=" + id + ";");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE id=" + id + ";");
             if (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -328,7 +328,7 @@ public class VisitesDao extends DAO {
 
     public boolean add(Visite visite) {
         try {
-            statement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,horraire,timestamp) VALUES (" +
+            visiteStatement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,horraire,timestamp) VALUES (" +
                             visite.getLogement().getId() + "," +
                             visite.getAgent().getId() + "," +
                             visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire()+",'" +visite.getTimestamp()+"'"+
@@ -345,7 +345,7 @@ public class VisitesDao extends DAO {
         LinkedList<Visite> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM visite");
+            result = visiteStatement.executeQuery("SELECT * FROM visite");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -383,7 +383,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE timestamp<current_timestamp;");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp<current_timestamp;");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -421,7 +421,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE timestamp>=current_date AND timestamp<=(current_date+'0000-02-00');");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>=current_date AND timestamp<=(current_date+'0000-02-00');");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -459,7 +459,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE timestamp>current_timestamp;");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>current_timestamp;");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -497,7 +497,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE etat='annulee';");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE etat='annulee';");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -536,7 +536,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM visite WHERE etat='reportee';");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE etat='reportee';");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

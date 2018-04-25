@@ -16,7 +16,7 @@ public class ClientDAO extends DAO {
     };
     public boolean changePassword(int id, String pwd){
         try {
-            statement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
+            clientStatement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class ClientDAO extends DAO {
     public Client getByUsername(String username){
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE username='" + username + "';");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE username='" + username + "';");
             if (result.next()) {
                 Client client = new Client();
                 client.setUsername(username);
@@ -48,7 +48,7 @@ public class ClientDAO extends DAO {
     }
     public boolean updatePassword(String pwd,int id){
         try {
-            statement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
+            clientStatement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
             return true;
         }catch (SQLException e){
             e.printStackTrace();
@@ -60,7 +60,7 @@ public class ClientDAO extends DAO {
     public Client getByEmail(String email) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE email='" + email + "';");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE email='" + email + "';");
             if (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -86,7 +86,7 @@ public class ClientDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE id=" + id +";");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE id=" + id +";");
             if (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -109,7 +109,7 @@ public class ClientDAO extends DAO {
     }
     public boolean banById(int id){
         try {
-            statement.execute("UPDATE client SET isBanned = 1" +
+            clientStatement.execute("UPDATE client SET isBanned = 1" +
                     " WHERE id="+id+" ;");
             return true;
         }catch (SQLException e){
@@ -120,7 +120,7 @@ public class ClientDAO extends DAO {
 
     public boolean retablirById(int id) {
         try {
-            statement.execute("UPDATE client SET isBanned = 0" +
+            clientStatement.execute("UPDATE client SET isBanned = 0" +
                     " WHERE id="+id+" ;");
             return true;
         }catch (SQLException e){
@@ -142,7 +142,7 @@ public class ClientDAO extends DAO {
     public boolean add(Object object) {
         Client client = (Client) object;
         try {
-            statement.execute("INSERT INTO client(`nom`, `prenom`, `dateNaiss`, `adresse`, `tel`, `email`, `username`, `password`, `dateAdded`, `isBanned`) VALUES (" +
+            clientStatement.execute("INSERT INTO client(`nom`, `prenom`, `dateNaiss`, `adresse`, `tel`, `email`, `username`, `password`, `dateAdded`, `isBanned`) VALUES (" +
                     "'" + client.getNom() + "'," +
                     "'" + client.getPrenom() + "'," +
                     "'"+client.getDateNaissance()+"'" + "," +
@@ -167,7 +167,7 @@ public class ClientDAO extends DAO {
         try {
             String username = client.getUsername();
             String password = client.getPassword();
-            statement.executeQuery("DELETE FROM client WHERE username='" + username + "' AND password='" + password + "';");
+            clientStatement.executeQuery("DELETE FROM client WHERE username='" + username + "' AND password='" + password + "';");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -181,7 +181,7 @@ public class ClientDAO extends DAO {
         LinkedList<Client> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT * FROM client");
+            result = clientStatement.executeQuery("SELECT * FROM client");
             while (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -206,7 +206,7 @@ public class ClientDAO extends DAO {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE isBanned=1;");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE isBanned=1;");
             while (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -229,7 +229,7 @@ public class ClientDAO extends DAO {
     public boolean isBanned(Client client){
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT isBanned FROM client WHERE username='" + client.getUsername() + "';");
+            result = clientStatement.executeQuery("SELECT isBanned FROM client WHERE username='" + client.getUsername() + "';");
             if (result.next()) {
                 return (result.getBoolean("isBanned"));
             }
@@ -243,7 +243,7 @@ public class ClientDAO extends DAO {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM client WHERE isBanned=0;");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE isBanned=0;");
             while (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -267,7 +267,7 @@ public class ClientDAO extends DAO {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT client.* FROM visite,employe,client WHERE employe.id="+agentId+" AND visite.agentId=employe.id AND client.id=visite.clientId;");
+            result = clientStatement.executeQuery("SELECT client.* FROM visite,employe,client WHERE employe.id="+agentId+" AND visite.agentId=employe.id AND client.id=visite.clientId;");
             while (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));

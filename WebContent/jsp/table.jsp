@@ -185,11 +185,11 @@
                                 %>
                             </select>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Confirmer</button>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit">Confirmer</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -217,11 +217,11 @@
 
                             </textarea>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -256,11 +256,11 @@
                                 %>
                             </select>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -283,11 +283,11 @@
                         <div class="form-group">
                             <label>Êtes vous sur de vouloir suspendre/réintegrer cet employé ?</label>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -310,10 +310,10 @@
                         <div class="form-group">
                             <label>Êtes vous sur de vouloir geler/dégeler ce logement ?</label>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     </form>
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -381,25 +381,30 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
                     <form method="post" action="/NewRapport" id="etablirRapportForm">
 
                         <input id="visiteRapport" name="visiteRapport" type="hidden">
-                        <input type="checkbox" name="etatClient" id="etatClient" value="0">
+                        <label for="etatClient">Cochez cette case si le client s'est présenté</label>
+                        <input  type="checkbox" name="etatClient" id="etatClient" value="0">
                         <div class="form-group" id="ifPresent" style="display:none">
                             <div class="form-group">
-                                <label for="avis">Avis du client</label>
-                                <select name="avis" id="avis" class="form-control">
-                                    <option value="positif"> Positif</option>
-                                    <option value="negatif"> Négatif</option>
-                                </select>
-
-                                <label for="commentaire">Commentaire</label>
-                                <textarea name="commentaire" id="commentaire" size="200" placeholder="Entrez le commentaire ici"></textarea>
+                                <div class="form-row">
+                                    <label for="avis">Avis du client</label>
+                                    <select name="avis" id="avis" class="form-control">
+                                        <option value="positif"> Positif</option>
+                                        <option value="negatif"> Négatif</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="commentaire">Commentaire:</label>
+                                    <textarea class="form-control" name="commentaire" id="commentaire" rows="5" placeholder="Entrez le commentaire ici"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <button class="btn btn-info btn-lg" type="submit">Soumettre</button>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit" form="etablirRapportForm">Soumettre</button>
+
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

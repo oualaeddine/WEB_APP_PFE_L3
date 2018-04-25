@@ -14,6 +14,17 @@ public class Logement implements Serializable {
     private boolean avecGarage;
     private boolean avecSousSol;
     private TypeLogement typeLogement;
+    private boolean meubles;
+    private Location location;
+    private boolean isGele;
+
+    public boolean isGele() {
+        return isGele;
+    }
+
+    public void setGele(boolean gele) {
+        isGele = gele;
+    }
 
     public TypeLogement getTypeLogement() {
         return typeLogement;
@@ -31,8 +42,7 @@ public class Logement implements Serializable {
         this.meubles = meubles;
     }
 
-    private boolean meubles;
-    private Location location;
+
 
     public Location getLocation() {
         return location;
@@ -76,7 +86,6 @@ public class Logement implements Serializable {
         this.prix = prix;
     }
 
-    private EtatLogement etat;
 
     public Logement() {
     }
@@ -89,13 +98,6 @@ public class Logement implements Serializable {
         this.etage = etage;
     }
 
-    public EtatLogement getEtat() {
-        return etat;
-    }
-
-    public void setEtat(EtatLogement etat) {
-        this.etat = etat;
-    }
 
     public int getId() {
         return id;
@@ -180,7 +182,7 @@ public class Logement implements Serializable {
                 ", location=" + location +
                 ", superficie=" + superficie +
                 ", prix=" + prix +
-                ", etat=" + etat +
+                ", gelé=" + isGele +
                 '}';
     }
 }

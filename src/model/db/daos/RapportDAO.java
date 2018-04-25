@@ -87,12 +87,12 @@ public class RapportDAO extends DAO {
 
     @Override
     public boolean add(Object object) {
-        Rapport rapport = new Rapport();
+        Rapport rapport = (Rapport) object;
         if (rapport.getEtatClient() == EtatClient.ABSENT) {
             try {
                 rapportStatement.execute("INSERT INTO rapport(visiteId,etatClient)VALUES (" +
                         rapport.getVisite().getId() + "," + "'absent'" +
-                        ")");
+                        ");");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

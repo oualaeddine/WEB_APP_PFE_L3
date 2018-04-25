@@ -1,9 +1,13 @@
 package control.servlets.administration.Agent;
 
 import control.servlets.MyServlet;
+import control.system.managers.AgentsManager;
+import model.beans.Rapport;
 import model.beans.Visite;
 import model.beans.humans.Employe;
+import model.db.daos.RapportDAO;
 import model.db.daos.VisitesDao;
+import model.enums.EtatClient;
 import model.enums.EtatVisite;
 
 import javax.servlet.ServletException;
@@ -16,28 +20,10 @@ import java.io.IOException;
 public class EnvoyerRapportServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
-            int visiteID = Integer.parseInt(request.getParameter("visiteRapport"));
-            Visite visite = new VisitesDao().getById(visiteID);
-                System.out.println("EnvoyerRapportServlet visite: "+visite);
-                Employe agent = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
-                switch (request.getParameter("etatVisite")) {
-                    case "validee":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
-                        System.out.println(new VisitesDao().validerVisite(visite));
-                        break;
-                    case "nonvalidee":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        System.out.println(new VisitesDao().visiteNegative(visite));
-                        break;
-                    case "reportee":
-                        visite.setEtatVisite(EtatVisite.REPORTEE);
-                        System.out.println(new VisitesDao().reporter(visite.getId()));
-                        break;
-                    case "annulee":
-                        visite.setEtatVisite(EtatVisite.ANNULEE);
-                        System.out.println(new VisitesDao().annulerVisite(visite));
-                        break;
-                }
+            Employe agent = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
+            AgentsManager agentsManager = new AgentsManager(agent);
+            System.out.println(agentsManager.envoyerRapport(request));
+
 
             this.getServletContext().getRequestDispatcher("/AgentServlet").forward(request,response);
         }else redirectToLogin(request,response,0);

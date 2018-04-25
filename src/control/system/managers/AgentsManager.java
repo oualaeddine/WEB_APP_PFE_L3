@@ -1,12 +1,16 @@
 package control.system.managers;
 
 import model.beans.Localite;
+import model.beans.Rapport;
 import model.beans.Vente;
 import model.beans.Visite;
 import model.beans.humans.Employe;
 import model.db.daos.*;
+import model.enums.EtatClient;
 import model.enums.EtatVente;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 
 public class AgentsManager {
@@ -34,25 +38,21 @@ public class AgentsManager {
         return agent;
     }
 
-    public void envoyerRapport(Visite visite){
-        switch (visite.getEtatVisite()) {
-            case VALIDEE:
-                Vente vente = new Vente();
-                vente.setAgent(loggedInAgent);
-                vente.setClient(visite.getClient());
-                vente.setLogement(visite.getLogement());
-                vente.setEtatVente(EtatVente.EN_COURS);
-                //TODO: njibou kech responsable de vente pour s'occuper de la vente qui vient d'être créée.
-                new VentesDAO().add(vente);
-                new VisitesDao().validerVisite(visite);
-                break;
-            case NON_VALIDEE:
-                new VisitesDao().visiteNegative(visite);
-                break;
-            case ANNULEE:
-
-
+    public boolean envoyerRapport(HttpServletRequest request){
+        int visiteID = Integer.parseInt(request.getParameter("visiteRapport"));
+        System.out.println("visite numero: " + visiteID);
+        Visite visite = new VisitesDao().getById(visiteID);
+        Rapport rapport = new Rapport();
+        if (request.getParameter("etatClient") == null) {
+            rapport.setEtatClient(EtatClient.ABSENT);
+            rapport.setVisite(visite);
+        } else {
+            rapport.setVisite(visite);
+            rapport.setEtatClient(EtatClient.PRESENT);
+            rapport.setAvis(request.getParameter("avis").equals("positif"));
+            rapport.setCommentaire(request.getParameter("commentaire"));
         }
+        return new RapportDAO().add(rapport);
     }
 
 }

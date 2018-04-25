@@ -110,10 +110,12 @@ public class AjoutServlet extends MyServlet {
                     case "gel":
                         int logementId = Integer.parseInt(request.getParameter("logementGele"));
                         Logement logementGele =(Logement) new LogementDAO().getById(logementId);
-                        if (logementGele.getEtat()== EtatLogement.GELE)
+                        if (logementGele.isGele()) {
                             System.out.println(new LogementDAO().degeler(logementId));
-                        else
+                        } else {
                             System.out.println(new LogementDAO().geler(logementId));
+                        }
+
                 }
             }
         redirectToDashboard(request,response);

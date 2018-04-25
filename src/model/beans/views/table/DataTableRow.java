@@ -106,7 +106,8 @@ public class DataTableRow {
 
     private void setupHtmlForGelerLogement() {
         Logement logement = (Logement) object;
-        String action = logement.getEtat() == EtatLogement.GELE ? "Dégeler" : "Geler";
+        String action = logement.isGele() ? "Dégeler" : "Geler";
+        String etat = logement.isGele() ? "Gelé" : "Libre";
         html = "<tr>" +
                 "<td>"+ logement.getId() +"</td>"+
                 "<td>"+ logement.getTitre() +"</td>"+
@@ -116,7 +117,7 @@ public class DataTableRow {
                 "<td>"+ logement.getLocalite().getNom() +"</td>"+
                 "<td>"+ logement.getPrix() +" DZD</td>"+
                 "<td>"+ logement.getEtage() +"</td>"+
-                "<td>"+ logement.getEtat() +"</td>"+
+                "<td>"+ etat +"</td>"+
                 "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + logement.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#gelerModal\" value=\"" + logement.getId() + "\">"+action+"</td>" +
                 "</tr>";
     }
@@ -307,6 +308,7 @@ public class DataTableRow {
 
     private void setupHtmlForLogement() {
         Logement logement = (Logement) object;
+        String etat = logement.isGele() ? "Gelé" : "Libre";
 
         html= "<tr>" +
                 "<td>" + logement.getId() + "</td>" +
@@ -317,7 +319,7 @@ public class DataTableRow {
                 "<td>" + logement.getLocalite().getNom() + "</td>" +
                 "<td>" + logement.getPrix() + "</td>" +
                 "<td>" + logement.getEtage() + "</td>" +
-                "<td>" + logement.getEtat() + "</td>" +
+                "<td>" + etat + "</td>" +
                 "</tr>";
     }
 

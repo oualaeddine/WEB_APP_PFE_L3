@@ -282,12 +282,6 @@ public class VisitesDao extends DAO {
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
-                        break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
                         break;

@@ -35,7 +35,7 @@ public class LogementDAO extends DAO {
             result = logementStatement.executeQuery("SELECT * FROM logement WHERE " +
                     "(superficie <= "+supMax+" AND superficie >= "+supMin+") " +
                     "AND (prix <= "+prixMax+" AND prix >= "+prixMin+") " +
-                    "AND  etat='avendre'" +
+                    "AND  gele=0" +
                     "AND region = "+criteres.getLocalite().getId()+" " +
                     "AND nbrPieces <= "+criteres.getNbrPieces()+" " +
                     "AND nbrSdb <= "+criteres.getNbrSdb()+" " +
@@ -52,11 +52,7 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
                 Localite localite = new Localite();
                 localite.setId(result.getInt("region"));
 
@@ -76,7 +72,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 System.out.println("Lguit: "+logement.getTitre());
 
@@ -92,7 +88,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='vendu';");
+            result = logementStatement.executeQuery("SELECT logement.* FROM logement,vente WHERE logement.id=vente.logementId AND vente.etat='confirmee';");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -100,11 +96,8 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -118,7 +111,7 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 list.add(logement);
             }
@@ -130,7 +123,7 @@ public class LogementDAO extends DAO {
 
     public boolean degeler(int id) {
         try {
-            logementStatement.execute("UPDATE logement SET etat = 'avendre' WHERE id=" + id + ";");
+            logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + id + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,7 +132,7 @@ public class LogementDAO extends DAO {
     }
     public boolean geler(int id){
         try {
-            logementStatement.execute("UPDATE logement SET etat = 'gele' WHERE id="+id+";");
+            logementStatement.execute("UPDATE logement SET gele=1 WHERE id="+id+";");
             return true;
         }catch (SQLException e){
             e.printStackTrace();
@@ -158,11 +151,6 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -175,6 +163,8 @@ public class LogementDAO extends DAO {
                 Location location = new Location();
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 list.add(logement);
             }
@@ -201,11 +191,8 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -219,8 +206,6 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                String type = result.getString("typeLogement");
-//                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT); //TODO: ki yaamar ramzy la bd rodiha keyna
                 return logement;
             }
         }catch (SQLException e){
@@ -316,11 +301,8 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -334,8 +316,6 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                // TODO: 4/23/2018 absar leh ygoli makanch column typr
-//                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         }catch (SQLException e){
@@ -358,11 +338,8 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 logement.setLocalite((Localite) new LocaliteDAO().getById(result.getInt("region")));
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -376,7 +353,6 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -390,7 +366,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='avendre';");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=0;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -398,11 +374,8 @@ public class LogementDAO extends DAO {
                 logement.setTitre(result.getString("titre"));
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
-                switch (result.getString("etat")) {
-                    case "vendu": logement.setEtat(EtatLogement.VENDU);break;
-                    case "avendre": logement.setEtat(EtatLogement.AVENDRE);break;
-                    case "gele": logement.setEtat(EtatLogement.GELE);break;
-                }
+                logement.setGele(result.getBoolean("gele"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 Localite localite = new Localite();
                 localite.setId(result.getInt("region"));
                 logement.setLocalite(localite);
@@ -420,7 +393,6 @@ public class LogementDAO extends DAO {
                 location.setLatitude(result.getDouble("latitude"));
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
-//                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         } catch (SQLException e) {

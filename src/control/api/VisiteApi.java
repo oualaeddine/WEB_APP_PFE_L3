@@ -6,6 +6,10 @@ import com.google.gson.JsonObject;
 import model.beans.Logement;
 import model.beans.RDV;
 import model.beans.Visite;
+import model.beans.humans.Client;
+import model.beans.humans.Employe;
+import model.db.daos.ClientDAO;
+import model.db.daos.EmployeDAO;
 import model.db.daos.LogementDAO;
 import model.db.daos.VisitesDao;
 import utils.MyConsts;
@@ -16,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -49,6 +54,19 @@ public class VisiteApi extends API {
                 rdvsToReturn.add(jsonObject);
             }
             response.getWriter().append(rdvsToReturn.toString());
+        }
+        if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
+            Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
+            int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
+            Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
+
+            Visite visite = new Visite();
+            visite.setClient(client);
+            visite.setHorraire(horraire);
+            visite.setTimestamp(timestamp);
+
+            System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
+            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
         }
 
         if (request.getParameter("action").equals("getFreeAgentForDate")) {

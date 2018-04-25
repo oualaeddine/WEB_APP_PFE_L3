@@ -50,7 +50,7 @@ public class ProgrammerVisiteServlet extends MyServlet {
             visite.setTimestamp(timestamp);
 
             System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
+//            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
         } else
             this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request, response);
 

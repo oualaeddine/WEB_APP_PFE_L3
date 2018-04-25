@@ -343,7 +343,18 @@
                             </select>
                             <div id='calendar'></div>
                         </div>
-                        <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                        <button class="btn btn-info btn-lg" type="button" onclick="function modifierVisite() {
+  var  action = $('#action option:selected').val();
+                        if (action===1){
+var params = {visiteId:          $('#visiteModifiee').val()  ,action:'rapport',etatVisite:'annulee'            };
+                        post('/NewRapport', params, 'GET'); }
+                        if (action===2){
+var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:'reportee'            };
+                        post('/NewRapport', params, 'GET');
+                        }
+                        }
+                        modifierVisite()">Valider
+                        </button>
                     </form>
 
                 </div>
@@ -429,6 +440,10 @@
             document.getElementById("logementGele").value = idTaaLeLogement;
         }
 
+        function getVisiteModifieeId(idtaalavisite) {
+            document.getElementById("visiteModifiee").value = idtaalavisite;
+        }
+
     </script>
 
     <!-- fullCalendar -->
@@ -437,6 +452,30 @@
     <script src="./programmerVisite/assets/fullcalendar/dist/locale/fr.js"></script>
     <script>
 
+
+        function post(path, params, method) {
+            method = method || "post"; // Set method to post by default if not specified.
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less wordy if you use one.
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", key);
+                    hiddenField.setAttribute("value", params[key]);
+
+                    form.appendChild(hiddenField);
+                }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
 
         var calendar = $('#calendar').fullCalendar({
 

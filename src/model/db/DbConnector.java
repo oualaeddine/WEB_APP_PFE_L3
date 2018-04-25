@@ -6,12 +6,12 @@ import java.sql.Statement;
 
 public class DbConnector {
 
-      private static final String
-           db_name = "soc_imm",
+    private static final String
+            db_name = "soc_imm",
             host = "localhost",
-            port = "124",
+            port = "3306",
             user = "root",
-            pass = "1234";
+            pass = "";
 
   /*  private static final String
             db_name = "soc_imm",

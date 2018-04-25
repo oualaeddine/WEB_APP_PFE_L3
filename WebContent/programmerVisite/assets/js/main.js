@@ -455,7 +455,7 @@ function confirmerVisite() {
         heureDebut: heureDebut,
         heureFin: heureFin
     };
-    post("#", params, "GET");
+    post("/ProgrammerVisite", params, "GET");
 }
 
 

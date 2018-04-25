@@ -1,6 +1,7 @@
 package control.servlets.administration.operateur;
 
 import control.servlets.MyServlet;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,8 @@ public class OperateurServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MODIFIER_VISITE").forward(request, response);
                         break;
                     case "programmerVisite":{
-                        this.getServletContext().getRequestDispatcher("/programmerVisite/index.html").forward(request,response);
+                        response.sendRedirect("programmerVisite/index.html");
+
                         break;
                     }
                     case "AdminsMessages":{

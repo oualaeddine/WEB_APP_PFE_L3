@@ -29,6 +29,9 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case AJOUTER_VERSEMENT:
+                setupDataClientsList();
+                break;
             case MODIFIER_VISITE:
                 setupDataModifierVisite();
                 break;

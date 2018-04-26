@@ -5,6 +5,7 @@ import model.beans.Vente;
 import model.beans.humans.Client;
 import model.db.daos.VentesDAO;
 import utils.JsonUtil;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 
-@WebServlet(name = "VenteApi")
+@WebServlet(name = "VenteApi", urlPatterns = MyConsts.VENTE_API_URL_PATTERN)
 public class VenteApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

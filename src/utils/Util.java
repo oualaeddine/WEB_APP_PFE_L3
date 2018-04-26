@@ -199,6 +199,8 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case AJOUTER_VERSEMENT:
+                return "Clients";
             case SUSPENDRE_ADMIN:
                 return "Administrateurs";
             case SIGNALEMENT:
@@ -282,6 +284,8 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "AJOUTER_VERSEMENT":
+                return AJOUTER_VERSEMENT;
             case "NOUVELLE_VENTE":
                 return NOUVELLE_VENTE;
             case "ETABLIR_RAPPORT":

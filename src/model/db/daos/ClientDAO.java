@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class ClientDAO extends DAO {
     public static final String TABLE_NAME = "client";
     public static final String[] COLUMN_NAMES = {
 
     };
+
     public boolean changePassword(int id, String pwd){
         try {
             clientStatement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
@@ -21,6 +23,7 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
+
     public Client getByUsername(String username){
         ResultSet result;
         try {
@@ -44,6 +47,7 @@ public class ClientDAO extends DAO {
         }
         return null;
     }
+
     public boolean updatePassword(String pwd,int id){
         try {
             clientStatement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
@@ -105,6 +109,7 @@ public class ClientDAO extends DAO {
         }
         return null;
     }
+
     public boolean banById(int id){
         try {
             clientStatement.execute("UPDATE client SET isBanned = 1" +
@@ -126,6 +131,7 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
+
     @Override
     public boolean deleteById(int id) {
         return super.deleteById(id, "personal");
@@ -224,6 +230,7 @@ public class ClientDAO extends DAO {
         }
         return list;
     }
+
     public boolean isBanned(Client client){
         ResultSet result;
         try {
@@ -261,6 +268,7 @@ public class ClientDAO extends DAO {
         }
         return list;
     }
+
     public LinkedList<Client> getClientsForAgent(int agentId) {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();

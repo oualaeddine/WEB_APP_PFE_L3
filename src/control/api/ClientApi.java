@@ -25,33 +25,44 @@ public class ClientApi extends API {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (request.getParameter("action") != null && request.getParameter("action").equals("getById")) {
-            int clientId = Integer.parseInt(request.getParameter("clientId"));
-            response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().banById(clientId)));
+//        if (request.getParameter("action") != null && request.getParameter("action").equals("getById")) {
+//            int clientId = Integer.parseInt(request.getParameter("clientId"));
+//            response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().banById(clientId)));
+//        }
+        if (request.getParameter("action") != null) {
+            String action = request.getParameter("action");
+            switch (action) {
+                case "getById":
+                    int clientId = Integer.parseInt(request.getParameter("clientId"));
+                    response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().banById(clientId)));
+                    break;
+                case "getAllClients":
+                    LinkedList listeDesClients = new ClientDAO().getAll();
+
+                    JsonArray clientsToReturn = new JsonArray();
+                    for (Object client : listeDesClients) {
+                        JsonObject jsonObject = new JsonObject();
+                        String nom = ((Client) client).getNom();
+                        String prenom = ((Client) client).getPrenom();
+                        String id = ((Client) client).getId() + "";
+                        String telephone = ((Client) client).getTel();
+                        String isBanned = ((Client) client).isBannedString();
+                        String dateDeNaissance = ((Client) client).getDateNaissance().toString();
+
+                        jsonObject.addProperty("id", id);
+                        jsonObject.addProperty("nom", nom);
+                        jsonObject.addProperty("prenom", prenom);
+                        jsonObject.addProperty("telephone", telephone);
+                        jsonObject.addProperty("isBanned", isBanned);
+                        jsonObject.addProperty("dateDeNaissance", dateDeNaissance);
+
+                        clientsToReturn.add(jsonObject);
+                    }
+
+                    response.getWriter().append(clientsToReturn.toString());
+            }
         }
 
-        LinkedList listeDesClients = new ClientDAO().getAll();
 
-        JsonArray clientsToReturn = new JsonArray();
-        for (Object client : listeDesClients) {
-            JsonObject jsonObject = new JsonObject();
-            String nom = ((Client) client).getNom();
-            String prenom = ((Client) client).getPrenom();
-            String id = ((Client) client).getId() + "";
-            String telephone = ((Client) client).getTel();
-            String isBanned = ((Client) client).isBannedString();
-            String dateDeNaissance = ((Client) client).getDateNaissance().toString();
-
-            jsonObject.addProperty("id", id);
-            jsonObject.addProperty("nom", nom);
-            jsonObject.addProperty("prenom", prenom);
-            jsonObject.addProperty("telephone", telephone);
-            jsonObject.addProperty("isBanned", isBanned);
-            jsonObject.addProperty("dateDeNaissance", dateDeNaissance);
-
-            clientsToReturn.add(jsonObject);
-        }
-
-        response.getWriter().append(clientsToReturn.toString());
     }
 }

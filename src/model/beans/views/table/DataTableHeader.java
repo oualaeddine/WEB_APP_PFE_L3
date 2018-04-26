@@ -13,6 +13,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case AJOUTER_VERSEMENT:
+                setupTableHeaderForClients();
+                break;
             case GELER_LOGEMENT:
                 setupTableHeaderForGelerLogement();
                 break;

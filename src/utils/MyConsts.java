@@ -8,6 +8,7 @@ public class MyConsts {
             CLIENT_API_URL_PATTERN = "/api/clientApi",
             LOGEMENT_API_URL_PATTERN = "/api/logementApi",
             VISITE_API_URL_PATTERN = "/api/visiteApi",
+            VENTE_API_URL_PATTERN = "/api/venteApi",
     /*Servlets urls*/
 
     /*ADMIN*/
@@ -40,7 +41,7 @@ public class MyConsts {
             OPERATEUR_NAV_CSS_CLASS = "operateur",
             AGENT_NAV_CSS_CLASS = "My",
             DEFAULT_NAV_CSS_CLASS = "",
-            RESPONSABLE_VENTES_NAV_CSS_CLASS = "",
+            RESPONSABLE_VENTES_NAV_CSS_CLASS = "responsable",
             ADMIN_NAV_CSS_CLASS = "admin",
             SUPER_USER_NAV_CSS_CLASS = "superuser";
 

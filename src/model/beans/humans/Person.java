@@ -84,4 +84,7 @@ public abstract class Person implements Serializable {
         this.dateNaissance = dateNaissance;
     }
 
+    public String getFullName() {
+        return getNom() + " " + getPrenom();
+    }
 }

@@ -2,12 +2,17 @@ package model.beans;
 
 import model.enums.EtatClient;
 
+import java.util.Date;
+
 public class Rapport {
     private Visite visite;
     private EtatClient etatClient;
     private String commentaire;
     private boolean avis;
+    private int id;
+    private Date dateEtabli;
 
+    // TODO: 4/26/2018 add an id
     public Rapport() {
     }
 
@@ -41,5 +46,24 @@ public class Rapport {
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEtatClientString() {
+        switch (etatClient) {
+            case PRESENT:
+                return "present";
+            case ABSENT:
+                return "absent";
+            default:
+                return null;
+        }
+    }
+
+    public Date getDateEtabli() {
+        return dateEtabli;
     }
 }

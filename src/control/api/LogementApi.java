@@ -9,6 +9,7 @@ import model.db.daos.ClientDAO;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
+import utils.JsonUtil;
 import utils.MyConsts;
 import utils.Util;
 
@@ -33,67 +34,56 @@ public class LogementApi extends API {
         String responseBody = "null";
         String action = request.getParameter("action");
         if (action != null) {
-            if (request.getParameter("action") != null && request.getParameter("action").equals("getRegions")) {
 
-                response.getWriter().append(Util.objectToJson(new LocaliteDAO().getAll()));
-            }
             switch (action) {
+                case "getRegions": {
+                    responseBody = Util.objectToJson(new LocaliteDAO().getAll());
+                    break;
+                }
                 case "search":
                     Logement logement = new Logement();
+
                     String type = request.getParameter("type");
-//                    TypeLogement typeLogement = type.equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT;
-//                    logement.setTypeLogement(typeLogement);
+                    TypeLogement typeLogement = type.equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT;
+                    logement.setTypeLogement(typeLogement);
+
                     int idLocal = 0;
                     if (!request.getParameter("region").equals("null"))
                         idLocal = Integer.parseInt(request.getParameter("region"));
-
                     Localite localite = new Localite();
                     localite.setId(idLocal);
                     logement.setLocalite(localite);
+
                     String[] prix = (request.getParameter("prix")).split(",");
                     double pMin = Double.parseDouble(prix[0]), pMax = Double.parseDouble(prix[1]);
+
                     String[] superficies = (request.getParameter("superficie")).split(",");
                     double sMin = Double.parseDouble(superficies[0]), sMax = Double.parseDouble(superficies[1]);
+
                     int nbrPieces = Integer.parseInt(request.getParameter("nbrPieces"));
                     logement.setNbrPieces(nbrPieces);
+
                     int nbrSdb = Integer.parseInt(request.getParameter("nbrSdb"));
                     logement.setNbrSdb(nbrSdb);
+
                     int nbrEtages = Integer.parseInt(request.getParameter("nbrEtages"));
                     logement.setEtage(nbrEtages);
+
                     boolean meuble = request.getParameter("meuble").equals("true");
                     logement.setMeubles(meuble);
+
                     boolean garage = request.getParameter("garage").equals("true");
                     logement.setAvecGarage(garage);
+
                     boolean jardin = request.getParameter("jardin").equals("true");
                     logement.setAvecJardin(jardin);
+
                     boolean soussol = request.getParameter("soussol").equals("true");
                     logement.setAvecSousSol(soussol);
 
-                    //LinkedList<Logement> logements = new LogementDAO().getAll();
-
                     LinkedList<Logement> logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin);
 
-                    JsonArray rdvsToReturn = new JsonArray();
-                    for (Logement myLogement : logements) {
-                        JsonObject jsonObject = new JsonObject();
-                        String id = "" + myLogement.getId();
-                        String titre = myLogement.getTitre();
-                        String description = myLogement.getDescription();
-                        String adresse = myLogement.getAdresse();
-                        String price = "" + myLogement.getPrix();
-                        String superficie = "" + myLogement.getSuperficie();
-
-                        jsonObject.addProperty("id", id);
-                        jsonObject.addProperty("titre", titre);
-                        jsonObject.addProperty("description", description);
-                        jsonObject.addProperty("adresse", adresse);
-                        jsonObject.addProperty("price", price);
-                        jsonObject.addProperty("superficie", superficie);
-
-                        rdvsToReturn.add(jsonObject);
-
-                    }
-                    responseBody = rdvsToReturn.toString();
+                    responseBody = JsonUtil.logementsListToJsonArray(logements);
             }
 
             response.getWriter().append(responseBody);

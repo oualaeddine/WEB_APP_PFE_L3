@@ -37,7 +37,7 @@ public class VentesDAO extends DAO {
     }
     public Vente getByClientAndlogement(Client client,Logement logement){
         ResultSet result;
-        try {
+        try {// TODO: 4/26/2018 nsit leh dernaha hedi fakrini ah
             result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() +
                     " AND logementId=" + logement.getId() + ";");
             if (result.next()){
@@ -194,5 +194,10 @@ public class VentesDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public LinkedList<Vente> getEnCours() {
+        // TODO: 4/26/2018
+        return null;
     }
 }

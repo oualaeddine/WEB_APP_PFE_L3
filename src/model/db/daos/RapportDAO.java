@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Rapport;
+import model.beans.Versement;
 import model.beans.humans.Person;
 import model.db.DAO;
 import model.enums.EtatClient;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
 public class RapportDAO extends DAO {
+    // TODO: 4/26/2018 add an id  to Rapport
 
 
     public LinkedList<Rapport> getByAgent(int agentId) {
@@ -100,10 +102,10 @@ public class RapportDAO extends DAO {
             String avis = rapport.isAvis() ? "positif" : "negatif";
             try {
                 rapportStatement.execute("INSERT INTO rapport(visiteId, etatClient, avis, commentaire) VALUES (" +
-                                rapport.getVisite().getId() + "," +
-                                "'present'," +
-                                "'" + avis + "'," +
-                                "'" + rapport.getCommentaire() + "'"+
+                        rapport.getVisite().getId() + "," +
+                        "'present'," +
+                        "'" + avis + "'," +
+                        "'" + rapport.getCommentaire() + "'" +
                         ")");
                 return true;
             } catch (SQLException e) {
@@ -147,4 +149,7 @@ public class RapportDAO extends DAO {
     }
 
 
+    public LinkedList<Versement> getByLogement() {
+        return null;
+    }
 }

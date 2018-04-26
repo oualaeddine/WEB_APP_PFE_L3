@@ -24,4 +24,6 @@ public class Client extends Person {
         else
             return "not banned";
     }
+
+
 }

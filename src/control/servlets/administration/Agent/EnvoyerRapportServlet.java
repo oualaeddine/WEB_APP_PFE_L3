@@ -23,8 +23,6 @@ public class EnvoyerRapportServlet extends MyServlet {
             Employe agent = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
             AgentsManager agentsManager = new AgentsManager(agent);
             System.out.println(agentsManager.envoyerRapport(request));
-
-
             this.getServletContext().getRequestDispatcher("/AgentServlet").forward(request,response);
         }else redirectToLogin(request,response,0);
     }

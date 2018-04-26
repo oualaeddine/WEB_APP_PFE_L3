@@ -18,6 +18,40 @@ import java.util.LinkedList;
 @SuppressWarnings("ALL")
 public class VisitesDao extends DAO {
 
+    public LinkedList<Visite> getNonReporteesForAgent(int agentId) {
+        ResultSet result;
+        LinkedList<Visite> visites = new LinkedList<>();
+        try {
+            result = visiteStatement.executeQuery("SELECT visite.* FROM visite,rapport WHERE visite.id=rapport.visiteId AND visite.agentId=" + agentId + " AND (SELECT count(rapport.visiteId) FROM rapport WHERE visiteId=visite.id)=0 ;");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(result.getInt("horraire"));
+                EtatVisite etatVisite = null;
+                switch (result.getString("etat")) {
+                    case "prevue":
+                        etatVisite = EtatVisite.PROGRAMMEE;
+                        break;
+                    case "reportee":
+                        etatVisite = EtatVisite.REPORTEE;
+                        break;
+                    case "annulee":
+                        etatVisite = EtatVisite.ANNULEE;
+                        break;
+                }
+                visite.setEtatVisite(etatVisite);
+
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
     public LinkedList<RDV> getFreeRdvForNext2months(int regionId) {
         LinkedList<RDV> libres = new LinkedList<>();
         ResultSet result;

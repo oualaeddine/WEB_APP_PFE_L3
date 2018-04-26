@@ -12,7 +12,6 @@ import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
 public class RapportDAO extends DAO {
-    // TODO: 4/26/2018 add an id  to Rapport
 
 
     public LinkedList<Rapport> getByAgent(int agentId) {

@@ -39,7 +39,9 @@ public class AgentsManager {
     public boolean envoyerRapport(HttpServletRequest request){
         int visiteID = Integer.parseInt(request.getParameter("visiteRapport"));
         System.out.println("visite numero: " + visiteID);
-        Visite visite = new VisitesDao().getById(visiteID);
+        Visite visite = new Visite();
+        visite.setId(visiteID);
+
         Rapport rapport = new Rapport();
         if (request.getParameter("etatClient") == null) {
             rapport.setEtatClient(EtatClient.ABSENT);

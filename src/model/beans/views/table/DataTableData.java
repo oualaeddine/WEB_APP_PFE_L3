@@ -138,8 +138,7 @@ public class DataTableData {
     }
 
     private void setupDataEtablirRapport() {
-        Employe employe = (Employe) new EmployeDAO().getById(userId);
-        LinkedList<Visite> visites = new VisitesDao().getVisitesByAgent(employe);
+        LinkedList<Visite> visites = new VisitesDao().getNonReporteesForAgent(userId);
         for (Visite visite : visites) {
             data.add(new DataTableRow(DataTableRowFormat.ETABLIR_RAPPORT, visite));
         }

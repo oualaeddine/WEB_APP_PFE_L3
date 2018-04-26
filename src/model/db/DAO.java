@@ -18,6 +18,8 @@ public abstract class DAO {
         this.venteStatement = DbConnector.getStatment();
         this.versementStatement = DbConnector.getStatment();
         this.visiteStatement = DbConnector.getStatment();
+        this.rapportStatement = DbConnector.getStatment();
+        this.statement = DbConnector.getStatment();
     }
 
     public abstract Person getByEmail(String email);

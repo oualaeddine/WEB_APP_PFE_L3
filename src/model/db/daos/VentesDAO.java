@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class VentesDAO extends DAO {
     public boolean confirm(Vente vente) {
         try {
@@ -38,7 +39,7 @@ public class VentesDAO extends DAO {
 
     public Vente getByClientAndlogement(Client client, Logement logement) {
         ResultSet result;
-        try {// TODO: 4/26/2018 nsit leh dernaha hedi fakrini ah
+        try {
             result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() +
                     " AND logementId=" + logement.getId() + ";");
             if (result.next()) {
@@ -204,15 +205,65 @@ public class VentesDAO extends DAO {
     }
 
     public LinkedList<Vente> getEnCours() {
-        // TODO: 4/26/2018
-        return null;
+        ResultSet result;
+        LinkedList<Vente> ventes = new LinkedList<>();
+        try {
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE etat='encours';");
+            while (result.next()) {
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ventes;
     }
 
-    public LinkedList getByClient(Client client) {// TODO: 4/26/2018
-        return null;
+    public LinkedList getByClient(Client client) {
+        ResultSet result;
+        LinkedList<Vente> ventes = new LinkedList<>();
+        try {
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId="+client.getId()+";");
+            while (result.next()) {
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ventes;
     }
 
-    public LinkedList getEnCoursForClient(Client client) {// TODO: 4/26/2018  
-        return null;
+    public LinkedList getEnCoursForClient(Client client) {
+        ResultSet result;
+        LinkedList<Vente> ventes = new LinkedList<>();
+        try {
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId="+client.getId()+" AND etat='encours';");
+            while (result.next()) {
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ventes;
     }
 }

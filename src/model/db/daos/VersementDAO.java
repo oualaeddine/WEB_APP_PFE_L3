@@ -13,7 +13,7 @@ public class VersementDAO extends DAO {
 
 
     public double getSommeVersementsByVente(int venteId) {
-        double somme=0;
+        double somme = 0;
         ResultSet result;
 
         try {
@@ -36,7 +36,7 @@ public class VersementDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = versementStatement.executeQuery("SELECT * FROM versement WHERE id=" + id+";");
+            result = versementStatement.executeQuery("SELECT * FROM versement WHERE id=" + id + ";");
             if (result.next()) {
                 Versement versement = new Versement();
                 versement.setId(result.getInt("id"));
@@ -85,6 +85,7 @@ public class VersementDAO extends DAO {
     public boolean dernierVersement(Vente vente, double montant) {
         return !(getSommeVersementsByVente(vente.getId()) + montant < vente.getLogement().getPrix());
     }
+
     @Override
     public boolean add(Object object) {
         Versement versement = (Versement) object;
@@ -133,5 +134,13 @@ public class VersementDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public LinkedList<Versement> getByClient(int clientId) {// TODO: 4/26/2018  
+        return null;
+    }
+
+    public LinkedList<Versement> getByVente(int venteId) {// TODO: 4/26/2018
+        return null;
     }
 }

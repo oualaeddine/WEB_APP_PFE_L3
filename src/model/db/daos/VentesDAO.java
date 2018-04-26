@@ -13,13 +13,13 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class VentesDAO extends DAO {
-    public boolean confirm(Vente vente){
+    public boolean confirm(Vente vente) {
         try {
             venteStatement.execute("UPDATE logement SET etat='vendu' WHERE id="
-                    +vente.getLogement().getId()+";");
-            venteStatement.execute("UPDATE vente SET etat='confirmee' WHERE id="+vente.getId()+";");
+                    + vente.getLogement().getId() + ";");
+            venteStatement.execute("UPDATE vente SET etat='confirmee' WHERE id=" + vente.getId() + ";");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -27,7 +27,7 @@ public class VentesDAO extends DAO {
 
     public boolean annuler(Vente vente) {
         try {
-            venteStatement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId()+";");
+            venteStatement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId() + ";");
             logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + vente.getLogement().getId() + ";");
             return true;
         } catch (SQLException e) {
@@ -35,23 +35,30 @@ public class VentesDAO extends DAO {
         }
         return false;
     }
-    public Vente getByClientAndlogement(Client client,Logement logement){
+
+    public Vente getByClientAndlogement(Client client, Logement logement) {
         ResultSet result;
         try {// TODO: 4/26/2018 nsit leh dernaha hedi fakrini ah
             result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() +
                     " AND logementId=" + logement.getId() + ";");
-            if (result.next()){
+            if (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setDate(result.getDate("date"));
                 switch (result.getString("etat")) {
-                    case "confirmee": vente.setEtatVente(EtatVente.CONFIRMEE); break;
-                    case "non_confirmee": vente.setEtatVente(EtatVente.EN_COURS); break;
-                    case "annulee": vente.setEtatVente(EtatVente.ANNULEE); break;
+                    case "confirmee":
+                        vente.setEtatVente(EtatVente.CONFIRMEE);
+                        break;
+                    case "non_confirmee":
+                        vente.setEtatVente(EtatVente.EN_COURS);
+                        break;
+                    case "annulee":
+                        vente.setEtatVente(EtatVente.ANNULEE);
+                        break;
                 }
                 return vente;
             }
@@ -70,11 +77,11 @@ public class VentesDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = venteStatement.executeQuery("SELECT * FROM vente WHERE id="+id);
-            if (result.next()){
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE id=" + id);
+            if (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
@@ -85,7 +92,7 @@ public class VentesDAO extends DAO {
                 vente.setDate(result.getDate("date"));
                 return vente;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -103,16 +110,16 @@ public class VentesDAO extends DAO {
     @Override
     public boolean add(Object object) {
         Vente vente = (Vente) object;
-        try{
+        try {
             venteStatement.execute("INSERT INTO vente (agentId, responsableId, clientId, logementId, etat) VALUES (" +
-                    vente.getAgent().getId()+","+
-                    vente.getResponsableVente().getId()+","+
-                    vente.getClient().getId()+","+
-                    vente.getLogement().getId()+"," +
-                    "'encours'"+
+                    vente.getAgent().getId() + "," +
+                    vente.getResponsableVente().getId() + "," +
+                    vente.getClient().getId() + "," +
+                    vente.getLogement().getId() + "," +
+                    "'encours'" +
                     ");");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -122,9 +129,9 @@ public class VentesDAO extends DAO {
     public boolean delete(Object object) {
         Vente vente = (Vente) object;
         try {
-            venteStatement.execute("DELETE FROM vente WHERE id="+vente.getId()+";");
+            venteStatement.execute("DELETE FROM vente WHERE id=" + vente.getId() + ";");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -134,9 +141,9 @@ public class VentesDAO extends DAO {
         Vente vente = (Vente) object;
         ResultSet result;
         try {
-            result=venteStatement.executeQuery("SELECT * FROM vente WHERE id="+vente.getId()+";");
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE id=" + vente.getId() + ";");
             if (result.next()) return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -148,17 +155,17 @@ public class VentesDAO extends DAO {
         ResultSet result;
         try {
             result = venteStatement.executeQuery("SELECT * FROM vente;");
-            while (result.next()){
+            while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe)new EmployeDAO().getById(result.getInt("agentId")));
+                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
                 vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
 
                 list.add(vente);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -198,6 +205,14 @@ public class VentesDAO extends DAO {
 
     public LinkedList<Vente> getEnCours() {
         // TODO: 4/26/2018
+        return null;
+    }
+
+    public LinkedList getByClient(Client client) {// TODO: 4/26/2018
+        return null;
+    }
+
+    public LinkedList getEnCoursForClient(Client client) {// TODO: 4/26/2018  
         return null;
     }
 }

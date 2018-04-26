@@ -27,12 +27,29 @@ public class VersementApi extends API {
                 case "getTotal": {
                     if (request.getParameter("venteId") != null) {
                         int venete = Integer.parseInt(request.getParameter("venteId"));
-                        responseBody = JsonUtil.objectToJson(new VersementDAO().getSommeVersementsByVente(venete));
+                        responseBody = "" + new VersementDAO().getSommeVersementsByVente(venete);
                     }
                     break;
                 }
                 case "getById": {
-                    responseBody = JsonUtil.versementsListToJsonArray(new VersementDAO().getAll());
+                    if (request.getParameter("versementId") != null) {
+                        int versementId = Integer.parseInt(request.getParameter("versementId"));
+                        responseBody = JsonUtil.objectToJson(new VersementDAO().getById(versementId));
+                    }
+                    break;
+                }
+                case "getByClient": {
+                    if (request.getParameter("clientId") != null) {
+                        int clientId = Integer.parseInt(request.getParameter("clientId"));
+                        responseBody = JsonUtil.objectToJson(new VersementDAO().getByClient(clientId));
+                    }
+                    break;
+                }
+                case "getByVente": {
+                    if (request.getParameter("venteId") != null) {
+                        int venteId = Integer.parseInt(request.getParameter("venteId"));
+                        responseBody = JsonUtil.objectToJson(new VersementDAO().getByVente(venteId));
+                    }
                     break;
                 }
 

@@ -9,6 +9,7 @@ public class MyConsts {
             LOGEMENT_API_URL_PATTERN = "/api/logementApi",
             VISITE_API_URL_PATTERN = "/api/visiteApi",
             VENTE_API_URL_PATTERN = "/api/venteApi",
+            VERSEMENT_API_URL_PATTERN = "/api/versementApi",
     /*Servlets urls*/
 
     /*ADMIN*/

@@ -74,11 +74,9 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Téléphone</th>
-                <th>Date de naissance</th>
-                <th>Etat</th>
+                <th>Client</th>
+                <th>Logement</th>
+                <th>Date</th>
             </tr>
             </thead>
             <tbody>
@@ -119,6 +117,37 @@
         </div>
     </div>
 </div>
+
+<%--New versement modal--%>
+<div id="newVersementModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ajouter versement</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/api/versementApi?action=add" id="ajouterVersementForm">
+
+                    <input id="selectedVente" name="selectedVente" type="hidden">
+                    <label for="montantInput">Veuillez entrer le montant du versement</label>
+                    <input type="text" name="montantInput" id="montantInput">
+
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info btn-lg" type="submit" form="ajouterVersementForm">Soumettre</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -136,7 +165,8 @@
 <script src="../programmerVisite/assets/js/main.js"></script>
 
 </body>
-
+<%String idClient = request.getParameter("selectedClientId");%>
+<%String url = "/api/venteApi?action=getVenteByClient&selectedClientId=" + idClient;%>
 <script>
     var table = $('#clientsTable').DataTable({
         'paging': true,
@@ -148,23 +178,22 @@
         "processing": true,
         "serverSide": true,
         ajax: {
-            url: '/api/venteApi?action=getVenteByClient&clientId=',
+            url: '<%out.print(url);%>',
             dataSrc: ''
         },
         columns: [
             {"data": "id"},
-            {"data": "nom"},
-            {"data": "prenom"},
-            {"data": "telephone"},
-            {"data": "dateDeNaissance"},
-            {"data": "isBanned"}
+            {"data": "clientId"},
+            {"data": "logementId"},
+            {"data": "date"}
         ]
     });
 
-    table.on('select', function (e, dt, type, indexes) {
+    table.on('click', function (e, dt, type, indexes) {
         var rowData = table.rows(indexes).data().toArray();
-        $('#clientId').val(rowData[0]['id']);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+        $('#selectedVente').val(rowData[0]['id']);
+        $('#newVersementModal').modal('show');
+
     });
 </script>
 <script src="../programmerVisite/assets/datatables.net/js/jquery.dataTables.js"></script>

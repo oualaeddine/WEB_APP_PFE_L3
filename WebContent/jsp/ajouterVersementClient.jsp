@@ -86,7 +86,8 @@
 
             </tbody>
         </table>
-        <input type="text" name="clientId" id="clientId">
+        <input type="hidden" name="selectedClientId" id="selectedClientId">
+        <button class="btn btn-primary" onclick="confirmerClient()"></button>
     </div>
 </div>
 
@@ -170,9 +171,35 @@
 
     table.on('select', function (e, dt, type, indexes) {
         var rowData = table.rows(indexes).data().toArray();
-        $('#clientId').val(rowData[0]['id']);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+        $('#selectedClientId').val(rowData[0]['id']);
     });
+
+    function confirmerClient() {
+        var client = $('#selectedClientId').val();
+        var params = {
+            selectedClientId: client
+        };
+        post("/jsp/ajouterVersementVente.jsp?action=getEnCoursForClient", params, "GET");
+    }
+
+    function post(path, params, method) {
+        method = method || "post";
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
 </script>
 
 

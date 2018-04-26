@@ -16,8 +16,6 @@ import java.util.LinkedList;
 public class VentesDAO extends DAO {
     public boolean confirm(Vente vente) {
         try {
-            venteStatement.execute("UPDATE logement SET etat='vendu' WHERE id="
-                    + vente.getLogement().getId() + ";");
             venteStatement.execute("UPDATE vente SET etat='confirmee' WHERE id=" + vente.getId() + ";");
             return true;
         } catch (SQLException e) {
@@ -209,7 +207,7 @@ public class VentesDAO extends DAO {
         ResultSet result;
         LinkedList<Vente> ventes = new LinkedList<>();
         try {
-            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId="+client.getId()+";");
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() + " AND etat='encours';");
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));

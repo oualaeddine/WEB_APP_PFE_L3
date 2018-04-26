@@ -19,9 +19,27 @@ public class JsonUtil {
 
 
     public static String ventesListToJsonArray(LinkedList<Vente> ventes) {
+        JsonArray result = new JsonArray();
 
+        for (Vente vente : ventes) {
+            JsonObject jsonObject = new JsonObject();
 
-        return null;
+            String id = "" + vente.getId();
+            String clientId = "" + vente.getClient().getNom() + " " + vente.getClient().getPrenom();
+            String logementId = "" + vente.getLogement().getTitre();
+            String etat = "" + vente.getEtatVente();
+            String date = "" + vente.getDate();
+
+            jsonObject.addProperty("id", id);
+            jsonObject.addProperty("clientId", clientId);
+            jsonObject.addProperty("logementId", logementId);
+            jsonObject.addProperty("etat", etat);
+            jsonObject.addProperty("date", date);
+
+            result.add(jsonObject);
+        }
+
+        return result.toString();
     }
 
     public static String versementsListToJsonArray(LinkedList<Versement> versements) {

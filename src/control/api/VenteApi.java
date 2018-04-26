@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 @WebServlet(name = "VenteApi", urlPatterns = MyConsts.VENTE_API_URL_PATTERN)
 public class VenteApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,20 +49,20 @@ public class VenteApi extends API {
                         ventes = new VentesDAO().getAll();
                         break;
                     }
-                    case "getForClient": {
-                        if (request.getParameter("clientId") != null) {
+                    case "getVenteByClient": {
+                        if (request.getParameter("selectedClientId") != null) {
                             Client client = new Client();
-                            String clientId = request.getParameter("clientId");
-                            client.setId(Integer.parseInt(clientId));
+                            int clientId = Integer.parseInt(request.getParameter("selectedClientId"));
+                            client.setId(clientId);
                             ventes = new VentesDAO().getByClient(client);
                         }
                         break;
                     }
                     case "getEnCoursForClient": {
-                        if (request.getParameter("clientId") != null) {
+                        if (request.getParameter("selectedClientId") != null) {
                             Client client = new Client();
-                            String clientId = request.getParameter("clientId");
-                            client.setId(Integer.parseInt(clientId));
+                            int clientId = Integer.parseInt(request.getParameter("selectedClientId"));
+                            client.setId(clientId);
                             ventes = new VentesDAO().getEnCoursForClient(client);
                         }
                         break;

@@ -19,7 +19,7 @@ public class VersementDAO extends DAO {
         try {
             result = versementStatement.executeQuery("SELECT montant FROM versement WHERE venteId=" + venteId + ";");
             while (result.next()) {
-                somme += result.getDouble("montant");
+                somme = somme + result.getDouble("montant");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,7 +83,7 @@ public class VersementDAO extends DAO {
     }
 
     public boolean dernierVersement(Vente vente, double montant) {
-        return !(getSommeVersementsByVente(vente.getId()) + montant < vente.getLogement().getPrix());
+        return ((getSommeVersementsByVente(vente.getId()) + montant) == vente.getLogement().getPrix());
     }
 
     @Override
@@ -99,7 +99,7 @@ public class VersementDAO extends DAO {
             versementStatement.execute("INSERT INTO versement(venteId, montant, date) VALUES (" +
                     versement.getVente().getId() + "," +
                     versement.getMontant() + "," +
-                    "'" + versement.getDate() + "' ," +
+                    "CURRENT_DATE" +
                     ");");
             return true;
         } catch (SQLException e) {

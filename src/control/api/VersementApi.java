@@ -1,7 +1,11 @@
 package control.api;
 
+import model.beans.Vente;
+import model.beans.Versement;
+import model.db.daos.VentesDAO;
 import model.db.daos.VersementDAO;
 import utils.JsonUtil;
+import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "VersementApi")
+@WebServlet(name = "VersementApi", urlPatterns = MyConsts.VERSEMENT_API_URL_PATTERN)
 public class VersementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String responseBody = "null";
         String action = request.getParameter("action");
-        if (action != null) {
+        if (action != null && action.equals("add")) {
+            Versement versement = new Versement();
+            versement.setVente((Vente) new VentesDAO().getById(Integer.parseInt(request.getParameter("selectedVente"))));
+            versement.setMontant(Double.parseDouble(request.getParameter("montantInput")));
+
+            System.out.println("Ajout versement: " + new VersementDAO().add(versement));
+
+        } else {
+
+
             switch (action) {
                 case "getAll": {
                     responseBody = JsonUtil.versementsListToJsonArray(new VersementDAO().getAll());
@@ -56,5 +69,6 @@ public class VersementApi extends API {
             }
             response.getWriter().append(responseBody);
         }
+        response.sendRedirect("/Dashboard");
     }
 }

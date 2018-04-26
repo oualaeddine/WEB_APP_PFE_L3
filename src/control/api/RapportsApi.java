@@ -1,14 +1,10 @@
 package control.api;
 
-import control.system.managers.AgentsManager;
 import model.db.daos.RapportDAO;
-import model.db.daos.VersementDAO;
 import utils.JsonUtil;
-import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

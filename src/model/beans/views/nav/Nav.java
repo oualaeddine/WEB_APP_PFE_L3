@@ -1,6 +1,5 @@
 package model.beans.views.nav;
 
-import control.servlets.MyServlet;
 import model.beans.views.MyView;
 import model.enums.TablePage;
 import model.enums.UserType;

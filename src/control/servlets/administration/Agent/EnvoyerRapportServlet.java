@@ -2,13 +2,7 @@ package control.servlets.administration.Agent;
 
 import control.servlets.MyServlet;
 import control.system.managers.AgentsManager;
-import model.beans.Rapport;
-import model.beans.Visite;
 import model.beans.humans.Employe;
-import model.db.daos.RapportDAO;
-import model.db.daos.VisitesDao;
-import model.enums.EtatClient;
-import model.enums.EtatVisite;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

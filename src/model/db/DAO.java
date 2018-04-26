@@ -1,6 +1,5 @@
 package model.db;
 
-import model.beans.humans.Employe;
 import model.beans.humans.Person;
 
 import java.sql.SQLException;

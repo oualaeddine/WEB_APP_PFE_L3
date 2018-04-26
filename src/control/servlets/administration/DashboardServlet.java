@@ -1,10 +1,7 @@
 package control.servlets.administration;
 
-import control.system.managers.AdminsManager;
 import control.servlets.MyServlet;
-import model.beans.humans.Employe;
 import model.enums.UserType;
-import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

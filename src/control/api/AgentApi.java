@@ -3,7 +3,6 @@ package control.api;
 
 import model.beans.humans.Employe;
 import model.db.daos.EmployeDAO;
-import model.enums.UserType;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static utils.Util.objectToJson;
+import static utils.JsonUtil.objectToJson;
 
 /**
  * name = now du servlet

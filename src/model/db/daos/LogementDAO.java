@@ -5,11 +5,8 @@ import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Employe;
 import model.db.DAO;
-import model.db.DAOInterface;
-import model.enums.EtatLogement;
 import model.enums.TypeLogement;
 import model.enums.UserType;
-import sun.rmi.runtime.Log;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

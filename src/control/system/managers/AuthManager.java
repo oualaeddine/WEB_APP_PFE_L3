@@ -1,8 +1,11 @@
 package control.system.managers;
 
 import control.servlets.MyServlet;
-import model.beans.humans.*;
-import model.db.daos.*;
+import model.beans.humans.Client;
+import model.beans.humans.Employe;
+import model.db.daos.AuthDAO;
+import model.db.daos.ClientDAO;
+import model.db.daos.EmployeDAO;
 import model.enums.UserType;
 import utils.Util;
 

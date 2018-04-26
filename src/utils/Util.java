@@ -1,9 +1,9 @@
 package utils;
 
 
-import com.google.gson.Gson;
 import model.beans.humans.Employe;
-import model.db.daos.*;
+import model.db.daos.ClientDAO;
+import model.db.daos.EmployeDAO;
 import model.enums.EtatVente;
 import model.enums.TablePage;
 import model.enums.UserType;
@@ -27,6 +27,7 @@ public class Util {
         }
         return null;
     }
+
     public static String getApprobationEmail(Employe employe) {
         Employe creator = (Employe) new EmployeDAO().getById(employe.getCreator());
         String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +
@@ -156,12 +157,6 @@ public class Util {
                 "</html>";
         return msg;
 
-    }
-
-    public static String objectToJson(Object object) {
-        String json;
-        json = new Gson().toJson(object);
-        return json;
     }
 
     public static UserType getUserTypeFromString(String type) {
@@ -359,6 +354,7 @@ public class Util {
         }
         return VISITES;
     }
+
     public static Date getDateFromString(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date date1 = null;

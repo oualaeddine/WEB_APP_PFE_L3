@@ -1,5 +1,6 @@
 package utils;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import model.beans.*;
@@ -9,6 +10,12 @@ import model.beans.humans.Employe;
 import java.util.LinkedList;
 
 public class JsonUtil {
+
+    public static String objectToJson(Object object) {
+        String json;
+        json = new Gson().toJson(object);
+        return json;
+    }
 
 
     public static String ventesListToJsonArray(LinkedList<Vente> ventes) {
@@ -92,7 +99,6 @@ public class JsonUtil {
 
         return null;
     }
-
 
     public static String rapportsListToJsonArray(LinkedList<Rapport> rapports) {
 

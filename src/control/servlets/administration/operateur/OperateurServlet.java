@@ -1,7 +1,6 @@
 package control.servlets.administration.operateur;
 
 import control.servlets.MyServlet;
-import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

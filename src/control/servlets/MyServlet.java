@@ -1,15 +1,12 @@
 package control.servlets;
 
-import control.system.managers.AuthManager;
 import model.beans.humans.Person;
-import model.enums.UserType;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class MyServlet extends HttpServlet {

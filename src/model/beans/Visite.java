@@ -6,7 +6,6 @@ import model.enums.EtatVisite;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class Visite implements Serializable {
     private int id;

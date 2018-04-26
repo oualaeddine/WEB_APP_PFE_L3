@@ -1,9 +1,7 @@
 package model.beans;
 
-import model.enums.EtatLogement;
 import model.enums.TypeLogement;
 
-import java.awt.*;
 import java.io.Serializable;
 
 public class Logement implements Serializable {

@@ -2,21 +2,19 @@ package control.api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import model.beans.RDV;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
+import utils.JsonUtil;
 import utils.MyConsts;
-import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedList;
 
-import static utils.Util.objectToJson;
+import static utils.JsonUtil.objectToJson;
 
 @WebServlet(name = "ClientApi", urlPatterns = MyConsts.CLIENT_API_URL_PATTERN)
 public class ClientApi extends API {
@@ -29,7 +27,7 @@ public class ClientApi extends API {
 
         if (request.getParameter("action") != null && request.getParameter("action").equals("getById")) {
             int clientId = Integer.parseInt(request.getParameter("clientId"));
-            response.getWriter().append(Util.objectToJson(new ClientDAO().banById(clientId)));
+            response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().banById(clientId)));
         }
 
         LinkedList listeDesClients = new ClientDAO().getAll();

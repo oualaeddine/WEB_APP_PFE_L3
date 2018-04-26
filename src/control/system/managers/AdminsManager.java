@@ -3,20 +3,18 @@ package control.system.managers;
 import model.beans.Localite;
 import model.beans.Location;
 import model.beans.Logement;
-import model.beans.humans.*;
+import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.daos.*;
 import model.enums.AdminRole;
 import model.enums.TypeLogement;
 import model.enums.UserType;
-import org.apache.http.HttpRequest;
 import utils.Util;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class AdminsManager {
     private final Employe loggedInAdmin;

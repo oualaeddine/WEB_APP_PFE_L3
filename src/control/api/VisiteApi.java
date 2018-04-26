@@ -1,17 +1,15 @@
 package control.api;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import model.beans.Logement;
 import model.beans.RDV;
 import model.beans.Visite;
 import model.beans.humans.Client;
-import model.beans.humans.Employe;
 import model.db.daos.ClientDAO;
-import model.db.daos.EmployeDAO;
 import model.db.daos.LogementDAO;
 import model.db.daos.VisitesDao;
+import utils.JsonUtil;
 import utils.MyConsts;
 import utils.Util;
 
@@ -21,8 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.ParseException;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 @WebServlet(name = "VisiteApi", urlPatterns = MyConsts.VISITE_API_URL_PATTERN)
@@ -84,7 +80,7 @@ public class VisiteApi extends API {
             System.out.println(myRdv);
             System.out.println("region" + region);
 
-            response.getWriter().append(Util.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
+            response.getWriter().append(JsonUtil.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
         }
 
     }

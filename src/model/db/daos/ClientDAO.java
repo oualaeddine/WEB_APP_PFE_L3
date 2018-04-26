@@ -1,9 +1,7 @@
 package model.db.daos;
 
 import model.beans.humans.Client;
-import model.beans.humans.Employe;
 import model.db.DAO;
-import model.db.DAOInterface;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

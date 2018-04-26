@@ -1,7 +1,8 @@
 package model.beans.views.table;
 
 import model.beans.*;
-import model.beans.humans.*;
+import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.daos.*;
 import model.enums.DataTableRowFormat;
 import model.enums.TablePage;

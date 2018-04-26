@@ -7,7 +7,6 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
-import utils.Util;
 
 import java.sql.Date;
 import java.sql.ResultSet;

@@ -6,7 +6,6 @@ import model.db.daos.ClientDAO;
 import model.db.daos.VisitesDao;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class ClientsManager {
     private final Client loggedInClient;

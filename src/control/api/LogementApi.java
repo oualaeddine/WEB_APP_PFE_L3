@@ -1,17 +1,12 @@
 package control.api;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import model.beans.Localite;
 import model.beans.Logement;
-import model.beans.RDV;
-import model.db.daos.ClientDAO;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
 import utils.JsonUtil;
 import utils.MyConsts;
-import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import static utils.Util.objectToJson;
 
 
 @WebServlet(name = "LogementApi", urlPatterns = MyConsts.LOGEMENT_API_URL_PATTERN)
@@ -37,7 +31,7 @@ public class LogementApi extends API {
 
             switch (action) {
                 case "getRegions": {
-                    responseBody = Util.objectToJson(new LocaliteDAO().getAll());
+                    responseBody = JsonUtil.objectToJson(new LocaliteDAO().getAll());
                     break;
                 }
                 case "search":

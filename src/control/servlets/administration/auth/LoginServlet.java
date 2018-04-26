@@ -1,7 +1,7 @@
 package control.servlets.administration.auth;
 
-import control.system.managers.AuthManager;
 import control.servlets.MyServlet;
+import control.system.managers.AuthManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

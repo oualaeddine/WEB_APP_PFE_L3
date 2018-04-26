@@ -1,20 +1,11 @@
 package control.api;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import model.beans.Localite;
 import model.beans.Logement;
-import model.beans.Vente;
 import model.beans.humans.Client;
-import model.db.daos.LocaliteDAO;
-import model.db.daos.LogementDAO;
 import model.db.daos.VentesDAO;
-import utils.Util;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,7 +1,6 @@
 package control.api;
 
 import control.system.managers.AuthManager;
-import model.enums.UserType;
 
 import javax.servlet.http.HttpServlet;
 

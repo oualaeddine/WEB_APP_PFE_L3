@@ -1,8 +1,7 @@
 package model.db.daos;
 
-import model.beans.humans.*;
+import model.beans.humans.Employe;
 import model.db.DAO;
-import model.enums.UserType;
 import utils.Util;
 
 import java.sql.ResultSet;

@@ -1,15 +1,13 @@
 package control.system.managers;
 
-import model.beans.Localite;
 import model.beans.Rapport;
-import model.beans.Vente;
 import model.beans.Visite;
 import model.beans.humans.Employe;
-import model.db.daos.*;
+import model.db.daos.EmployeDAO;
+import model.db.daos.RapportDAO;
+import model.db.daos.VisitesDao;
 import model.enums.EtatClient;
-import model.enums.EtatVente;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 

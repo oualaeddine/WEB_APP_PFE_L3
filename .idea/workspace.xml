@@ -6,64 +6,50 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="programmer visite ta3 sah">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/control/servlets/MyServlet$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/Main.class" afterPath="$PROJECT_DIR$/build/classes/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" afterPath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/api/ClientApi.class" afterPath="$PROJECT_DIR$/build/classes/control/api/ClientApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/api/LogementApi.class" afterPath="$PROJECT_DIR$/build/classes/control/api/LogementApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/api/VisiteApi.class" afterPath="$PROJECT_DIR$/build/classes/control/api/VisiteApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.class" afterPath="$PROJECT_DIR$/build/classes/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager$1.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager$1.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AuthManager.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AuthManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/ClientsManager.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/ClientsManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager$1.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager.class" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/Localite.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/Localite.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/Logement.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/Logement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/Visite.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/Visite.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/ExpendableNavElement.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/ExpendableNavElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav$1.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/NavElement.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/NavElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader$1.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow$1.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow.class" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/DAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/DAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/DbConnector.class" afterPath="$PROJECT_DIR$/build/classes/model/db/DbConnector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AssignationDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/AssignationDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AuthDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/AuthDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/ClientDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/ClientDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/EmployeDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/EmployeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LocaliteDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/LocaliteDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LogementDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/LogementDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/OttDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/OttDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VentesDAO.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/VentesDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" afterPath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" afterPath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" afterPath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/utils/Util$1.class" afterPath="$PROJECT_DIR$/build/classes/utils/Util$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/utils/Util.class" afterPath="$PROJECT_DIR$/build/classes/utils/Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" />
+    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/jsp/table.jsp" afterPath="$PROJECT_DIR$/WebContent/jsp/table.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js" afterPath="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/API.java" afterPath="$PROJECT_DIR$/src/control/api/API.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/AgentApi.java" afterPath="$PROJECT_DIR$/src/control/api/AgentApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/ClientApi.java" afterPath="$PROJECT_DIR$/src/control/api/ClientApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/LogementApi.java" afterPath="$PROJECT_DIR$/src/control/api/LogementApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/RapportsApi.java" afterPath="$PROJECT_DIR$/src/control/api/RapportsApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/VersementApi.java" afterPath="$PROJECT_DIR$/src/control/api/VersementApi.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/VisiteApi.java" afterPath="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/api/VneteApi.java" afterPath="$PROJECT_DIR$/src/control/api/VneteApi.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java" afterPath="$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java" afterPath="$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/MyServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/MyServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/AjoutServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/AjoutServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/DashboardServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/DashboardServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/auth/ChangePasswordServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/auth/ChangePasswordServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/servlets/client/general/ClientLoginServlet.java" afterPath="$PROJECT_DIR$/src/control/servlets/client/general/ClientLoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/system/managers/AdminsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AdminsManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/system/managers/AgentsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AgentsManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/system/managers/AuthManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/AuthManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/system/managers/ClientsManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/ClientsManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/system/managers/EmployeManager.java" afterPath="$PROJECT_DIR$/src/control/system/managers/EmployeManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/Logement.java" afterPath="$PROJECT_DIR$/src/model/beans/Logement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/Visite.java" afterPath="$PROJECT_DIR$/src/model/beans/Visite.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Client.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/humans/Employe.java" afterPath="$PROJECT_DIR$/src/model/beans/humans/Employe.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" afterPath="$PROJECT_DIR$/src/model/beans/views/nav/Nav.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java" afterPath="$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/DAO.java" afterPath="$PROJECT_DIR$/src/model/db/DAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/LogementDAO.java" afterPath="$PROJECT_DIR$/src/model/db/daos/LogementDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" afterPath="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/GoogleMail.java" afterPath="$PROJECT_DIR$/src/utils/GoogleMail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/JsonUtil.java" afterPath="$PROJECT_DIR$/src/utils/JsonUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Util.java" afterPath="$PROJECT_DIR$/src/utils/Util.java" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -100,11 +86,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProgrammerVisiteServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java">
+      <file leaf-file-name="VersementApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/api/VersementApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="39" column="113" lean-forward="false" selection-start-line="39" selection-start-column="113" selection-end-line="39" selection-end-column="113" />
+            <state relative-caret-position="246">
+              <caret line="29" column="47" lean-forward="false" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/api/AgentApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="65" column="47" lean-forward="false" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,127 +108,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visite" pinned="false" current-in-tab="true">
-        <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.visite">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+      <file leaf-file-name="VisiteApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-820">
+              <caret line="82" column="46" lean-forward="false" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js">
+      <file leaf-file-name="ClientApi.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/control/api/ClientApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5661">
-              <caret line="461" column="36" lean-forward="false" selection-start-line="461" selection-start-column="36" selection-end-line="461" selection-end-column="36" />
+            <state relative-caret-position="493">
+              <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
               <folding>
-                <element signature="e#872#1183#0" expanded="false" />
-                <element signature="e#3299#3329#0" expanded="false" />
-                <element signature="e#3389#3685#0" expanded="false" />
-                <element signature="e#3748#4047#0" expanded="false" />
-                <element signature="n#!!block;n#readURL#0" expanded="false" />
-                <element signature="e#5153#5997#0" expanded="false" />
-                <element signature="n#!!block;n#fillDetails#0" expanded="false" />
-                <element signature="n#!!block;n#getVisites#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OperateurServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9996">
-              <caret line="588" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="616" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/servlets/MyServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="51" column="30" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assignation_region" pinned="false" current-in-tab="false">
-        <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.assignation_region">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employe" pinned="false" current-in-tab="false">
-        <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.employe">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProgrammerVisiteClientServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/client/ProgrammerVisiteClientServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VisitesDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/db/daos/VisitesDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5219">
-              <caret line="333" column="129" lean-forward="false" selection-start-line="333" selection-start-column="129" selection-end-line="333" selection-end-column="129" />
-              <folding>
-                <marker date="1524563754708" expanded="true" signature="1880:2210" ph="SELECT times... visite" />
-                <marker date="1524563754708" expanded="true" signature="1928:2094" ph="SELECT count... employe" />
-                <marker date="1524563754708" expanded="true" signature="2115:2209" ph="SELECT count... visite" />
-                <marker date="1524563754708" expanded="true" signature="2839:2870" ph="SELECT DISTI... employe" />
-                <marker date="1524563754708" expanded="true" signature="2839:3046" ph="SELECT emplo... employe" />
-                <marker date="1524563754708" expanded="true" signature="2839:3148" ph="SELECT emplo... employe" />
-                <marker date="1524563754708" expanded="true" signature="2839:3522" ph="SELECT emplo... employe" />
-                <marker date="1524563754708" expanded="true" signature="2839:3529" ph="SELECT emplo... employe" />
-                <marker date="1524563754708" expanded="true" signature="3274:3351" ph="SELECT agent... visite" />
-                <marker date="1524563754708" expanded="true" signature="3274:3417" ph="SELECT agent... visite" />
-                <marker date="1524563754708" expanded="true" signature="3274:3488" ph="SELECT agent... visite" />
-                <marker date="1524563754708" expanded="true" signature="3274:3521" ph="SELECT agent... visite" />
-                <marker date="1524563754708" expanded="true" signature="4328:4365" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="true" signature="6189:6226" ph="SELECT id FR... visite" />
-                <marker date="1524563754708" expanded="true" signature="7945:8034" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="true" signature="9702:9748" ph="UPDATE visit... " />
-                <marker date="1524563754708" expanded="true" signature="10002:10044" ph="UPDATE visit... " />
-                <marker date="1524563754708" expanded="true" signature="10299:10347" ph="UPDATE visit... " />
-                <marker date="1524563754708" expanded="true" signature="10589:10632" ph="UPDATE visit... " />
-                <marker date="1524563754708" expanded="true" signature="10982:11012" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="true" signature="13008:13218" ph="INSERT INTO visite... " />
-                <marker date="1524563754708" expanded="true" signature="13008:13375" ph="INSERT INTO visite... " />
-                <marker date="1524563754708" expanded="true" signature="13008:13376" ph="INSERT INTO visite... " />
-                <marker date="1524563754708" expanded="true" signature="13692:13712" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="true" signature="15383:15437" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="true" signature="17129:17222" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="false" signature="18904:18958" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="false" signature="20637:20678" ph="SELECT * FRO... visite" />
-                <marker date="1524563754708" expanded="false" signature="22359:22401" ph="SELECT * FRO... visite" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -246,10 +138,10 @@
         <option value="package-info" />
         <option value="Enum" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -322,20 +214,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/control/system/managers/AuthManager.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
-        <option value="$PROJECT_DIR$/WebContent/html/client/register.html" />
-        <option value="$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/html/client/home.html" />
-        <option value="$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/ServletRequestWrapper.class" />
-        <option value="$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/control/RedirectServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/MyServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/html/login.html" />
         <option value="$PROJECT_DIR$/WebContent/html/register.html" />
-        <option value="$PROJECT_DIR$/src/control/api/AgentApi.java" />
         <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
         <option value="$PROJECT_DIR$/WebContent/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/src/control/system/managers/ClientsManager.java" />
@@ -343,7 +224,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console_1.sql" />
         <option value="$PROJECT_DIR$/src/model/beans/RDV.java" />
         <option value="$PROJECT_DIR$/src/model/beans/Visite.java" />
-        <option value="$PROJECT_DIR$/src/utils/Util.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/client/general/ClientLoginServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/gulp-file.js" />
         <option value="$PROJECT_DIR$/WebContent/gulpfile.js" />
@@ -357,9 +237,7 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/model/beans/humans/Employe.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql" />
-        <option value="$PROJECT_DIR$/src/control/api/LogementApi.java" />
         <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/mainClient.js" />
-        <option value="$PROJECT_DIR$/src/control/api/ClientApi.java" />
         <option value="$PROJECT_DIR$/WebContent/programmerVisite/programmer_visite_client.html" />
         <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/mainClient.js" />
         <option value="$PROJECT_DIR$/src/control/servlets/administration/client/ProgrammerVisiteServlet.java" />
@@ -367,12 +245,26 @@
         <option value="$PROJECT_DIR$/src/model/db/daos/LogementDAO.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/administration/client/ProgrammerVisiteClientServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/jsp/client/home.jsp" />
-        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
         <option value="$PROJECT_DIR$/WebContent/jsp/table.jsp" />
         <option value="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" />
         <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js" />
         <option value="$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java" />
         <option value="$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/VentesDAO.java" />
+        <option value="$PROJECT_DIR$/src/control/api/VneteApi.java" />
+        <option value="$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/api/RapportsApi.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/RapportDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/Rapport.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/humans/Client.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/humans/Person.java" />
+        <option value="$PROJECT_DIR$/src/utils/JsonUtil.java" />
+        <option value="$PROJECT_DIR$/src/utils/Util.java" />
+        <option value="$PROJECT_DIR$/src/control/api/LogementApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/VersementApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/AgentApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/ClientApi.java" />
       </list>
     </option>
   </component>
@@ -400,8 +292,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="54" />
+    <option name="y" value="63" />
     <option name="width" value="1376" />
     <option name="height" value="784" />
   </component>
@@ -423,25 +315,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="WEB_APP" type="cbb8eebc:String" user="WEB_APP" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="WEB_APP" type="cbb8eebc:String" user="WEB_APP" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -458,108 +333,24 @@
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="WEB_APP" type="cbb8eebc:String" user="WEB_APP" />
             </path>
             <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-              <item name="administration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-              <item name="administration" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
-              <item name="administration" type="462c0819:PsiDirectoryNode" />
-              <item name="operateur" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="table" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="programmerVisite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="programmerVisite" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="WEB_APP" type="cbb8eebc:String" user="WEB_APP" />
+              <item name="src" type="cbb8eebc:String" user="src" />
             </path>
           </expand>
           <select />
@@ -603,6 +394,138 @@
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\programmerVisite\assets\js" />
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\html" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/table.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/AjoutServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/AgentsManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/Logement.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/DAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/DbConnector.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/AssignationDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/ClientDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/LogementDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/SignalementDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VentesDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VisitesDao.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/enums/EtatVente.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/utils/Util.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/Rapport.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/Versement.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/RapportDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VersementDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/enums/EtatClient.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -881,7 +804,8 @@
       <workItem from="1524495910316" duration="37965000" />
       <workItem from="1524555689357" duration="9303000" />
       <workItem from="1524591261879" duration="7000" />
-      <workItem from="1524679437379" duration="60000" />
+      <workItem from="1524679437379" duration="4178000" />
+      <workItem from="1524726945891" duration="5031000" />
     </task>
     <task id="LOCAL-00001" summary="parmis lhwayj li tnahaw gbil -__-&#10;essayes tjr de decocher workspace.xml">
       <created>1518644625640</created>
@@ -1072,11 +996,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524557991061</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fi khatr lmhamsa">
+      <created>1524679515365</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1524679515365</updated>
+    </task>
+    <task id="LOCAL-00029" summary="#ventesApi&#10;#logementsApi&#10;#rapportsApi&#10;#versementsApi&#10;#added some todo&#10;#created JsonUtil Class">
+      <created>1524731622362</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1524731622362</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="334330000" />
+    <option name="totallyTimeSpent" value="343479000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1089,10 +1027,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32446808" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1101,13 +1039,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5456" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5616" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5248" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3728" sideWeight="0.4969605" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19832827" sideWeight="0.4256" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19832827" sideWeight="0.5744" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25455928" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20136778" sideWeight="0.416" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20136778" sideWeight="0.584" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25455928" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1861702" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1118,7 +1056,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32446808" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4528" sideWeight="0.49544072" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1215,7 +1152,10 @@
     <MESSAGE value="hwiyjat" />
     <MESSAGE value="programmer visite ta3 sah wmahabtch telah nananananana" />
     <MESSAGE value="programmer visite ta3 sah" />
-    <option name="LAST_COMMIT_MESSAGE" value="programmer visite ta3 sah" />
+    <MESSAGE value="fi khatr lmhamsa" />
+    <MESSAGE value="#ventesApi&#10;#logementsApi&#10;#rapportsApi&#10;#versementsApi&#10;#added some todo&#10;#created JsonUtil Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="#ventesApi&#10;#logementsApi&#10;#rapportsApi&#10;#versementsApi&#10;#added some todo&#10;#created JsonUtil Class" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1224,105 +1164,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/sql/DriverManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/gulp-file.js" />
-    <entry file="file://$PROJECT_DIR$/WebContent/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/Localite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/beans/Logement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="164" column="18" lean-forward="false" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.logement">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3928" lean-forward="false" selection-start-line="0" selection-start-column="3928" selection-end-line="0" selection-end-column="3928" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/Agent/AgentServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="75" column="13" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="75" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1eb455eb-cedd-4e9a-b880-34a34749e0d4/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="true" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.vente">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/beans/RDV.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1386,13 +1227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="270" column="45" lean-forward="false" selection-start-line="270" selection-start-column="28" selection-end-line="270" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/beans/views/TablesView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1407,24 +1241,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="71" column="27" lean-forward="true" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/client/ClientServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/ClientApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="31" column="94" lean-forward="false" selection-start-line="31" selection-start-column="94" selection-end-line="31" selection-end-column="94" />
         </state>
       </provider>
     </entry>
@@ -1491,13 +1311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="86" column="97" lean-forward="false" selection-start-line="86" selection-start-column="75" selection-end-line="86" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.client">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1505,30 +1318,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="39" column="113" lean-forward="false" selection-start-line="39" selection-start-column="113" selection-end-line="39" selection-end-column="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5661">
           <caret line="461" column="36" lean-forward="false" selection-start-line="461" selection-start-column="36" selection-end-line="461" selection-end-column="36" />
-          <folding>
-            <element signature="e#872#1183#0" expanded="false" />
-            <element signature="e#3299#3329#0" expanded="false" />
-            <element signature="e#3389#3685#0" expanded="false" />
-            <element signature="e#3748#4047#0" expanded="false" />
-            <element signature="n#!!block;n#readURL#0" expanded="false" />
-            <element signature="e#5153#5997#0" expanded="false" />
-            <element signature="n#!!block;n#fillDetails#0" expanded="false" />
-            <element signature="n#!!block;n#getVisites#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1536,14 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9996">
-          <caret line="588" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="616" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1582,37 +1367,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5219">
           <caret line="333" column="129" lean-forward="false" selection-start-line="333" selection-start-column="129" selection-end-line="333" selection-end-column="129" />
-          <folding>
-            <marker date="1524563754708" expanded="true" signature="1880:2210" ph="SELECT times... visite" />
-            <marker date="1524563754708" expanded="true" signature="1928:2094" ph="SELECT count... employe" />
-            <marker date="1524563754708" expanded="true" signature="2115:2209" ph="SELECT count... visite" />
-            <marker date="1524563754708" expanded="true" signature="2839:2870" ph="SELECT DISTI... employe" />
-            <marker date="1524563754708" expanded="true" signature="2839:3046" ph="SELECT emplo... employe" />
-            <marker date="1524563754708" expanded="true" signature="2839:3148" ph="SELECT emplo... employe" />
-            <marker date="1524563754708" expanded="true" signature="2839:3522" ph="SELECT emplo... employe" />
-            <marker date="1524563754708" expanded="true" signature="2839:3529" ph="SELECT emplo... employe" />
-            <marker date="1524563754708" expanded="true" signature="3274:3351" ph="SELECT agent... visite" />
-            <marker date="1524563754708" expanded="true" signature="3274:3417" ph="SELECT agent... visite" />
-            <marker date="1524563754708" expanded="true" signature="3274:3488" ph="SELECT agent... visite" />
-            <marker date="1524563754708" expanded="true" signature="3274:3521" ph="SELECT agent... visite" />
-            <marker date="1524563754708" expanded="true" signature="4328:4365" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="true" signature="6189:6226" ph="SELECT id FR... visite" />
-            <marker date="1524563754708" expanded="true" signature="7945:8034" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="true" signature="9702:9748" ph="UPDATE visit... " />
-            <marker date="1524563754708" expanded="true" signature="10002:10044" ph="UPDATE visit... " />
-            <marker date="1524563754708" expanded="true" signature="10299:10347" ph="UPDATE visit... " />
-            <marker date="1524563754708" expanded="true" signature="10589:10632" ph="UPDATE visit... " />
-            <marker date="1524563754708" expanded="true" signature="10982:11012" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="true" signature="13008:13218" ph="INSERT INTO visite... " />
-            <marker date="1524563754708" expanded="true" signature="13008:13375" ph="INSERT INTO visite... " />
-            <marker date="1524563754708" expanded="true" signature="13008:13376" ph="INSERT INTO visite... " />
-            <marker date="1524563754708" expanded="true" signature="13692:13712" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="true" signature="15383:15437" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="true" signature="17129:17222" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="false" signature="18904:18958" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="false" signature="20637:20678" ph="SELECT * FRO... visite" />
-            <marker date="1524563754708" expanded="false" signature="22359:22401" ph="SELECT * FRO... visite" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1620,6 +1375,234 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="39" column="113" lean-forward="false" selection-start-line="39" selection-start-column="113" selection-end-line="39" selection-end-column="113" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="573" column="21" lean-forward="false" selection-start-line="573" selection-start-column="21" selection-end-line="573" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VentesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <marker date="1524729601140" expanded="true" signature="434:476" ph="UPDATE logem... " />
+            <marker date="1524729601140" expanded="true" signature="569:612" ph="UPDATE vente... " />
+            <marker date="1524729601140" expanded="true" signature="856:897" ph="UPDATE vente... " />
+            <marker date="1524729601140" expanded="true" signature="960:996" ph="UPDATE logem... " />
+            <marker date="1524729601140" expanded="true" signature="1382:1475" ph="SELECT * FRO... vente" />
+            <marker date="1524729601140" expanded="true" signature="2789:2818" ph="SELECT * FRO... vente" />
+            <marker date="1524729601140" expanded="true" signature="4081:4435" ph="INSERT INTO vente... " />
+            <marker date="1524729601140" expanded="true" signature="4715:4742" ph="DELETE FROM " />
+            <marker date="1524729601140" expanded="true" signature="5063:5092" ph="SELECT * FRO... vente" />
+            <marker date="1524729601140" expanded="true" signature="5453:5472" ph="SELECT * FRO... vente" />
+            <marker date="1524729601140" expanded="true" signature="6253:6294" ph="UPDATE vente... " />
+            <marker date="1524729601140" expanded="true" signature="6641:6683" ph="SELECT * FRO... vente" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/Vente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/VneteApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="37" column="54" lean-forward="true" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VersementDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="115" column="22" lean-forward="false" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+          <folding>
+            <marker date="1524727047129" expanded="true" signature="443:487" ph="SELECT monta... versement" />
+            <marker date="1524727047129" expanded="true" signature="949:982" ph="SELECT * FRO... versement" />
+            <marker date="1524727047129" expanded="true" signature="1696:1727" ph="DELETE FROM " />
+            <marker date="1524727047129" expanded="true" signature="2105:2144" ph="SELECT id FR... versement" />
+            <marker date="1524727047129" expanded="true" signature="2980:3224" ph="INSERT INTO versement... " />
+            <marker date="1524727047129" expanded="true" signature="3645:3668" ph="SELECT * FRO... versement" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/system/managers/AgentsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="33" />
+          <folding>
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/RapportDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="14" column="44" lean-forward="false" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding>
+            <element signature="e#5503#5504#0" expanded="true" />
+            <element signature="e#5530#5531#0" expanded="true" />
+            <marker date="1524731548199" expanded="true" signature="574:655" ph="SELECT rappo... rapport" />
+            <marker date="1524731548199" expanded="true" signature="1808:1845" ph="SELECT * FRO... rapport" />
+            <marker date="1524731548199" expanded="true" signature="2856:2891" ph="DELETE FROM " />
+            <marker date="1524731548199" expanded="true" signature="3317:3468" ph="INSERT INTO rapport... " />
+            <marker date="1524731548199" expanded="true" signature="3708:4013" ph="INSERT INTO rapport... " />
+            <marker date="1524731548199" expanded="true" signature="4459:4480" ph="SELECT * FRO... rapport" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/RapportsApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="45" column="71" lean-forward="false" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="23" column="59" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/enums/EtatClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="88" column="5" lean-forward="false" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+          <folding>
+            <element signature="e#1592#1593#0" expanded="true" />
+            <element signature="e#1643#1644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="17" />
+          <folding>
+            <element signature="method#getEtatVenteFromString#0;class#Util#0" expanded="false" />
+            <element signature="method#getApprobationEmail#0;class#Util#0" expanded="false" />
+            <element signature="method#getForgotPasswordEmail#0;class#Util#0" expanded="false" />
+            <element signature="method#getUserTypeFromString#0;class#Util#0" expanded="false" />
+            <element signature="method#getStringFromType#0;class#Util#0" expanded="false" />
+            <element signature="method#getPageTitleFromPageType#0;class#Util#0" expanded="false" />
+            <element signature="method#getPageFromString#0;class#Util#0" expanded="false" />
+            <element signature="method#getDateFromString#0;class#Util#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/Rapport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+            <element signature="e#1293#1294#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/VersementApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="29" column="47" lean-forward="false" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/AgentApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="65" column="47" lean-forward="false" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-820">
+          <caret line="82" column="46" lean-forward="false" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/ClientApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

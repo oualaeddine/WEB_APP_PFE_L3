@@ -1,8 +1,5 @@
 package model.beans.humans;
 
-import java.io.Serializable;
-import java.util.Date;
-
 public class Client extends Person {
     private boolean isBanned;
 

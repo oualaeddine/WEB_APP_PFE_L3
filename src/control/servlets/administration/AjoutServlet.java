@@ -2,13 +2,12 @@ package control.servlets.administration;
 
 import control.servlets.MyServlet;
 import control.system.managers.*;
-import model.beans.Localite;
-import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Employe;
-import model.db.daos.*;
-import model.enums.EtatLogement;
-import model.enums.UserType;
+import model.db.daos.AssignationDAO;
+import model.db.daos.EmployeDAO;
+import model.db.daos.LogementDAO;
+import model.db.daos.SignalementDAO;
 import utils.GoogleMail;
 import utils.Util;
 
@@ -18,9 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @WebServlet(name = "AjoutServlet", value = "/AjoutServlet")
 public class AjoutServlet extends MyServlet {

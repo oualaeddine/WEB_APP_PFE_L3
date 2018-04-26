@@ -1,12 +1,7 @@
-import control.api.VisiteApi;
 import model.beans.RDV;
-import model.beans.humans.Employe;
 import model.db.daos.VisitesDao;
-import utils.GoogleMail;
 
-import javax.mail.MessagingException;
 import java.sql.Date;
-import java.util.LinkedList;
 
 
 public class Main {

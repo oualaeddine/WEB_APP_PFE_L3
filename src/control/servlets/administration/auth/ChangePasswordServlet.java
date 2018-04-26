@@ -1,7 +1,8 @@
 package control.servlets.administration.auth;
 
 import model.beans.humans.Person;
-import model.db.daos.*;
+import model.db.daos.ClientDAO;
+import model.db.daos.EmployeDAO;
 import model.enums.UserType;
 
 import javax.servlet.ServletException;

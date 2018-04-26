@@ -1,11 +1,11 @@
 package model.beans.views.table;
 
 import model.beans.*;
-import model.beans.humans.*;
+import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.daos.AssignationDAO;
 import model.db.daos.EmployeDAO;
 import model.enums.DataTableRowFormat;
-import model.enums.EtatLogement;
 
 public class DataTableRow {
 

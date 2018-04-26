@@ -2,7 +2,6 @@ package model.beans.humans;
 
 import model.enums.UserType;
 
-import java.io.Serializable;
 import java.util.Date;
 
 public class Employe extends Person {

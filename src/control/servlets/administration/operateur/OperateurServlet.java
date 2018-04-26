@@ -28,64 +28,66 @@ public class OperateurServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/operateur.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "nouvelleVente":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?what=NOUVELLE_VENTE").forward(request, response);
+                        break;
                     case "modifierVisite":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MODIFIER_VISITE").forward(request, response);
                         break;
-                    case "programmerVisite":{
+                    case "programmerVisite": {
                         response.sendRedirect("programmerVisite/index.html");
-
                         break;
                     }
-                    case "AdminsMessages":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINISTRATION_MESSAGES_FOR_EMPLOYEES").forward(request,response);
+                    case "AdminsMessages": {
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINISTRATION_MESSAGES_FOR_EMPLOYEES").forward(request, response);
                         break;
                     }
-                    case "newMessage":{
+                    case "newMessage": {
                         this.getServletContext().getRequestDispatcher("/html/newMessage.html").forward(request, response);
                         break;
                     }
 
-                    case "visitesProgrammees":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PROGRAMMED_VISITES").forward(request,response);
+                    case "visitesProgrammees": {
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PROGRAMMED_VISITES").forward(request, response);
                         break;
                     }
-                    case "visitesPassees":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PASSED_VISITS").forward(request,response);
+                    case "visitesPassees": {
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PASSED_VISITS").forward(request, response);
                         break;
                     }
-                    case "visitesAnnulees":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CANCELED_VISITES").forward(request,response);
+                    case "visitesAnnulees": {
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CANCELED_VISITES").forward(request, response);
                         break;
                     }
-                    case "listeClients":{
+                    case "listeClients": {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS").forward(request, response);
                         break;
                     }
-                    case "myClients":{
+                    case "myClients": {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CLIENTS_FOR_USER").forward(request, response);
                         break;
                     }
-                    case "signalerClient":{
+                    case "signalerClient": {
                         this.getServletContext().getRequestDispatcher("/html/signalerClient.html").forward(request, response);
                         break;
                     }
-                    case "allLogements":{
+                    case "allLogements": {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=LOGEMENTS").forward(request, response);
                         break;
                     }
-                    case "logementVendus":{
+                    case "logementVendus": {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=LOGEMENTS_VENDUS").forward(request, response);
                         break;
                     }
-                    case "logementGeles":{
+                    case "logementGeles": {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=FROZEN_LOGEMENTS").forward(request, response);
                         break;
                     }
-                    case "modifierProfil":{
+                    case "modifierProfil": {
                         this.getServletContext().getRequestDispatcher("/jsp/modifierProfil.jsp").forward(request, response);
                         break;
                     }
-                    case "changePassword":{
+                    case "changePassword": {
                         this.getServletContext().getRequestDispatcher("/ChangePassword").forward(request, response);
                         break;
                     }
@@ -95,6 +97,8 @@ public class OperateurServlet extends MyServlet {
                 }
 
             }
+        } else {
+            redirectToLogin(request, response, 0);
         }
     }
 }

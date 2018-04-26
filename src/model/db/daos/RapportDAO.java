@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Rapport;
+import model.beans.Vente;
 import model.beans.Versement;
 import model.beans.humans.Person;
 import model.db.DAO;

@@ -11,8 +11,6 @@ public class Vente implements Serializable {
     private int id;
     private Date date;
     private Logement logement;
-    private Employe agent;
-    private Employe responsableVente;
     private Client client;
     private EtatVente etatVente;
 
@@ -50,22 +48,6 @@ public class Vente implements Serializable {
 
     public void setLogement(Logement logement) {
         this.logement = logement;
-    }
-
-    public Employe getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Employe agent) {
-        this.agent = agent;
-    }
-
-    public Employe getResponsableVente() {
-        return responsableVente;
-    }
-
-    public void setResponsableVente(Employe responsableVente) {
-        this.responsableVente = responsableVente;
     }
 
     public Client getClient() {

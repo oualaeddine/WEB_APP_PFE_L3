@@ -45,22 +45,10 @@ public class VentesDAO extends DAO {
             if (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                vente.setDate(result.getDate("date"));
-                switch (result.getString("etat")) {
-                    case "confirmee":
-                        vente.setEtatVente(EtatVente.CONFIRMEE);
-                        break;
-                    case "non_confirmee":
-                        vente.setEtatVente(EtatVente.EN_COURS);
-                        break;
-                    case "annulee":
-                        vente.setEtatVente(EtatVente.ANNULEE);
-                        break;
-                }
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
                 return vente;
             }
         } catch (SQLException e) {
@@ -82,15 +70,10 @@ public class VentesDAO extends DAO {
             if (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
-                if (result.getString("etat").equals("confirmee"))
-                    vente.setEtatVente(EtatVente.CONFIRMEE);
-                else
-                    vente.setEtatVente(EtatVente.EN_COURS);
-                vente.setDate(result.getDate("date"));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
                 return vente;
             }
         } catch (SQLException e) {
@@ -112,12 +95,11 @@ public class VentesDAO extends DAO {
     public boolean add(Object object) {
         Vente vente = (Vente) object;
         try {
-            venteStatement.execute("INSERT INTO vente (agentId, responsableId, clientId, logementId, etat) VALUES (" +
-                    vente.getAgent().getId() + "," +
-                    vente.getResponsableVente().getId() + "," +
+            venteStatement.execute("INSERT INTO vente (clientId, logementId, etat) VALUES (" +
                     vente.getClient().getId() + "," +
                     vente.getLogement().getId() + "," +
-                    "'encours'" +
+                    "'encours'," +
+                    "current_date" +
                     ");");
             return true;
         } catch (SQLException e) {
@@ -159,10 +141,10 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
 
                 list.add(vente);
             }
@@ -190,8 +172,7 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
@@ -212,8 +193,7 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
@@ -233,8 +213,7 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
@@ -254,8 +233,7 @@ public class VentesDAO extends DAO {
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));
-                vente.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
-                vente.setResponsableVente((Employe) new EmployeDAO().getById(result.getInt("responsableId")));
+                vente.setDate(result.getDate("date"));
                 vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
                 vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
                 vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));

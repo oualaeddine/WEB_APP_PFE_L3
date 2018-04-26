@@ -358,10 +358,50 @@ public class Nav {
         messagesSubNavElementList.add(administrationMessagesNavElement);
         ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
         navElements.add(messagesExpendableNavElement);
+        /*Versements*/
+        LinkedList<NavElement> versementsSubElementList = new LinkedList<>();
+
+        NavElement ajouterVersementNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), "Ajouter versement", urlBase + "?what=ajouterVersement", "fa-plus");
+        versementsSubElementList.add(ajouterVersementNavElement);
+
+        NavElement versementsParVente = new NavElement(isPage(currentPage, TablePage.VERSEMENTS_FOR_VENTE), "Versements par vente", urlBase + "?what=versementsParVente", "fa-list");
+        versementsSubElementList.add(versementsParVente);
+
+        NavElement versementsParClientNavElement = new NavElement(isPage(currentPage, TablePage.VERSEMENTS_FOR_USER), "Versements par client", urlBase + "?what=versementsParClient", "fa-vcard-o");
+        versementsSubElementList.add(versementsParClientNavElement);
+
+        ExpendableNavElement versementExpendableNavElement = new ExpendableNavElement("versementsNav", "fa-money", "Versements", versementsSubElementList, false);
+        navElements.add(versementExpendableNavElement);
+
         /*ventes*/
-        /*clients*/
+        LinkedList<NavElement> ventesSubElementList = new LinkedList<>();
+
+        NavElement ventesEnAttenteNavElement = new NavElement(isPage(currentPage, TablePage.VENTES_EN_ATTENTE), "Ventes en attente",urlBase + "?what=ventesEnAttente","fa-clock-o");
+        ventesSubElementList.add(ventesEnAttenteNavElement);
+
+        NavElement ventesConfirmeeNavElement = new NavElement(isPage(currentPage, TablePage.CONFIRMED_VENTES), "Ventes confirmées", urlBase + "?what=ventesConfirmees", "fa-check-square-o");
+        ventesSubElementList.add(ventesConfirmeeNavElement);
+
+        NavElement ventesAnnuleesNavElement = new NavElement(isPage(currentPage, TablePage.VENTES_ANNULEES), "Ventes annulées", urlBase + "?what=ventesAnnulees", "fa-times");
+        ventesSubElementList.add(ventesAnnuleesNavElement);
+
+        ExpendableNavElement ventesExpendableNavElement = new ExpendableNavElement("ventesNav", "fa-dollar", "Ventes", ventesSubElementList, isPage(currentPage, TablePage.VENTES));
+        navElements.add(ventesExpendableNavElement);
+
         /*profile*/
+        LinkedList<NavElement> profilSubNavElement = new LinkedList<>();
+
+        NavElement modifierProfilNavElement = new NavElement(isPage(currentPage, TablePage.MODIFIER_PROFIL), MyConsts.MODIFIER_PROFIL, urlBase + "?what=modifierProfil", "fa fa-user-circle");
+        profilSubNavElement.add(modifierProfilNavElement);
+
+        NavElement changerMdpNavElement = new NavElement(isPage(currentPage, TablePage.CHANGER_MOT_DE_PASSE), MyConsts.CHANGE_PASSWORD, urlBase + "?what=changePassword","fa fa-lock");
+        profilSubNavElement.add(changerMdpNavElement);
+
+        ExpendableNavElement profilExpendableNavElement = new ExpendableNavElement("profilNav", "fa fa-fw fa-user","Profil", profilSubNavElement, isPage(currentPage, TablePage.MODIFIER_PROFIL));
+        navElements.add(profilExpendableNavElement);
         /*logout*/
+        NavElement logoutNavElement = new NavElement(isPage(currentPage, TablePage.LOGOUT), MyConsts.LOGOUT_PAGE_TITILE, MyConsts.LOGOUT_SERVLET_URL, "fa fa-fw fa-sign-out");
+        navElements.add(logoutNavElement);
 
     }
 
@@ -370,6 +410,10 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
+
+        /*Nouvelle vente*/
+        NavElement nouvelleVenteNavElement = new NavElement(false, "Nouvelle vente", urlBase + "?what=nouvelleVente", "fa-plus-circle");
+        navElements.add(nouvelleVenteNavElement);
 
         /*Programmer visite*/
 

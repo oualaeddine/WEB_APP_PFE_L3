@@ -249,8 +249,6 @@ public class DataTableHeader {
         html =
                 "                        <tr>\n" +
                         "                            <th>ID</th>\n" +
-                        "                            <th>Agent</th>\n" +
-                        "                            <th>Responsable vente</th>\n" +
                         "                            <th>Client</th>\n" +
                         "                            <th>Logement</th>\n" +
                         "                            <th>Date</th>\n" +

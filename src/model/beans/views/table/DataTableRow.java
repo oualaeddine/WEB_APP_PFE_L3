@@ -283,8 +283,6 @@ public class DataTableRow {
         Vente vente = (Vente) object;
         html="<tr>" +
                 "<td>"+vente.getId()+"</td>"+
-                "<td>"+vente.getAgent().getNom()+" "+vente.getAgent().getPrenom()+"</td>"+
-                "<td>"+vente.getResponsableVente().getNom()+" "+vente.getResponsableVente().getPrenom() +"</td>"+
                 "<td>"+vente.getClient().getNom()+" "+vente.getClient().getPrenom() +"</td>"+
                 "<td>"+vente.getLogement().getTitre()+"</td>"+
                 "<td>"+vente.getDate()+"</td>"+

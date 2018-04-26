@@ -39,7 +39,7 @@ public class DashboardServlet extends MyServlet {
                     this.getServletContext().getRequestDispatcher("/AgentServlet").forward(request, response);
                     break;
                 case RESPONSABLE_VENTES:
-                    this.getServletContext().getRequestDispatcher("/ResVentesServlet").forward(request, response);
+                    this.getServletContext().getRequestDispatcher("/ServiceVentesServlet").forward(request, response);
                     break;
                 case CLIENT:
                     this.getServletContext().getRequestDispatcher("/ClientServlet").forward(request, response);

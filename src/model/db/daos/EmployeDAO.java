@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class EmployeDAO extends DAO {
 
     public boolean inscriptionEmploye(Employe employe) {
@@ -519,4 +520,6 @@ public class EmployeDAO extends DAO {
         }
         return list;
     }
+
+
 }

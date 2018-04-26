@@ -273,12 +273,17 @@ public class Util {
                 return "Visites à venir";
             case ETABLIR_RAPPORT:
                 return "Visites";
+            case NOUVELLE_VENTE:
+                return "Clients";
+
         }
      return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "NOUVELLE_VENTE":
+                return NOUVELLE_VENTE;
             case "ETABLIR_RAPPORT":
                 return ETABLIR_RAPPORT;
             case "MODIFIER_VISITE":

@@ -23,11 +23,10 @@ public class DbConnector {
     private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name;
     private static Connection connexion;
 
-    public DbConnector() {
-        createConnexion();
+    DbConnector() {
     }
 
-    private static void createConnexion() {
+    static void createConnexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             if (connexion == null)

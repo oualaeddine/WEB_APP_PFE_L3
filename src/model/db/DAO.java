@@ -11,7 +11,7 @@ public abstract class DAO {
             rapportStatement, statement, clientStatement, employeStatement, localiteStatement, logementStatement, venteStatement, versementStatement, visiteStatement;
 
     public DAO() {
-        new DbConnector();
+        DbConnector.createConnexion();
 
         if (clientStatement == null)
             clientStatement = DbConnector.getStatment();

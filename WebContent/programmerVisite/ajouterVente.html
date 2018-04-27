@@ -84,13 +84,13 @@
 
                 <!--      Wizard container        -->
                 <div class="wizard-container">
-                    <div class="card wizard-card" data-color="blue" id="wizard">
+                    <div class="card wizard-card" data-color="red" id="wizard">
                         <form action="" method="">
                             <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
                             <div class="wizard-header">
-                                <h3 class="wizard-title">Programmer une visite</h3>
-                                <p class="category">Suivez les etapes pour programmer une visite.</p>
+                                <h3 class="wizard-title">Ajouter une vente</h3>
+                                <p class="category">Suivez les etapes pour Ajouter une vente.</p>
                             </div>
                             <div class="wizard-navigation">
                                 <div class="progress-with-circle">
@@ -120,14 +120,6 @@
                                                 <i class="ti-home"></i>
                                             </div>
                                             logements
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#date" data-toggle="tab">
-                                            <div class="icon-circle">
-                                                <i class="ti-calendar"></i>
-                                            </div>
-                                            Date rdv
                                         </a>
                                     </li>
                                     <li>
@@ -369,18 +361,6 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="date">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div id='calendar'></div>
-                                            <input type="hidden" name="rdv" id="idVisite">
-                                            <input type="hidden" name="rdv" id="idAgent">
-                                            <input type="hidden" name="rdv" id="heureDebutVisite">
-                                            <input type="hidden" name="rdv" id="heureFinVisite">
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="tab-pane" id="client">
                                     <div class="row">
                                         <h5 class="info-text"> Please tell us more about yourself.</h5>
@@ -420,7 +400,7 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12 ">
                                                 <div class="panel panel-success height">
-                                                    <div class="panel-heading">Details du Rendez-vous</div>
+                                                    <div class="panel-heading">Details de la vente</div>
                                                     <div class="panel-body">
                                                         <div class="col-xs-12 col-md-12 ">
                                                             <div class="panel panel-primary ">
@@ -495,37 +475,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 col-md-12 ">
-                                                            <div class="panel panel-danger height">
-                                                                <div class="panel-heading">Details de la visite</div>
-                                                                <div class="panel-body">
-                                                                    <div class=" col-md-4 ">
-                                                                        <strong>Agent ID:</strong>
-                                                                        <span id="idAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Date:</strong>
-                                                                        <span id="dateVisiteDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                    <div class="col-md-4 ">
-                                                                        <strong>Nom Agent:</strong>
-                                                                        <span id="nomAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Heure:</strong>
-                                                                        <span id="heureDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                    <div class="col-md-4 ">
-                                                                        <strong>telephone:</strong>
-                                                                        <span id="tellAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Durée:</strong>
-                                                                        <span id="dureeVisiteDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -539,7 +488,7 @@
                                            name='next'
                                            value='Next'/>
                                     <input type='button' class='btn btn-finish btn-fill btn-success btn-wd'
-                                           name='finish' value='Finish' onclick="confirmerVisite()"/>
+                                           name='finish' value='Finish' onclick="ajouterVente()"/>
                                 </div>
 
                                 <div class="pull-left">

@@ -211,7 +211,9 @@ var logementsTable = $('#logementsTable').DataTable({
 });
 
 logementsTable.on('select', function (e, dt, type, indexes) {
+
     var rowData = logementsTable.rows(indexes).data().toArray();
+
     $('#selectedlogementId').val(rowData[0]["id"]);
     $('#selectedlogementadresse').val(rowData[0]["adresse"]);
     $('#selectedLogementSuperficie').val(rowData[0]["superficie"]);
@@ -220,7 +222,7 @@ logementsTable.on('select', function (e, dt, type, indexes) {
     document.getElementById("idLogementDetails").innerHTML = rowData[0]["id"];
     document.getElementById("superficieDetails").innerHTML = rowData[0]["superficie"];
     document.getElementById("prixDetails").innerHTML = rowData[0]["price"];
-
+    fillDetails();
     initCalendar(rowData[0]["id"]);
 });
 
@@ -345,7 +347,10 @@ function fillOtherInputs(startDate, endDate) {
             var agent = JSON.parse(result);
 
             console.log(result);
+
+
             $('#idAgent').val(agent.id);
+
 
             $('#heureDebutVisite').val(startDate.format());
             $('#heureFinVisite').val(endDate.format().substring(11, 16));
@@ -363,16 +368,6 @@ function fillOtherInputs(startDate, endDate) {
 
 var visites;
 
-function getVisites() {
-    var logementId = $('#selectedLogementId').val();
-    var url = "/visitesApi?+action=possibleVisites&logementId=" + logementId;
-    $.ajax({
-        url: url, async: false, success: function (result) {
-            visites = JSON.parse(result);
-        }
-    });
-    return visites;
-}
 
 var calendar = $('#calendar').fullCalendar({
 
@@ -458,10 +453,20 @@ function confirmerVisite() {
     post("/ProgrammerVisite", params, "GET");
 }
 
+function ajouterVente() {
+    var idLogement = $('#selectedlogementId').val();
+    var idClient = $('#clientId').val();
+
+    var params = {
+        action: "add",
+        idLogement: idLogement,
+        idClient: idClient
+    };
+    post("/ajouterVente", params, "GET");
+}
 
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
-
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
@@ -478,7 +483,6 @@ function post(path, params, method) {
             form.appendChild(hiddenField);
         }
     }
-
     document.body.appendChild(form);
     form.submit();
 }

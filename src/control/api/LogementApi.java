@@ -75,7 +75,8 @@ public class LogementApi extends API {
                     boolean soussol = request.getParameter("soussol").equals("true");
                     logement.setAvecSousSol(soussol);
 
-                    LinkedList<Logement> logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin);
+                    //LinkedList<Logement> logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin);
+                    LinkedList<Logement> logements = new LogementDAO().getAll();
 
                     responseBody = JsonUtil.logementsListToJsonArray(logements);
             }

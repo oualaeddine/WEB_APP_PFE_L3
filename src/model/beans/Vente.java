@@ -1,7 +1,6 @@
 package model.beans;
 
 import model.beans.humans.Client;
-import model.beans.humans.Employe;
 import model.enums.EtatVente;
 
 import java.io.Serializable;
@@ -56,5 +55,16 @@ public class Vente implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    @Override
+    public String toString() {
+        return "Vente{" +
+                "id=" + id +
+                ", date=" + date +
+                ", logement=" + logement +
+                ", client=" + client +
+                ", etatVente=" + etatVente +
+                '}';
     }
 }

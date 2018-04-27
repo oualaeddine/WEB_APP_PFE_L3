@@ -87,4 +87,19 @@ public abstract class Person implements Serializable {
     public String getFullName() {
         return getNom() + " " + getPrenom();
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", tel='" + tel + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                '}';
+    }
 }

@@ -5,7 +5,6 @@ import model.beans.Vente;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
-import model.enums.EtatVente;
 import utils.Util;
 
 import java.sql.ResultSet;
@@ -93,12 +92,13 @@ public class VentesDAO extends DAO {
     public boolean add(Object object) {
         Vente vente = (Vente) object;
         try {
-            venteStatement.execute("INSERT INTO vente (clientId, logementId, etat) VALUES (" +
+            venteStatement.execute("INSERT INTO vente (clientId, logementId, etat,vente.date) VALUES (" +
                     vente.getClient().getId() + "," +
                     vente.getLogement().getId() + "," +
                     "'encours'," +
                     "current_date" +
                     ");");
+            System.out.println("vente ajouté client " + vente.getClient().getId() + "logement = " + vente.getLogement().getId());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -227,7 +227,7 @@ public class VentesDAO extends DAO {
         ResultSet result;
         LinkedList<Vente> ventes = new LinkedList<>();
         try {
-            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId="+client.getId()+" AND etat='encours';");
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE clientId=" + client.getId() + " AND etat='encours';");
             while (result.next()) {
                 Vente vente = new Vente();
                 vente.setId(result.getInt("id"));

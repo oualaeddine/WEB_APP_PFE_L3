@@ -22,5 +22,10 @@ public class Client extends Person {
             return "not banned";
     }
 
-
+    @Override
+    public String toString() {
+        return "Client{" +
+                "isBanned=" + isBanned +
+                "} " + super.toString();
+    }
 }

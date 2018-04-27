@@ -9,20 +9,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "MyClientServlet")
+@WebServlet(name = "MyClientServlet", value = "/ClientServlet")
+
 public class MyClientServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (isLoggedIn(request)) {
+            String action = request.getParameter("what");
+            if (action == null) {
+                redirectToHome(request, response);
+            } else {
+                switch (action) {
+                    case "myVisits":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=CLIENT_MY_VISITS").forward(request, response);
+                        break;
+                    case "mesVentes":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=CLIENT_MES_VENTES_EN_COURS").forward(request, response);
+                        break;
+                    case "mesLogements":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=CLIENT_MES_LOGEMENT_VISITES").forward(request, response);
+                        break;
 
+                }
+            }
+        } else {
+            redirectToLogin(request, response, 0);
+        }
     }
 
     protected void redirectToHome(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            this.getServletContext().getRequestDispatcher("/jsp/client/test.jsp").forward(request,response);
+            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServletException e) {

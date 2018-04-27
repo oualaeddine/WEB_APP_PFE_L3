@@ -199,6 +199,14 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case CLIENT_MES_LOGEMENT_VISITES:
+                return "Mes logements visités";
+            case CLIENT_MES_VENTES_EN_COURS:
+                return "Mes ventes en cours";
+            case CLIENT_MY_NOTIFICATIONS:
+                return "Mes notifications";
+            case CLIENT_MY_VISITS:
+                return "Mes visites";
             case AJOUTER_VERSEMENT:
                 return "Clients";
             case SUSPENDRE_ADMIN:
@@ -284,6 +292,14 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "CLIENT_MY_VISITS":
+                return CLIENT_MY_VISITS;
+            case "CLIENT_MY_NOTIFICATIONS":
+                return CLIENT_MY_NOTIFICATIONS;
+            case "CLIENT_MES_VENTES_EN_COURS":
+                return CLIENT_MES_VENTES_EN_COURS;
+            case "CLIENT_MES_LOGEMENT_VISITES":
+                return CLIENT_MES_LOGEMENT_VISITES;
             case "AJOUTER_VERSEMENT":
                 return AJOUTER_VERSEMENT;
             case "NOUVELLE_VENTE":

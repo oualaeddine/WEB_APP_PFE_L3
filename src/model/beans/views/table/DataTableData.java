@@ -29,6 +29,12 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case CLIENT_MES_LOGEMENT_VISITES:
+                setupDataLogementsVisites();
+                break;
+            case CLIENT_MY_VISITS:
+                setupDataVisitsForClient();
+                break;
             case AJOUTER_VERSEMENT:
                 setupDataClientsList();
                 break;
@@ -137,6 +143,31 @@ public class DataTableData {
             case ETABLIR_RAPPORT:
                 setupDataEtablirRapport();
                 break;
+            case CLIENT_MES_VENTES_EN_COURS:
+                setupDataVentesEnCoursForClient();
+                break;
+        }
+    }
+
+    private void setupDataLogementsVisites() {
+        LinkedList<Logement> logements = new LogementDAO().getLogementsVisitesByUser(userId);
+        for (Logement logement : logements) {
+            data.add(new DataTableRow(DataTableRowFormat.LOGEMENT, logement));
+        }
+    }
+
+    private void setupDataVentesEnCoursForClient() {
+        Client client = (Client) new ClientDAO().getById(userId);
+        LinkedList<Vente> ventes = new VentesDAO().getEnCoursForClient(client);
+        for (Vente v : ventes) {
+            data.add(new DataTableRow(DataTableRowFormat.VENTE, v));
+        }
+    }
+
+    private void setupDataVisitsForClient() {
+        LinkedList<Visite> visites = new VisitesDao().getVisitesByClient(userId);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.VISITE, visite));
         }
     }
 

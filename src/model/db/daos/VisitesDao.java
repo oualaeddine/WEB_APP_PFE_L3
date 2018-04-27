@@ -175,11 +175,11 @@ public class VisitesDao extends DAO {
         return list;
     }
 
-    public LinkedList<Visite> getVisitesByClient(Client client) {
+    public LinkedList<Visite> getVisitesByClient(int clientId) {
         ResultSet result;
         LinkedList<Visite> list = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT id FROM visite WHERE clientId=" + client.getId() + ";");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE clientId=" + clientId + ";");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -191,12 +191,6 @@ public class VisitesDao extends DAO {
                 switch (result.getString("etat")) {
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);

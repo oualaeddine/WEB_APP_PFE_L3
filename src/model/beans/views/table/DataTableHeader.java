@@ -13,6 +13,15 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case CLIENT_MES_LOGEMENT_VISITES:
+                setupTableHeaderForLogements();
+                break;
+            case CLIENT_MES_VENTES_EN_COURS:
+                setupTableHeaderForVentes();
+                break;
+            case CLIENT_MY_VISITS:
+                setupTableHeaderForVisites();
+                break;
             case AJOUTER_VERSEMENT:
                 setupTableHeaderForClients();
                 break;
@@ -250,13 +259,13 @@ public class DataTableHeader {
 
     private void setupTableHeaderForVentes() {
         html =
-                "                        <tr>\n" +
-                        "                            <th>ID</th>\n" +
-                        "                            <th>Client</th>\n" +
-                        "                            <th>Logement</th>\n" +
-                        "                            <th>Date</th>\n" +
-                        "                            <th>Etat</th>\n" +
-                        "                        </tr>";
+                "<tr>\n" +
+                        "    <th>ID</th>\n" +
+                        "    <th>Client</th>\n" +
+                        "    <th>Logement</th>\n" +
+                        "    <th>Date</th>\n" +
+                        "    <th>Etat</th>\n" +
+                        "</tr>";
     }
 
     private void setupTableHeaderForAgents() {

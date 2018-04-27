@@ -69,6 +69,6 @@ public class VersementApi extends API {
             }
             response.getWriter().append(responseBody);
         }
-        response.sendRedirect("/Dashboard");
+        response.sendRedirect("/DashboardServlet");
     }
 }

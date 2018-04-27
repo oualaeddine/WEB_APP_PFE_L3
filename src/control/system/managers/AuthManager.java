@@ -83,6 +83,8 @@ public class AuthManager {
             client = clientDAO.getByEmail(username);
         }
         session.setAttribute(MyServlet.LOGGED_IN_USER, client);
+        session.setAttribute(MyServlet.LOGGED_IN_USER_ID, client.getId());
+        session.setAttribute(MyServlet.LOGGED_IN_USER_TYPE, UserType.CLIENT);
 
 
     }

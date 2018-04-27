@@ -8,21 +8,38 @@ import java.util.LinkedList;
 
 public abstract class DAO {
     protected Statement
-            rapportStatement,statement,clientStatement, employeStatement,localiteStatement,logementStatement,venteStatement,versementStatement,visiteStatement;
+            rapportStatement, statement, clientStatement, employeStatement, localiteStatement, logementStatement, venteStatement, versementStatement, visiteStatement;
 
     public DAO() {
-        this.clientStatement = DbConnector.getStatment();
-        this.employeStatement = DbConnector.getStatment();
-        this.localiteStatement = DbConnector.getStatment();
-        this.logementStatement = DbConnector.getStatment();
-        this.venteStatement = DbConnector.getStatment();
-        this.versementStatement = DbConnector.getStatment();
-        this.visiteStatement = DbConnector.getStatment();
-        this.rapportStatement = DbConnector.getStatment();
-        this.statement = DbConnector.getStatment();
+        new DbConnector();
+
+        if (clientStatement == null)
+            clientStatement = DbConnector.getStatment();
+        else {
+            clientStatement = DbConnector.getStatment();
+        }
+
+        if (employeStatement == null)
+            employeStatement = DbConnector.getStatment();
+        if (localiteStatement == null)
+            localiteStatement = DbConnector.getStatment();
+        if (logementStatement == null)
+            logementStatement = DbConnector.getStatment();
+        if (venteStatement == null)
+            venteStatement = DbConnector.getStatment();
+        if (versementStatement == null)
+            versementStatement = DbConnector.getStatment();
+        if (visiteStatement == null)
+            visiteStatement = DbConnector.getStatment();
+        if (rapportStatement == null)
+            rapportStatement = DbConnector.getStatment();
+        if (statement == null)
+            statement = DbConnector.getStatment();
+
     }
 
     public abstract Person getByEmail(String email);
+
     protected boolean reintegrerById(int id, String table) {
         try {
             statement.execute("UPDATE " + table + " SET isSuspended = 0 " +

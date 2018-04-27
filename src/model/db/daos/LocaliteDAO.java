@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class LocaliteDAO extends DAO  {
+public class LocaliteDAO extends DAO {
     @Override
     public Employe getByEmail(String email) {
         return null;
@@ -18,14 +18,21 @@ public class LocaliteDAO extends DAO  {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = localiteStatement.executeQuery("SELECT * FROM localite WHERE id="+id);
-            if (result.next()){
+            result = localiteStatement.executeQuery("SELECT * FROM localite WHERE id=" + id);
+            if (result.next()) {
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));
                 localite.setNom(result.getString("nom"));
+
+                try {
+                    result.close();
+                    localiteStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 return localite;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -45,10 +52,10 @@ public class LocaliteDAO extends DAO  {
         Localite localite = (Localite) object;
         try {
             localiteStatement.execute("INSERT INTO localite(nom) VALUES (" +
-                    "'"+localite.getNom()+"'"+
+                    "'" + localite.getNom() + "'" +
                     ");");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -58,8 +65,8 @@ public class LocaliteDAO extends DAO  {
     public boolean delete(Object object) {
         Localite localite = (Localite) object;
         try {
-            localiteStatement.execute("DELETE FROM localite WHERE nom="+localite.getNom());
-        }catch (SQLException e){
+            localiteStatement.execute("DELETE FROM localite WHERE nom=" + localite.getNom());
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -68,13 +75,13 @@ public class LocaliteDAO extends DAO  {
     public boolean exists(Object object) {
         Localite localite = (Localite) object;
         ResultSet result;
-        try{
+        try {
             result = localiteStatement.executeQuery("SELECT * FROM localite");
-            while (result.next()){
+            while (result.next()) {
                 String nom = result.getString("nom");
                 if (localite.getNom().equals(nom)) return true;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -84,15 +91,15 @@ public class LocaliteDAO extends DAO  {
     public LinkedList getAll() {
         LinkedList<Localite> list = new LinkedList<>();
         ResultSet result;
-        try{
+        try {
             result = localiteStatement.executeQuery("SELECT * FROM localite;");
-            while (result.next()){
+            while (result.next()) {
                 Localite localite = new Localite();
                 localite.setId(result.getInt("id"));
                 localite.setNom(result.getString("nom"));
                 list.add(localite);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;

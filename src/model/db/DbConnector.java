@@ -9,9 +9,9 @@ public class DbConnector {
     private static final String
             db_name = "soc_imm",
             host = "localhost",
-            port = "124",
+            port = "3306",
             user = "root",
-            pass = "1234";
+            pass = "";
 
   /*  private static final String
             db_name = "soc_imm",
@@ -21,16 +21,25 @@ public class DbConnector {
             pass = "soc_imm_root";*/
 
     private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name;
+    private static Connection connexion;
 
     public DbConnector() {
+        createConnexion();
+    }
+
+    private static void createConnexion() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            if (connexion == null)
+                connexion = DriverManager.getConnection(conn, user, pass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     static Statement getStatment() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connexion = DriverManager.getConnection(conn, user, pass);
             return connexion.createStatement();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

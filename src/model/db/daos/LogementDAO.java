@@ -30,12 +30,12 @@ public class LogementDAO extends DAO {
         String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1 " : "";
         try {
             result = logementStatement.executeQuery("SELECT * FROM logement WHERE " +
-                    "(superficie <= "+supMax+" AND superficie >= "+supMin+") " +
-                    "AND (prix <= "+prixMax+" AND prix >= "+prixMin+") " +
+                    "(superficie <= " + supMax + " AND superficie >= " + supMin + ") " +
+                    "AND (prix <= " + prixMax + " AND prix >= " + prixMin + ") " +
                     "AND  gele=0 " +
-                    "AND region = "+criteres.getLocalite().getId()+" " +
-                    "AND nbrPieces <= "+criteres.getNbrPieces()+" " +
-                    "AND nbrSdb <= "+criteres.getNbrSdb()+" " +
+                    "AND region = " + criteres.getLocalite().getId() + " " +
+                    "AND nbrPieces <= " + criteres.getNbrPieces() + " " +
+                    "AND nbrSdb <= " + criteres.getNbrSdb() + " " +
                     avecGarage +
                     avecJardin +
                     avecSousSol +
@@ -71,13 +71,22 @@ public class LogementDAO extends DAO {
 
                 logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
-                System.out.println("Lguit: "+logement.getTitre());
+                System.out.println("Lguit: " + logement.getTitre());
 
                 logements.add(logement);
+            }
+
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
         return logements;
     }
 
@@ -112,6 +121,12 @@ public class LogementDAO extends DAO {
 
                 list.add(logement);
             }
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -121,26 +136,38 @@ public class LogementDAO extends DAO {
     public boolean degeler(int id) {
         try {
             logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + id + ";");
+            try {
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-    public boolean geler(int id){
+
+    public boolean geler(int id) {
         try {
-            logementStatement.execute("UPDATE logement SET gele=1 WHERE id="+id+";");
+            logementStatement.execute("UPDATE logement SET gele=1 WHERE id=" + id + ";");
+            try {
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
     public LinkedList<Logement> getLogementsForUser(UserType userType, int userId) {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE client.id=vente.clientId AND vente.clientId="+userId+" AND logement.id=vente.logementId;");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE client.id=vente.clientId AND vente.clientId=" + userId + " AND logement.id=vente.logementId;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -165,7 +192,13 @@ public class LogementDAO extends DAO {
 
                 list.add(logement);
             }
-        }catch (SQLException e){
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -180,8 +213,8 @@ public class LogementDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE id="+id);
-            if (result.next()){
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE id=" + id);
+            if (result.next()) {
                 Logement logement = new Logement();
 
                 logement.setId(result.getInt("id"));
@@ -205,7 +238,13 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 return logement;
             }
-        }catch (SQLException e){
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -233,25 +272,30 @@ public class LogementDAO extends DAO {
 
 
             logementStatement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,avecMeubles,latitude,longitude,prix,type) VALUES (" +
-                            "'" + logement.getTitre() + "', \n" +
-                            "'" + logement.getDescription() + "',\n " +
-                            logement.getSuperficie() + ",\n " +
-                            logement.getLocalite().getId() + ", \n" +
-                            "'" + logement.getAdresse() + "',\n " +
-                            logement.getNbrPieces() + ", \n" +
-                            logement.getNbrSdb() + ", \n" +
-                            logement.getEtage() +
-                            "," + jardin +
-                            "," + garage +
-                            "," + sousSol +
-                            "," + meubles + ","+
-                            logement.getLocation().getLatitude() + "," +
-                            logement.getLocation().getLongitude() + "," +
-                            logement.getPrix()+ "," +
-                            "'" + type +"'" +
+                    "'" + logement.getTitre() + "', \n" +
+                    "'" + logement.getDescription() + "',\n " +
+                    logement.getSuperficie() + ",\n " +
+                    logement.getLocalite().getId() + ", \n" +
+                    "'" + logement.getAdresse() + "',\n " +
+                    logement.getNbrPieces() + ", \n" +
+                    logement.getNbrSdb() + ", \n" +
+                    logement.getEtage() +
+                    "," + jardin +
+                    "," + garage +
+                    "," + sousSol +
+                    "," + meubles + "," +
+                    logement.getLocation().getLatitude() + "," +
+                    logement.getLocation().getLongitude() + "," +
+                    logement.getPrix() + "," +
+                    "'" + type + "'" +
                     ");");
+            try {
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -262,9 +306,14 @@ public class LogementDAO extends DAO {
         Logement logement = (Logement) object;
         try {
             logementStatement.execute("DELETE FROM logement " +
-                    "WHERE id='"+logement.getId()+"';");
+                    "WHERE id='" + logement.getId() + "';");
+            try {
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -275,11 +324,11 @@ public class LogementDAO extends DAO {
         ResultSet result;
         try {
             result = logementStatement.executeQuery("SELECT * FROM logement");
-            while (result.next()){
+            while (result.next()) {
                 String adresse = result.getString("adresse");
                 if (logement.getAdresse().equals(adresse)) return true;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -291,7 +340,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         try {
             result = logementStatement.executeQuery("SELECT * FROM logement;");
-            while (result.next()){
+            while (result.next()) {
                 Logement logement = new Logement();
 
                 logement.setId(result.getInt("id"));
@@ -315,12 +364,17 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 list.add(logement);
             }
-        }catch (SQLException e){
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
     }
-
 
 
     public LinkedList<Logement> getGeles() {
@@ -351,6 +405,12 @@ public class LogementDAO extends DAO {
                 location.setLongitude(result.getDouble("longitude"));
                 logement.setLocation(location);
                 list.add(logement);
+            }
+            try {
+                result.close();
+                logementStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();

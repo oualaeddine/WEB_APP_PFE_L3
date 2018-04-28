@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 
-
 @WebServlet(name = "LogementApi", urlPatterns = MyConsts.LOGEMENT_API_URL_PATTERN)
 public class LogementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -75,8 +74,8 @@ public class LogementApi extends API {
                     boolean soussol = request.getParameter("soussol").equals("true");
                     logement.setAvecSousSol(soussol);
 
-                    //LinkedList<Logement> logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax, pMin, sMax, sMin);
-                    LinkedList<Logement> logements = new LogementDAO().getAll();
+                    LinkedList<Logement> logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax * 1000, pMin * 1000, sMax, sMin);
+                    //LinkedList<Logement> logements = new LogementDAO().getAll();
 
                     responseBody = JsonUtil.logementsListToJsonArray(logements);
             }

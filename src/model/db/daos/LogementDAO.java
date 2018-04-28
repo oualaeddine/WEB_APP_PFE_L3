@@ -245,7 +245,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 return logement;
             }
             try {

@@ -1,8 +1,11 @@
-<%@ page import="model.beans.views.MyView" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.humans.Client" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.db.daos.ClientDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -30,7 +33,7 @@
     <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="../programmerVisite/assets/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="../programmerVisite/assets/datatables-select/select.dataTables.min.css">
     <link rel="stylesheet" href="../programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">
     <style>
@@ -69,25 +72,47 @@
     </div>
 </nav>
 <div class="content-wrapper">
+    <div class="card mb-3">
 
-    <div class="table-responsive">
-        <table id="clientsTable" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Téléphone</th>
-                <th>Date de naissance</th>
-                <th>Etat</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="card-body">
 
-            </tbody>
-        </table>
-        <input type="hidden" name="selectedClientId" id="selectedClientId">
-        <button class="btn btn-primary" onclick="confirmerClient()"></button>
+            <div class="table-responsive">
+                <table id="clientsTable" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Date de naissance</th>
+                        <th>Etat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        LinkedList<Client> list = new ClientDAO().getAll();
+                        for (Client client : list) {
+                            out.print("<tr>");
+
+                            out.print("<td>" + client.getId() + "</td>");
+                            out.print("<td>" + client.getNom() + "</td>");
+                            out.print(" <td>" + client.getPrenom() + "</td>");
+                            out.print("<td>" + client.getTel() + "</td>");
+                            out.print("<td>" + client.getDateNaissance() + "</td>");
+                            out.print("<td>" + client.isBannedString() + "</td>");
+
+                            out.print("</tr>");
+
+                        }
+                    %>
+                    </tbody>
+                </table>
+                <input type="hidden" name="selectedClientId" id="selectedClientId">
+            </div>
+        </div>
+        <div class="card-footer small text-muted ">
+            <button class="btn btn-primary pull-right" onclick="confirmerClient()">Suivant</button>
+        </div>
     </div>
 </div>
 
@@ -121,26 +146,24 @@
         </div>
     </div>
 </div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="../vendor/chart.js/Chart.min.js"></script>
 <script src="../vendor/datatables/jquery.dataTables.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
 <script src="../js/sb-admin-datatables.min.js"></script>
-<script src="../js/sb-admin-charts.js"></script>
-<script src="../programmerVisite/assets/js/main.js"></script>
-<script src="../programmerVisite/assets/datatables.net/js/jquery.dataTables.js"></script>
-<script src="../programmerVisite/assets/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+
+<script src="../assets/datatables.net/js/jquery.dataTables.js"></script>
+<script src="../assets/datatables.net-bs/js/dataTables.bootstrap.js"></script>
 <script src="../programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
-<script src="../programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js.min.js"></script>
-</div>
+<script src="../programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
 </body>
 
 <script>
@@ -150,28 +173,18 @@
         'searching': true,
         'info': true,
         'autoWidth': false,
+        'sortable': true,
         select: {
             style: 'single'
-        },
-        "processing": true,
-        "serverSide": true,
-        ajax: {
-            url: '/api/clientApi?action=getAllClients',
-            dataSrc: ''
-        },
-        columns: [
-            {"data": "id"},
-            {"data": "nom"},
-            {"data": "prenom"},
-            {"data": "telephone"},
-            {"data": "dateDeNaissance"},
-            {"data": "isBanned"}
-        ]
+        }
+
     });
 
     table.on('select', function (e, dt, type, indexes) {
         var rowData = table.rows(indexes).data().toArray();
-        $('#selectedClientId').val(rowData[0]['id']);
+        $('#selectedClientId').val(rowData[0][0]);
+
+        console.log("on select " + rowData[0][0])
     });
 
     function confirmerClient() {

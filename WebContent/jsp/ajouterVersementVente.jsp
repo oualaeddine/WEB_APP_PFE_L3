@@ -1,8 +1,13 @@
-<%@ page import="model.beans.views.MyView" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.Vente" %>
+<%@ page import="model.beans.humans.Client" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.db.daos.ClientDAO" %>
+<%@ page import="model.db.daos.VentesDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -68,25 +73,50 @@
 
     </div>
 </nav>
-<div class="content-wrapper">
-    <div class="table-responsive">
-        <table id="clientsTable" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Client</th>
-                <th>Logement</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
 
-            </tbody>
-        </table>
-        <input type="text" name="clientId" id="clientId">
+<div class="content-wrapper">
+    <div class="card mb-3">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table id="clientsTable" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Client</th>
+                        <th>Logement</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        int clientId = Integer.parseInt(request.getParameter("selectedClientId"));
+                        Client client = (Client) new ClientDAO().getById(clientId);
+                        LinkedList<Vente> list = new VentesDAO().getByClient(client);
+                        for (Vente vente : list) {
+                            out.print("<tr>");
+
+                            out.print("<td>" + vente.getId() + "</td>");
+                            out.print("<td>" + vente.getClient().getFullName() + "</td>");
+                            out.print(" <td>" + vente.getLogement().getTitre() + "</td>");
+                            out.print("<td>" + vente.getDate().toString() + "</td>");
+                            out.print("</tr>");
+
+                        }
+                    %>
+
+
+                    </tbody>
+                </table>
+                <input type="text" name="clientId" id="clientId">
+            </div>
+        </div>
+        <div class="card-footer small text-muted ">
+            <button class="btn btn-primary pull-right" onclick="confirmerClient()">Suivant</button>
+        </div>
     </div>
 </div>
-
 <footer class="sticky-footer">
     <div class="container">
         <div class="text-center">
@@ -154,19 +184,20 @@
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="../vendor/chart.js/Chart.min.js"></script>
 <script src="../vendor/datatables/jquery.dataTables.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
 <script src="../js/sb-admin-datatables.min.js"></script>
-<script src="../js/sb-admin-charts.js"></script>
-<script src="../programmerVisite/assets/js/main.js"></script>
 
 </body>
 <%String idClient = request.getParameter("selectedClientId");%>
 <%String url = "/api/venteApi?action=getVenteByClient&selectedClientId=" + idClient;%>
+<script src="../assets/datatables.net/js/jquery.dataTables.js"></script>
+<script src="../assets/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+<script src="../programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
+<script src="../programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js.min.js"></script>
 <script>
     var table = $('#clientsTable').DataTable({
         'paging': true,
@@ -174,31 +205,15 @@
         'searching': true,
         'info': true,
         'autoWidth': false,
-        select: true,
-        "processing": true,
-        "serverSide": true,
-        ajax: {
-            url: '<%out.print(url);%>',
-            dataSrc: ''
-        },
-        columns: [
-            {"data": "id"},
-            {"data": "clientId"},
-            {"data": "logementId"},
-            {"data": "date"}
-        ]
+        select: true
     });
 
     table.on('click', function (e, dt, type, indexes) {
         var rowData = table.rows(indexes).data().toArray();
-        $('#selectedVente').val(rowData[0]['id']);
+        $('#selectedVente').val(rowData[0][0]);
         $('#newVersementModal').modal('show');
 
     });
 </script>
-<script src="../programmerVisite/assets/datatables.net/js/jquery.dataTables.js"></script>
-<script src="../programmerVisite/assets/datatables.net-bs/js/dataTables.bootstrap.js"></script>
-<script src="../programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
-<script src="../programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js.min.js"></script>
 
 </html>

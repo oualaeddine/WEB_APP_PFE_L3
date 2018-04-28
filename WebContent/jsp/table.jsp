@@ -171,7 +171,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/AjoutServlet?ajouter=assignation">
+                    <form method="post" action="/AjoutServlet?ajouter=assignation" id="assignerRegionForm">
 
                         <input id="agentId" name="agentInput" type="hidden">
                         <div class="form-group">
@@ -189,7 +189,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit">Confirmer</button>
+                    <button class="btn btn-info btn-lg" type="submit" form="assignerRegionForm">Confirmer</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

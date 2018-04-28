@@ -32,6 +32,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="../../assets_client/css/normalize.css">
+
     <link rel="stylesheet" href="../../assets_client/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets_client/css/fontello.css">
     <link href="../../assets_client/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
@@ -95,7 +96,7 @@
                 + "             <span class=\"icon-bar\"></span>"
                 + "             <span class=\"icon-bar\"></span>"
                 + "         </button>"
-                + "         <a class=\"navbar-brand\" href=\"index.html\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
+                + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
                 + "     </div>" +
                 "     <!-- Collect the nav links, forms, and other content for toggling -->" +
                 "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
@@ -113,7 +114,7 @@
                 + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
                 + "             </li>"
                 + ""
-                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"properties.html\">Nos Logements</a>"
+                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"/jsp/client/logements.jsp\">Nos Logements</a>"
                 + "             </li>"
                 + "             <!-- <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"property.html\">A propos de <strong>HCH</strong></a></li> -->"
                 + ""
@@ -144,7 +145,8 @@
                 + " <!-- /.container-fluid -->" +
                 "</nav>" +
                 "<!-- End of nav bar -->");
-    else
+    else {
+        Client client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
         out.print("<nav class=\"navbar navbar-default \">" +
                 " <div class=\"container\">"
                 + "     <!-- Brand and toggle get grouped for better mobile display -->"
@@ -155,7 +157,7 @@
                 + "             <span class=\"icon-bar\"></span>"
                 + "             <span class=\"icon-bar\"></span>"
                 + "         </button>"
-                + "         <a class=\"navbar-brand\" href=\"index.html\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
+                + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
                 + "     </div>" +
                 "     <!-- Collect the nav links, forms, and other content for toggling -->" +
                 "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
@@ -170,12 +172,8 @@
                 + "             </li>"
                 + ""
                 + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-                "                   <a class=\"\" href=\"properties.html\">Nos Logements</a>"
+                "                   <a class=\"\" href=\"/jsp/client/logements.jsp\">Nos Logements</a>"
                 + "             </li>"
-                + "             <!-- <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-                "                       <a class=\"\" href=\"property.html\">A propos de <strong>HCH</strong></a>" +
-                "                   </li> -->"
-                + ""
                 + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
                 + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
                 + "                    data-delay=\"200\">A propos de <strong>HCH</strong> <b class=\"caret\"></b></a>"
@@ -216,6 +214,23 @@
                 + "                     </li>"
                 + "                 </ul>"
                 + "             </li>"
+                + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
+                + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
+                + "                    data-delay=\"200\"><i class=\"fa fa-user\"></i>     " + client.getUsername() + "<b class=\"caret\"></b></a>"
+                + "                 <ul class=\"dropdown-menu navbar-nav\">"
+                + "                     <li>"
+                + "                         <a class=\"dropdown-toggle\" href=\"\" >" +
+                "                              Modifier mes informations" +
+                "                           </a>"
+                + "                     </li>"
+                + "                     <li>" +
+                "                           <a class\"dropdown-toggle\" href=\"/logout\">" +
+                "                               Déconnexion" +
+                "                           </a>" +
+                "                       </li>"
+                + "                 </ul>"
+                + "             </li>"
+
                 + "         </ul>"
                 + "     </div>"
                 + "     <!-- /.navbar-collapse -->"
@@ -223,6 +238,8 @@
                 + " <!-- /.container-fluid -->" +
                 "</nav>" +
                 "<!-- End of nav bar -->");
+
+    }
 %>
 
 <div class="slider-area">
@@ -418,22 +435,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="proerty-th">
+            <div class="property-th">
             <%
                 LinkedList<Logement> logements = new LogementDAO().getNonVendus();
                 Client loggedIdClient=new Client();
+                String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
                 if (isLoggedIn) {
                     loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-
                 }
                 for (Logement logement : logements) {
+                    if (isLoggedIn) {
+                        href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                    }
                     out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
                             "                    <div class=\"box-two proerty-item\">\n" +
                             "                        <div class=\"item-thumb\">\n" +
-                            "                            <a href=\"/ProgrammerVisiteClient?logementId="+logement.getId()+"&region="+logement.getLocalite().getId()+"&clientId="+loggedIdClient.getId()+"\" ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                            "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"item-entry overflow\">\n" +
-                            "                            <h5><a onclick=\"getLogementId("+logement.getId()+")\" data-toggle=\"modal\" data-target=\"#programmerVisiteModal\">"+logement.getTitre()+" </a></h5>\n" +
+                            "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
                             "                            <div class=\"dot-hr\"></div>\n" +
                             "                            <span class=\"pull-left\"><b>Area :</b> "+logement.getSuperficie()+"m2</span>\n" +
                             "                            <span class=\"proerty-price pull-right\">"+logement.getPrix()+" DZD</span>\n" +
@@ -890,8 +910,29 @@
     </div>
 </div>
 
+<%--Modal login required--%>
+<div id="loginRequiredModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Veuillez vous connecter</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>Vous devez être connectés pour acheter ou visiter ce logement</h5>
 
+            </div>
+            <div class="modal-footer">
+                <a href="/loginsignup">
+                    <button class="btn btn-primary" type="button">Connexion/Inscription</button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -901,6 +942,23 @@
 
 </script>
 
+<
+<style>
+    .navbar-login {
+        width: 305px;
+        padding: 10px;
+        padding-bottom: 0px;
+    }
 
+    .navbar-login-session {
+        padding: 10px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+
+    .icon-size {
+        font-size: 87px;
+    }
+</style>
 </body>
 

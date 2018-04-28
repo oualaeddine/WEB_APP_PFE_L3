@@ -93,7 +93,7 @@
             + "             <span class=\"icon-bar\"></span>"
             + "             <span class=\"icon-bar\"></span>"
             + "         </button>"
-            + "         <a class=\"navbar-brand\" href=\"index.html\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
+            + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
             + "     </div>" +
             "     <!-- Collect the nav links, forms, and other content for toggling -->" +
             "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
@@ -104,7 +104,7 @@
             + "         </div>"
             + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
             + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
-            + "                 <a href=\"index.html\" >Accueil</a>"
+            + "                 <a href=\"/home\" >Accueil</a>"
             + "             </li>"
             + ""
             + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +

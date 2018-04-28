@@ -67,7 +67,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 System.out.println("Lguit: " + logement.getTitre());
 
@@ -118,7 +118,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 list.add(logement);
             }
@@ -194,7 +194,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 list.add(logement);
             }
@@ -245,7 +245,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 return logement;
             }
             try {
@@ -375,7 +375,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
             try {
@@ -421,7 +421,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
             try {
@@ -467,7 +467,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -506,7 +506,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
 
-                logement.setTypeLogement(result.getString("type").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
                 logements.add(logement);
             }

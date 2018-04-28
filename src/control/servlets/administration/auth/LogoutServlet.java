@@ -1,6 +1,8 @@
 package control.servlets.administration.auth;
 
 import control.servlets.MyServlet;
+import model.enums.UserType;
+import utils.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,20 +20,20 @@ public class LogoutServlet extends MyServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {        // TODO: 2/18/2018
+            boolean client = ((UserType) request.getSession().getAttribute(LOGGED_IN_USER_TYPE)) == UserType.CLIENT;
             request.getSession().invalidate();
-            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
+            if (client) {
+                response.sendRedirect("/home");
+            } else {
+                redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
+            }
         } else {
             redirectToNotLoggedIn(request, response);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
-            request.getSession().invalidate();
-            redirectToLogin(request,response,WRONG_CREDENTIALS_ERROR);
-        } else {
-            redirectToNotLoggedIn(request, response);
-        }
+        doPost(request, response);
     }
 
     private void redirectToNotLoggedIn(HttpServletRequest request, HttpServletResponse response) {

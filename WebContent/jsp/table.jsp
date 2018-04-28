@@ -1,18 +1,13 @@
-<%@ page import="model.beans.views.TablesView" %>
-<%@ page import="model.beans.views.nav.NavElement" %>
-<%@ page import="model.beans.views.table.DataTableRow" %>
-<%@ page import="static utils.MyConsts.FOOTER_COPYRIGHT" %>
-<%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.beans.humans.Person" %>
-<%@ page import="model.beans.views.MyView" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="static utils.MyConsts.FOOTER_COPYRIGHT" %>
+<%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.beans.views.table.DataTableRow" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.db.daos.EmployeDAO" %>
-<%@ page import="model.beans.Visite" %>
-<%@ page import="model.db.daos.VisitesDao" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -341,19 +336,11 @@
                                 <option value="1"> cancel</option>
                                 <option value="2"> reporter</option>
                             </select>
-                            <div id='calendar'></div>
                         </div>
-                        <button class="btn btn-info btn-lg" type="button" onclick="function modifierVisite() {
-  var  action = $('#action option:selected').val();
-                        if (action===1){
-var params = {visiteId:          $('#visiteModifiee').val()  ,action:'rapport',etatVisite:'annulee'            };
-                        post('/NewRapport', params, 'GET'); }
-                        if (action===2){
-var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:'reportee'            };
-                        post('/NewRapport', params, 'GET');
-                        }
-                        }
-                        modifierVisite()">Valider
+                        <input type="hidden" name="idAgent" id="idAgent">
+                        <input type="hidden" name="newDate" id="newDate">
+
+                        <button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider
                         </button>
                     </form>
 
@@ -366,6 +353,7 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
         </div>
     </div>
 
+    <input type="hidden" name="selectedRowId" id="selectedRowId">
 
     <%--Modal Etablir Rapport--%>
     <div id="etablirRapportModal" class="modal fade" role="dialog">
@@ -382,7 +370,7 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
 
                         <input id="visiteRapport" name="visiteRapport" type="hidden">
                         <label for="etatClient">Cochez cette case si le client s'est présenté</label>
-                        <input  type="checkbox" name="etatClient" id="etatClient" value="0">
+                        <input type="checkbox" name="etatClient" id="etatClient" value="0">
                         <div class="form-group" id="ifPresent" style="display:none">
                             <div class="form-group">
                                 <div class="form-row">
@@ -394,7 +382,8 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
                                 </div>
                                 <div class="form-group">
                                     <label for="commentaire">Commentaire:</label>
-                                    <textarea class="form-control" name="commentaire" id="commentaire" rows="5" placeholder="Entrez le commentaire ici"></textarea>
+                                    <textarea class="form-control" name="commentaire" id="commentaire" rows="5"
+                                              placeholder="Entrez le commentaire ici"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -428,10 +417,12 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
         $('#etatClient').change(function () {
             $(this).next('#ifPresent').toggle();
         });
+
         function getVisiteTaaLrapport(idTaaLaVisite) {
             document.getElementById("visiteRapport").value = idTaaLaVisite;
 
         }
+
         function getAgentId(idTaaLagent) {
             document.getElementById("agentId").value = idTaaLagent;
         }
@@ -464,6 +455,12 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
     <script src="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="./programmerVisite/assets/fullcalendar/dist/locale/fr.js"></script>
     <script>
+
+
+        table.on('select', function (e, dt, type, indexes) {
+            var rowData = table.rows(indexes).data().toArray();
+            $('#selectedRowId').val(rowData[0][0]);
+        });
 
 
         function post(path, params, method) {
@@ -554,6 +551,37 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
             calendar.fullCalendar('addEventSource', events);
             calendar.fullCalendar('refetchEvents');
         }
+
+
+        function modifierVisite() {
+            var action = $('#action option:selected').val();
+            var params;
+
+            if (action === 1) {
+                params = {
+                    visiteId: $('#visiteModifiee').val(),
+                    action: 'rapport',
+                    etatVisite: 'annulee'
+                };
+                post('/NewRapport', params, 'GET');
+            }
+            if (action === 2) {
+                params = {
+                    visiteId: $('#visiteModifiee').val(),
+                    agentId: $('#idAgent').val(),
+                    date: $('#newDate').val(),
+                    action: 'rapport',
+                    etatVisite: 'reportee'
+                };
+                post('/NewRapport', params, 'GET');
+            }
+        }
+
+        $('#action').on('change', function () {
+            if (this.val() === 1)
+                initCalendar($('#selectedRowId').val())
+        })
+
     </script>
 </div>
 </body>

@@ -34,8 +34,8 @@ public class LogementDAO extends DAO {
                     "AND (prix <= " + prixMax + " AND prix >= " + prixMin + ") " +
                     "AND  gele=0 " +
                     "AND region = " + criteres.getLocalite().getId() + " " +
-                    "AND nbrPieces <= " + criteres.getNbrPieces() + " " +
-                    "AND nbrSdb <= " + criteres.getNbrSdb() + " " +
+                    "AND nbrPieces >= " + criteres.getNbrPieces() + " " +
+                    "AND nbrSdb >= " + criteres.getNbrSdb() + " " +
                     avecGarage +
                     avecJardin +
                     avecSousSol +

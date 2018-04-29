@@ -259,51 +259,63 @@ function initLogementsTable() {
         '&jardin=' + jardin +
         '&soussol=' + soussol).load();
 }
-
-$(function () {
-
-
-    var table = $('#clientsTab').DataTable({
-            'paging': true,
-            'lengthChange': false,
-            'searching': true,
-            //'ordering': true,
-            'info': true,
-            'autoWidth': false,
-            //  'aDataSort': false,
-            //"order": [[ 3, "asc" ]],
-            select: {
-                style: 'single'
+var table = $('#clientsTab').DataTable({
+    'paging': true,
+    'lengthChange': false,
+    'searching': true,
+    //'ordering': true,
+    'info': true,
+    'autoWidth': false,
+    //  'aDataSort': false,
+    //"order": [[ 3, "asc" ]],
+    select: {
+        style: 'single'
+    }
+    ,
+    "processing": true,
+    "serverSide": true,
+    ajax: {
+        url: '/api/clientApi?action=getAllClients',
+        dataSrc: ''
+    },
+    columns: [
+        {"data": "id"},
+        {"data": "nom"},
+        {"data": "prenom"},
+        {"data": "telephone"},
+        {"data": "dateDeNaissance"},
+        {"data": "isBanned"}
+    ],
+    dom: 'Bfrtip',
+    buttons: [
+        {
+            text: 'Ajouter client',
+            action: function (e, dt, node, config) {
+                $('#ajouterClientModal').modal('show');
             }
-            ,
-            "processing": true,
-            "serverSide": true,
-            ajax: {
-                url: '/api/clientApi?action=getAllClients',
-                dataSrc: ''
-            },
-            columns: [
-                {"data": "id"},
-                {"data": "nom"},
-                {"data": "prenom"},
-                {"data": "telephone"},
-                {"data": "dateDeNaissance"},
-                {"data": "isBanned"}
-            ]
-        })
-    ;
-
-    table.on('select', function (e, dt, type, indexes) {
-        var rowData = table.rows(indexes).data().toArray();
-        $('#clientId').val(rowData[0]['id']);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
-        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
-        document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
-        document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
-    });
-
-
+        }
+    ]
 });
+table.on('select', function (e, dt, type, indexes) {
+    var rowData = table.rows(indexes).data().toArray();
+    $('#clientId').val(rowData[0]['id']);
+    document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+    document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
+    document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
+    document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
+});
+loadClients();
+function loadClients() {
+
+    table.ajax.url('/api/clientApi?action=getAllClients').load();
+
+
+}
+
+
+
+
+
 
 
 function fillDetails() {

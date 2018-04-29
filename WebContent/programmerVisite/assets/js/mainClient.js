@@ -152,7 +152,7 @@ function readURL(input) {
 function fillOtherInputs(startDate, endDate) {
 
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + findGetParameter("region"),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#regionId').val(),
         success: function (result) {
             var agent = JSON.parse(result);
 
@@ -268,6 +268,8 @@ function findGetParameter(parameterName) {
             tmp = item.split("=");
             if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
         });
+
+    console.log("findGetParameter  =  " + result);
     return result;
 }
 

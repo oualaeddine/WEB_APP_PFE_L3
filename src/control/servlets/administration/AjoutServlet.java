@@ -3,6 +3,7 @@ package control.servlets.administration;
 import control.servlets.MyServlet;
 import control.system.managers.*;
 import model.beans.Logement;
+import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.daos.AssignationDAO;
 import model.db.daos.EmployeDAO;
@@ -51,6 +52,26 @@ public class AjoutServlet extends MyServlet {
             String ajouter = request.getParameter("ajouter");
             if (ajouter != null) {
                 switch (ajouter) {
+                    case "client":
+                        String prenom = request.getParameter("prenomInput");
+                        String nom = request.getParameter("nomInput");
+                        String email = request.getParameter("emailInput");
+                        String tel = request.getParameter("inputTel");
+                        String username = request.getParameter("usernameInput");
+                        String password = request.getParameter("passwordInput");
+                        String adresse = request.getParameter("adresseInput");
+
+                        Client client = new Client();
+                        client.setPrenom(prenom);
+                        client.setNom(nom);
+                        client.setEmail(email);
+                        client.setTel(tel);
+                        client.setUsername(username);
+                        client.setPassword(password);
+                        client.setAdresse(adresse);
+                        client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+                        System.out.println("Ajout client: "+new AuthManager().signupClient(client));
+                        break;
                     case "inscriptionEmploye":
                         System.out.println("wsalt hna");
                         try {

@@ -337,8 +337,11 @@
                                 <option value="2"> reporter</option>
                             </select>
                         </div>
-                        <input type="hidden" name="idAgent" id="idAgent">
+                        <input type="hidden" name="clientId" id="clientId">
+                        <input type="hidden" name="visiteId" id="visiteId">
+                        <input type="hidden" name="regionId" id="regionId">
                         <input type="hidden" name="newDate" id="newDate">
+                        <input type="hidden" name="logementId" id="logementId">
 
                         <button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider
                         </button>
@@ -411,9 +414,13 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="../js/sb-admin-datatables.min.js"></script>
+    <%--<script src="../js/sb-admin-datatables.min.js"></script>--%>
 
     <script>
+
+
+        var table = $('#dataTable').DataTable();
+
         $('#etatClient').change(function () {
             $(this).next('#ifPresent').toggle();
         });
@@ -444,8 +451,13 @@
             document.getElementById("logementGele").value = idTaaLeLogement;
         }
 
-        function getVisiteModifieeId(idtaalavisite) {
+        function getVisiteModifieeId(idtaalavisite, idtaalogement, idtaalaregion, idtaalclient) {
+
             document.getElementById("visiteModifiee").value = idtaalavisite;
+            document.getElementById("visiteId").value = idtaalavisite;
+            document.getElementById("clientId").value = idtaalclient;
+            document.getElementById("logementId").value = idtaalogement;
+            document.getElementById("regionId").value = idtaalaregion;
         }
 
     </script>
@@ -557,28 +569,36 @@
             var action = $('#action option:selected').val();
             var params;
 
-            if (action === 1) {
+            console.log("action = " + action);
+
+            if (action == 1) {
                 params = {
                     visiteId: $('#visiteModifiee').val(),
                     action: 'rapport',
                     etatVisite: 'annulee'
                 };
+                console.log("ani f 1")
+
                 post('/NewRapport', params, 'GET');
             }
-            if (action === 2) {
+            if (action == 2) {
                 params = {
+                    clientId: $('#clientId').val(),
                     visiteId: $('#visiteModifiee').val(),
-                    agentId: $('#idAgent').val(),
-                    date: $('#newDate').val(),
-                    action: 'rapport',
+                    logementId: $('#logementId').val(),
+                    regionId: $('#regionId').val(),
+                    //    date: $('#newDate').val(),
+                    // action: 'rapport',
                     etatVisite: 'reportee'
                 };
-                post('/NewRapport', params, 'GET');
+
+                console.log("ani f 2");
+                post('/modifierVisiteServlet', params, 'GET');
             }
         }
 
         $('#action').on('change', function () {
-            if (this.val() === 1)
+            if ($('#action option:selected').val() === 1)
                 initCalendar($('#selectedRowId').val())
         })
 

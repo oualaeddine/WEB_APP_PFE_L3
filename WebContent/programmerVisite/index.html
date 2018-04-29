@@ -14,6 +14,7 @@
     <link href="./programmerVisite/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="./programmerVisite/assets/css/paper-bootstrap-wizard.css" rel="stylesheet"/>
     <link href="./programmerVisite/assets/css/bootstrap-slider.css" rel="stylesheet"/>
+    <link href="./programmerVisite/assets/css/datatables-buttons.css" rel="stylesheet"/>
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="./programmerVisite/assets/css/demo.css" rel="stylesheet"/>-->
@@ -556,13 +557,67 @@
         </div> <!-- row -->
     </div> <!--  big container -->
 </div>
+ <!--Ajouter client modal-->
+<div id="ajouterClientModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ajouter client</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/AjoutServlet?ajouter=client" id="ajouterClientForm">
+                    <div class="box-for overflow">
+                        <div class="col-md-12 col-xs-12 register-blocks">
+                            <h2>Inscription : </h2>
+                            <div class="form-group">
+                                <label for="nomInput">Nom</label>
+                                <input type="text" class="form-control" id="nomInput" name="nomInput">
+
+                                <label for="prenomInput">Prenom</label>
+                                <input type="text" class="form-control" id="prenomInput" name="prenomInput">
+
+                                <label for="dateNaissance">Date de naissance</label>
+                                <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailInput">Email</label>
+                                <input type="text" class="form-control" id="emailInput" name="emailInput">
+
+                                <label for="inputTel">Numéro de téléphone</label>
+                                <input type="text" class="form-control" id="inputTel" name="inputTel">
+
+                                <label for="adresseInput">Adresse</label>
+                                <input type="text" class="form-control" id="adresseInput" name="adresseInput">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="usernameInput">nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="usernameInput" name="usernameInput">
+
+                                <label for="passwordInput">Mot de passe</label>
+                                <input type="password" class="form-control" id="passwordInput" name="passwordInput">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-default">Inscription</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 <!--   Core JS Files   -->
-<script src="programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
 
 <!--  Plugin for the Wizard -->
 <!--<script src="programmerVisite/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>-->
@@ -582,6 +637,7 @@
 <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
 <script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
 <script src="./programmerVisite/assets/js/main.js"></script>
+<script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
 
 
 </html>

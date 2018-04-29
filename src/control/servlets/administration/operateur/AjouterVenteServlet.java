@@ -48,7 +48,7 @@ public class AjouterVenteServlet extends MyServlet {
                 }
             }
         else
-            this.getServletContext().getRequestDispatcher("/programmerVisite/ajouterVente.html").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/programmerVisite/ajouterVente.jsp").forward(request, response);
 
     }
 }

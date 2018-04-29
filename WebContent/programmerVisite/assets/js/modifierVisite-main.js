@@ -259,67 +259,55 @@ function initLogementsTable() {
         '&jardin=' + jardin +
         '&soussol=' + soussol).load();
 }
-var table = $('#clientsTab').DataTable({
-    'paging': true,
-    'lengthChange': false,
-    'searching': true,
-    //'ordering': true,
-    'info': true,
-    'autoWidth': false,
-    //  'aDataSort': false,
-    //"order": [[ 3, "asc" ]],
-    select: {
-        style: 'single'
-    }
-    ,
-    "processing": true,
-    "serverSide": true,
-    ajax: {
-        url: '/api/clientApi?action=getAllClients',
-        dataSrc: ''
-    },
-    columns: [
-        {"data": "id"},
-        {"data": "nom"},
-        {"data": "prenom"},
-        {"data": "telephone"},
-        {"data": "dateDeNaissance"},
-        {"data": "isBanned"}
-    ],
-    dom: 'Bfrtip',
-    buttons: [
-        {
-            text: 'Ajouter client',
-            action: function (e, dt, node, config) {
-                $('#ajouterClientModal').modal('show');
+
+$(function () {
+
+
+    var table = $('#clientsTab').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': true,
+            //'ordering': true,
+            'info': true,
+            'autoWidth': false,
+            //  'aDataSort': false,
+            //"order": [[ 3, "asc" ]],
+            select: {
+                style: 'single'
             }
-        }
-    ]
+            ,
+            "processing": true,
+            "serverSide": true,
+            ajax: {
+                url: '/api/clientApi?action=getAllClients',
+                dataSrc: ''
+            },
+            columns: [
+                {"data": "id"},
+                {"data": "nom"},
+                {"data": "prenom"},
+                {"data": "telephone"},
+                {"data": "dateDeNaissance"},
+                {"data": "isBanned"}
+            ]
+        })
+    ;
+
+    table.on('select', function (e, dt, type, indexes) {
+        var rowData = table.rows(indexes).data().toArray();
+        $('#clientId').val(rowData[0]['id']);
+        document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
+        document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
+        document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
+    });
+
+
 });
-table.on('select', function (e, dt, type, indexes) {
-    var rowData = table.rows(indexes).data().toArray();
-    $('#clientId').val(rowData[0]['id']);
-    document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
-    document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
-    document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
-    document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
-});
-loadClients();
-function loadClients() {
-
-    table.ajax.url('/api/clientApi?action=getAllClients').load();
-
-
-}
-
-
-
-
-
 
 
 function fillDetails() {
-    document.getElementById("regionDetails").innerHTML = $('#maregion').children("option").filter(":selected").text();
+    document.getElementById("regionDetails").innerHTML = $('#regionId').val();
     document.getElementById("nbrPiecesDetails").innerHTML = $('#nbrPieces').val();
     document.getElementById("nbrEtagesDetails").innerHTML = $('#nbrEtages').val();
     document.getElementById("nbrSDBDetails").innerHTML = $('#nbrSdb').val();
@@ -354,7 +342,7 @@ function fillOtherInputs(startDate, endDate) {
 
 
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#regionId').val(),
         success: function (result) {
             var agent = JSON.parse(result);
 
@@ -448,19 +436,21 @@ function initCalendar(idLogement) {
 
 function confirmerVisite() {
 
-    var idLogement = $('#selectedlogementId').val();
+    var idLogement = $('#logementId').val();
     var idClient = $('#clientId').val();
     var idAgent = document.getElementById("idAgentDetails").innerHTML;
     var heureDebut = $('#heureDebutVisite').val();
     var heureFin = $('#heureFinVisite').val();
+    var idVisite = $('#visiteId').val();
 
     var params = {
-        action: "add",
+        action: "edit",
         idLogement: idLogement,
         idClient: idClient,
         idAgent: idAgent,
         heureDebut: heureDebut,
-        heureFin: heureFin
+        heureFin: heureFin,
+        idVisite: idVisite
     };
     post("/ProgrammerVisite", params, "GET");
 }
@@ -507,4 +497,20 @@ function addInputToDocument(id, value) {
     hiddenField.setAttribute("id", id);
     hiddenField.setAttribute("value", value);
     document.body.appendChild(hiddenField);
+}
+
+
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+
+    console.log("findGetParameter  =  " + result);
+    return result;
 }

@@ -80,27 +80,30 @@ public class DataTableRow {
 
     private void setupHtmlForEtablirRapport() {
         Visite visite = (Visite) object;
-        html ="<tr>" +
+        html = "<tr>" +
                 "<td>" + visite.getId() + "</td>" +
                 "<td>" + visite.getLogement().getTitre() + "</td>" +
-                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
-                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getAgent().getNom() + " " + visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom() + " " + visite.getClient().getPrenom() + "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getVisiteTaaLrapport(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#etablirRapportModal\" value=\"" + visite.getId() + "\">Rapport</td>"+
+                "<td><button type=\"button\"  onclick=\"getVisiteTaaLrapport(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#etablirRapportModal\" value=\"" + visite.getId() + "\">Rapport</td>" +
                 "</tr>";
     }
 
     private void setupHtmlForModifierVisite() {
         Visite visite = (Visite) object;
-        html ="<tr>" +
+        html = "<tr>" +
                 "<td>" + visite.getId() + "</td>" +
                 "<td>" + visite.getLogement().getTitre() + "</td>" +
-                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
-                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getAgent().getNom() + " " + visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom() + " " + visite.getClient().getPrenom() + "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getVisiteModifieeId(" + visite.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\" value=\"" + visite.getId() + "\">Modifier</td>"+
+                "<td><button type=\"button\"  onclick=\"getVisiteModifieeId(" + visite.getId() + "," + visite.getId() +
+                "," + visite.getLogement().getId() + "," + visite.getLogement().getLocalite().getId() + "," + visite.getClient().getId() +
+                ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\"" +
+                " value=\"" + visite.getId() + "\">Modifier</td>" +
                 "</tr>";
     }
 
@@ -109,16 +112,16 @@ public class DataTableRow {
         String action = logement.isGele() ? "Dégeler" : "Geler";
         String etat = logement.isGele() ? "Gelé" : "Libre";
         html = "<tr>" +
-                "<td>"+ logement.getId() +"</td>"+
-                "<td>"+ logement.getTitre() +"</td>"+
-                "<td>"+ logement.getDescription() +"</td>"+
-                "<td>"+ logement.getSuperficie() +"</td>"+
-                "<td>"+ logement.getAdresse() +"</td>"+
-                "<td>"+ logement.getLocalite().getNom() +"</td>"+
-                "<td>"+ logement.getPrix() +" DZD</td>"+
-                "<td>"+ logement.getEtage() +"</td>"+
-                "<td>"+ etat +"</td>"+
-                "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + logement.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#gelerModal\" value=\"" + logement.getId() + "\">"+action+"</td>" +
+                "<td>" + logement.getId() + "</td>" +
+                "<td>" + logement.getTitre() + "</td>" +
+                "<td>" + logement.getDescription() + "</td>" +
+                "<td>" + logement.getSuperficie() + "</td>" +
+                "<td>" + logement.getAdresse() + "</td>" +
+                "<td>" + logement.getLocalite().getNom() + "</td>" +
+                "<td>" + logement.getPrix() + " DZD</td>" +
+                "<td>" + logement.getEtage() + "</td>" +
+                "<td>" + etat + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getLogementGeleId(" + logement.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#gelerModal\" value=\"" + logement.getId() + "\">" + action + "</td>" +
                 "</tr>";
     }
 
@@ -141,12 +144,12 @@ public class DataTableRow {
         Employe employe = (Employe) object;
         html = "<tr>" +
                 "<td>" + employe.getId() + "</td>" +
-                "<td>" + employe.getNom() + " "+ employe.getPrenom() + "</td>" +
+                "<td>" + employe.getNom() + " " + employe.getPrenom() + "</td>" +
                 "<td>" + employe.getTel() + "</td>" +
                 "<td>" + employe.getAdresse() + "</td>" +
                 "<td>" + employe.getEmail() + "</td>" +
                 "<td>" + employe.getDateNaissance() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getApprovedId("+employe.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#approuverModal\" value=\""+employe.getId()+"\"> Approuver</td>" +
+                "<td><button type=\"button\"  onclick=\"getApprovedId(" + employe.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#approuverModal\" value=\"" + employe.getId() + "\"> Approuver</td>" +
                 "</tr>";
     }
 
@@ -154,12 +157,12 @@ public class DataTableRow {
         Employe operateur = (Employe) object;
         html = "<tr>" +
                 "<td>" + operateur.getId() + "</td>" +
-                "<td>" + operateur.getNom() + " "+ operateur.getPrenom()+"</td>" +
+                "<td>" + operateur.getNom() + " " + operateur.getPrenom() + "</td>" +
                 "<td>" + operateur.getTel() + "</td>" +
                 "<td>" + operateur.getAdresse() + "</td>" +
                 "<td>" + operateur.getEmail() + "</td>" +
                 "<td>" + operateur.getDateNaissance() + "</td>" +
-                "</tr>" ;
+                "</tr>";
     }
 
     private void setupHtmlForSignals() {
@@ -181,7 +184,7 @@ public class DataTableRow {
                 "<td>" + client.getAdresse() + "</td>" +
                 "<td>" + client.getEmail() + "</td>" +
                 "<td>" + client.getDateNaissance() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getClientId("+client.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#signalerModal\" value=\""+client.getId()+"\"> Signaler</td>" +
+                "<td><button type=\"button\"  onclick=\"getClientId(" + client.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#signalerModal\" value=\"" + client.getId() + "\"> Signaler</td>" +
                 "</tr>";
     }
 
@@ -194,19 +197,19 @@ public class DataTableRow {
         }
         html = "<tr>" +
                 "<td>" + agent.getId() + "</td>" +
-                "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
+                "<td>" + agent.getNom() + " " + agent.getPrenom() + "</td>" +
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
                 "<td>" + agent.getEmail() + "</td>" +
                 "<td>" + agent.getDateNaissance() + "</td>" +
                 "<td>" + localite.getNom() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getAgentId("+agent.getId()+")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" value=\""+agent.getId()+"\"> Modifier</td>" +
+                "<td><button type=\"button\"  onclick=\"getAgentId(" + agent.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" value=\"" + agent.getId() + "\"> Modifier</td>" +
                 "</tr>";
 
     }
 
     private void setupHtmlForAgent() {
-        Employe agent= (Employe) object;
+        Employe agent = (Employe) object;
         Localite localite = new AssignationDAO().getLocaliteByAgent(agent.getId());
         if (localite == null) {
             localite = new Localite();
@@ -214,32 +217,32 @@ public class DataTableRow {
         }
         html = "<tr>" +
                 "<td><b>"
-                       + agent.getId() + "</td>" +
-                "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
+                + agent.getId() + "</td>" +
+                "<td>" + agent.getNom() + " " + agent.getPrenom() + "</td>" +
                 "<td>" + agent.getTel() + "</td>" +
                 "<td>" + agent.getAdresse() + "</td>" +
                 "<td>" + agent.getEmail() + "</td>" +
                 "<td>" + agent.getDateNaissance() + "</td>" +
                 "<td>" + localite.getNom() + "</td>" +
-                "</tr>" ;
+                "</tr>";
     }
 
     private void setupHtmlForAdmin() {
         Employe admin = (Employe) object;
         html = "<tr>" +
                 "<td><b>" + admin.getId() + "</td>" +
-                "<td>" + admin.getNom() + " "+ admin.getPrenom()+"</td>" +
+                "<td>" + admin.getNom() + " " + admin.getPrenom() + "</td>" +
                 "<td>" + admin.getTel() + "</td>" +
                 "<td>" + admin.getAdresse() + "</td>" +
                 "<td>" + admin.getEmail() + "</td>" +
                 "<td>" + admin.getDateNaissance() + "</td>" +
-                "<td>" + admin.getUserType() + "</td>" ;
+                "<td>" + admin.getUserType() + "</td>";
     }
 
     private void setupHtmlForLocalite() {
         Localite localite = (Localite) object;
-        html= "<tr><td><b>" + localite.getId() + "</td>" +
-              "<td>" + localite.getNom() + "</td></tr>";
+        html = "<tr><td><b>" + localite.getId() + "</td>" +
+                "<td>" + localite.getNom() + "</td></tr>";
     }
 
     private void setupHtmlForEmployee() {
@@ -281,24 +284,24 @@ public class DataTableRow {
 
     private void setupHtmlForVente() {
         Vente vente = (Vente) object;
-        html="<tr>" +
-                "<td>"+vente.getId()+"</td>"+
-                "<td>"+vente.getClient().getNom()+" "+vente.getClient().getPrenom() +"</td>"+
-                "<td>"+vente.getLogement().getTitre()+"</td>"+
-                "<td>"+vente.getDate()+"</td>"+
-                "<td>"+vente.getEtatVente()+"</td>"+
+        html = "<tr>" +
+                "<td>" + vente.getId() + "</td>" +
+                "<td>" + vente.getClient().getNom() + " " + vente.getClient().getPrenom() + "</td>" +
+                "<td>" + vente.getLogement().getTitre() + "</td>" +
+                "<td>" + vente.getDate() + "</td>" +
+                "<td>" + vente.getEtatVente() + "</td>" +
 
-            "</tr>";
+                "</tr>";
 
     }
 
     private void setupHtmlForVisite() {
         Visite visite = (Visite) object;
-        html ="<tr>" +
+        html = "<tr>" +
                 "<td>" + visite.getId() + "</td>" +
                 "<td>" + visite.getLogement().getTitre() + "</td>" +
-                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
-                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getAgent().getNom() + " " + visite.getAgent().getPrenom() + "</td>" +
+                "<td>" + visite.getClient().getNom() + " " + visite.getClient().getPrenom() + "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
                 "</tr>";
@@ -308,7 +311,7 @@ public class DataTableRow {
         Logement logement = (Logement) object;
         String etat = logement.isGele() ? "Gelé" : "Libre";
 
-        html= "<tr>" +
+        html = "<tr>" +
                 "<td>" + logement.getId() + "</td>" +
                 "<td>" + logement.getTitre() + "</td>" +
                 "<td>" + logement.getDescription() + "</td>" +

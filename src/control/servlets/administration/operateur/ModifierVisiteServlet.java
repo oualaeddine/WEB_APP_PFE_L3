@@ -43,7 +43,7 @@ public class ModifierVisiteServlet extends HttpServlet {
             System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
             this.getServletContext().getRequestDispatcher("/home").forward(request, response);
         } else
-            this.getServletContext().getRequestDispatcher("/programmerVisite/modifierVisite.html").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/programmerVisite/modifierVisite.jsp").forward(request, response);
 
     }
 }

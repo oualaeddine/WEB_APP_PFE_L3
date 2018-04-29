@@ -337,8 +337,11 @@
                                 <option value="2"> reporter</option>
                             </select>
                         </div>
-                        <input type="hidden" name="idAgent" id="idAgent">
+                        <input type="hidden" name="clientId" id="clientId">
+                        <input type="hidden" name="visiteId" id="visiteId">
+                        <input type="hidden" name="regionId" id="regionId">
                         <input type="hidden" name="newDate" id="newDate">
+                        <input type="hidden" name="logementId" id="logementId">
 
                         <button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider
                         </button>
@@ -448,8 +451,13 @@
             document.getElementById("logementGele").value = idTaaLeLogement;
         }
 
-        function getVisiteModifieeId(idtaalavisite) {
+        function getVisiteModifieeId(idtaalavisite, idtaalogement, idtaalaregion, idtaalclient) {
+
             document.getElementById("visiteModifiee").value = idtaalavisite;
+            document.getElementById("visiteId").value = idtaalavisite;
+            document.getElementById("clientId").value = idtaalclient;
+            document.getElementById("logementId").value = idtaalogement;
+            document.getElementById("regionId").value = idtaalaregion;
         }
 
     </script>
@@ -575,10 +583,12 @@
             }
             if (action == 2) {
                 params = {
+                    clientId: $('#clientId').val(),
                     visiteId: $('#visiteModifiee').val(),
-                    logementId: $('#idLogement').val(),
-                    date: $('#newDate').val(),
-                    action: 'rapport',
+                    logementId: $('#logementId').val(),
+                    regionId: $('#regionId').val(),
+                    //    date: $('#newDate').val(),
+                    // action: 'rapport',
                     etatVisite: 'reportee'
                 };
 

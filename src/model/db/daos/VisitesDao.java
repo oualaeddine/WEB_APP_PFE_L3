@@ -115,7 +115,7 @@ public class VisitesDao extends DAO {
                     "  , visite " +
                     "WHERE employe.id NOT IN (SELECT agentId " +
                     "                         FROM visite " +
-                    "                         WHERE horraire = '" + rdv.getHorraire() + "' " +
+                    "                         WHERE etat='prevue' and horraire = '" + rdv.getHorraire() + "' " +
                     "AND timestamp = '" + rdv.getDate().toString() + "')LIMIT 1");
 
             while (result.next()) {
@@ -480,7 +480,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>current_timestamp;");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>current_timestamp AND etat='prevue';");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

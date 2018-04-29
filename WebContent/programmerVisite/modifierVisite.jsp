@@ -119,11 +119,19 @@
                                 <div class="tab-pane" id="date">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <!--<div id='calendar'></div>-->
-                                            <!--<input type="hidden" name="rdv" id="idVisite">-->
-                                            <!--<input type="hidden" name="rdv" id="idAgent">-->
-                                            <!--<input type="hidden" name="rdv" id="heureDebutVisite">-->
-                                            <!--<input type="hidden" name="rdv" id="heureFinVisite">-->
+                                            <div id='calendar'></div>
+                                            <input type="hidden" name="regionId" id="regionId"
+                                                   value="<%out.print(request.getParameter("regionId"));%>">
+                                            <input type="hidden" name="clientId" id="clientId"
+                                                   value="<%out.print(request.getParameter("clientId"));%>">
+                                            <input type="hidden" name="logementId" id="logementId"
+                                                   value="<%out.print(request.getParameter("logementId"));%>">
+                                            <input type="hidden" name="visiteId" id="visiteId"
+                                                   value="<%out.print(request.getParameter("visiteId"));%>">
+
+                                            <input type="hidden" name="rdv" id="idAgent">
+                                            <input type="hidden" name="rdv" id="heureDebutVisite">
+                                            <input type="hidden" name="rdv" id="heureFinVisite">
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +219,7 @@
 <script src="./programmerVisite/assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
 <script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
-<script src="./programmerVisite/assets/js/mainClient.js"></script>
+<script src="./programmerVisite/assets/js/modifierVisite-main.js"></script>
 
 
 </html>

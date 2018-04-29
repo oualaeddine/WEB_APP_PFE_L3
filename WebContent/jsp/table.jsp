@@ -411,9 +411,13 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="../js/sb-admin-datatables.min.js"></script>
+    <%--<script src="../js/sb-admin-datatables.min.js"></script>--%>
 
     <script>
+
+
+        var table = $('#dataTable').DataTable();
+
         $('#etatClient').change(function () {
             $(this).next('#ifPresent').toggle();
         });
@@ -557,28 +561,34 @@
             var action = $('#action option:selected').val();
             var params;
 
-            if (action === 1) {
+            console.log("action = " + action);
+
+            if (action == 1) {
                 params = {
                     visiteId: $('#visiteModifiee').val(),
                     action: 'rapport',
                     etatVisite: 'annulee'
                 };
+                console.log("ani f 1")
+
                 post('/NewRapport', params, 'GET');
             }
-            if (action === 2) {
+            if (action == 2) {
                 params = {
                     visiteId: $('#visiteModifiee').val(),
-                    agentId: $('#idAgent').val(),
+                    logementId: $('#idLogement').val(),
                     date: $('#newDate').val(),
                     action: 'rapport',
                     etatVisite: 'reportee'
                 };
-                post('/NewRapport', params, 'GET');
+
+                console.log("ani f 2");
+                post('/modifierVisiteServlet', params, 'GET');
             }
         }
 
         $('#action').on('change', function () {
-            if (this.val() === 1)
+            if ($('#action option:selected').val() === 1)
                 initCalendar($('#selectedRowId').val())
         })
 

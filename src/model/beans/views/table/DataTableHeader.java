@@ -11,8 +11,21 @@ public class DataTableHeader {
         return html;
     }
 
+
     private void setupTableHeader() {
         switch (currentPage) {
+            case VENTES_EN_COURS:
+                setupTableHeaderForVentes();
+                break;
+            case VENTES_ANNULEES:
+                setupTableHeaderForVentes();
+                break;
+            case CONFIRMED_VENTES:
+                setupTableHeaderForVentes();
+                break;
+            case VERSEMENTS_FOR_VENTE:
+                setupTableHeaderForVentes();
+                break;
             case CLIENT_MES_LOGEMENT_VISITES:
                 setupTableHeaderForLogements();
                 break;
@@ -263,7 +276,8 @@ public class DataTableHeader {
                         "    <th>ID</th>\n" +
                         "    <th>Client</th>\n" +
                         "    <th>Logement</th>\n" +
-                        "    <th>Date</th>\n" +
+                        "    <th>Date de début</th>\n" +
+                        "    <th>Reste à payer</th>" +
                         "    <th>Etat</th>\n" +
                         "</tr>";
     }

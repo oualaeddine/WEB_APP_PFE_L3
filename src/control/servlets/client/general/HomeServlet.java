@@ -12,14 +12,21 @@ import java.io.IOException;
 @WebServlet(name = "HomeServlet", value = "/home")
 public class HomeServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
-            response.sendRedirect("/home");
-        }
+        String what = request.getParameter("what");
+        if (what == null) {
+            this.getServletContext().getRequestDispatcher("/jsp/client/home.jsp").forward(request, response);
+        } else {
+            switch (what) {
+                case "logements":
+                    this.getServletContext().getRequestDispatcher("/jsp/client/logements.jsp").forward(request, response);
+                    break;
 
+            }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/jsp/client/home.jsp").forward(request, response);
+        doPost(request, response);
     }
 
 }

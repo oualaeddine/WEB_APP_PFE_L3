@@ -411,6 +411,36 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
 
         </div>
     </div>
+    <%--Modal Versements par vente--%>
+    <div id="versementsByVenteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Liste des versements</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tableModal">
+                        <thead>
+                        <tr>
+                            <th>Montant</th>
+                        </tr>
+                        </thead>
+                        <tbody id="idTa3TBODY">
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -425,6 +455,20 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
     <script src="../js/sb-admin-datatables.min.js"></script>
 
     <script>
+        function getIdVenteForVersement(idTaaLaVente) {
+            $.ajax({
+                url: "/api/versementApi/getByVente?venteId=" + idTaaLaVente,
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    for (var row in data) {
+                        var montant = row['montant'];
+                        var rowTa3na = "<tr><td>" + montant + "</td></tr>";
+                        document.getElementById("idTa3TBODY").innerHTML =
+                            document.getElementById("idTa3TBODY").innerHTML + rowTa3na;
+                    }
+                }
+            });
+        }
         $('#etatClient').change(function () {
             $(this).next('#ifPresent').toggle();
         });
@@ -554,6 +598,7 @@ var params = {visiteId:$('#visiteModifiee').val()  ,action:'rapport',etatVisite:
             calendar.fullCalendar('addEventSource', events);
             calendar.fullCalendar('refetchEvents');
         }
+
     </script>
 </div>
 </body>

@@ -516,4 +516,15 @@ public class LogementDAO extends DAO {
         }
         return logements;
     }
+
+    public int getNombreLogements() {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("SELECT (count(id)) FROM logement;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

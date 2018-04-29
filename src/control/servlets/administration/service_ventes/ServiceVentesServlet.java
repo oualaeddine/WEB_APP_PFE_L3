@@ -46,7 +46,7 @@ public class ServiceVentesServlet extends MyServlet {
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=VERSEMENTS_FOR_USER").forward(request, response);
                         break;
                     case "ventesEnAttente":
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=VENTES_EN_ATTENTE").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=VENTES_EN_COURS").forward(request, response);
                         break;
                     case "ventesConfirmees":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CONFIRMED_VENTES").forward(request, response);

@@ -108,7 +108,7 @@
             + "             </li>"
             + ""
             + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-            "                   <a class=\"\" href=\"properties.html\">Nos Logements</a>"
+            "                   <a class=\"\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
             + "             </li>"
             + "             <!-- <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
             "                       <a class=\"\" href=\"property.html\">A propos de <strong>HCH</strong></a>" +

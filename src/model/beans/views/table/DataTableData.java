@@ -68,6 +68,8 @@ public class DataTableData {
             case LOGEMENTS_NON_VENDUS:
                 setupDataLogementsNonVendus();
                 break;
+            case EMPLOYES:
+                break;
             case AGENTS:
                 setupDataAgentList();
                 break;
@@ -107,8 +109,12 @@ public class DataTableData {
             case ADMINS:
                 setupDataAdminsList();
                 break;
+            case NEW_MESSAGE:
+                break;
             case LOCALITES:
                 setupDataLocaliteList();
+                break;
+            case PLAINTES:
                 break;
             case VENTES:
                 setupDataVentes();
@@ -119,12 +125,18 @@ public class DataTableData {
             case CLIENTS:
                 setupDataClientsList();
                 break;
+            case CLIENTS_FOR_USER:
+                break;
             case BANNED_CLIENTS:
                 setupDataBannedClients();
+                break;
+            case MESSAGES_FOR_ADMIN:
                 break;
             case MESSAGES:
                 break;
             case ADMINISTRATION_MESSAGES_FOR_USER:
+                break;
+            case ADMINISTRATION_MESSAGES_FOR_EMPLOYEES:
                 break;
             case CLIENTS_MESSAGES_FOR_USER:
                 break;
@@ -146,6 +158,41 @@ public class DataTableData {
             case CLIENT_MES_VENTES_EN_COURS:
                 setupDataVentesEnCoursForClient();
                 break;
+            case MODIFIER_PROFIL:
+                break;
+            case CHANGER_MOT_DE_PASSE:
+                break;
+            case LOGOUT:
+                break;
+            case NOUVELLE_VENTE:
+                break;
+            case VENTES_EN_COURS:
+                setupDataVentesEnCours();
+                break;
+            case VENTES_ANNULEES:
+                setupDataVentesAnnulees();
+                break;
+            case VERSEMENTS_FOR_VENTE:
+                setupDataVentes();
+                break;
+            case VERSEMENTS_FOR_USER:
+                break;
+            case CLIENT_MY_NOTIFICATIONS:
+                break;
+        }
+    }
+
+    private void setupDataVentesEnCours() {
+        LinkedList<Vente> ventes = new VentesDAO().getEnCours();
+        for (Vente v : ventes) {
+            data.add(new DataTableRow(DataTableRowFormat.VENTE, v));
+        }
+    }
+
+    private void setupDataVentesAnnulees() {
+        LinkedList<Vente> ventes = new VentesDAO().getAnnulees();
+        for (Vente v : ventes) {
+            data.add(new DataTableRow(DataTableRowFormat.VENTE, v));
         }
     }
 

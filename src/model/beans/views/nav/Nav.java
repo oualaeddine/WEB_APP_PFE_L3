@@ -345,7 +345,7 @@ public class Nav {
         navElements.add(logoutNavElement);
     }
 
-    private void setupNavElementsForResponsableVentes() {        // TODO: 2/18/2018
+    private void setupNavElementsForResponsableVentes() {
         String urlBase = "/DashboardServlet";
 
         /*dashboard*/
@@ -376,7 +376,7 @@ public class Nav {
         /*ventes*/
         LinkedList<NavElement> ventesSubElementList = new LinkedList<>();
 
-        NavElement ventesEnAttenteNavElement = new NavElement(isPage(currentPage, TablePage.VENTES_EN_ATTENTE), "Ventes en attente",urlBase + "?what=ventesEnAttente","fa-clock-o");
+        NavElement ventesEnAttenteNavElement = new NavElement(isPage(currentPage, TablePage.VENTES_EN_COURS), "Ventes en cours", urlBase + "?what=ventesEnAttente", "fa-clock-o");
         ventesSubElementList.add(ventesEnAttenteNavElement);
 
         NavElement ventesConfirmeeNavElement = new NavElement(isPage(currentPage, TablePage.CONFIRMED_VENTES), "Ventes confirmées", urlBase + "?what=ventesConfirmees", "fa-check-square-o");

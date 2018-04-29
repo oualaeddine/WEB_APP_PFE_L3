@@ -242,4 +242,24 @@ public class VentesDAO extends DAO {
         }
         return ventes;
     }
+
+    public LinkedList<Vente> getAnnulees() {
+        ResultSet result;
+        LinkedList<Vente> ventes = new LinkedList<>();
+        try {
+            result = venteStatement.executeQuery("SELECT * FROM vente WHERE etat='annulee';");
+            while (result.next()) {
+                Vente vente = new Vente();
+                vente.setId(result.getInt("id"));
+                vente.setDate(result.getDate("date"));
+                vente.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                vente.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                vente.setEtatVente(Util.getEtatVenteFromString(result.getString("etat")));
+                ventes.add(vente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ventes;
+    }
 }

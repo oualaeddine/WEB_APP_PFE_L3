@@ -116,7 +116,7 @@
                 + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
                 + "             </li>"
                 + ""
-                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"properties.html\">Nos Logements</a>"
+                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
                 + "             </li>"
                 + "             <!-- <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"property.html\">A propos de <strong>HCH</strong></a></li> -->"
                 + ""
@@ -170,11 +170,11 @@
                 + "         </div>"
                 + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
                 + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
+                + "                 <a href=\"index.html\" >Accueil</a>"
                 + "             </li>"
                 + ""
                 + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-                "                   <a class=\"\" href=\"properties.html\">Nos Logements</a>"
+                "                   <a class=\"active\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
                 + "             </li>"
                 + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
                 + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
@@ -245,7 +245,62 @@
 
 
 %>
+<div class="content-area recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                <!-- /.feature title -->
+                <h2>Nos logements</h2>
+                <p>Choisissez, Visitez, Achetez !</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="property-th">
+                <%
+                    LinkedList<Logement> logements = new LogementDAO().getNonVendus();
+                    Client loggedIdClient = new Client();
+                    String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
+                    if (isLoggedIn) {
+                        loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+                    }
+                    for (Logement logement : logements) {
+                        if (isLoggedIn) {
+                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                        }
+                        out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
+                                "                    <div class=\"box-two proerty-item\">\n" +
+                                "                        <div class=\"item-thumb\">\n" +
+                                "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                        </div>\n" +
+                                "                        <div class=\"item-entry overflow\">\n" +
+                                "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
+                                "                            <div class=\"dot-hr\"></div>\n" +
+                                "                            <span class=\"pull-left\"><b>Area :</b> " + logement.getSuperficie() + "m2</span>\n" +
+                                "                            <span class=\"proerty-price pull-right\">" + logement.getPrix() + " DZD</span>\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "                </div>");
+                    }
+                %>
 
+
+                <div class="col-sm-6 col-md-3 p0">
+                    <div class="box-tree more-proerty text-center">
+                        <div class="item-tree-icon">
+                            <i class="fa fa-th"></i>
+                        </div>
+                        <div class="more-entry overflow">
+                            <h5><a href="property-1.html">CAN'T DECIDE ? </a></h5>
+                            <h5 class="tree-sub-ttl">Show all properties</h5>
+                            <button class="btn border-btn more-black" value="All properties">All properties</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 

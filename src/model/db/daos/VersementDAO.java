@@ -140,7 +140,24 @@ public class VersementDAO extends DAO {
         return null;
     }
 
-    public LinkedList<Versement> getByVente(int venteId) {// TODO: 4/26/2018
-        return null;
+    public LinkedList<Versement> getByVente(int venteId) {
+        ResultSet result;
+        LinkedList<Versement> versements = new LinkedList<>();
+        try {
+            result = versementStatement.executeQuery("SELECT * FROM versement WHERE venteId=" + venteId + ";");
+            while (result.next()) {
+                Versement versement = new Versement();
+                versement.setId(result.getInt("id"));
+                versement.setMontant(result.getDouble("montant"));
+                versement.setDate(result.getDate("date"));
+                Vente vente = (Vente) new VentesDAO().getById(venteId);
+                versement.setVente(vente);
+
+                versements.add(versement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return versements;
     }
 }

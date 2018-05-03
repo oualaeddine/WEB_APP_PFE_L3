@@ -1,3 +1,4 @@
+
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.enums.UserType" %>
@@ -16,7 +17,6 @@
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
 %>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,7 +33,6 @@
     <link href="./programmerVisite/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="./programmerVisite/assets/css/paper-bootstrap-wizard.css" rel="stylesheet"/>
     <link href="./programmerVisite/assets/css/bootstrap-slider.css" rel="stylesheet"/>
-    <link href="./programmerVisite/assets/css/datatables-buttons.css" rel="stylesheet"/>
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="./programmerVisite/assets/css/demo.css" rel="stylesheet"/>-->
@@ -63,7 +62,8 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="./programmerVisite/assets/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="./programmerVisite/assets/datatables-select/select.dataTables.min.css">
-    <link rel="stylesheet" href="./programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="./programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">    <link href="./programmerVisite/assets/css/datatables-buttons.css" rel="stylesheet"/>
+
     <!--<link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">-->
     <style>
 
@@ -104,13 +104,13 @@
 
                 <!--      Wizard container        -->
                 <div class="wizard-container">
-                    <div class="card wizard-card" data-color="blue" id="wizard">
+                    <div class="card wizard-card" data-color="red" id="wizard">
                         <form action="" method="">
                             <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
                             <div class="wizard-header">
-                                <h3 class="wizard-title">Programmer une visite</h3>
-                                <p class="category">Suivez les etapes pour programmer une visite.</p>
+                                <h3 class="wizard-title">Ajouter une vente</h3>
+                                <p class="category">Suivez les etapes pour Ajouter une vente.</p>
                             </div>
                             <div class="wizard-navigation">
                                 <div class="progress-with-circle">
@@ -140,14 +140,6 @@
                                                 <i class="ti-home"></i>
                                             </div>
                                             logements
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#date" data-toggle="tab">
-                                            <div class="icon-circle">
-                                                <i class="ti-calendar"></i>
-                                            </div>
-                                            Date rdv
                                         </a>
                                     </li>
                                     <li>
@@ -391,18 +383,6 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="date">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div id='calendar'></div>
-                                            <input type="hidden" name="rdv" id="idVisite">
-                                            <input type="hidden" name="rdv" id="idAgent">
-                                            <input type="hidden" name="rdv" id="heureDebutVisite">
-                                            <input type="hidden" name="rdv" id="heureFinVisite">
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="tab-pane" id="client">
                                     <div class="row">
                                         <h5 class="info-text"> Please tell us more about yourself.</h5>
@@ -442,7 +422,7 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12 ">
                                                 <div class="panel panel-success height">
-                                                    <div class="panel-heading">Details du Rendez-vous</div>
+                                                    <div class="panel-heading">Details de la vente</div>
                                                     <div class="panel-body">
                                                         <div class="col-xs-12 col-md-12 ">
                                                             <div class="panel panel-primary ">
@@ -517,37 +497,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 col-md-12 ">
-                                                            <div class="panel panel-danger height">
-                                                                <div class="panel-heading">Details de la visite</div>
-                                                                <div class="panel-body">
-                                                                    <div class=" col-md-4 ">
-                                                                        <strong>Agent ID:</strong>
-                                                                        <span id="idAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Date:</strong>
-                                                                        <span id="dateVisiteDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                    <div class="col-md-4 ">
-                                                                        <strong>Nom Agent:</strong>
-                                                                        <span id="nomAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Heure:</strong>
-                                                                        <span id="heureDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                    <div class="col-md-4 ">
-                                                                        <strong>telephone:</strong>
-                                                                        <span id="tellAgentDetails"></span>
-                                                                        <br>
-                                                                        <strong>Durée:</strong>
-                                                                        <span id="dureeVisiteDetails"></span>
-                                                                        <br>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -561,7 +510,7 @@
                                            name='next'
                                            value='Next'/>
                                     <input type='button' class='btn btn-finish btn-fill btn-success btn-wd'
-                                           name='finish' value='Finish' onclick="confirmerVisite()"/>
+                                           name='finish' value='Finish' onclick="ajouterVente()"/>
                                 </div>
 
                                 <div class="pull-left">
@@ -635,10 +584,10 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="./programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="./programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="./programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="./programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
+<script src="programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
 
 <!--  Plugin for the Wizard -->
 <!--<script src="programmerVisite/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>-->
@@ -656,8 +605,8 @@
 <script src="./programmerVisite/assets/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="./programmerVisite/assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
-<script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
-<script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
+<script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script><script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
+
 <script src="./programmerVisite/assets/js/main.js"></script>
 
 <script>
@@ -690,8 +639,6 @@
 </script>
 
 </html>
-
-
 
 
 

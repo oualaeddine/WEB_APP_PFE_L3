@@ -349,7 +349,7 @@ public class LogementDAO extends DAO {
         LinkedList<Logement> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement;");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE  gele=0;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -395,7 +395,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE etat='gele';");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=1;");
             while (result.next()) {
                 Logement logement = new Logement();
 

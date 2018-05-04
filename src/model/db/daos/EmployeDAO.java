@@ -2,6 +2,7 @@ package model.db.daos;
 
 import model.beans.humans.Employe;
 import model.db.DAO;
+import model.enums.UserType;
 import utils.Util;
 
 import java.sql.ResultSet;
@@ -215,6 +216,12 @@ public class EmployeDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public int countAll() {
+
+        return 0;
     }
 
     public boolean authenticate(String username, String password) {
@@ -522,4 +529,7 @@ public class EmployeDAO extends DAO {
     }
 
 
+    public int countEmployeeByType(UserType agent) {
+        return 0;
+    }
 }

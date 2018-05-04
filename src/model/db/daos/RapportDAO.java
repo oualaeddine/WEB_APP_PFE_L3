@@ -1,7 +1,6 @@
 package model.db.daos;
 
 import model.beans.Rapport;
-import model.beans.Vente;
 import model.beans.Versement;
 import model.beans.humans.Person;
 import model.db.DAO;
@@ -9,6 +8,7 @@ import model.enums.EtatClient;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -148,8 +148,27 @@ public class RapportDAO extends DAO {
         return rapports;
     }
 
+    @Override
+    public int countAll() {
+
+        return 0;
+    }
+
 
     public LinkedList<Versement> getByLogement() {
         return null;
     }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * stats
+     **/
+
+
+    public int getPresencesForMonth(Month month) {
+        return 0;
+    }
+
 }

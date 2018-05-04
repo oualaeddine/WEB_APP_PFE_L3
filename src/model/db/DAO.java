@@ -85,4 +85,5 @@ public abstract class DAO {
 
     public abstract LinkedList getAll();
 
+    public abstract int countAll();
 }

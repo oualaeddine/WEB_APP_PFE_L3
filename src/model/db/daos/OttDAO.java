@@ -106,5 +106,11 @@ public class OttDAO extends DAO{
         return null;
     }
 
+    @Override
+    public int countAll() {
+
+        return 0;
+    }
+
 
 }

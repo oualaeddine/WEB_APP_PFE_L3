@@ -388,6 +388,12 @@ public class VisitesDao extends DAO {
         return list;
     }
 
+    @Override
+    public int countAll() {
+
+        return 0;
+    }
+
     public LinkedList<Visite> getPassee() {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();

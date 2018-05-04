@@ -1,21 +1,29 @@
-<%@ page import="model.beans.views.MyView" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="control.statistics.perso.AgentStats" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.MyView" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.humans.Employe" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%! private TablesView tablesView = new TablesView(); %>
+<%!
+    private TablesView tablesView = new TablesView();
+    int userId;
+
+%>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
-    int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+    userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     String currentPage = "Agent";
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);
     Employe agent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+%>
 
+<%!
+    AgentStats agentStats = new AgentStats(userId);
 %>
 <head>
     <meta charset="utf-8">
@@ -34,7 +42,7 @@
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin.css" rel="stylesheet">
     <style>
-        .nav-link:hover{
+        .nav-link:hover {
             background-color: rgba(21, 21, 21, 0.81);
         }
     </style>
@@ -44,7 +52,8 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+agent.getNom()+" "+agent.getPrenom());%></a>
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + agent.getNom() + " " + agent.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -77,7 +86,8 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-comments"></i>
                         </div>
-                        <div class="mr-5">26 Nouveaux Messages!</div>
+                        <div class="mr-5"><%out.print("" + agentStats.getNewMessagesNbr());%> Nouveaux Messages!
+                        </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les messages</span>
@@ -93,7 +103,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-list"></i>
                         </div>
-                        <div class="mr-5">11 Visites reportées!</div>
+                        <div class="mr-5"><%out.print("" + agentStats.getReportedVisites());%> Visites reportées!</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les details</span>
@@ -109,7 +119,8 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">13 Nouvelles Visites!</div>
+                        <div class="mr-5"><%out.print("" + agentStats.getProgrammedVisites());%> Nouvelles Visites!
+                        </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les Details</span>
@@ -125,7 +136,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-ban"></i>
                         </div>
-                        <div class="mr-5">7 Visites annulées!</div>
+                        <div class="mr-5"><%out.print("" + agentStats.getCanceledVisites());%> Visites annulées!</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les Details</span>
@@ -146,9 +157,10 @@
         <!-- Area Chart Example-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-chart-area"></i> Changement nombre de clients</div>
+                <i class="fa fa-chart-area"></i> Changement nombre de Visites
+            </div>
             <div class="card-body">
-                <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                <canvas id="visitesNbrChart" width="100%" height="30"></canvas>
             </div>
             <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
         </div>
@@ -157,7 +169,8 @@
                 <!-- Example Bar Chart Card-->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-chart-bar"></i> Nombre de clients par mois</div>
+                        <i class="fa fa-chart-bar"></i> Nombre de clients par mois
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-8 my-auto">
@@ -182,7 +195,8 @@
                 <!-- Example Pie Chart Card-->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-chart-pie"></i> Nombre de clients par region</div>
+                        <i class="fa fa-chart-pie"></i> Nombre de clients par region
+                    </div>
                     <div class="card-body">
                         <canvas id="myPieChart" width="100%" height="100"></canvas>
                     </div>
@@ -255,7 +269,8 @@
         <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

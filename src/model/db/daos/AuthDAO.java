@@ -80,4 +80,10 @@ public class AuthDAO extends DAO {
     public LinkedList getAll() {
         return null;
     }
+
+    @Override
+    public int countAll() {
+
+        return 0;
+    }
 }

@@ -1,5 +1,7 @@
 package control.statistics.perso;
 
+import control.statistics.PersoStats;
+
 public class ClientStats extends PersoStats {
 
     public ClientStats(int userId) {

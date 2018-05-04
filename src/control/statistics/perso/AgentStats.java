@@ -1,5 +1,6 @@
 package control.statistics.perso;
 
+import control.statistics.PersoStats;
 import model.db.daos.EmployeDAO;
 import model.db.daos.RapportDAO;
 import model.db.daos.VisitesDao;

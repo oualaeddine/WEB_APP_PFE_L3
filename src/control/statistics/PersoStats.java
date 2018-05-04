@@ -1,4 +1,4 @@
-package control.statistics.perso;
+package control.statistics;
 
 public class PersoStats {
     int userId;

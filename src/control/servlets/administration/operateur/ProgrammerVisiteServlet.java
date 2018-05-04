@@ -56,6 +56,7 @@ public class ProgrammerVisiteServlet extends MyServlet {
             System.out.println("Ajout de la nouvelle visite: " + new VisitesDao().add(visite));
 //            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
         }
+
         if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
             Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
             Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
@@ -71,10 +72,14 @@ public class ProgrammerVisiteServlet extends MyServlet {
             visite.setTimestamp(timestamp);
 
             System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-            redirectToDashboard(request, response);
-        } else if (request.getParameter("action") == null && !request.getParameter("action").equals("edit")) {
+            //   redirectToDashboard(request, response);
+            this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request, response);
+
         }
-        this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request, response);
+
+        if (request.getParameter("action") == null) {
+            this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request, response);
+        }
 
 
     }

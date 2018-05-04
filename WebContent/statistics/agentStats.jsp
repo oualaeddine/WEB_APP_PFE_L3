@@ -1,17 +1,17 @@
-<%@ page import="model.beans.humans.Employe" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="control.statistics.globales.VisitesStats" %>
 <%@ page import="control.statistics.perso.AgentStats" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.Rapport" %>
+<%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.db.daos.*" %>
+<%@ page import="model.enums.EtatClient" %>
+<%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.Rapport" %>
-<%@ page import="model.enums.EtatClient" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="control.statistics.globales.VisitesStats" %>
-<%@ page import="java.time.Month" %>
 <!DOCTYPE html>
 <html>
-<%Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
+<% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
 <%String localite = new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom();%>
 <%
     AgentStats stats = new AgentStats(loggedAgent.getId());
@@ -300,7 +300,7 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <ul class="chart-legend clearfix">
-                                    <%
+                                    <%!
                                         LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
                                     %>
 
@@ -338,7 +338,7 @@
     <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
-<%VisitesStats visitesStats = new VisitesStats();%>
+<%!private VisitesStats visitesStats = new VisitesStats();%>
 
 <script>
     $(function () {
@@ -427,7 +427,7 @@
 
         // Create the line chart
         salesChart.Line(salesChartData, salesChartOptions);
-    })
+    });
 </script>
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -444,7 +444,6 @@
 <!-- ChartJS -->
 <script src="bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 </body>

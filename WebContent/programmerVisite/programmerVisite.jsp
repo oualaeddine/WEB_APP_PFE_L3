@@ -1,11 +1,10 @@
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.beans.humans.Employe" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
-<%@ page import="model.beans.views.MyView" %>
-<%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
@@ -682,7 +681,8 @@
                 loadClients();
                 $('#ajouterClientModal').modal('hide');
             }
-        });    }
+        });
+    }
 
 
 

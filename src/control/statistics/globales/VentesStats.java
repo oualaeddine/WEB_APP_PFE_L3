@@ -13,26 +13,32 @@ public class VentesStats extends Stats {
         dao = new VentesDAO();
     }
 
+    // TODO: 5/4/2018
     public int confirmedVentesNbr() {
         return 0;
     }
 
+    // TODO: 5/4/2018
     public int pendingVentesNbr() {
         return 0;
     }
 
+    // TODO: 5/4/2018
     public int canceledVentesNbr() {
         return 0;
     }
 
+    // TODO: 5/4/2018
     public LinkedList<HashMap<Month, Integer>> confirmedVentesVariaton() {
         return null;
     }
 
+    // TODO: 5/4/2018
     public LinkedList<HashMap<Month, Integer>> pendingVentesVariaton() {
         return null;
     }
 
+    // TODO: 5/4/2018
     public LinkedList<HashMap<Month, Integer>> canceledVentesVariaton() {
         return null;
     }

@@ -1,9 +1,10 @@
 package control.statistics.globales;
 
-import control.statistics.Stats;
 import model.db.daos.EmployeDAO;
+import model.enums.UserType;
 
-public class EmployeesStats extends Stats {
+public class EmployeesStats {
+    private EmployeDAO dao;
 
     public EmployeesStats() {
         dao = new EmployeDAO();
@@ -11,13 +12,12 @@ public class EmployeesStats extends Stats {
 
     // TODO: 5/4/2018
     public int employeesNbr() {
-        //dao.getEmployeesNbr();
-        return 0;
+        return dao.countAll();
     }
 
     // TODO: 5/4/2018
     public int agentsNbr() {
-        return 0;
+        return dao.countEmployeeByType(UserType.AGENT);
     }
 
     // TODO: 5/4/2018
@@ -27,7 +27,7 @@ public class EmployeesStats extends Stats {
 
     // TODO: 5/4/2018
     public int operateursNbr() {
-        return 0;
+        return dao.countEmployeeByType(UserType.OPERATEUR);
     }
 
     // TODO: 5/4/2018
@@ -37,7 +37,7 @@ public class EmployeesStats extends Stats {
 
     // TODO: 5/4/2018
     public int responsablesVentesNbr() {
-        return 0;
+        return dao.countEmployeeByType(UserType.RESPONSABLE_VENTES);
     }
 
     // TODO: 5/4/2018
@@ -47,7 +47,7 @@ public class EmployeesStats extends Stats {
 
     // TODO: 5/4/2018
     public int adminsNbr() {
-        return 0;
+        return dao.countEmployeeByType(UserType.ADMIN);
     }
 
     // TODO: 5/4/2018

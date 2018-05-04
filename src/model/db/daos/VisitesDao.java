@@ -401,8 +401,9 @@ public class VisitesDao extends DAO {
     }
 
     @Override
-    public void countAll() {
+    public int countAll() {
 
+        return 0;
     }
 
     public LinkedList<Visite> getPassee() {

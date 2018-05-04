@@ -12,6 +12,7 @@ public class VisitesStats extends Stats {
         dao = new VisitesDao();
     }
 
+
     // TODO: 5/4/2018
     public int visitesPrevuesNbr() {
         return 0;
@@ -92,7 +93,7 @@ public class VisitesStats extends Stats {
 
     // TODO: 5/4/2018
     public int visitesNbr() {
-        return 0;
+        return dao.countAll();
     }
 
     // TODO: 5/4/2018

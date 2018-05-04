@@ -72,7 +72,8 @@ public class SignalementDAO extends DAO {
     }
 
     @Override
-    public void countAll() {
+    public int countAll() {
 
+        return 0;
     }
 }

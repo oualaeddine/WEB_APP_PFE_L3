@@ -149,8 +149,9 @@ public class RapportDAO extends DAO {
     }
 
     @Override
-    public void countAll() {
+    public int countAll() {
 
+        return 0;
     }
 
 

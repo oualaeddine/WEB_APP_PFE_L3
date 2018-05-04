@@ -14,6 +14,11 @@ public class VentesStats extends Stats {
     }
 
     // TODO: 5/4/2018
+    public int ventesNbr() {
+        return dao.countAll();
+    }
+
+    // TODO: 5/4/2018
     public int confirmedVentesNbr() {
         return 0;
     }

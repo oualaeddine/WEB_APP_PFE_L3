@@ -207,8 +207,9 @@ public class ClientDAO extends DAO {
     }
 
     @Override
-    public void countAll() {
+    public int countAll() {
 
+        return 0;
     }
 
     public LinkedList<Client> getBannedClients() {

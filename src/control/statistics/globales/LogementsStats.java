@@ -15,7 +15,7 @@ public class LogementsStats extends Stats {
 
     // TODO: 5/4/2018
     public int logementsNbr() {
-        return 0;
+        return dao.countAll();
     }
 
     // TODO: 5/4/2018

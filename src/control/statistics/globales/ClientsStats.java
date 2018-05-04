@@ -13,8 +13,7 @@ public class ClientsStats extends Stats {
 
     // TODO: 5/4/2018
     public int clientsNbr() {
-        dao.countAll();
-        return 0;
+        return dao.countAll();
     }
 
     // TODO: 5/4/2018

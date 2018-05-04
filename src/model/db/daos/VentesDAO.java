@@ -153,8 +153,9 @@ public class VentesDAO extends DAO {
     }
 
     @Override
-    public void countAll() {
+    public int countAll() {
 
+        return 0;
     }
 
     public boolean cancelVente(Vente vente) {

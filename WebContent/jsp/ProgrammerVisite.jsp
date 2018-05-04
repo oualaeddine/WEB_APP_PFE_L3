@@ -159,23 +159,10 @@
     </div>
 </nav>
 <div class="content-wrapper">
-    <div>
-        <iframe src="/ProgrammerVisite" width="100%" frameborder="0"
+
+    <iframe src="/ProgrammerVisite" width="100%" frameborder="0"
                 onload="resizeIframe(this)"></iframe>
-    </div>
 
-    <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Programmer une visite</li>
-        </ol>
-
-
-    </div>
-    <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
         <div class="container">

@@ -217,6 +217,11 @@ public class EmployeDAO extends DAO {
         return list;
     }
 
+    @Override
+    public void countAll() {
+
+    }
+
     public boolean authenticate(String username, String password) {
         ResultSet result;
         try {

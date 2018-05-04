@@ -152,6 +152,11 @@ public class VentesDAO extends DAO {
         return list;
     }
 
+    @Override
+    public void countAll() {
+
+    }
+
     public boolean cancelVente(Vente vente) {
         try {
             venteStatement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId() + ";");

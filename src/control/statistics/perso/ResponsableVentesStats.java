@@ -1,10 +1,9 @@
 package control.statistics.perso;
 
-import control.statistics.globales.EmployeesStats;
+public class ResponsableVentesStats extends PersoStats {
 
-public class ResponsableVentesStats extends EmployeesStats {
 
-    public ResponsableVentesStats() {
-        super();
+    public ResponsableVentesStats(int userId) {
+        super(userId);
     }
 }

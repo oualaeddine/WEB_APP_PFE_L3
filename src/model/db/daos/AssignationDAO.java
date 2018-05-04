@@ -94,6 +94,11 @@ public class AssignationDAO extends DAO{
         return null;
     }
 
+    @Override
+    public void countAll() {
+
+    }
+
     public int isAffected(int agent) {
         ResultSet result;
         try {

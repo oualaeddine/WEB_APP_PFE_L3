@@ -104,4 +104,9 @@ public class LocaliteDAO extends DAO {
         }
         return list;
     }
+
+    @Override
+    public void countAll() {
+
+    }
 }

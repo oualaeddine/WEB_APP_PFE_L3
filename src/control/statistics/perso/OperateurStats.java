@@ -1,9 +1,7 @@
 package control.statistics.perso;
 
-import control.statistics.globales.EmployeesStats;
-
-public class OperateurStats extends EmployeesStats {
-    public OperateurStats() {
-        super();
+public class OperateurStats extends PersoStats {
+    public OperateurStats(int userId) {
+        super(userId);
     }
 }

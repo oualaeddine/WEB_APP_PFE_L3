@@ -21,7 +21,17 @@ public class EmployeesStats extends Stats {
     }
 
     // TODO: 5/4/2018
+    public int notApprouvedAgentsNbr() {
+        return 0;
+    }
+
+    // TODO: 5/4/2018
     public int operateursNbr() {
+        return 0;
+    }
+
+    // TODO: 5/4/2018
+    public int notApprouvedOperateursNbr() {
         return 0;
     }
 
@@ -31,7 +41,17 @@ public class EmployeesStats extends Stats {
     }
 
     // TODO: 5/4/2018
+    public int notApprouvedResponsablesVentesNbr() {
+        return 0;
+    }
+
+    // TODO: 5/4/2018
     public int adminsNbr() {
+        return 0;
+    }
+
+    // TODO: 5/4/2018
+    public int notApprouvedAdminsNbr() {
         return 0;
     }
 

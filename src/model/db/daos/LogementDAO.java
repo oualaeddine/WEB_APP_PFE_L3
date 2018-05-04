@@ -390,6 +390,11 @@ public class LogementDAO extends DAO {
         return list;
     }
 
+    @Override
+    public void countAll() {
+
+    }
+
 
     public LinkedList<Logement> getGeles() {
         ResultSet result;

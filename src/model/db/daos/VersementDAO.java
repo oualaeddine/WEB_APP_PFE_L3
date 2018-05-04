@@ -136,6 +136,11 @@ public class VersementDAO extends DAO {
         return list;
     }
 
+    @Override
+    public void countAll() {
+
+    }
+
     public LinkedList<Versement> getByClient(int clientId) {// TODO: 4/26/2018
         return null;
     }

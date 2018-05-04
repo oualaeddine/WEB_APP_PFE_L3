@@ -6,7 +6,6 @@ import model.db.daos.VisitesDao;
 
 import java.time.Month;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class VisitesStats extends Stats {
     public VisitesStats() {
@@ -29,18 +28,66 @@ public class VisitesStats extends Stats {
     }
 
     // TODO: 5/4/2018
-    public LinkedList<HashMap<Month, Integer>> visitesPrevuesVariaton() {
-        return null;
+    public HashMap<Month, Integer> visitesPrevuesVariaton() {
+        HashMap<Month, Integer> variation = new HashMap<>();
+// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
+
+        variation.put(Month.JANUARY, 0);
+        variation.put(Month.FEBRUARY, 0);
+        variation.put(Month.MARCH, 0);
+        variation.put(Month.APRIL, 0);
+        variation.put(Month.MAY, 0);
+        variation.put(Month.JUNE, 0);
+        variation.put(Month.JULY, 0);
+        variation.put(Month.AUGUST, 0);
+        variation.put(Month.SEPTEMBER, 0);
+        variation.put(Month.OCTOBER, 0);
+        variation.put(Month.NOVEMBER, 0);
+        variation.put(Month.DECEMBER, 0);
+
+        return variation;
     }
 
     // TODO: 5/4/2018
-    public LinkedList<HashMap<Month, Integer>> visitesReporteesVariaton() {
-        return null;
+    public HashMap<Month, Integer> visitesReporteesVariaton() {
+        HashMap<Month, Integer> variation = new HashMap<>();
+// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
+
+        variation.put(Month.JANUARY, 0);
+        variation.put(Month.FEBRUARY, 0);
+        variation.put(Month.MARCH, 0);
+        variation.put(Month.APRIL, 0);
+        variation.put(Month.MAY, 0);
+        variation.put(Month.JUNE, 0);
+        variation.put(Month.JULY, 0);
+        variation.put(Month.AUGUST, 0);
+        variation.put(Month.SEPTEMBER, 0);
+        variation.put(Month.OCTOBER, 0);
+        variation.put(Month.NOVEMBER, 0);
+        variation.put(Month.DECEMBER, 0);
+
+        return variation;
     }
 
     // TODO: 5/4/2018
-    public LinkedList<HashMap<Month, Integer>> visitesAnnuleesVariaton() {
-        return null;
+    public HashMap<Month, Integer> visitesAnnuleesVariaton() {
+        HashMap<Month, Integer> variation = new HashMap<>();
+// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
+
+        variation.put(Month.JANUARY, 0);
+        variation.put(Month.FEBRUARY, 0);
+        variation.put(Month.MARCH, 0);
+        variation.put(Month.APRIL, 0);
+        variation.put(Month.MAY, 0);
+        variation.put(Month.JUNE, 0);
+        variation.put(Month.JULY, 0);
+        variation.put(Month.AUGUST, 0);
+        variation.put(Month.SEPTEMBER, 0);
+        variation.put(Month.OCTOBER, 0);
+        variation.put(Month.NOVEMBER, 0);
+        variation.put(Month.DECEMBER, 0);
+
+        return variation;
     }
 
     // TODO: 5/4/2018
@@ -49,7 +96,7 @@ public class VisitesStats extends Stats {
     }
 
     // TODO: 5/4/2018
-    public LinkedList<HashMap<Localite, Integer>> VisitesNbrPerRegion() {
+    public HashMap<Localite, Integer> VisitesNbrPerRegion() {
         return null;
     }
 

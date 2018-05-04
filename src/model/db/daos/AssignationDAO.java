@@ -96,7 +96,13 @@ public class AssignationDAO extends DAO{
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT (count(id)) FROM assignation_region;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 

@@ -138,7 +138,13 @@ public class VersementDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = versementStatement.executeQuery("SELECT (count(id)) FROM versement;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 

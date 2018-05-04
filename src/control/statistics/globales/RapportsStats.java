@@ -15,115 +15,102 @@ public class RapportsStats extends Stats {
         dao = new RapportDAO();
     }
 
-    // TODO: 5/4/2018
     public int rapportsNbr() {
         return dao.countAll();
     }
 
-    // TODO: 5/4/2018
     public int absencesNbr() {
-        return 0;
+        return dao.getAbsencesNbr();
     }
 
-    // TODO: 5/4/2018
     public int presencesNbr() {
-        return 0;
+        return dao.getPresences();
     }
 
-    // TODO: 5/4/2018
     public int positifsNbr() {
-        return 0;
+        return dao.getVisitesPositivesNbr();
     }
 
-    // TODO: 5/4/2018
     public int negatifsNbr() {
-        return 0;
+        return dao.getVisitesNegativesNbr();
     }
 
-    // TODO: 5/4/2018
     public float positifPercentage() {
-        return 0;
+        return dao.pourcentageAvisPositifs();
     }
 
-    // TODO: 5/4/2018
     public float negatifPercentage() {
-        return 0;
+        return dao.pourcentageAvisNegatifs();
     }
 
-    // TODO: 5/4/2018
-    public float abcencesPercentage() {
-        return 0;
+    public float absencesPercentage() {
+        return dao.pourcentageAbsences();
     }
 
-    // TODO: 5/4/2018
     public float presencesPercentage() {
-        return 0;
+        return dao.pourcentagePresences();
     }
 
     /**
      * variations
      **/
-    // TODO: 5/4/2018
     public HashMap<Month, Integer> absencesVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, dao.getAbsencesForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, dao.getAbsencesForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, dao.getAbsencesForMonth(Month.MARCH));
+        variation.put(Month.APRIL, dao.getAbsencesForMonth(Month.APRIL));
+        variation.put(Month.MAY, dao.getAbsencesForMonth(Month.MAY));
+        variation.put(Month.JUNE, dao.getAbsencesForMonth(Month.JUNE));
+        variation.put(Month.JULY, dao.getAbsencesForMonth(Month.JULY));
+        variation.put(Month.AUGUST, dao.getAbsencesForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, dao.getAbsencesForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, dao.getAbsencesForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, dao.getAbsencesForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, dao.getAbsencesForMonth(Month.DECEMBER));
 
         return variation;
     }
 
-    // TODO: 5/4/2018
     public HashMap<Month, Integer> presencesVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
 
         variation.put(Month.JANUARY, dao.getPresencesForMonth(Month.JANUARY));
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.FEBRUARY, dao.getPresencesForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, dao.getPresencesForMonth(Month.MARCH));
+        variation.put(Month.APRIL, dao.getPresencesForMonth(Month.APRIL));
+        variation.put(Month.MAY, dao.getPresencesForMonth(Month.MAY));
+        variation.put(Month.JUNE, dao.getPresencesForMonth(Month.JUNE));
+        variation.put(Month.JULY, dao.getPresencesForMonth(Month.JULY));
+        variation.put(Month.AUGUST, dao.getPresencesForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, dao.getPresencesForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, dao.getPresencesForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, dao.getPresencesForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, dao.getPresencesForMonth(Month.DECEMBER));
 
         return variation;
     }
 
     // TODO: 5/4/2018
-    public HashMap<Month, Integer> positifsVariation() {
-        HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
-
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
-
-        return variation;
-    }
+//    public HashMap<Month, Integer> positifsVariation() {
+//        HashMap<Month, Integer> variation = new HashMap<>();
+//
+//        variation.put(Month.JANUARY, dao.getAvisPositifsForMonth(Month.JANUARY));
+//        variation.put(Month.FEBRUARY, dao.getAvisPositifsForMonth(Month.FEBRUARY));
+//        variation.put(Month.MARCH, dao.getAvisPositifsForMonth(Month.MARCH));
+//        variation.put(Month.APRIL, dao.getAvisPositifsForMonth(Month.APRIL));
+//        variation.put(Month.MAY, dao.getAvisPositifsForMonth(Month.MAY));
+//        variation.put(Month.JUNE, dao.getAvisPositifsForMonth(Month.JUNE));
+//        variation.put(Month.JULY, dao.getAvisPositifsForMonth(Month.JULY));
+//        variation.put(Month.AUGUST, dao.getAvisPositifsForMonth(Month.AUGUST));
+//        variation.put(Month.SEPTEMBER, dao.getAvisPositifsForMonth(Month.SEPTEMBER));
+//        variation.put(Month.OCTOBER, dao.getAvisPositifsForMonth(Month.OCTOBER));
+//        variation.put(Month.NOVEMBER, dao.getAvisPositifsForMonth(Month.NOVEMBER));
+//        variation.put(Month.DECEMBER, dao.getAvisPositifsForMonth(Month.DECEMBER));
+//
+//        return variation;
+//    }
 
     // TODO: 5/4/2018
     public HashMap<Month, Integer> negatifsVariation() {

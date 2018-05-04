@@ -5,6 +5,7 @@ import model.db.DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -208,7 +209,13 @@ public class ClientDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("SELECT (count(id)) FROM client;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -298,5 +305,20 @@ public class ClientDAO extends DAO {
             e.printStackTrace();
         }
         return list;
+    }
+    //////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * * Stats
+     */
+    public int getNewClientsByMonth(int month) {
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select count(id) from client where MONTH(dateAdded)='" + month + "'");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -390,7 +390,13 @@ public class VisitesDao extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("SELECT (count(id)) FROM visite;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -410,12 +416,6 @@ public class VisitesDao extends DAO {
                 switch (result.getString("etat")) {
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);

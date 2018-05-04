@@ -191,7 +191,7 @@ public class Util {
             case SU:
                 return "SU";
             case RESPONSABLE_VENTES:
-                return "responsable_vente";
+                return "responsable_ventes";
             default:
                 return null;
         }

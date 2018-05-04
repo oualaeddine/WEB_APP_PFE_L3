@@ -150,7 +150,13 @@ public class RapportDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("SELECT (count(visiteId)) FROM rapport;");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -166,9 +172,100 @@ public class RapportDAO extends DAO {
      * stats
      **/
 
-
-    public int getPresencesForMonth(Month month) {
+    public Integer getAbsencesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='absent' and MONTH(visite.timestamp)='" + month.getValue() + "';");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
+
+    public int getPresencesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) as result from rapport,visite where visiteId=visite.id and etatClient='present' and MONTH(visite.timestamp)='" + month.getValue() + "';");
+            System.out.println("Result: " + result.getInt("result"));
+            return result.getInt("result");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getAbsencesNbr() {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport where etatClient='absent';");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getPresences() {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport where etatClient='present';");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getVisitesPositivesNbr() {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport where avis='positif';");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getVisitesNegativesNbr() {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport where avis='negatif';");
+            return result.getInt("count(visiteId)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public float pourcentageAvisPositifs() {
+        int nbrAvisPositifs = getVisitesPositivesNbr();
+        int allVisites = countAll();
+        return nbrAvisPositifs * 100 / allVisites;
+    }
+
+    public float pourcentageAvisNegatifs() {
+        int nbrAvisNeg = getVisitesNegativesNbr();
+        int allVisites = countAll();
+        return nbrAvisNeg * 100 / allVisites;
+    }
+
+    public float pourcentagePresences() {
+        int nbrPresences = getPresences();
+        int all = countAll();
+        return nbrPresences * 100 / all;
+    }
+
+    public float pourcentageAbsences() {
+        int nbrAbsences = getAbsencesNbr();
+        int all = countAll();
+        return nbrAbsences * 100 / all;
+    }
+
+
+//    public int getAvisPositifsForMonth(Month month) {
+//
+//    }
 }

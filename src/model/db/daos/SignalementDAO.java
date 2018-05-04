@@ -73,7 +73,13 @@ public class SignalementDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT (count(id)) FROM signalement;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 }

@@ -4,6 +4,7 @@ import control.statistics.Stats;
 import model.db.daos.ClientDAO;
 
 import java.time.Month;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class ClientsStats extends Stats {
@@ -18,7 +19,7 @@ public class ClientsStats extends Stats {
 
     // TODO: 5/4/2018
     public int newClientsThisMonthNbr() {
-        return 0;
+        return new ClientDAO().getNewClientsByMonth(Calendar.getInstance().get(Calendar.MONTH));
     }
 
     // TODO: 5/4/2018
@@ -43,6 +44,7 @@ public class ClientsStats extends Stats {
 
     // TODO: 5/4/2018 (max ventes)
     public int bestClient() {
+
         return 0;
     }
 

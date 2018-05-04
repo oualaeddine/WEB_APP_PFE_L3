@@ -154,13 +154,20 @@ public class VentesDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("SELECT (count(id)) FROM vente;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
     public boolean cancelVente(Vente vente) {
         try {
             venteStatement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId() + ";");
+            logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + vente.getLogement().getId());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

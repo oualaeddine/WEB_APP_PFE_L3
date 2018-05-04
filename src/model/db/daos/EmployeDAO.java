@@ -220,7 +220,13 @@ public class EmployeDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("SELECT (count(id)) FROM employe;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -530,6 +536,28 @@ public class EmployeDAO extends DAO {
 
 
     public int countEmployeeByType(UserType agent) {
+        String type = Util.getStringFromType(agent);
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("SELECT count (id) from employe where userType='" + type + "';");
+            return result.getInt("count(id)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
+
+    public int notApprovedNbrByType(UserType userType) {
+        ResultSet result;
+        String type = Util.getStringFromType(userType);
+        try {
+            result = employeStatement.executeQuery("SELECT count(id) from employe where userType='" + type + "' and isApproved=0;");
+            return result.getInt("count(id)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

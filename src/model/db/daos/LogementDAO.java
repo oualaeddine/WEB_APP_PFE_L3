@@ -29,7 +29,7 @@ public class LogementDAO extends DAO {
         String avecSousSol = criteres.isAvecSousSol() ? " AND avecSousSol = 1 " : "";
         String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1 " : "";
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE " +
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=0" +
                     "(superficie <= " + supMax + " AND superficie >= " + supMin + ") " +
                     "AND (prix <= " + prixMax + " AND prix >= " + prixMin + ") " +
                     "AND  gele=0 " +
@@ -392,7 +392,13 @@ public class LogementDAO extends DAO {
 
     @Override
     public int countAll() {
-
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("SELECT (count(id)) FROM logement;");
+            return result.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -523,11 +529,23 @@ public class LogementDAO extends DAO {
         return logements;
     }
 
-    public int getNombreLogements() {
+
+    public int getNbrVendus() {
         ResultSet result;
         try {
-            result = logementStatement.executeQuery("SELECT (count(id)) FROM logement;");
-            return result.getInt("id");
+            result = logementStatement.executeQuery("select count(l.id) from logement l,vente v where l.id=logementId and v.etat='confirmee';");
+            return result.getInt("count(l.id)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getNbrGeles() {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select count(id) from logement where gele=1;");
+            return result.getInt("count(id)");
         } catch (SQLException e) {
             e.printStackTrace();
         }

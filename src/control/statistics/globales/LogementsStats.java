@@ -13,7 +13,6 @@ public class LogementsStats extends Stats {
         dao = new LogementDAO();
     }
 
-    // TODO: 5/4/2018
     public int logementsNbr() {
         return dao.countAll();
     }
@@ -23,9 +22,9 @@ public class LogementsStats extends Stats {
         return null;
     }
 
-    // TODO: 5/4/2018
     public int logementsVendusNbr() {
-        return 0;
+
+        return new LogementDAO().getNbrVendus();
     }
 
     // TODO: 5/4/2018
@@ -55,9 +54,8 @@ public class LogementsStats extends Stats {
         return null;
     }
 
-    // TODO: 5/4/2018
     public int logementsGeleNbr() {
-        return 0;
+        return new LogementDAO().getNbrGeles();
     }
 
     // TODO: 5/4/2018

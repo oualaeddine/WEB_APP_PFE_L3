@@ -30,7 +30,7 @@ public class LogementDAO extends DAO {
         String avecSousSol = criteres.isAvecSousSol() ? " AND avecSousSol = 1 " : "";
         String avecMeubles = criteres.isMeubles() ? " AND avecMeubles = 1 " : "";
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=0" +
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=0 and " +
                     "(superficie <= " + supMax + " AND superficie >= " + supMin + ") " +
                     "AND (prix <= " + prixMax + " AND prix >= " + prixMin + ") " +
                     "AND  gele=0 " +

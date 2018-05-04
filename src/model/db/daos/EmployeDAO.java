@@ -223,7 +223,9 @@ public class EmployeDAO extends DAO {
         ResultSet result;
         try {
             result = employeStatement.executeQuery("SELECT (count(id)) FROM employe;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -535,12 +537,17 @@ public class EmployeDAO extends DAO {
     }
 
 
+    /**
+     * Stats
+     */
     public int countEmployeeByType(UserType agent) {
         String type = Util.getStringFromType(agent);
         ResultSet result;
         try {
             result = employeStatement.executeQuery("SELECT count (id) from employe where userType='" + type + "';");
-            return result.getInt("count(id)");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -552,7 +559,9 @@ public class EmployeDAO extends DAO {
         String type = Util.getStringFromType(userType);
         try {
             result = employeStatement.executeQuery("SELECT count(id) from employe where userType='" + type + "' and isApproved=0;");
-            return result.getInt("count(id)");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -560,4 +569,55 @@ public class EmployeDAO extends DAO {
     }
 
 
+    public int myReportedVisitsNbr(int userId) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select count(id) from visite where visite.timestamp>=current_date  and etat='reportee' and agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int myCanceledVisitsNbr(int userId) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select count(id) from visite where visite.timestamp>=current_date  and  etat='annulee' and agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int myProgrammedVisitsNbr(int userId) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select count(id) from visite where visite.timestamp>=current_date and etat='prevue' and agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int myVisitedLogementsNbr(int userId) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select count(distinct visite.logementId) as nbr from visite where visite.agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

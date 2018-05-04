@@ -99,7 +99,9 @@ public class AssignationDAO extends DAO{
         ResultSet result;
         try {
             result = statement.executeQuery("SELECT (count(id)) FROM assignation_region;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

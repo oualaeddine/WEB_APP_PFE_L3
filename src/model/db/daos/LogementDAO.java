@@ -10,6 +10,7 @@ import model.enums.UserType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -168,7 +169,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE client.id=vente.clientId AND vente.clientId=" + userId + " AND logement.id=vente.logementId;");
+            result = logementStatement.executeQuery("SELECT * FROM logement,vente WHERE logementId=logement.id AND vente.clientId=" + userId + " AND logement.id=vente.logementId;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -394,8 +395,10 @@ public class LogementDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = venteStatement.executeQuery("SELECT (count(id)) FROM logement;");
-            return result.getInt("id");
+            result = venteStatement.executeQuery("SELECT count(id) FROM logement;");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -448,6 +451,44 @@ public class LogementDAO extends DAO {
         return list;
     }
 
+    public LinkedList<Logement> getLogementsForAgent(int userId) {
+        ResultSet result;
+        LinkedList<Logement> list = new LinkedList<>();
+        try {
+            result = logementStatement.executeQuery("SELECT logement.* FROM logement,visite WHERE visite.logementId=logement.id and visite.agentId=" + userId + " ;");
+            while (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+                list.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public LinkedList<Logement> getNonVendus() {
         ResultSet result;
@@ -534,7 +575,9 @@ public class LogementDAO extends DAO {
         ResultSet result;
         try {
             result = logementStatement.executeQuery("select count(l.id) from logement l,vente v where l.id=logementId and v.etat='confirmee';");
-            return result.getInt("count(l.id)");
+            if (result.next()) {
+                return result.getInt("count(l.id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -545,10 +588,66 @@ public class LogementDAO extends DAO {
         ResultSet result;
         try {
             result = logementStatement.executeQuery("select count(id) from logement where gele=1;");
-            return result.getInt("count(id)");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
+
+    public int getNbrLogementsForRegion(int idRegion) {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select count(id) from logement where region=" + idRegion + ";");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public Integer nbrVendusForMonth(Month month) {
+        ResultSet resultSet;
+        try {
+            resultSet = venteStatement.executeQuery("select count(logementId) as nbr from vente where etat='confirmee' and MONTH(date)=" + month.getValue() + " and YEAR(date)=YEAR(current_date);");
+            if (resultSet.next()) {
+                return resultSet.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getNbrLogementsVendusForRegion(int id) {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("SELECT count(logementId) as nbr from vente,logement where vente.etat='confirmee' and vente.logementId=logement.id and logement.region=" + id + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getNbrGelesForRegion(int id) {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("SELECT count(logement.id) as result from logement where gele=1 and region=" + id + ";");
+            if (result.next()) {
+                return result.getInt("result");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

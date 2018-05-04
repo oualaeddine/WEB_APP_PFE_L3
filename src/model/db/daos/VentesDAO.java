@@ -9,6 +9,7 @@ import utils.Util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -157,7 +158,9 @@ public class VentesDAO extends DAO {
         ResultSet result;
         try {
             result = venteStatement.executeQuery("SELECT (count(id)) FROM vente;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -274,5 +277,100 @@ public class VentesDAO extends DAO {
             e.printStackTrace();
         }
         return ventes;
+    }
+
+    /**
+     * Stats
+     */
+    public int confirmedVentesNbr() {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='confirmee';");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public int ventesEnCoursNbr() {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='encours';");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int ventesAnnuleesNbr() {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='annulee';");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrConfirmedVentesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='confirmee' and MONTH(vente.date)=" + month.getValue() + " and YEAR(vente.date)=YEAR(current_date) ;");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVentesEnCoursForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='encours' and MONTH(vente.date)=" + month.getValue() + " and YEAR(vente.date)=YEAR(current_date) ;");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVentesAnnuleesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(id) from vente where etat='annulee' and MONTH(vente.date)=" + month.getValue() + " and YEAR(vente.date)=YEAR(current_date) ;");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVentesParRegion(int idregion) {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("SELECT count(vente.id) as nbr from vente,logement where vente.logementId=logement.id and logement.region=" + idregion + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

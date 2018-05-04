@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Localite;
 import model.beans.Logement;
 import model.beans.RDV;
 import model.beans.Visite;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -393,7 +395,9 @@ public class VisitesDao extends DAO {
         ResultSet result;
         try {
             result = visiteStatement.executeQuery("SELECT (count(id)) FROM visite;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -585,4 +589,112 @@ public class VisitesDao extends DAO {
         return visites;
     }
 
+    /**
+     * Stats
+     */
+
+    public int nbrVisitesPrevues() {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where visite.timestamp>=current_date and etat='prevue';");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesReportees() {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where etat='reportee';");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesAnnulees() {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where etat='annulee';");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesPrevuesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where visite.timestamp>=current_date and etat='prevue' and MONTH(visite.timestamp)=" + month.getValue() + " and year(timestamp)=year(current_date) ;");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesReporteesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where etat='reportee' and MONTH(visite.timestamp)=" + month.getValue() + " and year(timestamp)=year(current_date) ;");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesAnnuleesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where etat='annulee' and MONTH(visite.timestamp)=" + month.getValue() + " and year(timestamp)=year(current_date) ;");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public int nbrVisitesParRegion(int id) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(visite.id) as nbr from logement,visite where visite.logementId=logement.id and logement.region=" + id + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public Localite getMostVisitedRegion() {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("");
+            if (result.next()) {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

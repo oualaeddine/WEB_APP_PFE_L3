@@ -1,4 +1,5 @@
 import control.statistics.globales.RapportsStats;
+import control.statistics.perso.AgentStats;
 import model.beans.RDV;
 import model.beans.Vente;
 import model.beans.humans.Client;
@@ -14,7 +15,6 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Month: " + Month.APRIL.getValue());
-        System.out.println(new RapportDAO().getPresencesForMonth(Month.APRIL));
+        System.out.println(new AgentStats(1).negatifPercentage());
     }
 }

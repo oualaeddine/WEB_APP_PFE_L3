@@ -212,7 +212,9 @@ public class ClientDAO extends DAO {
         ResultSet result;
         try {
             result = clientStatement.executeQuery("SELECT (count(id)) FROM client;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -314,11 +316,33 @@ public class ClientDAO extends DAO {
     public int getNewClientsByMonth(int month) {
         ResultSet result;
         try {
-            result = clientStatement.executeQuery("select count(id) from client where MONTH(dateAdded)='" + month + "'");
-            return result.getInt("id");
+            result = clientStatement.executeQuery("select count(id) from client where MONTH(dateAdded)='" + month + "' and YEAR(dateAdded)=YEAR(current_date)");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public int getBestClient() {
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select acheteur from (select distinct c.id as acheteur,(select count(vente.id) from vente where c.id=vente.clientId) as nbrVentes from client c,vente v where c.id=v.clientId) myTable having  max(myTable.nbrVentes);");
+            if (result.next()) {
+                return result.getInt("acheteur");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public float percentageClientsForAgent(int userId) {
+        int nbrClientForAgent = getClientsForAgent(userId).size();
+        int nbrClients = getAll().size();
+
+        return nbrClientForAgent * 100 / nbrClients;
     }
 }

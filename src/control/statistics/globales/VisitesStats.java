@@ -6,6 +6,7 @@ import model.db.daos.VisitesDao;
 
 import java.time.Month;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class VisitesStats extends Stats {
     public VisitesStats() {
@@ -13,97 +14,90 @@ public class VisitesStats extends Stats {
     }
 
 
-    // TODO: 5/4/2018
     public int visitesPrevuesNbr() {
-        return 0;
+        return new VisitesDao().nbrVisitesPrevues();
     }
 
-    // TODO: 5/4/2018
     public int visitesReporteesNbr() {
-        return 0;
+        return new VisitesDao().nbrVisitesReportees();
     }
 
-    // TODO: 5/4/2018
     public int visitesAnnuleesNbr() {
-        return 0;
+        return new VisitesDao().nbrVisitesAnnulees();
     }
 
-    // TODO: 5/4/2018
     public HashMap<Month, Integer> visitesPrevuesVariaton() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, new VisitesDao().nbrVisitesPrevuesForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, new VisitesDao().nbrVisitesPrevuesForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, new VisitesDao().nbrVisitesPrevuesForMonth(Month.MARCH));
+        variation.put(Month.APRIL, new VisitesDao().nbrVisitesPrevuesForMonth(Month.APRIL));
+        variation.put(Month.MAY, new VisitesDao().nbrVisitesPrevuesForMonth(Month.MAY));
+        variation.put(Month.JUNE, new VisitesDao().nbrVisitesPrevuesForMonth(Month.JUNE));
+        variation.put(Month.JULY, new VisitesDao().nbrVisitesPrevuesForMonth(Month.JULY));
+        variation.put(Month.AUGUST, new VisitesDao().nbrVisitesPrevuesForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, new VisitesDao().nbrVisitesPrevuesForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, new VisitesDao().nbrVisitesPrevuesForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, new VisitesDao().nbrVisitesPrevuesForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, new VisitesDao().nbrVisitesPrevuesForMonth(Month.DECEMBER));
 
         return variation;
     }
 
-    // TODO: 5/4/2018
     public HashMap<Month, Integer> visitesReporteesVariaton() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, new VisitesDao().nbrVisitesReporteesForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, new VisitesDao().nbrVisitesReporteesForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, new VisitesDao().nbrVisitesReporteesForMonth(Month.MARCH));
+        variation.put(Month.APRIL, new VisitesDao().nbrVisitesReporteesForMonth(Month.APRIL));
+        variation.put(Month.MAY, new VisitesDao().nbrVisitesReporteesForMonth(Month.MAY));
+        variation.put(Month.JUNE, new VisitesDao().nbrVisitesReporteesForMonth(Month.JUNE));
+        variation.put(Month.JULY, new VisitesDao().nbrVisitesReporteesForMonth(Month.JULY));
+        variation.put(Month.AUGUST, new VisitesDao().nbrVisitesReporteesForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, new VisitesDao().nbrVisitesReporteesForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, new VisitesDao().nbrVisitesReporteesForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, new VisitesDao().nbrVisitesReporteesForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, new VisitesDao().nbrVisitesReporteesForMonth(Month.DECEMBER));
 
         return variation;
     }
 
-    // TODO: 5/4/2018
     public HashMap<Month, Integer> visitesAnnuleesVariaton() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.MARCH));
+        variation.put(Month.APRIL, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.APRIL));
+        variation.put(Month.MAY, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.MAY));
+        variation.put(Month.JUNE, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.JUNE));
+        variation.put(Month.JULY, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.JULY));
+        variation.put(Month.AUGUST, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, new VisitesDao().nbrVisitesAnnuleesForMonth(Month.DECEMBER));
 
         return variation;
     }
 
-    // TODO: 5/4/2018
     public int visitesNbr() {
         return dao.countAll();
     }
 
-    // TODO: 5/4/2018
     public HashMap<Localite, Integer> VisitesNbrPerRegion() {
-        return null;
+        HashMap<Localite, Integer> variation = new HashMap<>();
+        LinkedList<Localite> localites = new LinkedList<>();
+        for (Localite localite : localites) {
+            variation.put(localite, new VisitesDao().nbrVisitesParRegion(localite.getId()));
+        }
+        return variation;
     }
 
-    // TODO: 5/4/2018
     public Localite regionLaPlusVisitee() {
-        return null;
+        return new VisitesDao().getMostVisitedRegion();
     }
 
     // TODO: 5/4/2018

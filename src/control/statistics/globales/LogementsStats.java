@@ -2,6 +2,7 @@ package control.statistics.globales;
 
 import control.statistics.Stats;
 import model.beans.Localite;
+import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 
 import java.time.Month;
@@ -17,9 +18,13 @@ public class LogementsStats extends Stats {
         return dao.countAll();
     }
 
-    // TODO: 5/4/2018
-    public LinkedList<HashMap<Localite, Integer>> logementsNbrPerRegion() {
-        return null;
+    public HashMap<Localite, Integer> logementsNbrPerRegion() {
+        HashMap<Localite, Integer> variation = new HashMap<>();
+        LinkedList<Localite> localites = new LocaliteDAO().getAll();
+        for (Localite localite : localites) {
+            variation.put(localite, new LogementDAO().getNbrLogementsForRegion(localite.getId()));
+        }
+        return variation;
     }
 
     public int logementsVendusNbr() {
@@ -31,36 +36,43 @@ public class LogementsStats extends Stats {
     public HashMap<Month, Integer> logementsVendusNbrVariation() {
 
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, new LogementDAO().nbrVendusForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, new LogementDAO().nbrVendusForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, new LogementDAO().nbrVendusForMonth(Month.MARCH));
+        variation.put(Month.APRIL, new LogementDAO().nbrVendusForMonth(Month.APRIL));
+        variation.put(Month.MAY, new LogementDAO().nbrVendusForMonth(Month.MAY));
+        variation.put(Month.JUNE, new LogementDAO().nbrVendusForMonth(Month.JUNE));
+        variation.put(Month.JULY, new LogementDAO().nbrVendusForMonth(Month.JULY));
+        variation.put(Month.AUGUST, new LogementDAO().nbrVendusForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, new LogementDAO().nbrVendusForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, new LogementDAO().nbrVendusForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, new LogementDAO().nbrVendusForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, new LogementDAO().nbrVendusForMonth(Month.DECEMBER));
 
         return variation;
     }
 
-    // TODO: 5/4/2018
     public HashMap<Localite, Integer> logementsVendusNbrPerRegion() {
-        return null;
+        HashMap<Localite, Integer> variation = new HashMap<>();
+        LinkedList<Localite> localites = new LocaliteDAO().getAll();
+        for (Localite localite : localites) {
+            variation.put(localite, new LogementDAO().getNbrLogementsVendusForRegion(localite.getId()));
+        }
+        return variation;
     }
 
     public int logementsGeleNbr() {
         return new LogementDAO().getNbrGeles();
     }
 
-    // TODO: 5/4/2018
-    public LinkedList<HashMap<Localite, Integer>> logementsGeleNbrPerRegion() {
-        return null;
+    public HashMap<Localite, Integer> logementsGeleNbrPerRegion() {
+        HashMap<Localite, Integer> variation = new HashMap<>();
+        LinkedList<Localite> localites = new LocaliteDAO().getAll();
+        for (Localite localite : localites) {
+            variation.put(localite, new LogementDAO().getNbrGelesForRegion(localite.getId()));
+        }
+        return variation;
     }
 
 }

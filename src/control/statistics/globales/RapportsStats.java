@@ -92,43 +92,40 @@ public class RapportsStats extends Stats {
         return variation;
     }
 
-    // TODO: 5/4/2018
-//    public HashMap<Month, Integer> positifsVariation() {
-//        HashMap<Month, Integer> variation = new HashMap<>();
-//
-//        variation.put(Month.JANUARY, dao.getAvisPositifsForMonth(Month.JANUARY));
-//        variation.put(Month.FEBRUARY, dao.getAvisPositifsForMonth(Month.FEBRUARY));
-//        variation.put(Month.MARCH, dao.getAvisPositifsForMonth(Month.MARCH));
-//        variation.put(Month.APRIL, dao.getAvisPositifsForMonth(Month.APRIL));
-//        variation.put(Month.MAY, dao.getAvisPositifsForMonth(Month.MAY));
-//        variation.put(Month.JUNE, dao.getAvisPositifsForMonth(Month.JUNE));
-//        variation.put(Month.JULY, dao.getAvisPositifsForMonth(Month.JULY));
-//        variation.put(Month.AUGUST, dao.getAvisPositifsForMonth(Month.AUGUST));
-//        variation.put(Month.SEPTEMBER, dao.getAvisPositifsForMonth(Month.SEPTEMBER));
-//        variation.put(Month.OCTOBER, dao.getAvisPositifsForMonth(Month.OCTOBER));
-//        variation.put(Month.NOVEMBER, dao.getAvisPositifsForMonth(Month.NOVEMBER));
-//        variation.put(Month.DECEMBER, dao.getAvisPositifsForMonth(Month.DECEMBER));
-//
-//        return variation;
-//    }
+    public HashMap<Month, Integer> positifsVariation() {
+        HashMap<Month, Integer> variation = new HashMap<>();
 
-    // TODO: 5/4/2018
+        variation.put(Month.JANUARY, dao.getAvisPositifsForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, dao.getAvisPositifsForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, dao.getAvisPositifsForMonth(Month.MARCH));
+        variation.put(Month.APRIL, dao.getAvisPositifsForMonth(Month.APRIL));
+        variation.put(Month.MAY, dao.getAvisPositifsForMonth(Month.MAY));
+        variation.put(Month.JUNE, dao.getAvisPositifsForMonth(Month.JUNE));
+        variation.put(Month.JULY, dao.getAvisPositifsForMonth(Month.JULY));
+        variation.put(Month.AUGUST, dao.getAvisPositifsForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, dao.getAvisPositifsForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, dao.getAvisPositifsForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, dao.getAvisPositifsForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, dao.getAvisPositifsForMonth(Month.DECEMBER));
+
+        return variation;
+    }
+
     public HashMap<Month, Integer> negatifsVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
-        variation.put(Month.JANUARY, 0);
-        variation.put(Month.FEBRUARY, 0);
-        variation.put(Month.MARCH, 0);
-        variation.put(Month.APRIL, 0);
-        variation.put(Month.MAY, 0);
-        variation.put(Month.JUNE, 0);
-        variation.put(Month.JULY, 0);
-        variation.put(Month.AUGUST, 0);
-        variation.put(Month.SEPTEMBER, 0);
-        variation.put(Month.OCTOBER, 0);
-        variation.put(Month.NOVEMBER, 0);
-        variation.put(Month.DECEMBER, 0);
+        variation.put(Month.JANUARY, dao.getAvisNegatifsForMonth(Month.JANUARY));
+        variation.put(Month.FEBRUARY, dao.getAvisNegatifsForMonth(Month.FEBRUARY));
+        variation.put(Month.MARCH, dao.getAvisNegatifsForMonth(Month.MARCH));
+        variation.put(Month.APRIL, dao.getAvisNegatifsForMonth(Month.APRIL));
+        variation.put(Month.MAY, dao.getAvisNegatifsForMonth(Month.MAY));
+        variation.put(Month.JUNE, dao.getAvisNegatifsForMonth(Month.JUNE));
+        variation.put(Month.JULY, dao.getAvisNegatifsForMonth(Month.JULY));
+        variation.put(Month.AUGUST, dao.getAvisNegatifsForMonth(Month.AUGUST));
+        variation.put(Month.SEPTEMBER, dao.getAvisNegatifsForMonth(Month.SEPTEMBER));
+        variation.put(Month.OCTOBER, dao.getAvisNegatifsForMonth(Month.OCTOBER));
+        variation.put(Month.NOVEMBER, dao.getAvisNegatifsForMonth(Month.NOVEMBER));
+        variation.put(Month.DECEMBER, dao.getAvisNegatifsForMonth(Month.DECEMBER));
 
         return variation;
     }

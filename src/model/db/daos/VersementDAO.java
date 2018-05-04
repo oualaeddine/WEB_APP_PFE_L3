@@ -141,7 +141,9 @@ public class VersementDAO extends DAO {
         ResultSet result;
         try {
             result = versementStatement.executeQuery("SELECT (count(id)) FROM versement;");
-            return result.getInt("id");
+            if (result.next()) {
+                return result.getInt("count(id)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -153,7 +153,9 @@ public class RapportDAO extends DAO {
         ResultSet result;
         try {
             result = rapportStatement.executeQuery("SELECT (count(visiteId)) FROM rapport;");
-            return result.getInt("count(visiteId)");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -171,12 +173,39 @@ public class RapportDAO extends DAO {
     /**
      * stats
      **/
+    public int getAvisNegatifsForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visite.id=visiteId and avis='negatif' and MONTH(visite.timestamp)='" + month.getValue() + "' and YEAR(visite.timestamp)=YEAR(current_date );");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getAvisPositifsForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visite.id=visiteId and avis='positif' and MONTH(visite.timestamp)='" + month.getValue() + "' and YEAR(visite.timestamp)=YEAR(current_date );");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
     public Integer getAbsencesForMonth(Month month) {
         ResultSet result;
         try {
-            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='absent' and MONTH(visite.timestamp)='" + month.getValue() + "';");
-            return result.getInt("count(visiteId)");
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='absent' and MONTH(visite.timestamp)='" + month.getValue() + "' and YEAR(visite.timestamp)=YEAR(current_date );");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -187,9 +216,10 @@ public class RapportDAO extends DAO {
     public int getPresencesForMonth(Month month) {
         ResultSet result;
         try {
-            result = rapportStatement.executeQuery("select count(visiteId) as result from rapport,visite where visiteId=visite.id and etatClient='present' and MONTH(visite.timestamp)='" + month.getValue() + "';");
-            System.out.println("Result: " + result.getInt("result"));
-            return result.getInt("result");
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='present' and MONTH(visite.timestamp)='" + month.getValue() + "' and YEAR(visite.timestamp)=YEAR(current_date );");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -200,7 +230,9 @@ public class RapportDAO extends DAO {
         ResultSet result;
         try {
             result = rapportStatement.executeQuery("select count(visiteId) from rapport where etatClient='absent';");
-            return result.getInt("count(visiteId)");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -211,7 +243,9 @@ public class RapportDAO extends DAO {
         ResultSet result;
         try {
             result = rapportStatement.executeQuery("select count(visiteId) from rapport where etatClient='present';");
-            return result.getInt("count(visiteId)");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -222,7 +256,9 @@ public class RapportDAO extends DAO {
         ResultSet result;
         try {
             result = rapportStatement.executeQuery("select count(visiteId) from rapport where avis='positif';");
-            return result.getInt("count(visiteId)");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -233,7 +269,9 @@ public class RapportDAO extends DAO {
         ResultSet result;
         try {
             result = rapportStatement.executeQuery("select count(visiteId) from rapport where avis='negatif';");
-            return result.getInt("count(visiteId)");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -265,7 +303,94 @@ public class RapportDAO extends DAO {
     }
 
 
-//    public int getAvisPositifsForMonth(Month month) {
-//
-//    }
+    public int nbrRapportsForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(rapport.visiteId) as nbr from rapport,visite where rapport.visiteId=visite.id and visite.agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public int getAbsencesNbrForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='absent' and visite.agentId=" + userId + " ;");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getPresencesNbrForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where visiteId=visite.id and etatClient='present' and visite.agentId=" + userId + " ;");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public int getAvisPositifsForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where rapport.visiteId=visite.id and avis='positif' and visite.agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getAvisNegatifsForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = rapportStatement.executeQuery("select count(visiteId) from rapport,visite where rapport.visiteId=visite.id and avis='negatif' and visite.agentId=" + userId + ";");
+            if (result.next()) {
+                return result.getInt("count(visiteId)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public float pourcentagePositifForAgent(int userId) {
+        int nbrAvisPositifs = getAvisPositifsForAgent(userId);
+        int allVisites = nbrRapportsForAgent(userId);
+        return nbrAvisPositifs * 100 / allVisites;
+    }
+
+    public float pourcentageNegatifForAgent(int userId) {
+        int nbrAvisPositifs = getAvisNegatifsForAgent(userId);
+        int allVisites = nbrRapportsForAgent(userId);
+        return nbrAvisPositifs * 100 / allVisites;
+    }
+
+    public float pourcentagePresenceForAgent(int userId) {
+        int nbrPresences = getPresencesNbrForAgent(userId);
+        int all = nbrRapportsForAgent(userId);
+        return nbrPresences * 100 / all;
+    }
+
+    public float pourcentageAbsenceForAgent(int userId) {
+        int nbrPresences = getAbsencesNbrForAgent(userId);
+        int all = nbrRapportsForAgent(userId);
+        return nbrPresences * 100 / all;
+    }
 }

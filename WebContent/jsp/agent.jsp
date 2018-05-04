@@ -22,8 +22,8 @@
     Employe agent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 %>
 
-<%!
-    AgentStats agentStats = new AgentStats(userId);
+<%
+    AgentStats agentStats = new AgentStats(agent.getId());
 %>
 <head>
     <meta charset="utf-8">
@@ -119,7 +119,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5"><%out.print("" + agentStats.getProgrammedVisites());%> Nouvelles Visites!
+                        <div class="mr-5"><%out.print(agentStats.getProgrammedVisites());%> Nouvelles Visites!
                         </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
@@ -156,7 +156,7 @@
         </ol>
 
         <div>
-            <iframe src="./statistics/agentStats.html" width="100%" frameborder="0" scrolling="no"
+            <iframe src="./statistics/agentStats.jsp" width="100%" frameborder="0" scrolling="no"
                     onload="resizeIframe(this)"></iframe>
         </div>
 

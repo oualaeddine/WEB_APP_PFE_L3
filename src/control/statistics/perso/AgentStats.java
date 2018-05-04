@@ -1,9 +1,8 @@
 package control.statistics.perso;
 
 import control.statistics.PersoStats;
-import model.db.daos.EmployeDAO;
-import model.db.daos.RapportDAO;
-import model.db.daos.VisitesDao;
+import model.db.daos.*;
+import model.enums.UserType;
 
 import java.time.Month;
 import java.util.HashMap;
@@ -29,32 +28,25 @@ public class AgentStats extends PersoStats {
         return 0;
     }
 
-    /**
-     * @return the number of upcoming reported visits
-     */
-    public int getReportedVisites() {// TODO: 5/3/2018
-        return 0;
+    public int getReportedVisites() {
+        return employeeDao.myReportedVisitsNbr(userId);
     }
 
-    /**
-     * @return the number of upcoming reported visits
-     */
-    public int getCanceledVisites() {// TODO: 5/3/2018
-        return 0;
+
+    public int getCanceledVisites() {
+        return employeeDao.myCanceledVisitsNbr(userId);
     }
 
-    /**
-     * @return the number of upcoming programmed visits
-     */
-    public int getProgrammedVisites() {// TODO: 5/3/2018
-        return 0;
+
+    public int getProgrammedVisites() {
+        return employeeDao.myProgrammedVisitsNbr(userId);
     }
 
     /**
      * @return the number of upcoming canceled visits
      */
-    public int getVisitedLogementsNbr() {// TODO: 5/3/2018
-        return 0;
+    public int getVisitedLogementsNbr() {
+        return employeeDao.myVisitedLogementsNbr(userId);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,49 +54,40 @@ public class AgentStats extends PersoStats {
     /**
      * Rapports
      **/
-    // TODO: 5/4/2018
     public int rapportsNbr() {
-        return 0;
+        return rapportsDao.nbrRapportsForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public int absencesNbr() {
-        return 0;
+        return rapportsDao.getAbsencesNbrForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public int presencesNbr() {
-        return 0;
+        return rapportsDao.getPresencesNbrForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public int positifsNbr() {
-        return 0;
+        return rapportsDao.getAvisPositifsForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public int negatifsNbr() {
-        return 0;
+        return rapportsDao.getAvisNegatifsForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public float positifPercentage() {
-        return 0;
+        return rapportsDao.pourcentagePositifForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public float negatifPercentage() {
-        return 0;
+        return rapportsDao.pourcentageNegatifForAgent(userId);
     }
 
-    // TODO: 5/4/2018
-    public float abcencesPercentage() {
-        return 0;
+    public float absencesPercentage() {
+        return rapportsDao.pourcentageAbsenceForAgent(userId);
     }
 
-    // TODO: 5/4/2018
     public float presencesPercentage() {
-        return 0;
+        return rapportsDao.pourcentagePresenceForAgent(userId);
     }
 
     /**
@@ -113,7 +96,6 @@ public class AgentStats extends PersoStats {
     // TODO: 5/4/2018
     public HashMap<Month, Integer> absencesVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
         variation.put(Month.JANUARY, 0);
         variation.put(Month.FEBRUARY, 0);
@@ -194,4 +176,18 @@ public class AgentStats extends PersoStats {
     }
 
 
+    public int getClients() {
+        return new ClientDAO().getClientsForAgent(userId).size();
+    }
+
+    public float clientsPercentage() {
+
+        return new ClientDAO().percentageClientsForAgent(userId);
+    }
+
+    public float logementsVisitesPercentage() {
+        int logementsVisites = new LogementDAO().getLogementsForAgent(userId).size();
+        int all = new LogementDAO().countAll();
+        return logementsVisites * 100 / all;
+    }
 }

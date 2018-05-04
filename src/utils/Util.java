@@ -33,20 +33,20 @@ public class Util {
         String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +
                 "Votre compte a été approuvé par " + creator.getNom() + " " + creator.getPrenom() + " qui vous a attribué le poste: " +
                 employe.getUserType() + " \n Vous pouvez désormais vous connecter à votre compte avec vos identifiants: " +
-                "\n Nom d'utilisateur: "+employe.getUsername()+"" +
-                "\n Mot de passe: "+employe.getPassword();
+                "\n Nom d'utilisateur: " + employe.getUsername() + "" +
+                "\n Mot de passe: " + employe.getPassword();
         return email;
     }
 
     public static String getForgotPasswordEmail(String email, UserType userType, String code) {
-        String name; Employe employe = null;
+        String name;
+        Employe employe = null;
         employe = new EmployeDAO().getByEmail(email);
-        name = employe.getNom()+" "+employe.getPrenom();
-        String actionUrl = "localhost:8080/ForgotPassword?linsa="+employe.getId()+"&code="+code+"&wech="+getStringFromType(userType);
+        name = employe.getNom() + " " + employe.getPrenom();
+        String actionUrl = "localhost:8080/ForgotPassword?linsa=" + employe.getId() + "&code=" + code + "&wech=" + getStringFromType(userType);
 
 
-
-        String supportUrl="/contact";
+        String supportUrl = "/contact";
         String msg = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "  <head>\n" +
@@ -93,7 +93,7 @@ public class Util {
                 "                  \n" +
                 "                  <tr>\n" +
                 "                    <td class=\"content-cell\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
-                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Hi "+name+",</h1>\n" +
+                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Hi " + name + ",</h1>\n" +
                 "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">You recently requested to reset your password for your HCH Immobilier account. Use the button below to reset it. <strong style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">This password reset is only valid for the next 24 hours.</strong></p>\n" +
                 "                      \n" +
                 "                      <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;\">\n" +
@@ -106,7 +106,7 @@ public class Util {
                 "                                  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">\n" +
                 "                                    <tr>\n" +
                 "                                      <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
-                "                                        <a href=\""+actionUrl+"\" class=\"button button--green\" target=\"_blank\" style=\"-webkit-text-size-adjust: none; background: #22BC66; border-color: #22bc66; border-radius: 3px; border-style: solid; border-width: 10px 18px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); box-sizing: border-box; color: #FFF; display: inline-block; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-decoration: none;\">Reset your password</a>\n" +
+                "                                        <a href=\"" + actionUrl + "\" class=\"button button--green\" target=\"_blank\" style=\"-webkit-text-size-adjust: none; background: #22BC66; border-color: #22bc66; border-radius: 3px; border-style: solid; border-width: 10px 18px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); box-sizing: border-box; color: #FFF; display: inline-block; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-decoration: none;\">Reset your password</a>\n" +
                 "                                      </td>\n" +
                 "                                    </tr>\n" +
                 "                                  </table>\n" +
@@ -116,7 +116,7 @@ public class Util {
                 "                          </td>\n" +
                 "                        </tr>\n" +
                 "                      </table>\n" +
-                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\"> If you did not request a password reset, please ignore this email or <a href=\""+supportUrl+"\" style=\"box-sizing: border-box; color: #3869D4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">contact support</a> if you have questions.</p>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\"> If you did not request a password reset, please ignore this email or <a href=\"" + supportUrl + "\" style=\"box-sizing: border-box; color: #3869D4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">contact support</a> if you have questions.</p>\n" +
                 "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Thanks,\n" +
                 "                        <br />The HCH Immobilier Team</p>\n" +
                 "                      \n" +
@@ -124,7 +124,7 @@ public class Util {
                 "                        <tr>\n" +
                 "                          <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
                 "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>\n" +
-                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">"+actionUrl+"</p>\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">" + actionUrl + "</p>\n" +
                 "                          </td>\n" +
                 "                        </tr>\n" +
                 "                      </table>\n" +
@@ -297,7 +297,7 @@ public class Util {
                 return "Clients";
 
         }
-     return null;
+        return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
@@ -403,6 +403,8 @@ public class Util {
         Date date1 = null;
         try {
             java.util.Date date = sdf.parse(dateString);
+            System.out.println("the fufing dateString = " + dateString);
+            System.out.println("the fufing date = " + date.toString());
             date1 = new Date(date.getTime());
 
         } catch (ParseException e) {

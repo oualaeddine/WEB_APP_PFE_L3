@@ -1,6 +1,3 @@
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.humans.Client" %>
-<%@ page import="model.db.daos.ClientDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +23,9 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sidebar fixed-top" id="mainNav">
     <a class="navbar-brand" href="#">Espace Operateur</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -44,7 +43,8 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#messageComp" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#messageComp"
+                   data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-envelope"></i>
                     <span class="nav-link-text">Messages</span>
                 </a>
@@ -61,7 +61,8 @@
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-eye"></i>
                     <span class="nav-link-text">Visites</span>
                 </a>
@@ -78,7 +79,8 @@
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseClients" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseClients"
+                   data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">Clients</span>
                 </a>
@@ -98,7 +100,8 @@
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="buildings">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsebuildings" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsebuildings"
+                   data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-building"></i>
                     <span class="nav-link-text">Logements</span>
                 </a>
@@ -119,7 +122,8 @@
 
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseprofile" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseprofile"
+                   data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">Mon profil</span>
                 </a>
@@ -155,74 +159,12 @@
     </div>
 </nav>
 <div class="content-wrapper">
+    <div>
+        <iframe src="/ProgrammerVisite" width="100%" frameborder="0"
+                onload="resizeIframe(this)"></iframe>
+    </div>
+
     <div class="container-fluid">
-        <!-- Icon Cards-->
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-primary o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-comments"></i>
-                        </div>
-                        <div class="mr-5">26 Nouveaux Messages!</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les messages</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-warning o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-list"></i>
-                        </div>
-                        <div class="mr-5">11 Nouvelles Visites!</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-success o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-users"></i>
-                        </div>
-                        <div class="mr-5">13 Nouveaux Clients!</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-danger o-hidden h-100">
-                    <div class="card-body">
-                        <div class="card-body-icon">
-                            <i class="fa fa-fw fa-ban"></i>
-                        </div>
-                        <div class="mr-5">7 Visites annulées!</div>
-                    </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les Details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                    </a>
-                </div>
-            </div>
-        </div>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -230,52 +172,7 @@
             </li>
             <li class="breadcrumb-item active">Programmer une visite</li>
         </ol>
-        <%--Table--%>
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i> Liste des clients</div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
 
-                        <tr>
-                            <th>id</th>
-                            <th>Client</th>
-                            <th>Date de naissance</th>
-                            <th>Adresse</th>
-                            <th>Banni</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>id</th>
-                            <th>Client</th>
-                            <th>Date de naissance</th>
-                            <th>Adresse</th>
-                            <th>Banni</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        <%LinkedList<Client> list = new ClientDAO().getAll(); %>
-                        <%
-                            for (Client client: list) {
-                                out.print("<tr>\n" +
-                                        "                            <td>"+client.getId()+"</td>\n" +
-                                        "                            <td>"+client.getNom()+" "+client.getPrenom()+"</td>\n" +
-                                        "                            <td>"+client.getDateNaissance()+"</td>\n" +
-                                        "                            <td>"+client.getAdresse()+"</td>\n" +
-                                        "                            <td>"+client.isBanned()+"</td>\n" +
-                                        "                        </tr>");
-                            }
-
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
 
     </div>
     <!-- /.container-fluid-->
@@ -292,7 +189,8 @@
         <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -326,4 +224,9 @@
 </div>
 </body>
 
+<script>
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    }
+</script>
 </html>

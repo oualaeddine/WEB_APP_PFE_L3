@@ -86,7 +86,9 @@ public class VisiteApi extends API {
     }
 
     public static java.sql.Date getDateFromString(String date) {
-        return Util.getDateFromString(date.substring(0, 10));
+        String newdate = date.substring(0, 10);
+        System.out.println("the fucking date is" + newdate);
+        return Util.getDateFromString(newdate);
     }
 
     public static int getHorraireFromStringDate(String date) {

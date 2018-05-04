@@ -697,4 +697,31 @@ public class VisitesDao extends DAO {
         }
         return null;
     }
+
+    public LinkedList<Localite> getTopFiveRegions() {
+        LinkedList<Localite> localites = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select distinct l.region,(select count(visite.id) from logement,visite,localite where visite.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVisites from logement l order by nbrVisites DESC limit 5;");
+            while (result.next()) {
+                localites.add((Localite) new LocaliteDAO().getById(result.getInt("region")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return localites;
+    }
+
+    public int nbrVisitesForMonth(Month month) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(id) as nbr from visite where MONTH(visite.timestamp)=" + month.getValue() + " and year(timestamp)=year(current_date) ;");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

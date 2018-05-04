@@ -399,7 +399,7 @@ public class Util {
     }
 
     public static Date getDateFromString(String dateString) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;
         try {
             java.util.Date date = sdf.parse(dateString);

@@ -1,5 +1,6 @@
 import control.statistics.globales.RapportsStats;
 import control.statistics.perso.AgentStats;
+import model.beans.Localite;
 import model.beans.RDV;
 import model.beans.Vente;
 import model.beans.humans.Client;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(new AgentStats(1).negatifPercentage());
+        LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
+        System.out.println(localites.get(0));
     }
 }

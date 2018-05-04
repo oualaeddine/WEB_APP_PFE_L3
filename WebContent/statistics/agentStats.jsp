@@ -5,6 +5,10 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Rapport" %>
+<%@ page import="model.enums.EtatClient" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="control.statistics.globales.VisitesStats" %>
+<%@ page import="java.time.Month" %>
 <!DOCTYPE html>
 <html>
 <%Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
@@ -222,22 +226,38 @@
                                     LinkedList<Rapport> rapports = new RapportDAO().getByAgent(loggedAgent.getId());
                                     if (rapports.size() <= 5) {
                                         for (Rapport rapport : rapports) {
-                                            String avis = rapport.isAvis() ? "Positif" : "Négatif";
+                                            String avis;
+                                            String color;
+                                            if (rapport.getEtatClient() == EtatClient.ABSENT) {
+                                                avis = "Absent";
+                                                color = "label-danger";
+                                            } else {
+                                                color = rapport.isAvis() ? "label-success" : "label-warning";
+                                                avis = rapport.isAvis() ? "Positif" : "Négatif";
+                                            }
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getId() + "</a></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getId() + "</a></td>\n" +
                                                     "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getClient().getNom() + " " + rapport.getVisite().getClient().getPrenom() + "</a></td>\n" +
-                                                    "<td><span class=\"label label-success\">" + avis + "</span></td>\n" +
+                                                    "<td><span class=\"label " + color + "\">" + avis + "</span></td>\n" +
                                                     "</tr>");
                                         }
                                     } else
                                         for (int i = 1; i < 5; i++) {
-                                            String avis = rapports.get(i).isAvis() ? "Positif" : "Négatif";
+                                            String avis;
+                                            String color;
+                                            if (rapports.get(i).getEtatClient() == EtatClient.ABSENT) {
+                                                avis = "Absent";
+                                                color = "label-danger";
+                                            } else {
+                                                color = rapports.get(i).isAvis() ? "label-success" : "label-warning";
+                                                avis = rapports.get(i).isAvis() ? "Positif" : "Négatif";
+                                            }
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getId() + "</a></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getId() + "</a></td>\n" +
                                                     "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getClient().getNom() + " " + rapports.get(i).getVisite().getClient().getPrenom() + "</a></td>\n" +
-                                                    "<td><span class=\"label label-success\">" + avis + "</span></td>\n" +
+                                                    "<td><span class=\"label " + color + ">" + avis + "</span></td>\n" +
                                                     "</tr>");
                                         }
 
@@ -280,12 +300,26 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <ul class="chart-legend clearfix">
-                                    <li><i class="fa fa-circle-o text-red"></i> Ali mendjeli</li>
-                                    <li><i class="fa fa-circle-o text-green"></i>Kheroub</li>
-                                    <li><i class="fa fa-circle-o text-yellow"></i> Zouaghi</li>
-                                    <li><i class="fa fa-circle-o text-aqua"></i> Brooklyn</li>
-                                    <li><i class="fa fa-circle-o text-light-blue"></i> kendahar</li>
-                                    <li><i class="fa fa-circle-o text-gray"></i> NYC</li>
+                                    <%
+                                        LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
+                                    %>
+
+                                    <li>
+                                        <i class="fa fa-circle-o text-red"></i> <%out.print(localites.get(0).getNom());%>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-circle-o text-green"></i><%out.print(localites.get(1).getNom());%>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-circle-o text-yellow"></i> <%out.print(localites.get(2).getNom());%>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-circle-o text-aqua"></i> <%out.print(localites.get(3).getNom());%>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-circle-o text-light-blue"></i> <%out.print(localites.get(4).getNom());%>
+                                    </li>
+                                    <li><i class="fa fa-circle-o text-gray"></i>Autres</li>
                                 </ul>
                             </div>
                             <!-- /.col -->
@@ -304,7 +338,97 @@
     <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
+<%VisitesStats visitesStats = new VisitesStats();%>
 
+<script>
+    $(function () {
+        'use strict';
+        /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+        // -----------------------
+        // - MONTHLY SALES CHART -
+        // -----------------------
+
+        // Get context with jQuery - using jQuery's .get() method.
+        var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+        // This will get the first returned node in the jQuery collection.
+        var salesChart = new Chart(salesChartCanvas);
+
+        var salesChartData = {
+            labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+            datasets: [
+                {
+                    label: 'Digital Goods',
+                    fillColor: 'rgba(60,141,188,0.9)',
+                    strokeColor: 'rgba(60,141,188,0.8)',
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [
+                        <%out.print(visitesStats.allVisitesByMonth(Month.JANUARY));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.FEBRUARY));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.MARCH));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.APRIL));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.MAY));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.JUNE));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.JULY));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.AUGUST));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.SEPTEMBER));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.OCTOBER));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.NOVEMBER));%>,
+                        <%out.print(visitesStats.allVisitesByMonth(Month.DECEMBER));%>
+                    ]
+                }
+            ]
+        };
+
+        var salesChartOptions = {
+            // Boolean - If we should show the scale at all
+            showScale: true,
+            // Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: false,
+            // String - Colour of the grid lines
+            scaleGridLineColor: 'rgba(0,0,0,.05)',
+            // Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            // Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            // Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+            // Boolean - Whether the line is curved between points
+            bezierCurve: true,
+            // Number - Tension of the bezier curve between points
+            bezierCurveTension: 0.3,
+            // Boolean - Whether to show a dot for each point
+            pointDot: false,
+            // Number - Radius of each point dot in pixels
+            pointDotRadius: 4,
+            // Number - Pixel width of point dot stroke
+            pointDotStrokeWidth: 1,
+            // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius: 20,
+            // Boolean - Whether to show a stroke for datasets
+            datasetStroke: true,
+            // Number - Pixel width of dataset stroke
+            datasetStrokeWidth: 2,
+            // Boolean - Whether to fill the dataset with a color
+            datasetFill: true,
+            // String - A legend template
+            <%--legendTemplate: "<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>",--%>
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            // Boolean - whether to make the chart responsive to window resizing
+            responsive: true
+        };
+
+        // Create the line chart
+        salesChart.Line(salesChartData, salesChartOptions);
+    })
+</script>
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

@@ -26,6 +26,10 @@ public class VisitesStats extends Stats {
         return new VisitesDao().nbrVisitesAnnulees();
     }
 
+    public int allVisitesByMonth(Month month) {
+        return new VisitesDao().nbrVisitesForMonth(month);
+    }
+
     public HashMap<Month, Integer> visitesPrevuesVariaton() {
         HashMap<Month, Integer> variation = new HashMap<>();
 
@@ -98,6 +102,10 @@ public class VisitesStats extends Stats {
 
     public Localite regionLaPlusVisitee() {
         return new VisitesDao().getMostVisitedRegion();
+    }
+
+    public LinkedList<Localite> top5Regions() {
+        return new VisitesDao().getTopFiveRegions();
     }
 
     // TODO: 5/4/2018

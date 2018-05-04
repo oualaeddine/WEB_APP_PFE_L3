@@ -281,25 +281,25 @@ public class RapportDAO extends DAO {
     public float pourcentageAvisPositifs() {
         int nbrAvisPositifs = getVisitesPositivesNbr();
         int allVisites = countAll();
-        return nbrAvisPositifs * 100 / allVisites;
+        return allVisites == 0 ? 0 : nbrAvisPositifs * 100 / allVisites;
     }
 
     public float pourcentageAvisNegatifs() {
         int nbrAvisNeg = getVisitesNegativesNbr();
         int allVisites = countAll();
-        return nbrAvisNeg * 100 / allVisites;
+        return allVisites == 0 ? 0 : nbrAvisNeg * 100 / allVisites;
     }
 
     public float pourcentagePresences() {
         int nbrPresences = getPresences();
         int all = countAll();
-        return nbrPresences * 100 / all;
+        return all == 0 ? 0 : nbrPresences * 100 / all;
     }
 
     public float pourcentageAbsences() {
         int nbrAbsences = getAbsencesNbr();
         int all = countAll();
-        return nbrAbsences * 100 / all;
+        return all == 0 ? 0 : nbrAbsences * 100 / all;
     }
 
 
@@ -373,24 +373,24 @@ public class RapportDAO extends DAO {
     public float pourcentagePositifForAgent(int userId) {
         int nbrAvisPositifs = getAvisPositifsForAgent(userId);
         int allVisites = nbrRapportsForAgent(userId);
-        return nbrAvisPositifs * 100 / allVisites;
+        return allVisites == 0 ? 0 : nbrAvisPositifs * 100 / allVisites;
     }
 
     public float pourcentageNegatifForAgent(int userId) {
         int nbrAvisPositifs = getAvisNegatifsForAgent(userId);
         int allVisites = nbrRapportsForAgent(userId);
-        return nbrAvisPositifs * 100 / allVisites;
+        return allVisites == 0 ? 0 : nbrAvisPositifs * 100 / allVisites;
     }
 
     public float pourcentagePresenceForAgent(int userId) {
         int nbrPresences = getPresencesNbrForAgent(userId);
         int all = nbrRapportsForAgent(userId);
-        return nbrPresences * 100 / all;
+        return all == 0 ? 0 : nbrPresences * 100 / all;
     }
 
     public float pourcentageAbsenceForAgent(int userId) {
         int nbrPresences = getAbsencesNbrForAgent(userId);
         int all = nbrRapportsForAgent(userId);
-        return nbrPresences * 100 / all;
+        return all == 0 ? 0 : nbrPresences * 100 / all;
     }
 }

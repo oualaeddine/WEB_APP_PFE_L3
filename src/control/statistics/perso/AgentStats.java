@@ -37,6 +37,13 @@ public class AgentStats extends PersoStats {
     }
 
     /**
+     * @return the number of upcoming reported visits
+     */
+    public int getCanceledVisites() {// TODO: 5/3/2018
+        return 0;
+    }
+
+    /**
      * @return the number of upcoming programmed visits
      */
     public int getProgrammedVisites() {// TODO: 5/3/2018

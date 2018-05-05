@@ -1,17 +1,15 @@
-<%@ page import="control.statistics.perso.AgentStats" %>
-<%@ page import="model.db.daos.AssignationDAO" %>
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.beans.humans.Employe" %>
 <%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="java.time.Month" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
 <!DOCTYPE html>
 <html>
 <% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
-<%
-    LogementsStats logementsStats = new LogementsStats();
+<%!
+    private LogementsStats logementsStats = new LogementsStats();
 
 %>
 <head>
@@ -45,7 +43,7 @@
         <div class="row">
             <div class="col-md-3 ">
                 <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                    <span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-home"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tout les logements</span>
@@ -58,7 +56,7 @@
             <!-- /.col -->
             <div class="col-md-3 ">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                    <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-eye-close"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Logements gelés</span>
@@ -75,7 +73,7 @@
 
             <div class="col-md-3 ">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <span class="info-box-icon bg-green"><i class="fa fa-credit-card"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">logements vendus</span>
@@ -89,7 +87,7 @@
             <!-- /.col -->
             <div class="col-md-3 ">
                 <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <span class="info-box-icon bg-yellow"><i class="glyphicon glyphicon-globe"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Regions</span>
@@ -152,7 +150,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
                                     <canvas id="logementsPerRegion" style="height: 300px;"></canvas>
@@ -194,16 +192,6 @@
 
                             <!-- /.col -->
                         </div>
-                        <ul class="chart-legend clearfix">
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-red"></i> En vente &nbsp;&nbsp;
-                            </li>
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-green"></i>Vendus &nbsp;&nbsp;
-                            </li>
-                            &nbsp; &nbsp;
-                            </li>
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-aqua"></i> A vendre &nbsp;&nbsp;
-                            </li>
-                        </ul>
                         <!-- /.row -->
                     </div>
                     <!-- /.box-body -->
@@ -232,8 +220,6 @@
         <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- ChartJS -->
         <script src="../bower_components/chart.js/Chart.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <!--<script src="../dist/js/pages/dashboard2.js"></script>-->
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
     </section>
@@ -255,19 +241,13 @@
     // // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#logements').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
 
     var salesChartData = {
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
                 label: 'Tout les logements',
-                fillColor: '#9e9e9e',
-                strokeColor: '#9e9e9e',
-                pointColor: '#9e9e9e',
-                pointStrokeColor: '#9e9e9e',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#9e9e9e',
+                backgroundColor: '#3c8dbc',
                 data: [
                     <%out.print(logementsStats.logementsAVendre());%>,
                     <%out.print(logementsStats.logementsAVendre());%>,
@@ -285,12 +265,7 @@
             },
             {
                 label: 'Logements vendus',
-                fillColor: '#3b8bba',
-                strokeColor: '#3b8bba',
-                pointColor: '#3b8bba',
-                pointStrokeColor: '#3b8bba',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#3b8bba',
+                backgroundColor: '#00a65a',
                 data: [
                     <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.JANUARY));%>,
                     <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.FEBRUARY));%>,
@@ -349,7 +324,11 @@
     };
 
     // Create the  chart
-    salesChart.Line(salesChartData, salesChartOptions);
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: salesChartData,
+        options: salesChartOptions
+    });
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
@@ -370,7 +349,6 @@
     // // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#logementsPerRegion').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
 
     var salesChartData = {
         labels: [
@@ -383,13 +361,8 @@
         ],
         datasets: [
             {
-                label: 'Tout les logements',
-                fillColor: '#3b8bba',
-                strokeColor: '#3b8bba',
-                pointColor: '#3b8bba',
-                pointStrokeColor: '#3b8bba',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#3b8bba',
+                label: 'Logements',
+                backgroundColor: '#3B8BBA',
                 data: [
                     <%
                         for (Localite localite : localites){
@@ -432,16 +405,18 @@
         datasetStrokeWidth: 2,
         // Boolean - Whether to fill the dataset with a color
         datasetFill: true,
-        // String - A legend template
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
-        responsive: true,
-
+        responsive: true
     };
 
     // Create the  chart
-    salesChart.Bar(salesChartData, salesChartOptions);
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'bar',
+        data: salesChartData,
+        options: salesChartOptions
+    });
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
@@ -456,27 +431,26 @@
     // -------------
     // Get context with jQuery - using jQuery's .get() method.
     var pieChartCanvas = $('#logRepart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
+    var PieData =
         {
-            value: <%out.print(logementsStats.logementsGeleNbr());%>,
-            color: '#f56954',
-            highlight: '#f56954',
-            label: 'En vente'
-        },
-        {
-            value: <%out.print(logementsStats.logementsVendusNbr());%>,
-            color: '#00a65a',
-            highlight: '#00a65a',
-            label: 'Vendus'
-        },
-        {
-            value: <%out.print(logementsStats.logementsAVendre());%>,
-            color: '#00c0ef',
-            highlight: '#00c0ef',
-            label: 'a vendre'
-        }
-    ];
+            datasets: [{
+                data: [<%out.print(logementsStats.logementsGeleNbr());%>,
+                    <%out.print(logementsStats.logementsVendusNbr());%>,
+                    <%out.print(logementsStats.logementsAVendre());%>,
+                ],
+                backgroundColor: [
+                    '#f56954',
+                    '#00a65a',
+                    '#00c0ef'
+                ]
+            }],
+
+            labels: [
+                'Gelés',
+                'Vendus',
+                'a vendre'
+            ]
+        };
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment
         segmentShowStroke: true,
@@ -497,19 +471,19 @@
         // Boolean - whether to make the chart responsive to window resizing
         responsive: true,
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-        maintainAspectRatio: false,
-        // String - A legend template
-        <%--legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",--%>
-        // String - A tooltip template
-        <%--tooltipTemplate: '<%=value %>  <%=label%> '--%>
+        maintainAspectRatio: false
     };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    var pieChart = new Chart(pieChartCanvas, {
+        type: 'doughnut',
+        data: PieData,
+        options: pieOptions
+    });
+
     // -----------------
     // - END PIE CHART -
     // -----------------
-
 
 </script>
 </html>

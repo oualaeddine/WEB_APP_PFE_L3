@@ -1,5 +1,5 @@
-<%@ page import="control.statistics.globales.VentesStats" %>
 <%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
 <!DOCTYPE html>
 <html>
 <%
@@ -36,35 +36,35 @@
         <!-- Info boxes -->
         <div class="col-md-3 ">
             <div class="callout callout-info">
-                <h4>Nombre de ventes total</h4>
+                <h4>ventes total</h4>
 
                 <p><%out.print(ventesStats.ventesNbr());%> ventes.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-success">
-                <h4>Nombre de ventes terminées</h4>
+                <h4>ventes terminées</h4>
 
                 <p><%out.print(ventesStats.confirmedVentesNbr());%> ventes.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-danger">
-                <h4>Nombre de ventes annulées</h4>
+                <h4>ventes annulées</h4>
 
                 <p><%out.print(ventesStats.canceledVentesNbr());%> ventes.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-warning">
-                <h4>Nombre de ventes en cours</h4>
+                <h4>ventes en cours</h4>
 
                 <p><%out.print(ventesStats.pendingVentesNbr());%> ventes.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion "></i></span>
+                <span class="info-box-icon bg-aqua"><i class="fa fa-credit-card"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Prix total des logements</span>
@@ -78,7 +78,7 @@
         <!-- /.row -->
         <div class="col-md-3 ">
             <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion "></i></span>
+                <span class="info-box-icon bg-green"><i class="fa  fa-check"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Revenus ventes de cette année</span>
@@ -95,31 +95,31 @@
         <div class="clearfix visible-sm-block"></div>
 
 
-        <%--<div class="col-md-3 ">--%>
-        <%--<div class="info-box">--%>
-        <%--<span class="info-box-icon bg-red"><i class="fa "></i></span>--%>
+        <div class="col-md-3 ">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa "></i></span>
 
-        <%--<div class="info-box-content">--%>
-        <%--<span class="info-box-text">Pertes sur annulations</span>--%>
-        <%--<span class="info-box-number">6 385 000.00 Da</span>--%>
-        <%--</div>--%>
-        <%--<!-- /.info-box-content -->--%>
-        <%--</div>--%>
-        <%--<!-- /.info-box -->--%>
-        <%--</div>--%>
+                <div class="info-box-content">
+                    <span class="info-box-text">Pertes sur annulations</span>
+                    <span class="info-box-number">6 385 000.00 Da</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
         <!-- /.col -->
-        <%--<div class="col-md-3 ">--%>
-        <%--<div class="info-box">--%>
-        <%--<span class="info-box-icon bg-yellow"><i class="ion "></i></span>--%>
+        <div class="col-md-3 ">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion "></i></span>
 
-        <%--<div class="info-box-content">--%>
-        <%--<span class="info-box-text">Revenus estimés</span>--%>
-        <%--<span class="info-box-number">49 006 651.00</span>--%>
-        <%--</div>--%>
-        <%--<!-- /.info-box-content -->--%>
-        <%--</div>--%>
-        <%--<!-- /.info-box -->--%>
-        <%--</div>--%>
+                <div class="info-box-content">
+                    <span class="info-box-text">Revenus estimés</span>
+                    <span class="info-box-number">49 006 651.00</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
         <!-- /.col -->
 
 
@@ -244,24 +244,8 @@
                                 <canvas id="logRepart"></canvas>
                             </div>
                             <!-- ./chart-responsive -->
-                            <!-- /.col -->
-
-                            <!-- /.col -->
                         </div>
-                        <ul class="chart-legend clearfix">
-                            <li><i class="fa fa-circle-o text-red"></i> constantine <strong>1 285 000.00da</strong>
-                                &nbsp;&nbsp;
-                            </li>
-                            <li><i class="fa fa-circle-o text-green"></i>ali mendjeli <strong>189 285 000.00da</strong>
-                                &nbsp;&nbsp;
-                            </li>
-                            <li><i class="fa fa-circle-o text-yellow"></i>skikda <strong>89 252 000.00da</strong> &nbsp;
-                                &nbsp;
-                            </li>
-                            <li><i class="fa fa-circle-o text-aqua"></i> brooklyn <strong>89 285 000.00da</strong>
-                                &nbsp;&nbsp;
-                            </li>
-                        </ul>
+
                         <!-- /.row -->
                     </div>
                     <!-- /.box-body -->
@@ -308,86 +292,147 @@
     // // -----------------------
     //
     // // Get context with jQuery - using jQuery's .get() method.
-    var salesChartCanvas = $('#variationVentesNbr').get(0).getContext('2d');
+    var salesChartCanvas = $('#variationVentesPrice').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: {
+            labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+            datasets: [
 
-    var salesChartData = {
-        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-        datasets: [
-            {
-                label: 'Prix total de Tout les logements',
-                fillColor: '#3b8bba',
-                strokeColor: '#3b8bba',
-                pointColor: '#3b8bba',
-                pointStrokeColor: '#3b8bba',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#3b8bba',
-                data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
+                {
+                    label: 'ventes annulées',
+                    fill: true,
+                    backgroundColor: '#9c0200',
+                    borderColor: '#ba0200',
+                    data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
+                }, {
+                    label: 'ventes terminées ',
+                    fill: true,
+                    backgroundColor: '#00ba24',
+                    borderColor: '#00ba24',
+                    data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart'
             },
-            {
-                label: 'revenus',
-                fillColor: '#3cba00',
-                strokeColor: '#3cba00',
-                pointColor: '#3cba00',
-                pointStrokeColor: '#3cba00',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#3cba00',
-                data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+            tooltips: {
+                mode: 'index',
+                intersect: false,
             },
-            {
-                label: 'pertes annulations',
-                fillColor: '#ba1b00',
-                strokeColor: '#ba1b00',
-                pointColor: '#ba1b00',
-                pointStrokeColor: '#ba1b00',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#ba1b00',
-                data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    }
+                }]
             }
-        ]
-    };
-
-    var salesChartOptions = {
-        // Boolean - If we should show the scale at all
-        showScale: true,
-        // Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines: false,
-        // String - Colour of the grid lines
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        // Number - Width of the grid lines
-        scaleGridLineWidth: 1,
-        // Boolean - Whether to show horizontal lines (except X axis)
-        scaleShowHorizontalLines: true,
-        // Boolean - Whether to show vertical lines (except Y axis)
-        scaleShowVerticalLines: true,
-        // Boolean - Whether the line is curved between points
-        bezierCurve: true,
-        // Number - Tension of the bezier curve between points
-        bezierCurveTension: 0.3,
-        // Boolean - Whether to show a dot for each point
-        pointDot: false,
-        // Number - Radius of each point dot in pixels
-        pointDotRadius: 4,
-        // Number - Pixel width of point dot stroke
-        pointDotStrokeWidth: 1,
-        // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-        pointHitDetectionRadius: 20,
-        // Boolean - Whether to show a stroke for datasets
-        datasetStroke: true,
-        // Number - Pixel width of dataset stroke
-        datasetStrokeWidth: 2,
-        // Boolean - Whether to fill the dataset with a color
-        datasetFill: true,
-        // String - A legend template
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-        maintainAspectRatio: true,
-        // Boolean - whether to make the chart responsive to window resizing
-        responsive: true
-    };
+        }
+    });
 
     // Create the  chart
-    salesChart.Line(salesChartData, salesChartOptions);
+    // salesChart(salesChartData, salesChartOptions);
+
+    // ---------------------------
+    // - END MONTHLY SALES CHART -
+    // ---------------------------
+
+</script>
+<script>
+
+    // /* ChartJS
+    //  * -------
+    //  * Here we will create a few charts using ChartJS
+    //  */
+    //
+    // // -----------------------
+    // // - MONTHLY SALES CHART -
+    // // -----------------------
+    //
+    // // Get context with jQuery - using jQuery's .get() method.
+    var salesChartCanvas = $('#variationVentesNbr').get(0).getContext('2d');
+    // // This will get the first returned node in the jQuery collection.
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: {
+            labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+            datasets: [
+
+                {
+                    label: 'pertes annulations',
+                    fill: true,
+                    backgroundColor: '#9c0200',
+                    borderColor: '#ba0200',
+                    data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
+                }, {
+                    label: 'revenus',
+                    fill: true,
+                    backgroundColor: '#00ba24',
+                    borderColor: '#00ba24',
+                    data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+                },
+                {
+                    label: 'Prix total de Tout les logements',
+                    fill: true,
+                    backgroundColor: '#0040ba',
+                    borderColor: '#003db8',
+                    data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart'
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    }
+                }]
+            }
+        }
+    });
+
+    // Create the  chart
+    // salesChart(salesChartData, salesChartOptions);
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
@@ -408,25 +453,24 @@
     // // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#ventesPerRegion').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
-
-    var salesChartData = {
-        labels: ['constantine', 'ali mendjlei', 'Mars', 'didouch', 'Mai'],
-        datasets: [
-            {
-                label: 'Tout les logements',
-                fillColor: '#3b8bba',
-                strokeColor: '#3b8bba',
-                pointColor: '#3b8bba',
-                pointStrokeColor: '#3b8bba',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#3b8bba',
-                data: [208, 408, 520, 600, 286]
-            }
-        ]
-    };
-
-    var salesChartOptions = {
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'bar',
+        data: {
+            labels: ['constantine', 'ali mendjlei', 'Mars', 'didouch', 'Mai'],
+            datasets: [
+                {
+                    label: 'ventes terminées',
+                    backgroundColor: '#00ba24',
+                    data: [208, 408, 520, 600, 286]
+                },
+                {
+                    label: 'ventes annulées',
+                    backgroundColor: '#ba0200',
+                    data: [300, 6, 128, 200, 113]
+                }
+            ]
+        }
+        ,
         // Boolean - If we should show the scale at all
         showScale: true,
         // Boolean - Whether grid lines are shown across the chart
@@ -458,21 +502,21 @@
         // Boolean - Whether to fill the dataset with a color
         datasetFill: true,
         // String - A legend template
+        <%--legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>',--%>
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
         responsive: true
-    };
+    });
 
     // Create the  chart
-    salesChart.Bar(salesChartData, salesChartOptions);
+    //salesChart.Bar(salesChartData, salesChartOptions);
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
     // ---------------------------
 
 </script>
-
 <script>
 
     // -------------
@@ -480,66 +524,61 @@
     // -------------
     // Get context with jQuery - using jQuery's .get() method.
     var pieChartCanvas = $('#logRepart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
+    var pieChart = new Chart(pieChartCanvas,
         {
-            value: 700,
-            color: '#f56954',
-            highlight: '#f56954',
-            label: 'Gelés'
-        },
-        {
-            value: 500,
-            color: '#00a65a',
-            highlight: '#00a65a',
-            label: 'Vendus'
-        },
-        {
-            value: 400,
-            color: '#f39c12',
-            highlight: '#f39c12',
-            label: 'en vente'
-        },
-        {
-            value: 600,
-            color: '#00c0ef',
-            highlight: '#00c0ef',
-            label: 'a vendre'
-        }
-    ];
-    var pieOptions = {
-        // Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-        // String - The colour of each segment stroke
-        segmentStrokeColor: '#fff',
-        // Number - The width of each segment stroke
-        segmentStrokeWidth: 1,
-        // Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 50, // This is 0 for Pie charts
-        // Number - Amount of animation steps
-        animationSteps: 100,
-        // String - Animation easing effect
-        animationEasing: 'easeOutBounce',
-        // Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: true,
-        // Boolean - Whether we animate scaling the Doughnut from the centre
-        animateScale: false,
-        // Boolean - whether to make the chart responsive to window resizing
-        responsive: true,
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-        maintainAspectRatio: false,
-    };
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [10, 20, 30],
+                    backgroundColor: [
+                        '#ff6384', '#36a2eb', '#cc65fe'
+                    ]
+                }],
+
+                labels: [
+                    'Red',
+                    'Yellow',
+                    'Blue'
+                ]
+            },
+            options: {
+                // Boolean - Whether we should show a stroke on each segment
+                segmentShowStroke: true,
+                // String - The colour of each segment stroke
+                segmentStrokeColor: '#fff',
+                // Number - The width of each segment stroke
+                segmentStrokeWidth: 1,
+                // Number - The percentage of the chart that we cut out of the middle
+                percentageInnerCutout: 50, // This is 0 for Pie charts
+                // Number - Amount of animation steps
+                animationSteps: 100,
+                // String - Animation easing effect
+                animationEasing: 'easeOutBounce',
+                // Boolean - Whether we animate the rotation of the Doughnut
+                animateRotate: true,
+                // Boolean - Whether we animate scaling the Doughnut from the centre
+                animateScale: false,
+                // Boolean - whether to make the chart responsive to window resizing
+                responsive: true,
+                // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                maintainAspectRatio: false,
+                // String - A legend template
+                <%--legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',--%>
+                // String - A tooltip template
+                <%--tooltipTemplate: '<%=value %>  <%=label%> '--%>
+            }
+        });
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    //   pieChart.Doughnut(PieData, pieOptions);
+
+
     // -----------------
     // - END PIE CHART -
     // -----------------
 
 
 </script>
-
-
 </body>
 
 </html>

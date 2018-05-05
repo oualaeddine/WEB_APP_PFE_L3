@@ -113,7 +113,7 @@
                 + "         </div>"
                 + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
                 + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
+                + "                 <a href=\"/home\" class=\"active\">Accueil</a>"
                 + "             </li>"
                 + ""
                 + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\"><a class=\"\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
@@ -131,7 +131,7 @@
                 + "                         <a href=\"index-4.html\">Nos Services</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"index-4.html\">Nos Partenaires</a>"
+                + "                         <a href=\"/home?what=stats\">Statistiques</a>"
                 + "                     </li>"
                 + "                     <li>"
                 + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
@@ -187,7 +187,7 @@
                 + "                         <a href=\"index-4.html\">Nos Services</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"index-4.html\">Nos Partenaires</a>"
+                + "                         <a href=\"/ClientServlet?what=stats\">Statistiques</a>"
                 + "                     </li>"
                 + "                     <li>"
                 + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
@@ -283,19 +283,6 @@
                     }
                 %>
 
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-tree more-proerty text-center">
-                        <div class="item-tree-icon">
-                            <i class="fa fa-th"></i>
-                        </div>
-                        <div class="more-entry overflow">
-                            <h5><a href="property-1.html">CAN'T DECIDE ? </a></h5>
-                            <h5 class="tree-sub-ttl">Show all properties</h5>
-                            <button class="btn border-btn more-black" value="All properties">All properties</button>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>

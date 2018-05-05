@@ -11,7 +11,7 @@
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
-    String currentPage = "Responsable ventes";
+    String currentPage = "Responsable vente";
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);

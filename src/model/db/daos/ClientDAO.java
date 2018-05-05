@@ -345,4 +345,17 @@ public class ClientDAO extends DAO {
 
         return nbrClientForAgent * 100 / nbrClients;
     }
+
+    public int visitedLogementsNbrForClient(int client) {
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select count(visite.id) as nbr from visite where visite.clientId=" + client + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

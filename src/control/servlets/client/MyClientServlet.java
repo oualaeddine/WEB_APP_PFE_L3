@@ -23,6 +23,9 @@ public class MyClientServlet extends MyServlet {
                 redirectToHome(request, response);
             } else {
                 switch (action) {
+                    case "stats":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/statsClient.jsp").forward(request, response);
+                        break;
                     case "logements":
                         this.getServletContext().getRequestDispatcher("/jsp/client/logements.jsp").forward(request, response);
                         break;

@@ -20,7 +20,9 @@ public class HomeServlet extends MyServlet {
                 case "logements":
                     this.getServletContext().getRequestDispatcher("/jsp/client/logements.jsp").forward(request, response);
                     break;
-
+                case "stats":
+                    this.getServletContext().getRequestDispatcher("/jsp/client/statsClient.jsp").forward(request, response);
+                    break;
             }
         }
     }

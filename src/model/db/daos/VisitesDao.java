@@ -251,6 +251,7 @@ public class VisitesDao extends DAO {
     public boolean annulerVisite(Visite visite) {
         try {
             visiteStatement.execute("UPDATE visite SET etat='annulee' WHERE id=" + visite.getId() + ";");
+            //TODO: Send notifications
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

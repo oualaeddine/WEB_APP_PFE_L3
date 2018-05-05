@@ -7,13 +7,12 @@
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="model.beans.humans.Client" %>
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="control.statistics.globales.LogementsStats" %><%--
-  Created by IntelliJ IDEA.
-  User: berre
-  Date: 4/3/2018
-  Time: 9:45 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="model.db.daos.ClientDAO" %>
+<%@ page import="control.statistics.globales.ClientsStats" %>
+<%@ page import="model.db.daos.AssignationDAO" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="control.statistics.perso.ClientStats" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
@@ -22,11 +21,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HCH Immobilier | Home page</title>
+    <title>HCH Immobilier | Statistiques</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../statistics/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../statistics/st/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../statistics/st/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../statistics/st/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../statistics/st/dist/css/skins/_all-skins.min.css">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
 
@@ -264,163 +271,181 @@
         </div>
     </div>
 </div>
+<%
 
+%>
 <div class="home-lager-shearch" style="background-color: rgb(252, 252, 252); padding-top: 25px; margin-top: -125px;">
     <div class="container">
-        <div class="col-md-12 large-search">
-            <div class="search-form wow pulse">
-                <form action="" class=" form-inline">
-                    <div class="col-md-12">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Key word">
-                        </div>
-                        <div class="col-md-4">
-                            <select id="lunchBegins" class="selectpicker" data-live-search="true"
-                                    data-live-search-style="begins" title="Select your city">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="text-center">
+                        <strong>Mes visites dans la region
+                            de <%out.print(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom());%>
+                            : 1
+                            Jan, <%out.print(Calendar.getInstance().get(Calendar.YEAR));%> - 31 Decembre,
+                            <%out.print(Calendar.getInstance().get(Calendar.YEAR));%></strong>
+                    </p>
 
+                    <div class="chart">
+                        <!-- Sales Chart Canvas -->
+                        <canvas id="salesChart" style="height: 180px;"></canvas>
+                    </div>
+                    <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <p class="text-center">
+                        <strong>Mes statistiques</strong>
+                    </p>
 
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <select id="basic" class="selectpicker show-tick form-control">
-                                <option> -Status-</option>
-                                <option>Rent</option>
-                                <option>Boy</option>
-                                <option>used</option>
-
-                            </select>
+                    <!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Nombre de logements visités:</span>
+                        <span class="progress-number"><b><%
+                            out.print(stats.
+                            ()
+                            )
+                            ;
+                        %></b>/<%
+                            out
+                            .
+                            print
+                            (
+                            new
+                            LogementDAO
+                            (
+                            )
+                            .
+                            getAll
+                            (
+                            )
+                            .
+                            size
+                            (
+                            )
+                            )
+                            ;
+                        %></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-green"
+                                 style="width: <%out.print(stats.logementsVisitesPercentage());%>%"></div>
                         </div>
                     </div>
-                    <div class="col-md-12 ">
-                        <div class="search-row">
+                    <div class="progress-group">
+                        <span class="progress-text">Nombre des avis positifs sur mes visites que j'ai effectué </span>
+                        <span class="progress-number"><b><%
+                            out
+                            .
+                            print
+                            (
+                            stats
+                            .
+                            positifsNbr
+                            (
+                            )
+                            )
+                            ;
+                        %></b>/<%
+                            out
+                            .
+                            print
+                            (
+                            stats
+                            .
+                            rapportsNbr
+                            (
+                            )
+                            )
+                            ;
+                        %></span>
 
-                            <div class="col-sm-3">
-                                <label for="price-range">Price range ($):</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[0,450]" id="price-range"><br/>
-                                <b class="pull-left color">2000$</b>
-                                <b class="pull-right color">100000$</b>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <label for="property-geo">Property geo (m2) :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[50,450]" id="property-geo"><br/>
-                                <b class="pull-left color">40m</b>
-                                <b class="pull-right color">12000m</b>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <label for="price-range">Min baths :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[250,450]" id="min-baths"><br/>
-                                <b class="pull-left color">1</b>
-                                <b class="pull-right color">120</b>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <label for="property-geo">Min bed :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[250,450]" id="min-bed"><br/>
-                                <b class="pull-left color">1</b>
-                                <b class="pull-right color">120</b>
-                            </div>
-                            <!-- End of  -->
-
-                        </div>
-
-                        <div class="search-row">
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Fire Place(3100)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Dual Sinks(500)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Hurricane Shutters(99)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Swimming Pool(1190)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2 Stories(4600)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Emergency Exit(200)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Laundry Room(10073)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Jog Path(1503)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 26' Ceilings(1200)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-aqua"
+                                 style="width: <%out.print(stats.positifPercentage());%>%"></div>
                         </div>
                     </div>
-                    <div class="center">
-                        <input type="submit" value="" class="btn btn-default btn-lg-sheach">
+                    <!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Nombre des avis negatifs sur mes visites </span>
+                        <span class="progress-number"><b><%
+                            out
+                            .
+                            print
+                            (
+                            stats
+                            .
+                            negatifsNbr
+                            (
+                            )
+                            )
+                            ;
+                        %></b>/<%
+                            out
+                            .
+                            print
+                            (
+                            stats
+                            .
+                            rapportsNbr
+                            (
+                            )
+                            )
+                            ;
+                        %></span>
+
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-red"
+                                 style="width: <%out.print(stats.negatifPercentage());%>%"></div>
+                        </div>
                     </div>
-                </form>
+
+                    <!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Nombre de clients que j'ai reçu</span>
+                        <span class="progress-number"><b><%
+                            out
+                            .
+                            print
+                            (
+                            stats
+                            .
+                            getClients
+                            (
+                            )
+                            )
+                            ;
+                        %></b>/<%
+                            out
+                            .
+                            print
+                            (
+                            new
+                            ClientDAO
+                            (
+                            )
+                            .
+                            getAll
+                            (
+                            )
+                            .
+                            size
+                            (
+                            )
+                            )
+                            ;
+                        %></span>
+
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-yellow"
+                                 style="width: <%out.print(stats.clientsPercentage());%>%"></div>
+                        </div>
+                    </div>
+                    <!-- /.progress-group -->
+                </div>
+                <!-- /.col -->
             </div>
+            <!-- /.row -->
         </div>
     </div>
 </div>
@@ -439,32 +464,167 @@
         </div>
         <div class="row">
             <div class="property-th">
-            <%
-                LinkedList<Logement> logements = logementsStats.mostVisitedLogements();
-                Client loggedIdClient=new Client();
-                String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                if (isLoggedIn) {
-                    loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-                }
-                for (Logement logement : logements) {
-                    if (isLoggedIn) {
-                        href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                <%
+                    LinkedList
+                    <
+                    Logement
+                    >
+                    logements
+                    =
+                    logementsStats
+                    .
+                    mostVisitedLogements
+                    (
+                    )
+                    ;
+                    Client
+                    loggedIdClient
+                    =
+                    new
+                    Client
+                    (
+                    )
+                    ;
+                    String
+                    href
+                    =
+                    "data-toggle=\"modal\" data-target=\"#loginRequiredModal\""
+                    ;
+                    if
+                    (
+                    isLoggedIn
+                    )
+                    {
+                    loggedIdClient
+                    =
+                    (
+                    Client
+                    )
+                    request
+                    .
+                    getSession
+                    (
+                    )
+                    .
+                    getAttribute
+                    (
+                    MyServlet
+                    .
+                    LOGGED_IN_USER
+                    )
+                    ;
                     }
-                    out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
-                            "                    <div class=\"box-two proerty-item\">\n" +
-                            "                        <div class=\"item-thumb\">\n" +
-                            "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
-                            "                        </div>\n" +
-                            "                        <div class=\"item-entry overflow\">\n" +
-                            "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
-                            "                            <div class=\"dot-hr\"></div>\n" +
-                            "                            <span class=\"pull-left\"><b>Area :</b> "+logement.getSuperficie()+"m2</span>\n" +
-                            "                            <span class=\"proerty-price pull-right\">"+logement.getPrix()+" DZD</span>\n" +
-                            "                        </div>\n" +
-                            "                    </div>\n" +
-                            "                </div>");
-                }
-            %>
+                    for
+                    (
+                    Logement
+                    logement
+                    :
+                    logements
+                    )
+                    {
+                    if
+                    (
+                    isLoggedIn
+                    )
+                    {
+                    href
+                    =
+                    "href=\"/ProgrammerVisiteClient?logementId="
+                    +
+                    logement
+                    .
+                    getId
+                    (
+                    )
+                    +
+                    "&region="
+                    +
+                    logement
+                    .
+                    getLocalite
+                    (
+                    )
+                    .
+                    getId
+                    (
+                    )
+                    +
+                    "&clientId="
+                    +
+                    loggedIdClient
+                    .
+                    getId
+                    (
+                    )
+                    +
+                    "\""
+                    ;
+                    }
+                    out
+                    .
+                    print
+                    (
+                    "<div class=\"col-sm-6 col-md-3 p0\">\n"
+                    +
+                    "                    <div class=\"box-two proerty-item\">\n"
+                    +
+                    "                        <div class=\"item-thumb\">\n"
+                    +
+                    "                            <a "
+                    +
+                    href
+                    +
+                    " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n"
+                    +
+                    "                        </div>\n"
+                    +
+                    "                        <div class=\"item-entry overflow\">\n"
+                    +
+                    "                            <h5><a "
+                    +
+                    href
+                    +
+                    ">"
+                    +
+                    logement
+                    .
+                    getTitre
+                    (
+                    )
+                    +
+                    " </a></h5>\n"
+                    +
+                    "                            <div class=\"dot-hr\"></div>\n"
+                    +
+                    "                            <span class=\"pull-left\"><b>Area :</b> "
+                    +
+                    logement
+                    .
+                    getSuperficie
+                    (
+                    )
+                    +
+                    "m2</span>\n"
+                    +
+                    "                            <span class=\"proerty-price pull-right\">"
+                    +
+                    logement
+                    .
+                    getPrix
+                    (
+                    )
+                    +
+                    " DZD</span>\n"
+                    +
+                    "                        </div>\n"
+                    +
+                    "                    </div>\n"
+                    +
+                    "                </div>"
+                    )
+                    ;
+                    }
+                %>
 
 
                 <div class="col-sm-6 col-md-3 p0">
@@ -882,39 +1042,6 @@
 <script src="../../assets_client/js/main.js"></script>
 
 
-
-<div id="programmerVisiteModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Programmer une visite</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/AjoutServlet?ajouter=visite" id="newVisitForm">
-
-
-                    <input id="logementChoisi" name="logementChoisi" type="hidden">
-                    <div class="form-group">
-                        <label for="userTypeInput">Choisissez une date</label>
-                        <select class="custom-select" name="userTypeInput" id="userTypeInput">
-                            <option value="responsableVentes">Choisir une date</option>
-                        </select>
-                    </div>
-
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default"  type="submit" >Valider</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <%--Modal login required--%>
 <div id="loginRequiredModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -938,7 +1065,161 @@
         </div>
     </div>
 </div>
+<script src="../../statistics/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../statistics/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../statistics/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../statistics/dist/js/adminlte.min.js"></script>
+<script src="../../statistics/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script src="../../statistics/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../statistics/bower_components/chart.js/Chart.js"></script>
+<script src="../../statistics/dist/js/demo.js"></script>
+</body>
 
+<script>
+    'use strict';
+    /* ChartJS
+ * -------
+ * Here we will create a few charts using ChartJS
+ */
+
+    // -----------------------
+    // - MONTHLY SALES CHART -
+    // -----------------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    // This will get the first returned node in the jQuery collection.
+    var salesChart = new Chart(salesChartCanvas);
+
+    var salesChartData = {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        datasets: [
+            {
+                label: 'Digital Goods',
+                fillColor: 'rgba(60,141,188,0.9)',
+                strokeColor: 'rgba(60,141,188,0.8)',
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: []
+            }
+        ]
+    };
+
+    var salesChartOptions = {
+        // Boolean - If we should show the scale at all
+        showScale: true,
+        // Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines: false,
+        // String - Colour of the grid lines
+        scaleGridLineColor: 'rgba(0,0,0,.05)',
+        // Number - Width of the grid lines
+        scaleGridLineWidth: 1,
+        // Boolean - Whether to show horizontal lines (except X axis)
+        scaleShowHorizontalLines: true,
+        // Boolean - Whether to show vertical lines (except Y axis)
+        scaleShowVerticalLines: true,
+        // Boolean - Whether the line is curved between points
+        bezierCurve: true,
+        // Number - Tension of the bezier curve between points
+        bezierCurveTension: 0.3,
+        // Boolean - Whether to show a dot for each point
+        pointDot: false,
+        // Number - Radius of each point dot in pixels
+        pointDotRadius: 4,
+        // Number - Pixel width of point dot stroke
+        pointDotStrokeWidth: 1,
+        // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+        pointHitDetectionRadius: 20,
+        // Boolean - Whether to show a stroke for datasets
+        datasetStroke: true,
+        // Number - Pixel width of dataset stroke
+        datasetStrokeWidth: 2,
+        // Boolean - Whether to fill the dataset with a color
+        datasetFill: true,
+        // String - A legend template
+        <%--legendTemplate: "<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>",--%>
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: true,
+        // Boolean - whether to make the chart responsive to window resizing
+        responsive: true
+    };
+
+    // Create the line chart
+    salesChart.Line(salesChartData, salesChartOptions);
+</script>
+<script>
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
+    var pieChart = new Chart(pieChartCanvas);
+    var PieData = [
+        {
+            value:,
+            color: '#f56954',
+            highlight: '#f56954',
+            label: ''
+        },
+        {
+            value:,
+            color: '#00a65a',
+            highlight: '#00a65a',
+            label: ''
+        },
+        {
+            value:,
+            color: '#f39c12',
+            highlight: '#f39c12',
+            label: '<%out.print(localites.get(2).getNom());%>'
+        },
+        {
+            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
+            color: '#00c0ef',
+            highlight: '#00c0ef',
+            label: '<%out.print(localites.get(3).getNom());%>'
+        },
+        {
+            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>,
+            color: '#3c8dbc',
+            highlight: '#3c8dbc',
+            label: '<%out.print(localites.get(4).getNom());%>'
+        }
+        // {
+        //     value: ,
+        //     color: '#d2d6de',
+        //     highlight: '#d2d6de',
+        //     label: 'Autres'
+        // }
+    ];
+    var pieOptions = {
+        // Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        // String - The colour of each segment stroke
+        segmentStrokeColor: '#fff',
+        // Number - The width of each segment stroke
+        segmentStrokeWidth: 1,
+        // Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        // Number - Amount of animation steps
+        animationSteps: 100,
+        // String - Animation easing effect
+        animationEasing: 'easeOutBounce',
+        // Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        // Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        // Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        // String - A legend template
+        <%--legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',--%>
+        // String - A tooltip template
+        <%--tooltipTemplate: '<%=value %> <%=label%> users'--%>
+    };
+    // Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions);
+</script>
 
 <script type="text/javascript">
     function getLogementId(idTaaLogement) {

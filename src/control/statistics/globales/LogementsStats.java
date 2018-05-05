@@ -2,6 +2,7 @@ package control.statistics.globales;
 
 import control.statistics.Stats;
 import model.beans.Localite;
+import model.beans.Logement;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 
@@ -89,5 +90,9 @@ public class LogementsStats extends Stats {
 
     public double logementsVendusPercentage() {
         return logementsVendusNbr() == 0 ? 0 : logementsVendusNbr() * 100 / logementsNbr();
+    }
+
+    public LinkedList<Logement> mostVisitedLogements() {
+        return new LogementDAO().getMostVisitedLogements();
     }
 }

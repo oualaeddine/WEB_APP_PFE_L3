@@ -3,6 +3,7 @@ package model.db.daos;
 import model.beans.Localite;
 import model.beans.Location;
 import model.beans.Logement;
+import model.beans.Visite;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.TypeLogement;
@@ -153,6 +154,12 @@ public class LogementDAO extends DAO {
     public boolean geler(int id) {
         try {
             logementStatement.execute("UPDATE logement SET gele=1 WHERE id=" + id + ";");
+            Logement logement = new Logement();
+            logement.setId(id);
+            LinkedList<Visite> visites = new VisitesDao().getVisitesByLogement(logement);
+            for (Visite visite : visites) {
+                new VisitesDao().annulerVisite(visite);
+            }
             try {
                 logementStatement.close();
             } catch (SQLException e) {
@@ -674,5 +681,44 @@ public class LogementDAO extends DAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public LinkedList<Logement> getMostVisitedLogements() {
+        LinkedList<Logement> logements = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select distinct l.*,(select count(visite.id) from visite where l.id=visite.logementId) as nbrVisites from logement l,visite v where l.id=v.logementId order by nbrVisites desc LIMIT 5;");
+            while (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+                logements.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logements;
     }
 }

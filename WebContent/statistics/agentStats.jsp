@@ -48,10 +48,10 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                    <span class="info-box-icon bg-aqua"><i class="ion fa-line-chart"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Visites effectuées dans la region de <%out.print(localite);%></span>
+                        <span class="info-box-text">Visites dans ma region</span>
                         <span class="info-box-number"><%out.print(visitesStats.nbrVisitesPerAgent(loggedAgent.getId()));%></span>
                     </div>
                     <!-- /.info-box-content -->
@@ -61,10 +61,10 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                    <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis positifs</span>
+                        <span class="info-box-text">Avis positifs</span>
                         <span class="info-box-number"><%out.print(stats.positifPercentage());%>%</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -78,10 +78,10 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <span class="info-box-icon bg-red"><i class="fa  fa-close"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis negatifs</span>
+                        <span class="info-box-text">Avis negatifs</span>
                         <span class="info-box-number"><%out.print(stats.negatifPercentage());%>%</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -106,7 +106,7 @@
         <!-- /.row -->
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Nombre de visites mensuel</h3>
@@ -122,7 +122,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <p class="text-center">
                                     <strong>Mes visites dans la region
                                         de <%out.print(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom());%>
@@ -138,7 +138,31 @@
                                 <!-- /.chart-responsive -->
                             </div>
                             <!-- /.col -->
-                            <div class="col-md-4">
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-6">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Mes statistiques</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
                                 <p class="text-center">
                                     <strong>Mes statistiques</strong>
                                 </p>
@@ -185,10 +209,12 @@
                                 <!-- /.progress-group -->
                             </div>
                             <!-- /.col -->
+                            <!-- /.col -->
                         </div>
                         <!-- /.row -->
                     </div>
                     <!-- ./box-body -->
+
                 </div>
                 <!-- /.box -->
             </div>
@@ -215,7 +241,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="height: 300px">
                             <table class="table no-margin">
                                 <thead>
                                 <tr>
@@ -233,9 +259,9 @@
                                             String color;
                                             if (rapport.getEtatClient() == EtatClient.ABSENT) {
                                                 avis = "Absent";
-                                                color = "label-danger";
+                                                color = "label-warning";
                                             } else {
-                                                color = rapport.isAvis() ? "label-success" : "label-warning";
+                                                color = rapport.isAvis() ? "label-success" : "label-danger";
                                                 avis = rapport.isAvis() ? "Positif" : "Négatif";
                                             }
                                             out.print("" +
@@ -251,9 +277,9 @@
                                             String color;
                                             if (rapports.get(i).getEtatClient() == EtatClient.ABSENT) {
                                                 avis = "Absent";
-                                                color = "label-danger";
+                                                color = "label-warning";
                                             } else {
-                                                color = rapports.get(i).isAvis() ? "label-success" : "label-warning";
+                                                color = rapports.get(i).isAvis() ? "label-success" : "label-danger";
                                                 avis = rapports.get(i).isAvis() ? "Positif" : "Négatif";
                                             }
                                             out.print("" +
@@ -294,36 +320,11 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
+                                    <canvas id="pieChart" height="300"></canvas>
                                 </div>
                                 <!-- ./chart-responsive -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-4">
-                                <ul class="chart-legend clearfix">
-                                    <%!
-                                        LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
-                                    %>
-
-                                    <li>
-                                        <i class="fa fa-circle-o text-red"></i> <%out.print(localites.get(0).getNom());%>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle-o text-green"></i><%out.print(localites.get(1).getNom());%>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle-o text-yellow"></i> <%out.print(localites.get(2).getNom());%>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle-o text-aqua"></i> <%out.print(localites.get(3).getNom());%>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-circle-o text-light-blue"></i> <%out.print(localites.get(4).getNom());%>
-                                    </li>
-                                    <li><i class="fa fa-circle-o text-gray"></i>Autres</li>
-                                </ul>
                             </div>
                             <!-- /.col -->
                         </div>
@@ -343,8 +344,7 @@
 <!-- ./wrapper -->
 <%!private VisitesStats visitesStats = new VisitesStats();%>
 
-
-<!-- jQuery 3 -->
+<%!                                       LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();                                    %><!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -377,19 +377,13 @@
     // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
     // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
 
     var salesChartData = {
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
-                label: 'Digital Goods',
-                fillColor: 'rgba(60,141,188,0.9)',
-                strokeColor: 'rgba(60,141,188,0.8)',
-                pointColor: '#3b8bba',
-                pointStrokeColor: 'rgba(60,141,188,1)',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(60,141,188,1)',
+                label: 'Nombre des visites dans ma region',
+                backgroundColor: '#605ca8',
                 data: [
                     <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.JANUARY));%>,
                     <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.FEBRUARY));%>,
@@ -439,8 +433,6 @@
         datasetStrokeWidth: 2,
         // Boolean - Whether to fill the dataset with a color
         datasetFill: true,
-        // String - A legend template
-        <%--legendTemplate: "<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>",--%>
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
@@ -448,49 +440,39 @@
     };
 
     // Create the line chart
-    salesChart.Line(salesChartData, salesChartOptions);
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: salesChartData,
+        options: salesChartOptions
+    });
 </script>
 <script>
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-        {
-            value: <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(0).getId()));%>,
-            color: '#f56954',
-            highlight: '#f56954',
-            label: '<%out.print(localites.get(0).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(1).getId()));%>,
-            color: '#00a65a',
-            highlight: '#00a65a',
-            label: '<%out.print(localites.get(1).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(2).getId()));%>,
-            color: '#f39c12',
-            highlight: '#f39c12',
-            label: '<%out.print(localites.get(2).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
-            color: '#00c0ef',
-            highlight: '#00c0ef',
-            label: '<%out.print(localites.get(3).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>,
-            color: '#3c8dbc',
-            highlight: '#3c8dbc',
-            label: '<%out.print(localites.get(4).getNom());%>'
-        }
-        // {
-        //     value: ,
-        //     color: '#d2d6de',
-        //     highlight: '#d2d6de',
-        //     label: 'Autres'
-        // }
-    ];
+    var PieData = {
+        datasets: [{
+            data: [
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(0).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(1).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(2).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>
+            ],
+            backgroundColor: [
+                '#f56954',
+                '#00a65a',
+                '#f39c12',
+                '#00c0ef',
+                '#3c8dbc'
+            ]
+        }],
+        labels: [
+            '<%out.print(localites.get(0).getNom());%>',
+            '<%out.print(localites.get(1).getNom());%>',
+            '<%out.print(localites.get(2).getNom());%>',
+            '<%out.print(localites.get(3).getNom());%>',
+            '<%out.print(localites.get(4).getNom());%>'
+        ]
+    };
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment
         segmentShowStroke: true,
@@ -512,13 +494,13 @@
         responsive: true,
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: false,
-        // String - A legend template
-        <%--legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',--%>
-        // String - A tooltip template
-        <%--tooltipTemplate: '<%=value %> <%=label%> users'--%>
     };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    var pieChart = new Chart(pieChartCanvas, {
+        type: 'doughnut',
+        data: PieData,
+        options: pieOptions
+    });
 </script>
 </html>

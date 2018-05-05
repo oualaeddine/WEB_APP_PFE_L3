@@ -156,7 +156,7 @@
                     <iframe src="ventes.html" width="100%" frameborder="0"
                             style="height: 600px" onload="resizeIframe(this)"></iframe>
                 </div>
-                <div class="tab-pane active fade in" style="height: 600px" id="tab_default_2">
+                <div class="tab-pane" style="height: 600px" id="tab_default_2">
                     <iframe src="logements_regions.html" width="100%" frameborder="0"
                             style="height: 600px" onload="resizeIframe(this)"></iframe>
                 </div>
@@ -189,7 +189,7 @@
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script>
     function resizeIframe(obj, div) {
-        // obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        obj.style.height = document.body.scrollHeight + 'px';
 
         //    document.getElementById(div).style.height = obj.contentWindow.document.body.scrollHeight + 'px';
     }

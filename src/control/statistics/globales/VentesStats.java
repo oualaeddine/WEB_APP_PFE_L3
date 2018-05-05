@@ -4,6 +4,7 @@ import control.statistics.Stats;
 import model.beans.Localite;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.VentesDAO;
+import model.db.daos.VersementDAO;
 
 import java.time.Month;
 import java.util.HashMap;
@@ -96,5 +97,9 @@ public class VentesStats extends Stats {
             variations.put(localite, new VentesDAO().nbrVentesParRegion(localite.getId()));
         }
         return variations;
+    }
+
+    public float getRevenusAnnuels() {
+        return new VersementDAO().getRevenusAnnuels();
     }
 }

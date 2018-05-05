@@ -2,6 +2,7 @@ package control.statistics.globales;
 
 import control.statistics.Stats;
 import model.beans.Localite;
+import model.db.daos.EmployeDAO;
 import model.db.daos.VisitesDao;
 
 import java.time.Month;
@@ -116,8 +117,12 @@ public class VisitesStats extends Stats {
         return new VisitesDao().getTopFiveRegions();
     }
 
-    // TODO: 5/4/2018
     public Localite regionLaMoinVisitee() {
         return null;
+    }
+
+    public int nbrVisitesPerAgent(int agentId) {
+        EmployeDAO employeDAO = new EmployeDAO();
+        return employeDAO.myReportedVisitsNbr(agentId) + employeDAO.myCanceledVisitsNbr(agentId) + employeDAO.myProgrammedVisitsNbr(agentId);
     }
 }

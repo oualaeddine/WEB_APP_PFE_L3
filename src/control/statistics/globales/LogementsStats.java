@@ -32,7 +32,7 @@ public class LogementsStats extends Stats {
         return new LogementDAO().getNbrVendus();
     }
 
-    // TODO: 5/4/2018
+
     public HashMap<Month, Integer> logementsVendusNbrVariation() {
 
         HashMap<Month, Integer> variation = new HashMap<>();
@@ -75,4 +75,15 @@ public class LogementsStats extends Stats {
         return variation;
     }
 
+    public int logementsAVendre() {
+        return new LogementDAO().nbrAVendre();
+    }
+
+    public int nbrLogementsPerRegion(int region) {
+        return new LogementDAO().getNbrLogementsForRegion(region);
+    }
+
+    public double prixTotalDesLogements() {
+        return new LogementDAO().getSommeToutLesLogements();
+    }
 }

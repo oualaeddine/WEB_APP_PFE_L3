@@ -650,4 +650,29 @@ public class LogementDAO extends DAO {
     }
 
 
+    public int nbrAVendre() {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("SELECT count(logement.id) as result from logement where gele=0 ;");
+            if (result.next()) {
+                return result.getInt("result");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public double getSommeToutLesLogements() {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("SELECT sum(prix) as result from logement;");
+            if (result.next()) {
+                return result.getInt("result");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

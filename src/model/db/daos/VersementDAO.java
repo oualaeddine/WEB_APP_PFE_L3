@@ -174,4 +174,17 @@ public class VersementDAO extends DAO {
         }
         return versements;
     }
+
+    public float getRevenusAnnuels() {
+        ResultSet result;
+        try {
+            result = versementStatement.executeQuery("select sum(montant) as somme from versement where YEAR(date)=YEAR(current_date);");
+            if (result.next()) {
+                return result.getFloat("somme");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

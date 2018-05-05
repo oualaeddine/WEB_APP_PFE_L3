@@ -1,18 +1,10 @@
-<%@ page import="control.statistics.perso.AgentStats" %>
-<%@ page import="model.db.daos.AssignationDAO" %>
-<%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
 <%@ page import="control.statistics.globales.LogementsStats" %>
-<%@ page import="java.time.Month" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
 <!DOCTYPE html>
 <html>
-<% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
 <%
-    LogementsStats logementsStats = new LogementsStats();
-
+    VentesStats ventesStats = new VentesStats();
+    LogementsStats logementsStats1 = new LogementsStats();
 %>
 <head>
     <meta charset="utf-8">
@@ -42,72 +34,100 @@
     <!-- Main content -->
     <section class="content">
         <!-- Info boxes -->
-        <div class="row">
-            <div class="col-md-3 ">
-                <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+        <div class="col-md-3 ">
+            <div class="callout callout-info">
+                <h4>Nombre de ventes total</h4>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Tout les logements</span>
-                        <span class="info-box-number"><%out.print(logementsStats.logementsNbr());%></span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
+                <p><%out.print(ventesStats.ventesNbr());%> ventes.</p>
             </div>
-            <!-- /.col -->
-            <div class="col-md-3 ">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Logements gelés</span>
-                        <span class="info-box-number"><%out.print(logementsStats.logementsGeleNbr());%></span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 ">
-                <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">logements vendus</span>
-                        <span class="info-box-number"><%out.print(logementsStats.logementsVendusNbr());%></span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <!-- /.col -->
-            <div class="col-md-3 ">
-                <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Regions</span>
-                        <span class="info-box-number">13</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
         </div>
+        <div class="col-md-3 ">
+            <div class="callout callout-success">
+                <h4>Nombre de ventes terminées</h4>
+
+                <p><%out.print(ventesStats.confirmedVentesNbr());%> ventes.</p>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class="callout callout-danger">
+                <h4>Nombre de ventes annulées</h4>
+
+                <p><%out.print(ventesStats.canceledVentesNbr());%> ventes.</p>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class="callout callout-warning">
+                <h4>Nombre de ventes en cours</h4>
+
+                <p><%out.print(ventesStats.pendingVentesNbr());%> ventes.</p>
+            </div>
+        </div>
+        <div class="col-md-3 ">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion "></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Prix total des logements</span>
+                    <span class="info-box-number"><%out.print(logementsStats1.prixTotalDesLogements());%> Da</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
         <!-- /.row -->
+        <div class="col-md-3 ">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion "></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Revenus ventes de cette année</span>
+                    <span class="info-box-number"><%out.print(ventesStats.getRevenusAnnuels());%> Da</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+
+        <%--<div class="col-md-3 ">--%>
+        <%--<div class="info-box">--%>
+        <%--<span class="info-box-icon bg-red"><i class="fa "></i></span>--%>
+
+        <%--<div class="info-box-content">--%>
+        <%--<span class="info-box-text">Pertes sur annulations</span>--%>
+        <%--<span class="info-box-number">6 385 000.00 Da</span>--%>
+        <%--</div>--%>
+        <%--<!-- /.info-box-content -->--%>
+        <%--</div>--%>
+        <%--<!-- /.info-box -->--%>
+        <%--</div>--%>
+        <!-- /.col -->
+        <%--<div class="col-md-3 ">--%>
+        <%--<div class="info-box">--%>
+        <%--<span class="info-box-icon bg-yellow"><i class="ion "></i></span>--%>
+
+        <%--<div class="info-box-content">--%>
+        <%--<span class="info-box-text">Revenus estimés</span>--%>
+        <%--<span class="info-box-number">49 006 651.00</span>--%>
+        <%--</div>--%>
+        <%--<!-- /.info-box-content -->--%>
+        <%--</div>--%>
+        <%--<!-- /.info-box -->--%>
+        <%--</div>--%>
+        <!-- /.col -->
+
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Nombre des logements vendus (Bleu) et a vendre (Vert)</h3>
+                        <h3 class="box-title">Variation nombre des ventes terminées ,annulées et en cours </h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -123,7 +143,41 @@
                             <div class="col-md-12">
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
-                                    <canvas id="logements" style="height: 300px;"></canvas>
+                                    <canvas id="variationVentesPrice" style="height: 300px;"></canvas>
+                                </div>
+                                <!-- /.chart-responsive -->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                </div>
+                <!-- /.box -->
+                <!-- /.col -->
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Variation monetaire</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="chart">
+                                    <p>somme des ventes terminées,annulées et en cours et le prix total des
+                                        logements</p>
+                                    <!-- Sales Chart Canvas -->
+                                    <canvas id="variationVentesNbr" style="height: 300px;"></canvas>
                                 </div>
                                 <!-- /.chart-responsive -->
                             </div>
@@ -139,7 +193,7 @@
             <div class="col-md-8">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Nombre de logements par region</h3>
+                        <h3 class="box-title">nombre de ventes par region</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -155,7 +209,7 @@
                             <div class="col-md-8">
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
-                                    <canvas id="logementsPerRegion" style="height: 300px;"></canvas>
+                                    <canvas id="ventesPerRegion" style="height: 300px;"></canvas>
                                 </div>
                                 <!-- /.chart-responsive -->
                             </div>
@@ -173,7 +227,7 @@
 
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Etat des logements</h3>
+                        <h3 class="box-title">rentabilités des regions</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -195,13 +249,17 @@
                             <!-- /.col -->
                         </div>
                         <ul class="chart-legend clearfix">
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-red"></i> En vente &nbsp;&nbsp;
+                            <li><i class="fa fa-circle-o text-red"></i> constantine <strong>1 285 000.00da</strong>
+                                &nbsp;&nbsp;
                             </li>
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-green"></i>Vendus &nbsp;&nbsp;
+                            <li><i class="fa fa-circle-o text-green"></i>ali mendjeli <strong>189 285 000.00da</strong>
+                                &nbsp;&nbsp;
                             </li>
-                            &nbsp; &nbsp;
+                            <li><i class="fa fa-circle-o text-yellow"></i>skikda <strong>89 252 000.00da</strong> &nbsp;
+                                &nbsp;
                             </li>
-                            <li style="   display: inline;"><i class="fa fa-circle-o text-aqua"></i> A vendre &nbsp;&nbsp;
+                            <li><i class="fa fa-circle-o text-aqua"></i> brooklyn <strong>89 285 000.00da</strong>
+                                &nbsp;&nbsp;
                             </li>
                         </ul>
                         <!-- /.row -->
@@ -238,9 +296,6 @@
         <script src="../dist/js/demo.js"></script>
     </section>
 </div>
-
-
-</body>
 <script>
 
     // /* ChartJS
@@ -253,7 +308,7 @@
     // // -----------------------
     //
     // // Get context with jQuery - using jQuery's .get() method.
-    var salesChartCanvas = $('#logements').get(0).getContext('2d');
+    var salesChartCanvas = $('#variationVentesNbr').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
     var salesChart = new Chart(salesChartCanvas);
 
@@ -261,52 +316,35 @@
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
-                label: 'Tout les logements',
-                fillColor: '#9e9e9e',
-                strokeColor: '#9e9e9e',
-                pointColor: '#9e9e9e',
-                pointStrokeColor: '#9e9e9e',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: '#9e9e9e',
-                data: [
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>,
-                    <%out.print(logementsStats.logementsAVendre());%>
-                ]
-            },
-            {
-                label: 'Logements vendus',
+                label: 'Prix total de Tout les logements',
                 fillColor: '#3b8bba',
                 strokeColor: '#3b8bba',
                 pointColor: '#3b8bba',
                 pointStrokeColor: '#3b8bba',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: '#3b8bba',
-                data: [
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.JANUARY));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.FEBRUARY));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.MARCH));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.APRIL));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.MAY));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.JUNE));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.JULY));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.AUGUST));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.SEPTEMBER));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.OCTOBER));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.NOVEMBER));%>,
-                    <%out.print(logementsStats.logementsVendusNbrVariation().get(Month.DECEMBER));%>
-                ]
+                data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
+            },
+            {
+                label: 'revenus',
+                fillColor: '#3cba00',
+                strokeColor: '#3cba00',
+                pointColor: '#3cba00',
+                pointStrokeColor: '#3cba00',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#3cba00',
+                data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+            },
+            {
+                label: 'pertes annulations',
+                fillColor: '#ba1b00',
+                strokeColor: '#ba1b00',
+                pointColor: '#ba1b00',
+                pointStrokeColor: '#ba1b00',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#ba1b00',
+                data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
             }
-
         ]
     };
 
@@ -368,19 +406,12 @@
     // // -----------------------
     //
     // // Get context with jQuery - using jQuery's .get() method.
-    var salesChartCanvas = $('#logementsPerRegion').get(0).getContext('2d');
+    var salesChartCanvas = $('#ventesPerRegion').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
     var salesChart = new Chart(salesChartCanvas);
 
     var salesChartData = {
-        labels: [
-            <%
-                LinkedList<Localite> localites = new LocaliteDAO().getAll();
-                for (Localite localite : localites){
-                    out.print("'"+localite.getNom()+"',");
-                }
-            %>
-        ],
+        labels: ['constantine', 'ali mendjlei', 'Mars', 'didouch', 'Mai'],
         datasets: [
             {
                 label: 'Tout les logements',
@@ -390,13 +421,7 @@
                 pointStrokeColor: '#3b8bba',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: '#3b8bba',
-                data: [
-                    <%
-                        for (Localite localite : localites){
-                            out.print(logementsStats.nbrLogementsPerRegion(localite.getId())+",");
-                        }
-                    %>
-                ]
+                data: [208, 408, 520, 600, 286]
             }
         ]
     };
@@ -436,8 +461,7 @@
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
-        responsive: true,
-
+        responsive: true
     };
 
     // Create the  chart
@@ -459,19 +483,25 @@
     var pieChart = new Chart(pieChartCanvas);
     var PieData = [
         {
-            value: <%out.print(logementsStats.logementsGeleNbr());%>,
+            value: 700,
             color: '#f56954',
             highlight: '#f56954',
-            label: 'En vente'
+            label: 'Gelés'
         },
         {
-            value: <%out.print(logementsStats.logementsVendusNbr());%>,
+            value: 500,
             color: '#00a65a',
             highlight: '#00a65a',
             label: 'Vendus'
         },
         {
-            value: <%out.print(logementsStats.logementsAVendre());%>,
+            value: 400,
+            color: '#f39c12',
+            highlight: '#f39c12',
+            label: 'en vente'
+        },
+        {
+            value: 600,
             color: '#00c0ef',
             highlight: '#00c0ef',
             label: 'a vendre'
@@ -498,10 +528,6 @@
         responsive: true,
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: false,
-        // String - A legend template
-        <%--legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",--%>
-        // String - A tooltip template
-        <%--tooltipTemplate: '<%=value %>  <%=label%> '--%>
     };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
@@ -512,4 +538,8 @@
 
 
 </script>
+
+
+</body>
+
 </html>

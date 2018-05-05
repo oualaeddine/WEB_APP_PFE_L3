@@ -157,7 +157,7 @@ public class VentesDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = venteStatement.executeQuery("SELECT (count(id)) FROM vente;");
+            result = venteStatement.executeQuery("SELECT count(id) FROM vente;");
             if (result.next()) {
                 return result.getInt("count(id)");
             }

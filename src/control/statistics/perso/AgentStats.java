@@ -190,4 +190,5 @@ public class AgentStats extends PersoStats {
         int all = new LogementDAO().countAll();
         return logementsVisites * 100 / all;
     }
+
 }

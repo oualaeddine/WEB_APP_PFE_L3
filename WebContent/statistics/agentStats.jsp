@@ -14,6 +14,7 @@
 <% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
 <%String localite = new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom();%>
 <%
+    VisitesStats visitesStats = new VisitesStats();
     AgentStats stats = new AgentStats(loggedAgent.getId());
 %>
 <head>
@@ -51,7 +52,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total des Visites effectuées dans la region de <%out.print(localite);%></span>
-                        <span class="info-box-number">907</span>
+                        <span class="info-box-number"><%out.print(visitesStats.nbrVisitesPerAgent(loggedAgent.getId()));%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -63,8 +64,8 @@
                     <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis negatifs dans la region de <%out.print(localite);%></span>
-                        <span class="info-box-number">370</span>
+                        <span class="info-box-text">Total des Avis positifs</span>
+                        <span class="info-box-number"><%out.print(stats.positifPercentage());%>%</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -80,8 +81,8 @@
                     <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis positifs dans la region de <%out.print(localite);%></span>
-                        <span class="info-box-number">407</span>
+                        <span class="info-box-text">Total des Avis negatifs</span>
+                        <span class="info-box-number"><%out.print(stats.negatifPercentage());%>%</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -93,8 +94,8 @@
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Clients reçus dans la region de Constantine</span>
-                        <span class="info-box-number">730</span>
+                        <span class="info-box-text">Total des Clients reçus</span>
+                        <span class="info-box-number"><%out.print(stats.getClients());%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>

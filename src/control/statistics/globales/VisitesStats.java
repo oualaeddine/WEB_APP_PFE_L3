@@ -91,13 +91,21 @@ public class VisitesStats extends Stats {
         return dao.countAll();
     }
 
-    public HashMap<Localite, Integer> VisitesNbrPerRegion() {
+    public HashMap<Localite, Integer> visitesNbrPerRegion() {
         HashMap<Localite, Integer> variation = new HashMap<>();
         LinkedList<Localite> localites = new LinkedList<>();
         for (Localite localite : localites) {
             variation.put(localite, new VisitesDao().nbrVisitesParRegion(localite.getId()));
         }
         return variation;
+    }
+
+    public int nbrVisitesPerRegion(int region) {
+        return new VisitesDao().nbrVisitesParRegion(region);
+    }
+
+    public int nbrVisitesPerRegionPerMonth(int region, Month month) {
+        return new VisitesDao().nbrVisitesForRegionsForMonth(region, month);
     }
 
     public Localite regionLaPlusVisitee() {

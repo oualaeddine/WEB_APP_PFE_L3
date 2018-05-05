@@ -724,4 +724,17 @@ public class VisitesDao extends DAO {
         }
         return 0;
     }
+
+    public int nbrVisitesForRegionsForMonth(int region, Month month) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("select count(visite.id) as nbr from logement,visite where visite.logementId=logement.id and logement.region=" + region + " and MONTH(visite.timestamp)=" + month.getValue() + ";");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

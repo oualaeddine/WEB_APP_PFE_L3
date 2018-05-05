@@ -26,6 +26,7 @@ public class SUServlet extends MyServlet {
                     }
                     case "assignerRegion":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ASSIGNER_REGION").forward(request, response);
+                        break;
                     }
                     case "messages":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request,response);
@@ -41,6 +42,7 @@ public class SUServlet extends MyServlet {
                     }
                     case "suspendreAdmin":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SUSPENDRE_ADMIN").forward(request, response);
+                        break;
                     }
                     case "listeAgents":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENTS").forward(request, response);

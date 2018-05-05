@@ -31,30 +31,30 @@
         <!-- Info boxes -->
         <div class="col-md-3 ">
             <div class="callout callout-info">
-                <h4>nombre de ventes total</h4>
+                <h4>nombre des visites</h4>
 
-                <p>805 ventes.</p>
+                <p>805 visites.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-success">
-                <h4>nombre de ventes terminées</h4>
+                <h4>nombre des visites terminées</h4>
 
-                <p>300 ventes.</p>
+                <p>300 visites.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-danger">
-                <h4>nombre de ventes annulées</h4>
+                <h4>nombre des visites annulées</h4>
 
-                <p>180 ventes.</p>
+                <p>180 visites.</p>
             </div>
         </div>
         <div class="col-md-3 ">
             <div class="callout callout-warning">
-                <h4>nombre de ventes en cours</h4>
+                <h4>nombre des visites prevues</h4>
 
-                <p>245 ventes.</p>
+                <p>245 visites.</p>
             </div>
         </div>
         <div class="col-md-3 ">
@@ -62,7 +62,7 @@
                 <span class="info-box-icon bg-aqua"><i class="ion "></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Prix total logements</span>
+                    <span class="info-box-text">nombre des rapports etablies </span>
                     <span class="info-box-number">958 051 000.00 Da</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -76,7 +76,7 @@
                 <span class="info-box-icon bg-green"><i class="ion "></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Revenus ventes</span>
+                    <span class="info-box-text">rapports positif</span>
                     <span class="info-box-number">176 385 000.00 Da</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -95,7 +95,7 @@
                 <span class="info-box-icon bg-red"><i class="fa "></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">pertes sur annulations</span>
+                    <span class="info-box-text">rapports negatifs</span>
                     <span class="info-box-number">6 385 000.00 Da</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -108,7 +108,7 @@
                 <span class="info-box-icon bg-yellow"><i class="ion "></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Revenus estimés</span>
+                    <span class="info-box-text">absences des clients</span>
                     <span class="info-box-number">49 006 651.00</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -122,7 +122,7 @@
             <div class="col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Variation nombre des ventes terminées ,annulées et en cours </h3>
+                        <h3 class="box-title">Variation des rapports</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -154,7 +154,7 @@
             <div class="col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Variation monetaire</h3>
+                        <h3 class="box-title">Variation des visites </h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -188,7 +188,7 @@
             <div class="col-md-8">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">nombre de ventes par region</h3>
+                        <h3 class="box-title">nombre d'avis</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -222,7 +222,7 @@
 
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">rentabilités des regions</h3>
+                        <h3 class="box-title">5 regions avec le plus grand nombre de visites</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -305,45 +305,45 @@
     // // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#variationVentesNbr').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas, {
-        type: 'line',
+    var salesChart = new Chart(salesChartCanvas);
 
-        data: {
+    var salesChartData = {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        datasets: [
+            {
+                label: 'Prix total de Tout les logements',
+                fillColor: '#3b8bba',
+                strokeColor: '#3b8bba',
+                pointColor: '#3b8bba',
+                pointStrokeColor: '#3b8bba',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#3b8bba',
+                data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
+            },
+            {
+                label: 'revenus',
+                fillColor: '#3cba00',
+                strokeColor: '#3cba00',
+                pointColor: '#3cba00',
+                pointStrokeColor: '#3cba00',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#3cba00',
+                data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+            },
+            {
+                label: 'pertes annulations',
+                fillColor: '#ba1b00',
+                strokeColor: '#ba1b00',
+                pointColor: '#ba1b00',
+                pointStrokeColor: '#ba1b00',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#ba1b00',
+                data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
+            }
+        ]
+    };
 
-            labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-            datasets: [
-                {
-                    label: 'Prix total de Tout les logements',
-                    fillColor: '#3b8bba',
-                    strokeColor: '#3b8bba',
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: '#3b8bba',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: '#3b8bba',
-                    data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
-                },
-                {
-                    label: 'revenus',
-                    fillColor: '#3cba00',
-                    strokeColor: '#3cba00',
-                    pointColor: '#3cba00',
-                    pointStrokeColor: '#3cba00',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: '#3cba00',
-                    data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
-                },
-                {
-                    label: 'pertes annulations',
-                    fillColor: '#ba1b00',
-                    strokeColor: '#ba1b00',
-                    pointColor: '#ba1b00',
-                    pointStrokeColor: '#ba1b00',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: '#ba1b00',
-                    data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
-                }
-            ]
-        },
+    var salesChartOptions = {
         // Boolean - If we should show the scale at all
         showScale: true,
         // Boolean - Whether grid lines are shown across the chart
@@ -380,10 +380,10 @@
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
         responsive: true
-    });
+    };
 
     // Create the  chart
-    // salesChart(salesChartData, salesChartOptions);
+    salesChart.Line(salesChartData, salesChartOptions);
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
@@ -404,24 +404,25 @@
     // // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#ventesPerRegion').get(0).getContext('2d');
     // // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas, {
-        type: 'bar',
-        data: {
-            labels: ['constantine', 'ali mendjlei', 'Mars', 'didouch', 'Mai'],
-            datasets: [
-                {
-                    label: 'Tout les logements',
-                    fillColor: '#3b8bba',
-                    strokeColor: '#3b8bba',
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: '#3b8bba',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: '#3b8bba',
-                    data: [208, 408, 520, 600, 286]
-                }
-            ]
-        }
-        ,
+    var salesChart = new Chart(salesChartCanvas);
+
+    var salesChartData = {
+        labels: ['constantine', 'ali mendjlei', 'Mars', 'didouch', 'Mai'],
+        datasets: [
+            {
+                label: 'Tout les logements',
+                fillColor: '#3b8bba',
+                strokeColor: '#3b8bba',
+                pointColor: '#3b8bba',
+                pointStrokeColor: '#3b8bba',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: '#3b8bba',
+                data: [208, 408, 520, 600, 286]
+            }
+        ]
+    };
+
+    var salesChartOptions = {
         // Boolean - If we should show the scale at all
         showScale: true,
         // Boolean - Whether grid lines are shown across the chart
@@ -458,10 +459,10 @@
         maintainAspectRatio: true,
         // Boolean - whether to make the chart responsive to window resizing
         responsive: true
-    });
+    };
 
     // Create the  chart
-    //salesChart.Bar(salesChartData, salesChartOptions);
+    salesChart.Bar(salesChartData, salesChartOptions);
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
@@ -476,53 +477,62 @@
     // -------------
     // Get context with jQuery - using jQuery's .get() method.
     var pieChartCanvas = $('#logRepart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas,
+    var pieChart = new Chart(pieChartCanvas);
+    var PieData = [
         {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [10, 20, 30],
-                    backgroundColor: [
-                        '#ff6384', '#36a2eb', '#cc65fe'
-                    ]
-                }],
-
-                labels: [
-                    'Red',
-                    'Yellow',
-                    'Blue'
-                ]
-            },
-            // Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            // String - The colour of each segment stroke
-            segmentStrokeColor: '#fff',
-            // Number - The width of each segment stroke
-            segmentStrokeWidth: 1,
-            // Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            // Number - Amount of animation steps
-            animationSteps: 100,
-            // String - Animation easing effect
-            animationEasing: 'easeOutBounce',
-            // Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: true,
-            // Boolean - Whether we animate scaling the Doughnut from the centre
-            animateScale: false,
-            // Boolean - whether to make the chart responsive to window resizing
-            responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            // String - A legend template
-            legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
-            // String - A tooltip template
-            tooltipTemplate: '<%=value %>  <%=label%> '
-        });
+            value: 700,
+            color: '#f56954',
+            highlight: '#f56954',
+            label: 'Gelés'
+        },
+        {
+            value: 500,
+            color: '#00a65a',
+            highlight: '#00a65a',
+            label: 'Vendus'
+        },
+        {
+            value: 400,
+            color: '#f39c12',
+            highlight: '#f39c12',
+            label: 'en vente'
+        },
+        {
+            value: 600,
+            color: '#00c0ef',
+            highlight: '#00c0ef',
+            label: 'a vendre'
+        }
+    ];
+    var pieOptions = {
+        // Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        // String - The colour of each segment stroke
+        segmentStrokeColor: '#fff',
+        // Number - The width of each segment stroke
+        segmentStrokeWidth: 1,
+        // Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        // Number - Amount of animation steps
+        animationSteps: 100,
+        // String - Animation easing effect
+        animationEasing: 'easeOutBounce',
+        // Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        // Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        // Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        // String - A legend template
+        legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+        // String - A tooltip template
+        tooltipTemplate: '<%=value %>  <%=label%> '
+    };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    //   pieChart.Doughnut(PieData, pieOptions);
-
-
+    pieChart.Doughnut(PieData, pieOptions);
     // -----------------
     // - END PIE CHART -
     // -----------------

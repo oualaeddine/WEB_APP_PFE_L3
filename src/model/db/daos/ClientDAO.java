@@ -211,7 +211,7 @@ public class ClientDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = clientStatement.executeQuery("SELECT (count(id)) FROM client;");
+            result = clientStatement.executeQuery("SELECT count(id) FROM client;");
             if (result.next()) {
                 return result.getInt("count(id)");
             }

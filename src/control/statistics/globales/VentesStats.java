@@ -102,4 +102,37 @@ public class VentesStats extends Stats {
     public float getRevenusAnnuels() {
         return new VersementDAO().getRevenusAnnuels();
     }
+
+    public int confirmedVentesNbrPerMonth(Month month) {
+        return new VentesDAO().nbrConfirmedVentesForMonth(month);
+    }
+
+    public int nbrVentesPerRegion(int region) {
+        return new VentesDAO().nbrVentesParRegion(region);
+    }
+
+    public int versementsOfTheDay() {
+        return new VersementDAO().getNbrVersementsToday();
+    }
+
+    public double confirmedVentesPercentage() {
+        return ventesNbr() == 0 ? 0 : confirmedVentesNbr() * 100 / ventesNbr();
+    }
+
+    public double canceledVentesPercentage() {
+        return ventesNbr() == 0 ? 0 : canceledVentesNbr() * 100 / ventesNbr();
+    }
+
+    public int acheteursNbr() {
+        return new VentesDAO().nbrAcheteurs();
+    }
+
+    public double acheteursPercentage() {
+        int clients = new ClientsStats().clientsNbr();
+        return clients == 0 ? 0 : acheteursNbr() * 100 / clients;
+    }
+
+    public double versementsOfTheMonth() {
+        return new VersementDAO().getSommeVersementsThisMonth();
+    }
 }

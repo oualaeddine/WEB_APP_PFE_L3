@@ -187,4 +187,30 @@ public class VersementDAO extends DAO {
         }
         return 0;
     }
+
+    public int getNbrVersementsToday() {
+        ResultSet result;
+        try {
+            result = versementStatement.executeQuery("select count(versement.id) as somme from versement where date=current_date ;");
+            if (result.next()) {
+                return result.getInt("somme");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public double getSommeVersementsThisMonth() {
+        ResultSet result;
+        try {
+            result = versementStatement.executeQuery("select sum(montant) as somme from versement where MONTH(date)=MONTH(current_date );");
+            if (result.next()) {
+                return result.getInt("somme");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

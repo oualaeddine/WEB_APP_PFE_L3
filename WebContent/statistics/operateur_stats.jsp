@@ -9,13 +9,22 @@
 <%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
+<%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="model.beans.Versement" %>
+<%@ page import="control.statistics.globales.ClientsStats" %>
+<%@ page import="model.beans.Visite" %>
 <!DOCTYPE html>
 <html>
 <% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
-<%String localite = new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom();%>
 <%
     VisitesStats visitesStats = new VisitesStats();
     AgentStats stats = new AgentStats(loggedAgent.getId());
+    VentesStats ventesStats = new VentesStats();
+    LogementsStats logementsStats = new LogementsStats();
+%>
+<%!
+    LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
 %>
 <head>
     <meta charset="utf-8">
@@ -51,8 +60,8 @@
                     <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Visites effectuées dans la region de <%out.print(localite);%></span>
-                        <span class="info-box-number"><%out.print(visitesStats.nbrVisitesPerAgent(loggedAgent.getId()));%></span>
+                        <span class="info-box-text">Total des Logements vendus</span>
+                        <span class="info-box-number"><%out.print(logementsStats.logementsVendusNbr());%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -64,8 +73,8 @@
                     <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis positifs</span>
-                        <span class="info-box-number"><%out.print(stats.positifPercentage());%>%</span>
+                        <span class="info-box-text">Total des versements ce mois ci</span>
+                        <span class="info-box-number"><%out.print(ventesStats.versementsOfTheMonth());%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -81,8 +90,8 @@
                     <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Avis negatifs</span>
-                        <span class="info-box-number"><%out.print(stats.negatifPercentage());%>%</span>
+                        <span class="info-box-text">Total ventes en cours</span>
+                        <span class="info-box-number"><%out.print(ventesStats.pendingVentesNbr());%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -94,8 +103,8 @@
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Total des Clients reçus</span>
-                        <span class="info-box-number"><%out.print(stats.getClients());%></span>
+                        <span class="info-box-text">Total des nouveaux client ce mois ci</span>
+                        <span class="info-box-number"><%out.print(new ClientsStats().newClientsThisMonthNbr());%></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -124,8 +133,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="text-center">
-                                    <strong>Mes visites dans la region
-                                        de <%out.print(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom());%>
+                                    <strong>Ventes par mois
                                         : 1
                                         Jan, <%out.print(Calendar.getInstance().get(Calendar.YEAR));%> - 31 Decembre,
                                         <%out.print(Calendar.getInstance().get(Calendar.YEAR));%></strong>
@@ -133,7 +141,7 @@
 
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
-                                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                                    <canvas id="salesChartVentes" style="height: 180px;"></canvas>
                                 </div>
                                 <!-- /.chart-responsive -->
                             </div>
@@ -145,41 +153,41 @@
 
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Nombre de logements visités:</span>
-                                    <span class="progress-number"><b><%out.print(stats.getVisitedLogementsNbr());%></b>/<%out.print(new LogementDAO().getAll().size());%></span>
+                                    <span class="progress-text">Nombre de logements vendus:</span>
+                                    <span class="progress-number"><b><%out.print(logementsStats.logementsVendusNbr());%></b>/<%out.print(logementsStats.logementsNbr());%></span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green"
-                                             style="width: <%out.print(stats.logementsVisitesPercentage());%>%"></div>
+                                             style="width: <%out.print(logementsStats.logementsVendusPercentage());%>%"></div>
                                     </div>
                                 </div>
                                 <div class="progress-group">
-                                    <span class="progress-text">Nombre des avis positifs sur mes visites que j'ai effectué </span>
-                                    <span class="progress-number"><b><%out.print(stats.positifsNbr());%></b>/<%out.print(stats.rapportsNbr());%></span>
+                                    <span class="progress-text">Nombre des ventes confirmées</span>
+                                    <span class="progress-number"><b><%out.print(ventesStats.confirmedVentesNbr());%></b>/<%out.print(ventesStats.ventesNbr());%></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua"
-                                             style="width: <%out.print(stats.positifPercentage());%>%"></div>
+                                             style="width: <%out.print(ventesStats.confirmedVentesPercentage());%>%"></div>
                                     </div>
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Nombre des avis negatifs sur mes visites </span>
-                                    <span class="progress-number"><b><%out.print(stats.negatifsNbr());%></b>/<%out.print(stats.rapportsNbr());%></span>
+                                    <span class="progress-text">Nombre des ventes annulées </span>
+                                    <span class="progress-number"><b><%out.print(ventesStats.canceledVentesNbr());%></b>/<%out.print(ventesStats.ventesNbr());%></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red"
-                                             style="width: <%out.print(stats.negatifPercentage());%>%"></div>
+                                             style="width: <%out.print(ventesStats.canceledVentesPercentage());%>%"></div>
                                     </div>
                                 </div>
 
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Nombre de clients que j'ai reçu</span>
-                                    <span class="progress-number"><b><%out.print(stats.getClients());%></b>/<%out.print(new ClientDAO().getAll().size());%></span>
+                                    <span class="progress-text">Nombre d'acheteurs</span>
+                                    <span class="progress-number"><b><%out.print(ventesStats.acheteursNbr());%></b>/<%out.print(new ClientsStats().clientsNbr());%></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-yellow"
-                                             style="width: <%out.print(stats.clientsPercentage());%>%"></div>
+                                             style="width: <%out.print(ventesStats.acheteursPercentage());%>%"></div>
                                     </div>
                                 </div>
                                 <!-- /.progress-group -->
@@ -203,7 +211,7 @@
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Mes derniers rapports</h3>
+                        <h3 class="box-title">Dernieres visites ajoutees:</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -220,47 +228,32 @@
                                 <thead>
                                 <tr>
                                     <th>Visite ID</th>
+                                    <th>Logement ID</th>
                                     <th>Nom du client</th>
-                                    <th>Avis du client</th>
+                                    <th>Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <%
-                                    LinkedList<Rapport> rapports = new RapportDAO().getByAgent(loggedAgent.getId());
-                                    if (rapports.size() <= 5) {
-                                        for (Rapport rapport : rapports) {
-                                            String avis;
-                                            String color;
-                                            if (rapport.getEtatClient() == EtatClient.ABSENT) {
-                                                avis = "Absent";
-                                                color = "label-danger";
-                                            } else {
-                                                color = rapport.isAvis() ? "label-success" : "label-warning";
-                                                avis = rapport.isAvis() ? "Positif" : "Négatif";
-                                            }
+                                    LinkedList<Visite> visites = new VisitesDao().getAll();
+                                    if (visites.size() < 5) {
+                                        for (Visite visite : visites) {
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getClient().getNom() + " " + rapport.getVisite().getClient().getPrenom() + "</a></td>\n" +
-                                                    "<td><span class=\"label " + color + "\">" + avis + "</span></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getId() + "</a></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getLogement().getId() + "</a></td>" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getClient().getNom() + " " + visite.getClient().getPrenom() + "</a></td>" +
+                                                    "<td><span class=\"label  label-success\">" + visite.getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }
                                     } else
                                         for (int i = 0; i < 5; i++) {
-                                            String avis;
-                                            String color;
-                                            if (rapports.get(i).getEtatClient() == EtatClient.ABSENT) {
-                                                avis = "Absent";
-                                                color = "label-danger";
-                                            } else {
-                                                color = rapports.get(i).isAvis() ? "label-success" : "label-warning";
-                                                avis = rapports.get(i).isAvis() ? "Positif" : "Négatif";
-                                            }
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getClient().getNom() + " " + rapports.get(i).getVisite().getClient().getPrenom() + "</a></td>\n" +
-                                                    "<td><span class=\"label " + color + ">" + avis + "</span></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getId() + "</a></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getLogement().getId() + "</a></td>\n" +
+                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getClient().getNom() + " " + visites.get(i).getClient().getPrenom() + "</a></td>\n" +
+                                                    "<td><span class=\"label label-success\">" + visites.get(i).getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }
 
@@ -303,9 +296,7 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <ul class="chart-legend clearfix">
-                                    <%!
-                                        LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
-                                    %>
+
 
                                     <li>
                                         <i class="fa fa-circle-o text-red"></i> <%out.print(localites.get(0).getNom());%>
@@ -357,7 +348,7 @@
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
-<script src="bower_components/chart.js/Chart.js"></script>
+<script src="./bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
@@ -375,7 +366,7 @@
     // -----------------------
 
     // Get context with jQuery - using jQuery's .get() method.
-    var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+    var salesChartCanvas = $('#salesChartVentes').get(0).getContext('2d');
     // This will get the first returned node in the jQuery collection.
     var salesChart = new Chart(salesChartCanvas);
 
@@ -383,7 +374,7 @@
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
-                label: 'Digital Goods',
+                label: 'Ventes confirmees',
                 fillColor: 'rgba(60,141,188,0.9)',
                 strokeColor: 'rgba(60,141,188,0.8)',
                 pointColor: '#3b8bba',
@@ -391,18 +382,18 @@
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
                 data: [
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.JANUARY));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.FEBRUARY));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.MARCH));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.APRIL));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.MAY));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.JUNE));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.JULY));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.AUGUST));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.SEPTEMBER));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.OCTOBER));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.NOVEMBER));%>,
-                    <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.DECEMBER));%>
+                    <%out.print(visitesStats.allVisitesByMonth(Month.JANUARY));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.FEBRUARY));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.MARCH));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.APRIL));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.MAY));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.JUNE));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.JULY));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.AUGUST));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.SEPTEMBER));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.OCTOBER));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.NOVEMBER));%>,
+                    <%out.print(visitesStats.allVisitesByMonth(Month.DECEMBER));%>
                 ]
             }
         ]
@@ -484,12 +475,6 @@
             highlight: '#3c8dbc',
             label: '<%out.print(localites.get(4).getNom());%>'
         }
-        // {
-        //     value: ,
-        //     color: '#d2d6de',
-        //     highlight: '#d2d6de',
-        //     label: 'Autres'
-        // }
     ];
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment

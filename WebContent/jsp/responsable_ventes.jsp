@@ -3,6 +3,7 @@
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,6 +17,7 @@
     tablesView.setCurrentPage(currentPage);
     Employe agent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
+    VentesStats ventesStats1 = new VentesStats();
 %>
 <head>
     <meta charset="utf-8">
@@ -78,7 +80,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-comments"></i>
                         </div>
-                        <div class="mr-5">26 Nouveaux Messages!</div>
+                        <div class="mr-5"><%out.print(0);%> Nouveaux Messages!</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les messages</span>
@@ -94,7 +96,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-list"></i>
                         </div>
-                        <div class="mr-5">11 Visites reportées!</div>
+                        <div class="mr-5"><%out.print(ventesStats1.canceledVentesNbr());%> Ventes annulées!</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les details</span>
@@ -110,7 +112,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">13 Nouvelles Visites!</div>
+                        <div class="mr-5"><%out.print(ventesStats1.confirmedVentesNbr());%> Ventes confirmées!</div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les Details</span>
@@ -126,7 +128,9 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-ban"></i>
                         </div>
-                        <div class="mr-5">7 Visites annulées!</div>
+                        <div class="mr-5"><%out.print(ventesStats1.versementsOfTheDay());%> Versements ajoutés
+                            aujourd'hui!
+                        </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les Details</span>
@@ -144,105 +148,9 @@
             </li>
             <li class="breadcrumb-item active">Principale</li>
         </ol>
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-chart-area"></i> Changement nombre de clients
-            </div>
-            <div class="card-body">
-                <canvas id="myAreaChart" width="100%" height="30"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <!-- Example Bar Chart Card-->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-chart-bar"></i> Nombre de clients par mois
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-8 my-auto">
-                                <canvas id="myBarChart" width="100" height="69"></canvas>
-                            </div>
-                            <div class="col-sm-4 text-center my-auto">
-                                <div class="h4 mb-0 text-primary">$34,693</div>
-                                <div class="small text-muted">YTD Revenue</div>
-                                <hr>
-                                <div class="h4 mb-0 text-warning">$18,474</div>
-                                <div class="small text-muted">YTD Expenses</div>
-                                <hr>
-                                <div class="h4 mb-0 text-success">$16,219</div>
-                                <div class="small text-muted">YTD Margin</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <!-- Example Pie Chart Card-->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-chart-pie"></i> Nombre de clients par region
-                    </div>
-                    <div class="card-body">
-                        <canvas id="myPieChart" width="100%" height="100"></canvas>
-                    </div>
-                    <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
-                </div>
-                <!-- Example Notifications Card-->
-                <!-- <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-bell"></i> Activité</div>
-                    <div class="list-group list-group-flush small">
-                        <a class="list-group-item list-group-item-action" href="#">
-                            <div class="media">
-                                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
-                                <div class="media-body">
-                                    <strong>David Miller</strong>posted a new article to
-                                    <strong>David Miller Website</strong>.
-                                    <div class="text-muted smaller">Today at 5:43 PM - 5m ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#">
-                            <div class="media">
-                                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
-                                <div class="media-body">
-                                    <strong>Samantha King</strong>sent you a new message!
-                                    <div class="text-muted smaller">Today at 4:37 PM - 1hr ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#">
-                            <div class="media">
-                                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
-                                <div class="media-body">
-                                    <strong>Jeffery Wellings</strong>added a new photo to the album
-                                    <strong>Beach</strong>.
-                                    <div class="text-muted smaller">Today at 4:31 PM - 1hr ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#">
-                            <div class="media">
-                                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
-                                <div class="media-body">
-                                    <i class="fa fa-code-branch"></i>
-                                    <strong>Monica Dennis</strong>forked the
-                                    <strong>startbootstrap-sb-admin</strong>repository on
-                                    <strong>GitHub</strong>.
-                                    <div class="text-muted smaller">Today at 3:54 PM - 2hrs ago</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action" href="#">View all activity...</a>
-                    </div>
-                    <div class="card-footer small text-muted">Mis à jour <strong>Maintenant</strong></div>
-                </div> -->
-            </div>
+        <div>
+            <iframe src="./statistics/responsable_ventes_stats.jsp" width="100%" frameborder="0" scrolling="no"
+                    onload="resizeIframe(this)"></iframe>
         </div>
     </div>
     <!-- /.container-fluid-->
@@ -291,7 +199,12 @@
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
     <script src="../js/sb-admin-charts.js"></script>
+
 </div>
 </body>
-
+<script>
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    }
+</script>
 </html>

@@ -373,4 +373,17 @@ public class VentesDAO extends DAO {
         }
         return 0;
     }
+
+    public int nbrAcheteurs() {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select count(distinct clientId) as nbr from vente where etat='confirmee';");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

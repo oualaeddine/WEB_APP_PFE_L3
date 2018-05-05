@@ -86,4 +86,8 @@ public class LogementsStats extends Stats {
     public double prixTotalDesLogements() {
         return new LogementDAO().getSommeToutLesLogements();
     }
+
+    public double logementsVendusPercentage() {
+        return logementsVendusNbr() == 0 ? 0 : logementsVendusNbr() * 100 / logementsNbr();
+    }
 }

@@ -1,9 +1,9 @@
-<%@ page import="model.beans.views.MyView" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.MyView" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.humans.Employe" %>
-<%@ page import="control.statistics.globales.VentesStats" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -67,7 +67,6 @@
                 </a>
             </li>
         </ul>
-
     </div>
 </nav>
 <div class="content-wrapper">
@@ -100,9 +99,7 @@
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
                         <span class="float-left">Afficher les details</span>
-                        <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
+                        <span class="float-right">                <i class="fa fa-angle-right"></i>              </span>
                     </a>
                 </div>
             </div>

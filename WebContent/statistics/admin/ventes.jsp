@@ -1,5 +1,6 @@
 <%@ page import="control.statistics.globales.LogementsStats" %>
 <%@ page import="control.statistics.globales.VentesStats" %>
+<%@ page import="java.time.Month" %>
 <!DOCTYPE html>
 <html>
 <%
@@ -100,8 +101,8 @@
                 <span class="info-box-icon bg-red"><i class="fa "></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Pertes sur annulations</span>
-                    <span class="info-box-number">6 385 000.00 Da</span>
+                    <span class="info-box-text">Pourcentage d'acheteurs</span>
+                    <span class="info-box-number"><%out.print(ventesStats.acheteursPercentage());%>%</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -114,7 +115,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Revenus estimés</span>
-                    <span class="info-box-number">49 006 651.00</span>
+                    <span class="info-box-number"><%out.print(ventesStats.revenusEstimes());%> DA</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -127,7 +128,7 @@
             <div class="col-md-6">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Variation nombre des ventes terminées ,annulées et en cours </h3>
+                        <h3 class="box-title">Variation nombre des ventes terminées</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -301,17 +302,24 @@
             datasets: [
 
                 {
-                    label: 'ventes annulées',
+                    label: 'Ventes terminées',
                     fill: true,
                     backgroundColor: '#9c0200',
                     borderColor: '#ba0200',
-                    data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
-                }, {
-                    label: 'ventes terminées ',
-                    fill: true,
-                    backgroundColor: '#00ba24',
-                    borderColor: '#00ba24',
-                    data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
+                    data: [
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JANUARY));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.FEBRUARY));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.MARCH));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.APRIL));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.MAY));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JUNE));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JULY));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.AUGUST));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.SEPTEMBER));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.OCTOBER));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.NOVEMBER));%>,
+                        <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.DECEMBER));%>,
+                    ]
                 }
             ]
         },
@@ -377,24 +385,24 @@
             datasets: [
 
                 {
-                    label: 'pertes annulations',
+                    label: 'Revenus mensuel',
                     fill: true,
                     backgroundColor: '#9c0200',
                     borderColor: '#ba0200',
-                    data: [8, 18, 30, 9, 20, 40, 50, 86, 27, 90, 86, 27]
-                }, {
-                    label: 'revenus',
-                    fill: true,
-                    backgroundColor: '#00ba24',
-                    borderColor: '#00ba24',
-                    data: [18, 118, 130, 19, 120, 140, 150, 186, 127, 190, 186, 127]
-                },
-                {
-                    label: 'Prix total de Tout les logements',
-                    fill: true,
-                    backgroundColor: '#0040ba',
-                    borderColor: '#003db8',
-                    data: [128, 148, 152, 160, 186, 300, 312, 320, 340, 368, 380, 307]
+                    data: [
+                        <%out.print(ventesStats.revenusPerMonth(Month.JANUARY));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.FEBRUARY));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.MARCH));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.APRIL));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.MAY));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.JUNE));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.JULY));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.AUGUST));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.SEPTEMBER));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.OCTOBER));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.NOVEMBER));%>,
+                        <%out.print(ventesStats.revenusPerMonth(Month.DECEMBER));%>
+                    ]
                 }
             ]
         },

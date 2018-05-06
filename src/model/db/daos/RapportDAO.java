@@ -152,7 +152,7 @@ public class RapportDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = rapportStatement.executeQuery("SELECT (count(visiteId)) FROM rapport;");
+            result = rapportStatement.executeQuery("SELECT count(visiteId) FROM rapport;");
             if (result.next()) {
                 return result.getInt("count(visiteId)");
             }

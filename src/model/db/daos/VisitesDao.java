@@ -395,7 +395,7 @@ public class VisitesDao extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = visiteStatement.executeQuery("SELECT (count(id)) FROM visite;");
+            result = visiteStatement.executeQuery("SELECT count(id) FROM visite;");
             if (result.next()) {
                 return result.getInt("count(id)");
             }

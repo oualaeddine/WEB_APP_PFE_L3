@@ -3,15 +3,27 @@ package control.statistics.globales;
 import control.statistics.Stats;
 import model.beans.Localite;
 import model.db.daos.EmployeDAO;
+import model.db.daos.LogementDAO;
 import model.db.daos.VisitesDao;
+import model.enums.TypeLogement;
 
 import java.time.Month;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class VisitesStats extends Stats {
+
+
     public VisitesStats() {
         dao = new VisitesDao();
+    }
+
+    public int nbrVisitesParType(TypeLogement typeLogement) {
+        return new LogementDAO().nbrVisitesParType(typeLogement);
+    }
+
+    public int nbrVisitesParTypeParMois(TypeLogement typeLogement, Month month) {
+        return new LogementDAO().nbrVisitesParTypeParMois(typeLogement, month);
     }
 
     public int visitesPrevuesNbr() {
@@ -69,6 +81,17 @@ public class VisitesStats extends Stats {
         return variation;
     }
 
+    public int nbrVisitesPrevuesForMonth(Month month) {
+        return new VisitesDao().nbrVisitesPrevuesForMonth(month);
+    }
+
+    public int nbrVisitesAnnuleesForMonth(Month month) {
+        return new VisitesDao().nbrVisitesAnnuleesForMonth(month);
+    }
+
+    public int nbrVisitesReporteesForMonth(Month month) {
+        return new VisitesDao().nbrVisitesReporteesForMonth(month);
+    }
     public HashMap<Month, Integer> visitesAnnuleesVariaton() {
         HashMap<Month, Integer> variation = new HashMap<>();
 
@@ -125,4 +148,5 @@ public class VisitesStats extends Stats {
         EmployeDAO employeDAO = new EmployeDAO();
         return employeDAO.myReportedVisitsNbr(agentId) + employeDAO.myCanceledVisitsNbr(agentId) + employeDAO.myProgrammedVisitsNbr(agentId);
     }
+
 }

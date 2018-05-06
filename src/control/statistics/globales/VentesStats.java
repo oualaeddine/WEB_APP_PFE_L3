@@ -16,6 +16,14 @@ public class VentesStats extends Stats {
         dao = new VentesDAO();
     }
 
+    public double revenusEstimes() {
+        return new VentesDAO().getRevenusEtimes();
+    }
+
+    public double revenusPerMonth(Month month) {
+        return new VersementDAO().getSommeVersementsPerMonth(month);
+    }
+
     public int ventesNbr() {
         return dao.countAll();
     }

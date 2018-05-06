@@ -7,6 +7,7 @@ import model.db.DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Month;
 import java.util.LinkedList;
 
 public class VersementDAO extends DAO {
@@ -207,6 +208,19 @@ public class VersementDAO extends DAO {
             result = versementStatement.executeQuery("select sum(montant) as somme from versement where MONTH(date)=MONTH(current_date );");
             if (result.next()) {
                 return result.getInt("somme");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public double getSommeVersementsPerMonth(Month month) {
+        ResultSet result;
+        try {
+            result = versementStatement.executeQuery("select sum(montant) as somme from versement where MONTH(date)=" + month.getValue() + ";");
+            if (result.next()) {
+                return result.getDouble("somme");
             }
         } catch (SQLException e) {
             e.printStackTrace();

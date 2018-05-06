@@ -1,22 +1,21 @@
-<%@ page import="control.system.managers.AuthManager" %>
-<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
-<%@ page import="model.beans.Logement" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.db.daos.LogementDAO" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.beans.humans.Client" %>
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="control.statistics.globales.LogementsStats" %>
-<%@ page import="model.db.daos.ClientDAO" %>
+<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
 <%@ page import="control.statistics.globales.ClientsStats" %>
-<%@ page import="model.db.daos.AssignationDAO" %>
+<%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
+<%@ page import="control.statistics.globales.VisitesStats" %>
+<%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.Logement" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
-<%@ page import="control.statistics.perso.ClientStats" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
     LogementsStats logementsStats = new LogementsStats();
+    VisitesStats visitesStats = new VisitesStats();
+    VentesStats ventesStats = new VentesStats();
 %>
 <head>
     <meta charset="utf-8">
@@ -280,8 +279,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <p class="text-center">
-                        <strong>Mes visites dans la region
-                            de <%out.print(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom());%>
+                        <strong>Logements vendus
+                            de
                             : 1
                             Jan, <%out.print(Calendar.getInstance().get(Calendar.YEAR));%> - 31 Decembre,
                             <%out.print(Calendar.getInstance().get(Calendar.YEAR));%></strong>
@@ -293,6 +292,36 @@
                     </div>
                     <!-- /.chart-responsive -->
                 </div>
+                <div class="col-md-8">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Nombre de logements par region</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                        class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="chart">
+                                        <!-- Sales Chart Canvas -->
+                                        <canvas id="logementsPerRegion" style="height: 300px;"></canvas>
+                                    </div>
+                                    <!-- /.chart-responsive -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.row -->
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
                 <!-- /.col -->
                 <div class="col-md-4">
                     <p class="text-center">
@@ -301,144 +330,41 @@
 
                     <!-- /.progress-group -->
                     <div class="progress-group">
-                        <span class="progress-text">Nombre de logements visités:</span>
-                        <span class="progress-number"><b><%
-                            out.print(stats.
-                            ()
-                            )
-                            ;
-                        %></b>/<%
-                            out
-                            .
-                            print
-                            (
-                            new
-                            LogementDAO
-                            (
-                            )
-                            .
-                            getAll
-                            (
-                            )
-                            .
-                            size
-                            (
-                            )
-                            )
-                            ;
-                        %></span>
+                        <span class="progress-text">Nombre de logements vendus:</span>
+                        <span class="progress-number"><b><%out.print(logementsStats.logementsVendusNbr());%></b></span>
                         <div class="progress sm">
                             <div class="progress-bar progress-bar-green"
-                                 style="width: <%out.print(stats.logementsVisitesPercentage());%>%"></div>
+                                 style="width:100%"></div>
                         </div>
                     </div>
                     <div class="progress-group">
-                        <span class="progress-text">Nombre des avis positifs sur mes visites que j'ai effectué </span>
-                        <span class="progress-number"><b><%
-                            out
-                            .
-                            print
-                            (
-                            stats
-                            .
-                            positifsNbr
-                            (
-                            )
-                            )
-                            ;
-                        %></b>/<%
-                            out
-                            .
-                            print
-                            (
-                            stats
-                            .
-                            rapportsNbr
-                            (
-                            )
-                            )
-                            ;
-                        %></span>
+                        <span class="progress-text">Nombre de visites ce mois</span>
+                        <span class="progress-number"><b><%out.print(visitesStats.allVisitesByMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH))));%></b></span>
 
                         <div class="progress sm">
                             <div class="progress-bar progress-bar-aqua"
-                                 style="width: <%out.print(stats.positifPercentage());%>%"></div>
+                                 style="width: 100%"></div>
                         </div>
                     </div>
                     <!-- /.progress-group -->
                     <div class="progress-group">
-                        <span class="progress-text">Nombre des avis negatifs sur mes visites </span>
-                        <span class="progress-number"><b><%
-                            out
-                            .
-                            print
-                            (
-                            stats
-                            .
-                            negatifsNbr
-                            (
-                            )
-                            )
-                            ;
-                        %></b>/<%
-                            out
-                            .
-                            print
-                            (
-                            stats
-                            .
-                            rapportsNbr
-                            (
-                            )
-                            )
-                            ;
-                        %></span>
+                        <span class="progress-text">Nombre des ventes ce mois</span>
+                        <span class="progress-number"><b><%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH))));%></b></span>
 
                         <div class="progress sm">
                             <div class="progress-bar progress-bar-red"
-                                 style="width: <%out.print(stats.negatifPercentage());%>%"></div>
+                                 style="width: 100%"></div>
                         </div>
                     </div>
 
                     <!-- /.progress-group -->
                     <div class="progress-group">
-                        <span class="progress-text">Nombre de clients que j'ai reçu</span>
-                        <span class="progress-number"><b><%
-                            out
-                            .
-                            print
-                            (
-                            stats
-                            .
-                            getClients
-                            (
-                            )
-                            )
-                            ;
-                        %></b>/<%
-                            out
-                            .
-                            print
-                            (
-                            new
-                            ClientDAO
-                            (
-                            )
-                            .
-                            getAll
-                            (
-                            )
-                            .
-                            size
-                            (
-                            )
-                            )
-                            ;
-                        %></span>
+                        <span class="progress-text">Nombre d'acheteurs</span>
+                        <span class="progress-number"><b><%out.print(ventesStats.acheteursNbr());%></b>/<%out.print(new ClientsStats().clientsNbr());%></span>
 
                         <div class="progress sm">
                             <div class="progress-bar progress-bar-yellow"
-                                 style="width: <%out.print(stats.clientsPercentage());%>%"></div>
+                                 style="width: 100%"></div>
                         </div>
                     </div>
                     <!-- /.progress-group -->
@@ -1095,14 +1021,27 @@
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
-                label: 'Digital Goods',
+                label: 'Ventes par mois',
                 fillColor: 'rgba(60,141,188,0.9)',
                 strokeColor: 'rgba(60,141,188,0.8)',
                 pointColor: '#3b8bba',
                 pointStrokeColor: 'rgba(60,141,188,1)',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data: []
+                data: [
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JANUARY));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.FEBRUARY));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.MARCH));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.APRIL));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.MAY));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JUNE));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.JULY));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.AUGUST));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.SEPTEMBER));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.OCTOBER));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.NOVEMBER));%>,
+                    <%out.print(ventesStats.confirmedVentesNbrPerMonth(Month.DECEMBER));%>
+                ]
             }
         ]
     };
@@ -1145,7 +1084,7 @@
         // Boolean - whether to make the chart responsive to window resizing
         responsive: true
     };
-
+    <%LinkedList<Localite> localites = visitesStats.top5Regions(); %>
     // Create the line chart
     salesChart.Line(salesChartData, salesChartOptions);
 </script>
@@ -1154,41 +1093,35 @@
     var pieChart = new Chart(pieChartCanvas);
     var PieData = [
         {
-            value:,
+            value:<%out.print(ventesStats.nbrVentesPerRegion(localites.get(0).getId()));%>,
             color: '#f56954',
             highlight: '#f56954',
             label: ''
         },
         {
-            value:,
+            value:<%out.print(ventesStats.nbrVentesPerRegion(localites.get(1).getId()));%>,
             color: '#00a65a',
             highlight: '#00a65a',
-            label: ''
+            label: '<%out.print(localites.get(1).getNom());%>'
         },
         {
-            value:,
+            value:<%out.print(ventesStats.nbrVentesPerRegion(localites.get(2).getId()));%>,
             color: '#f39c12',
             highlight: '#f39c12',
             label: '<%out.print(localites.get(2).getNom());%>'
         },
         {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
+            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(3).getId()));%>,
             color: '#00c0ef',
             highlight: '#00c0ef',
             label: '<%out.print(localites.get(3).getNom());%>'
         },
         {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>,
+            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(4).getId()));%>,
             color: '#3c8dbc',
             highlight: '#3c8dbc',
             label: '<%out.print(localites.get(4).getNom());%>'
         }
-        // {
-        //     value: ,
-        //     color: '#d2d6de',
-        //     highlight: '#d2d6de',
-        //     label: 'Autres'
-        // }
     ];
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment

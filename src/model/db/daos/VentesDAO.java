@@ -386,4 +386,17 @@ public class VentesDAO extends DAO {
         }
         return 0;
     }
+
+    public double getRevenusEtimes() {
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select sum(distinct montant) as nbr from versement,vente where etat<>'annulee';");
+            if (result.next()) {
+                return result.getDouble("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

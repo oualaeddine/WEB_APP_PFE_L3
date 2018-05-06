@@ -721,4 +721,32 @@ public class LogementDAO extends DAO {
         }
         return logements;
     }
+
+    public int nbrVisitesParType(TypeLogement typeLogement) {
+        ResultSet result;
+        String type = typeLogement == TypeLogement.VILLA ? "villa" : "appartement";
+        try {
+            result = logementStatement.executeQuery("SELECT count(distinct visite.id) as result from logement,visite where logement.id=visite.logementId and logement.typeLogement='" + type + "';");
+            if (result.next()) {
+                return result.getInt("result");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int nbrVisitesParTypeParMois(TypeLogement typeLogement, Month month) {
+        ResultSet result;
+        String type = typeLogement == TypeLogement.VILLA ? "villa" : "appartement";
+        try {
+            result = logementStatement.executeQuery("SELECT count(distinct visite.id) as result from logement,visite where logement.id=visite.logementId and logement.typeLogement='" + type + "' and MONTH(visite.timestamp)=" + month.getValue() + ";");
+            if (result.next()) {
+                return result.getInt("result");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

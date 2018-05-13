@@ -20,11 +20,16 @@ import java.util.LinkedList;
 public class LogementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        String responseBody = "null";
         if (action != null)
             switch (action) {
                 case "getMyLogements":
+                    int user = Integer.parseInt(request.getParameter("userId"));
+                    LinkedList<Logement> myLogements = new LogementDAO().getLogementsForClient(user);
+                    responseBody = JsonUtil.logementsListToJsonArray(myLogements);
                     break;
             }
+        response.getWriter().append(responseBody);
 
     }
 

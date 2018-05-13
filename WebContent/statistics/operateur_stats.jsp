@@ -1,19 +1,16 @@
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="control.statistics.globales.ClientsStats" %>
+<%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="control.statistics.globales.VentesStats" %>
 <%@ page import="control.statistics.globales.VisitesStats" %>
 <%@ page import="control.statistics.perso.AgentStats" %>
 <%@ page import="model.beans.Localite" %>
-<%@ page import="model.beans.Rapport" %>
+<%@ page import="model.beans.Visite" %>
 <%@ page import="model.beans.humans.Employe" %>
-<%@ page import="model.db.daos.*" %>
-<%@ page import="model.enums.EtatClient" %>
+<%@ page import="model.db.daos.VisitesDao" %>
 <%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="control.statistics.globales.VentesStats" %>
-<%@ page import="control.statistics.globales.LogementsStats" %>
-<%@ page import="model.beans.Versement" %>
-<%@ page import="control.statistics.globales.ClientsStats" %>
-<%@ page import="model.beans.Visite" %>
 <!DOCTYPE html>
 <html>
 <% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
@@ -70,7 +67,7 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                    <span class="info-box-icon bg-red"><i class="fa "></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total des versements ce mois ci</span>
@@ -87,7 +84,7 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <span class="info-box-icon bg-green"><i class="ion "></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total ventes en cours</span>
@@ -100,7 +97,7 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <span class="info-box-icon bg-yellow"><i class="ion "></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total des nouveaux client ce mois ci</span>
@@ -368,7 +365,6 @@
     // Get context with jQuery - using jQuery's .get() method.
     var salesChartCanvas = $('#salesChartVentes').get(0).getContext('2d');
     // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
 
     var salesChartData = {
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
@@ -439,7 +435,12 @@
     };
 
     // Create the line chart
-    salesChart.Line(salesChartData, salesChartOptions);
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: salesChartData,
+        options: salesChartOptions
+    });
+
 </script>
 <script>
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d');

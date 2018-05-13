@@ -152,7 +152,7 @@ function readURL(input) {
 function fillOtherInputs(startDate, endDate) {
 
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#regionId').val(),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + findGetParameter('region'),
         success: function (result) {
             var agent = JSON.parse(result);
 
@@ -241,8 +241,8 @@ calendar.fullCalendar('refetchEvents');
 
 function confirmerVisite() {
 
-    var idLogement = findGetParameter("logementId")
-    var idClient = findGetParameter("clientId")
+    var idLogement = findGetParameter("logementId");
+    var idClient = findGetParameter("clientId");
     var idAgent = document.getElementById("idAgentDetails").innerHTML;
     var heureDebut = $('#heureDebutVisite').val();
     var heureFin = $('#heureFinVisite').val();

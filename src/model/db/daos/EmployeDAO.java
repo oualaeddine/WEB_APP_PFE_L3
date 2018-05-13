@@ -222,7 +222,7 @@ public class EmployeDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = employeStatement.executeQuery("SELECT (count(id)) FROM employe;");
+            result = employeStatement.executeQuery("SELECT count(id) FROM employe;");
             if (result.next()) {
                 return result.getInt("count(id)");
             }

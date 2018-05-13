@@ -19,7 +19,12 @@ import java.util.LinkedList;
 @WebServlet(name = "LogementApi", urlPatterns = MyConsts.LOGEMENT_API_URL_PATTERN)
 public class LogementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if (action != null)
+            switch (action) {
+                case "getMyLogements":
+                    break;
+            }
 
     }
 

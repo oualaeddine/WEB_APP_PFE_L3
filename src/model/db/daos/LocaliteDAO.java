@@ -109,7 +109,7 @@ public class LocaliteDAO extends DAO {
     public int countAll() {
         ResultSet result;
         try {
-            result = localiteStatement.executeQuery("SELECT (count(id)) FROM localite;");
+            result = localiteStatement.executeQuery("SELECT count(id) FROM localite;");
             if (result.next()) {
                 return result.getInt("count(id)");
             }

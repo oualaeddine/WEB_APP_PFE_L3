@@ -26,7 +26,12 @@ public class VisiteApi extends API {
 
     // TODO: 2/20/2018 action : addVisit
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if (action != null)
+            switch (action) {
+                case "getMyVisites":
+                    break;
+            }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,55 +39,71 @@ public class VisiteApi extends API {
 
         // TODO: 4/21/2018 return liste of possible
         // visites for logementId {id(autoInc),start(dateTtime),end(dateTtime),idAgent
+        String action = request.getParameter("action");
+        if (action != null)
+            switch (action) {
+                case "getTakenDates": {
+                    int logementId = Integer.parseInt(request.getParameter("logementId"));
+                    LinkedList<RDV> rdvs = getTakenDatesForLogement(logementId);
+                    JsonArray rdvsToReturn = new JsonArray();
+                    for (RDV rdv : rdvs) {
+                        JsonObject jsonObject = new JsonObject();
+                        String dateTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
+                        String endTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
+                        jsonObject.addProperty("start", dateTime);
+                        jsonObject.addProperty("end", endTime);
+
+                        rdvsToReturn.add(jsonObject);
+                    }
+                    response.getWriter().append(rdvsToReturn.toString());
+                    break;
+                }
+                case "add": {
+                    Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
+                    int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
+                    Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
+
+                    Visite visite = new Visite();
+                    visite.setClient(client);
+                    visite.setHorraire(horraire);
+                    visite.setTimestamp(timestamp);
+
+                    System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
+                    this.getServletContext().getRequestDispatcher("/home").forward(request, response);
+                    break;
+                }
+                case "getFreeAgentForDate": {
+                    String date;
+
+                    date = request.getParameter("date");
 
 
-        if (request.getParameter("action").equals("getTakenDates")) {
-            int logementId = Integer.parseInt(request.getParameter("logementId"));
-            LinkedList<RDV> rdvs = getTakenDatesForLogement(logementId);
-            JsonArray rdvsToReturn = new JsonArray();
-            for (RDV rdv : rdvs) {
-                JsonObject jsonObject = new JsonObject();
-                String dateTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
-                String endTime = rdv.getDate().toString() + "T" + getTimeForRdv(rdv.getHorraire());
-                jsonObject.addProperty("start", dateTime);
-                jsonObject.addProperty("end", endTime);
+                    int region = Integer.parseInt(request.getParameter("region"));
 
-                rdvsToReturn.add(jsonObject);
+                    RDV myRdv = new RDV();
+                    myRdv.setDate(getDateFromString(date));
+                    myRdv.setHorraire(getHorraireFromStringDate(date));
+
+                    System.out.println(myRdv);
+                    System.out.println("region" + region);
+
+                    response.getWriter().append(JsonUtil.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
+
+                    break;
+                }
+                case "getUpcoming": {
+                    // TODO: 5/11/2018
+                    break;
+                }
+                case "getCanceled": {
+                    // TODO: 5/11/2018
+                    break;
+                }
+                case "getPassed": {
+                    // TODO: 5/11/2018
+                    break;
+                }
             }
-            response.getWriter().append(rdvsToReturn.toString());
-        }
-        if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
-            Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
-            int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
-            Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
-
-            Visite visite = new Visite();
-            visite.setClient(client);
-            visite.setHorraire(horraire);
-            visite.setTimestamp(timestamp);
-
-            System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
-        }
-
-        if (request.getParameter("action").equals("getFreeAgentForDate")) {
-            String date;
-
-            date = request.getParameter("date");
-
-
-            int region = Integer.parseInt(request.getParameter("region"));
-
-            RDV myRdv = new RDV();
-            myRdv.setDate(getDateFromString(date));
-            myRdv.setHorraire(getHorraireFromStringDate(date));
-
-            System.out.println(myRdv);
-            System.out.println("region" + region);
-
-            response.getWriter().append(JsonUtil.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
-        }
-
     }
 
     public static java.sql.Date getDateFromString(String date) {

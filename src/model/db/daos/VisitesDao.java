@@ -24,7 +24,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT visite.* FROM visite,rapport WHERE visite.id=rapport.visiteId AND visite.agentId=" + agentId + " AND (SELECT count(rapport.visiteId) FROM rapport WHERE visiteId=visite.id)=0 ;");
+            result = visiteStatement.executeQuery("SELECT visite.* FROM visite,rapport WHERE visite.id=rapport.visiteId AND visite.agentId=" + agentId + " AND visite.id not in (select rapport.visiteId from rapport);");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

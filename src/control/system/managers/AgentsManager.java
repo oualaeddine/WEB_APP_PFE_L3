@@ -21,11 +21,12 @@ public class AgentsManager {
     public AgentsManager(Employe loggedInAgent) {
         this.loggedInAgent = loggedInAgent;
     }
-    public boolean changerMotDePasse(String mdp){
-        return new EmployeDAO().changePassword(loggedInAgent.getId(),mdp);
+
+    public boolean changerMotDePasse(String mdp) {
+        return new EmployeDAO().changePassword(loggedInAgent.getId(), mdp);
     }
 
-    public Employe creerCompte(String nom, String prenom, Date dateNaiss,String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended,int idRegion){
+    public Employe creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended, int idRegion) {
         Employe agent = new Employe();
         agent.setNom(nom);
         agent.setPrenom(prenom);
@@ -39,7 +40,7 @@ public class AgentsManager {
         return agent;
     }
 
-    public boolean envoyerRapport(HttpServletRequest request){
+    public boolean envoyerRapport(HttpServletRequest request) {
         int visiteID = Integer.parseInt(request.getParameter("visiteRapport"));
         System.out.println("visite numero: " + visiteID);
         Visite visite = new VisitesDao().getById(visiteID);
@@ -59,9 +60,43 @@ public class AgentsManager {
             vente.setClient(visite.getClient());
             vente.setLogement(visite.getLogement());
             vente.setEtatVente(EtatVente.EN_COURS);
-            System.out.println("Nouvelle vente: "+new VentesDAO().add(vente));
+            System.out.println("Nouvelle vente: " + new VentesDAO().add(vente));
         }
         return new RapportDAO().add(rapport);
+    }
+
+    public boolean envoyerRapport(String etatClient, int visiteID, String avis, String commentaire) {
+
+        System.out.println("rapport de la visite numero: " + visiteID);
+
+        Visite visite = new VisitesDao().getById(visiteID);
+        if (visite != null) {
+
+            Rapport rapport = new Rapport();
+
+            if (etatClient == null) {
+                rapport.setEtatClient(EtatClient.ABSENT);
+                rapport.setVisite(visite);
+            } else {
+                rapport.setVisite(visite);
+                rapport.setEtatClient(EtatClient.PRESENT);
+                rapport.setAvis(avis.equals("positif"));
+                rapport.setCommentaire(commentaire);
+            }
+            if (rapport.isAvis()) {
+                Vente vente = new Vente();
+
+                vente.setClient(visite.getClient());
+
+                vente.setLogement(visite.getLogement());
+
+                vente.setEtatVente(EtatVente.EN_COURS);
+                System.out.println("Nouvelle vente: " + new VentesDAO().add(vente));
+
+            }
+            return new RapportDAO().add(rapport);
+        } else
+            return false;
     }
 
 }

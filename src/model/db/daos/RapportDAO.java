@@ -106,12 +106,17 @@ public class RapportDAO extends DAO {
                         "'present'," +
                         "'" + avis + "'," +
                         "'" + rapport.getCommentaire() + "'" +
-                        ")");
+                        ") ");
+
+                System.out.println("rapport correctement etablie ");
+
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("rapport non etablie ");
+
         return false;
     }
 

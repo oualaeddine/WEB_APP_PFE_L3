@@ -79,7 +79,7 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Modifier mot de passe</div>
         <div class="card-body">
-            <form method="post" id="changePasswordForm">
+            <form method="post" id="changePasswordForm" action="/ChangePassword">
 
                 <div class="form-group" align="center">
                     <label for="id">Veuillez entrer le nouveau mot de passe</label>

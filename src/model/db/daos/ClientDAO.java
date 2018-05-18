@@ -288,7 +288,7 @@ public class ClientDAO extends DAO {
         ResultSet result;
         LinkedList<Client> list = new LinkedList<>();
         try {
-            result = clientStatement.executeQuery("SELECT client.* FROM visite,employe,client WHERE employe.id="+agentId+" AND visite.agentId=employe.id AND client.id=visite.clientId;");
+            result = clientStatement.executeQuery("SELECT distinct client.* FROM visite,employe,client WHERE employe.id=" + agentId + " AND visite.agentId=employe.id AND client.id=visite.clientId;");
             while (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));

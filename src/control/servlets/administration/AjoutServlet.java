@@ -5,10 +5,7 @@ import control.system.managers.*;
 import model.beans.Logement;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
-import model.db.daos.AssignationDAO;
-import model.db.daos.EmployeDAO;
-import model.db.daos.LogementDAO;
-import model.db.daos.SignalementDAO;
+import model.db.daos.*;
 import utils.GoogleMail;
 import utils.Util;
 
@@ -123,7 +120,13 @@ public class AjoutServlet extends MyServlet {
                         break;
                     case "suspend":
                         int employeId = Integer.parseInt(request.getParameter("employeSuspendu"));
-                        System.out.println(new EmployeDAO().suspendById(employeId));
+                        Employe employe = (Employe) new EmployeDAO().getById(employeId);
+                        if (employe.isSuspended()) {
+                            System.out.println("Employé réintegré: " + new EmployeDAO().reintegrerById(employeId));
+                        } else {
+                            System.out.println("Employé suspendu: " + new EmployeDAO().suspendById(employeId));
+
+                        }
                         break;
                     case "gel":
                         int logementId = Integer.parseInt(request.getParameter("logementGele"));
@@ -133,7 +136,16 @@ public class AjoutServlet extends MyServlet {
                         } else {
                             System.out.println(new LogementDAO().geler(logementId));
                         }
-
+                        break;
+                    case "ban":
+                        int clientBanniId = Integer.parseInt(request.getParameter("clientBanni"));
+                        Client client1 = (Client) new ClientDAO().getById(clientBanniId);
+                        if (client1.isBanned()) {
+                            System.out.println("Client rétabli: " + new ClientDAO().retablirById(clientBanniId));
+                        } else {
+                            System.out.println("Client banni: " + new ClientDAO().banById(clientBanniId));
+                        }
+                        break;
                 }
             }
         redirectToDashboard(request,response);

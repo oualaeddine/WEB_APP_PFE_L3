@@ -121,8 +121,10 @@ public class AdminsManager {
     }
 
     public boolean ajouterLocalite(HttpServletRequest request) {
-
-        return false;
+        String nom = request.getParameter("nomInput");
+        Localite localite = new Localite();
+        localite.setNom(nom);
+        return new LocaliteDAO().add(localite);
     }
 
     public boolean ajouterEmploye(HttpServletRequest request) throws ParseException {

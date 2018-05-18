@@ -21,16 +21,22 @@ public class AdminServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "myNotifications":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
+                        break;
                     case "modifierVisite":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?what=MODIFIER_VISITE").forward(request, response);
                         break;
                     case "gelerLogement":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=GELER_LOGEMENT").forward(request, response);
+                        break;
                     case "listeSignals":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALEMENT").forward(request, response);
+                        break;
                     }
                     case "assignerRegion":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ASSIGNER_REGION").forward(request, response);
+                        break;
                     }
                     case "messages":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request,response);
@@ -97,7 +103,7 @@ public class AdminServlet extends MyServlet {
                         break;
                     }
                     case "bannirClient":{
-                        this.getServletContext().getRequestDispatcher("/html/bannirClient.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=BANNIR_CLIENT").forward(request, response);
                         break;
                     }
                     case "clientsBannis":{

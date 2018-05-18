@@ -488,13 +488,13 @@
                                                                         <br>
                                                                     </div>
                                                                     <div class="col-md-4 ">
-                                                                        <strong>nobre de pieces:</strong>
+                                                                        <strong>nombre de pieces:</strong>
                                                                         <span id="nbrPiecesDetails"></span>
                                                                         <br>
-                                                                        <strong>nobre d'etages:</strong>
+                                                                        <strong>nombre d'etages:</strong>
                                                                         <span id="nbrEtagesDetails"></span>
                                                                         <br>
-                                                                        <strong>nobre de SDBs:</strong>
+                                                                        <strong>nombre de SDBs:</strong>
                                                                         <span id="nbrSDBDetails"></span>
                                                                         <br>
 

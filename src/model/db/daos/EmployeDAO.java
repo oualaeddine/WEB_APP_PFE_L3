@@ -157,6 +157,21 @@ public class EmployeDAO extends DAO {
 
     @Override
     public boolean update(Object object) {
+        Employe employe = (Employe) object;
+        try {
+            employeStatement.execute("UPDATE employe SET " +
+                    "nom = '" + employe.getNom() + "'," +
+                    "prenom = '" + employe.getPrenom() + "'," +
+                    "tel = '" + employe.getTel() + "'," +
+                    "dateNaiss = '" + employe.getDateNaissance() + "'," +
+                    "adresse='" + employe.getAdresse() + "'," +
+                    "email='" + employe.getEmail() + "'," +
+                    "username='" + employe.getUsername() + "'" +
+                    " WHERE employe.id=" + employe.getId() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

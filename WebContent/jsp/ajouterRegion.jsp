@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary btn-block" type="submit" value="register">Ajouter</button>
+                    <button class="btn btn-primary btn-block" type="submit">Ajouter</button>
                 </div>
             </form>
         </div>

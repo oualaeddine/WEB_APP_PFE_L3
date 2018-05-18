@@ -29,6 +29,9 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case RAPPORTS_LIST:
+                setupDataMesRapports();
+                break;
             case CLIENT_MES_LOGEMENT_VISITES:
                 setupDataLogementsVisites();
                 break;
@@ -115,6 +118,7 @@ public class DataTableData {
                 setupDataLocaliteList();
                 break;
             case PLAINTES:
+                setupDataListPlaintes();
                 break;
             case VENTES:
                 setupDataVentes();
@@ -179,6 +183,60 @@ public class DataTableData {
                 break;
             case CLIENT_MY_NOTIFICATIONS:
                 break;
+            case MY_CANCELED_VISITS:
+                setupDataCanceledVisitsForAgent();
+                break;
+            case MY_PASSED_VISITS:
+                setupDataPassedVisitsForAgent();
+                break;
+            case EMPLOYEE_NOTIFICATIONS:
+                setupDataNotificationsForEmployee();
+                break;
+            case BANNIR_CLIENT:
+                setupDataBannirClient();
+                break;
+        }
+    }
+
+    private void setupDataListPlaintes() {
+        LinkedList<Plainte> plaintes = new PlainteDAO().getAll();
+        for (Plainte plainte : plaintes) {
+            data.add(new DataTableRow(DataTableRowFormat.PLAINTE, plainte));
+        }
+    }
+
+    private void setupDataBannirClient() {
+        LinkedList<Client> list = new ClientDAO().getAll();
+        for (Client client : list) {
+            data.add(new DataTableRow(DataTableRowFormat.BANNIR_CLIENT, client));
+        }
+    }
+
+    private void setupDataNotificationsForEmployee() {
+        LinkedList<Notification> notifications = new EmployeNotificationDAO().getByEmployee(userId);
+        for (Notification notification : notifications) {
+            data.add(new DataTableRow(DataTableRowFormat.NOTIFICATIONS, notification));
+        }
+    }
+
+    private void setupDataPassedVisitsForAgent() {
+        LinkedList<Visite> visites = new VisitesDao().getPasseeForAgent(userId);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.VISITE, visite));
+        }
+    }
+
+    private void setupDataCanceledVisitsForAgent() {
+        LinkedList<Visite> visites = new VisitesDao().getAnnuleesForAgent(userId);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.VISITE, visite));
+        }
+    }
+
+    private void setupDataMesRapports() {
+        LinkedList<Rapport> rapports = new RapportDAO().getByAgent(userId);
+        for (Rapport rapport : rapports) {
+            data.add(new DataTableRow(DataTableRowFormat.RAPPORT, rapport));
         }
     }
 
@@ -431,7 +489,8 @@ public class DataTableData {
     }
 
     private void setupDataLogementsForUser() {
-        for (Logement logement : new LogementDAO().getLogementsForUser(userType, userId)) {
+        LinkedList<Logement> logements = new LogementDAO().getLogementsForAgent(userId);
+        for (Logement logement : logements) {
             data.add(new DataTableRow(DataTableRowFormat.LOGEMENT, logement));
         }
     }

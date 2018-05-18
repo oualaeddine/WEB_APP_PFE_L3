@@ -1,5 +1,6 @@
 package model.beans.views.nav;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import model.beans.views.MyView;
 import model.enums.TablePage;
 import model.enums.UserType;
@@ -61,6 +62,10 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
+
+        /*notifications*/
+        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
+        navElements.add(notifsNavElement);
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
@@ -209,6 +214,10 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
+        /*notifications*/
+        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
+        navElements.add(notifsNavElement);
+
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
         NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), MyConsts.MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=messages", "fa-envelope");
@@ -307,8 +316,8 @@ public class Nav {
         NavElement visitesAnnuleesNavElement = new NavElement(isPage(currentPage, TablePage.CANCELED_VISITES), "Visites annulées", urlBase + "?what=visitesAnnulees", "fa-calendar-times");
         visitesSubNavElementList.add(visitesAnnuleesNavElement);
 
-        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
-        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
+//        NavElement reporterAnnulerVisiteNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), "Modifier visite", urlBase + "?what=modifierVisite", "fa-pencil");
+//        visitesSubNavElementList.add(reporterAnnulerVisiteNavElement);
         
 
         ExpendableNavElement visitesExpendableNavElement = new ExpendableNavElement("visitesNav", "fa-eye", "Visites", visitesSubNavElementList, isPage(currentPage, TablePage.VISITES));
@@ -351,6 +360,10 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
+
+        /*notifications*/
+        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
+        navElements.add(notifsNavElement);
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
@@ -410,6 +423,10 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
+
+        /*notifications*/
+        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
+        navElements.add(notifsNavElement);
 
         /*Nouvelle vente*/
         NavElement nouvelleVenteNavElement = new NavElement(false, "Nouvelle vente", urlBase + "?what=nouvelleVente", "fa-plus-circle");
@@ -498,8 +515,19 @@ public class Nav {
 
         /*etablir rapport*/
 
+        LinkedList<NavElement> rapportsNavEelementList = new LinkedList<>();
+
+        NavElement mesRapportsNavElement = new NavElement(isPage(currentPage, TablePage.RAPPORTS_LIST), "Mes rapports", urlBase + "?what=mesRapports", "fa-list");
+        rapportsNavEelementList.add(mesRapportsNavElement);
+
         NavElement etablirRapportNavElement = new NavElement(false, MyConsts.ETABLIR_RAPPORT_NAV_TITLE, urlBase + "?what=etablirRapport", "fa-edit");
-        navElements.add(etablirRapportNavElement);
+        rapportsNavEelementList.add(etablirRapportNavElement);
+
+        ExpendableNavElement rapportsExpendableNavElement = new ExpendableNavElement("rapportsNav", "fa-edit", "Rapports", rapportsNavEelementList, false);
+        navElements.add(rapportsExpendableNavElement);
+        /*notifications*/
+        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
+        navElements.add(notifsNavElement);
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
@@ -544,7 +572,7 @@ public class Nav {
         NavElement listeLogementsNavElement = new NavElement(isPage(currentPage, TablePage.LOGEMENTS), MyConsts.LOGEMENT_TITLE, urlBase + "?what=allLogements", "fa fa-list");
         logementsSubNavElement.add(listeLogementsNavElement);
 
-        NavElement logementsVendusNavElement = new NavElement(isPage(currentPage, TablePage.LOGEMENTS_VENDUS), MyConsts.LOGEMENTS_VENDUS_TITLE, urlBase + "?what=logementVendus", "fa fa-check");
+        NavElement logementsVendusNavElement = new NavElement(isPage(currentPage, TablePage.LOGEMENTS_FOR_USER), "Mes logements visités", urlBase + "?what=mesLogementsVisites", "fa fa-check");
         logementsSubNavElement.add(logementsVendusNavElement);
 
         NavElement logementsGelesNavElement = new NavElement(isPage(currentPage, TablePage.FROZEN_LOGEMENTS), MyConsts.LOGEMENTS_GELES_TITLE, urlBase + "?what=logementGeles", "fa fa-fw fa-object-group");

@@ -92,4 +92,6 @@ public class AuthManager {
     public boolean signupClient(Client client) {
         return new ClientDAO().add(client);
     }
+
+
 }

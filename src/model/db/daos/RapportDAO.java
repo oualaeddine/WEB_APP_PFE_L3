@@ -1,6 +1,7 @@
 package model.db.daos;
 
 import model.beans.Rapport;
+import model.beans.Vente;
 import model.beans.Versement;
 import model.beans.humans.Person;
 import model.db.DAO;
@@ -95,6 +96,8 @@ public class RapportDAO extends DAO {
                 rapportStatement.execute("INSERT INTO rapport(visiteId,etatClient)VALUES (" +
                         rapport.getVisite().getId() + "," + "'absent'" +
                         ");");
+                visiteStatement.execute("UPDATE visite set etat = 'terminee' where visite.id=" + rapport.getVisite().getId() + ";");
+                return true;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -106,16 +109,15 @@ public class RapportDAO extends DAO {
                         "'present'," +
                         "'" + avis + "'," +
                         "'" + rapport.getCommentaire() + "'" +
-                        ") ");
-
-                System.out.println("rapport correctement etablie ");
+                        "); ");
+                visiteStatement.execute("UPDATE visite set etat = 'terminee' where visite.id=" + rapport.getVisite().getId() + ";");
 
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println("rapport non etablie ");
+        System.out.println("rapport non etabli");
 
         return false;
     }

@@ -21,6 +21,15 @@ public class AgentServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/agent.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "myNotifications":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
+                        break;
+                    case "mesRapports":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=RAPPORTS_LIST").forward(request, response);
+                        break;
+                    case "mesLogementsVisites":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=LOGEMENTS_FOR_USER").forward(request, response);
+                        break;
                     case "modifierVisite":
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MODIFIER_VISITE").forward(request, response);
                         break;
@@ -41,11 +50,11 @@ public class AgentServlet extends MyServlet {
                         break;
                     }
                     case "visitesPassees":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=PASSED_VISITS").forward(request,response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MY_PASSED_VISITS").forward(request, response);
                         break;
                     }
                     case "visitesAnnulees":{
-                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CANCELED_VISITES").forward(request,response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MY_CANCELED_VISITS").forward(request, response);
                         break;
                     }
                     case "listeClients":{

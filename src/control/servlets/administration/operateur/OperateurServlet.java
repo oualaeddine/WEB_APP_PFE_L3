@@ -28,6 +28,9 @@ public class OperateurServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/operateur.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "myNotifications":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
+                        break;
                     case "nouvelleVente":
                         this.getServletContext().getRequestDispatcher("/programmerVisite/ajouterVente.jsp").forward(request, response);
                         break;

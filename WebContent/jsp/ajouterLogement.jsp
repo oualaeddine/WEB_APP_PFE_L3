@@ -155,25 +155,10 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" />
+                    <button class="btn btn-primary" type="submit" form="ajouterLogementForm">Ajouter</button>
                 </div>
 
-                <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                Confirm Submit
-                            </div>
-                            <div class="modal-body">
-                                <h4>Are you sure you want to submit the following details?</h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="submit" id="submit" class="btn btn-success success">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </form>
         </div>
     </div>
@@ -278,10 +263,6 @@
         })
     });
 
-$('#submit').click(function(){
-    /* when the submit button in the modal is clicked, submit the form */
-    $("#ajouterLogementForm").submit();
-});
 </script>
 <style>
     .has-error .help-block {

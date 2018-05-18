@@ -286,10 +286,10 @@ public class LogementDAO extends DAO {
                     garage = logement.isAvecGarage() ? 1 : 0,
                     sousSol = logement.isAvecSousSol() ? 1 : 0,
                     meubles = logement.isMeubles() ? 1 : 0;
-            String type = logement.getTypeLogement() == TypeLogement.VILLA ? "villa" : "appartement";
+            String type = (logement.getTypeLogement() == TypeLogement.VILLA) ? "villa" : "appartement";
 
 
-            logementStatement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,avecMeubles,latitude,longitude,prix,type) VALUES (" +
+            logementStatement.execute("INSERT INTO logement (titre, description, superficie, region, adresse, nbrPieces, nbrSdb, etage,avecJardin,avecGarage,avecSousSol,avecMeubles,latitude,longitude,prix,typeLogement) VALUES (" +
                     "'" + logement.getTitre() + "', \n" +
                     "'" + logement.getDescription() + "',\n " +
                     logement.getSuperficie() + ",\n " +
@@ -462,7 +462,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT logement.* FROM logement,visite WHERE visite.logementId=logement.id and visite.agentId=" + userId + " ;");
+            result = logementStatement.executeQuery("SELECT distinct logement.* FROM logement,visite WHERE visite.logementId=logement.id and visite.agentId=" + userId + " ;");
             while (result.next()) {
                 Logement logement = new Logement();
 
@@ -501,7 +501,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> list = new LinkedList<>();
         try {
-            result = logementStatement.executeQuery("SELECT * FROM logement WHERE gele=0;");
+            result = logementStatement.executeQuery("SELECT * FROM logement WHERE logement.id not in (select distinct l.id from logement l,vente where l.id=vente.logementId and vente.etat='confirmee');");
             while (result.next()) {
                 Logement logement = new Logement();
 

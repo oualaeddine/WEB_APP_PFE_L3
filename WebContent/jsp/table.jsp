@@ -216,7 +216,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                    <button class="btn btn-info btn-lg" type="submit" form="signalerForm">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -243,7 +243,7 @@
                             <select class="custom-select" name="userTypeInput" id="userTypeInput">
                                 <option value="agent">Agent</option>
                                 <option value="operateur">Operateur</option>
-                                <option value="responsableVentes">Responsable ventes</option>
+                                <option value="responsable_ventes">Responsable ventes</option>
                                 <%
                                     if (userType == UserType.SU) {
                                         out.print("<option value=\"admin\">Admin</option>");
@@ -255,7 +255,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                    <button class="btn btn-info btn-lg" type="submit" form="approuverForm">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -282,7 +282,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                    <button class="btn btn-info btn-lg" type="submit" form="suspendreForm">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -308,7 +308,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit">Valider</button>
+                    <button class="btn btn-info btn-lg" type="submit" form="gelerForm">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                 </div>
             </div>
@@ -330,7 +330,7 @@
 
                         <input id="visiteModifiee" name="nouvelleDate" type="hidden">
                         <div class="form-group">
-                            <label for="motif">Veuillez entrer le motif de votre signalement</label>
+                            <label for="motif">Veuillez entrer le type de la modification</label>
                             <select name="action" id="action" class="form-control">
                                 <option value="0" disabled="" selected="">- action -</option>
                                 <option value="1"> cancel</option>
@@ -403,6 +403,32 @@
 
         </div>
     </div>
+    <%--Modal Bannir/Retablir client--%>
+    <div id="bannirModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=ban" id="bannirForm">
+
+                        <input id="clientBanni" name="clientBanni" type="hidden">
+                        <div class="form-group">
+                            <label>Êtes vous sur de vouloir bannir/rétablir ce client ?</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit" form="bannirForm">Valider</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -425,6 +451,9 @@
             $(this).next('#ifPresent').toggle();
         });
 
+        function getBannedClientId(idTaaLBannedClient) {
+            document.getElementById("clientBanni").value = idTaaLBannedClient;
+        }
         function getVisiteTaaLrapport(idTaaLaVisite) {
             document.getElementById("visiteRapport").value = idTaaLaVisite;
 

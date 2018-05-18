@@ -78,7 +78,7 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Modifier profil</div>
         <div class="card-body">
-            <form method="post" id="modifierProfilForm">
+            <form method="post" id="modifierProfilForm" action="/DashboardServlet?action=modifierProfil">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">

@@ -1,13 +1,11 @@
 package model.db.daos;
 
-import model.beans.Localite;
-import model.beans.Logement;
-import model.beans.RDV;
-import model.beans.Visite;
+import model.beans.*;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
+import utils.Util;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -24,7 +22,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT visite.* FROM visite,rapport WHERE visite.id=rapport.visiteId AND visite.agentId=" + agentId + " AND visite.id not in (select rapport.visiteId from rapport);");
+            result = visiteStatement.executeQuery("SELECT distinct v.* FROM visite v WHERE v.agentId=" + agentId + " and v.etat='prevue' AND (SELECT count(rapport.visiteId) from rapport WHERE visiteId=v.id)=0 ;");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -35,6 +33,10 @@ public class VisitesDao extends DAO {
                 visite.setHorraire(result.getInt("horraire"));
                 EtatVisite etatVisite = null;
                 switch (result.getString("etat")) {
+
+                    case "terminee":
+                        etatVisite = EtatVisite.TERMINEE;
+                        break;
                     case "prevue":
                         etatVisite = EtatVisite.PROGRAMMEE;
                         break;
@@ -142,9 +144,7 @@ public class VisitesDao extends DAO {
         LinkedList<Visite> list = new LinkedList<>();
         try {
             result = visiteStatement.executeQuery("SELECT * FROM visite WHERE agentId = " + agent.getId() + ";");
-            System.out.println("ani qbel l while");
             while (result.next()) {
-                System.out.println("ani dkhelt f l'while");
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
@@ -153,6 +153,9 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
@@ -185,6 +188,9 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
@@ -218,6 +224,9 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
@@ -346,6 +355,15 @@ public class VisitesDao extends DAO {
                             visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire()+",'" +visite.getTimestamp()+"'"+
 
                     ");");
+            Notification notification = new Notification();
+            notification.setDestinataire(visite.getAgent());
+            notification.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));
+            System.out.println("Notification envoyée à l'agent: " + new EmployeNotificationDAO().add(notification));
+
+            Notification notification1 = new Notification();
+            notification.setDestinataire(visite.getClient());
+            notification.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));
+            System.out.println("Notification envoyée au client: ");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -367,14 +385,11 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
@@ -419,6 +434,9 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
@@ -451,14 +469,11 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
@@ -479,7 +494,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>current_timestamp AND etat='prevue';");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp<=current_timestamp AND etat='prevue';");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));
@@ -492,11 +507,8 @@ public class VisitesDao extends DAO {
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
                         break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
@@ -513,6 +525,75 @@ public class VisitesDao extends DAO {
         return visites;
     }
 
+    public LinkedList<Visite> getPasseeForAgent(int userId) {
+        ResultSet result;
+        LinkedList<Visite> visites = new LinkedList<>();
+        try {
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE visite.timestamp<=current_date and visite.agentId=" + userId + ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(Integer.parseInt(result.getString("horraire")));
+                switch (result.getString("etat")) {
+                    case "prevue":
+                        visite.setEtatVisite(EtatVisite.PROGRAMMEE);
+                        break;
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
+                    case "reportee":
+                        visite.setEtatVisite(EtatVisite.REPORTEE);
+                        break;
+                    case "annulee":
+                        visite.setEtatVisite(EtatVisite.ANNULEE);
+                        break;
+                }
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
+
+    public LinkedList<Visite> getAnnuleesForAgent(int userId) {
+        ResultSet result;
+        LinkedList<Visite> visites = new LinkedList<>();
+        try {
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE etat='annulee' and visite.agentId=" + userId + ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(Integer.parseInt(result.getString("horraire")));
+                switch (result.getString("etat")) {
+                    case "prevue":
+                        visite.setEtatVisite(EtatVisite.PROGRAMMEE);
+                        break;
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
+                    case "reportee":
+                        visite.setEtatVisite(EtatVisite.REPORTEE);
+                        break;
+                    case "annulee":
+                        visite.setEtatVisite(EtatVisite.ANNULEE);
+                        break;
+                }
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
     public LinkedList<Visite> getAnnulee() {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
@@ -527,14 +608,11 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
@@ -566,14 +644,11 @@ public class VisitesDao extends DAO {
                 visite.setTimestamp(result.getDate("timestamp"));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
                     case "prevue":
                         visite.setEtatVisite(EtatVisite.PROGRAMMEE);
-                        break;
-                    case "avisNegatif":
-                        visite.setEtatVisite(EtatVisite.NON_VALIDEE);
-                        break;
-                    case "avisPositif":
-                        visite.setEtatVisite(EtatVisite.VALIDEE);
                         break;
                     case "reportee":
                         visite.setEtatVisite(EtatVisite.REPORTEE);
@@ -738,4 +813,6 @@ public class VisitesDao extends DAO {
         }
         return 0;
     }
+
+
 }

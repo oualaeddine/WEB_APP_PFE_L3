@@ -14,6 +14,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case RAPPORTS_LIST:
+                setupTableHeaderForRapport();
+                break;
             case VENTES_EN_COURS:
                 setupTableHeaderForVentes();
                 break;
@@ -48,7 +51,7 @@ public class DataTableHeader {
                 setupTableHeaderForPlainte();
                 break;
             case PLAINTES:
-                setupTableHeaderForPlainte();
+                setupTableHeaderForSignalement();
                 break;
             case SIGNALER_CLIENT:
                 setupTableHeaderForSignalerClient();
@@ -149,7 +152,49 @@ public class DataTableHeader {
             case ETABLIR_RAPPORT:
                 setupTableHeaderForEtablirRapport();
                 break;
+            case MY_CANCELED_VISITS:
+                setupTableHeaderForVisites();
+                break;
+            case MY_PASSED_VISITS:
+                setupTableHeaderForVisites();
+                break;
+            case EMPLOYEE_NOTIFICATIONS:
+                setupTableHeaderForNotifications();
+                break;
+            case BANNIR_CLIENT:
+                setupTableHeaderForSignalerClient();
+                break;
         }
+    }
+
+    private void setupTableHeaderForSignalement() {
+        html = "<tr>" +
+                "<th>ID</th>" +
+                "<th>Plaignant</th>" +
+                "<th>Contenu</th>" +
+                "<th>Date</th>" +
+                "</tr>";
+    }
+
+
+    private void setupTableHeaderForNotifications() {
+        html = "<tr>" +
+                "<th> ID </th>" +
+                "<th> Contenu </th>" +
+                "<th> Date et heure de reception </th>" +
+                "</tr>";
+    }
+
+    private void setupTableHeaderForRapport() {
+        html = "<tr>" +
+                "<th>ID Visite </th>" +
+                "<th>Visite </th>" +
+                "<th>Logement </th>" +
+                "<th>Client    </th>" +
+                "<th>Etat client   </th>" +
+                "<th>Avis  </th>" +
+                "<th>Commentaire  </th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForEtablirRapport() {
@@ -327,12 +372,14 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForVisites() {
-        html = "<tr><th>ID</th>" +
+        html = "<tr>" +
+                "<th>ID</th>" +
                 "<th>Logement</th>" +
                 "<th>Agent</th>" +
                 "<th>Client</th>" +
                 "<th>Horaire</th>" +
-                "<th>Etat</th></tr>" ;
+                "<th>Etat</th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForEmployees() {

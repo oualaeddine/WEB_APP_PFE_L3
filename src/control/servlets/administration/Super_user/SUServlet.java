@@ -21,6 +21,9 @@ public class SUServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/superuser.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "myNotifications":
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
+                        break;
                     case "listeSignals":{
                         this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALEMENT").forward(request, response);
                     }
@@ -101,7 +104,7 @@ public class SUServlet extends MyServlet {
                         break;
                     }
                     case "bannirClient":{
-                        this.getServletContext().getRequestDispatcher("/html/bannirClient.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=BANNIR_CLIENT").forward(request, response);
                         break;
                     }
                     case "clientsBannis":{

@@ -7,6 +7,8 @@ import model.db.daos.AssignationDAO;
 import model.db.daos.EmployeDAO;
 import model.db.daos.VersementDAO;
 import model.enums.DataTableRowFormat;
+import model.enums.EtatClient;
+import utils.Util;
 
 public class DataTableRow {
 
@@ -22,6 +24,15 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case PLAINTE:
+                setupHtmlForPlainte();
+                break;
+            case BANNIR_CLIENT:
+                setupHtmlForBannirClient();
+                break;
+            case NOTIFICATIONS:
+                setupHtmlForNotifications();
+                break;
             case SIGNALS:
                 setupHtmlForSignals();
                 break;
@@ -76,7 +87,59 @@ public class DataTableRow {
             case ETABLIR_RAPPORT:
                 setupHtmlForEtablirRapport();
                 break;
+            case RAPPORT:
+                setupHtmlForRapport();
+                break;
         }
+    }
+
+    private void setupHtmlForPlainte() {
+        Plainte plainte = (Plainte) object;
+        html = "<tr>" +
+                "<td>" + plainte.getId() + "</td>" +
+                "<td>" + plainte.getPlaignant().getFullName() + "</td>" +
+                "<td>" + plainte.getContenu() + "</td>" +
+                "<td>" + plainte.getDate() + "</td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForBannirClient() {
+        Client client = (Client) object;
+        String action = client.isBanned() ? "Rétablir" : "Bannir";
+        html = "<tr>" +
+                "<td>" + client.getId() + "</td>" +
+                "<td>" + client.getNom() + "</td>" +
+                "<td>" + client.getPrenom() + "</td>" +
+                "<td>" + client.getTel() + "</td>" +
+                "<td>" + client.getAdresse() + "</td>" +
+                "<td>" + client.getEmail() + "</td>" +
+                "<td>" + client.getDateNaissance() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getBannedClientId(" + client.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#bannirModal\" value=\"" + client.getId() + "\">" + action + "</td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForNotifications() {
+        Notification notification = (Notification) object;
+        html = "<tr>" +
+                "<td>" + notification.getId() + "</td>" +
+                "<td>" + notification.getContent() + "</td>" +
+                "<td>" + notification.getTimestamp() + "</td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForRapport() {
+        Rapport rapport = (Rapport) object;
+        String avis = rapport.getEtatClient() == EtatClient.ABSENT ? "ABSENT" : rapport.isAvis() ? "Positif" : "Négatif";
+        String commentaire = rapport.getEtatClient() == EtatClient.ABSENT ? "ABSENT" : rapport.getCommentaire();
+        html = "<tr>" +
+                "<td>" + rapport.getVisite().getId() + " </td>" +
+                "<td>" + rapport.getVisite().getTimestamp() + " " + Util.getStringFromHorraire(rapport.getVisite().getHorraire()) + " </td>" +
+                "<td>" + rapport.getVisite().getLogement().getTitre() + "</td>" +
+                "<td>" + rapport.getVisite().getClient().getFullName() + "</td>" +
+                "<td>" + rapport.getEtatClient() + "</td>" +
+                "<td>" + avis + "</td>" +
+                "<td>" + commentaire + "</td>" +
+                "</tr>";
     }
 
     private void setupHtmlForEtablirRapport() {
@@ -298,11 +361,11 @@ public class DataTableRow {
 
     private void setupHtmlForVisite() {
         Visite visite = (Visite) object;
-        html ="<tr>" +
+        html = "<tr>" +
                 "<td>" + visite.getId() + "</td>" +
                 "<td>" + visite.getLogement().getTitre() + "</td>" +
-                "<td>" + visite.getAgent().getNom()+" "+visite.getAgent().getPrenom() + "</td>" +
-                "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
+                "<td>" + visite.getAgent().getFullName() + "</td>" +
+                "<td>" + visite.getClient().getFullName() + "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
                 "</tr>";

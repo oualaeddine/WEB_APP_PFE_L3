@@ -295,13 +295,28 @@ public class Util {
                 return "Visites";
             case NOUVELLE_VENTE:
                 return "Clients";
-
+            case RAPPORTS_LIST:
+                return "Rapports";
+            case MY_CANCELED_VISITS:
+                return "Visites annulées";
+            case MY_PASSED_VISITS:
+                return "Visites passées";
+            case EMPLOYEE_NOTIFICATIONS:
+                return "Notifications";
+            case BANNIR_CLIENT:
+                return "Clients";
         }
         return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "BANNIR_CLIENT":
+                return BANNIR_CLIENT;
+            case "EMPLOYEE_NOTIFICATIONS":
+                return EMPLOYEE_NOTIFICATIONS;
+            case "MY_PASSED_VISITS":
+                return MY_PASSED_VISITS;
             case "VENTES_EN_COURS":
                 return VENTES_EN_COURS;
             case "VENTES_ANNULEES":
@@ -394,10 +409,31 @@ public class Util {
                 return ADMINISTRATION_MESSAGES_FOR_USER;
             case "CLIENTS_MESSAGES_FOR_USER":
                 return CLIENTS_MESSAGES_FOR_USER;
+            case "RAPPORTS_LIST":
+                return RAPPORTS_LIST;
+            case "MY_CANCELED_VISITS":
+                return MY_CANCELED_VISITS;
+            case "PLAINTES":
+                return PLAINTES;
+
         }
-        return VISITES;
+        return null;
     }
 
+    public static String getStringFromHorraire(int x) {
+        switch (x) {
+            case 1:
+                return "08:00 - 10:00";
+            case 2:
+                return "10:00 - 12:00";
+            case 3:
+                return "12:00 - 14:00";
+            case 4:
+                return "14:00 - 16:00";
+            default:
+                return "NULL";
+        }
+    }
     public static Date getDateFromString(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;

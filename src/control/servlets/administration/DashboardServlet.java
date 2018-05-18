@@ -1,6 +1,8 @@
 package control.servlets.administration;
 
 import control.servlets.MyServlet;
+import control.system.managers.AuthManager;
+import control.system.managers.EmployeManager;
 import model.enums.UserType;
 
 import javax.servlet.ServletException;
@@ -19,7 +21,15 @@ public class DashboardServlet extends MyServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        String action = request.getParameter("action");
+        if (action != null) {
+            switch (action) {
+                case "modifierProfil":
+                    EmployeManager employeManager = new EmployeManager();
+                    System.out.println("Modification :" + employeManager.modifierProfil(request));
+            }
+            doGet(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

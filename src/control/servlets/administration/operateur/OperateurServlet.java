@@ -72,7 +72,7 @@ public class OperateurServlet extends MyServlet {
                         break;
                     }
                     case "signalerClient": {
-                        this.getServletContext().getRequestDispatcher("/html/signalerClient.html").forward(request, response);
+                        this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALER_CLIENT").forward(request, response);
                         break;
                     }
                     case "allLogements": {

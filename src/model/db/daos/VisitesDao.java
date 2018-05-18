@@ -361,9 +361,9 @@ public class VisitesDao extends DAO {
             System.out.println("Notification envoyée à l'agent: " + new EmployeNotificationDAO().add(notification));
 
             Notification notification1 = new Notification();
-            notification.setDestinataire(visite.getClient());
-            notification.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));
-            System.out.println("Notification envoyée au client: ");
+            notification1.setDestinataire(visite.getClient());
+            notification1.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));
+            System.out.println("Notification envoyée au client: " + new ClientNotificationDAO().add(notification1));
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -494,7 +494,7 @@ public class VisitesDao extends DAO {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
         try {
-            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp<=current_timestamp AND etat='prevue';");
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE timestamp>=current_timestamp AND etat='prevue';");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

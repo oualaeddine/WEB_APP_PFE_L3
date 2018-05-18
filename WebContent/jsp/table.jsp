@@ -328,15 +328,15 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form method="get" action="/ModifierServlet?ajouter=visite" id="modifierVisiteForm">
+                    <form method="get" action="/modifierVisiteServlet" id="modifierVisiteForm">
 
                         <input id="visiteModifiee" name="nouvelleDate" type="hidden">
                         <div class="form-group">
                             <label for="motif">Veuillez entrer le type de la modification</label>
-                            <select name="action" id="action" class="form-control">
+                            <select name="what" id="what" class="form-control">
                                 <option value="0" disabled="" selected="">- action -</option>
-                                <option value="1"> cancel</option>
-                                <option value="2"> reporter</option>
+                                <option value="annuler"> cancel</option>
+                                <option value="reporter"> reporter</option>
                             </select>
                         </div>
                         <input type="hidden" name="clientId" id="clientId">
@@ -345,12 +345,12 @@
                         <input type="hidden" name="newDate" id="newDate">
                         <input type="hidden" name="logementId" id="logementId">
 
-                        <button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider
-                        </button>
+                        <%--<button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider</button>--%>
                     </form>
 
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="modifierVisiteForm">Valider</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

@@ -54,7 +54,7 @@ public class ProgrammerVisiteServlet extends MyServlet {
             visite.setTimestamp(timestamp);
 
             System.out.println("Ajout de la nouvelle visite: " + new VisitesDao().add(visite));
-//            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
+            redirectToDashboard(request, response);
         }
 
         if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
@@ -80,7 +80,6 @@ public class ProgrammerVisiteServlet extends MyServlet {
         if (request.getParameter("action") == null) {
             this.getServletContext().getRequestDispatcher("/programmerVisite/programmerVisite.jsp").forward(request, response);
         }
-
 
     }
 }

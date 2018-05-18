@@ -164,7 +164,7 @@ public class DataTableRow {
                 "<td>" + visite.getClient().getNom()+" "+visite.getClient().getPrenom()+ "</td>" +
                 "<td>" + visite.getTimestamp() + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
-                "<td><button type=\"button\"  onclick=\"getVisiteModifieeId(" + visite.getId() + "," + visite.getId() +
+                "<td><button type=\"button\"  onclick=\"getVisiteModifieeId(" + visite.getId() +
                 "," + visite.getLogement().getId() + "," + visite.getLogement().getLocalite().getId() + "," + visite.getClient().getId() +
                 ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#modifierVisiteModal\"" +
                 " value=\"" + visite.getId() + "\">Modifier</td>" +
@@ -351,7 +351,7 @@ public class DataTableRow {
         double restant = vente.getLogement().getPrix() - new VersementDAO().getSommeVersementsByVente(vente.getId());
         html = "<tr>" +
                 "<td>" + vente.getId() + "</td>" +
-                "<td>" + vente.getClient().getNom() + " " + vente.getClient().getPrenom() + "</td>" +
+                "<td>" + vente.getClient().getFullName() + "</td>" +
                 "<td>" + vente.getLogement().getTitre() + "</td>" +
                 "<td>" + vente.getDate() + "</td>" +
                 "<td>" + restant + "</td>" +

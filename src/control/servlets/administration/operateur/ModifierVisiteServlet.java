@@ -1,6 +1,8 @@
 package control.servlets.administration.operateur;
 
 import control.api.VisiteApi;
+import control.servlets.MyServlet;
+import control.system.managers.OperateursManager;
 import model.beans.Logement;
 import model.beans.Visite;
 import model.beans.humans.Client;
@@ -18,32 +20,44 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
+@SuppressWarnings("ALL")
 @WebServlet(name = "ModifierVisiteServlet", urlPatterns = "/modifierVisiteServlet")
-public class ModifierVisiteServlet extends HttpServlet {
+public class ModifierVisiteServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String what = request.getParameter("what");
+        if (what != null) {
+            switch (what) {
+                case "annuler":
+                    int visiteId = Integer.parseInt(request.getParameter("visiteId"));
+                    Visite visitee = new VisitesDao().getById(visiteId);
+                    System.out.println("Annulation: " + new VisitesDao().annulerVisite(visitee));
+                    break;
+                case "reporter":
+                    if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
+                        Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
+                        Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
+                        Employe agent = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("idAgent")));
+                        int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
+                        Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
 
-        if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
-            Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));
-            Client client = (Client) new ClientDAO().getById(Integer.parseInt(request.getParameter("idClient")));
-            Employe agent = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("idAgent")));
-            int horraire = VisiteApi.getHorraireFromStringDate(request.getParameter("heureDebut"));
-            Date timestamp = VisiteApi.getDateFromString(request.getParameter("heureDebut"));
+                        Visite visite = new Visite();
+                        visite.setLogement(logement);
+                        visite.setClient(client);
+                        visite.setAgent(agent);
+                        visite.setHorraire(horraire);
+                        visite.setTimestamp(timestamp);
 
-            Visite visite = new Visite();
-            visite.setLogement(logement);
-            visite.setClient(client);
-            visite.setAgent(agent);
-            visite.setHorraire(horraire);
-            visite.setTimestamp(timestamp);
-
-            System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
-        } else
-            this.getServletContext().getRequestDispatcher("/programmerVisite/modifierVisite.jsp").forward(request, response);
-
+                        System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
+                        this.getServletContext().getRequestDispatcher("/home").forward(request, response);
+                    } else
+                        this.getServletContext().getRequestDispatcher("/programmerVisite/modifierVisite.jsp").forward(request, response);
+                    break;
+            }
+        }
+        redirectToDashboard(request, response);
     }
 }

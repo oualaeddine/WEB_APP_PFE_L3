@@ -63,9 +63,7 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-        /*notifications*/
-        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
-        navElements.add(notifsNavElement);
+
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
@@ -214,9 +212,7 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-        /*notifications*/
-        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
-        navElements.add(notifsNavElement);
+
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
@@ -361,9 +357,6 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-        /*notifications*/
-        NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
-        navElements.add(notifsNavElement);
 
         /*messages*/
         LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();

@@ -97,7 +97,6 @@ public class RapportDAO extends DAO {
                         rapport.getVisite().getId() + "," + "'absent'" +
                         ");");
                 visiteStatement.execute("UPDATE visite set etat = 'terminee' where visite.id=" + rapport.getVisite().getId() + ";");
-                return true;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -112,6 +111,7 @@ public class RapportDAO extends DAO {
                         "); ");
                 visiteStatement.execute("UPDATE visite set etat = 'terminee' where visite.id=" + rapport.getVisite().getId() + ";");
 
+                System.out.println("rapport etabli");
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();

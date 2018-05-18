@@ -288,7 +288,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
+                                    <canvas id="pieChart" height="300"></canvas>
                                 </div>
                                 <!-- ./chart-responsive -->
                             </div>
@@ -438,43 +438,43 @@
     };
 
     // Create the line chart
-    salesChart.Line(salesChartData, salesChartOptions);
+
+    var salesChart = new Chart(salesChartCanvas, {
+        type: 'line',
+        data: salesChartData,
+        options: salesChartOptions
+    });
+
+    // salesChart.Line(salesChartData, salesChartOptions);
 </script>
 <script>
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-        {
-            value: <%out.print(ventesStats.nbrVentesPerRegion(localites.get(0).getId()));%>,
-            color: '#f56954',
-            highlight: '#f56954',
-            label: '<%out.print(localites.get(0).getNom());%>'
-        },
-        {
-            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(1).getId()));%>,
-            color: '#00a65a',
-            highlight: '#00a65a',
-            label: '<%out.print(localites.get(1).getNom());%>'
-        },
-        {
-            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(2).getId()));%>,
-            color: '#f39c12',
-            highlight: '#f39c12',
-            label: '<%out.print(localites.get(2).getNom());%>'
-        },
-        {
-            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(3).getId()));%>,
-            color: '#00c0ef',
-            highlight: '#00c0ef',
-            label: '<%out.print(localites.get(3).getNom());%>'
-        },
-        {
-            value:  <%out.print(ventesStats.nbrVentesPerRegion(localites.get(4).getId()));%>,
-            color: '#3c8dbc',
-            highlight: '#3c8dbc',
-            label: '<%out.print(localites.get(4).getNom());%>'
-        }
-    ];
+    var PieData = {
+        datasets: [{
+            data: [
+                <%out.print(ventesStats.nbrVentesPerRegion(localites.get(0).getId()));%>,
+                <%out.print(ventesStats.nbrVentesPerRegion(localites.get(1).getId()));%>,
+                <%out.print(ventesStats.nbrVentesPerRegion(localites.get(2).getId()));%>,
+                <%out.print(ventesStats.nbrVentesPerRegion(localites.get(3).getId()));%>,
+                <%out.print(ventesStats.nbrVentesPerRegion(localites.get(4).getId()));%>
+            ],
+            backgroundColor: [
+                '#f56954',
+                '#00a65a',
+                '#f39c12',
+                '#00c0ef',
+                '#3c8dbc'
+            ]
+        }],
+        labels: [
+            '<%out.print(localites.get(0).getNom());%>',
+            '<%out.print(localites.get(1).getNom());%>',
+            '<%out.print(localites.get(2).getNom());%>',
+            '<%out.print(localites.get(3).getNom());%>',
+            '<%out.print(localites.get(4).getNom());%>'
+        ]
+    }
+
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment
         segmentShowStroke: true,
@@ -496,13 +496,13 @@
         responsive: true,
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: false,
-        // String - A legend template
-        <%--legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',--%>
-        // String - A tooltip template
-        <%--tooltipTemplate: '<%=value %> <%=label%> users'--%>
     };
     // Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    var pieChart = new Chart(pieChartCanvas, {
+        type: 'doughnut',
+        data: PieData,
+        options: pieOptions
+    });
 </script>
 </html>

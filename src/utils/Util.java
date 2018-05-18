@@ -2,6 +2,7 @@ package utils;
 
 
 import model.beans.humans.Employe;
+import model.beans.humans.Person;
 import model.db.daos.ClientDAO;
 import model.db.daos.EmployeDAO;
 import model.enums.EtatVente;
@@ -411,5 +412,9 @@ public class Util {
             e.printStackTrace();
         }
         return date1;
+    }
+
+    public static boolean isEmploye(Person attribute) {
+        return false;
     }
 }

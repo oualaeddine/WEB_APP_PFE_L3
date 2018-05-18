@@ -6,6 +6,7 @@
 <%@ page import="model.beans.humans.Client" %>
 <%@ page import="model.db.daos.EmployeDAO" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
 <%@ page import="java.util.LinkedList" %>
 <%--
   Created by IntelliJ IDEA.
@@ -149,99 +150,111 @@
                 "</nav>" +
                 "<!-- End of nav bar -->");
     else {
-        Client client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-        out.print("<nav class=\"navbar navbar-default \">" +
-                " <div class=\"container\">"
-                + "     <!-- Brand and toggle get grouped for better mobile display -->"
-                + "     <div class=\"navbar-header\">"
-                + "         <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navigation\">"
-                + "             <span class=\"sr-only\">Toggle navigation</span>"
-                + "             <span class=\"icon-bar\"></span>"
-                + "             <span class=\"icon-bar\"></span>"
-                + "             <span class=\"icon-bar\"></span>"
-                + "         </button>"
-                + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
-                + "     </div>" +
-                "     <!-- Collect the nav links, forms, and other content for toggling -->" +
-                "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
-                "         <div class=\"button navbar-right\">"
-                + "             <button class=\"navbar-btn nav-button wow fadeInRight\" onclick=\" window.open('submit-property.html')"
-                + "                     data-wow-delay=\"0.5s\">Visitez un Logement"
-                + "             </button>"
-                + "         </div>"
-                + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
-                + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
-                + "             </li>"
-                + ""
-                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-                "                   <a class=\"\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
-                + "             </li>"
-                + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
-                + "                    data-delay=\"200\">A propos de <strong>HCH</strong> <b class=\"caret\"></b></a>"
-                + "                 <ul class=\"dropdown-menu navbar-nav\">"
-                + "                     <li>"
-                + "                         <a href=\"index-2.html\">Qui somme nous?</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"index-4.html\">Nos Services</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=stats\">Statistiques</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
-                + "                     </li>" +
-                "                       <li>" +
-                "                           <a href=\"contact.html\">Contactez nous</a>" +
-                "                       </li>"
-                + ""
-                + "                 </ul>"
-                + "             </li>"
-                + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
-                + "                    data-delay=\"200\">Mon espace<b class=\"caret\"></b></a>"
-                + "                 <ul class=\"dropdown-menu navbar-nav\">"
-                + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=myVisits\">Mes visites</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesNotifs\">Mes notifications</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesVentes\">Mes ventes en cours</a>"
-                + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesLogements\">Mes logements visités</a>"
-                + "                     </li>"
-                + "                 </ul>"
-                + "             </li>"
-                + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
-                + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
-                + "                    data-delay=\"200\"><i class=\"fa fa-user\"></i>     " + client.getUsername() + "<b class=\"caret\"></b></a>"
-                + "                 <ul class=\"dropdown-menu navbar-nav\">"
-                + "                     <li>"
-                + "                         <a class=\"dropdown-toggle\" href=\"\" >" +
-                "                              Modifier mes informations" +
-                "                           </a>"
-                + "                     </li>"
-                + "                     <li>" +
-                "                           <a class\"dropdown-toggle\" href=\"/logout\">" +
-                "                               Déconnexion" +
-                "                           </a>" +
-                "                       </li>"
-                + "                 </ul>"
-                + "             </li>"
+        Client client;
+        UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
+        if (userType == UserType.OPERATEUR
+                || userType == UserType.ADMIN
+                || userType == UserType.AGENT
+                || userType == UserType.SU
+                || userType == UserType.RESPONSABLE_VENTES)
+            out.print("<script>window.location.replace(\"/DashboardServlet\");</script>");
 
-                + "         </ul>"
-                + "     </div>"
-                + "     <!-- /.navbar-collapse -->"
-                + " </div>"
-                + " <!-- /.container-fluid -->" +
-                "</nav>" +
-                "<!-- End of nav bar -->");
+        else {
+            client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
+
+            out.print("<nav class=\"navbar navbar-default \">" +
+                    " <div class=\"container\">"
+                    + "     <!-- Brand and toggle get grouped for better mobile display -->"
+                    + "     <div class=\"navbar-header\">"
+                    + "         <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navigation\">"
+                    + "             <span class=\"sr-only\">Toggle navigation</span>"
+                    + "             <span class=\"icon-bar\"></span>"
+                    + "             <span class=\"icon-bar\"></span>"
+                    + "             <span class=\"icon-bar\"></span>"
+                    + "         </button>"
+                    + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
+                    + "     </div>" +
+                    "     <!-- Collect the nav links, forms, and other content for toggling -->" +
+                    "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
+                    "         <div class=\"button navbar-right\">"
+                    + "             <button class=\"navbar-btn nav-button wow fadeInRight\" onclick=\" window.open('submit-property.html')"
+                    + "                     data-wow-delay=\"0.5s\">Visitez un Logement"
+                    + "             </button>"
+                    + "         </div>"
+                    + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
+                    + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
+                    + "                 <a href=\"index.html\" class=\"active\">Accueil</a>"
+                    + "             </li>"
+                    + ""
+                    + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
+                    "                   <a class=\"\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
+                    + "             </li>"
+                    + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
+                    + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
+                    + "                    data-delay=\"200\">A propos de <strong>HCH</strong> <b class=\"caret\"></b></a>"
+                    + "                 <ul class=\"dropdown-menu navbar-nav\">"
+                    + "                     <li>"
+                    + "                         <a href=\"index-2.html\">Qui somme nous?</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"index-4.html\">Nos Services</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"/ClientServlet?what=stats\">Statistiques</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
+                    + "                     </li>" +
+                    "                       <li>" +
+                    "                           <a href=\"contact.html\">Contactez nous</a>" +
+                    "                       </li>"
+                    + ""
+                    + "                 </ul>"
+                    + "             </li>"
+                    + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
+                    + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
+                    + "                    data-delay=\"200\">Mon espace<b class=\"caret\"></b></a>"
+                    + "                 <ul class=\"dropdown-menu navbar-nav\">"
+                    + "                     <li>"
+                    + "                         <a href=\"/ClientServlet?what=myVisits\">Mes visites</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"/ClientServlet?what=mesNotifs\">Mes notifications</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"/ClientServlet?what=mesVentes\">Mes ventes en cours</a>"
+                    + "                     </li>"
+                    + "                     <li>"
+                    + "                         <a href=\"/ClientServlet?what=mesLogements\">Mes logements visités</a>"
+                    + "                     </li>"
+                    + "                 </ul>"
+                    + "             </li>"
+                    + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
+                    + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
+                    + "                    data-delay=\"200\"><i class=\"fa fa-user\"></i>     " + client.getUsername() + "<b class=\"caret\"></b></a>"
+                    + "                 <ul class=\"dropdown-menu navbar-nav\">"
+                    + "                     <li>"
+                    + "                         <a class=\"dropdown-toggle\" href=\"\" >" +
+                    "                              Modifier mes informations" +
+                    "                           </a>"
+                    + "                     </li>"
+                    + "                     <li>" +
+                    "                           <a class\"dropdown-toggle\" href=\"/logout\">" +
+                    "                               Déconnexion" +
+                    "                           </a>" +
+                    "                       </li>"
+                    + "                 </ul>"
+                    + "             </li>"
+
+                    + "         </ul>"
+                    + "     </div>"
+                    + "     <!-- /.navbar-collapse -->"
+                    + " </div>"
+                    + " <!-- /.container-fluid -->" +
+                    "</nav>" +
+                    "<!-- End of nav bar -->");
+        }
     }
 %>
 
@@ -439,32 +452,32 @@
         </div>
         <div class="row">
             <div class="property-th">
-            <%
-                LinkedList<Logement> logements = logementsStats.mostVisitedLogements();
-                Client loggedIdClient=new Client();
-                String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                if (isLoggedIn) {
-                    loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-                }
-                for (Logement logement : logements) {
+                <%
+                    LinkedList<Logement> logements = logementsStats.mostVisitedLogements();
+                    Client loggedIdClient = new Client();
+                    String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
                     if (isLoggedIn) {
-                        href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                        loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
                     }
-                    out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
-                            "                    <div class=\"box-two proerty-item\">\n" +
-                            "                        <div class=\"item-thumb\">\n" +
-                            "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
-                            "                        </div>\n" +
-                            "                        <div class=\"item-entry overflow\">\n" +
-                            "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
-                            "                            <div class=\"dot-hr\"></div>\n" +
-                            "                            <span class=\"pull-left\"><b>Area :</b> "+logement.getSuperficie()+"m2</span>\n" +
-                            "                            <span class=\"proerty-price pull-right\">"+logement.getPrix()+" DZD</span>\n" +
-                            "                        </div>\n" +
-                            "                    </div>\n" +
-                            "                </div>");
-                }
-            %>
+                    for (Logement logement : logements) {
+                        if (isLoggedIn) {
+                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                        }
+                        out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
+                                "                    <div class=\"box-two proerty-item\">\n" +
+                                "                        <div class=\"item-thumb\">\n" +
+                                "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                        </div>\n" +
+                                "                        <div class=\"item-entry overflow\">\n" +
+                                "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
+                                "                            <div class=\"dot-hr\"></div>\n" +
+                                "                            <span class=\"pull-left\"><b>Area :</b> " + logement.getSuperficie() + "m2</span>\n" +
+                                "                            <span class=\"proerty-price pull-right\">" + logement.getPrix() + " DZD</span>\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "                </div>");
+                    }
+                %>
 
 
                 <div class="col-sm-6 col-md-3 p0">
@@ -882,7 +895,6 @@
 <script src="../../assets_client/js/main.js"></script>
 
 
-
 <div id="programmerVisiteModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -908,7 +920,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default"  type="submit" >Valider</button>
+                <button class="btn btn-default" type="submit">Valider</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
             </div>
         </div>

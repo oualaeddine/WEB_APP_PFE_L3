@@ -1,29 +1,29 @@
-<%@ page import="control.system.managers.AuthManager" %>
-<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
-<%@ page import="model.beans.Logement" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.db.daos.LogementDAO" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.beans.humans.Client" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
+<%@ page import="control.statistics.globales.LogementsStats" %>
+<%@ page import="control.statistics.globales.RapportsStats" %>
+<%@ page import="model.beans.Logement" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="model.db.daos.EmployeDAO" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <%--
   Created by IntelliJ IDEA.
-  User: hp
-  Date: 27/04/2018
-  Time: 17:59
+  User: berre
+  Date: 4/3/2018
+  Time: 9:45 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));%>
-
-
-<html>
+<%
+    boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
+    LogementsStats logementsStats = new LogementsStats();
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HCH Immobilier | Nos logements</title>
+    <title>ERITP | Accueil</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -51,57 +51,57 @@
     <link rel="stylesheet" href="../../assets_client/css/owl.transitions.css">
     <link rel="stylesheet" href="../../assets_client/css/style.css">
     <link rel="stylesheet" href="../../assets_client/css/responsive.css">
+
+
 </head>
 <body>
-
-<!-- Body content -->
-
-
 <div id="include_html"></div>
-<div class="content-area recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+<%
+    Client client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+%>
+<div class="register-area" style="background-color: rgb(249, 249, 249);">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                <!-- /.feature title -->
-                <h2>Nos logements</h2>
-                <p>Choisissez, Visitez, Achetez !</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="property-th">
-                <%
-                    LinkedList<Logement> logements = new LogementDAO().getNonVendus();
-                    Client loggedIdClient = new Client();
-                    String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                    if (isLoggedIn) {
-                        loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-                    }
-                    for (Logement logement : logements) {
-                        if (isLoggedIn) {
-                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
-                        }
-                        out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
-                                "                    <div class=\"box-two proerty-item\">\n" +
-                                "                        <div class=\"item-thumb\">\n" +
-                                "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"item-entry overflow\">\n" +
-                                "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
-                                "                            <div class=\"dot-hr\"></div>\n" +
-                                "                            <span class=\"pull-left\"><b>Area :</b> " + logement.getSuperficie() + "m2</span>\n" +
-                                "                            <span class=\"proerty-price pull-right\">" + logement.getPrix() + " DZD</span>\n" +
-                                "                        </div>\n" +
-                                "                    </div>\n" +
-                                "                </div>");
-                    }
-                %>
 
+        <div class="col-md-6">
+            <div class="box-for overflow">
+                <div class="col-md-12 col-xs-12 register-blocks">
+                    <h2>Modifier mes informations : </h2>
+                    <form action="/loginsignup" method="post">
+                        <input type="hidden" class="form-control" name="tag" value="edit">
 
+                        <div class="form-group">
+                            <label for="nomInput">Nom</label>
+                            <input type="text" class="form-control" id="nomInput" name="nomInput"
+                                   value="<%out.print(client.getNom());%>">
+
+                            <label for="prenomInput">Prenom</label>
+                            <input type="text" class="form-control" id="prenomInput" name="prenomInput"
+                                   value="<%out.print(client.getPrenom());%>">
+
+                            <label for="dateNaissance">Prenom</label>
+                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance"
+                                   value="<%out.print(client.getDateNaissance());%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailInput">Email</label>
+                            <input type="text" class="form-control" id="emailInput" name="emailInput"
+                                   value="<%out.print(client.getEmail());%>">
+
+                            <label for="inputTel">Numéro de téléphone</label>
+                            <input type="text" class="form-control" id="inputTel" name="inputTel"
+                                   value="<%out.print(client.getTel());%>">
+
+                            <label for="adresseInput">Adresse</label>
+                            <input type="text" class="form-control" id="adresseInput" name="adresseInput"
+                                   value="<%out.print(client.getAdresse());%>">
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</body>
 
 
 <script src="../../assets_client/js/modernizr-2.6.2.min.js"></script>
@@ -127,4 +127,5 @@
         $("#include_html").load("../../jsp/client/entete.jsp");
     });
 </script>
+</body>
 </html>

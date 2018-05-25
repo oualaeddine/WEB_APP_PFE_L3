@@ -184,7 +184,8 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="choice" data-toggle="wizard-radio">
-                                                    <input type="radio" id="appartement" name="type"
+                                                    <input type="radio" class="active" checked id="appartement"
+                                                           name="type"
                                                            value="appartement">
                                                     <div class="card card-checkboxes card-hover-effect">
                                                         <i class="far fa-building"></i>

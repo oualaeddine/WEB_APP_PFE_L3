@@ -38,7 +38,12 @@ public class MyClientServlet extends MyServlet {
                     case "mesLogements":
                         this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=CLIENT_MES_LOGEMENT_VISITES").forward(request, response);
                         break;
-
+                    case "mesNotifs":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=CLIENT_MY_NOTIFICATIONS").forward(request, response);
+                        break;
+                    case "modifierProfil":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/modifierProfilClient.jsp").forward(request, response);
+                        break;
                 }
             }
         } else {

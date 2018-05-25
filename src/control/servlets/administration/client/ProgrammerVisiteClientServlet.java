@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
+@SuppressWarnings("ALL")
 @WebServlet(name = "ProgrammerVisiteClientServlet", value = "/ProgrammerVisiteClient")
 public class ProgrammerVisiteClientServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

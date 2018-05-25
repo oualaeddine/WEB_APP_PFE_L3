@@ -39,6 +39,11 @@ public class ClientLoginServlet extends MyClientServlet {
                         doSignup(request, response);
                         break;
                     }
+                    case "edit": {
+                        doEdit(request, response);
+                        break;
+                    }
+
                     default: {
                         // TODO: 4/15/2018  tag non specifé error
                         //  redirectToLogin(request, response, //l'error ta3na);
@@ -52,8 +57,30 @@ public class ClientLoginServlet extends MyClientServlet {
         }
     }
 
+    private void doEdit(HttpServletRequest request, HttpServletResponse response) {
+        String prenom = request.getParameter("prenomInput");
+        String nom = request.getParameter("nomInput");
+        String email = request.getParameter("emailInput");
+        String tel = request.getParameter("inputTel");
+        String username = request.getParameter("usernameInput");
+        String password = request.getParameter("passwordInput");
+        String adresse = request.getParameter("adresseInput");
+
+        Client client = new Client();
+        client.setPrenom(prenom);
+        client.setNom(nom);
+        client.setEmail(email);
+        client.setTel(tel);
+        client.setUsername(username);
+        client.setPassword(password);
+        client.setAdresse(adresse);
+        client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+        if (authManager.modifierProfil(client)) {
+
+        }
+    }
+
     private void doSignup(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // TODO: 4/15/2018 get form -> validate it -> send it to authManager
 
         String prenom = request.getParameter("prenomInput");
         String nom = request.getParameter("nomInput");

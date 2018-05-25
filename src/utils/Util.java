@@ -44,7 +44,7 @@ public class Util {
         Employe employe = null;
         employe = new EmployeDAO().getByEmail(email);
         name = employe.getNom() + " " + employe.getPrenom();
-        String actionUrl = "localhost:8080/ForgotPassword?linsa=" + employe.getId() + "&code=" + code + "&wech=" + getStringFromType(userType);
+        String actionUrl = "localhost:8080/ForgotPassword?linsa=" + employe.getId() + "&code=" + code;
 
 
         String supportUrl = "/contact";

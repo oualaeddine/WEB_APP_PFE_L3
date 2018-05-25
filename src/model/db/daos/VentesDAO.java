@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Localite;
 import model.beans.Logement;
 import model.beans.Vente;
 import model.beans.humans.Client;
@@ -398,5 +399,19 @@ public class VentesDAO extends DAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public LinkedList<Localite> getTopFiveRegions() {
+        LinkedList<Localite> localites = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = venteStatement.executeQuery("select distinct l.region,(select count(vente.id) from logement,vente,localite where visite.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVisites from logement l order by nbrVisites DESC limit 5;");
+            while (result.next()) {
+                localites.add((Localite) new LocaliteDAO().getById(result.getInt("region")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return localites;
     }
 }

@@ -99,6 +99,7 @@ public class ClientNotificationDAO extends DAO {
                 notification.setContent(result.getString("content"));
                 notification.setTimestamp(result.getTimestamp("timestamp"));
                 System.out.println(notification.toString());
+
                 notifications.add(notification);
             }
         } catch (SQLException e) {

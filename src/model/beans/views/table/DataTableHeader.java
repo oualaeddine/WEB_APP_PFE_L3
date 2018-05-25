@@ -29,6 +29,9 @@ public class DataTableHeader {
             case VERSEMENTS_FOR_VENTE:
                 setupTableHeaderForVentes();
                 break;
+            case CLIENT_MY_NOTIFICATIONS:
+                setupTableHeaderForNotifications();
+                break;
             case CLIENT_MES_LOGEMENT_VISITES:
                 setupTableHeaderForLogements();
                 break;

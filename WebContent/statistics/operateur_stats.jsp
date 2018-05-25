@@ -237,9 +237,9 @@
                                         for (Visite visite : visites) {
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getLogement().getId() + "</a></td>" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visite.getClient().getNom() + " " + visite.getClient().getPrenom() + "</a></td>" +
+                                                    "<td>" + visite.getId() + "</td>\n" +
+                                                    "<td>" + visite.getLogement().getId() + "</td>" +
+                                                    "<td>" + visite.getClient().getFullName() + "</td>" +
                                                     "<td><span class=\"label  label-success\">" + visite.getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }
@@ -247,9 +247,9 @@
                                         for (int i = 0; i < 5; i++) {
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getLogement().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + visites.get(i).getClient().getNom() + " " + visites.get(i).getClient().getPrenom() + "</a></td>\n" +
+                                                    "<td>" + visites.get(i).getId() + "</td>\n" +
+                                                    "<td>" + visites.get(i).getLogement().getId() + "</td>\n" +
+                                                    "<td>" + visites.get(i).getClient().getFullName() + "</td>\n" +
                                                     "<td><span class=\"label label-success\">" + visites.get(i).getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }

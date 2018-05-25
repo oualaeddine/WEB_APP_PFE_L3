@@ -94,4 +94,7 @@ public class AuthManager {
     }
 
 
+    public boolean modifierProfil(Client client) {
+        return new ClientDAO().update(client);
+    }
 }

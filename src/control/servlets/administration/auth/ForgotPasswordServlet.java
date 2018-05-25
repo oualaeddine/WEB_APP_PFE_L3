@@ -36,10 +36,10 @@ public class ForgotPasswordServlet extends MyServlet {
             }
             this.getServletContext().getRequestDispatcher("/html/forgot-password.html").forward(request,response);
             System.out.println(code);
-        } else { //todo: test if token is valid
+        } else {
             int userId = Integer.parseInt(request.getParameter("linsa"));
-            UserType userType = Util.getUserTypeFromString(request.getParameter("wech"));
-            System.out.println(new OttDAO().verifyToken(token, userId, userType));
+            System.out.println(new OttDAO().verifyToken(token, userId));
+
         }
     }
 
@@ -52,8 +52,7 @@ public class ForgotPasswordServlet extends MyServlet {
             System.out.println("ani f l'else taa doGet");
             String token = request.getParameter("code");
             int userId = Integer.parseInt(request.getParameter("linsa"));
-            UserType userType = Util.getUserTypeFromString(request.getParameter("wech"));
-            if (new OttDAO().verifyToken(token, userId, userType)) {
+            if (new OttDAO().verifyToken(token, userId)) {
                 Employe employe = (Employe) new EmployeDAO().getById(userId);
                 String username = employe.getUsername();
                 new AuthManager().createSessionForEmploye(username,request);

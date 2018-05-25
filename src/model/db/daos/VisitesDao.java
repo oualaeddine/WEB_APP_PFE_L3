@@ -375,7 +375,7 @@ public class VisitesDao extends DAO {
         LinkedList<Visite> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = visiteStatement.executeQuery("SELECT * FROM visite");
+            result = visiteStatement.executeQuery("SELECT * FROM visite order by id desc;");
             while (result.next()) {
                 Visite visite = new Visite();
                 visite.setId(result.getInt("id"));

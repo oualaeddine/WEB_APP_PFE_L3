@@ -20,7 +20,7 @@ public class RapportDAO extends DAO {
         ResultSet result;
         LinkedList<Rapport> rapports = new LinkedList<>();
         try {
-            result = rapportStatement.executeQuery("SELECT rapport.* FROM rapport,visite WHERE visiteId=visite.id AND visite.agentId=" + agentId + ";");
+            result = rapportStatement.executeQuery("SELECT rapport.* FROM rapport,visite WHERE visiteId=visite.id AND visite.agentId=" + agentId + " order by rapport.visiteId desc ;");
             while (result.next()) {
                 Rapport rapport;
                 if (result.getString("etatClient").equals("present")) {

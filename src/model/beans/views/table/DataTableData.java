@@ -182,6 +182,7 @@ public class DataTableData {
             case VERSEMENTS_FOR_USER:
                 break;
             case CLIENT_MY_NOTIFICATIONS:
+                setupDataClientNotifications();
                 break;
             case MY_CANCELED_VISITS:
                 setupDataCanceledVisitsForAgent();
@@ -195,6 +196,13 @@ public class DataTableData {
             case BANNIR_CLIENT:
                 setupDataBannirClient();
                 break;
+        }
+    }
+
+    private void setupDataClientNotifications() {
+        LinkedList<Notification> notifications = new ClientNotificationDAO().getByClient(userId);
+        for (Notification notification : notifications) {
+            data.add(new DataTableRow(DataTableRowFormat.NOTIFICATIONS, notification));
         }
     }
 

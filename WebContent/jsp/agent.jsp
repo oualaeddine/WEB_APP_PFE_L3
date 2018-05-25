@@ -122,7 +122,7 @@
                         <div class="mr-5"><%out.print(agentStats.getProgrammedVisites());%> Nouvelles Visites!
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
+                    <a class="card-footer text-white clearfix small z-1" href="/DashboardServlet?what=myVisits">
                         <span class="float-left">Afficher les Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -138,7 +138,7 @@
                         </div>
                         <div class="mr-5"><%out.print("" + agentStats.getCanceledVisites());%> Visites annulées!</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
+                    <a class="card-footer text-white clearfix small z-1" href="/DashboardServlet?what=visitesAnnulees">
                         <span class="float-left">Afficher les Details</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>

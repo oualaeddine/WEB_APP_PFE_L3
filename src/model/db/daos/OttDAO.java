@@ -34,10 +34,10 @@ public class OttDAO extends DAO{
         return false;
     }
 
-    public boolean verifyToken(String token, int userId, UserType userType) {
+    public boolean verifyToken(String token, int userId) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='" + token + "' AND userId=" + userId + " AND userType='" + Util.getStringFromType(userType) + "' AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
+            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='" + token + "' AND userId=" + userId + "  AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
             if (result.next()) {
                 return true;
             }

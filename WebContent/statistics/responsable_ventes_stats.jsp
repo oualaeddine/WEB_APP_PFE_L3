@@ -23,7 +23,7 @@
     LogementsStats logementsStats = new LogementsStats();
 %>
 <%!
-    LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();
+    LinkedList<Localite> localites = new VentesDAO().getTopFiveRegions();
 %>
 <head>
     <meta charset="utf-8">
@@ -239,9 +239,9 @@
                                         for (Versement versement : versements) {
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versement.getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versement.getVente().getLogement().getId() + "</a></td>" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versement.getVente().getClient().getNom() + " " + versement.getVente().getClient().getPrenom() + "</a></td>" +
+                                                    "<td>" + versement.getId() + "</td>\n" +
+                                                    "<td>" + versement.getVente().getLogement().getId() + "</td>" +
+                                                    "<td>" + versement.getVente().getClient().getNom() + " " + versement.getVente().getClient().getPrenom() + "</td>" +
                                                     "<td><span class=\"label  label-success\">" + versement.getMontant() + " DA</span></td>\n" +
                                                     "</tr>");
                                         }
@@ -249,9 +249,9 @@
                                         for (int i = 0; i < 5; i++) {
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versements.get(i).getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versements.get(i).getVente().getLogement().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + versements.get(i).getVente().getClient().getNom() + " " + versements.get(i).getVente().getClient().getPrenom() + "</a></td>\n" +
+                                                    "<td>" + versements.get(i).getId() + "</td>\n" +
+                                                    "<td>" + versements.get(i).getVente().getLogement().getId() + "</td>\n" +
+                                                    "<td>" + versements.get(i).getVente().getClient().getNom() + " " + versements.get(i).getVente().getClient().getPrenom() + "</td>\n" +
                                                     "<td><span class=\"label label-success\">" + versements.get(i).getMontant() + " DA</span></td>\n" +
                                                     "</tr>");
                                         }

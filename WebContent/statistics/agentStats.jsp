@@ -266,8 +266,8 @@
                                             }
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapport.getVisite().getClient().getNom() + " " + rapport.getVisite().getClient().getPrenom() + "</a></td>\n" +
+                                                    "<td>" + rapport.getVisite().getId() + "</td>\n" +
+                                                    "<td>" + rapport.getVisite().getClient().getNom() + " " + rapport.getVisite().getClient().getPrenom() + "</td>\n" +
                                                     "<td><span class=\"label " + color + "\">" + avis + "</span></td>\n" +
                                                     "</tr>");
                                         }
@@ -284,8 +284,8 @@
                                             }
                                             out.print("" +
                                                     "<tr>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getId() + "</a></td>\n" +
-                                                    "<td><a href=\"pages/examples/invoice.html\">" + rapports.get(i).getVisite().getClient().getNom() + " " + rapports.get(i).getVisite().getClient().getPrenom() + "</a></td>\n" +
+                                                    "<td>" + rapports.get(i).getVisite().getId() + "</td>\n" +
+                                                    "<td>" + rapports.get(i).getVisite().getClient().getNom() + " " + rapports.get(i).getVisite().getClient().getPrenom() + "</td>\n" +
                                                     "<td><span class=\"label " + color + ">" + avis + "</span></td>\n" +
                                                     "</tr>");
                                         }
@@ -343,6 +343,7 @@
 </div>
 <!-- ./wrapper -->
 <%!private VisitesStats visitesStats = new VisitesStats();%>
+
 
 <%!                                       LinkedList<Localite> localites = new VisitesDao().getTopFiveRegions();                                    %><!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>

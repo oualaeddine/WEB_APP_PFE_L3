@@ -119,7 +119,7 @@ public class VersementDAO extends DAO {
         LinkedList<Versement> list = new LinkedList<>();
         ResultSet result;
         try {
-            result = versementStatement.executeQuery("SELECT * FROM versement;");
+            result = versementStatement.executeQuery("SELECT * FROM versement order by id desc;");
             while (result.next()) {
                 Versement versement = new Versement();
                 versement.setId(result.getInt("id"));

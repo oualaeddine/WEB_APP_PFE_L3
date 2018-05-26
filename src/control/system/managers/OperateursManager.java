@@ -14,14 +14,9 @@ public class OperateursManager {
         this.loggedInOperateur = loggedInOperateur;
     }
 
+
     public boolean createClient(Client client){
         return new ClientDAO().add(client);
-    }
-    public boolean banClient(Client client){
-        return new ClientDAO().banById(client.getId());
-    }
-    public boolean createVisite(Visite visite){
-        return new VisitesDao().add(visite);
     }
 
     public boolean changerMotDePasse(String mdp){

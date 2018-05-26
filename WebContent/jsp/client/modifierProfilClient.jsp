@@ -60,9 +60,9 @@
     Client client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 %>
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
-    <div class="container">
+    <div class="container center-block">
 
-        <div class="col-md-6">
+        <div class="col-md-6 ">
             <div class="box-for overflow">
                 <div class="col-md-12 col-xs-12 register-blocks">
                     <h2>Modifier mes informations : </h2>

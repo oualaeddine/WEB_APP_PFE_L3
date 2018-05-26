@@ -91,7 +91,7 @@ public class ClientNotificationDAO extends DAO {
         ResultSet result;
         LinkedList<Notification> notifications = new LinkedList<>();
         try {
-            result = statement.executeQuery("SELECT * FROM notification_client where destinataire=" + id + ";");
+            result = statement.executeQuery("SELECT * FROM notification_client where destinataire=" + id + " order by timestamp desc ;");
             while (result.next()) {
                 Notification notification = new Notification();
                 notification.setId(result.getInt("id"));

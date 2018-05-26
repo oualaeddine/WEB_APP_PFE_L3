@@ -366,7 +366,7 @@ public class DataTableRow {
                 "<td>" + visite.getLogement().getTitre() + "</td>" +
                 "<td>" + visite.getAgent().getFullName() + "</td>" +
                 "<td>" + visite.getClient().getFullName() + "</td>" +
-                "<td>" + visite.getTimestamp() + "</td>" +
+                "<td>" + visite.getTimestamp() + " | " + Util.getStringFromHorraire(visite.getHorraire()) + "</td>" +
                 "<td>" + visite.getEtatVisite() + "</td>" +
                 "</tr>";
     }

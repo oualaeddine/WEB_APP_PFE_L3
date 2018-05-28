@@ -15,6 +15,16 @@ public class ClientDAO extends DAO {
 
     };
 
+    public boolean authenticateClient(String username, String password) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("SELECT id,isBanned FROM client WHERE ((username='" + username + "' AND password='" + password + "') OR (email='" + username + "' AND password='" + password + "')) AND isBanned=0 ;");
+            return (result.next());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean changePassword(int id, String pwd){
         try {
             clientStatement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
@@ -142,13 +152,13 @@ public class ClientDAO extends DAO {
     public boolean update(Object object) {
         Client employe = (Client) object;
         try {
-            clientStatement.execute("UPDATE employe SET " +
+            clientStatement.execute("UPDATE client SET " +
                     "nom = '" + employe.getNom() + "'," +
                     "prenom = '" + employe.getPrenom() + "'," +
                     "tel = '" + employe.getTel() + "'," +
                     "dateNaiss = '" + employe.getDateNaissance() + "'," +
                     "adresse='" + employe.getAdresse() + "'," +
-                    "email='" + employe.getEmail() + "'," +
+                    "email='" + employe.getEmail() + "'" +
                     " WHERE employe.id=" + employe.getId() + ";");
             return true;
         } catch (SQLException e) {

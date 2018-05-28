@@ -293,10 +293,11 @@
                             <i class="fa fa-th"></i>
                         </div>
                         <div class="more-entry overflow">
-                            <h5><a href="logements.jsp">CAN'T DECIDE ? </a></h5>
-                            <h5 class="tree-sub-ttl">Show all properties</h5>
-                            <a href="/ClientServlet?what=logements">
-                                <button class="btn border-btn more-black" value="All properties">All properties</button>
+                            <h5><a href="logements.jsp">IMPOSSIBLE DE SE DECIDER ? </a></h5>
+                            <h5 class="tree-sub-ttl">Voir tous les logements</h5>
+                            <a href="/DashboardServlet?what=logements">
+                                <button class="btn border-btn more-black" value="All properties">TOUS LES LOGEMENTS
+                                </button>
                             </a>
                         </div>
                     </div>
@@ -915,6 +916,24 @@
 
     new WOW().init();
 </script>
+
+<%
+    if (request.getParameter("error") != null) {
+        int errorId = Integer.parseInt(request.getParameter("error"));
+        String errorMessage = "Unidentified error";
+        switch (errorId) {
+            case MyServlet.ACTION_ERROR:
+                errorMessage = "Action non effectuee, Veuillez reessayer";
+                break;
+            case MyServlet.ACTION_SUCCESS:
+                errorMessage = "Action bien effectuee !";
+                break;
+        }
+        out.print("<script type=\"text/javascript\">");
+        out.println("alert('" + errorMessage + "');");
+        out.println("</script>");
+    }
+%>
 
 </body>
 

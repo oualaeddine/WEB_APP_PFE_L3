@@ -130,6 +130,23 @@
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="../js/bootstrapValidator.min.js"></script>
+<%
+    if (request.getParameter("error") != null) {
+        int errorId = Integer.parseInt(request.getParameter("error"));
+        String errorMessage = "Unidentified error";
+        switch (errorId) {
+            case MyServlet.ACTION_ERROR:
+                errorMessage = "Erreur lors de la reinitialisation du mot de passe";
+                break;
+            case MyServlet.ACTION_SUCCESS:
+                errorMessage = "Mot de passe réinitialisé";
+                break;
+        }
+        out.print("<script type=\"text/javascript\">");
+        out.println("alert('" + errorMessage + "');");
+        out.println("</script>");
+    }
+%>
 </body>
 <script>
     $(document).ready(function () {

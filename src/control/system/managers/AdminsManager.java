@@ -168,13 +168,13 @@ public class AdminsManager {
         return new EmployeDAO().add(employee);
     }
 
-    public String bannirClient(HttpServletRequest request) {
+    public boolean bannirClient(HttpServletRequest request) {
         int clientBanniId = Integer.parseInt(request.getParameter("clientBanni"));
         Client client1 = (Client) new ClientDAO().getById(clientBanniId);
         if (client1.isBanned()) {
-            return ("Client rétabli: " + new ClientDAO().retablirById(clientBanniId));
+            return new ClientDAO().retablirById(clientBanniId);
         } else {
-            return ("Client banni: " + new ClientDAO().banById(clientBanniId));
+            return new ClientDAO().banById(clientBanniId);
         }
     }
 }

@@ -14,23 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet({"/ChangePassword"})
-public class ChangePasswordServlet extends HttpServlet {
+public class ChangePasswordServlet extends MyServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Person person =(Person) request.getSession().getAttribute("user");
         String mdp = request.getParameter("newMdp");
         switch ((UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE)) {
             case CLIENT:
                 if (new ClientDAO().changePassword(person.getId(), mdp)) {
-                    System.out.println("Password changed successfully");
-                } else System.out.println("Error changing password");
+                    redirectToDashboard(request, response, ACTION_SUCCESS);
+                } else redirectToDashboard(request, response, ACTION_ERROR);
                 break;
             default:
                 if (new EmployeDAO().changePassword(person.getId(), mdp)) {
-                    System.out.println("Password changed successfully");
-                } else System.out.println("Error changing password");
+                    redirectToDashboard(request, response, ACTION_SUCCESS);
+                } else redirectToDashboard(request, response, ACTION_ERROR);
                 break;
         }
-        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

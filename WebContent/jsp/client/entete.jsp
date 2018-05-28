@@ -102,7 +102,7 @@
                 "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
                 "         <div class=\"button navbar-right\">"
                 + "             <button class=\"navbar-btn nav-button wow bounceInRight login\" onclick=\" window.open('/loginsignup')\""
-                + "                     data-wow-delay=\"0.4s\">Login"
+                + "                     data-wow-delay=\"0.4s\">Se connecter/S'enregistrer"
                 + "             </button>"
                 + ""
                 + "         </div>"
@@ -123,15 +123,8 @@
                 + "                         <a href=\"index-2.html\">Qui somme nous?</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"index-4.html\">Nos Services</a>"
-                + "                     </li>"
-                + "                     <li>"
                 + "                         <a href=\"/home?what=stats\">Statistiques</a>"
                 + "                     </li>"
-                + "                     <li>"
-                + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
-                + "                     </li>"
-                + ""
                 + "                 </ul>"
                 + "             </li>"
                 + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.4s\"><a href=\"contact.html\">Contactez nous</a></li>"
@@ -171,7 +164,7 @@
                 + "             </li>"
                 + ""
                 + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.1s\">" +
-                "                   <a class=\"" + logements + "\" href=\"/ClientServlet?what=logements\">Nos Logements</a>"
+                "                   <a class=\"" + logements + "\" href=\"/DashboardServlet?what=logements\">Nos Logements</a>"
                 + "             </li>"
                 + "             <li class=\"dropdown ymm-sw \" data-wow-delay=\"0.1s\">"
                 + "                 <a href=\"index.html\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" data-hover=\"dropdown\""
@@ -184,13 +177,13 @@
                 + "                         <a href=\"index-4.html\">Nos Services</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=stats\">Statistiques</a>"
+                + "                         <a href=\"/DashboardServlet?what=stats\">Statistiques</a>"
                 + "                     </li>"
                 + "                     <li>"
                 + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
                 + "                     </li>" +
                 "                       <li>" +
-                "                           <a href=\"contact.html\">Contactez nous</a>" +
+                "                           <a href=\"/DashboardServlet?what=contacter\">Contactez nous</a>" +
                 "                       </li>"
                 + ""
                 + "                 </ul>"
@@ -200,16 +193,16 @@
                 + "                    data-delay=\"200\">Mon espace<b class=\"caret\"></b></a>"
                 + "                 <ul class=\"dropdown-menu navbar-nav\">"
                 + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=myVisits\">Mes visites</a>"
+                + "                         <a href=\"/DashboardServlet?what=myVisits\">Mes visites</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesNotifs\">Mes notifications</a>"
+                + "                         <a href=\"/DashboardServlet?what=mesNotifs\">Mes notifications</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesVentes\">Mes ventes en cours</a>"
+                + "                         <a href=\"/DashboardServlet?what=mesVentes\">Mes ventes en cours</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"/ClientServlet?what=mesLogements\">Mes logements visités</a>"
+                + "                         <a href=\"/DashboardServlet?what=mesLogements\">Mes logements visités</a>"
                 + "                     </li>"
                 + "                 </ul>"
                 + "             </li>"
@@ -218,8 +211,13 @@
                 + "                    data-delay=\"200\"><i class=\"fa fa-user\"></i>     " + client.getUsername() + "<b class=\"caret\"></b></a>"
                 + "                 <ul class=\"dropdown-menu navbar-nav\">"
                 + "                     <li>"
-                + "                         <a class=\"dropdown-toggle\" href=\"/ClientServlet?what=modifierProfil\" >" +
+                + "                         <a class=\"dropdown-toggle\" href=\"/DashboardServlet?what=modifierProfil\" >" +
                 "                              Modifier mes informations" +
+                "                           </a>"
+                + "                     </li>"
+                + "                     <li>"
+                + "                         <a class=\"dropdown-toggle\" href=\"/DashboardServlet?what=changerMdp\" >" +
+                "                              Changer mot de passe" +
                 "                           </a>"
                 + "                     </li>"
                 + "                     <li>" +

@@ -1,13 +1,7 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
 <%@ page import="control.statistics.globales.LogementsStats" %>
-<%@ page import="control.statistics.globales.RapportsStats" %>
-<%@ page import="model.beans.Logement" %>
 <%@ page import="model.beans.humans.Client" %>
-<%@ page import="model.db.daos.EmployeDAO" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="java.util.LinkedList" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -51,7 +45,7 @@
     <link rel="stylesheet" href="../../assets_client/css/owl.transitions.css">
     <link rel="stylesheet" href="../../assets_client/css/style.css">
     <link rel="stylesheet" href="../../assets_client/css/responsive.css">
-
+    <link rel="stylesheet" href="../../css/bootstrapValidator.min.css">
 
 </head>
 <body>
@@ -66,19 +60,21 @@
             <div class="box-for overflow">
                 <div class="col-md-12 col-xs-12 register-blocks">
                     <h2>Modifier mes informations : </h2>
-                    <form action="/loginsignup" method="post">
-                        <input type="hidden" class="form-control" name="tag" value="edit">
+                    <form action="/Edit" method="post" id="modifierProfilForm">
+                        <input type="hidden" class="form-control" name="action" value="account">
 
                         <div class="form-group">
                             <label for="nomInput">Nom</label>
                             <input type="text" class="form-control" id="nomInput" name="nomInput"
                                    value="<%out.print(client.getNom());%>">
-
+                        </div>
+                        <div class="form-group">
                             <label for="prenomInput">Prenom</label>
                             <input type="text" class="form-control" id="prenomInput" name="prenomInput"
                                    value="<%out.print(client.getPrenom());%>">
-
-                            <label for="dateNaissance">Prenom</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateNaissance">Date de naissance</label>
                             <input type="date" class="form-control" id="dateNaissance" name="dateNaissance"
                                    value="<%out.print(client.getDateNaissance());%>">
                         </div>
@@ -86,15 +82,19 @@
                             <label for="emailInput">Email</label>
                             <input type="text" class="form-control" id="emailInput" name="emailInput"
                                    value="<%out.print(client.getEmail());%>">
-
+                        </div>
+                        <div class="form-group">
                             <label for="inputTel">Numéro de téléphone</label>
                             <input type="text" class="form-control" id="inputTel" name="inputTel"
                                    value="<%out.print(client.getTel());%>">
-
+                        </div>
+                        <div class="form-group">
                             <label for="adresseInput">Adresse</label>
                             <input type="text" class="form-control" id="adresseInput" name="adresseInput"
                                    value="<%out.print(client.getAdresse());%>">
-
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Valider</button>
                         </div>
                     </form>
                 </div>
@@ -122,6 +122,71 @@
 <script src="../../assets_client/js/price-range.js"></script>
 
 <script src="../../assets_client/js/main.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var validator = $("#modifierProfilForm").bootstrapValidator({
+            fields: {
+                nomInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre nom"
+                        }
+                    }
+                },
+                prenomInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre prenom"
+                        }
+                    }
+                },
+                dateNaissance: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre date de naissance"
+                        }
+                    }
+                },
+                emailInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre adresse email"
+                        },
+                        emailAddress: {
+                            message: "Veuillez entrer une adresse valide (eg: john@abc.com"
+                        },
+                        stringLength: {
+                            max: 50,
+                            message: "L'adresse email ne doit pas dépasser 50 caractères"
+                        }
+                    }
+                },
+                inputTel: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre numero de telephone"
+                        },
+                        stringLength: {
+                            min: 10,
+                            max: 14,
+                            message: "Veuillez entrer un numero de telephone valide"
+                        }
+                    }
+                },
+                adresseInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre adresse"
+                        }
+                    }
+                }
+            }
+        })
+    })
+</script>
+
 <script>
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");

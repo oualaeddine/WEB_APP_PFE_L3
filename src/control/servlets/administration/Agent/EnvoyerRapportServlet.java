@@ -17,9 +17,16 @@ public class EnvoyerRapportServlet extends MyServlet {
         if (isLoggedIn(request) && request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.AGENT) {
             Employe agent = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
             AgentsManager agentsManager = new AgentsManager(agent);
-            System.out.println(agentsManager.envoyerRapport(request));
+            int error;
+            if (agentsManager.envoyerRapport(request)) {
+                error = ACTION_SUCCESS;
+                System.out.println("Rapport: true");
+            } else {
+                error = ACTION_ERROR;
+                System.out.println("Rapport: false");
+            }
             this.getServletContext().getRequestDispatcher("/AgentServlet").forward(request,response);
-        }else redirectToLogin(request,response,0);
+        } else redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +37,6 @@ public class EnvoyerRapportServlet extends MyServlet {
             System.out.println("visite id: "+visiteId);
             this.getServletContext().getRequestDispatcher("/jsp/Rapport.jsp").forward(request,response);
         }else
-            redirectToLogin(request,response,0);
+            redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
     }
 }

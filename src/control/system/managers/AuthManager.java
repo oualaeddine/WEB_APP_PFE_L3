@@ -39,10 +39,7 @@ public class AuthManager {
     }
 
     public boolean authenticateClient(String username, String password) {
-        Client client = new Client();
-        client.setUsername(username);
-        client.setPassword(password);
-        return authDAO.exists(client, UserType.CLIENT);
+        return new ClientDAO().authenticateClient(username, password);
     }
 
     public boolean authenticateEmploye(String username, String password) {

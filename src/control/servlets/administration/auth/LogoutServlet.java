@@ -19,13 +19,13 @@ public class LogoutServlet extends MyServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {        // TODO: 2/18/2018
+        if (isLoggedIn(request)) {
             boolean client = ((UserType) request.getSession().getAttribute(LOGGED_IN_USER_TYPE)) == UserType.CLIENT;
             request.getSession().invalidate();
             if (client) {
                 response.sendRedirect("/home");
             } else {
-                redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
+                redirectToLogin(request, response, LOGIN_NEEDED_ERROR_ID);
             }
         } else {
             redirectToNotLoggedIn(request, response);

@@ -47,7 +47,8 @@ public class AjoutServlet extends MyServlet {
             }
         } else manager = new AuthManager();
 
-            String ajouter = request.getParameter("ajouter");
+        String ajouter = request.getParameter("ajouter");
+        int error = 0;
             if (ajouter != null) {
                 switch (ajouter) {
                     case "client":
@@ -68,13 +69,23 @@ public class AjoutServlet extends MyServlet {
                         client.setPassword(password);
                         client.setAdresse(adresse);
                         client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
-                        System.out.println("Ajout client: "+new AuthManager().signupClient(client));
+                        if (new AuthManager().signupClient(client)) {
+                            error = ACTION_SUCCESS;
+                            System.out.println("Ajout réussi");
+                        } else {
+                            error = ACTION_ERROR;
+                            System.out.println("Ajout non effectué");
+                        }
                         break;
                     case "inscriptionEmploye":
-                        System.out.println("wsalt hna");
                         try {
-
-                            System.out.println("Inscription:" + ((AuthManager) manager).registerEmploye(request));
+                            if (((AuthManager) manager).registerEmploye(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Inscription: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Inscription: false");
+                            }
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -82,6 +93,8 @@ public class AjoutServlet extends MyServlet {
                     case "approuvement":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
                             if (((AdminsManager) manager).approuverEmploye(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Approuvement: true");
                                 int approvedId = Integer.parseInt(request.getParameter("employeApprouve"));
                                 Employe approvedEmploye = (Employe) new EmployeDAO().getById(approvedId);
                                 try {
@@ -91,24 +104,44 @@ public class AjoutServlet extends MyServlet {
                                 } catch (MessagingException e) {
                                     e.printStackTrace();
                                 }
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Approuvement: false");
                             }
-                            System.out.println();
                         }
                         break;
                     case "localite":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println(((AdminsManager) manager).ajouterLocalite(request));
+                            if (((AdminsManager) manager).ajouterLocalite(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Ajout: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Ajout: false");
+                            }
                         }
                         break;
                     case "logement":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println(((AdminsManager) manager).createLogement(request));
+                            if (((AdminsManager) manager).createLogement(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Ajout logement: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Ajout logement: false");
+                            }
                         }
                         break;
                     case "employe":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
                             try {
-                                System.out.println(((AdminsManager) manager).ajouterEmploye(request));
+                                if (((AdminsManager) manager).ajouterEmploye(request)) {
+                                    error = ACTION_SUCCESS;
+                                    System.out.println("Ajout employe: true");
+                                } else {
+                                    error = ACTION_ERROR;
+                                    System.out.println("Ajout employe: false");
+                                }
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
@@ -116,31 +149,62 @@ public class AjoutServlet extends MyServlet {
                         break;
                     case "assignation":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println("Nouvelle assignation: " + ((AdminsManager) manager).assigner(request));
+                            if (((AdminsManager) manager).assigner(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Assignation: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Assignation: false");
+                            }
                         }
                         break;
                     case "signalement":
-                        if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) != UserType.CLIENT)
-                            System.out.println("Signalement: " + ((EmployeManager) manager).signalerClient(request));
+                        if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) != UserType.CLIENT) {
+                            if (((EmployeManager) manager).signalerClient(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Signalement: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Signalement: false");
+                            }
+                        }
                         break;
                     case "suspend":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println("Suspendu: " + ((AdminsManager) manager).suspendEmployee(request));
+                            if (((AdminsManager) manager).suspendEmployee(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Suspend: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Suspend: false");
+                            }
                         }
                         break;
                     case "gel":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println("Logement gelé: " + ((AdminsManager) manager).gelerLogement(request));
+                            if (((AdminsManager) manager).gelerLogement(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Logement gelé: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Logement gelé: false");
+                            }
                         }
                         break;
                     case "ban":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
-                            System.out.println("Client banni: " + ((AdminsManager) manager).bannirClient(request));
+                            if (((AdminsManager) manager).bannirClient(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Ajout: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Ajout: false");
+                            }
                         }
                         break;
                 }
             }
-        redirectToDashboard(request,response);
+        redirectToDashboard(request, response, error);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

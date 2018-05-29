@@ -1,7 +1,6 @@
 package control.system;
 
 import com.twilio.Twilio;
-import utils.Util;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -15,8 +14,8 @@ public class ContextListener implements ServletContextListener {
     }
 
     // TODO: 5/29/2018  get twilio credentials
-    private static final String ACCOUNT_SID = "SKe4f7014bb5182752592814ce207e6aab";
-    private static final String AUTH_TOKEN = "f6e170b9f25f223d44d6bb351649384a";
+    private static final String ACCOUNT_SID = "ACd4eed8271623412d543a34e3c3075aad";
+    private static final String AUTH_TOKEN = "5513eaecf302e4189d826500bec1e41c";
 
     // -------------------------------------------------------
     // ContextListener implementation
@@ -28,6 +27,8 @@ public class ContextListener implements ServletContextListener {
       */
 //        initializeNotificationsService();
         initializeTwilio();
+        // Util.sendSms("555113103", "test ta3 sms");
+
     }
 
     private void initializeTwilio() {
@@ -40,7 +41,6 @@ public class ContextListener implements ServletContextListener {
     private void initializeNotificationsService() {
         System.out.println("initializing the notifications service");
         new NotificationService().initService();
-        Util.sendSms("696689498", "test ta3 sms");
     }
 
 

@@ -2,7 +2,9 @@ package control.system;
 
 import model.beans.Notification;
 import model.beans.humans.Person;
+import model.db.daos.ClientDAO;
 import model.db.daos.ClientNotificationDAO;
+import model.db.daos.EmployeDAO;
 import model.db.daos.EmployeNotificationDAO;
 import utils.Util;
 
@@ -11,9 +13,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-class NotificationService {
+public class NotificationService {
 
-    NotificationService() {
+    public NotificationService() {
     }
 
     /**
@@ -100,4 +102,24 @@ class NotificationService {
         Util.sendPush(notifReceiver.getId(), notifContent);
     }
 
+    public boolean registerToken(int userId, String token, String userType) {
+        boolean registered = false;
+        switch (userType) {
+            case "client":
+                ClientDAO clientDao = new ClientDAO();
+                if (clientDao.tokenExists(token))
+                    registered = clientDao.updateToken(userId, token);
+                else
+                    registered = clientDao.addToken(userId, token);
+                break;
+            case "employee":
+                EmployeDAO employeDAO = new EmployeDAO();
+                if (employeDAO.tokenExists(token))
+                    registered = employeDAO.updateToken(userId, token);
+                else
+                    registered = employeDAO.addToken(userId, token);
+                break;
+        }
+        return registered;
+    }
 }

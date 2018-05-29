@@ -386,4 +386,19 @@ public class ClientDAO extends DAO {
         // TODO: 5/29/2018
         return null;
     }
+
+    public boolean tokenExists(String token) {
+        // TODO: 5/29/2018
+        return false;
+    }
+
+    public boolean addToken(int userId, String token) {
+        // TODO: 5/29/2018
+        return false;
+    }
+
+    public boolean updateToken(int userId, String token) {
+        // TODO: 5/29/2018
+        return false;
+    }
 }

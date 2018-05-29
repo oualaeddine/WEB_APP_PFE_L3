@@ -168,4 +168,9 @@ public class JsonUtil {
         }
         return result.toString();
     }
+
+    public static String notificationsToJson(LinkedList<Notification> notifications) {
+        // TODO: 5/29/2018
+        return null;
+    }
 }

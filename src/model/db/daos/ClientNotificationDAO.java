@@ -112,4 +112,9 @@ public class ClientNotificationDAO extends DAO {
     public int countAll() {
         return getAll().size();
     }
+
+    public LinkedList<Notification> getTomorrowsScheduledNotifs(int horraire) {
+        // TODO: 5/29/2018
+        return null;
+    }
 }

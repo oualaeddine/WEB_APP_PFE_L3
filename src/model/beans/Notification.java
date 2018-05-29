@@ -10,6 +10,16 @@ public class Notification {
     private String content;
     private Timestamp timestamp;
 
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id=" + id +
+                ", destinataire=" + destinataire.getFullName() +
+                ", content='" + content + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
+
     public Notification() {
 
     }

@@ -435,6 +435,7 @@ public class Util {
                 return "NULL";
         }
     }
+
     public static Date getDateFromString(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;
@@ -452,5 +453,16 @@ public class Util {
 
     public static boolean isEmploye(Person attribute) {
         return false;
+    }
+
+    public static void sendMail(String email, String notifContent) {
+// TODO: 5/29/2018
+
+        System.out.println("sending email notification : \nemail = [" + email + "], notifContent = [" + notifContent + "]");
+    }
+
+    public static void sendSms(String tel, String notifContent) {
+        // TODO: 5/29/2018
+        System.out.println("sending sms notification : \ntel = [" + tel + "], notifContent = [" + notifContent + "]");
     }
 }

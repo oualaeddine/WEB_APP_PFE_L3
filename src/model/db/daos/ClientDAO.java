@@ -5,7 +5,6 @@ import model.db.DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Month;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
@@ -381,5 +380,10 @@ public class ClientDAO extends DAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public LinkedList<String> getNotifTokens(int userId) {
+        // TODO: 5/29/2018
+        return null;
     }
 }

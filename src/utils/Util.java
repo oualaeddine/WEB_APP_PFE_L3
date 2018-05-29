@@ -12,6 +12,7 @@ import model.enums.EtatVente;
 import model.enums.TablePage;
 import model.enums.UserType;
 
+import javax.mail.MessagingException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,6 +22,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 
 import static model.enums.TablePage.*;
 import static model.enums.UserType.OPERATEUR;
@@ -577,10 +579,7 @@ public class Util {
         return false;
     }
 
-    public static void sendMail(String email, String notifContent) {
-        // TODO: 5/29/2018
-        System.out.println("sending email notification : \nemail = [" + email + "], notifContent = [" + notifContent + "]");
-    }
+    private final static String apiKey = "I added my key here";
 
 
     public static void sendSms(String tel, String notifContent) {
@@ -594,18 +593,33 @@ public class Util {
                 .create();
 
         System.out.println(message.getSid());
-
-
     }
 
-    public static void sendPush(int id, String notifContent) {
+    public static void sendMail(String email, String notifContent) {
         // TODO: 5/29/2018
-        System.out.println("sending push notification : \nid = [" + id + "], notifContent = [" + notifContent + "]");
-
+        System.out.println("sending email notification : \nemail = [" + email + "], notifContent = [" + notifContent + "]");
 
         try {
-            final String apiKey = "I added my key here";
-            URL url = null;
+            GoogleMail.Send("eritpimmobilier@gmail.com", "eritppfe", email, "Notification", notifContent);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void sendPush(int userId, String notifContent) {
+        // TODO: 5/29/2018
+        System.out.println("sending push notification : \nuserId = [" + userId + "], notifContent = [" + notifContent + "]");
+
+        LinkedList<String> userTokens = new ClientDAO().getNotifTokens(userId);
+        for (String token : userTokens) {
+            sendPushNotifToToken(token, notifContent);
+        }
+    }
+
+    private static void sendPushNotifToToken(String token, String message) {
+
+        try {
+            URL url;
 
             url = new URL("https://fcm.googleapis.com/fcm/send");
 
@@ -620,7 +634,8 @@ public class Util {
 
             conn.setDoOutput(true);
 
-            String input = "{\"notification\" : {\"title\" : \"Test\"}, \"to\":\"test\"}";
+
+            String input = "{\"notification\" : {\"title\" : \"Test\",\"body\": \"" + message + "\"}, \"to\":\"" + token + "\"}";
 
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());

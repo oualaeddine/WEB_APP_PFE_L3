@@ -1,10 +1,10 @@
 package control.ivs.menu.logement.essential;
 
 
-import com.twilio.twiml.Gather;
-import com.twilio.twiml.Play;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Gather;
+import com.twilio.twiml.voice.Play;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;

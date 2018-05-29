@@ -1,7 +1,10 @@
 package control.ivs.menu.logement.essential;
 
 
-import com.twilio.twiml.*;
+import com.twilio.twiml.TwiMLException;
+import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Gather;
+import com.twilio.twiml.voice.Play;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.twilio.http.HttpMethod.GET;
 
 @WebServlet(name = "RegionServlet")
 public class RegionServlet extends HttpServlet {
@@ -24,7 +29,7 @@ public class RegionServlet extends HttpServlet {
                 .play(new Play.Builder("https://twiliopfe2.000webhostapp.com/Region.mp3").build())
                 .gather(new Gather.Builder()
                         .action(MyConsts.FOURCHETE_PRIX_SERVLET_URL + "?chambre=" + chambresNbr)
-                        .method(Method.GET)
+                        .method(GET)
                         .numDigits(1)
                         .build())
                 .build();

@@ -1,6 +1,8 @@
 package utils;
 
 
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.beans.humans.Person;
@@ -10,6 +12,12 @@ import model.enums.EtatVente;
 import model.enums.TablePage;
 import model.enums.UserType;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -570,13 +578,72 @@ public class Util {
     }
 
     public static void sendMail(String email, String notifContent) {
-// TODO: 5/29/2018
-
+        // TODO: 5/29/2018
         System.out.println("sending email notification : \nemail = [" + email + "], notifContent = [" + notifContent + "]");
     }
+
 
     public static void sendSms(String tel, String notifContent) {
         // TODO: 5/29/2018
         System.out.println("sending sms notification : \ntel = [" + tel + "], notifContent = [" + notifContent + "]");
+
+        Message message = Message
+                .creator(new PhoneNumber("+213" + tel), // to
+                        new PhoneNumber("+213696689498"), // from
+                        notifContent)
+                .create();
+
+        System.out.println(message.getSid());
+
+
+    }
+
+    public static void sendPush(int id, String notifContent) {
+        // TODO: 5/29/2018
+        System.out.println("sending push notification : \nid = [" + id + "], notifContent = [" + notifContent + "]");
+
+
+        try {
+            final String apiKey = "I added my key here";
+            URL url = null;
+
+            url = new URL("https://fcm.googleapis.com/fcm/send");
+
+            HttpURLConnection conn;
+
+            conn = (HttpURLConnection) url.openConnection();
+
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Authorization", "key=" + apiKey);
+
+            conn.setDoOutput(true);
+
+            String input = "{\"notification\" : {\"title\" : \"Test\"}, \"to\":\"test\"}";
+
+            OutputStream os = conn.getOutputStream();
+            os.write(input.getBytes());
+            os.flush();
+            os.close();
+
+            int responseCode = conn.getResponseCode();
+            System.out.println("\nSending 'POST' request to URL : " + url);
+            System.out.println("Post parameters : " + input);
+            System.out.println("Response Code : " + responseCode);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

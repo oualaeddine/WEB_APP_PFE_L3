@@ -1,9 +1,9 @@
 package control.ivs;
 
-import com.twilio.twiml.Dial;
-import com.twilio.twiml.Number;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Dial;
+import com.twilio.twiml.voice.Number;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;

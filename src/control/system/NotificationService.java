@@ -97,6 +97,7 @@ class NotificationService {
 
         Util.sendMail(notifReceiver.getEmail(), notifContent);
         Util.sendSms(notifReceiver.getTel(), notifContent);
+        Util.sendPush(notifReceiver.getId(), notifContent);
     }
 
 }

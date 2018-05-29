@@ -1,8 +1,10 @@
 package control.ivs.menu.logement.essential;
 
 
-
-import com.twilio.twiml.*;
+import com.twilio.twiml.TwiMLException;
+import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Gather;
+import com.twilio.twiml.voice.Play;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.twilio.http.HttpMethod.GET;
 
 @WebServlet(name = "FourchetteArgentServlet")
 public class FourchetteArgentServlet extends HttpServlet {
@@ -29,7 +33,7 @@ public class FourchetteArgentServlet extends HttpServlet {
               .play(new Play.Builder(MyConsts.PRIX_MP3_URL).build())
                 .gather(new Gather.Builder()
                         .action(MyConsts.GET_VISIT_SERVLET_URL + "?chambre=" + chambresNbr + "&region=" + region)
-                        .method(Method.GET)
+                        .method(GET)
                         .numDigits(1)
                         .build())
                 .build();

@@ -405,7 +405,7 @@ public class VentesDAO extends DAO {
         LinkedList<Localite> localites = new LinkedList<>();
         ResultSet result;
         try {
-            result = venteStatement.executeQuery("select distinct l.region,(select count(vente.id) from logement,vente,localite where visite.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVisites from logement l order by nbrVisites DESC limit 5;");
+            result = venteStatement.executeQuery("select distinct l.region,(select count(vente.id) from logement,vente,localite where vente.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVentes from logement l order by nbrVentes DESC limit 5;");
             while (result.next()) {
                 localites.add((Localite) new LocaliteDAO().getById(result.getInt("region")));
             }

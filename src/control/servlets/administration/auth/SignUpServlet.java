@@ -1,6 +1,7 @@
 package control.servlets.administration.auth;
 
 import control.servlets.MyServlet;
+import control.system.managers.AuthManager;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
 
@@ -19,7 +20,6 @@ import java.text.SimpleDateFormat;
 public class SignUpServlet extends MyServlet {
     @Override
     public void init() throws ServletException {
-        //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
         super.init();
     }
 
@@ -27,49 +27,22 @@ public class SignUpServlet extends MyServlet {
 
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
-        } else {        // TODO: 2/18/2018
-            RequestDispatcher dispatcher=request.getRequestDispatcher("/login");
-            String prenom = request.getParameter("prenomInput");
-            String nom = request.getParameter("nomInput");
-            String email = request.getParameter("emailInput");
-            String tel = request.getParameter("inputTel");
-            String username = request.getParameter("usernameInput");
-            String password = request.getParameter("passwordInput");
-            String confirmPassword = request.getParameter("confirmPassword");
-            String adresse = request.getParameter("adresseInput");
-            if (password.equals(confirmPassword)) {// TODO: 4/15/2018 what the fuck is this oO
-                Client client = new Client();
-                client.setPrenom(prenom);
-                client.setNom(nom);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-                try {
-                    java.util.Date date = sdf.parse(request.getParameter("dateNaissance"));
-                    Date date1 = new Date(date.getTime());
-                    client.setDateNaissance(date1);
-                } catch (ParseException e) {
-                    e.printStackTrace();
+        } else {
+            try {
+                if (new AuthManager().registerEmploye(request)) {
+                    System.out.println("Inscription: true");
+                    redirectToLogin(request, response, REGISTRATION_SUCCESS);
+                } else {
+                    System.out.println("Inscription: false");
+                    redirectToLogin(request, response, REGISTRATION_ERROR);
                 }
-                client.setEmail(email);
-                client.setTel(tel);
-                client.setUsername(username);
-                client.setPassword(password);
-                client.setAdresse(adresse);
-                if (new ClientDAO().add(client)) {
-                    redirectToLogin(request,response,0);
-                }
-            }else{
-                System.out.println("Veuillez vérifier votre mot de passe");
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (isLoggedIn(request)) {
-//            redirectToDashboard(request, response);
-//        } else {        // TODO: 2/18/2018
-//
-//        }
         this.getServletContext().getRequestDispatcher("/html/register.html").forward(request,response);
     }
 }

@@ -42,7 +42,7 @@ public class LoginServlet extends MyServlet {
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
         } else {
-            getServletContext().getRequestDispatcher("/html/login.html").forward(request, response);
+            getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
         }
     }
 

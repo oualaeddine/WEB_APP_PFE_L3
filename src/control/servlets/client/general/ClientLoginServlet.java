@@ -1,14 +1,18 @@
 package control.servlets.client.general;
 
+import control.servlets.MyServlet;
 import control.servlets.client.MyClientServlet;
 import control.system.managers.AuthManager;
 import model.beans.humans.Client;
+import utils.GoogleMail;
 import utils.Util;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.io.IOException;
 
 @WebServlet(name = "ClientLoginServlet", urlPatterns = "/loginsignup")
@@ -98,28 +102,30 @@ public class ClientLoginServlet extends MyClientServlet {
         client.setUsername(username);
         client.setPassword(password);
         client.setAdresse(adresse);
-            client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+        client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
         if (authManager.signupClient(client)) {
-            redirectToLogin(request, response, 0);
+            try {
+                GoogleMail.Send("hchimmobilier", "HchImmobilier1234", client.getEmail(), "", "Bienvenue chez ERITP", Util.getWelcomeEmail(client));
+                System.out.println("Welcome email sent");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+            redirectToLogin(request, response, MyServlet.REGISTRATION_SUCCESS);
         } else {
-            // TODO: 4/15/2018 handle signup failed error
+            redirectToLogin(request, response, MyServlet.REGISTRATION_ERROR);
         }
     }
 
     private void doLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (username != null && password != null) {
-            if (authManager.authenticateClient(username, password)) {
-                System.out.println("login = " + true);
-                authManager.createSessionForClient(username, request);
-                redirectToHome(request, response);
-            } else {
-                System.out.println("login = " + false);
-                redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
-            }
+        if (authManager.authenticateClient(username, password)) {
+            System.out.println("login = " + true);
+            authManager.createSessionForClient(username, request);
+            redirectToHome(request, response);
         } else {
-            redirectToLogin(request, response, MISSING_CREDENTIALS_ERROR);
+            System.out.println("login = " + false);
+            redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
         }
     }
 
@@ -128,9 +134,7 @@ public class ClientLoginServlet extends MyClientServlet {
         if (isLoggedIn(request)) {
             redirectToDashboard(request, response);
         } else {
-            getServletContext().getRequestDispatcher("/html/client/register.html").forward(request, response);
+            getServletContext().getRequestDispatcher("/jsp/client/register.jsp").forward(request, response);
         }
     }
-
-
 }

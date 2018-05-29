@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.text.ParseException;
 
+@SuppressWarnings("ALL")
 public class AdminsManager {
     private final Employe loggedInAdmin;
 
@@ -24,7 +25,7 @@ public class AdminsManager {
     }
 
 
-    public Employe creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended,AdminRole role){
+    public Employe creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended, AdminRole role){
         Employe admin = new Employe();
         admin.setNom(nom);
         admin.setPrenom(prenom);
@@ -43,16 +44,25 @@ public class AdminsManager {
         }
         return admin;
     }
+
     public boolean reintegrerEmploye(int userId){
         return new EmployeDAO().reintegrerById(userId);
     }
-    public boolean suspendEmployee(int userId) {
-        return new EmployeDAO().suspendById(userId);
+
+    public boolean suspendEmployee(HttpServletRequest request) {
+        int employeId = Integer.parseInt(request.getParameter("employeSuspendu"));
+        Employe employe = (Employe) new EmployeDAO().getById(employeId);
+        if (employe.isSuspended()) {
+            return new EmployeDAO().reintegrerById(employeId);
+        } else {
+            return new EmployeDAO().suspendById(employeId);
+        }
     }
 
     public boolean createClient(Client client){
         return new ClientDAO().add(client);
     }
+
     public boolean deleteClient(Client client){
         return new ClientDAO().delete(client);
     }
@@ -91,8 +101,9 @@ public class AdminsManager {
         location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
         logement.setLocation(location);
         logement.setTypeLogement(request.getParameter("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-       return new LogementDAO().add(logement);
+        return new LogementDAO().add(logement);
     }
+
     public boolean deleteLogement(Logement logement){
         return new LogementDAO().delete(logement);
     }
@@ -100,13 +111,22 @@ public class AdminsManager {
     public boolean createLocalite(Localite localite){
         return new LocaliteDAO().add(localite);
     }
+
     public boolean deleteLocalite(Localite localite){
         return new LocaliteDAO().delete(localite);
     }
 
-    public boolean gelerLogement(Logement logement){
-        return new LogementDAO().geler(logement.getId());
+    public boolean gelerLogement(HttpServletRequest request) {
+        int logementId = Integer.parseInt(request.getParameter("logementGele"));
+        Logement logementGele = (Logement) new LogementDAO().getById(logementId);
+        if (logementGele.isGele()) {
+            return (new LogementDAO().degeler(logementId));
+        } else {
+            return (new LogementDAO().geler(logementId));
+        }
+
     }
+
     public boolean approuverEmploye(ServletRequest request){
         return new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")), loggedInAdmin.getId(), request.getParameter("userTypeInput"));
     }
@@ -116,7 +136,13 @@ public class AdminsManager {
     }
 
 
-    public boolean assigner(int agent, int region) {
+    public boolean assigner(HttpServletRequest request) {
+        int agent = Integer.parseInt(request.getParameter("agentInput"));
+        int region = Integer.parseInt(request.getParameter("selectRegion"));
+        int assignationId = new AssignationDAO().isAffected(agent);
+        if (assignationId != 0) {
+            System.out.println("Agent déjà assigné, suppression de la 1ere assignation: " + new AssignationDAO().deleteById(assignationId));
+        }
         return new AssignationDAO().add(agent, region);
     }
 
@@ -140,5 +166,15 @@ public class AdminsManager {
         employee.setEmail(request.getParameter("emailInput"));
         employee.setCreator(loggedInAdmin.getId());
         return new EmployeDAO().add(employee);
+    }
+
+    public boolean bannirClient(HttpServletRequest request) {
+        int clientBanniId = Integer.parseInt(request.getParameter("clientBanni"));
+        Client client1 = (Client) new ClientDAO().getById(clientBanniId);
+        if (client1.isBanned()) {
+            return new ClientDAO().retablirById(clientBanniId);
+        } else {
+            return new ClientDAO().banById(clientBanniId);
+        }
     }
 }

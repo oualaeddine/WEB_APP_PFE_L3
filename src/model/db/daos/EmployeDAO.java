@@ -250,7 +250,7 @@ public class EmployeDAO extends DAO {
     public boolean authenticate(String username, String password) {
         ResultSet result;
         try {
-            result = employeStatement.executeQuery("SELECT id,isSuspended FROM employe WHERE ((username='" + username + "' AND password='" + password + "') OR (email='"+username+"' AND password='"+password+"')) AND isSuspended=0");
+            result = employeStatement.executeQuery("SELECT id,isSuspended,isApproved FROM employe WHERE ((username='" + username + "' AND password='" + password + "') OR (email='" + username + "' AND password='" + password + "')) AND isSuspended=0 AND isApproved=1");
             return (result.next());
         } catch (SQLException e) {
             e.printStackTrace();

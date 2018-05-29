@@ -50,7 +50,7 @@ public class PlainteDAO extends DAO {
     public boolean add(Object object) {
         Plainte plainte = (Plainte) object;
         try {
-            statement.executeQuery("insert into plainte (idPlaignant, contenu, date) values (" +
+            statement.execute("insert into plainte (idPlaignant, contenu, date) values (" +
                     plainte.getPlaignant().getId() + "," +
                     "'" + plainte.getContenu() + "'," +
                     "current_date " +

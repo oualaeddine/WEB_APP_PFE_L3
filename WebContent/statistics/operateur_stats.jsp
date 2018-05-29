@@ -11,6 +11,7 @@
 <%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.enums.EtatVisite" %>
 <!DOCTYPE html>
 <html>
 <% Employe loggedAgent = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);%>
@@ -235,22 +236,24 @@
                                     LinkedList<Visite> visites = new VisitesDao().getAll();
                                     if (visites.size() < 5) {
                                         for (Visite visite : visites) {
+                                            String color = visite.getEtatVisite() == EtatVisite.REPORTEE ? "label-warning" : visite.getEtatVisite() == EtatVisite.ANNULEE ? "label-danger" : "label-success";
                                             out.print("" +
                                                     "<tr>\n" +
                                                     "<td>" + visite.getId() + "</td>\n" +
                                                     "<td>" + visite.getLogement().getId() + "</td>" +
                                                     "<td>" + visite.getClient().getFullName() + "</td>" +
-                                                    "<td><span class=\"label  label-success\">" + visite.getTimestamp() + " </span></td>\n" +
+                                                    "<td><span class=\"label  " + color + "\">" + visite.getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }
                                     } else
                                         for (int i = 0; i < 5; i++) {
+                                            String color = visites.get(i).getEtatVisite() == EtatVisite.REPORTEE ? "label-warning" : visites.get(i).getEtatVisite() == EtatVisite.ANNULEE ? "label-danger" : "label-success";
                                             out.print("" +
                                                     "<tr>\n" +
                                                     "<td>" + visites.get(i).getId() + "</td>\n" +
                                                     "<td>" + visites.get(i).getLogement().getId() + "</td>\n" +
                                                     "<td>" + visites.get(i).getClient().getFullName() + "</td>\n" +
-                                                    "<td><span class=\"label label-success\">" + visites.get(i).getTimestamp() + " </span></td>\n" +
+                                                    "<td><span class=\"label " + color + "\">" + visites.get(i).getTimestamp() + " </span></td>\n" +
                                                     "</tr>");
                                         }
 
@@ -286,7 +289,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
+                                    <canvas id="pieChart" height="300"></canvas>
                                 </div>
                                 <!-- ./chart-responsive -->
                             </div>
@@ -444,39 +447,33 @@
 </script>
 <script>
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
-    var pieChart = new Chart(pieChartCanvas);
-    var PieData = [
-        {
-            value: <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(0).getId()));%>,
-            color: '#f56954',
-            highlight: '#f56954',
-            label: '<%out.print(localites.get(0).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(1).getId()));%>,
-            color: '#00a65a',
-            highlight: '#00a65a',
-            label: '<%out.print(localites.get(1).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(2).getId()));%>,
-            color: '#f39c12',
-            highlight: '#f39c12',
-            label: '<%out.print(localites.get(2).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
-            color: '#00c0ef',
-            highlight: '#00c0ef',
-            label: '<%out.print(localites.get(3).getNom());%>'
-        },
-        {
-            value:  <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>,
-            color: '#3c8dbc',
-            highlight: '#3c8dbc',
-            label: '<%out.print(localites.get(4).getNom());%>'
-        }
-    ];
+    var PieData = {
+        datasets: [{
+            data: [
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(0).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(1).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(2).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(3).getId()));%>,
+                <%out.print(visitesStats.nbrVisitesPerRegion(localites.get(4).getId()));%>
+            ],
+            backgroundColor: [
+                '#f56954',
+                '#00a65a',
+                '#f39c12',
+                '#00c0ef',
+                '#3c8dbc'
+            ]
+        }],
+        labels: [
+            '<%out.print(localites.get(0).getNom());%>',
+            '<%out.print(localites.get(1).getNom());%>',
+            '<%out.print(localites.get(2).getNom());%>',
+            '<%out.print(localites.get(3).getNom());%>',
+            '<%out.print(localites.get(4).getNom());%>'
+        ]
+    };
+
+
     var pieOptions = {
         // Boolean - Whether we should show a stroke on each segment
         segmentShowStroke: true,
@@ -503,8 +500,10 @@
         // String - A tooltip template
         <%--tooltipTemplate: '<%=value %> <%=label%> users'--%>
     };
-    // Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions);
+    var pieChart = new Chart(pieChartCanvas, {
+        type: 'doughnut',
+        data: PieData,
+        options: pieOptions
+    });
 </script>
 </html>

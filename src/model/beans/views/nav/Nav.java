@@ -443,6 +443,9 @@ public class Nav {
         NavElement visitesProgrammeesNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), MyConsts.VISITES_PROGRAMMEES_TITLE, urlBase + "?what=visitesProgrammees", "fa-calendar");
         visitesSubNavElementList.add(visitesProgrammeesNavElement);
 
+        NavElement reportedVisitsNavElement = new NavElement(isPage(currentPage, TablePage.REPORTED_VISITES), "Visites reportées", urlBase + "?what=visitesReportees", "fa-calendar-minus-o");
+        visitesSubNavElementList.add(reportedVisitsNavElement);
+
         NavElement visitesPasseesNavElement = new NavElement((isPage(currentPage, TablePage.PASSED_VISITS)), MyConsts.VISITES_PASSEES_TITLE, urlBase + "?what=visitesPassees", "fa-calendar-check");
         visitesSubNavElementList.add(visitesPasseesNavElement);
 

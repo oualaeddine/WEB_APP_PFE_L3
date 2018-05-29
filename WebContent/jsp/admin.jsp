@@ -118,6 +118,23 @@
     <script src="../js/sb-admin-datatables.min.js"></script>
     <script src="../js/sb-admin-charts.js"></script>
 </div>
+<%
+    if (request.getParameter("error") != null) {
+        int errorId = Integer.parseInt(request.getParameter("error"));
+        String errorMessage = "Unidentified error";
+        switch (errorId) {
+            case MyServlet.ACTION_ERROR:
+                errorMessage = "Action non effectuee, Veuillez reessayer";
+                break;
+            case MyServlet.ACTION_SUCCESS:
+                errorMessage = "Action bien effectuee !";
+                break;
+        }
+        out.print("<script type=\"text/javascript\">");
+        out.println("alert('" + errorMessage + "');");
+        out.println("</script>");
+    }
+%>
 </body>
 <script>
     function resizeIframe(obj) {

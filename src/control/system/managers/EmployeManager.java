@@ -3,6 +3,7 @@ package control.system.managers;
 import control.servlets.MyServlet;
 import model.beans.humans.Employe;
 import model.db.daos.EmployeDAO;
+import model.db.daos.SignalementDAO;
 import utils.Util;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,4 +35,11 @@ public class EmployeManager {
         return new EmployeDAO().update(employe);
     }
 
+    public boolean signalerClient(HttpServletRequest request) {
+        int loggedIn = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+        int clientId = Integer.parseInt(request.getParameter("clientInput"));
+        String comment = request.getParameter("comment");
+
+        return (new SignalementDAO().add(loggedIn, clientId, comment));
+    }
 }

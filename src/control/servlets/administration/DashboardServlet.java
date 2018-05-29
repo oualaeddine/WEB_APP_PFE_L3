@@ -16,19 +16,20 @@ public class DashboardServlet extends MyServlet {
 
     @Override
     public void init() throws ServletException {
-        //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
         super.init();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action != null) {
-            switch (action) {
-                case "modifierProfil":
-                    EmployeManager employeManager = new EmployeManager();
-                    System.out.println("Modification :" + employeManager.modifierProfil(request));
+        if (isLoggedIn(request) && request.getSession().getAttribute(LOGGED_IN_USER_TYPE) != UserType.CLIENT) {
+            String action = request.getParameter("action");
+            if (action != null) {
+                switch (action) {
+                    case "modifierProfil":
+                        EmployeManager employeManager = new EmployeManager();
+                        System.out.println("Modification :" + employeManager.modifierProfil(request));
+                }
+                doGet(request, response);
             }
-            doGet(request, response);
         }
     }
 
@@ -56,7 +57,7 @@ public class DashboardServlet extends MyServlet {
                     break;
             }
         } else {
-            redirectToLogin(request, response, WRONG_CREDENTIALS_ERROR);
+            redirectToLogin(request, response, LOGIN_NEEDED_ERROR_ID);
         }
     }
 }

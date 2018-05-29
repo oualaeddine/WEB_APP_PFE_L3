@@ -1,8 +1,6 @@
 package utils;
 
 
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.beans.humans.Person;
@@ -586,13 +584,13 @@ public class Util {
         // TODO: 5/29/2018
         System.out.println("sending sms notification : \ntel = [" + tel + "], notifContent = [" + notifContent + "]");
 
-        Message message = Message
+       /* Message message = Message
                 .creator(new PhoneNumber("+213" + tel), // to
-                        new PhoneNumber("+213696689498"), // from
+                        new PhoneNumber("+13092471806"), // from
                         notifContent)
                 .create();
 
-        System.out.println(message.getSid());
+        System.out.println(message.getSid());*/
     }
 
     public static void sendMail(String email, String notifContent) {
@@ -617,7 +615,7 @@ public class Util {
     }
 
     private static void sendPushNotifToToken(String token, String message) {
-
+        System.out.println("sendPushNotifToToken : \n token = [" + token + "], message = [" + message + "]");
         try {
             URL url;
 

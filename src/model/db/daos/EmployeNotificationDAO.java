@@ -121,4 +121,9 @@ public class EmployeNotificationDAO extends DAO {
         // TODO: 5/29/2018
         return null;
     }
+
+    public LinkedList<Notification> getForEmploye(int userId) {
+        // TODO: 5/29/2018
+        return null;
+    }
 }

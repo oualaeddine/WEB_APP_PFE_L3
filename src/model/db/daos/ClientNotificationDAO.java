@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-@SuppressWarnings("ALL")
 public class ClientNotificationDAO extends DAO {
     @Override
     public Person getByEmail(String email) {
@@ -114,6 +113,11 @@ public class ClientNotificationDAO extends DAO {
     }
 
     public LinkedList<Notification> getTomorrowsScheduledNotifs(int horraire) {
+        // TODO: 5/29/2018
+        return null;
+    }
+
+    public LinkedList<Notification> getForClient(int userId) {
         // TODO: 5/29/2018
         return null;
     }

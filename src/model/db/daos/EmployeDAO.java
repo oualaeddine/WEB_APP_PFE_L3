@@ -32,9 +32,10 @@ public class EmployeDAO extends DAO {
         }
         return false;
     }
+
     public boolean approuverEmploye(int id, int myId, String userType) {
         try {
-            employeStatement.execute("UPDATE employe SET isApproved = 1, addedBy = "+myId+",userType='"+userType+"',dateAdded=CURRENT_DATE WHERE id="+id+";");
+            employeStatement.execute("UPDATE employe SET isApproved = 1, addedBy = " + myId + ",userType='" + userType + "',dateAdded=CURRENT_DATE WHERE id=" + id + ";");
 //            employeStatement.execute("UPDATE employe SET isApproved=1 WHERE id=" + id + ";");
 //            employeStatement.execute("UPDATE employe SET addedBy = "+ myId +" WHERE id="+ id +";");
 //            employeStatement.execute("UPDATE employe SET userType = '" + userType + "' WHERE id=" + id + ";");
@@ -44,6 +45,7 @@ public class EmployeDAO extends DAO {
         }
         return false;
     }
+
     public boolean changePassword(int id, String pass) {
         try {
             employeStatement.execute("UPDATE employe SET password='" + pass + "' WHERE id=" + id);
@@ -53,6 +55,7 @@ public class EmployeDAO extends DAO {
         }
         return false;
     }
+
     public Employe getByUsername(String username) {
         ResultSet result;
         try {
@@ -85,7 +88,7 @@ public class EmployeDAO extends DAO {
     public Employe getByEmail(String email) {
         ResultSet result;
         try {
-            result = employeStatement.executeQuery("SELECT * FROM employe WHERE email = '"+email+"';");
+            result = employeStatement.executeQuery("SELECT * FROM employe WHERE email = '" + email + "';");
             if (result.next()) {
                 Employe employe = new Employe();
                 employe.setId(result.getInt("id"));
@@ -182,7 +185,7 @@ public class EmployeDAO extends DAO {
             employeStatement.execute("INSERT INTO employe (`nom`,`prenom`,`dateNaiss`,`adresse`,`tel`,`email`,`username`, `password`,`dateAdded`,`addedBy`,`isSuspended`,`userType` ) VALUES(" +
                     "'" + employe.getNom() + "'," +
                     "'" + employe.getPrenom() + "'," +
-                    "'"+employe.getDateNaissance() +"'"+ "," +
+                    "'" + employe.getDateNaissance() + "'" + "," +
                     "'" + employe.getAdresse() + "'," +
                     "'" + employe.getTel() + "'," +
                     "'" + employe.getEmail() + "'," +
@@ -191,7 +194,7 @@ public class EmployeDAO extends DAO {
                     "CURRENT_DATE" + "," +
                     employe.getCreator() + "," +
                     employe.isSuspended() + "," +
-                    "'"+Util.getStringFromType(employe.getUserType())+"'"+
+                    "'" + Util.getStringFromType(employe.getUserType()) + "'" +
                     ");");
             return true;
         } catch (SQLException e) {
@@ -259,7 +262,7 @@ public class EmployeDAO extends DAO {
     }
 
     public boolean reintegrerById(int id) {
-        return super.reintegrerById(id,"employe");
+        return super.reintegrerById(id, "employe");
     }
 
     public boolean suspendById(int userId) {
@@ -358,6 +361,7 @@ public class EmployeDAO extends DAO {
         }
         return list;
     }
+
     public LinkedList<Employe> getAllOperateurs() {
         ResultSet result;
         LinkedList<Employe> list = new LinkedList<>();
@@ -634,5 +638,20 @@ public class EmployeDAO extends DAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public boolean tokenExists(String token) {
+        // TODO: 5/29/2018
+        return false;
+    }
+
+    public boolean updateToken(int userId, String token) {
+// TODO: 5/29/2018
+        return false;
+    }
+
+    public boolean addToken(int userId, String token) {
+        // TODO: 5/29/2018
+        return false;
     }
 }

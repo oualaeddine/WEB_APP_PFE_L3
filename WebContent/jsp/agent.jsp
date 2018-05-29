@@ -86,11 +86,11 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-comments"></i>
                         </div>
-                        <div class="mr-5"><%out.print("" + agentStats.getNewMessagesNbr());%> Nouveaux Messages!
+                        <div class="mr-5"><%out.print("" + agentStats.getNewNotifications());%> Nouvelles notifications!
                         </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les messages</span>
+                    <a class="card-footer text-white clearfix small z-1" href="/DashboardServlet?what=myNotifications">
+                        <span class="float-left">Afficher les notifications</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -105,8 +105,8 @@
                         </div>
                         <div class="mr-5"><%out.print("" + agentStats.getReportedVisites());%> Visites reportées!</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les details</span>
+                    <a class="card-footer text-white clearfix small z-1" href="/DashboardServlet?what=myVisits">
+                        <span class="float-left">Afficher les visites</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>

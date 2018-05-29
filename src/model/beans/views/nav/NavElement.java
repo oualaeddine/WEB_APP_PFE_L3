@@ -3,7 +3,6 @@ package model.beans.views.nav;
 import model.beans.views.MyView;
 
 public class NavElement extends MyView {
-    // TODO: 2/18/2018
     private boolean isPage;
     private String
             title;

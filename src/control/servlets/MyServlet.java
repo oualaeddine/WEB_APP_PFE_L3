@@ -25,6 +25,7 @@ public class MyServlet extends HttpServlet {
     public static final int REGISTRATION_ERROR = 4;
     public static final int ACTION_SUCCESS = 5;
     public static final int ACTION_ERROR = 6;
+    public static final int LOGGED_OUT = 7;
 
     protected void redirectToHome(HttpServletRequest request, HttpServletResponse response, int error) {
         try {

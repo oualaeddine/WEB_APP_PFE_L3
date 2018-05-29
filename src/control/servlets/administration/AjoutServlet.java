@@ -160,7 +160,7 @@ public class AjoutServlet extends MyServlet {
                         break;
                     case "signalement":
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) != UserType.CLIENT) {
-                            if (((EmployeManager) manager).signalerClient(request)) {
+                            if (new EmployeManager(loggedInEmploye).signalerClient(request)) {
                                 error = ACTION_SUCCESS;
                                 System.out.println("Signalement: true");
                             } else {

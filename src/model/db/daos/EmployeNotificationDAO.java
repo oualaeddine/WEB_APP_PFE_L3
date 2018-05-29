@@ -1,8 +1,10 @@
 package model.db.daos;
 
 import model.beans.Notification;
+import model.beans.Visite;
 import model.beans.humans.Person;
 import model.db.DAO;
+import utils.Util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -118,12 +120,17 @@ public class EmployeNotificationDAO extends DAO {
     }
 
     public LinkedList<Notification> getTomorrowsScheduledNotifs(int horraire) {
-        // TODO: 5/29/2018
-        return null;
+        LinkedList<Visite> visites = new VisitesDao().getTommorrowsScheduledVisits(horraire);
+        LinkedList<Notification> notifications = new LinkedList<>();
+        for (Visite visite : visites) {
+            Notification notification = new Notification();
+            notification.setDestinataire(visite.getAgent());
+            notification.setContent("Rappel: vous avez une visite prévue demain a " + Util.getStringFromHorraire(horraire));
+
+            notifications.add(notification);
+        }
+        return notifications;
     }
 
-    public LinkedList<Notification> getForEmploye(int userId) {
-        // TODO: 5/29/2018
-        return null;
-    }
+
 }

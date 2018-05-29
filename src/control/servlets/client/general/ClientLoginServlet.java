@@ -30,8 +30,6 @@ public class ClientLoginServlet extends MyClientServlet {
                 switch (tag) {
                     case "login": {
                         try {
-                            //  int retryTime = Integer.parseInt(request.getParameter("retryNbr"));
-                            //   if (retryTime != 3)
                             doLogin(request, response);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -49,14 +47,12 @@ public class ClientLoginServlet extends MyClientServlet {
                     }
 
                     default: {
-                        // TODO: 4/15/2018  tag non specifé error
-                        //  redirectToLogin(request, response, //l'error ta3na);
+                        redirectToLogin(request, response, 700);
                         break;
                     }
                 }
             } else {
-                // TODO: 4/15/2018  tag non specifé error
-                response.getWriter().append("tag null error");
+                redirectToLogin(request, response, 700);
             }
         }
     }

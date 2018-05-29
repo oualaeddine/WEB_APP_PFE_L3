@@ -9,10 +9,8 @@ public class Rapport {
     private EtatClient etatClient;
     private String commentaire;
     private boolean avis;
-    private int id;
-    private Date dateEtabli;
 
-    // TODO: 4/26/2018 add an id
+
     public Rapport() {
     }
 
@@ -48,9 +46,6 @@ public class Rapport {
         this.commentaire = commentaire;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getEtatClientString() {
         switch (etatClient) {
@@ -63,7 +58,4 @@ public class Rapport {
         }
     }
 
-    public Date getDateEtabli() {
-        return dateEtabli;
-    }
 }

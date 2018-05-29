@@ -1,13 +1,17 @@
 package model.db.daos;
 
 import model.beans.Notification;
+import model.beans.Visite;
+import model.beans.humans.Client;
 import model.beans.humans.Person;
 import model.db.DAO;
+import utils.Util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class ClientNotificationDAO extends DAO {
     @Override
     public Person getByEmail(String email) {
@@ -113,12 +117,16 @@ public class ClientNotificationDAO extends DAO {
     }
 
     public LinkedList<Notification> getTomorrowsScheduledNotifs(int horraire) {
-        // TODO: 5/29/2018
-        return null;
+        LinkedList<Visite> tomorrowsVisits = new VisitesDao().getTommorrowsScheduledVisits(horraire);
+        LinkedList<Notification> notifications = new LinkedList<>();
+        for (Visite visite : tomorrowsVisits) {
+            Notification notification = new Notification();
+            notification.setDestinataire(visite.getClient());
+            notification.setContent("Rappel: Vous avez une visite programmée demain a " + Util.getStringFromHorraire(horraire));
+            notifications.add(notification);
+        }
+        return notifications;
     }
 
-    public LinkedList<Notification> getForClient(int userId) {
-        // TODO: 5/29/2018
-        return null;
-    }
+
 }

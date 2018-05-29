@@ -383,22 +383,50 @@ public class ClientDAO extends DAO {
     }
 
     public LinkedList<String> getNotifTokens(int userId) {
-        // TODO: 5/29/2018
-        return null;
+        LinkedList<String> strings = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select * from user_push_tokens where userId=" + userId + ";");
+            while (result.next()) {
+                strings.add(result.getString("token"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return strings;
     }
 
     public boolean tokenExists(String token) {
-        // TODO: 5/29/2018
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select * from user_push_tokens where token='" + token + "';");
+            if (result.next()) return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean addToken(int userId, String token) {
-        // TODO: 5/29/2018
+        try {
+            clientStatement.execute("insert into user_push_tokens (userId, token) values (" +
+                    userId + "," +
+                    "'" + token + "'" +
+                    ");");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean updateToken(int userId, String token) {
-        // TODO: 5/29/2018
+        try {
+            clientStatement.execute("update user_push_tokens set token = '" + token + "' where userId=" + userId + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

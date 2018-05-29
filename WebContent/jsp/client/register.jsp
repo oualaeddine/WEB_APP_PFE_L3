@@ -117,7 +117,7 @@
             <div class="box-for overflow">
                 <div class="col-md-12 col-xs-12 login-blocks">
                     <h2>Connexion : </h2>
-                    <form action="" method="post">
+                    <form action="" method="post" id="loginForm">
                         <input type="hidden" class="form-control" name="tag" value="login">
 
                         <div class="form-group">
@@ -403,6 +403,24 @@
 
             }
         });
+        var validator2 = $("#loginForm").bootstrapValidator({
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre nom d'utilisateur"
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer votre mot de passe"
+                        }
+                    }
+                }
+            }
+        })
     })
 </script>
 

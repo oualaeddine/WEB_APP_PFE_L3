@@ -64,7 +64,7 @@
                 <div class="header-half header-call">
                     <p>
                         <span><i class="pe-7s-call"></i> +213 696 689 498</span>
-                        <span><i class="pe-7s-mail"></i> hchimmobilier@gmail.com</span>
+                        <span><i class="pe-7s-mail"></i> eritpimmobilier@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -137,10 +137,6 @@
                 "<!-- End of nav bar -->");
     } else {
         Client client;
-        UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
-//        if (userType != UserType.CLIENT) {
-//            out.print("<script>window.location.replace(\"/DashboardServlet\");</script>");
-//        } else {
         client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
 

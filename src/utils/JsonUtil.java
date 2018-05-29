@@ -124,10 +124,9 @@ public class JsonUtil {
         for (Rapport rapport : rapports) {
             JsonObject jsonObject = new JsonObject();
 
-            String id = "" + rapport.getId();
+            String id = "" + rapport.getVisite().getId();
             String commentaire = "" + rapport.getCommentaire();
             String EtatClient = "" + rapport.getEtatClientString();
-            String dateEtablie = "" + rapport.getDateEtabli().toString();
 
             String visiteId = "" + rapport.getVisite().getId();
             String dateVisite = "" + rapport.getVisite().getTimestamp();
@@ -147,7 +146,6 @@ public class JsonUtil {
             jsonObject.addProperty("id ", id);
             jsonObject.addProperty("commentaire", commentaire);
             jsonObject.addProperty("EtatClient", EtatClient);
-            jsonObject.addProperty("dateEtablie", dateEtablie);
 
             jsonObject.addProperty("visiteId", visiteId);
             jsonObject.addProperty("dateVisite", dateVisite);

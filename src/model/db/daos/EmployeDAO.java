@@ -641,17 +641,49 @@ public class EmployeDAO extends DAO {
     }
 
     public boolean tokenExists(String token) {
-        // TODO: 5/29/2018
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select * from employe_push_tokens where token='" + token + "';");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean updateToken(int userId, String token) {
-// TODO: 5/29/2018
+        try {
+            employeStatement.execute("update employe_push_tokens set token = '" + token + "' where employeId=" + userId + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean addToken(int userId, String token) {
-        // TODO: 5/29/2018
+        try {
+            employeStatement.execute("insert into employe_push_tokens (employeId, token) values (" +
+                    userId + "," +
+                    "'" + token + "'" +
+                    ");");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
+    }
+
+    public int newNotifsNbrForAgent(int userId) {
+        ResultSet result;
+        try {
+            result = employeStatement.executeQuery("select count(id) as nbr from notification_employe where destinataire=" + userId + " and DATE(timestamp)=current_date ;");
+            if (result.next()) {
+                return result.getInt("nbr");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

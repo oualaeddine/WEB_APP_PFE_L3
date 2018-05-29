@@ -3,6 +3,7 @@ package control.servlets.administration;
 import control.servlets.MyServlet;
 import control.system.managers.AuthManager;
 import control.system.managers.EmployeManager;
+import model.beans.humans.Employe;
 import model.enums.UserType;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class DashboardServlet extends MyServlet {
             if (action != null) {
                 switch (action) {
                     case "modifierProfil":
-                        EmployeManager employeManager = new EmployeManager();
+                        EmployeManager employeManager = new EmployeManager((Employe) request.getSession().getAttribute(LOGGED_IN_USER));
                         System.out.println("Modification :" + employeManager.modifierProfil(request));
                 }
                 doGet(request, response);

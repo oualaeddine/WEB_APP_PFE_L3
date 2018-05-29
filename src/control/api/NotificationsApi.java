@@ -30,10 +30,10 @@ public class NotificationsApi extends API {
                     LinkedList<Notification> notifications = null;
                     switch (userType) {
                         case "client":
-                            notifications = new ClientNotificationDAO().getForClient(_userId);
+                            notifications = new ClientNotificationDAO().getByClient(_userId);
                             break;
                         case "employee":
-                            notifications = new EmployeNotificationDAO().getForEmploye(_userId);
+                            notifications = new EmployeNotificationDAO().getByEmployee(_userId);
                             break;
                     }
                     myResponseBody = JsonUtil.notificationsToJson(notifications);

@@ -14,7 +14,6 @@ import java.io.IOException;
 public class LogoutServlet extends MyServlet {
     @Override
     public void init() throws ServletException {
-        //todo hna on initialise l'objet li fih les methodes ta3 hed servlet
         super.init();
     }
 
@@ -28,15 +27,11 @@ public class LogoutServlet extends MyServlet {
                 redirectToLogin(request, response, LOGIN_NEEDED_ERROR_ID);
             }
         } else {
-            redirectToNotLoggedIn(request, response);
+            redirectToLogin(request, response, LOGGED_OUT);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
-    }
-
-    private void redirectToNotLoggedIn(HttpServletRequest request, HttpServletResponse response) {
-
     }
 }

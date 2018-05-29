@@ -63,16 +63,6 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-
-
-        /*messages*/
-        LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), MyConsts.MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=messages", "fa-envelope");
-        messagesSubNavElementList.add(administrationMessagesNavElement);
-        NavElement envoyerMessage = new NavElement(isPage(currentPage,TablePage.NEW_MESSAGE),"Envoyer un message",urlBase + "?what=newMessage","fa fa-pencil");
-        messagesSubNavElementList.add(envoyerMessage);
-        ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
-        navElements.add(messagesExpendableNavElement);
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
             /*Admins*/
@@ -212,16 +202,6 @@ public class Nav {
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
 
-
-
-        /*messages*/
-        LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), MyConsts.MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=messages", "fa-envelope");
-        messagesSubNavElementList.add(administrationMessagesNavElement);
-        NavElement envoyerMessage = new NavElement(isPage(currentPage,TablePage.NEW_MESSAGE),"Envoyer un message",urlBase + "?what=newMessage","fa fa-pencil");
-        messagesSubNavElementList.add(envoyerMessage);
-        ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
-        navElements.add(messagesExpendableNavElement);
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
 
@@ -427,14 +407,7 @@ public class Nav {
         NavElement programmerVisiteNavElement = new NavElement(false, MyConsts.PROGRAMMER_VISITE_NAV_TITLE, urlBase + "?what=programmerVisite", "fa-calendar-plus-o");
         navElements.add(programmerVisiteNavElement);
 
-        /*messages*/
-        LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.ADMINISTRATION_MESSAGES_FOR_EMPLOYEES), MyConsts.ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=AdminsMessages", "fa-envelope");
-        messagesSubNavElementList.add(administrationMessagesNavElement);
-        NavElement envoyerMessage = new NavElement(isPage(currentPage,TablePage.NEW_MESSAGE),"Envoyer un message",urlBase + "?what=newMessage","fa fa-pencil");
-        messagesSubNavElementList.add(envoyerMessage);
-        ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
-        navElements.add(messagesExpendableNavElement);
+
         /*visites*/
         LinkedList<NavElement> visitesSubNavElementList = new LinkedList<>();
         NavElement visitesProgrammeesNavElement = new NavElement(isPage(currentPage, TablePage.PROGRAMMED_VISITES), MyConsts.VISITES_PROGRAMMEES_TITLE, urlBase + "?what=visitesProgrammees", "fa-calendar");
@@ -522,14 +495,7 @@ public class Nav {
         NavElement notifsNavElement = new NavElement(isPage(currentPage, TablePage.EMPLOYEE_NOTIFICATIONS), "Notifications", urlBase + "?what=myNotifications", "fa-bell-o");
         navElements.add(notifsNavElement);
 
-        /*messages*/
-        LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.ADMINISTRATION_MESSAGES_FOR_EMPLOYEES), MyConsts.ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=AdminsMessages", "fa-envelope");
-        messagesSubNavElementList.add(administrationMessagesNavElement);
-        NavElement envoyerMessage = new NavElement(isPage(currentPage,TablePage.NEW_MESSAGE),"Envoyer un message",urlBase + "?what=newMessage","fa fa-pencil");
-        messagesSubNavElementList.add(envoyerMessage);
-        ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
-        navElements.add(messagesExpendableNavElement);
+
         /*visites*/
         LinkedList<NavElement> visitesSubNavElementList = new LinkedList<>();
         NavElement mesVisitesNavElement = new NavElement(isPage(currentPage, TablePage.AGENT_VISITES), "Mes visites", urlBase + "?what=myVisits", "fa fa-calendar");

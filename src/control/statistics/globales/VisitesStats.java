@@ -39,7 +39,6 @@ public class VisitesStats extends Stats {
     }
 
     public int allVisitesByMonth(Month month) {
-        // TODO: 5/5/2018
         return new VisitesDao().nbrVisitesForMonth(month);
     }
 

@@ -21,12 +21,7 @@ public class AgentStats extends PersoStats {
         this.rapportsDao = new RapportDAO();
     }
 
-    /**
-     * @return the number of unread messages
-     */
-    public int getNewMessagesNbr() {// TODO: 5/3/2018
-        return 0;
-    }
+
 
     public int getReportedVisites() {
         return employeeDao.myReportedVisitsNbr(userId);
@@ -136,7 +131,6 @@ public class AgentStats extends PersoStats {
     // TODO: 5/4/2018
     public HashMap<Month, Integer> positifsVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
         variation.put(Month.JANUARY, 0);
         variation.put(Month.FEBRUARY, 0);
@@ -157,7 +151,6 @@ public class AgentStats extends PersoStats {
     // TODO: 5/4/2018
     public HashMap<Month, Integer> negatifsVariation() {
         HashMap<Month, Integer> variation = new HashMap<>();
-// TODO: 5/4/2018 f dao ndiro method traj3alna haja kima haka , sinon pour chaque month ndirou counter f dao
 
         variation.put(Month.JANUARY, 0);
         variation.put(Month.FEBRUARY, 0);
@@ -191,4 +184,7 @@ public class AgentStats extends PersoStats {
         return logementsVisites * 100 / all;
     }
 
+    public int getNewNotifications() {
+        return employeeDao.newNotifsNbrForAgent(userId);
+    }
 }

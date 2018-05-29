@@ -833,4 +833,39 @@ public class VisitesDao extends DAO {
     }
 
 
+    public LinkedList<Visite> getTommorrowsScheduledVisits(int horraire) {
+        LinkedList<Visite> visites = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("SELECT * FROM visite where timestamp=(current_date + 1) and horraire='" + horraire + "' ;");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(Integer.parseInt(result.getString("horraire")));
+                switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
+                    case "prevue":
+                        visite.setEtatVisite(EtatVisite.PROGRAMMEE);
+                        break;
+                    case "reportee":
+                        visite.setEtatVisite(EtatVisite.REPORTEE);
+                        break;
+                    case "annulee":
+                        visite.setEtatVisite(EtatVisite.ANNULEE);
+                        break;
+                }
+                visites.add(visite);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
 }

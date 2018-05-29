@@ -98,6 +98,9 @@
             case MyServlet.REGISTRATION_ERROR:
                 errorMessage = "Erreur lors de la création du compte. Veuillez réessayer";
                 break;
+            case MyServlet.LOGGED_OUT:
+                errorMessage = "Vous avez ete deconnecte";
+                break;
         }
         out.print("<script type=\"text/javascript\">");
         out.println("alert('" + errorMessage + "');");

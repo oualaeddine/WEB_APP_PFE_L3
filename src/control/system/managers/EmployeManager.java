@@ -9,10 +9,11 @@ import utils.Util;
 import javax.servlet.http.HttpServletRequest;
 
 public class EmployeManager {
-    private final EmployeDAO employeDAO;
+    public EmployeDAO employeDAO;
+    private Employe loggedInEmploye;
 
-    public EmployeManager() {
-        this.employeDAO = new EmployeDAO();
+    public EmployeManager(Employe loggedInEmploye) {
+        this.loggedInEmploye = loggedInEmploye;
     }
 
     public boolean modifierProfil(HttpServletRequest request) {

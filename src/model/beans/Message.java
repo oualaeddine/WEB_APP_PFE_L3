@@ -2,7 +2,7 @@ package model.beans;
 
 import model.beans.humans.Person;
 
-public class Message {        // TODO: 2/18/2018
+public class Message {
     private int id;
     private String content;
     private Person sender,receiver;

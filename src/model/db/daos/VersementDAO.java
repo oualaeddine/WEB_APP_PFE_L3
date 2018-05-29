@@ -151,7 +151,8 @@ public class VersementDAO extends DAO {
         return 0;
     }
 
-    public LinkedList<Versement> getByClient(int clientId) {// TODO: 4/26/2018
+    public LinkedList<Versement> getByClient(int clientId) {
+
         return null;
     }
 

@@ -153,6 +153,10 @@
                             <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Longitude">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="image">Photo</label>
+                        <input id="image" class="form-control" type="file" name="image" placeholder="Photo">
+                    </div>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit" form="ajouterLogementForm">Ajouter</button>

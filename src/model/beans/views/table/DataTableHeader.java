@@ -14,6 +14,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case ANNULER_VENTE:
+                setupTableHeaderForAnnulerVentes();
+                break;
             case RAPPORTS_LIST:
                 setupTableHeaderForRapport();
                 break;
@@ -168,6 +171,19 @@ public class DataTableHeader {
                 setupTableHeaderForSignalerClient();
                 break;
         }
+    }
+
+    private void setupTableHeaderForAnnulerVentes() {
+        html =
+                "<tr>\n" +
+                        "    <th>ID</th>\n" +
+                        "    <th>Client</th>\n" +
+                        "    <th>Logement</th>\n" +
+                        "    <th>Date de début</th>\n" +
+                        "    <th>Reste à payer</th>" +
+                        "    <th>Etat</th>\n" +
+                        "    <th>Action</th>" +
+                        "</tr>";
     }
 
     private void setupTableHeaderForSignalement() {

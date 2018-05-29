@@ -29,6 +29,9 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case ANNULER_VENTE:
+                setupDataAnnulerVente();
+                break;
             case RAPPORTS_LIST:
                 setupDataMesRapports();
                 break;
@@ -196,6 +199,13 @@ public class DataTableData {
             case BANNIR_CLIENT:
                 setupDataBannirClient();
                 break;
+        }
+    }
+
+    private void setupDataAnnulerVente() {
+        LinkedList<Vente> ventes = new VentesDAO().getEnCours();
+        for (Vente v : ventes) {
+            data.add(new DataTableRow(DataTableRowFormat.ANNULER_VENTE, v));
         }
     }
 

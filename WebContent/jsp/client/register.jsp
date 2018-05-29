@@ -374,7 +374,7 @@
                     validators: {
                         notEmpty: {
                             message: "Veuillez entrer un nom d'utilisateur"
-                        }
+                        },
                     }
                 },
                 passwordInput: {

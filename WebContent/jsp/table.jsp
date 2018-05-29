@@ -431,6 +431,33 @@
             </div>
         </div>
     </div>
+
+    <%--Modal Annuler vente--%>
+    <div id="annulerVenteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=annulationVente" id="annulerVenteForm">
+
+                        <input id="venteAnnulee" name="venteAnnulee" type="hidden">
+                        <div class="form-group">
+                            <label>Êtes vous sur de vouloir annuler cette vente ?</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit" form="annulerVenteForm">Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -478,6 +505,9 @@
             $(this).next('#ifPresent').toggle();
         });
 
+        function getCanceledVente(idTaaLaventeAnnulee) {
+            document.getElementById("venteAnnulee").value = idTaaLaventeAnnulee;
+        }
         function getBannedClientId(idTaaLBannedClient) {
             document.getElementById("clientBanni").value = idTaaLBannedClient;
         }

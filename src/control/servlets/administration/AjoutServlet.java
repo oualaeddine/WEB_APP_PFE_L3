@@ -98,7 +98,7 @@ public class AjoutServlet extends MyServlet {
                                 int approvedId = Integer.parseInt(request.getParameter("employeApprouve"));
                                 Employe approvedEmploye = (Employe) new EmployeDAO().getById(approvedId);
                                 try {
-                                    GoogleMail.Send("hchimmobilier", "HchImmobilier1234", approvedEmploye.getEmail(), "", "Approbation du compte", Util.getApprobationEmail(approvedEmploye));
+                                    GoogleMail.Send("eritpimmobilier", "eritppfe", approvedEmploye.getEmail(), "", "Approbation du compte", Util.getApprobationEmail(approvedEmploye));
                                     System.out.println("Sent");
 
                                 } catch (MessagingException e) {
@@ -200,6 +200,17 @@ public class AjoutServlet extends MyServlet {
                                 error = ACTION_ERROR;
                                 System.out.println("Ajout: false");
                             }
+                        }
+                        break;
+                    case "annulationVente":
+                        if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.RESPONSABLE_VENTES) {
+                            if (((ResponsablesVentesManager) manager).annulerVente(request)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Annulation: true");
+                            }
+                        } else {
+                            error = ACTION_ERROR;
+                            System.out.println("Annulation: false");
                         }
                         break;
                 }

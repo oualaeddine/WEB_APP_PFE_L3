@@ -29,7 +29,7 @@ public class ForgotPasswordServlet extends MyServlet {
 
             String code = new OttDAO().generateNewToken(employe.getId(),userType);
             try {
-                GoogleMail.Send("hchimmobilier", "HchImmobilier1234", adress, "", "Récuperation du mot de passe", Util.getForgotPasswordEmail(adress,userType,code) );
+                GoogleMail.Send("eritpimmobilier", "eritppfe", adress, "", "Récuperation du mot de passe", Util.getForgotPasswordEmail(adress, userType, code));
 
             } catch (MessagingException e) {
                 e.printStackTrace();

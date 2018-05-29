@@ -33,7 +33,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="gson-2.6.2" level="project" />
-    <orderEntry type="library" exported="" name="com.mysql.jdbc_5.1.5" level="project" />
     <orderEntry type="library" exported="" name="javax.transaction" level="project" />
     <orderEntry type="library" exported="" name="mail" level="project" />
     <orderEntry type="module-library" scope="TEST">
@@ -93,5 +92,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="twilio-7.21.1-jar-with-dependencies" level="project" />
+    <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
   </component>
 </module>

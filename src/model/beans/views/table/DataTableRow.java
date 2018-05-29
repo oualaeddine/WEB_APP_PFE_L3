@@ -24,6 +24,9 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case ANNULER_VENTE:
+                setupHtmlForAnnulerVente();
+                break;
             case PLAINTE:
                 setupHtmlForPlainte();
                 break;
@@ -91,6 +94,20 @@ public class DataTableRow {
                 setupHtmlForRapport();
                 break;
         }
+    }
+
+    private void setupHtmlForAnnulerVente() {
+        Vente vente = (Vente) object;
+        double restant = vente.getLogement().getPrix() - new VersementDAO().getSommeVersementsByVente(vente.getId());
+        html = "<tr>" +
+                "<td>" + vente.getId() + "</td>" +
+                "<td>" + vente.getClient().getFullName() + "</td>" +
+                "<td>" + vente.getLogement().getTitre() + "</td>" +
+                "<td>" + vente.getDate() + "</td>" +
+                "<td>" + restant + "</td>" +
+                "<td>" + vente.getEtatVente() + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getCanceledVente(" + vente.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#annulerVenteModal\" value=\"" + vente.getId() + "\">Annuler</button></td>" +
+                "</tr>";
     }
 
     private void setupHtmlForPlainte() {

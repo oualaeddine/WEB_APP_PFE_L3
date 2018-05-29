@@ -358,12 +358,6 @@ public class Nav {
         navElements.add(dashboardNavElement);
 
 
-        /*messages*/
-        LinkedList<NavElement> messagesSubNavElementList = new LinkedList<>();
-        NavElement administrationMessagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES), MyConsts.ADMINISTRATION_MESSAGES_NAV_ELEMENT_TITLE, urlBase + "?what=AdminsMessages", "");// TODO: 3/1/2018 add icon
-        messagesSubNavElementList.add(administrationMessagesNavElement);
-        ExpendableNavElement messagesExpendableNavElement = new ExpendableNavElement("messagesNav", "fa-envelope", MyConsts.MESSAGES_NAV_ELEMENT_TITLE, messagesSubNavElementList, isPage(currentPage, TablePage.MESSAGES));
-        navElements.add(messagesExpendableNavElement);
         /*Versements*/
         LinkedList<NavElement> versementsSubElementList = new LinkedList<>();
 
@@ -381,6 +375,9 @@ public class Nav {
 
         /*ventes*/
         LinkedList<NavElement> ventesSubElementList = new LinkedList<>();
+
+        NavElement annulerVenteNavElement = new NavElement(isPage(currentPage, TablePage.ANNULER_VENTE), "Annuler vente", urlBase + "?what=annulerVente", "fa-times");
+        ventesSubElementList.add(annulerVenteNavElement);
 
         NavElement ventesEnAttenteNavElement = new NavElement(isPage(currentPage, TablePage.VENTES_EN_COURS), "Ventes en cours", urlBase + "?what=ventesEnAttente", "fa-clock-o");
         ventesSubElementList.add(ventesEnAttenteNavElement);

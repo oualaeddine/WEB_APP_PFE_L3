@@ -324,6 +324,12 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case EMPLOYES:
+                return "Employés";
+            case VERSEMENTS_FOR_USER:
+                return "Versements";
+            case ANNULER_VENTE:
+                return "Ventes en cours";
             case VENTES_EN_COURS:
                 return "Ventes en cours";
             case VENTES_ANNULEES:
@@ -436,6 +442,8 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "ANNULER_VENTE":
+                return ANNULER_VENTE;
             case "BANNIR_CLIENT":
                 return BANNIR_CLIENT;
             case "EMPLOYEE_NOTIFICATIONS":
@@ -586,8 +594,7 @@ public class Util {
         // TODO: 5/29/2018
         System.out.println("sending sms notification : \ntel = [" + tel + "], notifContent = [" + notifContent + "]");
 
-        Message message = Message
-                .creator(new PhoneNumber("+213" + tel), // to
+        Message message = Message.creator(new PhoneNumber("+213" + tel), // to
                         new PhoneNumber("+213696689498"), // from
                         notifContent)
                 .create();

@@ -171,7 +171,7 @@ public class VentesDAO extends DAO {
     public boolean cancelVente(Vente vente) {
         try {
             venteStatement.execute("UPDATE vente SET etat='annulee' WHERE id=" + vente.getId() + ";");
-            logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + vente.getLogement().getId());
+            logementStatement.execute("UPDATE logement SET gele=0 WHERE id=" + vente.getLogement().getId() + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

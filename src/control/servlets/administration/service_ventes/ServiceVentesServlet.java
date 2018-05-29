@@ -34,6 +34,9 @@ public class ServiceVentesServlet extends MyServlet {
                     this.getServletContext().getRequestDispatcher("/jsp/responsable_ventes.jsp").forward(request, response);
                 } else {
                     switch (what) {
+                        case "annulerVente":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ANNULER_VENTE").forward(request, response);
+                            break;
                         case "myNotifications":
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
                             break;

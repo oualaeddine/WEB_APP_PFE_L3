@@ -105,7 +105,7 @@ public class ClientLoginServlet extends MyClientServlet {
         client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
         if (authManager.signupClient(client)) {
             try {
-                GoogleMail.Send("hchimmobilier", "HchImmobilier1234", client.getEmail(), "", "Bienvenue chez ERITP", Util.getWelcomeEmail(client));
+                GoogleMail.Send("eritpimmobilier", "eritppfe", client.getEmail(), "", "Bienvenue chez ERITP", Util.getWelcomeEmail(client));
                 System.out.println("Welcome email sent");
             } catch (MessagingException e) {
                 e.printStackTrace();

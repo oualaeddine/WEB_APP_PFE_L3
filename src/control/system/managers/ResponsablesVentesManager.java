@@ -6,6 +6,8 @@ import model.db.daos.ClientDAO;
 import model.db.daos.EmployeDAO;
 import model.db.daos.VentesDAO;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class ResponsablesVentesManager {
     private final Employe responsableVente;
 
@@ -16,7 +18,10 @@ public class ResponsablesVentesManager {
     public boolean confirmerVente(Vente vente){
         return new VentesDAO().confirm(vente);
     }
-    public boolean annulerVente(Vente vente){
+
+    public boolean annulerVente(HttpServletRequest request) {
+        int venteId = Integer.parseInt(request.getParameter("venteAnnulee"));
+        Vente vente = (Vente) new VentesDAO().getById(venteId);
         return new VentesDAO().cancelVente(vente);
     }
 

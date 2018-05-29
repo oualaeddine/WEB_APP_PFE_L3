@@ -635,7 +635,14 @@ public class Util {
             conn.setDoOutput(true);
 
 
-            String input = "{\"notification\" : {\"title\" : \"Test\",\"body\": \"" + message + "\"}, \"to\":\"" + token + "\"}";
+            String input =
+                    "{\"notification\" : " +
+                            "{" +
+                            "\"title\" : \"Test\"," +
+                            "\"body\": \"" + message + "\"" +
+                            "}," +
+                            " \"to\":\"" + token + "\"" +
+                            "}";
 
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());

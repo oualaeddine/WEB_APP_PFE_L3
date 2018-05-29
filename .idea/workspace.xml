@@ -6,49 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/WebContent/statistics/admin/visites_rapports.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" afterDir="false" />
+    <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="export, impression, accueil client redirect to dashboard">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/twilio_java_sdk_7_0_0_rc_10_jar_with_dependencies.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/admin/ventes.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/admin/ventes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/.bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/00-Getting-Started.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/01-Line-Chart.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/02-Bar-Chart.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/03-Radar-Chart.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/04-Polar-Area-Chart.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/05-Pie-Doughnut-Chart.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/06-Advanced.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/docs/07-Notes.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/gulpfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/bar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/doughnut.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/line-customTooltips.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/line.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/pie-customTooltips.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/pie.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/polar-area.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/samples/radar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.Bar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.Core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.Doughnut.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.Line.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.PolarArea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/src/Chart.Radar.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/control/api/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/API.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" afterDir="false" />
@@ -71,7 +37,6 @@
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" afterDir="false" />
@@ -92,14 +57,15 @@
       <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVente.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/EtatVente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVisite.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/EtatVisite.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/GoogleMail$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/GoogleMail.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/utils/Util$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/Util$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/utils/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Util.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -135,6 +101,12 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="soc_imm@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="soc_imm@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="soc_imm: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
     </expand>
@@ -144,124 +116,69 @@
     <favorites_list name="web_app" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.57908845">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="logements_regions.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="349" column="20" selection-start-line="349" selection-start-column="20" selection-end-line="349" selection-end-column="20" />
-                  <folding>
-                    <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ventes.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/ventes.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="474" column="20" lean-forward="true" selection-start-line="474" selection-start-column="20" selection-end-line="474" selection-end-column="20" />
-                  <folding>
-                    <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-                    <element signature="e#12844#16220#0" />
-                    <element signature="e#16937#19387#0" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="visites_rapports.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/visites_rapports.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-156">
-                  <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
-                  <folding>
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="157" column="22" selection-start-line="157" selection-start-column="22" selection-end-line="157" selection-end-column="22" />
-                  <folding>
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="VisitesStats.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-153">
-                  <caret line="14" selection-start-line="14" selection-end-line="14" />
-                  <folding>
-                    <element signature="e#5189#5190#0" expanded="true" />
-                    <element signature="e#5256#5257#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RapportsStats.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/RapportsStats.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-935">
-                  <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="ContextListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/system/ContextListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Util.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="935">
+              <caret line="638" column="20" selection-start-line="638" selection-start-column="20" selection-end-line="638" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoogleMail.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="34" column="151" lean-forward="true" selection-start-line="34" selection-start-column="126" selection-end-line="34" selection-end-column="151" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="385" column="26" selection-start-line="385" selection-start-column="26" selection-end-line="385" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
         <option value="Enum" />
+        <option value="HTML File" />
+        <option value="Jsp File" />
+        <option value="JUnit5 Test Class" />
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="Jsp File" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>op</find>
-      <find>''</find>
-      <find>logement</find>
-      <find>api</find>
       <find>prix</find>
       <find>/api/</find>
       <find>#re</find>
@@ -288,6 +205,10 @@
       <find>Ventes</find>
       <find>5</find>
       <find>vect</find>
+      <find>callout</find>
+      <find>pe-7s-users</find>
+      <find>salesChart</find>
+      <find>soc_imm.</find>
     </findStrings>
     <replaceStrings>
       <replace>return</replace>
@@ -327,57 +248,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/control/statistics/VentesStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/VisitesStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/RapportsStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/ClientsStats.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/stats/ClientStatsDAO.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/Stats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/perso/PersoStats.java" />
-        <option value="$PROJECT_DIR$/src/model/db/DAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/AssignationDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/AuthDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/LogementDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/OttDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/SignalementDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/VentesDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/VersementDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/ClientsStats.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/EmployeesStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/LogementsStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/RapportsStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/VentesStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/perso/ClientStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/perso/OperateurStats.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/perso/ResponsableVentesStats.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/RapportDAO.java" />
-        <option value="$PROJECT_DIR$/src/control/statistics/perso/AgentStats.java" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/agentStats.html" />
-        <option value="$PROJECT_DIR$/WebContent/jsp/agent.jsp" />
-        <option value="$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java" />
-        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
-        <option value="$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java" />
-        <option value="$PROJECT_DIR$/src/utils/Util.java" />
-        <option value="$PROJECT_DIR$/WebContent/jsp/ProgrammerVisite.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/programmerVisite/programmerVisite.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/index.html" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/gulpfile.js" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/dist/js/pages/dashboard2.js" />
-        <option value="$PROJECT_DIR$/WebContent/jsp/admin.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/agentStats.jsp" />
-        <option value="$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/admin/visites_rapports.html" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/client/MesStats.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/statistics/operateur_stats.jsp" />
         <option value="$PROJECT_DIR$/WebContent/statistics/admin/index.html" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.js" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.min.js" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/admin/ventes.html" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.html" />
+        <option value="$PROJECT_DIR$/WebContent/assets_client/js/main.js" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql" />
+        <option value="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" />
+        <option value="$PROJECT_DIR$/WebContent/statistics/agentStats.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/html/client/register.html" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/mainClient.js" />
+        <option value="$PROJECT_DIR$/src/control/api/LogementApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
+        <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
+        <option value="$PROJECT_DIR$/src/control/api/NotificationsApi.java" />
+        <option value="$PROJECT_DIR$/src/control/api/AuthApi.java" />
+        <option value="$PROJECT_DIR$/src/control/system/managers/AgentsManager.java" />
+        <option value="$PROJECT_DIR$/src/control/system/managers/AgentsManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/RapportDAO.java" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/buttons.flash.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/jszip.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/pdfmake.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/vfs_fonts.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/buttons.html5.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/buttons.print.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/jquery.dataTables.min.css" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/buttons.dataTables.min.css" />
+        <option value="$PROJECT_DIR$/WebContent/vendor/datatables/dataTables.buttons.min.js" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/table.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/nouvelleVente.jsp" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1eb455eb-cedd-4e9a-b880-34a34749e0d4/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console_1.sql" />
+        <option value="$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/client/home.jsp" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/VentesDAO.java" />
+        <option value="$PROJECT_DIR$/src/javax/servlet/ServletContextListener.java" />
+        <option value="$PROJECT_DIR$/src/system/ServletContextListener.java" />
+        <option value="$PROJECT_DIR$/src/model/db/DAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/ClientNotificationDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/EmployeNotificationDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/Notification.java" />
+        <option value="$PROJECT_DIR$/src/control/system/NotificationService.java" />
+        <option value="$PROJECT_DIR$/src/control/system/ContextListener.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RoomsNumberServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RegionServlet.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java" />
+        <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
+        <option value="$PROJECT_DIR$/src/utils/Util.java" />
       </list>
     </option>
   </component>
@@ -410,10 +331,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-3" />
-    <option name="y" value="912" />
-    <option name="width" value="1358" />
-    <option name="height" value="655" />
+    <option name="x" value="6" />
+    <option name="y" value="894" />
+    <option name="width" value="1376" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -423,7 +344,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -434,28 +354,89 @@
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
-              <item name="globales" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="logement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="logement" type="462c0819:PsiDirectoryNode" />
+              <item name="additional" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="logement" type="462c0819:PsiDirectoryNode" />
+              <item name="essential" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="managers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
@@ -466,75 +447,76 @@
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="adminservlet&#9;FILE&#9;file://C:/Users/hp/Documents/WEB_APP_PFE_L3/src/control/servlets/main/admin/AdminServlet.java&#10;/Visites&#9;FILE&#9;file://C:/Users/hp/Documents/WEB_APP_PFE_L3/src/control/servlets/sub/ListeVisitesServlet.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/SQL Dialects" value="MySQL" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebContent/statistics/dist" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/twilio-7.21.1-jar-with-dependencies.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20663266" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="control.system.managers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\src\tests" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\admin" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\programmerVisite\assets\js" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\html" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="control.servlets.administration.client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\lib" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components\chart.js" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components" />
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist\js" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.db.daos.stats" />
       <recent name="model.beans" />
       <recent name="model.beans.views" />
       <recent name="model.enums" />
       <recent name="control.system" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components\chart.js" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist\js" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist\js\pages" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="control.servlets.administration.client" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\admin" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\programmerVisite\assets\js" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\html" />
     </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -551,10 +533,54 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/statistics/agentStats.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/html/register.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/admin.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/agent.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/changePassword.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/entete.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/home.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/modifierProfilClient.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/statsClient.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/operateur.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/responsable_ventes.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/superuser.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/statistics/operateur_stats.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/MyServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Agent/AgentServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/AjoutServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/DashboardServlet.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Super_user/SUServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/admin/AdminServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/ChangePasswordServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/LogoutServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/SignUpServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/client/ProgrammerVisiteClientServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/AjouterVenteServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/ModifierVisiteServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/service_ventes/ServiceVentesServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/ClientLoginServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/ContactServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/personal/EditProfileServlet.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/AdminsManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/AuthManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/ClientsManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/EmployeManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/OperateursManager.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/nav/Nav.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/ClientDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/ClientNotificationDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/PlainteDAO.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VentesDAO.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VisitesDao.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/utils/Util.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -562,7 +588,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/changerMdp.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/contacterSociete.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/register.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/login.jsp</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -675,6 +704,52 @@
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
+    <configuration name="AgentsManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="web_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="control.system.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="control.system.managers" />
+      <option name="MAIN_CLASS_NAME" value="control.system.managers.AgentsManagerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="AgentsManagerTest.envoyerRapport" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="web_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="control.system.managers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="control.system.managers" />
+      <option name="MAIN_CLASS_NAME" value="control.system.managers.AgentsManagerTest" />
+      <option name="METHOD_NAME" value="envoyerRapport" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -714,7 +789,6 @@
       <listeners />
     </configuration>
     <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.5" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
       <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -727,6 +801,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_web_app_2" />
         <option name="DEPLOY_TOMCAT_APPS" value="true" />
+        <option name="PRESERVE_SESSIONS" value="true" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -787,25 +862,16 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
     <list>
       <item itemvalue="Tomcat Server.Tomcat" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.AgentsManagerTest.envoyerRapport" />
+      <item itemvalue="JUnit.AgentsManagerTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AgentsManagerTest" />
+        <item itemvalue="JUnit.AgentsManagerTest.envoyerRapport" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -914,77 +980,34 @@
       <workItem from="1525454465761" duration="10010000" />
       <workItem from="1525500650204" duration="3125000" />
       <workItem from="1525507203038" duration="4737000" />
-      <workItem from="1525522374889" duration="13372000" />
-    </task>
-    <task id="LOCAL-00001" summary="parmis lhwayj li tnahaw gbil -__-&#10;essayes tjr de decocher workspace.xml">
-      <created>1518644625640</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1518644625640</updated>
-    </task>
-    <task id="LOCAL-00002" summary="hwayj">
-      <created>1518717126318</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1518717126318</updated>
-    </task>
-    <task id="LOCAL-00003" summary="hwayj">
-      <created>1518764681179</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1518764681179</updated>
-    </task>
-    <task id="LOCAL-00004" summary="hwayj">
-      <created>1518941644299</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1518941644299</updated>
-    </task>
-    <task id="LOCAL-00005" summary="tables view whwayjha">
-      <created>1518953165990</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1518953165991</updated>
-    </task>
-    <task id="LOCAL-00006" summary="hwayj">
-      <created>1519390248336</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1519390248336</updated>
-    </task>
-    <task id="LOCAL-00007" summary="hek">
-      <created>1520456404834</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1520456404834</updated>
-    </task>
-    <task id="LOCAL-00008" summary="hek">
-      <created>1520456797076</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1520456797076</updated>
-    </task>
-    <task id="LOCAL-00009" summary="trayef">
-      <created>1520461105493</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1520461105518</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Change password form+bdd">
-      <created>1520515431270</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1520515431270</updated>
+      <workItem from="1525522374889" duration="14843000" />
+      <workItem from="1525549155829" duration="8626000" />
+      <workItem from="1525593829526" duration="12583000" />
+      <workItem from="1525608975725" duration="1963000" />
+      <workItem from="1525738081797" duration="809000" />
+      <workItem from="1525774055402" duration="1235000" />
+      <workItem from="1525803755422" duration="614000" />
+      <workItem from="1526060105854" duration="2083000" />
+      <workItem from="1526186743255" duration="2265000" />
+      <workItem from="1526199962977" duration="3375000" />
+      <workItem from="1526254083750" duration="338000" />
+      <workItem from="1526328190157" duration="592000" />
+      <workItem from="1526331236031" duration="8129000" />
+      <workItem from="1526482233885" duration="285000" />
+      <workItem from="1526491906581" duration="746000" />
+      <workItem from="1526507954986" duration="598000" />
+      <workItem from="1526633194340" duration="5102000" />
+      <workItem from="1526641070790" duration="2887000" />
+      <workItem from="1526651853205" duration="605000" />
+      <workItem from="1526720482589" duration="1512000" />
+      <workItem from="1526740060548" duration="174000" />
+      <workItem from="1527243219332" duration="1264000" />
+      <workItem from="1527253066893" duration="1837000" />
+      <workItem from="1527255200740" duration="1135000" />
+      <workItem from="1527345658968" duration="1011000" />
+      <workItem from="1527416357771" duration="2324000" />
+      <workItem from="1527511539631" duration="665000" />
+      <workItem from="1527588069448" duration="9124000" />
     </task>
     <task id="LOCAL-00011" summary="hek">
       <created>1520800834040</created>
@@ -1259,11 +1282,113 @@
       <option name="project" value="LOCAL" />
       <updated>1525528099307</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="aaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+      <created>1525536454789</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1525536454790</updated>
+    </task>
+    <task id="LOCAL-00051" summary="aaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+      <created>1525557082633</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1525557082635</updated>
+    </task>
+    <task id="LOCAL-00052" summary="aaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+      <created>1525597988410</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1525597988410</updated>
+    </task>
+    <task id="LOCAL-00053" summary="aaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+      <created>1526202642274</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1526202642274</updated>
+    </task>
+    <task id="LOCAL-00054" summary="hwayj">
+      <created>1526492023126</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1526492023126</updated>
+    </task>
+    <task id="LOCAL-00055" summary="export, impression, accueil client redirect to dashboard">
+      <created>1526640695874</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1526640695876</updated>
+    </task>
+    <task id="LOCAL-00056" summary="export, impression, accueil client redirect to dashboard">
+      <created>1527255457261</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1527255457263</updated>
+    </task>
+    <task id="LOCAL-00057" summary="notifications system">
+      <created>1527590724261</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1527590724277</updated>
+    </task>
+    <task id="LOCAL-00058" summary="send sms, send push notif">
+      <created>1527593666154</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1527593666154</updated>
+    </task>
+    <task id="LOCAL-00059" summary="notifs tjr">
+      <created>1527596604652</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1527596604652</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 19m 43s.xml">
+      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 20m 11s.xml">
+      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 25m 30s.xml">
+      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 28m 52s.xml">
+      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 31m 31s.xml">
+      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 31m 36s.xml">
+      <configuration name="AgentsManagerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 33m 16s.xml">
+      <configuration name="AgentsManagerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 36m 06s.xml">
+      <configuration name="AgentsManagerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 39m 24s.xml">
+      <configuration name="AgentsManagerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AgentsManagerTest - 2018.05.18 at 10h 08m 06s.xml">
+      <configuration name="AgentsManagerTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="461045000" />
+    <option name="totallyTimeSpent" value="534397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1279,38 +1404,38 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="FTP" order="14" weight="0.32884902" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5045593" side_tool="true" weight="0.4592" />
-      <window_info anchor="bottom" id="Application Servers" order="9" weight="0.32744783" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
-      <window_info anchor="bottom" id="Database Changes" order="13" weight="0.32735425" />
+      <window_info anchor="bottom" id="FTP" order="13" weight="0.32884902" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045593" side_tool="true" weight="0.4592" />
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.32744783" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32978722" />
+      <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32735425" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="right" id="Database" order="9" weight="0.19969743" />
-      <window_info id="Structure" order="1" sideWeight="0.5906902" side_tool="true" weight="0.1762918" />
+      <window_info anchor="right" id="Database" order="9" weight="0.19591528" />
+      <window_info id="Structure" order="1" sideWeight="0.59229535" side_tool="true" weight="0.16033435" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.505618" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.39312407" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.39312407" />
       <window_info anchor="right" id="Messages" order="8" weight="0.32446808" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="7" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.328" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.328" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.4093098" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.37078652" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4969605" weight="0.37239164" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4093098" visible="true" weight="0.15355521" />
-      <window_info id="Web" order="5" sideWeight="0.5905512" side_tool="true" weight="0.18161094" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.41573033" />
+      <window_info anchor="bottom" x="11" y="199" width="1316" height="402" id="Run" order="14" weight="0.6035313" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969605" weight="0.37239164" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.40288925" visible="true" weight="0.23298033" />
+      <window_info id="Web" order="5" sideWeight="0.59711075" side_tool="true" weight="0.23298033" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.54735154" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="6" sideWeight="0.568" side_tool="true" weight="0.22768533" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49544072" weight="0.45264846" />
+      <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49544072" weight="0.45104334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.54895663" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1362,13 +1487,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="trayef" />
-    <MESSAGE value="Change password form+bdd" />
-    <MESSAGE value="hek" />
-    <MESSAGE value="bezzaaaaaaaaaf hwayej" />
-    <MESSAGE value="client side" />
     <MESSAGE value="added gitignore" />
-    <MESSAGE value="hwayj" />
     <MESSAGE value="home servlet" />
     <MESSAGE value="programmer visite ta3 sah wmahabtch telah nananananana" />
     <MESSAGE value="programmer visite ta3 sah" />
@@ -1387,7 +1506,13 @@
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="les stats ta3 l'admin&#10;html design LOGEMENTS AND REGIONS" />
     <MESSAGE value="les stats ta3 l'admin&#10;html design ventes" />
-    <option name="LAST_COMMIT_MESSAGE" value="les stats ta3 l'admin&#10;html design ventes" />
+    <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+    <MESSAGE value="hwayj" />
+    <MESSAGE value="export, impression, accueil client redirect to dashboard" />
+    <MESSAGE value="notifications system" />
+    <MESSAGE value="send sms, send push notif" />
+    <MESSAGE value="notifs tjr" />
+    <option name="LAST_COMMIT_MESSAGE" value="notifs tjr" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1401,175 +1526,66 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="20" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/OttDAO.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/buttons.print.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+        <state relative-caret-position="51">
+          <caret line="3" column="435" selection-start-line="3" selection-start-column="435" selection-end-line="3" selection-end-column="435" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/SignalementDAO.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/jquery.dataTables.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        <state>
+          <caret column="13899" selection-start-column="13899" selection-end-column="13899" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VentesDAO.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/buttons.dataTables.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
+        <state>
+          <caret column="9262" selection-start-column="9262" selection-end-column="9262" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VersementDAO.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/dataTables.buttons.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="140" column="8" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+        <state relative-caret-position="560">
+          <caret line="38" column="282" selection-start-line="38" selection-start-column="282" selection-end-line="38" selection-end-column="282" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VisitesDao.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/nouvelleVente.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/ProgrammerVisite.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="404" column="8" selection-start-line="404" selection-start-column="8" selection-end-line="404" selection-end-column="8" />
+        <state relative-caret-position="1938">
+          <caret line="114" column="58" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1eb455eb-cedd-4e9a-b880-34a34749e0d4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="532" column="8" selection-start-line="532" selection-start-column="8" selection-end-line="532" selection-end-column="17" />
+        <state relative-caret-position="328">
+          <caret line="292" selection-start-line="292" selection-end-line="292" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/EmployeesStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="49" column="55" lean-forward="true" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/LogementsStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/PersoStats.java">
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/perso/ClientStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/perso/OperateurStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/vendor/bootstrap/js/bootstrap.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="4687" column="11" selection-start-line="4687" selection-start-column="11" selection-end-line="4687" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/perso/ResponsableVentesStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/ClientsStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/RapportDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="207" column="5" selection-start-line="207" selection-start-column="5" selection-end-line="207" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/dist/js/adminlte.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/Agent/AgentServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/perso/AgentStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/DashboardServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="35" column="84" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="37" column="76" selection-start-line="37" selection-start-column="76" selection-end-line="37" selection-end-column="76" />
+          <caret line="1" column="65" selection-start-line="1" selection-start-column="65" selection-end-line="1" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1580,78 +1596,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="46" column="56" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="90" column="37" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="405" column="70" selection-start-line="405" selection-start-column="70" selection-end-line="405" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/programmerVisite.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="685" column="4" selection-start-line="685" selection-start-column="4" selection-end-line="685" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/dist/js/demo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2652" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/ProgrammerVisite.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="163" column="53" selection-start-line="162" selection-start-column="4" selection-end-line="163" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/agentStats.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="328" selection-end-line="329" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/employe">
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/versement">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="55" column="13" lean-forward="true" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/vente">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/agent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="212" selection-start-line="212" selection-end-line="216" selection-end-column="9" />
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/signalement">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/rapport">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/plainte">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/ottemploye">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/ott_client">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/notification_employe">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/notification_client">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1662,143 +1666,245 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/agentStats.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="361" column="7" lean-forward="true" selection-start-line="361" selection-start-column="7" selection-end-line="361" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/localite">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/dist/js/pages/dashboard2.js">
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/client">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/assignation_region">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/table.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="32" column="55" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/system/managers/AuthManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="88" selection-start-line="46" selection-start-column="18" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/client/statsClient.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2023">
+          <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="79" selection-start-line="4" selection-start-column="3" selection-end-line="79" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/VentesStats.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/client/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-632">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="1530">
+          <caret line="90" column="58" selection-start-line="90" selection-start-column="58" selection-end-line="90" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/RapportsStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/employe">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/statistics/globales/VisitesStats.java">
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientNotificationDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="374">
+          <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/EmployeNotificationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="119" column="36" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/DAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VentesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="395" column="40" lean-forward="true" selection-start-line="395" selection-start-column="40" selection-end-line="395" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/Notification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/system/NotificationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="99" column="20" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/additional/EtageServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/GoodbyeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="e#5189#5190#0" expanded="true" />
-            <element signature="e#5256#5257#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/visites_rapports.html">
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
+        <state relative-caret-position="323">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/index.html">
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="157" column="22" selection-start-line="157" selection-start-column="22" selection-end-line="157" selection-end-column="22" />
+        <state relative-caret-position="391">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RegionServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/package.json">
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RoomsNumberServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="4229" column="9" selection-start-line="4229" selection-start-column="9" selection-end-line="4229" selection-end-column="9" />
+        <state relative-caret-position="391">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.min.js">
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/VisiteServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="9" column="159438" selection-start-line="9" selection-start-column="159438" selection-end-line="9" selection-end-column="159438" />
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/bower_components/chart.js/Chart.bundle.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/ventes.html">
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="474" column="20" lean-forward="true" selection-start-line="474" selection-start-column="20" selection-end-line="474" selection-end-column="20" />
+        <state>
+          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
           <folding>
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#12844#16220#0" />
-            <element signature="e#16937#19387#0" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/statistics/admin/logements_regions.html">
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="349" column="20" selection-start-line="349" selection-start-column="20" selection-end-line="349" selection-end-column="20" />
+        <state relative-caret-position="408">
+          <caret line="385" column="26" selection-start-line="385" selection-start-column="26" selection-end-line="385" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/system/ContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#2;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="34" column="151" lean-forward="true" selection-start-line="34" selection-start-column="126" selection-end-line="34" selection-end-column="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="638" column="20" selection-start-line="638" selection-start-column="20" selection-end-line="638" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1863,7 +1969,6 @@
             <option name="proportions">
               <list>
                 <option value="0.20663266" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1871,7 +1976,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mail</last-edited>
+          <last-edited>twilio-7.21.1-jar-with-dependencies</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

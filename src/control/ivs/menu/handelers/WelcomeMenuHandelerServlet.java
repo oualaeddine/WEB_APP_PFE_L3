@@ -1,9 +1,9 @@
 package control.ivs.menu.handelers;
 
 
-import com.twilio.twiml.Redirect;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Redirect;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
@@ -47,8 +47,7 @@ public class WelcomeMenuHandelerServlet extends HttpServlet {
         return new VoiceResponse
                 .Builder()
                 .redirect(new Redirect
-                        .Builder()
-                        .url(MyConsts.ERROR_SERVLET_URL)
+                        .Builder(MyConsts.ERROR_SERVLET_URL)
                         .build())
                 .build();
     }
@@ -57,8 +56,7 @@ public class WelcomeMenuHandelerServlet extends HttpServlet {
         return new VoiceResponse
                 .Builder()
                 .redirect(new Redirect
-                        .Builder()
-                        .url(MyConsts.RedirectToHumanServlet)
+                        .Builder(MyConsts.RedirectToHumanServlet)
                         .build())
                 .build();
     }
@@ -67,8 +65,7 @@ public class WelcomeMenuHandelerServlet extends HttpServlet {
         return new VoiceResponse
                 .Builder()
                 .redirect(new Redirect
-                        .Builder()
-                        .url(MyConsts.ChangeLanguageServlet)
+                        .Builder(MyConsts.ChangeLanguageServlet)
                         .build())
                 .build();
     }
@@ -77,8 +74,7 @@ public class WelcomeMenuHandelerServlet extends HttpServlet {
         return new VoiceResponse
                 .Builder()
                 .redirect(new Redirect
-                        .Builder()
-                        .url(MyConsts.APPARTEMENT_SERVLET_URL)
+                        .Builder(MyConsts.APPARTEMENT_SERVLET_URL)
                         .build())
                 .build();
     }

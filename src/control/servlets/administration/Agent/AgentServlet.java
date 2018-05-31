@@ -39,14 +39,6 @@ public class AgentServlet extends MyServlet {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ETABLIR_RAPPORT").forward(request, response);
                             break;
                         }
-                        case "AdminsMessages": {
-                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ADMINISTRATION_MESSAGES_FOR_EMPLOYEES").forward(request, response);
-                            break;
-                        }
-                        case "newMessage": {
-                            this.getServletContext().getRequestDispatcher("/html/newMessage.html").forward(request, response);
-                            break;
-                        }
                         case "myVisits": {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENT_VISITES").forward(request, response);
                             break;

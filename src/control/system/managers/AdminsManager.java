@@ -53,8 +53,10 @@ public class AdminsManager {
         int employeId = Integer.parseInt(request.getParameter("employeSuspendu"));
         Employe employe = (Employe) new EmployeDAO().getById(employeId);
         if (employe.isSuspended()) {
+            Util.sendEmail(employe.getEmail(), "Vous avez été réintegré", Util.getReintegrerEmployeEmail(employe));
             return new EmployeDAO().reintegrerById(employeId);
         } else {
+            Util.sendEmail(employe.getEmail(), "Vous avez été suspendu", Util.getSuspendreEmail(employe));
             return new EmployeDAO().suspendById(employeId);
         }
     }
@@ -172,8 +174,10 @@ public class AdminsManager {
         int clientBanniId = Integer.parseInt(request.getParameter("clientBanni"));
         Client client1 = (Client) new ClientDAO().getById(clientBanniId);
         if (client1.isBanned()) {
+            Util.sendEmail(client1.getEmail(), "Votre compte a été rétabli", Util.getRetablirClientEmail(client1));
             return new ClientDAO().retablirById(clientBanniId);
         } else {
+            Util.sendEmail(client1.getEmail(), "Vous avez été bannis", Util.getBannirEmail(client1));
             return new ClientDAO().banById(clientBanniId);
         }
     }

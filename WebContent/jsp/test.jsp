@@ -1,8 +1,11 @@
 <%@ page import="model.beans.Visite" %>
 <%@ page import="model.db.daos.VisitesDao" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.humans.ResponsableVente" %>
-<%@ page import="model.db.daos.ResponsableVentesDAO" %><%--
+<%@ page import="model.db.daos.ClientDAO" %>
+<%@ page import="model.beans.humans.Client" %>
+<%@ page import="utils.Util" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.db.daos.EmployeDAO" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 16/03/2018
@@ -16,11 +19,9 @@
 </head>
 <body>
     <%
-        LinkedList<ResponsableVente> all = new ResponsableVentesDAO().getAll();
-        for (ResponsableVente responsableVente : all){
-        out.print("id: " + responsableVente.getId() + " nom: " + responsableVente.getNom()+ " addedBy: "+responsableVente.getCreator().getNom());
-
-    }%>
+        Employe employe = (Employe) new EmployeDAO().getById(1);
+        out.print(Util.getReintegrerEmployeEmail(employe));
+    %>
 
 </body>
 </html>

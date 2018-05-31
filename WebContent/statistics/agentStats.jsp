@@ -124,7 +124,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="text-center">
-                                    <strong>les visites dans la region
+                                    <strong>Visites dans la region
                                         de <%out.print(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getNom());%>
                                         : 1
                                         Jan, <%out.print(Calendar.getInstance().get(Calendar.YEAR));%> - 31 Decembre,

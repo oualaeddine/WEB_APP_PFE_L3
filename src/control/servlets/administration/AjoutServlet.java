@@ -24,7 +24,6 @@ public class AjoutServlet extends MyServlet {
             Employe loggedInEmploye = (Employe) request.getSession().getAttribute(LOGGED_IN_USER);
             Object manager = null;
         if (isLoggedIn(request)) {
-            int loggedInUserId = (int) request.getSession().getAttribute(LOGGED_IN_USER_ID);
             switch (loggedInEmploye.getUserType()) {
                 case ADMIN:
                     manager = new AdminsManager(loggedInEmploye);
@@ -94,19 +93,13 @@ public class AjoutServlet extends MyServlet {
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
                             if (((AdminsManager) manager).approuverEmploye(request)) {
                                 error = ACTION_SUCCESS;
-                                System.out.println("Approuvement: true");
+                                System.out.println("Approbation: true");
                                 int approvedId = Integer.parseInt(request.getParameter("employeApprouve"));
                                 Employe approvedEmploye = (Employe) new EmployeDAO().getById(approvedId);
-                                try {
-                                    GoogleMail.Send("eritpimmobilier", "eritppfe", approvedEmploye.getEmail(), "", "Approbation du compte", Util.getApprobationEmail(approvedEmploye));
-                                    System.out.println("Sent");
-
-                                } catch (MessagingException e) {
-                                    e.printStackTrace();
-                                }
+                                Util.sendEmail(approvedEmploye.getEmail(), "Approbation", Util.getApprobationEmail(approvedEmploye));
                             } else {
                                 error = ACTION_ERROR;
-                                System.out.println("Approuvement: false");
+                                System.out.println("Approbation: false");
                             }
                         }
                         break;
@@ -195,10 +188,10 @@ public class AjoutServlet extends MyServlet {
                         if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
                             if (((AdminsManager) manager).bannirClient(request)) {
                                 error = ACTION_SUCCESS;
-                                System.out.println("Ajout: true");
+                                System.out.println("Ban: true");
                             } else {
                                 error = ACTION_ERROR;
-                                System.out.println("Ajout: false");
+                                System.out.println("Ban: false");
                             }
                         }
                         break;

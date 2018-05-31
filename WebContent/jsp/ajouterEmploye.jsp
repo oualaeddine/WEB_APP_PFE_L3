@@ -98,8 +98,7 @@
                                 <option value="responsable_ventes">Responsable ventes</option>
                                 <%
                                     if (userType == UserType.SU) {
-                                        out.print("<option value=\"admin\">Admin</option>\n" +
-                                                "<option value=\"su\">Super-Utilisateur</option>");
+                                        out.print("<option value=\"admin\">Admin</option>\n");
                                     }
                                 %>
                             </select>

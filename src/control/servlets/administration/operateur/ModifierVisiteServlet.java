@@ -29,6 +29,7 @@ public class ModifierVisiteServlet extends MyServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int error = 0;
         if (isLoggedIn(request) && (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.OPERATEUR || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.CLIENT)) {
             String what = request.getParameter("what");
             if (what != null) {
@@ -36,7 +37,13 @@ public class ModifierVisiteServlet extends MyServlet {
                     case "annuler":
                         int visiteId = Integer.parseInt(request.getParameter("visiteId"));
                         Visite visitee = new VisitesDao().getById(visiteId);
-                        System.out.println("Annulation: " + new VisitesDao().annulerVisite(visitee));
+                        if (new VisitesDao().annulerVisite(visitee)) {
+                            error = ACTION_SUCCESS;
+                            System.out.println("Annulation: true");
+                        } else {
+                            error = ACTION_ERROR;
+                            System.out.println("Annulation: false");
+                        }
                         break;
                     case "reporter":
                         if (request.getParameter("action") != null && request.getParameter("action").equals("add")) {
@@ -52,15 +59,21 @@ public class ModifierVisiteServlet extends MyServlet {
                             visite.setAgent(agent);
                             visite.setHorraire(horraire);
                             visite.setTimestamp(timestamp);
-
-                            System.out.println("Ajout de la visite: " + new VisitesDao().add(visite));
-                            this.getServletContext().getRequestDispatcher("/home").forward(request, response);
+                            if (new VisitesDao().add(visite)) {
+                                error = ACTION_SUCCESS;
+                                System.out.println("Ajout de la nouvelle visite: true");
+                            } else {
+                                error = ACTION_ERROR;
+                                System.out.println("Ajout de la nouvelle visite: false");
+                            }
                         } else
                             this.getServletContext().getRequestDispatcher("/programmerVisite/modifierVisite.jsp").forward(request, response);
                         break;
                 }
             }
+            redirectToDashboard(request, response, error);
+        } else {
+            redirectToLogin(request, response, LOGIN_NEEDED_ERROR_ID);
         }
-        redirectToDashboard(request, response);
     }
 }

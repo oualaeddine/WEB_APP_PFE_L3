@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 import static model.enums.TablePage.*;
+import static model.enums.UserType.AGENT;
 import static model.enums.UserType.OPERATEUR;
 
 public class Util {
@@ -36,6 +37,443 @@ public class Util {
                 return EtatVente.EN_COURS;
         }
         return null;
+    }
+
+    public static boolean sendEmail(String email, String objet, String content) {
+        try {
+            GoogleMail.Send("eritpimmobilier", "eritppfe", email, objet, content);
+            System.out.println("Email sent: true");
+            return true;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Email sent: false");
+        return false;
+    }
+
+    public static String getBannirEmail(Client client) {
+        String supportUrl = "/localhost:8080";
+        String email = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "  <head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <title>Vous avez été bannis</title>\n" +
+                "    \n" +
+                "    \n" +
+                "  </head>\n" +
+                "  <body style=\"-webkit-text-size-adjust: none; box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; height: 100%; line-height: 1.4; margin: 0; width: 100% !important;\" bgcolor=\"#F2F4F6\"><style type=\"text/css\">\n" +
+                "body {\n" +
+                "width: 100% !important; height: 100%; margin: 0; line-height: 1.4; background-color: #F2F4F6; color: #74787E; -webkit-text-size-adjust: none;\n" +
+                "}\n" +
+                "@media only screen and (max-width: 600px) {\n" +
+                "  .email-body_inner {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "  .email-footer {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "@media only screen and (max-width: 500px) {\n" +
+                "  .button {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "</style>\n" +
+                "    <span class=\"preheader\" style=\"box-sizing: border-box; display: none !important; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden;\">Use this link to reset your password. The link is only valid for 24 hours.</span>\n" +
+                "    <table class=\"email-wrapper\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\" bgcolor=\"#F2F4F6\">\n" +
+                "      <tr>\n" +
+                "        <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "          <table class=\"email-content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\">\n" +
+                "            <tr>\n" +
+                "              <td class=\"email-masthead\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 25px 0; word-break: break-word;\" align=\"center\">\n" +
+                "                <a href=\"https://example.com\" class=\"email-masthead_name\" style=\"box-sizing: border-box; color: #bbbfc3; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;\">\n" +
+                "        Compte ERITP\n" +
+                "      </a>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            \n" +
+                "            <tr>\n" +
+                "              <td class=\"email-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"-premailer-cellpadding: 0; -premailer-cellspacing: 0; border-bottom-color: #EDEFF2; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%; word-break: break-word;\" bgcolor=\"#FFFFFF\">\n" +
+                "                <table class=\"email-body_inner\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; width: 570px;\" bgcolor=\"#FFFFFF\">\n" +
+                "                  \n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Bonjour " + client.getFullName() + ",</h1>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Votre compte ERITP a été bloqué par nos administrateurs<br>Vous n'aurez plus accès à votre compte et vos visites prévues on été annulées<br>" +
+                "                      \n" +
+                "                      <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;\">\n" +
+                "                        <tr>\n" +
+                "                          <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            \n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\"> Si vous souhaitez contester cette sanction, contactez nous en cliquant <a href=\"" + supportUrl + "\" style=\"box-sizing: border-box; color: #3869D4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">ici</a> .</p>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Merci,\n" +
+                "                        <br />L'équipe ERITP</p>\n" +
+                "                      \n" +
+                "                      <table class=\"body-sub\" style=\"border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 25px; padding-top: 25px;\">\n" +
+                "                        <tr>\n" +
+                "                          <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Si vous avez un problème avec le bouton si dessus, collez le lien suivant dans votre navigateur.</p>\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">/localhost:8080</p>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
+                "                        SARL ERITP\n" +
+                "                        <br />UV 05, Ali mendjeli\n" +
+                "                        <br />Constantine, Algérie\n" +
+                "                      </p>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </table>\n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </table>\n" +
+                "  </body>\n" +
+                "</html>";
+        return email;
+    }
+
+    public static String getRetablirClientEmail(Client client) {
+        String supportUrl = "/localhost:8080";
+        String email = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "  <head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <title>Votre compte a été rétabli</title>\n" +
+                "    \n" +
+                "    \n" +
+                "  </head>\n" +
+                "  <body style=\"-webkit-text-size-adjust: none; box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; height: 100%; line-height: 1.4; margin: 0; width: 100% !important;\" bgcolor=\"#F2F4F6\"><style type=\"text/css\">\n" +
+                "body {\n" +
+                "width: 100% !important; height: 100%; margin: 0; line-height: 1.4; background-color: #F2F4F6; color: #74787E; -webkit-text-size-adjust: none;\n" +
+                "}\n" +
+                "@media only screen and (max-width: 600px) {\n" +
+                "  .email-body_inner {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "  .email-footer {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "@media only screen and (max-width: 500px) {\n" +
+                "  .button {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "</style>\n" +
+                "    <span class=\"preheader\" style=\"box-sizing: border-box; display: none !important; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden;\">Use this link to reset your password. The link is only valid for 24 hours.</span>\n" +
+                "    <table class=\"email-wrapper\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\" bgcolor=\"#F2F4F6\">\n" +
+                "      <tr>\n" +
+                "        <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "          <table class=\"email-content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\">\n" +
+                "            <tr>\n" +
+                "              <td class=\"email-masthead\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 25px 0; word-break: break-word;\" align=\"center\">\n" +
+                "                <a href=\"https://example.com\" class=\"email-masthead_name\" style=\"box-sizing: border-box; color: #bbbfc3; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;\">\n" +
+                "        Compte ERITP\n" +
+                "      </a>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            \n" +
+                "            <tr>\n" +
+                "              <td class=\"email-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"-premailer-cellpadding: 0; -premailer-cellspacing: 0; border-bottom-color: #EDEFF2; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%; word-break: break-word;\" bgcolor=\"#FFFFFF\">\n" +
+                "                <table class=\"email-body_inner\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; width: 570px;\" bgcolor=\"#FFFFFF\">\n" +
+                "                  \n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Bonjour " + client.getFullName() + ",</h1>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Votre compte ERITP a été rétabli par nos administrateurs<br>Vous avez de nouveau accès à votre compte<br>Vous pouvez dès maintenant consulter nos logements et programmer des visites !" +
+                "                      \n" +
+                "                      <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;\">\n" +
+                "                        <tr>\n" +
+                "                          <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            \n" +
+                "                            <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">\n" +
+                "                              <tr>\n" +
+                "                                <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                                  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">\n" +
+                "                                    <tr>\n" +
+                "                                      <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                                        <a href=\"" + supportUrl + "\" class=\"button button--green\" target=\"_blank\" style=\"-webkit-text-size-adjust: none; background: #22BC66; border-color: #22bc66; border-radius: 3px; border-style: solid; border-width: 10px 18px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); box-sizing: border-box; color: #FFF; display: inline-block; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-decoration: none;\">C'est parti !</a>\n" +
+                "                                      </td>\n" +
+                "                                    </tr>\n" +
+                "                                  </table>\n" +
+                "                                </td>\n" +
+                "                              </tr>\n" +
+                "                            </table>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">À bientot,\n" +
+                "                        <br />L'équipe ERITP</p>\n" +
+                "                      \n" +
+                "                      <table class=\"body-sub\" style=\"border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 25px; padding-top: 25px;\">\n" +
+                "                        <tr>\n" +
+                "                          <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Si vous avez un problème avec le bouton si dessus, collez le lien suivant dans votre navigateur.</p>\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">/localhost:8080</p>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
+                "                        SARL ERITP\n" +
+                "                        <br />UV 05, Ali mendjeli\n" +
+                "                        <br />Constantine, Algérie\n" +
+                "                      </p>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </table>\n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </table>\n" +
+                "  </body>\n" +
+                "</html>";
+        return email;
+    }
+
+    public static String getSuspendreEmail(Employe employe) {
+        String agent = employe.getUserType() == AGENT ? " et vos visites ont été annulées." : "";
+        String supportUrl = "/localhost:8080";
+        String email = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "  <head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <title>Vous avez été suspendu</title>\n" +
+                "    \n" +
+                "    \n" +
+                "  </head>\n" +
+                "  <body style=\"-webkit-text-size-adjust: none; box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; height: 100%; line-height: 1.4; margin: 0; width: 100% !important;\" bgcolor=\"#F2F4F6\"><style type=\"text/css\">\n" +
+                "body {\n" +
+                "width: 100% !important; height: 100%; margin: 0; line-height: 1.4; background-color: #F2F4F6; color: #74787E; -webkit-text-size-adjust: none;\n" +
+                "}\n" +
+                "@media only screen and (max-width: 600px) {\n" +
+                "  .email-body_inner {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "  .email-footer {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "@media only screen and (max-width: 500px) {\n" +
+                "  .button {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "</style>\n" +
+                "    <span class=\"preheader\" style=\"box-sizing: border-box; display: none !important; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden;\">Use this link to reset your password. The link is only valid for 24 hours.</span>\n" +
+                "    <table class=\"email-wrapper\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\" bgcolor=\"#F2F4F6\">\n" +
+                "      <tr>\n" +
+                "        <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "          <table class=\"email-content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\">\n" +
+                "            <tr>\n" +
+                "              <td class=\"email-masthead\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 25px 0; word-break: break-word;\" align=\"center\">\n" +
+                "                <a href=\"https://example.com\" class=\"email-masthead_name\" style=\"box-sizing: border-box; color: #bbbfc3; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;\">\n" +
+                "        Compte ERITP\n" +
+                "      </a>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            \n" +
+                "            <tr>\n" +
+                "              <td class=\"email-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"-premailer-cellpadding: 0; -premailer-cellspacing: 0; border-bottom-color: #EDEFF2; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%; word-break: break-word;\" bgcolor=\"#FFFFFF\">\n" +
+                "                <table class=\"email-body_inner\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; width: 570px;\" bgcolor=\"#FFFFFF\">\n" +
+                "                  \n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Bonjour " + employe.getFullName() + ",</h1>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Votre compte ERITP a été suspendu par les administrateurs<br>Vous n'aurez plus accès à votre compte" + agent + "<br>" +
+                "                      \n" +
+                "                      <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;\">\n" +
+                "                        <tr>\n" +
+                "                          <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            \n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\"> Si vous souhaitez contester cette sanction, contactez nous en cliquant <a href=\"" + supportUrl + "\" style=\"box-sizing: border-box; color: #3869D4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">ici</a> .</p>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Merci,\n" +
+                "                        <br />L'équipe ERITP</p>\n" +
+                "                      \n" +
+                "                      <table class=\"body-sub\" style=\"border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 25px; padding-top: 25px;\">\n" +
+                "                        <tr>\n" +
+                "                          <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Si vous avez un problème avec le bouton si dessus, collez le lien suivant dans votre navigateur.</p>\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">/localhost:8080</p>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
+                "                        SARL ERITP\n" +
+                "                        <br />UV 05, Ali mendjeli\n" +
+                "                        <br />Constantine, Algérie\n" +
+                "                      </p>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </table>\n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </table>\n" +
+                "  </body>\n" +
+                "</html>";
+        return email;
+    }
+
+    public static String getReintegrerEmployeEmail(Employe employe) {
+        String supportUrl = "/login";
+        String email = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "  <head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "    <title>Votre compte a été rétabli</title>\n" +
+                "    \n" +
+                "    \n" +
+                "  </head>\n" +
+                "  <body style=\"-webkit-text-size-adjust: none; box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; height: 100%; line-height: 1.4; margin: 0; width: 100% !important;\" bgcolor=\"#F2F4F6\"><style type=\"text/css\">\n" +
+                "body {\n" +
+                "width: 100% !important; height: 100%; margin: 0; line-height: 1.4; background-color: #F2F4F6; color: #74787E; -webkit-text-size-adjust: none;\n" +
+                "}\n" +
+                "@media only screen and (max-width: 600px) {\n" +
+                "  .email-body_inner {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "  .email-footer {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "@media only screen and (max-width: 500px) {\n" +
+                "  .button {\n" +
+                "    width: 100% !important;\n" +
+                "  }\n" +
+                "}\n" +
+                "</style>\n" +
+                "    <span class=\"preheader\" style=\"box-sizing: border-box; display: none !important; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden;\">Use this link to reset your password. The link is only valid for 24 hours.</span>\n" +
+                "    <table class=\"email-wrapper\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\" bgcolor=\"#F2F4F6\">\n" +
+                "      <tr>\n" +
+                "        <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "          <table class=\"email-content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%;\">\n" +
+                "            <tr>\n" +
+                "              <td class=\"email-masthead\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 25px 0; word-break: break-word;\" align=\"center\">\n" +
+                "                <a href=\"https://example.com\" class=\"email-masthead_name\" style=\"box-sizing: border-box; color: #bbbfc3; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;\">\n" +
+                "        Compte ERITP\n" +
+                "      </a>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            \n" +
+                "            <tr>\n" +
+                "              <td class=\"email-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"-premailer-cellpadding: 0; -premailer-cellspacing: 0; border-bottom-color: #EDEFF2; border-bottom-style: solid; border-bottom-width: 1px; border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0; padding: 0; width: 100%; word-break: break-word;\" bgcolor=\"#FFFFFF\">\n" +
+                "                <table class=\"email-body_inner\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; width: 570px;\" bgcolor=\"#FFFFFF\">\n" +
+                "                  \n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <h1 style=\"box-sizing: border-box; color: #2F3133; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;\" align=\"left\">Bonjour " + employe.getFullName() + ",</h1>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Votre compte ERITP a été rétabli par nos administrateurs<br>Vous avez de nouveau accès à votre compte<br>Vous pouvez dès maintenant acceder à votre tableau de bord en vous connectant avec vos identifiants:<br>Nom d\'utilisateur: " + employe.getUsername() + "<br>Mot de passe: " + employe.getPassword() +
+                "                      \n" +
+                "                      <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;\">\n" +
+                "                        <tr>\n" +
+                "                          <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            \n" +
+                "                            <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">\n" +
+                "                              <tr>\n" +
+                "                                <td align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                                  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">\n" +
+                "                                    <tr>\n" +
+                "                                      <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                                        <a href=\"" + supportUrl + "\" class=\"button button--green\" target=\"_blank\" style=\"-webkit-text-size-adjust: none; background: #22BC66; border-color: #22bc66; border-radius: 3px; border-style: solid; border-width: 10px 18px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); box-sizing: border-box; color: #FFF; display: inline-block; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; text-decoration: none;\">C'est parti !</a>\n" +
+                "                                      </td>\n" +
+                "                                    </tr>\n" +
+                "                                  </table>\n" +
+                "                                </td>\n" +
+                "                              </tr>\n" +
+                "                            </table>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">À bientot,\n" +
+                "                        <br />L'équipe ERITP</p>\n" +
+                "                      \n" +
+                "                      <table class=\"body-sub\" style=\"border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 25px; padding-top: 25px;\">\n" +
+                "                        <tr>\n" +
+                "                          <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Si vous avez un problème avec le bouton si dessus, collez le lien suivant dans votre navigateur.</p>\n" +
+                "                            <p class=\"sub\" style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"left\">/localhost:8080</p>\n" +
+                "                          </td>\n" +
+                "                        </tr>\n" +
+                "                      </table>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "              <td style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; word-break: break-word;\">\n" +
+                "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
+                "                  <tr>\n" +
+                "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
+                "                        SARL ERITP\n" +
+                "                        <br />UV 05, Ali mendjeli\n" +
+                "                        <br />Constantine, Algérie\n" +
+                "                      </p>\n" +
+                "                    </td>\n" +
+                "                  </tr>\n" +
+                "                </table>\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </table>\n" +
+                "        </td>\n" +
+                "      </tr>\n" +
+                "    </table>\n" +
+                "  </body>\n" +
+                "</html>";
+        return email;
     }
 
     public static String getWelcomeEmail(Client client) {
@@ -153,11 +591,11 @@ public class Util {
 
     public static String getApprobationEmail(Employe employe) {
         Employe creator = (Employe) new EmployeDAO().getById(employe.getCreator());
-        String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "\n" +
+        String email = "Bonjour " + employe.getNom() + " " + employe.getPrenom() + "<br>" +
                 "Votre compte a été approuvé par " + creator.getNom() + " " + creator.getPrenom() + " qui vous a attribué le poste: " +
-                employe.getUserType() + " \n Vous pouvez désormais vous connecter à votre compte avec vos identifiants: " +
-                "\n Nom d'utilisateur: " + employe.getUsername() + "" +
-                "\n Mot de passe: " + employe.getPassword();
+                employe.getUserType() + " <br> Vous pouvez désormais vous connecter à votre compte avec vos identifiants: " +
+                "<br> Nom d'utilisateur: " + employe.getUsername() + "" +
+                "<br> Mot de passe: " + employe.getPassword();
         return email;
     }
 
@@ -606,7 +1044,7 @@ public class Util {
         System.out.println("sending email notification : \nemail = [" + email + "], notifContent = [" + notifContent + "]");
 
         try {
-            GoogleMail.Send("eritpimmobilier@gmail.com", "eritppfe", email, "Notification", notifContent);
+            GoogleMail.Send("eritpimmobilier", "eritppfe", email, "Notification", notifContent);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

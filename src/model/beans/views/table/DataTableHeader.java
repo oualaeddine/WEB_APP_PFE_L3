@@ -312,14 +312,14 @@ public class DataTableHeader {
 
     private void setupTableHeaderForClientsForAgent() {
         html =  "<tr><td>ID</th>" +
-                "<th>Nom   </th>" +
+                "<th>Nom  </th>" +
                 "<th>Prenom</th>" +
                 "<th>Telephone</th>" +
                 "<th>Adresse</th>" +
                 "<th>email</th>" +
                 "<th>Date de naissance</th>" +
                 "<th>Etat</th>" +
-                "<tr>";
+                "</tr>";
     }
 
     private void setupTableHeaderForAssignerRegion() {

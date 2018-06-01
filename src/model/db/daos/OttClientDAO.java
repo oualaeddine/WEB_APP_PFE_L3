@@ -10,15 +10,15 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
-public class OttDAO extends DAO{
+public class OttClientDAO extends DAO {
     public String generateNewToken(int userId) {
-        String code="";
+        String code = "";
         do {
             String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
             for (int i = 0; i < 6; i++) {
                 code = code + candidateChars.charAt((int) (Math.random() * candidateChars.length()));
             }
-        }while (exists(code));
+        } while (exists(code));
         System.out.println("Attribution du code: " + add(code, userId));
         return code;
     }
@@ -26,7 +26,7 @@ public class OttDAO extends DAO{
     public boolean exists(String token) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='"+token+"';");
+            result = statement.executeQuery("SELECT id FROM ott_client WHERE token='" + token + "';");
             if (result.next()) {
                 return true;
             }
@@ -39,7 +39,7 @@ public class OttDAO extends DAO{
     public boolean verifyToken(String token, int userId) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT id FROM ottEmploye WHERE token='" + token + "' AND userId=" + userId + "  AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
+            result = statement.executeQuery("SELECT id FROM ott_client WHERE token='" + token + "' AND clientId=" + userId + "  AND timestamp > DATE_SUB(CURTIME(),INTERVAL 24 HOUR);");
             if (result.next()) {
                 return true;
             }
@@ -53,9 +53,9 @@ public class OttDAO extends DAO{
     public int getUserBytoken(String token) {
         ResultSet result;
         try {
-            result = statement.executeQuery("SELECT userId FROM ottEmploye WHERE token='" + token + "';");
+            result = statement.executeQuery("SELECT clientId FROM ott_client WHERE token='" + token + "';");
             if (result.next()) {
-                return result.getInt("userId");
+                return result.getInt("clientId");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class OttDAO extends DAO{
 
     public boolean add(String code, int userId) {
         try {
-            statement.execute("INSERT INTO ottEmploye (token, userId, timestamp) VALUES (" +
+            statement.execute("INSERT INTO ott_client (token, clientId, timestamp) VALUES (" +
                     "'" + code + "', " + userId + ", CURRENT_TIMESTAMP);");
             return true;
         } catch (SQLException e) {
@@ -115,6 +115,4 @@ public class OttDAO extends DAO{
 
         return 0;
     }
-
-
 }

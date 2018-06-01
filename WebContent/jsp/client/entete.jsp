@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="../../assets_client/css/style.css">
     <link rel="stylesheet" href="../../assets_client/css/responsive.css">
 </head>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
     LogementsStats logementsStats = new LogementsStats();

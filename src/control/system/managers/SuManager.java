@@ -13,6 +13,7 @@ import model.enums.UserType;
 
 import java.sql.Date;
 
+@SuppressWarnings("ALL")
 public class SuManager extends AdminsManager{
 
     public SuManager(Employe loggedInAdmin) {
@@ -39,9 +40,11 @@ public class SuManager extends AdminsManager{
         }
         return admin;
     }
+
     public boolean reintegrerEmploye(int userId){
         return new EmployeDAO().reintegrerById(userId);
     }
+
     public boolean suspendEmployee(int userId) {
         return new EmployeDAO().suspendById(userId);
     }
@@ -49,6 +52,7 @@ public class SuManager extends AdminsManager{
     public boolean createClient(Client client){
         return new ClientDAO().add(client);
     }
+
     public boolean deleteClient(Client client){
         return new ClientDAO().delete(client);
     }
@@ -69,6 +73,7 @@ public class SuManager extends AdminsManager{
     public boolean createLogement(Logement logement){
         return new LogementDAO().add(logement);
     }
+
     public boolean deleteLogement(Logement logement){
         return new LogementDAO().delete(logement);
     }
@@ -76,16 +81,13 @@ public class SuManager extends AdminsManager{
     public boolean createLocalite(Localite localite){
         return new LocaliteDAO().add(localite);
     }
+
     public boolean deleteLocalite(Localite localite){
         return new LocaliteDAO().delete(localite);
     }
 
     public boolean gelerLogement(Logement logement){
         return new LogementDAO().geler(logement.getId());
-    }
-    public boolean approuverEmploye(Employe employe){
-        //en supposant que l'employé ki ydir l'inscription ma yetzadch f la bd heta yaqblou l'admin
-        return new EmployeDAO().add(employe);
     }
 
     public void imprimerFacture(int numVente){

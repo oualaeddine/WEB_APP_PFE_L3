@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Visite;
 import model.beans.humans.Client;
 import model.db.DAO;
 
@@ -124,6 +125,10 @@ public class ClientDAO extends DAO {
         try {
             clientStatement.execute("UPDATE client SET isBanned = 1" +
                     " WHERE id="+id+" ;");
+            LinkedList<Visite> visites = new VisitesDao().getProgrammeesForClient(id);
+            for (Visite visite : visites) {
+                new VisitesDao().annulerVisite(visite);
+            }
             return true;
         }catch (SQLException e){
             e.printStackTrace();

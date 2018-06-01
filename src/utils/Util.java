@@ -569,7 +569,7 @@ public class Util {
                 "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
                 "                  <tr>\n" +
                 "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
-                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 HCH Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
                 "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
                 "                        SARL ERITP\n" +
                 "                        <br />UV 05, Ali mendjeli\n" +
@@ -599,12 +599,17 @@ public class Util {
         return email;
     }
 
-    public static String getForgotPasswordEmail(String email, UserType userType, String code) {
+    public static String getForgotPasswordEmail(String email, String code, boolean client) {
         String name;
-        Employe employe = null;
-        employe = new EmployeDAO().getByEmail(email);
-        name = employe.getNom() + " " + employe.getPrenom();
-        String actionUrl = "localhost:8080/ForgotPassword?linsa=" + employe.getId() + "&code=" + code;
+        Person person;
+        if (client) {
+            person = new ClientDAO().getByEmail(email);
+        } else {
+            person = new EmployeDAO().getByEmail(email);
+        }
+        name = person.getFullName();
+        String isClient = client ? "true" : "false";
+        String actionUrl = "localhost:8080/ForgotPassword?linsa=" + person.getId() + "&code=" + code + "&client=" + isClient;
 
 
         String supportUrl = "/contact";
@@ -613,7 +618,7 @@ public class Util {
                 "  <head>\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
                 "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
-                "    <title>Set up a new password for HCH Immobilier</title>\n" +
+                "    <title>Set up a new password for ERITP Immobilier</title>\n" +
                 "    \n" +
                 "    \n" +
                 "  </head>\n" +
@@ -643,7 +648,7 @@ public class Util {
                 "            <tr>\n" +
                 "              <td class=\"email-masthead\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 25px 0; word-break: break-word;\" align=\"center\">\n" +
                 "                <a href=\"https://example.com\" class=\"email-masthead_name\" style=\"box-sizing: border-box; color: #bbbfc3; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;\">\n" +
-                "        HCH Immobilier account\n" +
+                "        Compte ERITP Immobilier \n" +
                 "      </a>\n" +
                 "              </td>\n" +
                 "            </tr>\n" +
@@ -679,7 +684,7 @@ public class Util {
                 "                      </table>\n" +
                 "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\"> If you did not request a password reset, please ignore this email or <a href=\"" + supportUrl + "\" style=\"box-sizing: border-box; color: #3869D4; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;\">contact support</a> if you have questions.</p>\n" +
                 "                      <p style=\"box-sizing: border-box; color: #74787E; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;\" align=\"left\">Thanks,\n" +
-                "                        <br />The HCH Immobilier Team</p>\n" +
+                "                        <br />The ERITP Immobilier Team</p>\n" +
                 "                      \n" +
                 "                      <table class=\"body-sub\" style=\"border-top-color: #EDEFF2; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin-top: 25px; padding-top: 25px;\">\n" +
                 "                        <tr>\n" +
@@ -699,9 +704,9 @@ public class Util {
                 "                <table class=\"email-footer\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0 auto; padding: 0; text-align: center; width: 570px;\">\n" +
                 "                  <tr>\n" +
                 "                    <td class=\"content-cell\" align=\"center\" style=\"box-sizing: border-box; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; padding: 35px; word-break: break-word;\">\n" +
-                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 HCH Immobilier. All rights reserved.</p>\n" +
+                "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">© 2018 ERITP Immobilier. All rights reserved.</p>\n" +
                 "                      <p class=\"sub align-center\" style=\"box-sizing: border-box; color: #AEAEAE; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; line-height: 1.5em; margin-top: 0;\" align=\"center\">\n" +
-                "                        HCH Immobilier, LLC\n" +
+                "                        ERITP Immobilier, LLC\n" +
                 "                        <br />1234 Street Rd.\n" +
                 "                        <br />Suite 1234\n" +
                 "                      </p>\n" +
@@ -742,7 +747,7 @@ public class Util {
     public static String getStringFromType(UserType type) {
         switch (type) {
             case CLIENT:
-                return ClientDAO.TABLE_NAME;
+                return "client";
             case AGENT:
                 return "agent";
             case OPERATEUR:

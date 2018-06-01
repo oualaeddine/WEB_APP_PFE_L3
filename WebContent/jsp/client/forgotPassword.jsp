@@ -12,9 +12,9 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERITP | Authentification</title>
+    <title>ERITP | Mot de passe oublié</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -52,96 +52,40 @@
     <div class="container">
         <div class="row">
             <div class="page-head-content">
-                <h1 class="page-title">Inscription / Connexion </h1>
+                <h1 class="page-title">Mot de passe oublié </h1>
             </div>
         </div>
+
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header" align="center">Réinitialiser le mot de passe</div>
+            <div class="card-body">
+                <div class="text-center mt-4 mb-5">
+                    <h4>Mot de passe oublié ?</h4>
+                    <p>Entrez votre adresse email<br>
+                        Nous vous enverrons les instructions relatives à la réinitialisation de votre mot de passe</p>
+
+                </div>
+                <form method="post" onsubmit="greeting()" name="form1">
+                    <input type="hidden" name="client" value="true">
+                    <div class="form-group">
+                        <input class="form-control" id="exampleInputEmail1" name="emailAdress" type="email"
+                               aria-describedby="emailHelp" placeholder="Enter email address">
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="submit">Réinitialiser mot de passe</button>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small mt-3" href="/loginsignup">S'authentifier ou créer un nouveau compte</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- End page header -->
 
 
-<!-- register-area -->
-<div class="register-area" style="background-color: rgb(249, 249, 249);">
-    <div class="container">
-
-        <div class="col-md-6">
-            <div class="box-for overflow">
-                <div class="col-md-12 col-xs-12 register-blocks">
-                    <h2>Inscription : </h2>
-                    <form action="" method="post" id="registerForm">
-                        <input type="hidden" class="form-control" name="tag" value="signup">
-                        <div class="form-group">
-                            <label for="nomInput">Nom</label>
-                            <input type="text" class="form-control" id="nomInput" name="nomInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="prenomInput">Prenom</label>
-                            <input type="text" class="form-control" id="prenomInput" name="prenomInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
-                        </div>
-                        <div class="form-group">
-                            <label for="emailInput">Email</label>
-                            <input type="text" class="form-control" id="emailInput" name="emailInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputTel">Numéro de téléphone</label>
-                            <input type="text" class="form-control" id="inputTel" name="inputTel">
-                        </div>
-                        <div class="form-group">
-                            <label for="adresseInput">Adresse</label>
-                            <input type="text" class="form-control" id="adresseInput" name="adresseInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="usernameInput">nom d'utilisateur</label>
-                            <input type="text" class="form-control" id="usernameInput" name="usernameInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="passwordInput">Mot de passe</label>
-                            <input type="password" class="form-control" id="passwordInput" name="passwordInput">
-                        </div>
-                        <div class="form-group">
-                            <label for="passwordInput">Confirmation du mot de passe</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default">Inscription</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="box-for overflow">
-                <div class="col-md-12 col-xs-12 login-blocks">
-                    <h2>Connexion : </h2>
-                    <form action="" method="post" id="loginForm">
-                        <input type="hidden" class="form-control" name="tag" value="login">
-
-                        <div class="form-group">
-                            <label for="username">Nom d'utilisateur</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" name="password">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default"> Connexion</button>
-                        </div>
-                        <div class="text-center">
-                            <a href="/ForgotPassword?client=true">Mot de passe oublié</a>
-                        </div>
-                    </form>
-                    <br>
-                </div>
-            </div>
-        </div>
-
-    </div>
+</div>
 </div>
 
 <!-- Footer area-->
@@ -319,139 +263,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var validator = $("#registerForm").bootstrapValidator({
-            fields: {
-                nomInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre nom"
-                        }
-                    }
-                },
-                prenomInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre prenom"
-                        }
-                    }
-                },
-                dateNaissance: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre date de naissance"
-                        }
-                    }
-                },
-                emailInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre adresse email"
-                        },
-                        emailAddress: {
-                            message: "L'adresse email doit être valide (eg: john@gmail.com)"
-                        },
-                        stringLength: {
-                            max: 50,
-                            message: "L'adresse email ne doit pas dépasser 50 caractères"
-                        }
-                    }
-                },
-                inputTel: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre numero de telephone"
-                        },
-                        stringLength: {
-                            min: 10,
-                            max: 14,
-                            message: "Veuillez entrer un numéro valide"
-                        }
-                    }
-                },
-                adresseInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre adresse"
-                        }
-                    }
-                },
-                usernameInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer un nom d'utilisateur"
-                        },
-                    }
-                },
-                passwordInput: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer un mot de passe"
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 500,
-                            message: "Le mot de passe doit contenir au moins 6 caracteres"
-                        }
-                    }
-                },
-                confirmPassword: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez confirmer votre mot de passe"
-                        },
-                        identical: {
-                            field: "passwordInput",
-                            message: "Les deux mot de passe ne sont pas identiques"
-                        }
-                    }
-                }
-
-            }
-        });
-        var validator2 = $("#loginForm").bootstrapValidator({
-            fields: {
-                username: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre nom d'utilisateur"
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: "Veuillez entrer votre mot de passe"
-                        }
-                    }
-                }
-            }
+            fields: {}
         })
-    })
+    });
 </script>
 
-
-<%
-    if (request.getParameter("error") != null) {
-        int errorId = Integer.parseInt(request.getParameter("error"));
-        String errorMessage = "Unidentified error";
-        switch (errorId) {
-            case MyServlet.LOGIN_NEEDED_ERROR_ID:
-                errorMessage = "Veuillez vous connecter pour continuer";
-                break;
-            case MyServlet.WRONG_CREDENTIALS_ERROR:
-                errorMessage = "Utilisateur ou mot de passe incorrect";
-                break;
-            case MyServlet.REGISTRATION_SUCCESS:
-                errorMessage = "Votre compte a été créé avec succès. Veuillez vous connecter";
-                break;
-            case MyServlet.REGISTRATION_ERROR:
-                errorMessage = "Erreur lors de la création du compte. Veuillez réessayer";
-                break;
-        }
-        out.print("<script type=\"text/javascript\">");
-        out.println("alert('" + errorMessage + "');");
-        out.println("</script>");
-    }
-%>
 </body>
 
 </html>

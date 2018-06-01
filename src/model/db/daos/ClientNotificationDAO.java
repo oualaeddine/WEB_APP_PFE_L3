@@ -78,7 +78,7 @@ public class ClientNotificationDAO extends DAO {
             while (result.next()) {
                 Notification notification = new Notification();
                 notification.setId(result.getInt("id"));
-                notification.setDestinataire((Person) new EmployeDAO().getById(result.getInt("destinataire")));
+                notification.setDestinataire((Person) new ClientDAO().getById(result.getInt("destinataire")));
                 notification.setContent(result.getString("content"));
                 notification.setTimestamp(result.getTimestamp("timestamp"));
                 System.out.println(notification.toString());
@@ -98,7 +98,7 @@ public class ClientNotificationDAO extends DAO {
             while (result.next()) {
                 Notification notification = new Notification();
                 notification.setId(result.getInt("id"));
-                notification.setDestinataire((Person) new EmployeDAO().getById(result.getInt("destinataire")));
+                notification.setDestinataire((Person) new ClientDAO().getById(result.getInt("destinataire")));
                 notification.setContent(result.getString("content"));
                 notification.setTimestamp(result.getTimestamp("timestamp"));
                 System.out.println(notification.toString());

@@ -27,7 +27,7 @@ public class ContextListener implements ServletContextListener {
       */
 //        initializeNotificationsService();
         initializeTwilio();
-        // Util.sendSms("555113103", "test ta3 sms");
+        //  Util.sendSms("+213696689498", "test ta3 sms");
 
     }
 

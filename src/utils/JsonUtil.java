@@ -142,7 +142,6 @@ public class JsonUtil {
             String logementId = "" + rapport.getVisite().getLogement().getId();
             String logementTitle = "" + rapport.getVisite().getLogement().getTitre();
 
-
             jsonObject.addProperty("id ", id);
             jsonObject.addProperty("commentaire", commentaire);
             jsonObject.addProperty("EtatClient", EtatClient);
@@ -162,7 +161,6 @@ public class JsonUtil {
             jsonObject.addProperty("logementTitle", logementTitle);
 
             result.add(jsonObject);
-
         }
         return result.toString();
     }

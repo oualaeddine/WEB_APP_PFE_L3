@@ -1,5 +1,6 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.humans.Client" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
@@ -209,7 +210,7 @@
                                                     <%LinkedList<Localite> localites = new LocaliteDAO().getAll(); %>
                                                     <%
                                                         for (Localite localite : localites) {
-                                                            out.print("<option value=\""+localite.getId()+"\">"+localite.getNom()+" </option>");
+                                                            out.print("<option value=\"" + localite.getId() + "\">" + localite.getNom() + " </option>");
                                                         }
                                                     %>
                                                 </select>
@@ -333,41 +334,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
+
                                                 </tbody>
                                                 <!--  <tfoot>
                                                   <tr>
@@ -419,7 +386,19 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                <%
+                                                    LinkedList<Client> clients = (LinkedList<Client>) request.getAttribute("clients");
+                                                    for (Client client : clients) {
+                                                        String row = "<tr>" +
+                                                                "<td>" + client.getId() + "</td>" +
+                                                                "<td>" + client.getNom() + "</td>" +
+                                                                "<td>" + client.getPrenom() + "</td>" +
+                                                                "<td>" + client.getDateNaissance() + "</td>" +
+                                                                "<td>" + client.getTel() + "</td>" +
+                                                                "<td>" + client.isBannedString() + "</td>" +
+                                                                "</tr>";
+                                                    }
+                                                %>
                                                 </tbody>
                                                 <!--  <tfoot>
                                                   <tr>
@@ -621,7 +600,8 @@
                                 <input type="password" class="form-control" id="passwordInput" name="passwordInput">
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn btn-default" onclick="ajouterClient()">Inscription</button>
+                                <button type="button" class="btn btn-default" onclick="ajouterClient()">Inscription
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -661,17 +641,17 @@
 <script src="./programmerVisite/assets/js/main.js"></script>
 
 <script>
-    function ajouterClient(){
+    function ajouterClient() {
 
 
         $.ajax({
             type: "POST",
             url: "/AjoutServlet?ajouter=client",
             data: {
-                prenomInput:$('#prenomInput').val(),
+                prenomInput: $('#prenomInput').val(),
                 nomInput: $('#nomInput').val(),
                 emailInput: $('#emailInput').val(),
-                inputTel: $('#inputTel').val() ,
+                inputTel: $('#inputTel').val(),
                 usernameInput: $('#usernameInput').val(),
                 passwordInput: $('#passwordInput').val(),
                 adresseInput: $('#adresseInput').val(),
@@ -680,12 +660,18 @@
 
             success: function (result) {
                 loadClients();
+                $('#clientsTab').row.add([
+                    result,
+                    $('#nomInput').val(),
+                    $('#prenomInput').val(),
+                    $('#dateNaissance').val(),
+                    "not banned"
+                ]).draw(false);
+
                 $('#ajouterClientModal').modal('hide');
             }
         });
     }
-
-
 
 
 </script>

@@ -677,7 +677,6 @@
                 adresseInput: $('#adresseInput').val(),
                 dateNaissance: $('#dateNaissance').val()
             },
-
             success: function (result) {
                 loadClients();
                 $('#ajouterClientModal').modal('hide');

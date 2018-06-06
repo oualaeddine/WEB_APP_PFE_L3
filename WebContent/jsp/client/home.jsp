@@ -7,6 +7,9 @@
 <%@ page import="model.db.daos.EmployeDAO" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.db.ContactInfosDAO" %>
+<%@ page import="model.db.daos.LogementDAO" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -14,7 +17,6 @@
   Time: 9:45 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
     LogementsStats logementsStats = new LogementsStats();
@@ -22,7 +24,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERITP | Accueil</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | Accueil</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -257,8 +259,15 @@
                 <%--. </p>--%>
             </div>
         </div>
-        <div class="row">
-            <div class="property-th">
+        <div class="col-md-9  pr0 padding-top-40 properties-page">
+            <div class="col-md-12 clear">
+                <div class="col-xs-2 layout-switcher text-center">
+                    <a class="layout-list" href="javascript:void(0);"> <i class="fa fa-th-list"></i> </a>
+                    <a class="layout-grid active" href="javascript:void(0);"> <i class="fa fa-th"></i> </a>
+                </div>
+                <!--/ .layout-switcher-->
+            </div>
+            <div id="list-type" class="property-th">
                 <%
                     LinkedList<Logement> logements = (LinkedList<Logement>) request.getAttribute("logements");
                     Client loggedIdClient = new Client();
@@ -267,22 +276,34 @@
                         loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
                     }
                     for (Logement logement : logements) {
+                        String button = "";
                         if (isLoggedIn) {
+                            int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
                             href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                        } else {
+                            button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
                         }
-                        out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
-                                "                    <div class=\"box-two proerty-item\">\n" +
-                                "                        <div class=\"item-thumb\">\n" +
-                                "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"item-entry overflow\">\n" +
-                                "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
-                                "                            <div class=\"dot-hr\"></div>\n" +
-                                "                            <span class=\"pull-left\"><b>Area :</b> " + logement.getSuperficie() + "m2</span>\n" +
-                                "                            <span class=\"proerty-price pull-right\">" + logement.getPrix() + " DZD</span>\n" +
-                                "                        </div>\n" +
-                                "                    </div>\n" +
-                                "                </div>");
+                        out.print("<div class=\"col-sm-6 col-md-4 p0\">\n" +
+                                "                            <div class=\"box-two proerty-item\">\n" +
+                                "                                <div class=\"item-thumb\">\n" +
+                                "                                    <a href=\"property-1.html\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                                </div>\n" +
+                                "\n" +
+                                "                                <div class=\"item-entry overflow\">\n" +
+                                "                                    <h5><a href=\"property-1.html\"> " + logement.getTitre() + " </a></h5>\n" +
+                                "                                    <div class=\"dot-hr\"></div>\n" +
+                                "                                    <span class=\"pull-left\"><b> Superficie :</b> " + logement.getSuperficie() + "</span>\n" +
+                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() + "m DA</span>\n" +
+                                "                                    <p style=\"display: none;\">" + logement.getDescription() + "</p>\n" +
+                                "                                    <div class=\"property-icon\">\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/bed.png\">" + logement.getNbrPieces() + "|\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/shawer.png\">" + logement.getNbrSdb() + "|\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/cars.png\">(1)\n" +
+                                "                                    </div>\n" + button +
+                                "                                </div>\n" +
+                                "                            </div>\n" +
+                                "                        </div>");
                     }
                 %>
 
@@ -293,7 +314,7 @@
                             <i class="fa fa-th"></i>
                         </div>
                         <div class="more-entry overflow">
-                            <h5><a href="logements.jsp">IMPOSSIBLE DE SE DECIDER ? </a></h5>
+                            <h5><a href="/DashboardServlet?what=logements">IMPOSSIBLE DE SE DECIDER ? </a></h5>
                             <h5 class="tree-sub-ttl">Voir tous les logements</h5>
                             <a href="/DashboardServlet?what=logements">
                                 <button class="btn border-btn more-black" value="All properties">TOUS LES LOGEMENTS
@@ -536,152 +557,7 @@
 
 
 <!-- Footer area-->
-<div class="footer-area">
-
-    <div class=" footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                    <div class="single-footer">
-                        <h4>About us </h4>
-                        <div class="footer-title-line"></div>
-
-                        <img src="../../assets_client/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                        <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
-                        <ul class="footer-adress">
-                            <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                            <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                            <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                    <div class="single-footer">
-                        <h4>Quick links </h4>
-                        <div class="footer-title-line"></div>
-                        <ul class="footer-menu">
-                            <li><a href="properties.html">Properties</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="submit-property.html">Submit property </a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="faq.html">fqa</a></li>
-                            <li><a href="faq.html">Terms </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                    <div class="single-footer">
-                        <h4>Last News</h4>
-                        <div class="footer-title-line"></div>
-                        <ul class="footer-blog">
-                            <li>
-                                <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                    <a href="single.html">
-                                        <img src="../../assets_client/img/demo/small-proerty-2.jpg">
-                                    </a>
-                                    <span class="blg-date">12-12-2016</span>
-
-                                </div>
-                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                    <h6><a href="single.html">Add news functions </a></h6>
-                                    <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla
-                                        ...</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                    <a href="single.html">
-                                        <img src="../../assets_client/img/demo/small-proerty-2.jpg">
-                                    </a>
-                                    <span class="blg-date">12-12-2016</span>
-
-                                </div>
-                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                    <h6><a href="single.html">Add news functions </a></h6>
-                                    <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla
-                                        ...</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                    <a href="single.html">
-                                        <img src="../../assets_client/img/demo/small-proerty-2.jpg">
-                                    </a>
-                                    <span class="blg-date">12-12-2016</span>
-
-                                </div>
-                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                    <h6><a href="single.html">Add news functions </a></h6>
-                                    <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla
-                                        ...</p>
-                                </div>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                    <div class="single-footer news-letter">
-                        <h4>Stay in touch</h4>
-                        <div class="footer-title-line"></div>
-                        <p>Lorem ipsum dolor sit amet, nulla suscipit similique quisquam molestias. Vel unde,
-                            blanditiis.</p>
-
-                        <form>
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="E-mail ... ">
-                                <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i
-                                                    class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
-                        <div class="social pull-right">
-                            <ul>
-                                <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i
-                                        class="fa fa-twitter"></i></a></li>
-                                <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec"
-                                       data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec"
-                                       data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec"
-                                       data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec"
-                                       data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-copy text-center">
-        <div class="container">
-            <div class="row">
-                <div class="pull-left">
-                    <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span>
-                </div>
-                <div class="bottom-menu pull-right">
-                    <ul>
-                        <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                        <li><a class="wow fadeInUp animated" href="/login" data-wow-delay="0.3s">Employé</a></li>
-                        <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                        <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
+<div id="footer_include"></div>
 
 <script src="../../assets_client/js/modernizr-2.6.2.min.js"></script>
 
@@ -792,6 +668,9 @@
 
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");
+    });
+    $(function () {
+        $("#footer_include").load("../../jsp/client/footer.jsp");
     });
 
     $(window).load(function () { // makes sure the whole site is loaded

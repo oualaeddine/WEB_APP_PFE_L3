@@ -4,7 +4,8 @@
 <%@ page import="model.beans.views.table.DataTableRow" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.views.TablesView" %>
-<%@ page import="model.enums.UserType" %><%--
+<%@ page import="model.enums.UserType" %>
+<%@ page import="model.db.ContactInfosDAO" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 27/04/2018
@@ -53,7 +54,11 @@
     <link rel="stylesheet" href="../../assets_client/css/owl.transitions.css">
     <link rel="stylesheet" href="../../assets_client/css/style.css">
     <link rel="stylesheet" href="../../assets_client/css/responsive.css">
-    <title><%out.print(title);%></title>
+
+    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="../vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | <%out.print(title);%></title>
 </head>
 <body>
 <div id="include_html"></div>
@@ -81,8 +86,13 @@
         </table>
     </div>
 </div>
+<div id="footer_include"></div>
 </body>
-
+<script>
+    $(function () {
+        $("#footer_include").load("../../jsp/client/footer.jsp");
+    });
+</script>
 <script src="../../assets_client/js/modernizr-2.6.2.min.js"></script>
 
 <script src="../../assets_client/js/jquery-1.10.2.min.js"></script>
@@ -101,9 +111,38 @@
 <script src="../../assets_client/js/price-range.js"></script>
 
 <script src="../../assets_client/js/main.js"></script>
+<script src="./vendor/datatables/jquery.dataTables.js"></script>
+<script src="./vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<script src="../../vendor/datatables/dataTables.buttons.min.js"></script>
+<script src="../../vendor/datatables/buttons.flash.min.js"></script>
+<script src="../../vendor/datatables/jszip.min.js"></script>
+<script src="../../vendor/datatables/pdfmake.min.js"></script>
+<script src="../../vendor/datatables/vfs_fonts.js"></script>
+<script src="../../vendor/datatables/buttons.html5.min.js"></script>
+<script src="../../vendor/datatables/buttons.print.min.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
+
 <script>
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");
+    });
+
+    var table = $('#dataTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy',
+            'csv',
+            'excel',
+            {
+                extend: 'pdfHtml5',
+                messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'
+            },
+            {
+                extend: 'print',
+                messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'
+            }
+        ]
     });
 </script>
 </html>

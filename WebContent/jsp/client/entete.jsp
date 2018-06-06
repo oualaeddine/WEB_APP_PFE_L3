@@ -1,8 +1,9 @@
 <%@ page import="control.statistics.globales.LogementsStats" %>
 <%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
 <%@ page import="model.beans.humans.Client" %>
-<%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.db.ContactInfosDAO" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <head>
     <meta charset="utf-8">
@@ -62,7 +63,7 @@
             <div class="col-md-5 col-sm-8  col-xs-12">
                 <div class="header-half header-call">
                     <p>
-                        <span><i class="pe-7s-call"></i> +213 696 689 498</span>
+                        <span><i class="pe-7s-call"></i> <%out.print(new ContactInfosDAO().getTelSociete());%></span>
                         <span><i class="pe-7s-mail"></i> eritpimmobilier@gmail.com</span>
                     </p>
                 </div>
@@ -126,7 +127,7 @@
                 + "                     </li>"
                 + "                 </ul>"
                 + "             </li>"
-                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.4s\"><a href=\"contact.html\">Contactez nous</a></li>"
+                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.4s\"><a href=\"/home?what=contacter\">Contactez nous</a></li>"
                 + "         </ul>"
                 + "     </div>"
                 + "     <!-- /.navbar-collapse -->"
@@ -169,7 +170,7 @@
                 + "                         <a href=\"index-2.html\">Qui somme nous?</a>"
                 + "                     </li>"
                 + "                     <li>"
-                + "                         <a href=\"index-4.html\">Nos Services</a>"
+                + "                         <a href=\"/DashboardServlet?what=contacter\">Nous contacter</a>"
                 + "                     </li>"
                 + "                     <li>"
                 + "                         <a href=\"/DashboardServlet?what=stats\">Statistiques</a>"
@@ -178,7 +179,7 @@
                 + "                         <a href=\"index-3.html\">Regles d'utilisation</a>"
                 + "                     </li>" +
                 "                       <li>" +
-                "                           <a href=\"/DashboardServlet?what=contacter\">Contactez nous</a>" +
+                "                           <a href=\"/DashboardServlet?what=sePlaindre\">Se plaindre</a>" +
                 "                       </li>"
                 + ""
                 + "                 </ul>"
@@ -189,6 +190,9 @@
                 + "                 <ul class=\"dropdown-menu navbar-nav\">"
                 + "                     <li>"
                 + "                         <a href=\"/DashboardServlet?what=myVisits\">Mes visites</a>"
+                + "                     </li>"
+                + "                     <li>"
+                + "                         <a href=\"/DashboardServlet?what=myWishes\">Ma liste de souhaits</a>"
                 + "                     </li>"
                 + "                     <li>"
                 + "                         <a href=\"/DashboardServlet?what=mesNotifs\">Mes notifications</a>"

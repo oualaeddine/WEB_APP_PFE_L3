@@ -360,6 +360,15 @@ public class DataTableRow {
 
     private void setupHtmlForMessage() {
         Message message = (Message) object;
+        String isClient = message.isClient() ? "Oui" : "Non";
+        html = "<tr>" +
+                "<td>" + message.getId() + "</td>" +
+                "<td>" + message.getEmail() + "</td>" +
+                "<td>" + message.getObject() + "</td>" +
+                "<td>" + message.getContent() + "</td>" +
+                "<td>" + isClient + "</td>" +
+                "<td>" + message.getTimestamp() + "</td>" +
+                "</tr>";
     }
 
 

@@ -5,6 +5,7 @@ import model.beans.Location;
 import model.beans.Logement;
 import model.beans.humans.Client;
 import model.beans.humans.Employe;
+import model.db.ContactInfosDAO;
 import model.db.daos.*;
 import model.enums.AdminRole;
 import model.enums.TypeLogement;
@@ -180,5 +181,16 @@ public class AdminsManager {
             Util.sendEmail(client1.getEmail(), "Vous avez été bannis", Util.getBannirEmail(client1));
             return new ClientDAO().banById(clientBanniId);
         }
+    }
+
+    public boolean modifierContactInfos(HttpServletRequest request) {
+        ContactInfosDAO contactInfosDAO = new ContactInfosDAO();
+        String nomSociete = request.getParameter("nomInput");
+        String tel = request.getParameter("inputTel");
+        String adresse = request.getParameter("adresseInput");
+        String email = request.getParameter("emailInput");
+        String description = request.getParameter("descriptionInput");
+
+        return new ContactInfosDAO().update(nomSociete, email, tel, adresse, description);
     }
 }

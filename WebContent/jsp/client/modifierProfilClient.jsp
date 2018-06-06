@@ -2,6 +2,7 @@
 <%@ page import="static control.servlets.MyServlet.LOGGED_IN_USER" %>
 <%@ page import="control.statistics.globales.LogementsStats" %>
 <%@ page import="model.beans.humans.Client" %>
+<%@ page import="model.db.ContactInfosDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: berre
@@ -17,7 +18,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERITP | Accueil</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | Accueil</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -102,7 +103,7 @@
         </div>
     </div>
 </div>
-
+<div id="footer_include"></div>
 
 <script src="../../assets_client/js/modernizr-2.6.2.min.js"></script>
 
@@ -190,6 +191,9 @@
 <script>
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");
+    });
+    $(function () {
+        $("#footer_include").load("../../jsp/client/footer.jsp");
     });
 </script>
 </body>

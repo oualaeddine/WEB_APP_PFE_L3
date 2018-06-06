@@ -765,6 +765,8 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case CLIENT_MY_WISHES:
+                return "Souhaits";
             case EMPLOYES:
                 return "Employés";
             case VERSEMENTS_FOR_USER:
@@ -877,12 +879,18 @@ public class Util {
                 return "Notifications";
             case BANNIR_CLIENT:
                 return "Clients";
+            case MESSAGES_FOR_ADMIN:
+                return "Messages";
         }
         return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "MESSAGES_FOR_ADMIN":
+                return MESSAGES_FOR_ADMIN;
+            case "CLIENT_MY_WISHES":
+                return CLIENT_MY_WISHES;
             case "ANNULER_VENTE":
                 return ANNULER_VENTE;
             case "BANNIR_CLIENT":

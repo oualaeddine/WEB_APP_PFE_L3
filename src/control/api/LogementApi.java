@@ -1,7 +1,10 @@
 package control.api;
 
+import control.servlets.MyServlet;
+import control.system.managers.ClientsManager;
 import model.beans.Localite;
 import model.beans.Logement;
+import model.beans.humans.Client;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
@@ -28,6 +31,11 @@ public class LogementApi extends API {
                     LinkedList<Logement> myLogements = new LogementDAO().getLogementsForClient(user);
                     responseBody = JsonUtil.logementsListToJsonArray(myLogements);
                     break;
+                case "addToWishList":
+                    int clientId = Integer.parseInt(request.getParameter("clientId"));
+                    int logementId = Integer.parseInt(request.getParameter("logementId"));
+                    System.out.println("ajout à la liste de souhaits: " + new ClientsManager((Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER)).ajouterALaListeDeSouhaits(clientId, logementId));
+                    break;
             }
         response.getWriter().append(responseBody);
 
@@ -39,6 +47,11 @@ public class LogementApi extends API {
         if (action != null) {
 
             switch (action) {
+                case "addToWishList":
+                    int clientId = Integer.parseInt(request.getParameter("clientId"));
+                    int logementId = Integer.parseInt(request.getParameter("logementId"));
+                    System.out.println("ajout à la liste de souhaits: " + new LogementDAO().ajouterALaListeDeSouhaits(clientId, logementId));
+                    break;
                 case "getRegions": {
                     responseBody = JsonUtil.objectToJson(new LocaliteDAO().getAll());
                     break;

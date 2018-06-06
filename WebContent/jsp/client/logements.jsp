@@ -7,6 +7,7 @@
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="model.beans.humans.Client" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.db.ContactInfosDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: hp
@@ -23,7 +24,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HCH Immobilier | Nos logements</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | Nos logements</title>
     <meta name="description" content="GARO is a real-estate template">
     <meta name="author" content="Kimarotec">
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -67,36 +68,73 @@
                 <p>Choisissez, Visitez, Achetez !</p>
             </div>
         </div>
-        <div class="row">
-            <div class="property-th">
+        <div class="col-md-9  pr0 padding-top-40 properties-page">
+            <div class="col-md-12 clear">
+                <div class="col-xs-2 layout-switcher text-center">
+                    <a class="layout-list" href="javascript:void(0);"> <i class="fa fa-th-list"></i> </a>
+                    <a class="layout-grid active" href="javascript:void(0);"> <i class="fa fa-th"></i> </a>
+                </div>
+                <!--/ .layout-switcher-->
+            </div>
+            <div class="col-md-12 clear">
+                <div id="list-type" class="proerty-th">
                 <%
-                    LinkedList<Logement> logements = new LogementDAO().getNonVendus();
-                    Client loggedIdClient = new Client();
-                    String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                    if (isLoggedIn) {
-                        loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-                    }
+                    LinkedList<Logement> logements = new LogementDAO().getAll();
                     for (Logement logement : logements) {
+                        String button = "";
                         if (isLoggedIn) {
-                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                            int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
+                        } else {
+                            button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
                         }
-                        out.print("<div class=\"col-sm-6 col-md-3 p0\">\n" +
-                                "                    <div class=\"box-two proerty-item\">\n" +
-                                "                        <div class=\"item-thumb\">\n" +
-                                "                            <a " + href + " ><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"item-entry overflow\">\n" +
-                                "                            <h5><a " + href + ">" + logement.getTitre() + " </a></h5>\n" +
-                                "                            <div class=\"dot-hr\"></div>\n" +
-                                "                            <span class=\"pull-left\"><b>Area :</b> " + logement.getSuperficie() + "m2</span>\n" +
-                                "                            <span class=\"proerty-price pull-right\">" + logement.getPrix() + " DZD</span>\n" +
-                                "                        </div>\n" +
-                                "                    </div>\n" +
-                                "                </div>");
+                        out.print("<div class=\"col-sm-6 col-md-4 p0\">\n" +
+                                "                            <div class=\"box-two proerty-item\">\n" +
+                                "                                <div class=\"item-thumb\">\n" +
+                                "                                    <a href=\"property-1.html\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                                </div>\n" +
+                                "\n" +
+                                "                                <div class=\"item-entry overflow\">\n" +
+                                "                                    <h5><a href=\"property-1.html\"> " + logement.getTitre() + " </a></h5>\n" +
+                                "                                    <div class=\"dot-hr\"></div>\n" +
+                                "                                    <span class=\"pull-left\"><b> Superficie :</b> " + logement.getSuperficie() + "</span>\n" +
+                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() + "m DA</span>\n" +
+                                "                                    <p style=\"display: none;\">" + logement.getDescription() + "</p>\n" +
+                                "                                    <div class=\"property-icon\">\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/bed.png\">" + logement.getNbrPieces() + "|\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/shawer.png\">" + logement.getNbrSdb() + "|\n" +
+                                "                                        <img src=\"../../assets_client/img/icon/cars.png\">(1)\n" +
+                                "                                    </div>\n" + button +
+                                "                                </div>\n" +
+                                "                            </div>\n" +
+                                "                        </div>");
                     }
                 %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer_include"></div>
+<%--Modal login required--%>
+<div id="loginRequiredModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Veuillez vous connecter</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>Vous devez être connectés pour acheter ou visiter ce logement</h5>
 
+            </div>
+            <div class="modal-footer">
+                <a href="/loginsignup">
+                    <button class="btn btn-primary" type="button">Connexion/Inscription</button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
             </div>
         </div>
     </div>
@@ -126,5 +164,54 @@
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");
     });
+    $(function () {
+        $("#footer_include").load("../../jsp/client/footer.jsp");
+    });
+
+    function getLogementId(selectedLogementId) {
+        // document.getElementById("logementId").value = selectedLogementId;
+        var dataToBeSent = {
+            clientId: <%out.print(request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID));%>,
+            logementId: selectedLogementId
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/logementApi?action=addToWishList', // Your Servlet mapping or JSP(not suggested)
+            data: dataToBeSent,
+            success: function (result) {
+                location.reload();
+            },
+            error: function (result) {
+                location.reload();
+                alert("Impossible d'ajouter/retirer le logement de votre liste de souhaits\nVeuillez reessayer");
+            }
+
+        });
+    }
+</script>
+<script type="text/javascript">
+    <%--$(function(){--%>
+    <%--function getData() {--%>
+    <%--var dataToBeSent  = {--%>
+    <%--clientId : <%out.print(request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID));%>, //--%>
+    <%--logementId: $("#logementId").val()--%>
+    <%--}; // you can change parameter name--%>
+
+    <%--$.ajax({--%>
+    <%--url : '/api/logementApi?', // Your Servlet mapping or JSP(not suggested)--%>
+    <%--data :dataToBeSent,--%>
+    <%--type : 'POST',--%>
+    <%--dataType : 'html', // Returns HTML as plain text; included script tags are evaluated when inserted in the DOM.--%>
+    <%--success : function(response) {--%>
+    <%--$('#outputDiv').html(response); // create an empty div in your page with some id--%>
+    <%--},--%>
+    <%--error : function(request, textStatus, errorThrown) {--%>
+    <%--alert(errorThrown);--%>
+    <%--}--%>
+    <%--});--%>
+    <%--}--%>
+
+    <%--});--%>
 </script>
 </html>

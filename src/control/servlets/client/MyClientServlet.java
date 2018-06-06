@@ -25,8 +25,14 @@ public class MyClientServlet extends MyServlet {
                     redirectToHome(request, response);
                 } else {
                     switch (action) {
+                        case "myWishes":
+                            this.getServletContext().getRequestDispatcher("/jsp/client/liste_souhaits.jsp").forward(request, response);
+                            break;
+                        case "sePlaindre":
+                            this.getServletContext().getRequestDispatcher("/jsp/client/sePlaindre.jsp").forward(request, response);
+                            break;
                         case "contacter":
-                            this.getServletContext().getRequestDispatcher("/jsp/client/contacterSociete.jsp").forward(request, response);
+                            this.getServletContext().getRequestDispatcher("/jsp/client/nousContacter.jsp").forward(request, response);
                             break;
                         case "changerMdp":
                             this.getServletContext().getRequestDispatcher("/jsp/client/changerMdp.jsp").forward(request, response);
@@ -55,7 +61,7 @@ public class MyClientServlet extends MyServlet {
                     }
                 }
             } else {
-                redirectToDashboard(request, response);
+                redirectToDashboard(request, response, ACCESS_DENIED);
             }
         } else redirectToHome(request, response);
     }

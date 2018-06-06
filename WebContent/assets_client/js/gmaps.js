@@ -151,6 +151,8 @@ var GMaps = (function(global) {
 
   var GMaps = function(options) {
     if (!this) return new GMaps(options);
+      options.lat = 36.264831;
+      options.lng = 6.579476;
 
     options.zoom = options.zoom || 15;
     options.mapType = options.mapType || 'roadmap';

@@ -63,7 +63,7 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter un logement</div>
         <div class="card-body">
-            <form method="post" action="/AjoutServlet?ajouter=logement" id="ajouterLogementForm">
+            <form method="post" action="/UploadServlet" id="ajouterLogementForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
@@ -154,12 +154,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="image">Photo</label>
-                        <input id="image" class="form-control" type="file" name="image" placeholder="Photo">
+                        <label for="file">Photo</label>
+                        <input id="file" class="form-control" type="file" name="file" placeholder="Photo">
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary" type="submit" form="ajouterLogementForm">Ajouter</button>
+                    <input class="btn btn-primary" type="submit" form="ajouterLogementForm"
+                           value="Upload">Ajouter</input>
                 </div>
 
 

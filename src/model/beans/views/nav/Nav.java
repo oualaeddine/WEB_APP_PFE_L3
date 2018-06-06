@@ -62,7 +62,9 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
-
+        /*Messages*/
+        NavElement messagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), "Messages visiteurs", urlBase + "?what=messages", "fa-envelope-o");
+        navElements.add(messagesNavElement);
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
             /*Admins*/
@@ -201,6 +203,9 @@ public class Nav {
         /*dashboard*/
         NavElement dashboardNavElement = new NavElement(false, MyConsts.DASHBOARD_NAV_ELEMENT_TITLE, urlBase, "fa-home");
         navElements.add(dashboardNavElement);
+        /*Messages*/
+        NavElement messagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), "Messages visiteurs", urlBase + "?what=messages", "fa-envelope-o");
+        navElements.add(messagesNavElement);
 
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();

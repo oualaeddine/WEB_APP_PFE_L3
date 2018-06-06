@@ -96,4 +96,8 @@ public class LogementsStats extends Stats {
     public LinkedList<Logement> mostVisitedLogements() {
         return new LogementDAO().getMostVisitedLogements();
     }
+
+    public LinkedList<Logement> dernierLogementsAjoutes() {
+        return new LogementDAO().getLatestAddedLogements();
+    }
 }

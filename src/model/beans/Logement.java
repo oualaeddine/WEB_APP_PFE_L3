@@ -16,6 +16,9 @@ public class Logement implements Serializable {
     private Location location;
     private boolean isGele;
 
+    public Logement() {
+    }
+
     public boolean isGele() {
         return isGele;
     }
@@ -77,16 +80,13 @@ public class Logement implements Serializable {
     private double superficie, prix;
 
     public double getPrix() {
-        return prix;
+        return prix / 1000000;
     }
 
     public void setPrix(double prix) {
         this.prix = prix;
     }
 
-
-    public Logement() {
-    }
 
     public int getEtage() {
         return etage;

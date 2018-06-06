@@ -169,7 +169,6 @@ public class EmployeDAO extends DAO {
                     "dateNaiss = '" + employe.getDateNaissance() + "'," +
                     "adresse='" + employe.getAdresse() + "'," +
                     "email='" + employe.getEmail() + "'," +
-                    "username='" + employe.getUsername() + "'" +
                     " WHERE employe.id=" + employe.getId() + ";");
             return true;
         } catch (SQLException e) {

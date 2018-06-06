@@ -138,6 +138,7 @@ public class DataTableData {
                 setupDataBannedClients();
                 break;
             case MESSAGES_FOR_ADMIN:
+                setupDataMessagesForAdmin();
                 break;
             case MESSAGES:
                 break;
@@ -199,6 +200,13 @@ public class DataTableData {
             case BANNIR_CLIENT:
                 setupDataBannirClient();
                 break;
+        }
+    }
+
+    private void setupDataMessagesForAdmin() {
+        LinkedList<Message> messages = new MessageVisiteursDAO().getAll();
+        for (Message message : messages) {
+            data.add(new DataTableRow(DataTableRowFormat.MESSAGE, message));
         }
     }
 

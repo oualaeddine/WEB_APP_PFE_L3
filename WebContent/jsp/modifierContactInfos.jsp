@@ -3,6 +3,8 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.views.MyView" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.db.ContactInfosDAO" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="fr">
 <%! private TablesView tablesView = new TablesView(); %>
@@ -11,7 +13,7 @@
     int userId = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
     Employe employe = (Employe) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
 
-    String currentPage = "CHANGER_MOT_DE_PASSE";
+    String currentPage = "MODIFIER_PROFIL";
     tablesView.setLoggedInUserId(userId);
     tablesView.setLoggedInUserType(userType);
     tablesView.setCurrentPage(currentPage);
@@ -22,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Modifier profil</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | Modifier contact infos</title>
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -35,7 +37,7 @@
     <link href="../css/bootstrapValidator.min.css" rel="stylesheet">
 
     <style>
-        .nav-link:hover{
+        .nav-link:hover {
             background-color: rgba(21, 21, 21, 0.81);
         }
     </style>
@@ -44,7 +46,8 @@
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + employe.getNom() + " " + employe.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -78,40 +81,44 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Modifier profil</div>
         <div class="card-body">
-            <form method="post" id="modifierProfilForm" action="/DashboardServlet?action=modifierProfil">
+            <form method="post" id="modifierContactInfosForm" action="/DashboardServlet?action=modifierContactInfos">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <label for="prenomInput">Prenom</label>
-                            <input class="form-control" id="prenomInput" name="prenomInput" type="text" value="<%out.print(employe.getPrenom());%>">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="nomInput">Nom</label>
-                            <input class="form-control" id="nomInput" name="nomInput" type="text" value="<%out.print(employe.getNom());%>">
+                            <label for="nomInput">Nom de la société</label>
+                            <input class="form-control" id="nomInput" name="nomInput" type="text"
+                                   value="<%out.print(new ContactInfosDAO().getNomSociete());%>">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <label for="inputTel">Telephone</label>
-                            <input class="form-control" id="inputTel" name="inputTel" type="text" value="<%out.print(employe.getTel());%>">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="dateNaissance">Date de naissance</label>
-                            <input class="form-control" id="dateNaissance" name="dateNaissance" type="date" value="<%out.print(employe.getDateNaissance());%>">
+                            <label for="inputTel">Numéro de téléphone de la société</label>
+                            <input class="form-control" id="inputTel" name="inputTel" type="text"
+                                   value="<%out.print(new ContactInfosDAO().getTelSociete());%>">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-12">
-                            <label for="adresseInput">Adresse</label>
-                            <input name="adresseInput" type="text" class="form-control" id="adresseInput" value="<%out.print(employe.getAdresse());%>">
+                            <label for="adresseInput">Adresse de la société</label>
+                            <input name="adresseInput" type="text" class="form-control" id="adresseInput"
+                                   value="<%out.print(new ContactInfosDAO().getAdresseSociete());%>">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-12">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email" value="<%out.print(employe.getEmail());%>">
+                            <label for="exampleInputEmail1">Adresse email</label>
+                            <input class="form-control" id="exampleInputEmail1" name="emailInput" type="email"
+                                   value="<%out.print(new ContactInfosDAO().getEmailSociete());%>">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <label for="descriptionInput">Description</label>
+                            <textarea class="form-control" name="descriptionInput" id="descriptionInput" required
+                                      size="200"
+                                      placeholder="<%out.print(new ContactInfosDAO().getDescriptionSociete());%>"></textarea>
                         </div>
                     </div>
                 </div>
@@ -129,7 +136,7 @@
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
-                <small>Copyright © Berrehal-Benghezal-Rehab PFE GL L3 2018</small>
+                <small>Copyright © Berrehal-Benghezal-Rahab PFE GL L3 2018</small>
             </div>
         </div>
     </footer>
@@ -138,7 +145,8 @@
         <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -170,57 +178,43 @@
                 nomInput: {
                     validators: {
                         notEmpty: {
-                            message: "Veuillez entrer votre nom"
+                            message: "Veuillez entrer le nom de la société"
                         }
                     }
                 },
-                prenomInput: {
+                inputTel: {
                     validators: {
                         notEmpty: {
-                            message: "Veuillez entrer votre prénom"
-                        }
-                    }
-                },
-                inputTel:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer votre numéro de téléphone"
+                            message: "Veuillez entrer le numéro de téléphone de la société"
                         },
-                        stringLength:{
-                            min:10,
-                            max:20,
-                            message:"Veuillez entrer votre numéro de téléphone"
+                        stringLength: {
+                            min: 10,
+                            max: 20,
+                            message: "Veuillez entrer un numéro de téléphone valide"
                         }
                     }
                 },
-                dateNaissance:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer votre date de naissance"
+                adresseInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer l\'adresse de la société"
                         }
                     }
                 },
-                adresseInput:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer votre adresse"
-                        }
-                    }
-                },
-                emailInput:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer votre adresse email"
+                emailInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer l'adresse email de la société"
                         },
-                        emailAddress:{
-                            message:"Veuillez entrer une adresse valide (eg. john@gmail.com)"
+                        emailAddress: {
+                            message: "Veuillez entrer une adresse valide (eg. john@gmail.com)"
                         }
                     }
                 },
-                usernameInput:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer votre nom d'utilisateur"
+                descriptionInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer une description de la société (Date de création, gérant etc...)"
                         }
                     }
                 }

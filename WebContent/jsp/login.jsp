@@ -1,4 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.db.ContactInfosDAO" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>HCH IMMOBILIER - Authentification</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> - Authentification</title>
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -26,7 +29,7 @@
         <div class="card-body">
             <form method="post" id="loginForm" action="/login">
                 <div class="form-group">
-                    <label for="id">Username</label>
+                    <label for="id">Nom d'utilisateur</label>
                     <input class="form-control" id="id" name="userId" type="text"
                            placeholder="Entrez votre nom d'utilisateur">
                 </div>

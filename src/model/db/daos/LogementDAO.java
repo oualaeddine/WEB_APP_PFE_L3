@@ -17,6 +17,45 @@ import java.util.LinkedList;
 @SuppressWarnings("ALL")
 public class LogementDAO extends DAO {
 
+    public LinkedList<Logement> getListeDeSouhaitsForClient(int client) {
+        ResultSet result;
+        LinkedList<Logement> logements = new LinkedList<>();
+        try {
+            result = statement.executeQuery("select idLogement from souhaits where idClient=" + client + ";");
+            while (result.next()) {
+                Logement logement = (Logement) getById(result.getInt("idLogement"));
+                if (!logement.isGele())
+                    logements.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logements;
+    }
+
+    public boolean retirerDeLaListeDeSouhaits(int client, int logement) {
+        try {
+            statement.execute("DELETE FROM souhaits where (idClient=" + client + " AND idLogement=" + logement + ");");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean ajouterALaListeDeSouhaits(int client, int logement) {
+        try {
+            statement.execute("INSERT INTO souhaits (idClient, idLogement) VALUES (" +
+                    client + "," +
+                    logement +
+                    ");");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public LinkedList<Logement> getLogementsSelonCriteres(Logement criteres, Double prixMax, Double prixMin, Double supMax, Double supMin) {
         System.out.println("" +
                 "criteres = " + criteres.toString() + "," +
@@ -791,5 +830,57 @@ public class LogementDAO extends DAO {
             e.printStackTrace();
         }
         return logements;
+    }
+
+    public LinkedList<Logement> getLatestAddedLogements() {
+        ResultSet result;
+        LinkedList<Logement> logements = new LinkedList<>();
+        try {
+            result = localiteStatement.executeQuery("SELECT * FROM logement ORDER BY id DESC LIMIT 3;");
+
+            while (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+                logements.add(logement);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logements;
+    }
+
+    public boolean isInWishList(int client, int id) {
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select * from souhaits where (idClient=" + client + " and idLogement=" + id + ");");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

@@ -1,11 +1,11 @@
 package control.system.managers;
 
+import control.servlets.MyServlet;
+import model.beans.Message;
 import model.beans.Plainte;
 import model.beans.Visite;
 import model.beans.humans.Client;
-import model.db.daos.ClientDAO;
-import model.db.daos.PlainteDAO;
-import model.db.daos.VisitesDao;
+import model.db.daos.*;
 import utils.Util;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,5 +73,33 @@ public class ClientsManager {
         plainte.setPlaignant(loggedInClient);
         plainte.setContenu(contenu);
         return new PlainteDAO().add(plainte);
+    }
+
+    public boolean contacterSociete(HttpServletRequest request) {
+        Client client = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
+        String email = client.getEmail();
+        String objet = request.getParameter("objet");
+        String msg = request.getParameter("message");
+        String nom = client.getNom();
+        String prenom = client.getPrenom();
+        String tel = client.getTel();
+        Message message = new Message();
+        message.setEmail(email);
+        message.setObject(objet);
+        message.setContent(msg);
+        message.setClient(true);
+        message.setTel(tel);
+        message.setNom(nom);
+        message.setPrenom(prenom);
+        return new MessageVisiteursDAO().add(message);
+    }
+
+    public boolean ajouterALaListeDeSouhaits(int clientId, int logementId) {
+        LogementDAO logementDAO = new LogementDAO();
+        if (logementDAO.isInWishList(clientId, logementId)) {
+            return logementDAO.retirerDeLaListeDeSouhaits(clientId, logementId);
+        } else {
+            return logementDAO.ajouterALaListeDeSouhaits(clientId, logementId);
+        }
     }
 }

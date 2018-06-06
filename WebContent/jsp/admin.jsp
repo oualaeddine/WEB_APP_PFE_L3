@@ -129,6 +129,9 @@
             case MyServlet.ACTION_SUCCESS:
                 errorMessage = "Action bien effectuee !";
                 break;
+            case MyServlet.ACCESS_DENIED:
+                errorMessage = "Accès refusé";
+                break;
         }
         out.print("<script type=\"text/javascript\">");
         out.println("alert('" + errorMessage + "');");

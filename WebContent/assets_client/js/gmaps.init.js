@@ -20,22 +20,21 @@ function map() {
 	},
 	panControl: false,
 	streetViewControl: false,
-	mapTypeControl: false,
+        mapTypeControl: true,
 	overviewMapControl: false,
-	scrollwheel: false,
-	draggable: false,
+        scrollwheel: true,
+        draggable: true,
 	styles: styles
     });
 
     
 
     map.addMarker({
-	lat: -12.043333,
-	lng: -77.028333,
-	/* ,
-	 title: '',
+        lat: 36.264831,
+        lng: 6.579476,
+        title: 'SARL ERITP',
 	 infoWindow: {
-	 content: '<p>HTML Content</p>'
-	 }*/
+         content: '<p>SARL ERITP, Résidences les ZIANIDES</p>'
+     }
     });
 }

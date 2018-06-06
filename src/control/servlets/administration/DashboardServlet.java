@@ -1,6 +1,7 @@
 package control.servlets.administration;
 
 import control.servlets.MyServlet;
+import control.system.managers.AdminsManager;
 import control.system.managers.AuthManager;
 import control.system.managers.EmployeManager;
 import model.beans.humans.Employe;
@@ -24,11 +25,33 @@ public class DashboardServlet extends MyServlet {
         if (isLoggedIn(request) && request.getSession().getAttribute(LOGGED_IN_USER_TYPE) != UserType.CLIENT) {
             String action = request.getParameter("action");
             if (action != null) {
+                String error = "";
                 switch (action) {
                     case "modifierProfil":
                         EmployeManager employeManager = new EmployeManager((Employe) request.getSession().getAttribute(LOGGED_IN_USER));
-                        System.out.println("Modification :" + employeManager.modifierProfil(request));
+                        if (employeManager.modifierProfil(request)) {
+                            System.out.println("Modification : true");
+                            redirectToDashboard(request, response, ACTION_SUCCESS);
+                        } else {
+                            redirectToDashboard(request, response, ACTION_ERROR);
+                        }
+                        break;
+                    case "modifierContactInfos":
+                        if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            AdminsManager adminsManager = new AdminsManager((Employe) request.getSession().getAttribute(LOGGED_IN_USER));
+                            if (adminsManager.modifierContactInfos(request)) {
+                                System.out.println("Modification : true");
+                                redirectToDashboard(request, response, ACTION_SUCCESS);
+                            } else {
+                                redirectToDashboard(request, response, ACTION_ERROR);
+                            }
+                        } else {
+                            redirectToDashboard(request, response, ACCESS_DENIED);
+                        }
+
+                        break;
                 }
+            } else {
                 doGet(request, response);
             }
         }

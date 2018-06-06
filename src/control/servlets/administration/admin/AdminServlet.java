@@ -44,10 +44,6 @@ public class AdminServlet extends MyServlet {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request, response);
                             break;
                         }
-                        case "newMessage": {
-                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=MESSAGES_FOR_ADMIN").forward(request, response);
-                            break;
-                        }
                         case "listeAgents": {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=AGENTS").forward(request, response);
                             break;
@@ -153,7 +149,7 @@ public class AdminServlet extends MyServlet {
                             break;
                         }
                         case "modifierInfosContact": {
-                            this.getServletContext().getRequestDispatcher("/html/modifierInfosContact.html").forward(request, response);
+                            this.getServletContext().getRequestDispatcher("/jsp/modifierContactInfos.jsp").forward(request, response);
                             break;
                         }
                         default:

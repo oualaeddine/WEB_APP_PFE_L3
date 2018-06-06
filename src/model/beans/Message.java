@@ -2,11 +2,37 @@ package model.beans;
 
 import model.beans.humans.Person;
 
+import java.sql.Timestamp;
+
 public class Message {
     private int id;
-    private String content;
-    private Person sender,receiver;
+    private String object, email, content, tel, nom, prenom;
+    private boolean isClient;
+    private Timestamp timestamp;
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
     public int getId() {
         return id;
@@ -24,19 +50,35 @@ public class Message {
         this.content = content;
     }
 
-    public Person getSender() {
-        return sender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSender(Person sender) {
-        this.sender = sender;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Person getReceiver() {
-        return receiver;
+    public boolean isClient() {
+        return isClient;
     }
 
-    public void setReceiver(Person receiver) {
-        this.receiver = receiver;
+    public void setClient(boolean client) {
+        isClient = client;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getObject() {
+        return object;
+    }
+
+    public void setObject(String object) {
+        this.object = object;
     }
 }

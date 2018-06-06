@@ -34,9 +34,9 @@ public class ForgotPasswordServlet extends MyServlet {
                 if (client != null && isClient.equals("true")) {
                     String code = new OttClientDAO().generateNewToken(client.getId());
                     Util.sendEmail(address, "Récuperation du mot de passe", Util.getForgotPasswordEmail(address, code, true));
-                    this.getServletContext().getRequestDispatcher("/jsp/client/forgotPassword.jsp").forward(request, response);
                     System.out.println(code);
                 }
+                this.getServletContext().getRequestDispatcher("/jsp/client/forgotPassword.jsp").forward(request, response);
             } else {
                 int userId = Integer.parseInt(request.getParameter("linsa"));
                 System.out.println("verify token: " + new OttClientDAO().verifyToken(token, userId));

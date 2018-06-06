@@ -14,6 +14,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case MESSAGES_FOR_ADMIN:
+                setupTableHeaderForMessages();
+                break;
             case ANNULER_VENTE:
                 setupTableHeaderForAnnulerVentes();
                 break;
@@ -357,8 +360,14 @@ public class DataTableHeader {
     }
 
     private void setupTableHeaderForMessages() {
-        html = "";
-
+        html = "<tr>" +
+                "<th>ID</th>" +
+                "<th>Email</th>" +
+                "<th>Objet</th>" +
+                "<th>Contenu</th>" +
+                "<th>Client</th>" +
+                "<th>Date et heure de réception</th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForClients() {

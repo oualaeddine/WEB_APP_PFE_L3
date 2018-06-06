@@ -29,6 +29,9 @@ public class HomeServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/client/home.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "contacter":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/nousContacter.jsp").forward(request, response);
+                        break;
                     case "logements":
                         this.getServletContext().getRequestDispatcher("/jsp/client/logements.jsp").forward(request, response);
                         break;

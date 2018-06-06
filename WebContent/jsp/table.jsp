@@ -37,22 +37,20 @@
     <meta name="author" content="">
     <title><%out.print(tablesView.getPageTitle() + " | " + tablesView.getDataTable().getDataTableTitle());%></title>
     <!-- Bootstrap core CSS-->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="../vendor/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-    <link href="../vendor/font-awesome-old/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./vendor/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <link href="./vendor/font-awesome-old/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
-    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="../vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
-    <link href="../vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="./vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="./vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="./vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin.css" rel="stylesheet">
-
-
+    <link href="./css/sb-admin.css" rel="stylesheet">
     <!-- fullCalendar -->
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.print.min.css" media="print">
-
+    <link rel="stylesheet" href="./css/bootstrapValidator.min.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -459,27 +457,26 @@
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="../vendor/datatables/jquery.dataTables.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="./vendor/datatables/jquery.dataTables.js"></script>
+    <script src="./vendor/datatables/dataTables.bootstrap4.js"></script>
 
-    <script src="../vendor/datatables/dataTables.buttons.min.js"></script>
-    <script src="../vendor/datatables/buttons.flash.min.js"></script>
-    <script src="../vendor/datatables/jszip.min.js"></script>
-    <script src="../vendor/datatables/pdfmake.min.js"></script>
-    <script src="../vendor/datatables/vfs_fonts.js"></script>
-    <script src="../vendor/datatables/buttons.html5.min.js"></script>
-    <script src="../vendor/datatables/buttons.print.min.js"></script>
+    <script src="./vendor/datatables/dataTables.buttons.min.js"></script>
+    <script src="./vendor/datatables/buttons.flash.min.js"></script>
+    <script src="./vendor/datatables/jszip.min.js"></script>
+    <script src="./vendor/datatables/pdfmake.min.js"></script>
+    <script src="./vendor/datatables/vfs_fonts.js"></script>
+    <script src="./vendor/datatables/buttons.html5.min.js"></script>
+    <script src="./vendor/datatables/buttons.print.min.js"></script>
+    <script src="./js/bootstrapValidator.min.js"></script>
 
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <%--<script src="../js/sb-admin-datatables.min.js"></script>--%>
+    <script src="./js/sb-admin.min.js"></script>
 
     <script>
 

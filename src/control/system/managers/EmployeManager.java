@@ -23,7 +23,6 @@ public class EmployeManager {
         String date = request.getParameter("dateNaissance");
         String adresse = request.getParameter("adresseInput");
         String email = request.getParameter("emailInput");
-        String username = request.getParameter("usernameInput");
         Employe employe = new Employe();
         employe.setId((Integer) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID));
         employe.setPrenom(prenom);
@@ -32,7 +31,6 @@ public class EmployeManager {
         employe.setDateNaissance(Util.getDateFromString(date));
         employe.setAdresse(adresse);
         employe.setEmail(email);
-        employe.setUsername(username);
         return new EmployeDAO().update(employe);
     }
 

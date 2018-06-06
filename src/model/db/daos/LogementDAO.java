@@ -836,7 +836,7 @@ public class LogementDAO extends DAO {
         ResultSet result;
         LinkedList<Logement> logements = new LinkedList<>();
         try {
-            result = localiteStatement.executeQuery("SELECT * FROM logement ORDER BY id DESC LIMIT 3;");
+            result = localiteStatement.executeQuery("SELECT * FROM logement where gele=0 ORDER BY id DESC LIMIT 3;");
 
             while (result.next()) {
                 Logement logement = new Logement();
@@ -876,7 +876,7 @@ public class LogementDAO extends DAO {
     public boolean isInWishList(int client, int id) {
         ResultSet result;
         try {
-            result = logementStatement.executeQuery("select * from souhaits where (idClient=" + client + " and idLogement=" + id + ");");
+            result = logementStatement.executeQuery("select * from souhaits where (idClient=" + client + " and idLogement=" + id + ") and gele=0;");
             return result.next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -885,22 +885,138 @@ public class LogementDAO extends DAO {
     }
 
     public boolean isThereLogements(String fourchettePrix, String region) {
-        // TODO: 6/6/2018
+        ResultSet result;
+        long prixMax = 0, prixMin = 0;
+        switch (fourchettePrix) {
+            case "1":
+                prixMin = 0;
+                prixMax = 1000000;
+                break;
+            case "2":
+                prixMin = 1000000;
+                prixMax = 10000000;
+                break;
+            case "3":
+                prixMin = 10000000;
+                prixMax = 1000000000;
+                break;
+        }
+        try {
+            result = logementStatement.executeQuery("select * from logement where " +
+                    "prix > " + prixMin + " and prix < " + prixMax + "" +
+                    " and region = " + region + " and gele=0;");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean isThereLogements(String fourchettePrix, String region, String type) {
-        // TODO: 6/6/2018
+        ResultSet result;
+        long prixMax = 0, prixMin = 0;
+        switch (fourchettePrix) {
+            case "1":
+                prixMin = 0;
+                prixMax = 1000000;
+                break;
+            case "2":
+                prixMin = 1000000;
+                prixMax = 10000000;
+                break;
+            case "3":
+                prixMin = 10000000;
+                prixMax = 1000000000;
+                break;
+        }
+        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+        try {
+            result = logementStatement.executeQuery("select * from logement where " +
+                    "prix > " + prixMin + " and prix < " + prixMax + "" +
+                    " and region = " + region + " and gele=0" +
+                    " and typeLogement = '" + typeLogement + "';");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean isThereLogementsVilla(String fourchettePrix, String region, String type, String superficie) {
-        // TODO: 6/6/2018
+        ResultSet result;
+        long prixMax = 0, prixMin = 0;
+        switch (fourchettePrix) {
+            case "1":
+                prixMin = 0;
+                prixMax = 1000000;
+                break;
+            case "2":
+                prixMin = 1000000;
+                prixMax = 10000000;
+                break;
+            case "3":
+                prixMin = 10000000;
+                prixMax = 1000000000;
+                break;
+        }
+        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+        long supMin = 0, supMax = 0;
+        switch (superficie) {
+            case "1":
+                supMin = 0;
+                supMax = 100;
+                break;
+            case "2":
+                supMin = 100;
+                supMax = 200;
+                break;
+            case "3":
+                supMin = 200;
+                supMax = 10000;
+                break;
+        }
+        try {
+            result = logementStatement.executeQuery("select * from logement where " +
+                    "prix > " + prixMin + " and prix < " + prixMax + "" +
+                    " and region = " + region + " and gele=0" +
+                    " and typeLogement = '" + typeLogement + "'" +
+                    " and superficie > " + supMin + " and superficie < " + supMax + ";");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean isThereLogementsAppartement(String fourchettePrix, String region, String type, String rooms) {
-        // TODO: 6/6/2018
+        ResultSet result;
+        long prixMax = 0, prixMin = 0;
+        switch (fourchettePrix) {
+            case "1":
+                prixMin = 0;
+                prixMax = 1000000;
+                break;
+            case "2":
+                prixMin = 1000000;
+                prixMax = 10000000;
+                break;
+            case "3":
+                prixMin = 10000000;
+                prixMax = 1000000000;
+                break;
+        }
+        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+
+        try {
+            result = logementStatement.executeQuery("select * from logement where " +
+                    "prix > " + prixMin + " and prix < " + prixMax + "" +
+                    " and region = " + region + " and gele=0" +
+                    " and typeLogement = '" + typeLogement + "'" +
+                    " and nbrPieces = " + rooms + ";");
+            return result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

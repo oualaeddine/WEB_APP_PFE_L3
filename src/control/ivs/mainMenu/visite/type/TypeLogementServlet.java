@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TypeLogementServlet")
+@WebServlet(name = "TypeLogementServlet", urlPatterns = IVSConsts.TYPE_MENU_SERVLET_URL)
 public class TypeLogementServlet extends HttpServlet {
     private String language;
     private String fourchettePrix;

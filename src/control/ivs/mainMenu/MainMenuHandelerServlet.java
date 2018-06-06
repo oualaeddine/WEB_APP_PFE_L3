@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "MainMenuHandelerServlet")
+@WebServlet(name = "MainMenuHandelerServlet", urlPatterns = IVSConsts.MAIN_MENU_HANDELER_SERVLET_URL)
 public class MainMenuHandelerServlet extends HttpServlet {
 
     private String language;

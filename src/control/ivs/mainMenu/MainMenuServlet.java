@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "MainMenuServlet")
+@WebServlet(name = "MainMenuServlet", urlPatterns = IVSConsts.MAIN_MENU_SERVLET_URL)
 public class MainMenuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

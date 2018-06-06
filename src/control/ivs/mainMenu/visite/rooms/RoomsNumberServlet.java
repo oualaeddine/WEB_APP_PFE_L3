@@ -7,7 +7,6 @@ import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Gather;
 import com.twilio.twiml.voice.Play;
 import control.ivs.IVSConsts;
-import utils.MyConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
-@WebServlet(name = "RoomsNumberServlet", urlPatterns = MyConsts.ROOMS_NUMBER_SERVLET_URL)
+@WebServlet(name = "RoomsNumberServlet", urlPatterns = IVSConsts.ROOMS_NUMBER_SERVLET_URL)
 public class RoomsNumberServlet extends HttpServlet {
     private String language;
     private String fourchettePrix;

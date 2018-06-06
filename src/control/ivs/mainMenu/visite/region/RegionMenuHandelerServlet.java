@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "RegionMenuHandelerServlet")
+@WebServlet(name = "RegionMenuHandelerServlet", urlPatterns = IVSConsts.REGION_MENU_HANDELER_SERVLET_URL)
 public class RegionMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;

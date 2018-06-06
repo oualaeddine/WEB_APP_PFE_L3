@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "IvsMainMenu", urlPatterns = IVSConsts.WELCOME_MENU_SERVLET_URL)
+@WebServlet(name = "IvsMainMenu", urlPatterns = IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
 public class FirstMessageServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "FourchettePrixServlet")
+@WebServlet(name = "FourchettePrixServlet", urlPatterns = IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL)
 public class FourchettePrixServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String language = request.getParameter("language");

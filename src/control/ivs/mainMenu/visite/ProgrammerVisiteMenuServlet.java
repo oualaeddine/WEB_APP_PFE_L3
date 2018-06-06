@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ProgrammerVisiteMenuServlet")
+@WebServlet(name = "ProgrammerVisiteMenuServlet", urlPatterns = IVSConsts.PROGRAM_VISIT_SERVLET_URL)
 public class ProgrammerVisiteMenuServlet extends HttpServlet {
     private String language;
 

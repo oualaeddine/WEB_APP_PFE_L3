@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static control.ivs.IVSConsts.WELCOME_MESSAGE_SERVLET_URL;
+import static control.ivs.IVSConsts.WELCOME_MENU_SERVLET_URL;
 
-@WebServlet(name = "WelcomeMessageServlet", urlPatterns = WELCOME_MESSAGE_SERVLET_URL)
+@WebServlet(name = "WelcomeMessageServlet", urlPatterns = WELCOME_MENU_SERVLET_URL)
 public class WelcomeMessageServlet extends HttpServlet {
     private boolean isClient;
 
@@ -55,7 +55,7 @@ public class WelcomeMessageServlet extends HttpServlet {
             return new VoiceResponse.Builder()
                     .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL)
+                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL)
                             .method(HttpMethod.POST)
                             .option("language", "ar")
                             .build())
@@ -64,7 +64,7 @@ public class WelcomeMessageServlet extends HttpServlet {
             return new VoiceResponse.Builder()
                     .play(new Play.Builder(IVSConsts.AR_STANDARD_WELCOME_MESSAGE_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL)
+                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL)
                             .method(HttpMethod.POST)
                             .option("language", "ar")
                             .build())

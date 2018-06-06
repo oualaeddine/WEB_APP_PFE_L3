@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "SuperficeiMenuHandelerServlet")
+@WebServlet(name = "SuperficeiMenuHandelerServlet", urlPatterns = IVSConsts.SUPERFICIE_MENU_HANDELER_SERVLET_URL)
 public class SuperficeiMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;

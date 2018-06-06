@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "RegionServlet")
+@WebServlet(name = "RegionServlet", urlPatterns = IVSConsts.REGION_MENU_SERVLET_URL)
 public class RegionServlet extends HttpServlet {
     private String fourchettePrix;
 

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SuppressWarnings({"Duplicates"})
-@WebServlet(name = "SuperficieServlet", urlPatterns = IVSConsts.SUPERFICIE_SERVLET_SERVLET_URL)
+@WebServlet(name = "SuperficieServlet", urlPatterns = IVSConsts.SUPERFICIE_SERVLET_URL)
 public class SuperficieServlet extends HttpServlet {
     private String language;
     private String fourchettePrix;

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "WelcomeHandelerServlet")
+@WebServlet(name = "WelcomeHandelerServlet", urlPatterns = IVSConsts.WELCOME_HANDELER_SERVLET_URL)
 public class WelcomeHandelerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String selectedOption = request.getParameter("Digits");

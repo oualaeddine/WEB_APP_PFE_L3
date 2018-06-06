@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "TypeMenuHandelerServlet")
+@WebServlet(name = "TypeMenuHandelerServlet", urlPatterns = IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL)
 public class TypeMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;
@@ -60,7 +60,7 @@ public class TypeMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goNbrPieces() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.NBR_PIECES_SERVLET_URL)
+                        .Builder(IVSConsts.ROOMS_NUMBER_SERVLET_URL)
                         .method(HttpMethod.POST)
                         .option("language", language)
                         .option("prix", fourchettePrix)
@@ -73,7 +73,7 @@ public class TypeMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goSuperficie() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.SUPERFICIE_SERVLET_SERVLET_URL)
+                        .Builder(IVSConsts.SUPERFICIE_SERVLET_URL)
                         .method(HttpMethod.POST)
                         .option("language", language)
                         .option("prix", fourchettePrix)

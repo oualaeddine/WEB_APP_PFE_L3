@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="../js/js-datatable-1.0.4/css.min/bootstrap-table.min.css">
+<link rel="stylesheet" href="../js/js-datatable-1.0.4/css.min/datatable.min.css">
+
+
+<table
+        class="datatable table"
+        data-show-chart="true"
+        data-id-field="code"
+        data-rank-mode="grouped_muted"
+        data-chart-modes="bar,scatter,comparison"
+        data-chart-default-mode="scatter"
+
+        data-scatter-x="value1"
+        data-scatter-y="value2"
+
+        data-comparison-row-id-field="code"
+        data-comparison-sets-json='[{"title": "All values","data_axis_title": "Value axis", "fields": ["value1", "value2", "value3", "value4"], "field_titles": ["custom title 1","custom title 2","custom title 3","custom title 4"]},{"title": "Sub comparison 1","data_axis_title": "Value", "fields": ["value1", "value2"]},{"title": "Sub comparison 2", "data_axis_title": "Accuracy", "fields": ["value3", "value4"]}]'
+        data-comparison-active-set="All values"
+        data-comparison-a-row="Red"
+        data-comparison-b-row="Blue"
+
+        data-sort-name="value1"
+        data-sort-order="desc"
+        data-pagination="false"
+        data-show-pagination-switch="false"
+>
+    <thead>
+    <tr>
+        <th data-sortable="false" data-rank="true">
+            <span class="text-muted">Rank</span>
+        </th>
+        <th class="sep-left-cell"
+            data-chartable="false"
+            data-field="code"
+            data-sortable="true"
+            data-visible="true">
+            System
+        </th>
+        <th class="sep-left-cell"
+            data-align="center"
+            data-beginatzero="false"
+            data-chartable="true"
+            data-field="value1"
+            data-sortable="true"
+            data-visible="true">
+            Value 1
+        </th>
+        <th class="sep-left-cell"
+            data-align="center"
+            data-beginatzero="false"
+            data-chartable="true"
+            data-field="value2"
+            data-sortable="true"
+            data-visible="true">
+            Value 2
+        </th>
+        <th class="sep-left-cell"
+            data-align="center"
+            data-beginatzero="false"
+            data-chartable="true"
+            data-field="value3"
+            data-sortable="true"
+            data-visible="true">
+            Value 3
+        </th>
+        <th class="sep-left-cell"
+            data-align="center"
+            data-beginatzero="false"
+            data-chartable="true"
+            data-field="value4"
+            data-sortable="true"
+            data-visible="true">
+            Value 4
+        </th>
+    </tr>
+    </thead>
+</table>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="../js/js-datatable-1.0.4/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="../js/js-datatable-1.0.4/js/Chart.bundle.js"></script>
+<script type="text/javascript" src="../js/js-datatable-1.0.4/js/datatable.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dynamic-table-1').datatable({
+            bar: {
+                height: 440,
+            },
+            scatter: {
+                height: 400,
+            },
+            comparison: {
+                height: 400,
+            },
+            icon: {
+                bar: '',
+                scatter: '',
+                comparison: '',
+                off: '',
+                caret: '',
+                chartable: ''
+            },
+            label: {
+                bar: 'Custom Bar',
+                scatter: 'Custom Scatter',
+                comparison: 'Custom Comparison',
+                off: 'Off',
+                select_x_axis: 'Select data field for X-axis',
+                select_y_axis: 'Select data field for Y-axis',
+                select_set: 'Select set',
+                select_a_row: 'Select row A',
+                select_b_row: 'Select row B',
+            },
+            button_css: {
+                bar: 'btn btn-primary selector-button',
+                scatter: 'btn btn-danger selector-button',
+                comparison: 'btn btn-warning selector-button',
+                off: 'btn btn-default selector-button',
+            },
+
+        });
+    });
+</script>

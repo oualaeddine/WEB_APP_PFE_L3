@@ -29,9 +29,9 @@ public class ProgrammerVisiteServlet extends MyServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
             if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.OPERATEUR) {
+                request.setAttribute("clients", new ClientDAO().getAll());
+
                 if (request.getParameter("action") != null && request.getParameter("action").equals("edit")) {
-
-
                     System.out.println("Visite reportée: " + new VisitesDao().reporter(Integer.parseInt(request.getParameter("idVisite"))));
 
                     Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("idLogement")));

@@ -1,10 +1,11 @@
-package control.ivs.menu.handelers;
+package control.ivs.welcome;
 
-
+import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Play;
 import com.twilio.twiml.voice.Redirect;
-import utils.MyConsts;
+import control.ivs.IVSConsts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,27 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "WelcomeMenuHandelerServlet", urlPatterns = MyConsts.WelcomeMenuHandelerServlet)
-public class WelcomeMenuHandelerServlet extends HttpServlet {
-
+@WebServlet(name = "WelcomeHandelerServlet", urlPatterns = IVSConsts.WELCOME_HANDELER_SERVLET_URL)
+public class WelcomeHandelerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String selectedOption = request.getParameter("Digits");
-
         VoiceResponse voiceResponse;
         switch (selectedOption) {
             case "1":
-                voiceResponse = goToAppartementServlet();
+                voiceResponse = goFrench();
                 break;
             case "2":
-                voiceResponse = goToChangeLanguageServlet();
-                break;
-            case "3":
-                voiceResponse = goToRedirectToHumanServlet();
+                voiceResponse = goArab();
                 break;
             default:
-                voiceResponse = goToErrorServlet();
+                voiceResponse = goFrench();
                 break;
         }
+
         response.setContentType("application/xml");
         try {
             String resp = voiceResponse.toXml();
@@ -43,38 +40,26 @@ public class WelcomeMenuHandelerServlet extends HttpServlet {
         }
     }
 
-    private VoiceResponse goToErrorServlet() {
+    private VoiceResponse goArab() {
         return new VoiceResponse
                 .Builder()
+                .play(new Play.Builder(IVSConsts.YOU_CHOOSED_ARABIC_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(MyConsts.ERROR_SERVLET_URL)
+                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
+                        .method(HttpMethod.POST)
+                        .option("language", "ar")
                         .build())
                 .build();
     }
 
-    private VoiceResponse goToRedirectToHumanServlet() {
+    private VoiceResponse goFrench() {
         return new VoiceResponse
                 .Builder()
+                .play(new Play.Builder(IVSConsts.YOU_CHOOSED_FRENCH_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(MyConsts.RedirectToHumanServlet)
-                        .build())
-                .build();
-    }
-
-    private VoiceResponse goToChangeLanguageServlet() {
-        return new VoiceResponse
-                .Builder()
-                .redirect(new Redirect
-                        .Builder(MyConsts.ChangeLanguageServlet)
-                        .build())
-                .build();
-    }
-
-    private VoiceResponse goToAppartementServlet() {
-        return new VoiceResponse
-                .Builder()
-                .redirect(new Redirect
-                        .Builder(MyConsts.APPARTEMENT_SERVLET_URL)
+                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
+                        .method(HttpMethod.POST)
+                        .option("language", "fr")
                         .build())
                 .build();
     }

@@ -1,27 +1,28 @@
 package control.ivs;
 
-
+import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Gather;
 import com.twilio.twiml.voice.Play;
-import utils.MyConsts;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "WelcomeServlet", urlPatterns = MyConsts.WELCOME_SERVLET_URL)
-public class WelcomeServlet extends javax.servlet.http.HttpServlet {
+@WebServlet(name = "IvsMainMenu", urlPatterns = IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
+public class FirstMessageServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Create a TwiML response and add our friendly message.
         VoiceResponse voiceResponse = new VoiceResponse.Builder()
-                .play(new Play.Builder("https://twiliopfe2.000webhostapp.com/Welcome.mp3").build())
+                .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(MyConsts.WelcomeMenuHandelerServlet)
+                        .action(IVSConsts.WELCOME_HANDELER_SERVLET_URL)
+                        .method(HttpMethod.POST)
                         .numDigits(1)
                         .build())
                 .build();

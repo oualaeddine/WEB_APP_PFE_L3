@@ -175,7 +175,7 @@ if ($('#garage').is(":checked")) garage = "true";
 var logementsTable = $('#logementsTable').DataTable({
     'paging': true,
     'lengthChange': false,
-    'searching': true,
+    'searching': false,
     'ordering': true,
     'info': true,
     'autoWidth': false,
@@ -272,20 +272,20 @@ var table = $('#clientsTab').DataTable({
         style: 'single'
     }
     ,
-    "processing": true,
-    "serverSide": true,
-    ajax: {
-        url: '/api/clientApi?action=getAllClients',
-        dataSrc: ''
-    },
-    columns: [
-        {"data": "id"},
-        {"data": "nom"},
-        {"data": "prenom"},
-        {"data": "telephone"},
-        {"data": "dateDeNaissance"},
-        {"data": "isBanned"}
-    ],
+    //  "processing": true,
+    // "serverSide": true,
+    // ajax: {
+    //     url: '/api/clientApi?action=getAllClients',
+    //     dataSrc: ''
+    // },
+    /* columns: [
+         {"data": "id"},
+         {"data": "nom"},
+         {"data": "prenom"},
+         {"data": "telephone"},
+         {"data": "dateDeNaissance"},
+         {"data": "isBanned"}
+     ],*/
     dom: 'Bfrtip',
     buttons: [
         {
@@ -307,7 +307,7 @@ table.on('select', function (e, dt, type, indexes) {
 loadClients();
 function loadClients() {
 
-    table.ajax.url('/api/clientApi?action=getAllClients').load();
+    //table.ajax.url('/api/clientApi?action=getAllClients').load();
 
 
 }

@@ -1039,7 +1039,7 @@ public class Util {
     private final static String apiKey = "I added my key here";
 
 
-    public static void sendSms(String tel, String notifContent) {
+    public static String sendSms(String tel, String notifContent) {
         // TODO: 5/29/2018
         System.out.println("sending sms notification : \ntel = [" + tel + "], notifContent = [" + notifContent + "]");
 
@@ -1050,6 +1050,36 @@ public class Util {
                 .create();
 
         System.out.println(message.getSid());*/
+
+        try {
+            // Construct data
+            String apiKey = "apikey=" + "I+bA0UO6zNA-pvGkArGoAjsD6tbPnBDSAeiZ8MiGGQ\t";
+            String message = "&message=" + notifContent;
+            String sender = "&sender=" + "Ouala eddine from ERITP";
+            String numbers = "&numbers=" + tel;
+
+            // Send data
+            HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+            String data = apiKey + numbers + message + sender;
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+            conn.getOutputStream().write(data.getBytes("UTF-8"));
+            final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            final StringBuilder stringBuffer = new StringBuilder();
+            String line;
+            while ((line = rd.readLine()) != null) {
+                stringBuffer.append(line);
+            }
+            rd.close();
+            System.out.println("sent SMS " + stringBuffer.toString());
+
+
+            return stringBuffer.toString();
+        } catch (Exception e) {
+            System.out.println("Error SMS " + e);
+            return "Error " + e;
+        }
     }
 
     public static void sendMail(String email, String notifContent) {

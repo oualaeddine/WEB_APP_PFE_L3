@@ -883,4 +883,24 @@ public class LogementDAO extends DAO {
         }
         return false;
     }
+
+    public boolean isThereLogements(String fourchettePrix, String region) {
+        // TODO: 6/6/2018
+        return false;
+    }
+
+    public boolean isThereLogements(String fourchettePrix, String region, String type) {
+        // TODO: 6/6/2018
+        return false;
+    }
+
+    public boolean isThereLogementsVilla(String fourchettePrix, String region, String type, String superficie) {
+        // TODO: 6/6/2018
+        return false;
+    }
+
+    public boolean isThereLogementsAppartement(String fourchettePrix, String region, String type, String rooms) {
+        // TODO: 6/6/2018
+        return false;
+    }
 }

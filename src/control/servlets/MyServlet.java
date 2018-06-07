@@ -41,7 +41,9 @@ public class MyServlet extends HttpServlet {
 
         try {
             this.getServletContext().getRequestDispatcher("/home").forward(request, response);
-        } catch (IOException | ServletException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
             e.printStackTrace();
         }
 

@@ -638,7 +638,7 @@
 <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
 <script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
 <script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
-<script src="./programmerVisite/assets/js/main_oper.js"></script>
+<script src="./programmerVisite/assets/js/main.js"></script>
 
 <script>
     function ajouterClient() {

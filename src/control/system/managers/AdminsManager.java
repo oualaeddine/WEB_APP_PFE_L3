@@ -90,7 +90,7 @@ public class AdminsManager {
         logement.setDescription(request.getParameter("description"));
         logement.setAdresse(request.getParameter("adresse"));
         logement.setSuperficie(Double.parseDouble(request.getParameter("superficie")));
-        logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region"))));
+        logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("a_region"))));
         logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
         logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
         logement.setAvecJardin(!(request.getParameter("jardin")==null));

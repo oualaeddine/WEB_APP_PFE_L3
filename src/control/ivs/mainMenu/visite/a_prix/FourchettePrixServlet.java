@@ -1,4 +1,4 @@
-package control.ivs.mainMenu.visite.type;
+package control.ivs.mainMenu.visite.a_prix;
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -14,30 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TypeLogementServlet", urlPatterns = IVSConsts.TYPE_MENU_SERVLET_URL)
-public class TypeLogementServlet extends HttpServlet {
-    private String language;
-    private String fourchettePrix;
-    private String region;
-
+@WebServlet(name = "FourchettePrixServlet", urlPatterns = IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL)
+public class FourchettePrixServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        language = request.getParameter("language");
-        fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("region");
+        String language = request.getParameter("language");
 
         VoiceResponse voiceResponse;
         switch (language) {
             case "fr":
-                voiceResponse = handleChoiceFr();
+                voiceResponse = goRegionFr();
                 break;
             case "ar":
-                voiceResponse = handleChoiceAr();
+                voiceResponse = goRegionAr();
                 break;
             default:
-                voiceResponse = handleChoiceFr();
+                voiceResponse = goRegionFr();
                 break;
         }
-
         response.setContentType("application/xml");
         try {
             String resp = voiceResponse.toXml();
@@ -47,22 +40,22 @@ public class TypeLogementServlet extends HttpServlet {
         }
     }
 
-    private VoiceResponse handleChoiceAr() {
+    private VoiceResponse goRegionAr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.FR_TYPE_MENU_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.AR_FOURCHETTE_PRIX_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&region=" + region)
+                        .action(IVSConsts.REGION_MENU_SERVLET_URL + "?language=ar")
                         .method(HttpMethod.GET)
                         .numDigits(1)
                         .build())
                 .build();
     }
 
-    private VoiceResponse handleChoiceFr() {
+    private VoiceResponse goRegionFr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.AR_TYPE_MENU_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.FR_FOURCHETTE_PRIX_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&region=" + region)
+                        .action(IVSConsts.REGION_MENU_SERVLET_URL + "?language=fr")
                         .method(HttpMethod.GET)
                         .numDigits(1)
                         .build())

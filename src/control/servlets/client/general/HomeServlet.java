@@ -53,8 +53,8 @@ public class HomeServlet extends MyServlet {
                     logement.setTypeLogement(typeLogement);
 
                     int idLocal = 0;
-                    if (!request.getParameter("region").equals("null"))
-                        idLocal = Integer.parseInt(request.getParameter("region"));
+                    if (!request.getParameter("a_region").equals("null"))
+                        idLocal = Integer.parseInt(request.getParameter("a_region"));
                     Localite localite = new Localite();
                     localite.setId(idLocal);
                     logement.setLocalite(localite);

@@ -5,6 +5,7 @@ import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Gather;
 import com.twilio.twiml.voice.Play;
+import model.db.daos.CallsDAO;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,8 @@ import java.io.IOException;
 public class FirstMessageServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String number = "213696689498";
+        new CallsDAO().add(number);
 
         // Create a TwiML response and add our friendly message.
         VoiceResponse voiceResponse = new VoiceResponse.Builder()

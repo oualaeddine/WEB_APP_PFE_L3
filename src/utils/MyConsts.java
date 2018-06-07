@@ -58,7 +58,7 @@ public class MyConsts {
             WelcomeMenuHandelerServlet = "/WelcomeMenuHandelerServlet",
             WELCOME_SERVLET_URL = "/welcome";
     public static final String ROOMS_NUMBER_SERVLET_URL = "/rooms";
-    public static final String REGION_SERVLET_URL = "/region";
+    public static final String REGION_SERVLET_URL = "/a_region";
     public static final String FOURCHETE_PRIX_SERVLET_URL = "/prix";
     public static final String GET_VISIT_SERVLET_URL = "/Visites";
     public static final String GET_LOGEMENT_SERVLET_URL = "/Logement";

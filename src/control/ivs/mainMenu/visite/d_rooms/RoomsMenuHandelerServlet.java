@@ -1,4 +1,4 @@
-package control.ivs.mainMenu.visite.region;
+package control.ivs.mainMenu.visite.d_rooms;
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -16,32 +16,28 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "RegionMenuHandelerServlet", urlPatterns = IVSConsts.REGION_MENU_HANDELER_SERVLET_URL)
-public class RegionMenuHandelerServlet extends HttpServlet {
+@WebServlet(name = "RoomsMenuHandelerServlet", urlPatterns = IVSConsts.ROOMS_MENU_HANDELER_SERVLET_URL)
+public class RoomsMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;
     private String fourchettePrix;
+    private String type;
+    private String rooms;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         language = request.getParameter("language");
         fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("Digits");
+        region = request.getParameter("a_region");
+        type = request.getParameter("type");
+        rooms = request.getParameter("Digits");
 
         VoiceResponse voiceResponse;
-        if (new LogementDAO().isThereLogements(fourchettePrix, region))
-            switch (language) {
-                case "fr":
-                    voiceResponse = goTypeFr();
-                    break;
-                case "ar":
-                    voiceResponse = goTypeAr();
-                    break;
-                default:
-                    voiceResponse = goTypeFr();
-                    break;
-            }
+
+        if (new LogementDAO().isThereLogementsAppartement(fourchettePrix, region, type, rooms))
+            voiceResponse = goToRecap();
         else
             voiceResponse = noLogementsMessage();
+
         response.setContentType("application/xml");
         try {
             String resp = voiceResponse.toXml();
@@ -51,27 +47,18 @@ public class RegionMenuHandelerServlet extends HttpServlet {
         }
     }
 
-    private VoiceResponse goTypeAr() {
+    private VoiceResponse goToRecap() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
+                        .Builder(IVSConsts.RECAP_SERVLET_URL)
                         .method(HttpMethod.POST)
-                        .option("language", "ar")
+                        .option("language", language)
                         .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .build())
-                .build();
-    }
-
-    private VoiceResponse goTypeFr() {
-        return new VoiceResponse.Builder()
-                .redirect(new Redirect
-                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", "ar")
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .build())
+                        .option("a_region", region)
+                        .option("type", type)
+                        .option("rooms", rooms)
+                        .build()
+                )
                 .build();
     }
 

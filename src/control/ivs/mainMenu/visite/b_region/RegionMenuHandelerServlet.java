@@ -1,4 +1,4 @@
-package control.ivs.mainMenu.visite.type;
+package control.ivs.mainMenu.visite.b_region;
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -16,30 +16,28 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "TypeMenuHandelerServlet", urlPatterns = IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL)
-public class TypeMenuHandelerServlet extends HttpServlet {
+@WebServlet(name = "RegionMenuHandelerServlet", urlPatterns = IVSConsts.REGION_MENU_HANDELER_SERVLET_URL)
+public class RegionMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;
     private String fourchettePrix;
-    private String type;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         language = request.getParameter("language");
         fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("region");
-        type = request.getParameter("Digits");
+        region = request.getParameter("Digits");
 
         VoiceResponse voiceResponse;
-        if (new LogementDAO().isThereLogements(fourchettePrix, region, type))
-            switch (type) {
-                case "1":
-                    voiceResponse = goSuperficie();
+        if (new LogementDAO().isThereLogements(fourchettePrix, region))
+            switch (language) {
+                case "fr":
+                    voiceResponse = goTypeFr();
                     break;
-                case "2":
-                    voiceResponse = goNbrPieces();
+                case "ar":
+                    voiceResponse = goTypeAr();
                     break;
                 default:
-                    voiceResponse = goSuperficie();
+                    voiceResponse = goTypeFr();
                     break;
             }
         else
@@ -53,33 +51,31 @@ public class TypeMenuHandelerServlet extends HttpServlet {
         }
     }
 
+    private VoiceResponse goTypeAr() {
+        return new VoiceResponse.Builder()
+                .redirect(new Redirect
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
+                        .method(HttpMethod.POST)
+                        .option("language", "ar")
+                        .option("prix", fourchettePrix)
+                        .option("a_region", region)
+                        .build())
+                .build();
+    }
+
+    private VoiceResponse goTypeFr() {
+        return new VoiceResponse.Builder()
+                .redirect(new Redirect
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
+                        .method(HttpMethod.POST)
+                        .option("language", "ar")
+                        .option("prix", fourchettePrix)
+                        .option("a_region", region)
+                        .build())
+                .build();
+    }
+
     private VoiceResponse noLogementsMessage() {
         return getVoiceResponse(language);
-    }
-
-    private VoiceResponse goNbrPieces() {
-        return new VoiceResponse.Builder()
-                .redirect(new Redirect
-                        .Builder(IVSConsts.ROOMS_NUMBER_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .option("type", type)
-                        .build())
-                .build();
-    }
-
-    private VoiceResponse goSuperficie() {
-        return new VoiceResponse.Builder()
-                .redirect(new Redirect
-                        .Builder(IVSConsts.SUPERFICIE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .option("type", type)
-                        .build())
-                .build();
     }
 }

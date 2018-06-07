@@ -407,7 +407,7 @@ public class VentesDAO extends DAO {
         try {
             result = venteStatement.executeQuery("select distinct l.region,(select count(vente.id) from logement,vente,localite where vente.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVentes from logement l order by nbrVentes DESC limit 5;");
             while (result.next()) {
-                localites.add((Localite) new LocaliteDAO().getById(result.getInt("region")));
+                localites.add((Localite) new LocaliteDAO().getById(result.getInt("a_region")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -4,11 +4,11 @@
 <%@ page import="control.statistics.globales.RapportsStats" %>
 <%@ page import="model.beans.Logement" %>
 <%@ page import="model.beans.humans.Client" %>
+<%@ page import="model.db.ContactInfosDAO" %>
 <%@ page import="model.db.daos.EmployeDAO" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.db.ContactInfosDAO" %>
 <%@ page import="model.db.daos.LogementDAO" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%--
   Created by IntelliJ IDEA.
@@ -280,7 +280,7 @@
                         if (isLoggedIn) {
                             int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
                             button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
-                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&a_region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
                         } else {
                             button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
                         }

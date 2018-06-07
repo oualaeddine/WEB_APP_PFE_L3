@@ -213,7 +213,7 @@ $.fn.sparkline._base = createClass({
     },
 
     /**
-     * Return a region id for a given x/y co-ordinate
+     * Return a a_region id for a given x/y co-ordinate
      */
     getRegion: function (x, y) {
     },
@@ -368,7 +368,7 @@ barHighlightMixin = {
             target = this.target,
             shapeids = this.regionShapes[currentRegion],
             newShapes;
-        // will be null if the region value was null
+        // will be null if the a_region value was null
         if (shapeids) {
             newShapes = this.renderRegion(currentRegion, highlight);
             if ($.isArray(newShapes) || $.isArray(shapeids)) {

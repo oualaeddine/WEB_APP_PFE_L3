@@ -93,7 +93,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -144,7 +144,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -226,7 +226,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -277,7 +277,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -407,7 +407,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -467,7 +467,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -512,7 +512,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -551,7 +551,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -590,7 +590,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -737,7 +737,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -805,7 +805,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -846,7 +846,7 @@ public class LogementDAO extends DAO {
                 logement.setDescription(result.getString("description"));
                 logement.setSuperficie(result.getDouble("superficie"));
                 logement.setGele(result.getBoolean("gele"));
-                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("a_region"));
                 logement.setLocalite(localite);
                 logement.setAdresse(result.getString("adresse"));
                 logement.setNbrPieces(result.getInt("nbrPieces"));
@@ -1018,5 +1018,10 @@ public class LogementDAO extends DAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Logement trouverUnLogementAvecLesCriteres(String fourchettePrix, String region, String type, String superficie, String rooms) {
+        // TODO: 6/7/2018 diri fi hsabk si villa tjik rooms null w lakan appartement tjik superficie null
+        return null;
     }
 }

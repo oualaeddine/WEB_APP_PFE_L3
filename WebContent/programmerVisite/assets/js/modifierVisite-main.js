@@ -188,7 +188,7 @@ var logementsTable = $('#logementsTable').DataTable({
         url: '/api/logementApi?' +
         'action=search' +
         '&type=' + myType +
-        '&a_region=' + region +
+        '&region=' + region +
         '&prix=' + pricee +
         '&superficie=' + superficie +
         '&nbrPieces=' + nbrPieces +
@@ -248,7 +248,7 @@ function initLogementsTable() {
     logementsTable.ajax.url('/api/logementApi?' +
         'action=search' +
         '&type=' + myType +
-        '&a_region=' + region +
+        '&region=' + region +
         '&prix=' + pricee +
         '&superficie=' + superficie +
         '&nbrPieces=' + nbrPieces +
@@ -342,7 +342,7 @@ function fillOtherInputs(startDate, endDate) {
 
 
     $.ajax({
-        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&a_region=" + $('#regionId').val(),
+        url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#regionId').val(),
         success: function (result) {
             var agent = JSON.parse(result);
 

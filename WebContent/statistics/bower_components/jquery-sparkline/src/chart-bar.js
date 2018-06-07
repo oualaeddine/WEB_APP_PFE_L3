@@ -188,7 +188,7 @@ $.fn.sparkline.bar = bar = createClass($.fn.sparkline._base, barHighlightMixin, 
     },
 
     /**
-     * Render bar(s) for a a_region
+     * Render bar(s) for a region
      */
     renderRegion: function (valuenum, highlight) {
         var vals = this.values[valuenum],

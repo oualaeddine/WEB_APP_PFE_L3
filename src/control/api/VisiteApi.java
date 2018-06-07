@@ -78,14 +78,14 @@ public class VisiteApi extends API {
                     date = request.getParameter("date");
 
 
-                    int region = Integer.parseInt(request.getParameter("a_region"));
+                    int region = Integer.parseInt(request.getParameter("region"));
 
                     RDV myRdv = new RDV();
                     myRdv.setDate(getDateFromString(date));
                     myRdv.setHorraire(getHorraireFromStringDate(date));
 
                     System.out.println(myRdv);
-                    System.out.println("a_region" + region);
+                    System.out.println("region" + region);
 
                     response.getWriter().append(JsonUtil.objectToJson(new VisitesDao().getFreeAgentsForVisite(myRdv, region)));
 

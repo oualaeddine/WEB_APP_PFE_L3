@@ -1,4 +1,4 @@
-package control.ivs.mainMenu.visite.d_superficie;
+package control.ivs.mainMenu.visite.rooms;
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -16,24 +16,24 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "SuperficeiMenuHandelerServlet", urlPatterns = IVSConsts.SUPERFICIE_MENU_HANDELER_SERVLET_URL)
-public class SuperficeiMenuHandelerServlet extends HttpServlet {
+@WebServlet(name = "RoomsMenuHandelerServlet", urlPatterns = IVSConsts.ROOMS_MENU_HANDELER_SERVLET_URL)
+public class RoomsMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;
     private String fourchettePrix;
     private String type;
-    private String superficie;
+    private String rooms;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         language = request.getParameter("language");
         fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("a_region");
+        region = request.getParameter("region");
         type = request.getParameter("type");
-        superficie = request.getParameter("Digits");
+        rooms = request.getParameter("Digits");
 
         VoiceResponse voiceResponse;
 
-        if (new LogementDAO().isThereLogementsVilla(fourchettePrix, region, type, superficie))
+        if (new LogementDAO().isThereLogementsAppartement(fourchettePrix, region, type, rooms))
             voiceResponse = goToRecap();
         else
             voiceResponse = noLogementsMessage();
@@ -50,14 +50,15 @@ public class SuperficeiMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goToRecap() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.RECAP_SERVLET_URL)
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
                         .method(HttpMethod.POST)
                         .option("language", language)
                         .option("prix", fourchettePrix)
-                        .option("a_region", region)
+                        .option("region", region)
                         .option("type", type)
-                        .option("superficie", superficie)
-                        .build())
+                        .option("rooms", rooms)
+                        .build()
+                )
                 .build();
     }
 

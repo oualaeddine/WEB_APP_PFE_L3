@@ -84,7 +84,7 @@ public class VisitesDao extends DAO {
     }
 
     public LinkedList<RDV> getTakenRDVForAgents(int regionId) {
-        //Dates et horraires ou tout les agents de la a_region sont occupés
+        //Dates et horraires ou tout les agents de la region sont occupés
         ResultSet result;
         LinkedList<RDV> list = new LinkedList<>();
         try {
@@ -798,7 +798,7 @@ public class VisitesDao extends DAO {
         try {
             result = visiteStatement.executeQuery("select distinct l.region,(select count(visite.id) from logement,visite,localite where visite.logementId=logement.id and logement.region=l.region and logement.region=localite.id) as nbrVisites from logement l order by nbrVisites DESC limit 5;");
             while (result.next()) {
-                localites.add((Localite) new LocaliteDAO().getById(result.getInt("a_region")));
+                localites.add((Localite) new LocaliteDAO().getById(result.getInt("region")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

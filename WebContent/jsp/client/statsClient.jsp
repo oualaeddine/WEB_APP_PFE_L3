@@ -7,11 +7,11 @@
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.Logement" %>
 <%@ page import="model.beans.humans.Client" %>
-<%@ page import="model.db.ContactInfosDAO" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="java.time.Month" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.db.ContactInfosDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     boolean isLoggedIn = !((request.getSession() == null || request.getSession().getAttribute(LOGGED_IN_USER) == null));
@@ -233,7 +233,7 @@
                                                                         (
                                                                         )
                                                 +
-                                                "&a_region="
+                                                "&region="
                                                 +
                                                 logement
                                                         .

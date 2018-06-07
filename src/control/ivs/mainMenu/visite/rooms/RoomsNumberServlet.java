@@ -1,4 +1,5 @@
-package control.ivs.mainMenu.visite.d_superficie;
+package control.ivs.mainMenu.visite.rooms;
+
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -14,19 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@SuppressWarnings({"Duplicates"})
-@WebServlet(name = "SuperficieServlet", urlPatterns = IVSConsts.SUPERFICIE_SERVLET_URL)
-public class SuperficieServlet extends HttpServlet {
+@SuppressWarnings("Duplicates")
+@WebServlet(name = "RoomsNumberServlet", urlPatterns = IVSConsts.ROOMS_NUMBER_SERVLET_URL)
+public class RoomsNumberServlet extends HttpServlet {
     private String language;
     private String fourchettePrix;
     private String region;
     private String type;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         language = request.getParameter("language");
         fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("a_region");
+        region = request.getParameter("region");
         type = request.getParameter("type");
+
 
         VoiceResponse voiceResponse;
         switch (language) {
@@ -51,14 +54,13 @@ public class SuperficieServlet extends HttpServlet {
 
     private VoiceResponse handleChoiceAr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.AR_SUPERFICIE_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.AR_NBR_PIECES_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.SUPERFICIE_MENU_HANDELER_SERVLET_URL +
+                        .action(IVSConsts.ROOMS_MENU_HANDELER_SERVLET_URL +
                                 "?language=" + language +
                                 "&prix=" + fourchettePrix +
-                                "&a_region=" + region +
-                                "&type=" + type
-                        )
+                                "&region=" + region +
+                                "&type=" + type)
                         .method(HttpMethod.GET)
                         .numDigits(1)
                         .build())
@@ -67,12 +69,12 @@ public class SuperficieServlet extends HttpServlet {
 
     private VoiceResponse handleChoicefr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.FR_SUPERFICIE_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.FR_NBR_PIECES_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.SUPERFICIE_MENU_HANDELER_SERVLET_URL +
+                        .action(IVSConsts.ROOMS_MENU_HANDELER_SERVLET_URL +
                                 "?language=" + language +
                                 "&prix=" + fourchettePrix +
-                                "&a_region=" + region +
+                                "&region=" + region +
                                 "&type=" + type
                         )
                         .method(HttpMethod.GET)

@@ -15,7 +15,7 @@ $.fn.sparkline.box = box = createClass($.fn.sparkline._base, {
     },
 
     /**
-     * Simulate a single a_region
+     * Simulate a single region
      */
     getRegion: function () {
         return 1;

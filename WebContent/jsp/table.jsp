@@ -155,7 +155,7 @@
         </div>
     </div>
 
-    <%--Modal assigner a_region--%>
+    <%--Modal assigner region--%>
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 

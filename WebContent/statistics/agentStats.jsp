@@ -383,7 +383,7 @@
         labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [
             {
-                label: 'Nombre des visites dans ma a_region',
+                label: 'Nombre des visites dans ma region',
                 backgroundColor: '#605ca8',
                 data: [
                     <%out.print(visitesStats.nbrVisitesPerRegionPerMonth(new AssignationDAO().getLocaliteByAgent(loggedAgent.getId()).getId(),Month.JANUARY));%>,

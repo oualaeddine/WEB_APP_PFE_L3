@@ -209,7 +209,7 @@
         } else if (jQuery && !jQuery.fn.sparkline) {
             factory(jQuery);
         }
-    };
+    }
     (function ($) {
         'use strict';
 
@@ -1160,7 +1160,7 @@
             },
 
             /**
-             * Return a a_region id for a given x/y co-ordinate
+             * Return a region id for a given x/y co-ordinate
              */
             getRegion: function (x, y) {
             },
@@ -1315,7 +1315,7 @@
                     target = this.target,
                     shapeids = this.regionShapes[currentRegion],
                     newShapes;
-                // will be null if the a_region value was null
+                // will be null if the region value was null
                 if (shapeids) {
                     newShapes = this.renderRegion(currentRegion, highlight);
                     if ($.isArray(newShapes) || $.isArray(shapeids)) {
@@ -1902,7 +1902,7 @@
             },
 
             /**
-             * Render bar(s) for a a_region
+             * Render bar(s) for a region
              */
             renderRegion: function (valuenum, highlight) {
                 var vals = this.values[valuenum],
@@ -2392,7 +2392,7 @@
             },
 
             /**
-             * Simulate a single a_region
+             * Simulate a single region
              */
             getRegion: function () {
                 return 1;

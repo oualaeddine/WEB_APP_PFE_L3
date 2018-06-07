@@ -1,4 +1,4 @@
-package control.ivs.mainMenu.visite.c_type;
+package control.ivs.mainMenu.visite.superficie;
 
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
@@ -16,34 +16,28 @@ import java.io.IOException;
 
 import static control.ivs.IVSConsts.getVoiceResponse;
 
-@WebServlet(name = "TypeMenuHandelerServlet", urlPatterns = IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL)
-public class TypeMenuHandelerServlet extends HttpServlet {
+@WebServlet(name = "SuperficeiMenuHandelerServlet", urlPatterns = IVSConsts.SUPERFICIE_MENU_HANDELER_SERVLET_URL)
+public class SuperficeiMenuHandelerServlet extends HttpServlet {
     private String language;
     private String region;
     private String fourchettePrix;
     private String type;
+    private String superficie;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         language = request.getParameter("language");
         fourchettePrix = request.getParameter("prix");
-        region = request.getParameter("a_region");
-        type = request.getParameter("Digits");
+        region = request.getParameter("region");
+        type = request.getParameter("type");
+        superficie = request.getParameter("Digits");
 
         VoiceResponse voiceResponse;
-        if (new LogementDAO().isThereLogements(fourchettePrix, region, type))
-            switch (type) {
-                case "1":
-                    voiceResponse = goSuperficie();
-                    break;
-                case "2":
-                    voiceResponse = goNbrPieces();
-                    break;
-                default:
-                    voiceResponse = goSuperficie();
-                    break;
-            }
+
+        if (new LogementDAO().isThereLogementsVilla(fourchettePrix, region, type, superficie))
+            voiceResponse = goToRecap();
         else
             voiceResponse = noLogementsMessage();
+
         response.setContentType("application/xml");
         try {
             String resp = voiceResponse.toXml();
@@ -53,33 +47,21 @@ public class TypeMenuHandelerServlet extends HttpServlet {
         }
     }
 
+    private VoiceResponse goToRecap() {
+        return new VoiceResponse.Builder()
+                .redirect(new Redirect
+                        .Builder(IVSConsts.RECAP_SERVLET_URL)
+                        .method(HttpMethod.POST)
+                        .option("language", language)
+                        .option("prix", fourchettePrix)
+                        .option("region", region)
+                        .option("type", type)
+                        .option("superficie", superficie)
+                        .build())
+                .build();
+    }
+
     private VoiceResponse noLogementsMessage() {
         return getVoiceResponse(language);
-    }
-
-    private VoiceResponse goNbrPieces() {
-        return new VoiceResponse.Builder()
-                .redirect(new Redirect
-                        .Builder(IVSConsts.ROOMS_NUMBER_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("a_region", region)
-                        .option("type", type)
-                        .build())
-                .build();
-    }
-
-    private VoiceResponse goSuperficie() {
-        return new VoiceResponse.Builder()
-                .redirect(new Redirect
-                        .Builder(IVSConsts.SUPERFICIE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("a_region", region)
-                        .option("type", type)
-                        .build())
-                .build();
     }
 }

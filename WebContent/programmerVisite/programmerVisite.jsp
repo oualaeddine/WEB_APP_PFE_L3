@@ -641,38 +641,7 @@
 <script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
 <script src="./programmerVisite/assets/js/main.js"></script>
 
-<script>
-    function ajouterClient() {
-        $.ajax({
-            type: "POST",
-            url: "/AjoutServlet?ajouter=client",
-            data: {
-                prenomInput: $('#prenomInput').val(),
-                nomInput: $('#nomInput').val(),
-                emailInput: $('#emailInput').val(),
-                inputTel: $('#inputTel').val(),
-                usernameInput: $('#usernameInput').val(),
-                passwordInput: $('#passwordInput').val(),
-                adresseInput: $('#adresseInput').val(),
-                dateNaissance: $('#dateNaissance').val()
-            },
-            success: function (result) {
-                loadClients();
-                $('#clientsTab').row.add([
-                    result,
-                    $('#nomInput').val(),
-                    $('#prenomInput').val(),
-                    $('#dateNaissance').val(),
-                    "not banned"
-                ]).draw(false);
 
-                $('#ajouterClientModal').modal('hide');
-            }
-        });
-    }
-
-
-</script>
 
 </html>
 

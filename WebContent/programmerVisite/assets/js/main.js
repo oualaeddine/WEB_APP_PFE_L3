@@ -326,7 +326,7 @@ var table = $('#clientsTab').DataTable({
          {"data": "dateDeNaissance"},
          {"data": "isBanned"}
      ],*/
-    // dom: 'Bfrtip',
+    dom: 'Bfrtip',
     buttons: [
         {
             text: 'Ajouter client',
@@ -349,10 +349,58 @@ loadClients();
 function loadClients() {
 
     //table.ajax.url('/api/clientApi?action=getAllClients').load();
+    $.ajax({
+        type: "GET",
+        url: '/api/clientApi?action=getAllClients',
+        success: function (result) {
 
+            table.clear();
+            var jsonData = JSON.parse(result);
+            for (var i = 0; i < jsonData.length; i++) {
+
+                table.row.add([
+                    jsonData[i].id,
+                    jsonData[i].nom,
+                    jsonData[i].prenom,
+                    jsonData[i].telephone,
+                    jsonData[i].dateDeNaissance,
+                    jsonData[i].isBanned
+                ]).draw(false);
+            }
+        }
+    });
 
 }
 
+function ajouterClient() {
+    $.ajax({
+        type: "POST",
+        url: "/AjoutServlet?ajouter=client",
+        data: {
+            prenomInput: $('#prenomInput').val(),
+            nomInput: $('#nomInput').val(),
+            emailInput: $('#emailInput').val(),
+            inputTel: $('#inputTel').val(),
+            usernameInput: $('#usernameInput').val(),
+            passwordInput: $('#passwordInput').val(),
+            adresseInput: $('#adresseInput').val(),
+            dateNaissance: $('#dateNaissance').val()
+        },
+        success: function (result) {
+            loadClients();
+            /*   table.row.add([
+                   result,
+                   $('#nomInput').val(),
+                   $('#prenomInput').val(),
+                   $('#dateNaissance').val(),
+                   $('#inputTel').val(),
+                   "not banned"
+               ]).draw(false);*/
+
+            $('#ajouterClientModal').modal('hide');
+        }
+    });
+}
 
 function fillDetails() {
     document.getElementById("regionDetails").innerHTML = $('#maregion').children("option").filter(":selected").text();

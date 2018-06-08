@@ -338,11 +338,16 @@ var table = $('#clientsTab').DataTable({
 });
 table.on('select', function (e, dt, type, indexes) {
     var rowData = table.rows(indexes).data().toArray();
-    $('#clientId').val(rowData[0]['id']);
-    document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
-    document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
-    document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
-    document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
+    if (rowData[0][5] == "banned") {
+        alert('attention ce client est banni');
+    } else {
+        console.log(rowData);
+        $('#clientId').val(rowData[0][0]);
+        document.getElementById("clientIdDetails").innerHTML = rowData[0][0];
+        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0][4];
+        document.getElementById("nomCompletClient").innerHTML = rowData[0][1] + " " + rowData[0][2];
+        document.getElementById("dateNaissClient").innerHTML = rowData[0][3];
+    }
 });
 loadClients();
 
@@ -435,15 +440,12 @@ function fillDetails() {
 }
 
 function fillOtherInputs(startDate, endDate) {
-
-
     $.ajax({
         url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
         success: function (result) {
             var agent = JSON.parse(result);
 
             console.log(result);
-
 
             $('#idAgent').val(agent.id);
 

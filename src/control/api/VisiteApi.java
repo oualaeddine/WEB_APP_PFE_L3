@@ -162,7 +162,6 @@ public class VisiteApi extends API {
             RDV newRdv = new RDV();
             newRdv.setDate(visite.getTimestamp());
             newRdv.setHorraire(visite.getHorraire());
-            //System.out.println("getTakenDatesForLogement " + newRdv.toString());
             takenRdv.add(newRdv);
         }
 

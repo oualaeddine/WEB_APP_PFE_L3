@@ -397,6 +397,7 @@
                                                                 "<td>" + client.getTel() + "</td>" +
                                                                 "<td>" + client.isBannedString() + "</td>" +
                                                                 "</tr>";
+                                                        out.print(row);
                                                     }
                                                 %>
                                                 </tbody>

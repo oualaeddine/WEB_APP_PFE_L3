@@ -174,7 +174,7 @@ if ($('#garage').is(":checked")) garage = "true";
 
 var logementsTable = $('#logementsTable').DataTable({
     'paging': true,
-    'lengthChange': false,
+    'lengthChange': true,
     'searching': true,
     'ordering': true,
     'info': true,
@@ -301,7 +301,7 @@ function initLogementsTableData() {
 
 var table = $('#clientsTab').DataTable({
     'paging': true,
-    'lengthChange': false,
+    'lengthChange': true,
     'searching': true,
     //'ordering': true,
     'info': true,
@@ -312,20 +312,20 @@ var table = $('#clientsTab').DataTable({
         style: 'single'
     }
     ,
-    "processing": true,
-    "serverSide": true,
-    ajax: {
-        url: '/api/clientApi?action=getAllClients',
-        dataSrc: ''
-    },
-    columns: [
-        {"data": "id"},
-        {"data": "nom"},
-        {"data": "prenom"},
-        {"data": "telephone"},
-        {"data": "dateDeNaissance"},
-        {"data": "isBanned"}
-    ],
+    //  "processing": true,
+    //  "serverSide": true,
+    /* ajax: {
+         url: '/api/clientApi?action=getAllClients',
+         dataSrc: ''
+     },
+     columns: [
+         {"data": "id"},
+         {"data": "nom"},
+         {"data": "prenom"},
+         {"data": "telephone"},
+         {"data": "dateDeNaissance"},
+         {"data": "isBanned"}
+     ],*/
     // dom: 'Bfrtip',
     buttons: [
         {

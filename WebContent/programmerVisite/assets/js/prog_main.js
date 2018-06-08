@@ -175,7 +175,7 @@ if ($('#garage').is(":checked")) garage = "true";
 var logementsTable = $('#logementsTable').DataTable({
     'paging': true,
     'lengthChange': false,
-    'searching': true,
+    'searching': false,
     'ordering': true,
     'info': true,
     'autoWidth': false,
@@ -184,30 +184,30 @@ var logementsTable = $('#logementsTable').DataTable({
         style: 'single'
     },
 
-    /* ajax: {
-         url: '/api/logementApi?' +
-         'action=search' +
-         '&type=' + myType +
-         '&region=' + region +
-         '&prix=' + pricee +
-         '&superficie=' + superficie +
-         '&nbrPieces=' + nbrPieces +
-         '&nbrSdb=' + nbrSdb +
-         '&nbrEtages=' + nbrEtages +
-         '&meuble=' + meuble +
-         '&garage=' + garage +
-         '&jardin=' + jardin +
-         '&soussol=' + soussol,
-         dataSrc: ''
-     },
-     columns: [
-         {"data": "id"},
-         {"data": "titre"},
-         {"data": "price"},
-         {"data": "superficie"},
-         {"data": "adresse"},
-         {"data": "description"}
-     ]*/
+    ajax: {
+        url: '/api/logementApi?' +
+        'action=search' +
+        '&type=' + myType +
+        '&region=' + region +
+        '&prix=' + pricee +
+        '&superficie=' + superficie +
+        '&nbrPieces=' + nbrPieces +
+        '&nbrSdb=' + nbrSdb +
+        '&nbrEtages=' + nbrEtages +
+        '&meuble=' + meuble +
+        '&garage=' + garage +
+        '&jardin=' + jardin +
+        '&soussol=' + soussol,
+        dataSrc: ''
+    },
+    columns: [
+        {"data": "id"},
+        {"data": "titre"},
+        {"data": "price"},
+        {"data": "superficie"},
+        {"data": "adresse"},
+        {"data": "description"}
+    ]
 });
 
 logementsTable.on('select', function (e, dt, type, indexes) {
@@ -245,28 +245,7 @@ function initLogementsTable() {
     if ($('#garage').is(":checked")) garage = "true"; else garage = "false";
 
 
-    initLogementsTableData();
-    /*    logementsTable.ajax.url('/api/logementApi?' +
-            'action=search' +
-            '&type=' + myType +
-            '&region=' + region +
-            '&prix=' + pricee +
-            '&superficie=' + superficie +
-            '&nbrPieces=' + nbrPieces +
-            '&nbrSdb=' + nbrSdb +
-            '&nbrEtages=' + nbrEtages +
-            '&meuble=' + meuble +
-            '&garage=' + garage +
-            '&jardin=' + jardin +
-            '&soussol=' + soussol).load();*/
-}
-
-
-function initLogementsTableData() {
-
-    $.ajax({
-        type: "GET",
-        url: '/api/logementApi?' +
+    logementsTable.ajax.url('/api/logementApi?' +
         'action=search' +
         '&type=' + myType +
         '&region=' + region +
@@ -278,26 +257,8 @@ function initLogementsTableData() {
         '&meuble=' + meuble +
         '&garage=' + garage +
         '&jardin=' + jardin +
-        '&soussol=' + soussol,
-        success: function (result) {
-
-
-            var jsonData = JSON.parse(result);
-            for (var i = 0; i < jsonData.length; i++) {
-
-                $('#logementsTable').row.add([
-                    jsonData[i].id,
-                    jsonData[i].titre,
-                    jsonData[i].prix,
-                    jsonData[i].superficie,
-                    jsonData[i].adresse,
-                    jsonData[i].description
-                ]).draw(false);
-            }
-        }
-    });
+        '&soussol=' + soussol).load();
 }
-
 
 var table = $('#clientsTab').DataTable({
     'paging': true,

@@ -1,6 +1,5 @@
 package control.servlets;
 
-import model.beans.humans.Person;
 import utils.MyConsts;
 
 import javax.servlet.ServletException;
@@ -56,11 +55,11 @@ public class MyServlet extends HttpServlet {
         response.sendRedirect(MyConsts.LOGIN_SERVLET_URL + "?error=" + wrongCredentialsError);
     }
 
-    protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("/DashboardServlet");
     }
 
-    protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response, int error) throws IOException, ServletException {
+    protected void redirectToDashboard(HttpServletRequest request, HttpServletResponse response, int error) throws IOException {
         if (error == 0) {
             response.sendRedirect("/DashboardServlet");
         } else {

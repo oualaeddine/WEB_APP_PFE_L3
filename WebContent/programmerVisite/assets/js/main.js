@@ -213,17 +213,17 @@ var logementsTable = $('#logementsTable').DataTable({
 logementsTable.on('select', function (e, dt, type, indexes) {
 
     var rowData = logementsTable.rows(indexes).data().toArray();
+    console.log(rowData[0][0]);
+    $('#selectedlogementId').val(rowData[0][0]);
+    $('#selectedlogementadresse').val(rowData[0][4]);
+    $('#selectedLogementSuperficie').val(rowData[0][3]);
+    $('#selectedlogementprice').val(rowData[0][2]);
 
-    $('#selectedlogementId').val(rowData[0]["id"]);
-    $('#selectedlogementadresse').val(rowData[0]["adresse"]);
-    $('#selectedLogementSuperficie').val(rowData[0]["superficie"]);
-    $('#selectedlogementprice').val(rowData[0]["price"]);
-
-    document.getElementById("idLogementDetails").innerHTML = rowData[0]["id"];
-    document.getElementById("superficieDetails").innerHTML = rowData[0]["superficie"];
-    document.getElementById("prixDetails").innerHTML = rowData[0]["price"];
+    document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
+    document.getElementById("superficieDetails").innerHTML = rowData[0][3];
+    document.getElementById("prixDetails").innerHTML = rowData[0][2];
     fillDetails();
-    initCalendar(rowData[0]["id"]);
+    initCalendar(rowData[0][0]);
 });
 
 function initLogementsTable() {
@@ -285,10 +285,10 @@ function initLogementsTableData() {
             var jsonData = JSON.parse(result);
             for (var i = 0; i < jsonData.length; i++) {
 
-                $('#logementsTable').row.add([
+                logementsTable.row.add([
                     jsonData[i].id,
                     jsonData[i].titre,
-                    jsonData[i].prix,
+                    jsonData[i].price,
                     jsonData[i].superficie,
                     jsonData[i].adresse,
                     jsonData[i].description
@@ -464,6 +464,7 @@ function fillOtherInputs(startDate, endDate) {
 
 var visites;
 
+var today = moment().day();
 
 var calendar = $('#calendar').fullCalendar({
 
@@ -484,6 +485,7 @@ var calendar = $('#calendar').fullCalendar({
         hiddenDays: [6, 7], // hide Tuesdays and Thursdays
         selectable: true,
         unselectAuto: false,
+    firstDay: today,
         businessHours: {
             // days of week. an array of zero-based day of week integers (0=Sunday)
             dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday

@@ -29,6 +29,10 @@ public class HomeServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/client/home.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "logement":
+                        int id = Integer.parseInt(request.getParameter("id"));
+                        this.getServletContext().getRequestDispatcher("/jsp/client/detailsLogement.jsp?id=" + id).forward(request, response);
+                        break;
                     case "contacter":
                         this.getServletContext().getRequestDispatcher("/jsp/client/nousContacter.jsp").forward(request, response);
                         break;

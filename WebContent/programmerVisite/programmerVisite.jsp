@@ -642,8 +642,6 @@
 
 <script>
     function ajouterClient() {
-
-
         $.ajax({
             type: "POST",
             url: "/AjoutServlet?ajouter=client",

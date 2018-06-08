@@ -65,6 +65,20 @@ public class Nav {
         /*Messages*/
         NavElement messagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), "Messages visiteurs", urlBase + "?what=messages", "fa-envelope-o");
         navElements.add(messagesNavElement);
+
+        /*Appels*/
+        LinkedList<NavElement> appelsSubNavElementList = new LinkedList<>();
+
+        NavElement allAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS), "Tous les appels", urlBase + "?what=allAppels", "fa-phone");
+        appelsSubNavElementList.add(allAppelsNavElement);
+
+        NavElement confirmedAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS_CONFIRMES), "Appels confirmés", urlBase + "?what=confirmedAppels", "fa-check");
+        appelsSubNavElementList.add(confirmedAppelsNavElement);
+
+
+        ExpendableNavElement appelsExpendableNavElement = new ExpendableNavElement("appelsNav", "fa-volume-control-phone", "Appels", appelsSubNavElementList, false);
+        navElements.add(appelsExpendableNavElement);
+
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
             /*Admins*/
@@ -207,6 +221,17 @@ public class Nav {
         NavElement messagesNavElement = new NavElement(isPage(currentPage, TablePage.MESSAGES_FOR_ADMIN), "Messages visiteurs", urlBase + "?what=messages", "fa-envelope-o");
         navElements.add(messagesNavElement);
 
+        LinkedList<NavElement> appelsSubNavElementList = new LinkedList<>();
+
+        NavElement allAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS), "Tous les appels", urlBase + "?what=allAppels", "fa-phone");
+        appelsSubNavElementList.add(allAppelsNavElement);
+
+        NavElement confirmedAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS_CONFIRMES), "Appels confirmés", urlBase + "?what=confirmedAppels", "fa-check");
+        appelsSubNavElementList.add(confirmedAppelsNavElement);
+
+
+        ExpendableNavElement appelsExpendableNavElement = new ExpendableNavElement("appelsNav", "fa-volume-control-phone", "Appels", appelsSubNavElementList, false);
+        navElements.add(appelsExpendableNavElement);
         /*Employees*/
         LinkedList<NavElement> employeesSubNavElement = new LinkedList<>();
 
@@ -412,6 +437,19 @@ public class Nav {
         NavElement programmerVisiteNavElement = new NavElement(false, MyConsts.PROGRAMMER_VISITE_NAV_TITLE, urlBase + "?what=programmerVisite", "fa-calendar-plus-o");
         navElements.add(programmerVisiteNavElement);
 
+        LinkedList<NavElement> appelsSubNavElementList = new LinkedList<>();
+
+        NavElement allAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS), "Tous les appels", urlBase + "?what=allAppels", "fa-phone");
+        appelsSubNavElementList.add(allAppelsNavElement);
+
+        NavElement confirmedAppelsNavElement = new NavElement(isPage(currentPage, TablePage.APPELS_CONFIRMES), "Appels confirmés", urlBase + "?what=confirmedAppels", "fa-check");
+        appelsSubNavElementList.add(confirmedAppelsNavElement);
+
+        NavElement confirmerAppelNavElement = new NavElement(isPage(currentPage, TablePage.CONFIRMER_APPEL), "Confirmer appel", urlBase + "?what=confirmerAppel", "fa-pencil");
+        appelsSubNavElementList.add(confirmerAppelNavElement);
+
+        ExpendableNavElement appelsExpendableNavElement = new ExpendableNavElement("appelsNav", "fa-volume-control-phone", "Appels", appelsSubNavElementList, false);
+        navElements.add(appelsExpendableNavElement);
 
         /*visites*/
         LinkedList<NavElement> visitesSubNavElementList = new LinkedList<>();

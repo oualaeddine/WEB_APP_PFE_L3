@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.print.min.css" media="print">
     <link rel="stylesheet" href="./css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="./css/dataTable.responsive.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -135,6 +136,8 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fa fa-angle-up"></i>
     </a>
+
+
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -154,7 +157,6 @@
             </div>
         </div>
     </div>
-
     <%--Modal assigner region--%>
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -456,6 +458,67 @@
             </div>
         </div>
     </div>
+
+    <%--Employe details modal--%>
+    <div id="detailsEmployeModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de l'employé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td>Nom:</td>
+                        </tr>
+                        <tr>
+                            <td>Prénom:</td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                        </tr>
+                        <tr>
+                            <td>Numéro de téléphone:</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse email:</td>
+                        </tr>
+                        <tr>
+                            <td>Nom d'utilisateur:</td>
+                        </tr>
+                        <tr>
+                            <td>Role:</td>
+                        </tr>
+                        <tr>
+                            <td>Ajouté le:</td>
+                        </tr>
+                        <tr>
+                            <td>Ajouté par:</td>
+                        </tr>
+                        <tr>
+                            <td>Approuvé:</td>
+                        </tr>
+                        <tr>
+                            <td>Suspendu:</td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit" form="annulerVenteForm">Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="./vendor/jquery/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -473,15 +536,24 @@
     <script src="./vendor/datatables/buttons.html5.min.js"></script>
     <script src="./vendor/datatables/buttons.print.min.js"></script>
     <script src="./js/bootstrapValidator.min.js"></script>
+    <script src="./js/dataTables.responsaive.js"></script>
 
 
     <!-- Custom scripts for all pages-->
     <script src="./js/sb-admin.min.js"></script>
-
     <script>
-
-
         var table = $('#dataTable').DataTable({
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
+                }
+            },
             dom: 'Bfrtip',
             buttons: [
                 'copy',
@@ -496,6 +568,7 @@
                     messageTop: 'Ce fichier est créé pour : <%out.print(employe.getFullName()+"("+employe.getUserType()+")");%>'
                 }
             ]
+
         });
 
         $('#etatClient').change(function () {

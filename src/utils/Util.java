@@ -765,6 +765,14 @@ public class Util {
 
     public static String getPageTitleFromPageType(TablePage currentPage) {
         switch (currentPage) {
+            case APPELS:
+                return "Appels";
+            case APPELS_NON_CONFIRMES:
+                return "Appels non confirmés";
+            case APPELS_CONFIRMES:
+                return "Appels confirmés";
+            case CONFIRMER_APPEL:
+                return "Appels non confirmés";
             case CLIENT_MY_WISHES:
                 return "Souhaits";
             case EMPLOYES:
@@ -887,6 +895,14 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "CONFIRMER_APPEL":
+                return CONFIRMER_APPEL;
+            case "APPELS_NON_CONFIRMES":
+                return APPELS_NON_CONFIRMES;
+            case "APPELS_CONFIRMES":
+                return APPELS_CONFIRMES;
+            case "APPELS":
+                return APPELS;
             case "MESSAGES_FOR_ADMIN":
                 return MESSAGES_FOR_ADMIN;
             case "CLIENT_MY_WISHES":

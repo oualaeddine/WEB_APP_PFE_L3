@@ -14,6 +14,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case APPELS:
+                setupTableHeaderForAppels();
+                break;
             case MESSAGES_FOR_ADMIN:
                 setupTableHeaderForMessages();
                 break;
@@ -173,7 +176,38 @@ public class DataTableHeader {
             case BANNIR_CLIENT:
                 setupTableHeaderForSignalerClient();
                 break;
+            case APPELS_NON_CONFIRMES:
+                setupTableHeaderForAppels();
+                break;
+            case APPELS_CONFIRMES:
+                setupTableHeaderForAppels();
+            case CONFIRMER_APPEL:
+                setupTableHeaderForConfirmerAppel();
+                break;
         }
+    }
+
+    private void setupTableHeaderForConfirmerAppel() {
+        html = "<tr>" +
+                "<th>ID</th>" +
+                "<th>Numéro de téléphone</th>" +
+                "<th>Logement</th>" +
+                "<th>Agent</th>" +
+                "<th>Date et heure</th>" +
+                "<th>Etat</th>" +
+                "<th>Action</th>" +
+                "</tr>";
+    }
+
+    private void setupTableHeaderForAppels() {
+        html = "<tr>" +
+                "<th>ID</th>" +
+                "<th>Numéro de téléphone</th>" +
+                "<th>Logement</th>" +
+                "<th>Agent</th>" +
+                "<th>Date et heure</th>" +
+                "<th>Etat</th>" +
+                "</tr>";
     }
 
     private void setupTableHeaderForAnnulerVentes() {

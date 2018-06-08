@@ -17,6 +17,46 @@ import java.util.LinkedList;
 @SuppressWarnings("ALL")
 public class LogementDAO extends DAO {
 
+    public LinkedList<Logement> getSimilar(Logement heda) {
+        LinkedList<Logement> logements = new LinkedList<>();
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select * from logement where region=" + heda.getLocalite().getId() + " and id<>" + heda.getId() + ";");
+            while (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+                logements.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logements;
+    }
+
     public LinkedList<Logement> getListeDeSouhaitsForClient(int client) {
         ResultSet result;
         LinkedList<Logement> logements = new LinkedList<>();
@@ -876,7 +916,7 @@ public class LogementDAO extends DAO {
     public boolean isInWishList(int client, int id) {
         ResultSet result;
         try {
-            result = logementStatement.executeQuery("select * from souhaits where (idClient=" + client + " and idLogement=" + id + ") and gele=0;");
+            result = logementStatement.executeQuery("select * from souhaits where idClient=" + client + " and idLogement=" + id + " and idLogement not in (select id from logement where gele=1);");
             return result.next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -1019,4 +1059,6 @@ public class LogementDAO extends DAO {
         }
         return false;
     }
+
+
 }

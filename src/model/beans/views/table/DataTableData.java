@@ -29,6 +29,18 @@ public class DataTableData {
 
     private void setupData() {
         switch (currentPage) {
+            case CONFIRMER_APPEL:
+                setupDataConfirmerAppel();
+                break;
+            case APPELS_NON_CONFIRMES:
+                setupDataAppelsNonConfirmes();
+                break;
+            case APPELS_CONFIRMES:
+                setupDataAppelsConfirmes();
+                break;
+            case APPELS:
+                setupDataAppels();
+                break;
             case ANNULER_VENTE:
                 setupDataAnnulerVente();
                 break;
@@ -200,6 +212,34 @@ public class DataTableData {
             case BANNIR_CLIENT:
                 setupDataBannirClient();
                 break;
+        }
+    }
+
+    private void setupDataConfirmerAppel() {
+        LinkedList<Appel> appels = new AppelsDAO().getNonConfirmes();
+        for (Appel appel : appels) {
+            data.add(new DataTableRow(DataTableRowFormat.CONFIRMER_APPEL, appel));
+        }
+    }
+
+    private void setupDataAppelsNonConfirmes() {
+        LinkedList<Appel> appels = new AppelsDAO().getNonConfirmes();
+        for (Appel appel : appels) {
+            data.add(new DataTableRow(DataTableRowFormat.APPEL, appel));
+        }
+    }
+
+    private void setupDataAppelsConfirmes() {
+        LinkedList<Appel> appels = new AppelsDAO().getConfirmes();
+        for (Appel appel : appels) {
+            data.add(new DataTableRow(DataTableRowFormat.APPEL, appel));
+        }
+    }
+
+    private void setupDataAppels() {
+        LinkedList<Appel> appels = new AppelsDAO().getAll();
+        for (Appel appel : appels) {
+            data.add(new DataTableRow(DataTableRowFormat.APPEL, appel));
         }
     }
 

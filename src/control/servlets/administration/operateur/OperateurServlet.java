@@ -29,6 +29,15 @@ public class OperateurServlet extends MyServlet {
                     this.getServletContext().getRequestDispatcher("/jsp/operateur.jsp").forward(request, response);
                 } else {
                     switch (what) {
+                        case "allAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS").forward(request, response);
+                            break;
+                        case "confirmedAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS_CONFIRMES").forward(request, response);
+                            break;
+                        case "confirmerAppel":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=CONFIRMER_APPEL").forward(request, response);
+                            break;
                         case "visitesReportees":
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=REPORTED_VISITES").forward(request, response);
                             break;

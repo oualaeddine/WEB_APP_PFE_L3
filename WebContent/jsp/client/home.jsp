@@ -282,12 +282,13 @@
                             button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
                             href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
                         } else {
+                            href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
                             button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
                         }
                         out.print("<div class=\"col-sm-6 col-md-4 p0\">\n" +
                                 "                            <div class=\"box-two proerty-item\">\n" +
                                 "                                <div class=\"item-thumb\">\n" +
-                                "                                    <a href=\"property-1.html\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                                    <a href=\"/home?what=logement&id=" + logement.getId() + "\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
                                 "                                </div>\n" +
                                 "\n" +
                                 "                                <div class=\"item-entry overflow\">\n" +
@@ -339,7 +340,7 @@
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                                 <!-- /.feature title -->
-                                <h2>E.R.I.T.P </h2>
+                                <h2><%out.print(new ContactInfosDAO().getNomSociete());%></h2>
                             </div>
                         </div>
                     </div>
@@ -352,7 +353,7 @@
                                     <div class="welcome-icon">
                                         <i class="pe-7s-home pe-4x"></i>
                                     </div>
-                                    <h3>Any property</h3>
+                                    <h3>Logements</h3>
                                 </div>
                             </div>
                             <div class="col-xs-6 m-padding">
@@ -360,7 +361,7 @@
                                     <div class="welcome-icon">
                                         <i class="pe-7s-users pe-4x"></i>
                                     </div>
-                                    <h3>More Clients</h3>
+                                    <h3>Contact</h3>
                                 </div>
                             </div>
 
@@ -374,7 +375,7 @@
                                     <div class="welcome-icon">
                                         <i class="pe-7s-notebook pe-4x"></i>
                                     </div>
-                                    <h3>Easy to use</h3>
+                                    <h3>Facile à utiliser</h3>
                                 </div>
                             </div>
                             <div class="col-xs-6 m-padding">
@@ -382,7 +383,7 @@
                                     <div class="welcome-icon">
                                         <i class="pe-7s-help2 pe-4x"></i>
                                     </div>
-                                    <h3>Any help </h3>
+                                    <h3>Besoin d'aide </h3>
                                 </div>
                             </div>
 
@@ -394,63 +395,6 @@
     </div>
 </div>
 
-<!--TESTIMONIALS -->
-<div class="testimonial-area recent-property" style="background-color: #FCFCFC; padding-bottom: 15px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                <!-- /.feature title -->
-                <h2>Our Customers Said </h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="row testimonial">
-                <div class="col-md-12">
-                    <div id="testimonial-slider">
-                        <div class="item">
-                            <div class="client-text">
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                            </div>
-                            <div class="client-face wow fadeInRight" data-wow-delay=".9s">
-                                <img src="../../assets_client/img/client-face1.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="client-text">
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                            </div>
-                            <div class="client-face">
-                                <img src="../../assets_client/img/client-face2.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="client-text">
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                            </div>
-                            <div class="client-face">
-                                <img src="../../assets_client/img/client-face1.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="client-text">
-                                <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                            </div>
-                            <div class="client-face">
-                                <img src="../../assets_client/img/client-face2.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <!-- Count area -->
 <div class="count-area">
@@ -458,7 +402,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                 <!-- /.feature title -->
-                <h2>You can trust Us </h2>
+                <h2>Vous pouvez nous faire confiance </h2>
             </div>
         </div>
         <div class="row">
@@ -471,7 +415,7 @@
                             </div>
                             <div class="chart" data-percent="5000">
                                 <h2 class="percent" id="counter">0</h2>
-                                <h5>HAPPY CUSTOMER </h5>
+                                <h5>Clients </h5>
                             </div>
                         </div>
                     </div>
@@ -482,7 +426,7 @@
                             </div>
                             <div class="chart" data-percent="12000">
                                 <h2 class="percent" id="counter1">0</h2>
-                                <h5>Properties in stock</h5>
+                                <h5>Logements à vendre</h5>
                             </div>
                         </div>
                     </div>
@@ -493,7 +437,7 @@
                             </div>
                             <div class="chart" data-percent="120">
                                 <h2 class="percent" id="counter2">0</h2>
-                                <h5>City registered </h5>
+                                <h5>Localités </h5>
                             </div>
                         </div>
                     </div>
@@ -519,37 +463,9 @@
 <div class="boy-sale-area">
     <div class="container">
         <div class="row">
-
-            <div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">
-                <div class="asks-first">
-                    <div class="asks-first-circle">
-                        <span class="fa fa-search"></span>
-                    </div>
-                    <div class="asks-first-info">
-                        <h2>ARE YOU LOOKING FOR A Property?</h2>
-                        <p> varius od lio eget conseq uat blandit, lorem auglue comm lodo nisl no us nibh mas lsa</p>
-                    </div>
-                    <div class="asks-first-arrow">
-                        <a href="properties.html"><span class="fa fa-angle-right"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
-                <div class="asks-first">
-                    <div class="asks-first-circle">
-                        <span class="fa fa-usd"></span>
-                    </div>
-                    <div class="asks-first-info">
-                        <h2>DO YOU WANT TO SELL A Property?</h2>
-                        <p> varius od lio eget conseq uat blandit, lorem auglue comm lodo nisl no us nibh mas lsa</p>
-                    </div>
-                    <div class="asks-first-arrow">
-                        <a href="properties.html"><span class="fa fa-angle-right"></span></a>
-                    </div>
-                </div>
-            </div>
             <div class="col-xs-12">
-                <p class="asks-call">QUESTIONS? CALL US : <span class="strong"> + 3-123- 424-5700</span></p>
+                <p class="asks-call">DES QUESTIONS ? APPELLEZ-NOUS : <span
+                        class="strong"> <%out.print(new ContactInfosDAO().getTelSociete());%></span></p>
             </div>
         </div>
     </div>
@@ -622,7 +538,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h5>Vous devez être connectés pour acheter ou visiter ce logement</h5>
+                <h5>Vous devez être connectés pour effectuer cette action</h5>
 
             </div>
             <div class="modal-footer">

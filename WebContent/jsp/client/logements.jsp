@@ -84,14 +84,14 @@
                         String button = "";
                         if (isLoggedIn) {
                             int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
-                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
+                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>" : "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>";
                         } else {
-                            button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
+                            button = "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>";
                         }
                         out.print("<div class=\"col-sm-6 col-md-4 p0\">\n" +
                                 "                            <div class=\"box-two proerty-item\">\n" +
                                 "                                <div class=\"item-thumb\">\n" +
-                                "                                    <a href=\"property-1.html\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
+                                "                                    <a href=\"/home?what=logement&id=" + logement.getId() + "\"><img src=\"../../assets_client/img/demo/property-1.jpg\"></a>\n" +
                                 "                                </div>\n" +
                                 "\n" +
                                 "                                <div class=\"item-entry overflow\">\n" +
@@ -177,7 +177,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/api/logementApi?action=addToWishList', // Your Servlet mapping or JSP(not suggested)
+            url: '/api/logementApi?action=addToWishList',
             data: dataToBeSent,
             success: function (result) {
                 location.reload();

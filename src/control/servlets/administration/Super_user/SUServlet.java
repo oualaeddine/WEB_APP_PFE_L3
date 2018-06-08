@@ -23,8 +23,11 @@ public class SUServlet extends MyServlet {
                     this.getServletContext().getRequestDispatcher("/jsp/superuser.jsp").forward(request, response);
                 } else {
                     switch (what) {
-                        case "myNotifications":
-                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
+                        case "allAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS").forward(request, response);
+                            break;
+                        case "confirmedAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS_CONFIRMES").forward(request, response);
                             break;
                         case "listeSignals": {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALEMENT").forward(request, response);

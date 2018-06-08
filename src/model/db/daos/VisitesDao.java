@@ -103,6 +103,38 @@ public class VisitesDao extends DAO {
         return null;
     }
 
+    public Employe getNewAgentForVisit(Visite visite) {
+        ResultSet result;
+        try {
+            result = visiteStatement.executeQuery("" +
+                    "SELECT " +
+                    "  employe.id, " +
+                    "  nom, " +
+                    "  prenom, " +
+                    "  tel " +
+                    "FROM employe " +
+                    "  JOIN assignation_region ON id = assignation_region.agentId AND localiteId =" + visite.getLogement().getLocalite().getId() + " AND userType = 'agent' and isApproved=1 and isSuspended=0" +
+                    "  , visite " +
+                    "WHERE employe.id NOT IN (SELECT agentId " +
+                    "                         FROM visite " +
+                    "                         WHERE etat='prevue' and horraire = '" + visite.getHorraire() + "' " +
+                    "AND timestamp = '" + visite.getTimestamp() + "') and employe.id <> " + visite.getAgent().getId() + "  ORDER BY (SELECT count(visite.id) FROM visite WHERE visite.agentId=employe.id) ASC LIMIT 1;");
+
+            while (result.next()) {
+                Employe employe = new Employe();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setTel(result.getString("tel"));
+                System.out.println("Resultat " + employe);
+                return employe;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
     public Employe getFreeAgentsForVisite(RDV rdv, int regionId) {
 
         System.out.println("rdv = [" + rdv + "], regionId = [" + regionId + "]");
@@ -115,12 +147,12 @@ public class VisitesDao extends DAO {
                     "  prenom, " +
                     "  tel " +
                     "FROM employe " +
-                    "  JOIN assignation_region ON id = assignation_region.agentId AND localiteId =" + regionId + " AND userType = 'agent' " +
+                    "  JOIN assignation_region ON id = assignation_region.agentId AND localiteId =" + regionId + " AND userType = 'agent' and isApproved=1 and isSuspended=0" +
                     "  , visite " +
                     "WHERE employe.id NOT IN (SELECT agentId " +
                     "                         FROM visite " +
                     "                         WHERE etat='prevue' and horraire = '" + rdv.getHorraire() + "' " +
-                    "AND timestamp = '" + rdv.getDate().toString() + "')LIMIT 1");
+                    "AND timestamp = '" + rdv.getDate().toString() + "') ORDER BY (SELECT count(visite.id) FROM visite WHERE visite.agentId=employe.id) ASC LIMIT 1;");
 
             while (result.next()) {
                 Employe employe = new Employe();

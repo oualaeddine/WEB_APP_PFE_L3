@@ -38,15 +38,8 @@ public class MyServlet extends HttpServlet {
         }
     }
 
-    protected void redirectToHome(HttpServletRequest request, HttpServletResponse response) {
-
-        try {
+    protected void redirectToHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             this.getServletContext().getRequestDispatcher("/home").forward(request, response);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
 
     }
 

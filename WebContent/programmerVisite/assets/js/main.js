@@ -272,21 +272,21 @@ var table = $('#clientsTab').DataTable({
         style: 'single'
     }
     ,
-    //  "processing": true,
-    // "serverSide": true,
-    // ajax: {
-    //     url: '/api/clientApi?action=getAllClients',
-    //     dataSrc: ''
-    // },
-    /* columns: [
+    "processing": true,
+    "serverSide": true,
+    ajax: {
+        url: '/api/clientApi?action=getAllClients',
+        dataSrc: ''
+    },
+    columns: [
          {"data": "id"},
          {"data": "nom"},
          {"data": "prenom"},
          {"data": "telephone"},
          {"data": "dateDeNaissance"},
          {"data": "isBanned"}
-     ],*/
-    dom: 'Bfrtip',
+    ],
+    // dom: 'Bfrtip',
     buttons: [
         {
             text: 'Ajouter client',

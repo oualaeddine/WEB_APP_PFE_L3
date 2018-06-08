@@ -1,6 +1,7 @@
 package control.servlets.administration.admin;
 
 import control.servlets.MyServlet;
+import model.beans.humans.Employe;
 import model.enums.UserType;
 
 import javax.servlet.ServletException;
@@ -16,13 +17,19 @@ public class AdminServlet extends MyServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isLoggedIn(request)) {
+        if (isLoggedIn(request) && !((Employe) request.getSession().getAttribute(LOGGED_IN_USER)).isSuspended()) {
             if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.ADMIN) {
                 String what = request.getParameter("what");
                 if (what == null) {
                     this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
                 } else {
                     switch (what) {
+                        case "allAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS").forward(request, response);
+                            break;
+                        case "confirmedAppels":
+                            this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS_CONFIRMES");
+                            break;
                         case "myNotifications":
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=EMPLOYEE_NOTIFICATIONS").forward(request, response);
                             break;

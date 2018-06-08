@@ -24,6 +24,9 @@ public class DataTableRow {
 
     private void setupHtml() {
         switch (dataFormat) {
+            case APPEL:
+                setupHtmlForAppel();
+                break;
             case ANNULER_VENTE:
                 setupHtmlForAnnulerVente();
                 break;
@@ -93,7 +96,39 @@ public class DataTableRow {
             case RAPPORT:
                 setupHtmlForRapport();
                 break;
+            case CONFIRMER_APPEL:
+                setupHtmlForConfirmerAppel();
+                break;
+
         }
+    }
+
+    private void setupHtmlForConfirmerAppel() {
+        Appel appel = (Appel) object;
+        String isConfirmed = appel.isConfirmed() ? "Confirmé" : "Non confirmé";
+        html = "<tr>" +
+                "<td>" + appel.getId() + "</td>" +
+                "<td>" + appel.getNumeroTel() + "</td>" +
+                "<td>" + appel.getVisite().getLogement().getTitre() + "</td>" +
+                "<td>" + appel.getVisite().getAgent().getFullName() + "</td>" +
+                "<td>" + appel.getVisite().getTimestamp() + " | " + Util.getStringFromHorraire(appel.getVisite().getHorraire()) + "</td>" +
+                "<td>" + isConfirmed + "</td>" +
+                "<td><button type=\"button\"  onclick=\"getConfirmedAppel(" + appel.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#confirmerAppelModal\" value=\"" + appel.getId() + "\">Confirmer</button></td>" +
+                "</tr>";
+    }
+
+    private void setupHtmlForAppel() {
+        Appel appel = (Appel) object;
+        String isConfirmed = appel.isConfirmed() ? "Confirmé" : "Non confirmé";
+        html = "<tr>" +
+                "<td>" + appel.getId() + "</td>" +
+                "<td>" + appel.getNumeroTel() + "</td>" +
+                "<td>" + appel.getVisite().getLogement().getTitre() + "</td>" +
+                "<td>" + appel.getVisite().getAgent().getFullName() + "</td>" +
+                "<td>" + appel.getVisite().getTimestamp() + " | " + Util.getStringFromHorraire(appel.getVisite().getHorraire()) + "</td>" +
+                "<td>" + isConfirmed + "</td>" +
+                "</tr>";
+
     }
 
     private void setupHtmlForAnnulerVente() {

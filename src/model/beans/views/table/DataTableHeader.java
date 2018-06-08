@@ -181,6 +181,7 @@ public class DataTableHeader {
                 break;
             case APPELS_CONFIRMES:
                 setupTableHeaderForAppels();
+                break;
             case CONFIRMER_APPEL:
                 setupTableHeaderForConfirmerAppel();
                 break;

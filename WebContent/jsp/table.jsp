@@ -518,6 +518,73 @@
         </div>
     </div>
 
+    <%--Confirmer appel modal--%>
+    <div id="confirmerAppelModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmer appel</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/DashboardServlet?what=confirmerAppel" id="confirmerAppelForm">
+
+                        <input id="appelConfirme" name="appelConfirme" type="hidden">
+                        <label for="confirmationAppel">Cochez cette case si le client désire confirmer sa visite</label>
+                        <input type="checkbox" name="confirmationAppel" id="confirmationAppel" value="0">
+                        <div class="form-group" id="ifConfirme" style="display:none">
+                            <div class="form-group">
+                                <div class="col-md-12 col-xs-12 register-blocks">
+                                    <h2>Inscription : </h2>
+                                    <div class="form-group">
+                                        <label for="nomInput">Nom</label>
+                                        <input type="text" class="form-control" id="nomInput" name="nomInput">
+
+                                        <label for="prenomInput">Prenom</label>
+                                        <input type="text" class="form-control" id="prenomInput" name="prenomInput">
+
+                                        <label for="dateNaissance">Date de naissance</label>
+                                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailInput">Email</label>
+                                        <input type="text" class="form-control" id="emailInput" name="emailInput">
+
+                                        <label for="inputTel">Numéro de téléphone</label>
+                                        <input type="text" class="form-control" id="inputTel" name="inputTel">
+
+                                        <label for="adresseInput">Adresse</label>
+                                        <input type="text" class="form-control" id="adresseInput" name="adresseInput">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usernameInput">Nom d'utilisateur</label>
+                                        <input type="text" class="form-control" id="usernameInput" name="usernameInput">
+
+                                        <label for="passwordInput">Mot de passe</label>
+                                        <input type="password" class="form-control" id="passwordInput"
+                                               name="passwordInput">
+                                    </div>
+                                    <div class="text-center">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="confirmerAppelForm">Soumettre</button>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="./vendor/jquery/jquery.min.js"></script>
@@ -542,6 +609,15 @@
     <!-- Custom scripts for all pages-->
     <script src="./js/sb-admin.min.js"></script>
     <script>
+
+        $('#etatClient').change(function () {
+            $(this).next('#ifPresent').toggle();
+        });
+        $('#confirmationAppel').change(function () {
+            $(this).next('#ifConfirme').toggle();
+        });
+
+
         var table = $('#dataTable').DataTable({
             responsive: {
                 details: {
@@ -571,10 +647,10 @@
 
         });
 
-        $('#etatClient').change(function () {
-            $(this).next('#ifPresent').toggle();
-        });
 
+        function getConfirmedAppel(idTaaLAppelConfirme) {
+            document.getElementById("appelConfirme").value = idTaaLAppelConfirme;
+        }
         function getCanceledVente(idTaaLaventeAnnulee) {
             document.getElementById("venteAnnulee").value = idTaaLaventeAnnulee;
         }
@@ -756,7 +832,8 @@
         $('#action').on('change', function () {
             if ($('#action option:selected').val() === 1)
                 initCalendar($('#selectedRowId').val())
-        })
+        });
+
 
     </script>
 </div>

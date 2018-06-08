@@ -20,7 +20,8 @@ public class IVSConsts {
             CALL_OPERATOR_SERVLET_URL = "/ivs_CALL_OPERATOR",
             PROGRAM_VISIT_SERVLET_URL = "/ivs_PROGRAM_VISIT",
             CHANGE_LANGUAGE_SERVLET_URL = "/ivs_CHANGE_LANGUAGE";
-
+    public static final String WELCOME_HANDELER_SERVLET_URL = "/ivs_WELCOME_HANDELER",
+            WELCOME_MENU_SERVLET_URL = "/ivs_WELCOME_MENU";
     public static final String WELCOME_MP3_URL = "/21";
 
     public static final String FR_PROGRAMMER_VISITE_MP3_URL = "/20",
@@ -31,20 +32,19 @@ public class IVSConsts {
             FR_NBR_PIECES_MP3_URL = "/15",
             YOU_CHOOSED_FRENCH_MP3_URL = "/14",
             FR_STANDARD_WELCOME_MESSAGE_MP3_URL = "",
-            FR_MAIN_MENU_MP3_URL = "/13";
-    public static final String AR_PROGRAMMER_VISITE_MP3_URL = "/12",
-            AR_FOURCHETTE_PRIX_MP3_URL = "/11",
-            AR_REGION_MENU_MP3_URL = "/10",
-            AR_SUPERFICIE_MP3_URL = "/9",
-            AR_TYPE_MENU_MP3_URL = "/8",
-            AR_NBR_PIECES_MP3_URL = "/7",
-            YOU_CHOOSED_ARABIC_MP3_URL = "/6",
-            AR_STANDARD_WELCOME_MESSAGE_MP3_URL = "/5",
-            AR_MAIN_MENU_MP3_URL = "/4";
-    public static final String WELCOME_HANDELER_SERVLET_URL = "/3",
-            WELCOME_MENU_SERVLET_URL = "";
-    private static final String AR_NO_LOGEMENTS_MP3_URL = "/2",
-            FR_NO_LOGEMENTS_MP3_URL = "/1";
+            FR_MAIN_MENU_MP3_URL = "";
+    public static final String AR_PROGRAMMER_VISITE_MP3_URL = "",
+            AR_FOURCHETTE_PRIX_MP3_URL = "",
+            AR_REGION_MENU_MP3_URL = "",
+            AR_SUPERFICIE_MP3_URL = "",
+            AR_TYPE_MENU_MP3_URL = "",
+            AR_NBR_PIECES_MP3_URL = "",
+            YOU_CHOOSED_ARABIC_MP3_URL = "",
+            AR_STANDARD_WELCOME_MESSAGE_MP3_URL = "",
+            AR_MAIN_MENU_MP3_URL = "";
+
+    private static final String AR_NO_LOGEMENTS_MP3_URL = "",
+            FR_NO_LOGEMENTS_MP3_URL = "";
 
     public static VoiceResponse getVoiceResponse(String language) {
         switch (language) {

@@ -549,10 +549,10 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
 
 <!--  Plugin for the Wizard -->
 <!--<script src="programmerVisite/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>-->

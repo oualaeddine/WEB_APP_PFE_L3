@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="web_app:Web exploded" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="577dda33-047f-4c3f-b13f-21049b32abf4" name="Default" comment="export, impression, accueil client redirect to dashboard">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/web_app_Web_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1eb455eb-cedd-4e9a-b880-34a34749e0d4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/twilio_java_sdk_7_0_0_rc_10_jar_with_dependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/api/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/API.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/api/ClientApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/ClientApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/api/LogementApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/LogementApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/api/VisiteApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/api/VisiteApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/RedirectToHumanOperatorServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/ivs/RedirectToHumanOperatorServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/WelcomeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/ivs/WelcomeServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c1197ece-737f-4ba6-8c08-737c3e5b1416.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/api/API.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/api/AgentApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/api/ClientApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/api/LogementApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/api/VisiteApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/GoodbyeServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/RedirectToHumanOperatorServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/WelcomeServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/handelers/WelcomeMenuHandelerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/logement/VisiteServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/logement/additional/EtageServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/logement/essential/FourchetteArgentServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/logement/essential/RegionServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/ivs/menu/logement/essential/RoomsNumberServlet.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/control/servlets/MyServlet$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/servlets/MyServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/servlets/MyServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/servlets/MyServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AdminsManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AuthManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/AuthManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/ClientsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/control/system/managers/ClientsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Logement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/Logement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Vente.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/Vente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Visite.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/Visite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/humans/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/DAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/DbConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/DbConnector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AssignationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/AssignationDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AuthDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/AuthDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/ClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/ClientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/EmployeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/EmployeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LocaliteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/LocaliteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LogementDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/LogementDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/OttDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/OttDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VentesDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/VentesDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVente.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/EtatVente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVisite.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/EtatVisite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/GoogleMail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/GoogleMail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/utils/Util$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/Util$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/utils/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/utils/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/db/DbConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AgentsManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/AuthManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/ClientsManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/OperateursManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/ResponsablesVentesManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/control/system/managers/SuManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Logement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Vente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/Visite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Employe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/humans/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/Nav.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/nav/NavElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableHeader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/beans/views/table/DataTableRow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/DAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/DbConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AssignationDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/AuthDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/ClientDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/EmployeDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LocaliteDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/LogementDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/OttDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VentesDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/db/daos/VisitesDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/DataTableRowFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/EtatVisite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/enums/TablePage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/GoogleMail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/MyConsts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/Util$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/db/DbConnector.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -75,12 +79,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-      <option value="module" />
-    </option>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -93,175 +91,71 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soc_imm@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soc_imm@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soc_imm@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="soc_imm: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="web_app" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ContextListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/control/system/ContextListener.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="VisiteApi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+            <state relative-caret-position="209">
+              <caret line="167" column="14" selection-start-line="167" selection-start-column="14" selection-end-line="167" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="programmerVisite.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/programmerVisite.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="635" selection-start-line="635" selection-end-line="642" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajouterVente.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/ajouterVente.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="579" selection-start-line="579" selection-end-line="579" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/servlets/MyServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="61" column="38" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="421" column="8" selection-start-line="421" selection-start-column="8" selection-end-line="421" selection-end-column="8" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-                <element signature="e#1114#1115#0" expanded="true" />
+                <element signature="n#!!block;n#initLogementsTable#0" />
+                <element signature="n#!!block;n#initLogementsTableData#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Util.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/utils/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="638" column="20" selection-start-line="638" selection-start-column="20" selection-end-line="638" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoogleMail.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/GoogleMail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="34" column="151" lean-forward="true" selection-start-line="34" selection-start-column="126" selection-end-line="34" selection-end-column="151" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="385" column="26" selection-start-line="385" selection-start-column="26" selection-end-line="385" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="package-info" />
-        <option value="Enum" />
-        <option value="HTML File" />
-        <option value="Jsp File" />
-        <option value="JUnit5 Test Class" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>prix</find>
-      <find>/api/</find>
-      <find>#re</find>
-      <find>http://localhost:8080/</find>
-      <find>#mare</find>
-      <find>json</find>
-      <find>substring</find>
-      <find>sexe</find>
-      <find>\n</find>
-      <find>modifierVisiteForm</find>
-      <find>modifierVisiteModal</find>
-      <find>getVisiteModifieeId(</find>
-      <find>getVisiteModifieeId</find>
-      <find>getVisiteModifieeI</find>
-      <find>heureDebutVisite</find>
-      <find>region</find>
-      <find>programmerVisite</find>
-      <find>calendar</find>
-      <find>programmerVisite/</find>
-      <find>visite</find>
-      <find>rendez</find>
-      <find>for</find>
-      <find>getVisite</find>
-      <find>Ventes</find>
-      <find>5</find>
-      <find>vect</find>
-      <find>callout</find>
-      <find>pe-7s-users</find>
-      <find>salesChart</find>
-      <find>soc_imm.</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>return</replace>
-      <replace>../assets</replace>
-      <replace>../assets_client</replace>
-      <replace>../vendor/bootstrap_client</replace>
-      <replace>../../</replace>
-      <replace>../../assets_client</replace>
-      <replace>../../vendor/bootstrap_client</replace>
-      <replace>HCH Immobilier</replace>
-      <replace>\&quot;</replace>
-      <replace>Inscription</replace>
-      <replace>programmerVisite/assets</replace>
-      <replace>'</replace>
-      <replace>.</replace>
-      <replace>http://localhost:8080/api/</replace>
-      <replace>/</replace>
-      <replace>tell</replace>
-      <replace />
-      <replace>./programmerVisite</replace>
-      <replace>./programmerVisite/</replace>
-      <replace>Ajouter</replace>
-      <replace>vente</replace>
-      <replace>Visites</replace>
-      <replace>0</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent</dir>
-      <dir>C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\src</dir>
-      <dir>C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics</dir>
-    </dirStrings>
-  </component>
-  <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebContent/jsp/client/MesStats.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/operateur_stats.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/admin/index.html" />
-        <option value="$PROJECT_DIR$/WebContent/assets_client/js/main.js" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/LocaliteDAO.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql" />
-        <option value="$PROJECT_DIR$/src/model/beans/views/table/DataTableData.java" />
-        <option value="$PROJECT_DIR$/src/model/db/daos/VisitesDao.java" />
-        <option value="$PROJECT_DIR$/WebContent/statistics/agentStats.jsp" />
         <option value="$PROJECT_DIR$/WebContent/html/client/register.html" />
         <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/mainClient.js" />
         <option value="$PROJECT_DIR$/src/control/api/LogementApi.java" />
-        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
         <option value="$PROJECT_DIR$/src/utils/MyConsts.java" />
         <option value="$PROJECT_DIR$/src/control/api/NotificationsApi.java" />
         <option value="$PROJECT_DIR$/src/control/api/AuthApi.java" />
@@ -281,8 +175,6 @@
         <option value="$PROJECT_DIR$/WebContent/jsp/nouvelleVente.jsp" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1eb455eb-cedd-4e9a-b880-34a34749e0d4/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console_1.sql" />
-        <option value="$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/jsp/client/home.jsp" />
         <option value="$PROJECT_DIR$/src/model/db/daos/VentesDAO.java" />
         <option value="$PROJECT_DIR$/src/javax/servlet/ServletContextListener.java" />
         <option value="$PROJECT_DIR$/src/system/ServletContextListener.java" />
@@ -299,6 +191,19 @@
         <option value="$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java" />
         <option value="$PROJECT_DIR$/src/model/db/daos/ClientDAO.java" />
         <option value="$PROJECT_DIR$/src/utils/Util.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/welcome/WelcomeHandelerServlet.java" />
+        <option value="$PROJECT_DIR$/src/model/db/DbConnector.java" />
+        <option value="$PROJECT_DIR$/src/control/ivs/IVSConsts.java" />
+        <option value="$PROJECT_DIR$/WebContent/jsp/client/home.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/prog_main.js" />
+        <option value="$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java" />
+        <option value="$PROJECT_DIR$/src/model/beans/Logement.java" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/programmerVisite.jsp" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql" />
+        <option value="$PROJECT_DIR$/src/control/api/VisiteApi.java" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/ajouterVente.html" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/ajouterVente.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js" />
       </list>
     </option>
   </component>
@@ -315,26 +220,11 @@
     <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/WebContent/statistics/bower_components/bootstrap/package.json" />
       <path value="$PROJECT_DIR$/WebContent/statistics/bower_components/jquery-slimscroll/package.json" />
     </packageJsonPaths>
-  </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="6" />
-    <option name="y" value="894" />
-    <option name="width" value="1376" />
-    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -354,11 +244,6 @@
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -372,59 +257,31 @@
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="logement" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="logement" type="462c0819:PsiDirectoryNode" />
-              <item name="additional" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="ivs" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="logement" type="462c0819:PsiDirectoryNode" />
-              <item name="essential" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="managers" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="general" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
@@ -436,7 +293,23 @@
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+              <item name="humans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
@@ -447,45 +320,31 @@
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="programmerVisite" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="programmerVisite" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WEB_APP" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="programmerVisite" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="adminservlet&#9;FILE&#9;file://C:/Users/hp/Documents/WEB_APP_PFE_L3/src/control/servlets/main/admin/AdminServlet.java&#10;/Visites&#9;FILE&#9;file://C:/Users/hp/Documents/WEB_APP_PFE_L3/src/control/servlets/sub/ListeVisitesServlet.java" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/SQL Dialects" value="MySQL" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="create.test.in.the.same.root" value="true" />
-    <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/twilio-7.21.1-jar-with-dependencies.jar!/" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.20663266" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -505,11 +364,11 @@
       <recent name="control.servlets.administration.client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\programmerVisite\assets\js" />
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\lib" />
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components\chart.js" />
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics" />
       <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\bower_components" />
-      <recent name="C:\Users\berre\Desktop\PROJET_DE_FIN_ETUDES_L3\IMPLEMENTATION\WEB_APP\WebContent\statistics\dist\js" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.db.daos.stats" />
@@ -518,167 +377,6 @@
       <recent name="model.enums" />
       <recent name="control.system" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/html/register.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/admin.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/agent.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/changePassword.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/entete.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/home.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/modifierProfilClient.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/statsClient.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/operateur.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/responsable_ventes.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/superuser.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/statistics/operateur_stats.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/MyServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Agent/AgentServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/AjoutServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/DashboardServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/Super_user/SUServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/admin/AdminServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/ChangePasswordServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/LoginServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/LogoutServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/auth/SignUpServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/client/ProgrammerVisiteClientServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/AjouterVenteServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/ModifierVisiteServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/OperateurServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/operateur/ProgrammerVisiteServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/administration/service_ventes/ServiceVentesServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/ClientLoginServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/ContactServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/servlets/client/personal/EditProfileServlet.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/AdminsManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/AuthManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/ClientsManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/EmployeManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/control/system/managers/OperateursManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/nav/Nav.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/beans/views/table/DataTableRow.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/ClientDAO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/ClientNotificationDAO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/EmployeDAO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/PlainteDAO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VentesDAO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/db/daos/VisitesDao.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/utils/Util.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/changerMdp.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/contacterSociete.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/client/register.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebContent/jsp/login.jsp</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -692,63 +390,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="web_app" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="AgentsManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="web_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="control.system.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="control.system.managers" />
-      <option name="MAIN_CLASS_NAME" value="control.system.managers.AgentsManagerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="AgentsManagerTest.envoyerRapport" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="web_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="control.system.managers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="control.system.managers" />
-      <option name="MAIN_CLASS_NAME" value="control.system.managers.AgentsManagerTest" />
-      <option name="METHOD_NAME" value="envoyerRapport" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -759,7 +403,7 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -777,7 +421,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -788,93 +432,6 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.5" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="web_app:Web exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_web_app_2" />
-        <option name="DEPLOY_TOMCAT_APPS" value="true" />
-        <option name="PRESERVE_SESSIONS" value="true" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="65108" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="web_app:Web exploded" />
-        </option>
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Tomcat Server.Tomcat" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.AgentsManagerTest.envoyerRapport" />
-      <item itemvalue="JUnit.AgentsManagerTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.AgentsManagerTest" />
-        <item itemvalue="JUnit.AgentsManagerTest.envoyerRapport" />
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1008,76 +565,8 @@
       <workItem from="1527416357771" duration="2324000" />
       <workItem from="1527511539631" duration="665000" />
       <workItem from="1527588069448" duration="9124000" />
-    </task>
-    <task id="LOCAL-00011" summary="hek">
-      <created>1520800834040</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1520800834040</updated>
-    </task>
-    <task id="LOCAL-00012" summary="bezzaaaaaaaaaf hwayej">
-      <created>1521226512949</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1521226512992</updated>
-    </task>
-    <task id="LOCAL-00013" summary="client side">
-      <created>1521740467238</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1521740467238</updated>
-    </task>
-    <task id="LOCAL-00014" summary="added gitignore">
-      <created>1521913974209</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1521913974209</updated>
-    </task>
-    <task id="LOCAL-00015" summary="hwayj">
-      <created>1523810764813</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1523810764813</updated>
-    </task>
-    <task id="LOCAL-00016" summary="hwayj">
-      <created>1523820644605</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1523820644605</updated>
-    </task>
-    <task id="LOCAL-00017" summary="home servlet">
-      <created>1523823859662</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1523823859664</updated>
-    </task>
-    <task id="LOCAL-00018" summary="home servlet">
-      <created>1523825779751</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1523825779751</updated>
-    </task>
-    <task id="LOCAL-00019" summary="hwiyjat">
-      <created>1523828140113</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1523828140113</updated>
-    </task>
-    <task id="LOCAL-00020" summary="hwiyjat">
-      <created>1524398674029</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1524398674029</updated>
+      <workItem from="1528423181832" duration="717000" />
+      <workItem from="1528442777153" duration="9283000" />
     </task>
     <task id="LOCAL-00021" summary="hwiyjat">
       <created>1524477903205</created>
@@ -1352,43 +841,81 @@
       <option name="project" value="LOCAL" />
       <updated>1527596604652</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Revert &quot;commit hekak bark&quot;&#10;&#10;This reverts commit f324636">
+      <created>1528412139420</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1528412139420</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Revert &quot;hwayj&quot;&#10;&#10;This reverts commit e6b713a">
+      <created>1528412151853</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1528412151853</updated>
+    </task>
+    <task id="LOCAL-00062" summary="whaa rab l3ali aaaaaaaa">
+      <created>1528443133469</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1528443133470</updated>
+    </task>
+    <task id="LOCAL-00063" summary="programmer visite ta3 operateur tjib les logements dynamically , drk nraja3ha fiha la recherche w pagination">
+      <created>1528445248251</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1528445248251</updated>
+    </task>
+    <task id="LOCAL-00064" summary="enabled searching in clients table">
+      <created>1528445509969</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1528445509969</updated>
+    </task>
+    <task id="LOCAL-00065" summary="fixed l'ajout dynamique de clients">
+      <created>1528447822362</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1528447822362</updated>
+    </task>
+    <task id="LOCAL-00066" summary="programmation de visite (operateur) : &#10;ajout de client,&#10;recuperation de logements,&#10;recuperation de dates">
+      <created>1528449070024</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1528449070024</updated>
+    </task>
+    <task id="LOCAL-00067" summary="programmer visite ta3 l'operateur temchi 3la cha3ra">
+      <created>1528450634822</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1528450634822</updated>
+    </task>
+    <task id="LOCAL-00068" summary="ajouter vente ta3 l'operateur tmchi">
+      <created>1528451347579</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1528451347579</updated>
+    </task>
+    <task id="LOCAL-00069" summary="export, impression, accueil client redirect to dashboard">
+      <created>1528451929884</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1528451929884</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 19m 43s.xml">
-      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 20m 11s.xml">
-      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 25m 30s.xml">
-      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 28m 52s.xml">
-      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest_envoyerRapport - 2018.05.15 at 00h 31m 31s.xml">
-      <configuration name="AgentsManagerTest.envoyerRapport" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 31m 36s.xml">
-      <configuration name="AgentsManagerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 33m 16s.xml">
-      <configuration name="AgentsManagerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 36m 06s.xml">
-      <configuration name="AgentsManagerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest - 2018.05.15 at 00h 39m 24s.xml">
-      <configuration name="AgentsManagerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AgentsManagerTest - 2018.05.18 at 10h 08m 06s.xml">
-      <configuration name="AgentsManagerTest" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="534397000" />
+    <option name="totallyTimeSpent" value="548721000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1400,8 +927,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="760" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="-4" y="760" width="1376" height="784" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="FTP" order="13" weight="0.32884902" />
@@ -1411,21 +937,21 @@
       <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32735425" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="right" id="Database" order="9" weight="0.19591528" />
+      <window_info anchor="right" id="Database" order="9" visible="true" weight="0.19528875" />
       <window_info id="Structure" order="1" sideWeight="0.59229535" side_tool="true" weight="0.16033435" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.505618" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.39312407" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3916533" />
       <window_info anchor="right" id="Messages" order="8" weight="0.32446808" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.328" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.41573033" />
-      <window_info anchor="bottom" x="11" y="199" width="1316" height="402" id="Run" order="14" weight="0.6035313" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.41573033" />
+      <window_info anchor="bottom" x="11" y="199" width="1316" height="402" id="Run" order="14" weight="0.41733548" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969605" weight="0.37239164" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.40288925" visible="true" weight="0.23298033" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.40288925" visible="true" weight="0.168693" />
       <window_info id="Web" order="5" sideWeight="0.59711075" side_tool="true" weight="0.23298033" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.54735154" />
       <window_info anchor="right" id="Theme Preview" order="6" />
@@ -1437,22 +963,44 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.32744783" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49544072" weight="0.45104334" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" x="11" y="199" width="1316" height="402" id="Run" order="14" visible="true" weight="0.5216693" />
+      <window_info id="Image Layers" order="7" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="6" sideWeight="0.568" side_tool="true" weight="0.22768533" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969605" weight="0.37239164" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045593" side_tool="true" weight="0.4592" />
+      <window_info anchor="right" id="Messages" order="8" weight="0.32446808" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3916533" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.40288925" visible="true" weight="0.24012157" />
+      <window_info anchor="bottom" id="FTP" order="13" weight="0.32884902" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.328" />
+      <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32735425" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.41573033" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32978722" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.54735154" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="9" weight="0.19591528" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info id="Web" order="5" sideWeight="0.59711075" side_tool="true" weight="0.23298033" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info id="Structure" order="1" sideWeight="0.59229535" side_tool="true" weight="0.16033435" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.505618" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="UpdateCopyrightCheckinHandler">
-    <option name="UPDATE_COPYRIGHT" value="true" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1460,6 +1008,8 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="LONG_EDGES_VISIBLE" value="true" />
+              <option name="BEK_SORT_TYPE" value="1" />
               <option name="RECENTLY_FILTERED_USER_GROUPS">
                 <collection />
               </option>
@@ -1487,15 +1037,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added gitignore" />
-    <MESSAGE value="home servlet" />
-    <MESSAGE value="programmer visite ta3 sah wmahabtch telah nananananana" />
-    <MESSAGE value="programmer visite ta3 sah" />
-    <MESSAGE value="fi khatr lmhamsa" />
-    <MESSAGE value="#ventesApi&#10;#logementsApi&#10;#rapportsApi&#10;#versementsApi&#10;#added some todo&#10;#created JsonUtil Class" />
-    <MESSAGE value="some refractoring + imports optimisation + code reformat" />
-    <MESSAGE value="kamalt apis" />
-    <MESSAGE value="DAO connections fix" />
     <MESSAGE value="DAO connections fix (haja bark)" />
     <MESSAGE value="ajouter vente" />
     <MESSAGE value="hwiyjat" />
@@ -1508,11 +1049,20 @@
     <MESSAGE value="les stats ta3 l'admin&#10;html design ventes" />
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="hwayj" />
-    <MESSAGE value="export, impression, accueil client redirect to dashboard" />
     <MESSAGE value="notifications system" />
     <MESSAGE value="send sms, send push notif" />
     <MESSAGE value="notifs tjr" />
-    <option name="LAST_COMMIT_MESSAGE" value="notifs tjr" />
+    <MESSAGE value="Revert &quot;commit hekak bark&quot;&#10;&#10;This reverts commit f324636" />
+    <MESSAGE value="Revert &quot;hwayj&quot;&#10;&#10;This reverts commit e6b713a" />
+    <MESSAGE value="whaa rab l3ali aaaaaaaa" />
+    <MESSAGE value="programmer visite ta3 operateur tjib les logements dynamically , drk nraja3ha fiha la recherche w pagination" />
+    <MESSAGE value="enabled searching in clients table" />
+    <MESSAGE value="fixed l'ajout dynamique de clients" />
+    <MESSAGE value="programmation de visite (operateur) : &#10;ajout de client,&#10;recuperation de logements,&#10;recuperation de dates" />
+    <MESSAGE value="programmer visite ta3 l'operateur temchi 3la cha3ra" />
+    <MESSAGE value="ajouter vente ta3 l'operateur tmchi" />
+    <MESSAGE value="export, impression, accueil client redirect to dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="export, impression, accueil client redirect to dashboard" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1530,163 +1080,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/buttons.print.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="435" selection-start-line="3" selection-start-column="435" selection-end-line="3" selection-end-column="435" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/jquery.dataTables.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13899" selection-start-column="13899" selection-end-column="13899" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/buttons.dataTables.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9262" selection-start-column="9262" selection-end-column="9262" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/vendor/datatables/dataTables.buttons.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="38" column="282" selection-start-line="38" selection-start-column="282" selection-end-line="38" selection-end-column="282" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/nouvelleVente.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/ProgrammerVisite.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="114" column="58" selection-start-line="114" selection-start-column="58" selection-end-line="114" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1eb455eb-cedd-4e9a-b880-34a34749e0d4/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="292" selection-start-line="292" selection-end-line="292" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/Agent/EnvoyerRapportServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="65" selection-start-line="1" selection-start-column="65" selection-end-line="1" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/7925b000/c1197ece-737f-4ba6-8c08-737c3e5b1416/soc_imm.visite">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/versement">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/vente">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/signalement">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/rapport">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/plainte">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/ottemploye">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/ott_client">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/notification_employe">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/notification_client">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/logement">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/localite">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/client">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/assignation_region">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/jsp/table.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1701,20 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/system/managers/AuthManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="88" selection-start-line="46" selection-start-column="18" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/servlets/client/MyClientServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
@@ -1726,20 +1105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2023">
           <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/jsp/client/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="58" selection-start-line="90" selection-start-column="58" selection-end-line="90" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -1771,13 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/db/daos/VentesDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1799,96 +1157,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/additional/EtageServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/GoodbyeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RegionServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RoomsNumberServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/VisiteServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="385" column="26" selection-start-line="385" selection-start-column="26" selection-end-line="385" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/additional/EtageServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/GoodbyeServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/WelcomeServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/FourchetteArgentServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RegionServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/essential/RoomsNumberServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/menu/logement/VisiteServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/RedirectToHumanOperatorServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/control/system/ContextListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1903,89 +1183,241 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="638" column="20" selection-start-line="638" selection-start-column="20" selection-end-line="638" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/AgentApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/client/personal/EditProfileServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/mainMenu/MainMenuHandelerServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/welcome/WelcomeHandelerServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/welcome/WelcomeMessageServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="82" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/DbConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/LogementDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-364">
+          <caret line="907" column="13" lean-forward="true" selection-start-line="907" selection-start-column="13" selection-end-line="907" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#13340#13341#0" expanded="true" />
+            <element signature="e#13367#13368#0" expanded="true" />
+            <element signature="e#15527#15528#0" expanded="true" />
+            <element signature="e#15582#15583#0" expanded="true" />
+            <element signature="e#15640#15641#0" expanded="true" />
+            <element signature="e#15668#15669#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>web_app:Web exploded</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web (web_app)|Web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>gson-2.6.2</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>web_app</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>twilio-7.21.1-jar-with-dependencies</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.20663266" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/src/control/ivs/IVSConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/jsp/client/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="280" column="96" selection-start-line="280" selection-start-column="96" selection-end-line="280" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/js/prog_main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+          <folding>
+            <element signature="e#710#4102#0" />
+            <element signature="n#!!block;n#readURL#0" />
+            <element signature="e#5153#5998#0" />
+            <element signature="e#6062#6670#0" />
+            <element signature="n#!!block;n#initLogementsTable#0" />
+            <element signature="e#8682#9148#0" />
+            <element signature="n#!!block;n#fillDetails#0" />
+            <element signature="n#!!block;n#fillOtherInputs#0" />
+            <element signature="e#11694#13564#0" />
+            <element signature="n#!!block;n#initCalendar#0" />
+            <element signature="n#!!block;n#confirmerVisite#0" />
+            <element signature="n#!!block;n#ajouterVente#0" />
+            <element signature="n#!!block;n#post#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/Logement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/ClientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="190" column="34" lean-forward="true" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/system/managers/AuthManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#3435#3436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/client/general/HomeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/beans/humans/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/LogementApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="102" column="68" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/db/daos/VisitesDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="143" column="24" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/ClientApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="55" column="67" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="93" column="41" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c1197ece-737f-4ba6-8c08-737c3e5b1416/schema/soc_imm/table/visite">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1197ece-737f-4ba6-8c08-737c3e5b1416/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/ajouterVente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="333" column="65" selection-start-line="333" selection-start-column="55" selection-end-line="333" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/administration/operateur/ModifierVisiteServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="73" column="47" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/api/VisiteApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="167" column="14" selection-start-line="167" selection-start-column="14" selection-end-line="167" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/programmerVisite.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="635" selection-start-line="635" selection-end-line="642" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/ajouterVente.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="579" selection-start-line="579" selection-end-line="579" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/servlets/MyServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/programmerVisite/assets/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="421" column="8" selection-start-line="421" selection-start-column="8" selection-end-line="421" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!block;n#initLogementsTable#0" />
+            <element signature="n#!!block;n#initLogementsTableData#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

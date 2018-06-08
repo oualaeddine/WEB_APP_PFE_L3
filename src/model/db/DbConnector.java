@@ -6,19 +6,19 @@ import java.sql.Statement;
 
 public class DbConnector {
 
-    private static final String
+ /*   private static final String
             db_name = "soc_imm",
             host = "localhost",
             port = "124",
             user = "root",
-            pass = "1234";
+            pass = "1234";*/
 
-  /*  private static final String
+    private static final String
             db_name = "soc_imm",
-            host = "db4free.net",
+            host = "localhost",
             port = "3306",
-            user = "soc_imm_root",
-            pass = "soc_imm_root";*/
+            user = "root",
+            pass = "";
 
     private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name;
     private static Connection connexion;

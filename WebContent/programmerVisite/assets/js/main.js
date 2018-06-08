@@ -43,8 +43,16 @@ $(document).ready(function () {
 
             if (index === 2)
                 initLogementsTable();
-            if (index === 5)
+            if (index === 3)
+                if ($('#clientId').val() == "" || $('#clientId').val() == undefined)
+                    alert("aucun client n'est selectionné!");
+            if (index === 5) {
+                if (document.getElementById("idAgentDetails").innerHTML == "" ||
+                    document.getElementById("idAgentDetails").innerHTML == undefined)
+                    alert("aucun agent n'est selectionné!");
+
                 fillDetails();
+            }
 
         },
 
@@ -332,6 +340,9 @@ table.on('select', function (e, dt, type, indexes) {
         document.getElementById("numeroTelephoneClient").innerHTML = rowData[0][4];
         document.getElementById("nomCompletClient").innerHTML = rowData[0][1] + " " + rowData[0][2];
         document.getElementById("dateNaissClient").innerHTML = rowData[0][3];
+        initCalendar($('#selectedlogementId').val());
+
+
     }
 });
 loadClients();
@@ -431,6 +442,8 @@ function fillOtherInputs(startDate, endDate) {
         alert("aucun logement n'est selectionné!");
         return;
     }
+
+
     $.ajax({
         url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
         success: function (result) {
@@ -515,14 +528,16 @@ var calendar = $('#calendar').fullCalendar({
 ;
 
 function initCalendar(idLogement) {
+
     var events = {
-        url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
+        url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement + "&clientId=" + $('#clientId').val(), // use the `url` property
         color: 'red',    // an option!
         textColor: 'black'  // an option!
     };
     calendar.fullCalendar('removeEventSources');
     calendar.fullCalendar('addEventSource', events);
     calendar.fullCalendar('refetchEvents');
+
 }
 
 function confirmerVisite() {

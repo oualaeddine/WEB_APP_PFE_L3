@@ -44,7 +44,10 @@ public class VisiteApi extends API {
             switch (action) {
                 case "getTakenDates": {
                     int logementId = Integer.parseInt(request.getParameter("logementId"));
-                    LinkedList<RDV> rdvs = getTakenDatesForLogement(logementId);
+                    int clientId = Integer.parseInt(request.getParameter("clientId"));
+
+
+                    LinkedList<RDV> rdvs = getTakenDates(logementId, clientId);
                     JsonArray rdvsToReturn = new JsonArray();
                     for (RDV rdv : rdvs) {
                         JsonObject jsonObject = new JsonObject();
@@ -104,6 +107,21 @@ public class VisiteApi extends API {
                     break;
                 }
             }
+    }
+
+    private LinkedList<RDV> getTakenDates(int logementId, int clientId) {
+        LinkedList<RDV> takenRdv;
+        takenRdv = getTakenDatesForClient(clientId);
+        LinkedList<RDV> l2 = getTakenDatesForLogement(logementId);
+        for (RDV newRdv : l2) {
+            if (!takenRdv.contains(newRdv))
+                takenRdv.add(newRdv);
+        }
+        return takenRdv;
+    }
+
+    private LinkedList<RDV> getTakenDatesForClient(int clientId) {
+        return new VisitesDao().getTakenRDVForClients(clientId);
     }
 
     public static java.sql.Date getDateFromString(String date) {

@@ -1,3 +1,18 @@
+/*!
+
+ =========================================================
+ * Paper Bootstrap Wizard - v1.0.2
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-bootstrap-wizard
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/paper-bootstrap-wizard/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+
 // Paper Bootstrap Wizard Functions
 
 searchVisible = 0;
@@ -43,16 +58,8 @@ $(document).ready(function () {
 
             if (index === 2)
                 initLogementsTable();
-            if (index === 3)
-                if ($('#clientId').val() == "" || $('#clientId').val() == undefined)
-                    alert("aucun client n'est selectionné!");
-            if (index === 5) {
-                if (document.getElementById("idAgentDetails").innerHTML == "" ||
-                    document.getElementById("idAgentDetails").innerHTML == undefined)
-                    alert("aucun agent n'est selectionné!");
-
+            if (index === 5)
                 fillDetails();
-            }
 
         },
 
@@ -167,8 +174,8 @@ if ($('#garage').is(":checked")) garage = "true";
 
 var logementsTable = $('#logementsTable').DataTable({
     'paging': true,
-    'lengthChange': true,
-    'searching': true,
+    'lengthChange': false,
+    'searching': false,
     'ordering': true,
     'info': true,
     'autoWidth': false,
@@ -177,46 +184,46 @@ var logementsTable = $('#logementsTable').DataTable({
         style: 'single'
     },
 
-    /* ajax: {
-         url: '/api/logementApi?' +
-         'action=search' +
-         '&type=' + myType +
-         '&region=' + region +
-         '&prix=' + pricee +
-         '&superficie=' + superficie +
-         '&nbrPieces=' + nbrPieces +
-         '&nbrSdb=' + nbrSdb +
-         '&nbrEtages=' + nbrEtages +
-         '&meuble=' + meuble +
-         '&garage=' + garage +
-         '&jardin=' + jardin +
-         '&soussol=' + soussol,
-         dataSrc: ''
-     },
-     columns: [
-         {"data": "id"},
-         {"data": "titre"},
-         {"data": "price"},
-         {"data": "superficie"},
-         {"data": "adresse"},
-         {"data": "description"}
-     ]*/
+    ajax: {
+        url: '/api/logementApi?' +
+        'action=search' +
+        '&type=' + myType +
+        '&region=' + region +
+        '&prix=' + pricee +
+        '&superficie=' + superficie +
+        '&nbrPieces=' + nbrPieces +
+        '&nbrSdb=' + nbrSdb +
+        '&nbrEtages=' + nbrEtages +
+        '&meuble=' + meuble +
+        '&garage=' + garage +
+        '&jardin=' + jardin +
+        '&soussol=' + soussol,
+        dataSrc: ''
+    },
+    columns: [
+        {"data": "id"},
+        {"data": "titre"},
+        {"data": "price"},
+        {"data": "superficie"},
+        {"data": "adresse"},
+        {"data": "description"}
+    ]
 });
 
 logementsTable.on('select', function (e, dt, type, indexes) {
 
     var rowData = logementsTable.rows(indexes).data().toArray();
-    console.log(rowData[0][0]);
-    $('#selectedlogementId').val(rowData[0][0]);
-    $('#selectedlogementadresse').val(rowData[0][4]);
-    $('#selectedLogementSuperficie').val(rowData[0][3]);
-    $('#selectedlogementprice').val(rowData[0][2]);
 
-    document.getElementById("idLogementDetails").innerHTML = rowData[0][0];
-    document.getElementById("superficieDetails").innerHTML = rowData[0][3];
-    document.getElementById("prixDetails").innerHTML = rowData[0][2];
+    $('#selectedlogementId').val(rowData[0]["id"]);
+    $('#selectedlogementadresse').val(rowData[0]["adresse"]);
+    $('#selectedLogementSuperficie').val(rowData[0]["superficie"]);
+    $('#selectedlogementprice').val(rowData[0]["price"]);
+
+    document.getElementById("idLogementDetails").innerHTML = rowData[0]["id"];
+    document.getElementById("superficieDetails").innerHTML = rowData[0]["superficie"];
+    document.getElementById("prixDetails").innerHTML = rowData[0]["price"];
     fillDetails();
-    initCalendar(rowData[0][0]);
+    initCalendar(rowData[0]["id"]);
 });
 
 function initLogementsTable() {
@@ -238,28 +245,7 @@ function initLogementsTable() {
     if ($('#garage').is(":checked")) garage = "true"; else garage = "false";
 
 
-    initLogementsTableData();
-    /*    logementsTable.ajax.url('/api/logementApi?' +
-            'action=search' +
-            '&type=' + myType +
-            '&region=' + region +
-            '&prix=' + pricee +
-            '&superficie=' + superficie +
-            '&nbrPieces=' + nbrPieces +
-            '&nbrSdb=' + nbrSdb +
-            '&nbrEtages=' + nbrEtages +
-            '&meuble=' + meuble +
-            '&garage=' + garage +
-            '&jardin=' + jardin +
-            '&soussol=' + soussol).load();*/
-}
-
-
-function initLogementsTableData() {
-
-    $.ajax({
-        type: "GET",
-        url: '/api/logementApi?' +
+    logementsTable.ajax.url('/api/logementApi?' +
         'action=search' +
         '&type=' + myType +
         '&region=' + region +
@@ -271,30 +257,12 @@ function initLogementsTableData() {
         '&meuble=' + meuble +
         '&garage=' + garage +
         '&jardin=' + jardin +
-        '&soussol=' + soussol,
-        success: function (result) {
-
-
-            var jsonData = JSON.parse(result);
-            for (var i = 0; i < jsonData.length; i++) {
-
-                logementsTable.row.add([
-                    jsonData[i].id,
-                    jsonData[i].titre,
-                    jsonData[i].price,
-                    jsonData[i].superficie,
-                    jsonData[i].adresse,
-                    jsonData[i].description
-                ]).draw(false);
-            }
-        }
-    });
+        '&soussol=' + soussol).load();
 }
-
 
 var table = $('#clientsTab').DataTable({
     'paging': true,
-    'lengthChange': true,
+    'lengthChange': false,
     'searching': true,
     //'ordering': true,
     'info': true,
@@ -305,21 +273,21 @@ var table = $('#clientsTab').DataTable({
         style: 'single'
     }
     ,
-    //  "processing": true,
-    //  "serverSide": true,
-    /* ajax: {
-         url: '/api/clientApi?action=getAllClients',
-         dataSrc: ''
-     },
-     columns: [
-         {"data": "id"},
-         {"data": "nom"},
-         {"data": "prenom"},
-         {"data": "telephone"},
-         {"data": "dateDeNaissance"},
-         {"data": "isBanned"}
-     ],*/
-    dom: 'Bfrtip',
+    "processing": true,
+    "serverSide": true,
+    ajax: {
+        url: '/api/clientApi?action=getAllClients',
+        dataSrc: ''
+    },
+    columns: [
+        {"data": "id"},
+        {"data": "nom"},
+        {"data": "prenom"},
+        {"data": "telephone"},
+        {"data": "dateDeNaissance"},
+        {"data": "isBanned"}
+    ],
+    // dom: 'Bfrtip',
     buttons: [
         {
             text: 'Ajouter client',
@@ -331,77 +299,21 @@ var table = $('#clientsTab').DataTable({
 });
 table.on('select', function (e, dt, type, indexes) {
     var rowData = table.rows(indexes).data().toArray();
-    if (rowData[0][5] == "banned") {
-        alert('attention ce client est banni');
-    } else {
-        console.log(rowData);
-        $('#clientId').val(rowData[0][0]);
-        document.getElementById("clientIdDetails").innerHTML = rowData[0][0];
-        document.getElementById("numeroTelephoneClient").innerHTML = rowData[0][4];
-        document.getElementById("nomCompletClient").innerHTML = rowData[0][1] + " " + rowData[0][2];
-        document.getElementById("dateNaissClient").innerHTML = rowData[0][3];
-        initCalendar($('#selectedlogementId').val());
-
-
-    }
+    $('#clientId').val(rowData[0]['id']);
+    document.getElementById("clientIdDetails").innerHTML = rowData[0]['id'];
+    document.getElementById("numeroTelephoneClient").innerHTML = rowData[0]['telephone'];
+    document.getElementById("nomCompletClient").innerHTML = rowData[0]['nom'] + " " + rowData[0]['prenom'];
+    document.getElementById("dateNaissClient").innerHTML = rowData[0]['dateDeNaissance'];
 });
 loadClients();
 
 function loadClients() {
 
     //table.ajax.url('/api/clientApi?action=getAllClients').load();
-    $.ajax({
-        type: "GET",
-        url: '/api/clientApi?action=getAllClients',
-        success: function (result) {
 
-            table.clear();
-            var jsonData = JSON.parse(result);
-            for (var i = 0; i < jsonData.length; i++) {
-
-                table.row.add([
-                    jsonData[i].id,
-                    jsonData[i].nom,
-                    jsonData[i].prenom,
-                    jsonData[i].telephone,
-                    jsonData[i].dateDeNaissance,
-                    jsonData[i].isBanned
-                ]).draw(false);
-            }
-        }
-    });
 
 }
 
-function ajouterClient() {
-    $.ajax({
-        type: "POST",
-        url: "/AjoutServlet?ajouter=client",
-        data: {
-            prenomInput: $('#prenomInput').val(),
-            nomInput: $('#nomInput').val(),
-            emailInput: $('#emailInput').val(),
-            inputTel: $('#inputTel').val(),
-            usernameInput: $('#usernameInput').val(),
-            passwordInput: $('#passwordInput').val(),
-            adresseInput: $('#adresseInput').val(),
-            dateNaissance: $('#dateNaissance').val()
-        },
-        success: function (result) {
-            loadClients();
-            /*   table.row.add([
-                   result,
-                   $('#nomInput').val(),
-                   $('#prenomInput').val(),
-                   $('#dateNaissance').val(),
-                   $('#inputTel').val(),
-                   "not banned"
-               ]).draw(false);*/
-
-            $('#ajouterClientModal').modal('hide');
-        }
-    });
-}
 
 function fillDetails() {
     document.getElementById("regionDetails").innerHTML = $('#maregion').children("option").filter(":selected").text();
@@ -438,18 +350,13 @@ function fillDetails() {
 function fillOtherInputs(startDate, endDate) {
 
 
-    if ($('#selectedlogementId').val() == "" || $('#selectedlogementId').val() == undefined) {
-        alert("aucun logement n'est selectionné!");
-        return;
-    }
-
-
     $.ajax({
         url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
         success: function (result) {
             var agent = JSON.parse(result);
 
             console.log(result);
+
 
             $('#idAgent').val(agent.id);
 
@@ -470,7 +377,6 @@ function fillOtherInputs(startDate, endDate) {
 
 var visites;
 
-var today = moment().day();
 
 var calendar = $('#calendar').fullCalendar({
 
@@ -491,7 +397,6 @@ var calendar = $('#calendar').fullCalendar({
         hiddenDays: [6, 7], // hide Tuesdays and Thursdays
         selectable: true,
         unselectAuto: false,
-    firstDay: today,
         businessHours: {
             // days of week. an array of zero-based day of week integers (0=Sunday)
             dow: [0, 1, 2, 3, 4, 5], // Monday - Thursday
@@ -528,16 +433,14 @@ var calendar = $('#calendar').fullCalendar({
 ;
 
 function initCalendar(idLogement) {
-
     var events = {
-        url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement + "&clientId=" + $('#clientId').val(), // use the `url` property
+        url: '/api/visiteApi?action=getTakenDates&logementId=' + idLogement, // use the `url` property
         color: 'red',    // an option!
         textColor: 'black'  // an option!
     };
     calendar.fullCalendar('removeEventSources');
     calendar.fullCalendar('addEventSource', events);
     calendar.fullCalendar('refetchEvents');
-
 }
 
 function confirmerVisite() {

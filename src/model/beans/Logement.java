@@ -15,6 +15,7 @@ public class Logement implements Serializable {
     private boolean meubles;
     private Location location;
     private boolean isGele;
+    private double superficie, prix;
 
     public Logement() {
     }
@@ -77,7 +78,6 @@ public class Logement implements Serializable {
         this.avecSousSol = avecSousSol;
     }
 
-    private double superficie, prix;
 
     public double getPrix() {
         return prix / 1000000;

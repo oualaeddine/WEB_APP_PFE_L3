@@ -1,12 +1,11 @@
 
 <%@ page import="control.servlets.MyServlet" %>
-<%@ page import="model.beans.humans.Employe" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
-<%@ page import="model.beans.views.MyView" %>
-<%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Localite" %>
+<%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
@@ -325,41 +324,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Berrehal</td>
-                                                    <td>Ouala Eddine</td>
-                                                    <td>200m²</td>
-                                                    <td>7 000 000.00 da</td>
-                                                </tr>
+
                                                 </tbody>
                                                 <!--  <tfoot>
                                                   <tr>
@@ -584,10 +549,10 @@
 </body>
 
 <!--   Core JS Files   -->
-<script src="programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-<script src="programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="./programmerVisite/assets/js/bootstrap-slider.js" type="text/javascript"></script>
 
 <!--  Plugin for the Wizard -->
 <!--<script src="programmerVisite/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>-->
@@ -605,38 +570,13 @@
 <script src="./programmerVisite/assets/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="./programmerVisite/assets/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
-<script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script><script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
+<script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
+<script src="./programmerVisite/assets/js/datatable-buttons.js"></script>
 
 <script src="./programmerVisite/assets/js/main.js"></script>
 
-<script>
-    function ajouterClient(){
 
 
-        $.ajax({
-            type: "POST",
-            url: "/AjoutServlet?ajouter=client",
-            data: {
-                prenomInput:$('#prenomInput').val(),
-                nomInput: $('#nomInput').val(),
-                emailInput: $('#emailInput').val(),
-                inputTel: $('#inputTel').val() ,
-                usernameInput: $('#usernameInput').val(),
-                passwordInput: $('#passwordInput').val(),
-                adresseInput: $('#adresseInput').val(),
-                dateNaissance: $('#dateNaissance').val()
-            },
-
-            success: function (result) {
-                loadClients();
-                $('#ajouterClientModal').modal('hide');
-            }
-        });    }
-
-
-
-
-</script>
 
 </html>
 

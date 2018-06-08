@@ -56,6 +56,7 @@ public class VisitesDao extends DAO {
         }
         return visites;
     }
+
     public LinkedList<RDV> getFreeRdvForNext2months(int regionId) {
         LinkedList<RDV> libres = new LinkedList<>();
         ResultSet result;
@@ -135,6 +136,7 @@ public class VisitesDao extends DAO {
         }
         return null;
     }
+
     public Employe getFreeAgentsForVisite(RDV rdv, int regionId) {
 
         System.out.println("rdv = [" + rdv + "], regionId = [" + regionId + "]");
@@ -400,9 +402,9 @@ public class VisitesDao extends DAO {
     public boolean add(Visite visite) {
         try {
             visiteStatement.execute("INSERT INTO visite(logementId, agentId, clientId, etat,horraire,timestamp) VALUES (" +
-                            visite.getLogement().getId() + "," +
-                            visite.getAgent().getId() + "," +
-                            visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire()+",'" +visite.getTimestamp()+"'"+
+                    visite.getLogement().getId() + "," +
+                    visite.getAgent().getId() + "," +
+                    visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire() + ",'" + visite.getTimestamp() + "'" +
 
                     ");");
             Notification notification = new Notification();
@@ -644,6 +646,7 @@ public class VisitesDao extends DAO {
         }
         return visites;
     }
+
     public LinkedList<Visite> getAnnulee() {
         ResultSet result;
         LinkedList<Visite> visites = new LinkedList<>();
@@ -934,5 +937,19 @@ public class VisitesDao extends DAO {
             e.printStackTrace();
         }
         return visites;
+    }
+
+    public LinkedList<RDV> getTakenRDVForClients(int clientId) {
+        LinkedList<Visite> rdvs = getProgrammeesForClient(clientId);
+        LinkedList<RDV> result = new LinkedList<>();
+        for (Visite visite : rdvs) {
+            if (visite.getEtatVisite() == EtatVisite.PROGRAMMEE) {
+                RDV rdv = new RDV();
+                rdv.setHorraire(visite.getHorraire());
+                rdv.setDate(visite.getTimestamp());
+                result.add(rdv);
+            }
+        }
+        return result;
     }
 }

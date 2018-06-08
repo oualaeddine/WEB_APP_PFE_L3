@@ -44,7 +44,10 @@ public class VisiteApi extends API {
             switch (action) {
                 case "getTakenDates": {
                     int logementId = Integer.parseInt(request.getParameter("logementId"));
-                    LinkedList<RDV> rdvs = getTakenDatesForLogement(logementId);
+                    int clientId = Integer.parseInt(request.getParameter("clientId"));
+
+
+                    LinkedList<RDV> rdvs = getTakenDates(logementId, clientId);
                     JsonArray rdvsToReturn = new JsonArray();
                     for (RDV rdv : rdvs) {
                         JsonObject jsonObject = new JsonObject();
@@ -106,6 +109,21 @@ public class VisiteApi extends API {
             }
     }
 
+    private LinkedList<RDV> getTakenDates(int logementId, int clientId) {
+        LinkedList<RDV> takenRdv;
+        takenRdv = getTakenDatesForClient(clientId);
+        LinkedList<RDV> l2 = getTakenDatesForLogement(logementId);
+        for (RDV newRdv : l2) {
+            if (!takenRdv.contains(newRdv))
+                takenRdv.add(newRdv);
+        }
+        return takenRdv;
+    }
+
+    private LinkedList<RDV> getTakenDatesForClient(int clientId) {
+        return new VisitesDao().getTakenRDVForClients(clientId);
+    }
+
     public static java.sql.Date getDateFromString(String date) {
         String newdate = date.substring(0, 10);
         System.out.println("the fucking date is" + newdate);
@@ -162,7 +180,6 @@ public class VisiteApi extends API {
             RDV newRdv = new RDV();
             newRdv.setDate(visite.getTimestamp());
             newRdv.setHorraire(visite.getHorraire());
-            //System.out.println("getTakenDatesForLogement " + newRdv.toString());
             takenRdv.add(newRdv);
         }
 

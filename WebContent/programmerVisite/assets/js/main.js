@@ -1,5 +1,3 @@
-
-
 // Paper Bootstrap Wizard Functions
 
 searchVisible = 0;
@@ -427,6 +425,12 @@ function fillDetails() {
 }
 
 function fillOtherInputs(startDate, endDate) {
+
+
+    if ($('#selectedlogementId').val() == "" || $('#selectedlogementId').val() == undefined) {
+        alert("aucun logement n'est selectionné!");
+        return;
+    }
     $.ajax({
         url: "/api/visiteApi?action=getFreeAgentForDate&date=" + startDate.format() + "&region=" + $('#maregion option:selected').val(),
         success: function (result) {

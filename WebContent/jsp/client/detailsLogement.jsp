@@ -1,9 +1,9 @@
 <%--suppress ALL --%>
-<%@ page import="model.db.ContactInfosDAO" %>
+<%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.Logement" %>
+<%@ page import="model.db.ContactInfosDAO" %>
 <%@ page import="model.db.daos.LogementDAO" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="control.servlets.MyServlet" %>
 <%@page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -320,13 +320,14 @@
                                         String href = "";
                                         boolean isLoggedin = !(request.getSession().getAttribute(MyServlet.LOGGED_IN_USER) == null);
                                         if (isLoggedin) {
-                                            href = "<a href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID) + "\">ici</a>";
+                                            href = "" +
+                                                    "<h2><span class=\"label label-warning\"><a href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID) + "\">VISITEZ CE LOGEMENT!</a></span></h2>";
                                         } else {
-                                            href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\">ici";
+                                            href = "<span class=\"label label-warning\"><a data-toggle=\"modal\" data-target=\"#loginRequiredModal\">ici</a></span>";
                                         }
                                     %>
                                     <p>Vous pouvez programmer une visite de ce logement en nous contactant ou en
-                                        cliquant <a <%out.print(href);%> </a> </p>
+                                        cliquant</p> <%out.print(href);%>
                                 </div>
 
                             </div>

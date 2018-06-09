@@ -93,5 +93,6 @@
     </orderEntry>
     <orderEntry type="library" name="twilio-7.21.1-jar-with-dependencies" level="project" />
     <orderEntry type="library" name="com.mysql.jdbc_5.1.5" level="project" />
+    <orderEntry type="library" name="jspdf" level="application" />
   </component>
 </module>

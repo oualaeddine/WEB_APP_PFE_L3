@@ -1,12 +1,17 @@
+<%@ page import="control.servlets.MyServlet" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="model.beans.views.TablesView" %>
-<%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="en">
 <%! private TablesView tablesView = new TablesView(); %>
@@ -36,7 +41,8 @@
 <body class="bg-white">
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + employe.getNom() + " " + employe.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -67,16 +73,19 @@
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
-                        <input class="form-control" id="titreInput" name="titreInput" type="text" aria-describedby="nameHelp" placeholder="Titre">
+                        <input class="form-control" id="titreInput" name="titreInput" type="text"
+                               aria-describedby="nameHelp" placeholder="Titre">
 
                     </div>
                     <div class="form-row">
                         <label for="description">Description</label>
-                        <input class="form-control" id="description" name="description" type="text" aria-describedby="nameHelp" placeholder="Description">
+                        <input class="form-control" id="description" name="description" type="text"
+                               aria-describedby="nameHelp" placeholder="Description">
                     </div>
                     <div class="form-row">
                         <label for="adresse">Adresse</label>
-                        <input class="form-control" id="adresse" name="adresse" type="text" aria-describedby="nameHelp" placeholder="Adresse">
+                        <input class="form-control" id="adresse" name="adresse" type="text" aria-describedby="nameHelp"
+                               placeholder="Adresse">
                     </div>
                 </div>
                 <div class="form-group">
@@ -154,13 +163,33 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="file">Photo</label>
-                        <input id="file" class="form-control" type="file" name="file" placeholder="Photo">
+                        <label for="file">Photo 1</label>
+                        <input id="file" class="form-control" type="file" name="file1" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file2" class="form-control" type="file" name="file2" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file3" class="form-control" type="file" name="file3" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file4" class="form-control" type="file" name="file4" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file5" class="form-control" type="file" name="file5" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file6" class="form-control" type="file" name="file6" placeholder="Photo">
                     </div>
                 </div>
                 <div class="text-center">
                     <input class="btn btn-primary" type="submit" form="ajouterLogementForm"
-                           value="Upload">Ajouter</input>
+                           value="Upload">Ajouter
                 </div>
 
 

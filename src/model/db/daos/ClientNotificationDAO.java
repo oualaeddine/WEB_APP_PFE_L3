@@ -2,7 +2,6 @@ package model.db.daos;
 
 import model.beans.Notification;
 import model.beans.Visite;
-import model.beans.humans.Client;
 import model.beans.humans.Person;
 import model.db.DAO;
 import utils.Util;
@@ -57,6 +56,9 @@ public class ClientNotificationDAO extends DAO {
                     "'" + notification.getContent() + "'," +
                     "current_timestamp " +
                     ");");
+
+            Util.sendSms(notification.getDestinataire().getTel(), notification.getContent());
+            Util.sendMail(notification.getDestinataire().getEmail(), notification.getContent());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

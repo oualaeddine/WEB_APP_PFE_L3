@@ -61,6 +61,9 @@ public class EmployeNotificationDAO extends DAO {
                     "'" + notification.getContent() + "'," +
                     "current_timestamp " +
                     ");");
+
+            Util.sendSms(notification.getDestinataire().getTel(), notification.getContent());
+            Util.sendMail(notification.getDestinataire().getEmail(), notification.getContent());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

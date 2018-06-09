@@ -5,7 +5,6 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
-import utils.GoogleMail;
 import utils.Util;
 
 import java.sql.Date;
@@ -1008,4 +1007,8 @@ public class VisitesDao extends DAO {
     }
 
 
+    public boolean add(Logement logement, Client client, RDV rdv) {
+        // TODO: 6/9/2018
+        return false;
+    }
 }

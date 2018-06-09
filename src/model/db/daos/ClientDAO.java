@@ -439,4 +439,9 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
+
+    public Client getByPhone(String callerNumber) {
+        // TODO: 6/9/2018
+        return null;
+    }
 }

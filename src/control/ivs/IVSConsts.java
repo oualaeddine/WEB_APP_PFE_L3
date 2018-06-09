@@ -4,6 +4,8 @@ import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Play;
 
 public class IVSConsts {
+
+
     public static final String FOURCHETTE_PRIX_MENU_SERVLET_URL = "/ivs_FOURCHETTE_PRIX",
             REGION_MENU_SERVLET_URL = "/ivs_REGION_MENU",
             REGION_MENU_HANDELER_SERVLET_URL = "/ivs_REGION_MENU_HANDELER",

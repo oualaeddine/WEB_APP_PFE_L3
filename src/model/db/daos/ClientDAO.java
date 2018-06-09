@@ -25,9 +25,10 @@ public class ClientDAO extends DAO {
         }
         return false;
     }
-    public boolean changePassword(int id, String pwd){
+
+    public boolean changePassword(int id, String pwd) {
         try {
-            clientStatement.execute("UPDATE client SET password='"+pwd+"' WHERE id = "+id+";");
+            clientStatement.execute("UPDATE client SET password='" + pwd + "' WHERE id = " + id + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +36,7 @@ public class ClientDAO extends DAO {
         return false;
     }
 
-    public Client getByUsername(String username){
+    public Client getByUsername(String username) {
         ResultSet result;
         try {
             result = clientStatement.executeQuery("SELECT * FROM client WHERE username='" + username + "';");
@@ -49,7 +50,7 @@ public class ClientDAO extends DAO {
                 client.setAdresse(result.getString("adresse"));
                 client.setTel(result.getString("tel"));
                 client.setEmail(result.getString("email"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
                 client.setId(result.getInt("id"));
                 return client;
             }
@@ -59,11 +60,11 @@ public class ClientDAO extends DAO {
         return null;
     }
 
-    public boolean updatePassword(String pwd,int id){
+    public boolean updatePassword(String pwd, int id) {
         try {
-            clientStatement.execute("UPDATE client SET password= '"+pwd+"' WHERE id="+id);
+            clientStatement.execute("UPDATE client SET password= '" + pwd + "' WHERE id=" + id);
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -85,7 +86,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
 
                 return client;
             }
@@ -99,7 +100,7 @@ public class ClientDAO extends DAO {
     public Object getById(int id) {
         ResultSet result;
         try {
-            result = clientStatement.executeQuery("SELECT * FROM client WHERE id=" + id +";");
+            result = clientStatement.executeQuery("SELECT * FROM client WHERE id=" + id + ";");
             if (result.next()) {
                 Client client = new Client();
                 client.setId(result.getInt("id"));
@@ -111,7 +112,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
 
                 return client;
             }
@@ -121,16 +122,16 @@ public class ClientDAO extends DAO {
         return null;
     }
 
-    public boolean banById(int id){
+    public boolean banById(int id) {
         try {
             clientStatement.execute("UPDATE client SET isBanned = 1" +
-                    " WHERE id="+id+" ;");
+                    " WHERE id=" + id + " ;");
             LinkedList<Visite> visites = new VisitesDao().getProgrammeesForClient(id);
             for (Visite visite : visites) {
                 new VisitesDao().annulerVisite(visite);
             }
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -139,9 +140,9 @@ public class ClientDAO extends DAO {
     public boolean retablirById(int id) {
         try {
             clientStatement.execute("UPDATE client SET isBanned = 0" +
-                    " WHERE id="+id+" ;");
+                    " WHERE id=" + id + " ;");
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -178,7 +179,7 @@ public class ClientDAO extends DAO {
             clientStatement.execute("INSERT INTO client(`nom`, `prenom`, `dateNaiss`, `adresse`, `tel`, `email`, `username`, `password`, `dateAdded`, `isBanned`) VALUES (" +
                     "'" + client.getNom() + "'," +
                     "'" + client.getPrenom() + "'," +
-                    "'"+client.getDateNaissance()+"'" + "," +
+                    "'" + client.getDateNaissance() + "'" + "," +
                     "'" + client.getAdresse() + "'," +
                     "'" + client.getTel() + "'," +
                     "'" + client.getEmail() + "'," +
@@ -226,7 +227,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -265,7 +266,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -274,7 +275,7 @@ public class ClientDAO extends DAO {
         return list;
     }
 
-    public boolean isBanned(Client client){
+    public boolean isBanned(Client client) {
         ResultSet result;
         try {
             result = clientStatement.executeQuery("SELECT isBanned FROM client WHERE username='" + client.getUsername() + "';");
@@ -303,7 +304,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -328,7 +329,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
-                client.setBanned(result.getInt("isBanned")==1);
+                client.setBanned(result.getInt("isBanned") == 1);
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -433,5 +434,10 @@ public class ClientDAO extends DAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Client getByPhone(String callerNumber) {
+        // TODO: 6/9/2018
+        return null;
     }
 }

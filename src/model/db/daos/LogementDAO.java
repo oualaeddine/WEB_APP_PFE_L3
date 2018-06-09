@@ -1112,4 +1112,8 @@ public class LogementDAO extends DAO {
     }
 
 
+    public Logement getLogement(String fourchettePrix, String region, String type, String superficie) {
+// TODO: 6/9/2018
+        return null;
+    }
 }

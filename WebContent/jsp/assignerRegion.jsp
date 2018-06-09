@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
@@ -9,7 +10,6 @@
 <%@ page import="model.beans.Localite" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);

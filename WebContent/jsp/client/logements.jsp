@@ -98,7 +98,7 @@
                                 "                                    <h5><a href=\"property-1.html\"> " + logement.getTitre() + " </a></h5>\n" +
                                 "                                    <div class=\"dot-hr\"></div>\n" +
                                 "                                    <span class=\"pull-left\"><b> Superficie :</b> " + logement.getSuperficie() + "</span>\n" +
-                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() + "m DA</span>\n" +
+                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() / 1000000 + "m DA</span>\n" +
                                 "                                    <p style=\"display: none;\">" + logement.getDescription() + "</p>\n" +
                                 "                                    <div class=\"property-icon\">\n" +
                                 "                                        <img src=\"../../assets_client/img/icon/bed.png\">" + logement.getNbrPieces() + "|\n" +

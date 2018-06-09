@@ -1,16 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.beans.Visite" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.db.daos.VisitesDao" %>
-<%@ page import="model.beans.humans.Agent" %>
-<%@ page import="model.beans.humans.Client" %>
-<%@ page import="model.db.daos.ClientDAO" %><%--
-  Created by IntelliJ IDEA.
-  User: hp
-  Date: 23/02/2018
-  Time: 22:32
-  To change this template use File | Settings | File Templates.
+Created by IntelliJ IDEA.
+User: hp
+Date: 23/02/2018
+Time: 22:32
+To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -183,7 +180,7 @@
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
-        <%Agent agent = (Agent) request.getSession().getAttribute("user");%>
+                    <%Agent agent = (Agent) request.getSession().getAttribute("user");%>
                     <label for="agent">Agent responsable de la visite:  </label>
                     <p class="form-control" id="agent"><%out.print(agent.getNom()+" "+agent.getPrenom());%></p>
                 </div>

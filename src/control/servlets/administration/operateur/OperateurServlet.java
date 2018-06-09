@@ -1,6 +1,8 @@
 package control.servlets.administration.operateur;
 
 import control.servlets.MyServlet;
+import control.system.managers.OperateursManager;
+import model.beans.humans.Employe;
 import model.enums.UserType;
 
 import javax.servlet.ServletException;
@@ -18,7 +20,24 @@ public class OperateurServlet extends MyServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        if (isLoggedIn(request)) {
+            String what = request.getParameter("what");
+            if (what == null) {
+                this.getServletContext().getRequestDispatcher("/jsp/operateur.jsp").forward(request, response);
+            } else {
+                switch (what) {
+                    case "confirmerAppel":
+                        OperateursManager operateursManager = new OperateursManager((Employe) request.getSession().getAttribute(LOGGED_IN_USER));
+                        if (operateursManager.confirmerAppel(request)) {
+                            System.out.println("Confirmation appel: true");
+                            redirectToDashboard(request, response, ACTION_SUCCESS);
+                        } else {
+                            System.out.println("Confirmation appel: false");
+                            redirectToDashboard(request, response, ACTION_ERROR);
+                        }
+                }
+            }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

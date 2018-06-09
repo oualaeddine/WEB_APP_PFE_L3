@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.humans.Employe" %>
@@ -15,7 +16,6 @@
   Time: 10:20 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
@@ -51,7 +51,8 @@
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="./programmerVisite/assets/fullcalendar/dist/fullcalendar.print.min.css" media="print">
     <link rel="stylesheet" href="./css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="./css/dataTable.responsive.css">
+    <link rel="stylesheet" href="./programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="./programmerVisite/assets/datatables-select/select.dataTables.min.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -586,6 +587,30 @@
         </div>
     </div>
 
+    <%--Details modal--%>
+    <div id="detailsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/AjoutServlet?ajouter=annulationVente" id="details">
+
+                        <p id="test" name="test" type="text"></p>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info btn-lg" type="submit" form="annulerVenteForm">Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="./vendor/jquery/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -603,7 +628,8 @@
     <script src="./vendor/datatables/buttons.html5.min.js"></script>
     <script src="./vendor/datatables/buttons.print.min.js"></script>
     <script src="./js/bootstrapValidator.min.js"></script>
-    <script src="./js/dataTables.responsaive.js"></script>
+    <script src="./programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
+    <script src="./programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
 
 
     <!-- Custom scripts for all pages-->
@@ -619,17 +645,8 @@
 
 
         var table = $('#dataTable').DataTable({
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal({
-                        header: function (row) {
-                            var data = row.data();
-                            return 'Details for ' + data[0] + ' ' + data[1];
-                        }
-                    }),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll()
-                }
-            },
+            processing: true,
+            select: true,
             dom: 'Bfrtip',
             buttons: [
                 'copy',
@@ -646,17 +663,29 @@
             ]
 
         });
+        table.on('select', function (e, dt, type, indexes) {
+            var rowData = table.rows(indexes).data().toArray();
+            $('#selectedRowId').val(rowData[0][0]);
+            var visiteiD = rowData[0][0];
+            $("#test").val(visiteiD);
+            $("#detailsModal").modal({
+                show: true
+            })
+        });
 
 
         function getConfirmedAppel(idTaaLAppelConfirme) {
             document.getElementById("appelConfirme").value = idTaaLAppelConfirme;
         }
+
         function getCanceledVente(idTaaLaventeAnnulee) {
             document.getElementById("venteAnnulee").value = idTaaLaventeAnnulee;
         }
+
         function getBannedClientId(idTaaLBannedClient) {
             document.getElementById("clientBanni").value = idTaaLBannedClient;
         }
+
         function getVisiteTaaLrapport(idTaaLaVisite) {
             document.getElementById("visiteRapport").value = idTaaLaVisite;
 

@@ -100,9 +100,11 @@
                 + "     </div>" +
                 "     <!-- Collect the nav links, forms, and other content for toggling -->" +
                 "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
-                "         <div class=\"button navbar-right\">"
-                + "             <button class=\"navbar-btn nav-button wow bounceInRight login\" onclick=\" window.open('/loginsignup')\""
-                + "                     data-wow-delay=\"0.4s\">Se connecter/S'enregistrer"
+
+                "         <div class=\"button navbar-right\">" +
+                "       <button class=\"navbar-btn nav-button wow fadeInRight animated\" onclick=\"window.open('')\" data-wow-delay=\"0.5s\" style=\"visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;\">Programmer une visite</button>"
+                + "             <button class=\"navbar-btn nav-button wow bounceInRight login animated\" onclick=\" window.open('/loginsignup')\" data-wow-delay=\"0.4s\" style=\"visibility: visible; animation-delay:0.4s; animation-name:bounceInRight;\">"
+                + "                     Se connecter/S'enregistrer"
                 + "             </button>"
                 + ""
                 + "         </div>"
@@ -125,9 +127,11 @@
                 + "                     <li>"
                 + "                         <a href=\"/home?what=stats\">Statistiques</a>"
                 + "                     </li>"
+                + "                     <li>"
+                + "                         <a href=\"/home?what=contacter\">Contactez nous</a>"
+                + "                     </li>"
                 + "                 </ul>"
                 + "             </li>"
-                + "             <li class=\"wow fadeInDown\" data-wow-delay=\"0.4s\"><a href=\"/home?what=contacter\">Contactez nous</a></li>"
                 + "         </ul>"
                 + "     </div>"
                 + "     <!-- /.navbar-collapse -->"
@@ -153,7 +157,9 @@
                 + "         <a class=\"navbar-brand\" href=\"/home\"><img src=\"../../assets_client/img/logo.png\" alt=\"\"></a>"
                 + "     </div>" +
                 "     <!-- Collect the nav links, forms, and other content for toggling -->" +
-                "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">"
+                "     <div class=\"collapse navbar-collapse yamm\" id=\"navigation\">" +
+                "         <div class=\"button navbar-right\">" +
+                "       <button class=\"navbar-btn nav-button wow fadeInRight animated\" onclick=\"window.open('')\" data-wow-delay=\"0.5s\" style=\"visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;\">Programmer une visite</button></div>"
                 + "         <ul class=\"main-nav nav navbar-nav navbar-right\">"
                 + "             <li class=\"wow fadeInDown \" data-wow-delay=\"0.1s\">"
                 + "                 <a href=\"/home\" class=\"" + accueil + "\">Accueil</a>"

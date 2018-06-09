@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="control.servlets.MyServlet" %>
@@ -182,6 +183,7 @@
     .has-error .help-block {
         color: red;
     }
+
     small.help-block {
         color: #F44336 !important;
     }

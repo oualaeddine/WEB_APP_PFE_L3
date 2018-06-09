@@ -889,12 +889,16 @@ public class Util {
                 return "Clients";
             case MESSAGES_FOR_ADMIN:
                 return "Messages";
+            case MODIFIER_VISITE_CLIENT:
+                return "Visites prévues";
         }
         return null;
     }
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "MODIFIER_VISITE_CLIENT":
+                return MODIFIER_VISITE_CLIENT;
             case "CONFIRMER_APPEL":
                 return CONFIRMER_APPEL;
             case "APPELS_NON_CONFIRMES":

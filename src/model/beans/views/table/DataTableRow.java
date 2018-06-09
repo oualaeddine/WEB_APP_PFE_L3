@@ -110,7 +110,6 @@ public class DataTableRow {
                 "<td>" + appel.getId() + "</td>" +
                 "<td>" + appel.getNumeroTel() + "</td>" +
                 "<td>" + appel.getVisite().getLogement().getTitre() + "</td>" +
-                "<td>" + appel.getVisite().getAgent().getFullName() + "</td>" +
                 "<td>" + appel.getVisite().getTimestamp() + " | " + Util.getStringFromHorraire(appel.getVisite().getHorraire()) + "</td>" +
                 "<td>" + isConfirmed + "</td>" +
                 "<td><button type=\"button\"  onclick=\"getConfirmedAppel(" + appel.getId() + ")\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#confirmerAppelModal\" value=\"" + appel.getId() + "\">Confirmer</button></td>" +
@@ -124,7 +123,6 @@ public class DataTableRow {
                 "<td>" + appel.getId() + "</td>" +
                 "<td>" + appel.getNumeroTel() + "</td>" +
                 "<td>" + appel.getVisite().getLogement().getTitre() + "</td>" +
-                "<td>" + appel.getVisite().getAgent().getFullName() + "</td>" +
                 "<td>" + appel.getVisite().getTimestamp() + " | " + Util.getStringFromHorraire(appel.getVisite().getHorraire()) + "</td>" +
                 "<td>" + isConfirmed + "</td>" +
                 "</tr>";

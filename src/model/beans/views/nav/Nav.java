@@ -476,8 +476,6 @@ public class Nav {
         NavElement listeClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.LISTE_CLIENTS, urlBase + "?what=listeClients", "fa fa-list");
         clientsSubNavElement.add(listeClientNavElement);
 
-        NavElement mesClientsNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS_FOR_USER), MyConsts.CLIENTS_MES_CLIENTS, urlBase + "?what=myClients", "fa fa-fw fa-gratipay");
-        clientsSubNavElement.add(mesClientsNavElement);
 
         NavElement signalerClientNavElement = new NavElement(isPage(currentPage, TablePage.CLIENTS), MyConsts.EMPLOYE_SIGNALER_CLIENT, urlBase + "?what=signalerClient", "fa fa-fw fa-ban");
         clientsSubNavElement.add(signalerClientNavElement);

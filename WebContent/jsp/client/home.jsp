@@ -278,8 +278,7 @@
                     for (Logement logement : logements) {
                         String button = "";
                         if (isLoggedIn) {
-                            // TODO: 6/8/2018 ay ga3da tdir f erreur la ligne hedi choufi m3aha
-                            int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+                            int client = Integer.parseInt(String.valueOf(request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID)));
                             button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
                             href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
                         } else {
@@ -296,7 +295,7 @@
                                 "                                    <h5><a href=\"property-1.html\"> " + logement.getTitre() + " </a></h5>\n" +
                                 "                                    <div class=\"dot-hr\"></div>\n" +
                                 "                                    <span class=\"pull-left\"><b> Superficie :</b> " + logement.getSuperficie() + "</span>\n" +
-                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() + "m DA</span>\n" +
+                                "                                    <span class=\"proerty-price pull-right\"> " + logement.getPrix() / 1000000 + "m DA</span>\n" +
                                 "                                    <p style=\"display: none;\">" + logement.getDescription() + "</p>\n" +
                                 "                                    <div class=\"property-icon\">\n" +
                                 "                                        <img src=\"../../assets_client/img/icon/bed.png\">" + logement.getNbrPieces() + "|\n" +

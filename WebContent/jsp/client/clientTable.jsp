@@ -58,6 +58,9 @@
     <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
     <link href="../vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../../programmerVisite/assets/datatables-select/select.dataTables.min.css">
+    <link href="../../programmerVisite/assets/datatables-responsive/responsive.dataTables.min.css">
+
     <title><%out.print(new ContactInfosDAO().getNomSociete());%> | <%out.print(title);%></title>
 </head>
 <body>
@@ -85,8 +88,57 @@
             </tbody>
         </table>
     </div>
+    <%
+        if (currentPage.equals("CLIENT_MY_VISITS")) {
+            out.print("<div class=\"text-center\">\n" +
+                    "        <a href=\"/DashboardServlet?what=modifierVisite\"> <button class=\"btn btn-default\" >Modifier une visite</button></a>\n" +
+                    "    </div>");
+        }
+    %>
+
 </div>
 <div id="footer_include"></div>
+
+<%--Annuler/reporter visite--%>
+<div id="modifierVisiteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modifier visite</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="get" action="/modifierVisiteServlet" id="modifierVisiteForm">
+
+                    <input id="visiteModifiee" name="nouvelleDate" type="hidden">
+                    <div class="form-group">
+                        <label for="what">Veuillez séléctionner le type de la modification</label>
+                        <select name="what" id="what" class="form-control">
+                            <option value="0" disabled="" selected="">- action -</option>
+                            <option value="annuler"> cancel</option>
+                            <option value="reporter"> reporter</option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="clientId" id="clientId">
+                    <input type="hidden" name="visiteId" id="visiteId">
+                    <input type="hidden" name="regionId" id="regionId">
+                    <input type="hidden" name="newDate" id="newDate">
+                    <input type="hidden" name="logementId" id="logementId">
+
+                    <%--<button class="btn btn-info btn-lg" type="button" onclick="modifierVisite()">Valider</button>--%>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="modifierVisiteForm">Valider</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 <script>
     $(function () {
@@ -122,13 +174,15 @@
 <script src="../../vendor/datatables/buttons.html5.min.js"></script>
 <script src="../../vendor/datatables/buttons.print.min.js"></script>
 <script src="../../js/bootstrapValidator.min.js"></script>
+<script src="../../programmerVisite/assets/datatables-responsive/dataTables.responsive.min.js"></script>
+<script src="../../programmerVisite/assets/datatables-select/dataTables.select.min.js"></script>
 
 <script>
     $(function () {
         $("#include_html").load("../../jsp/client/entete.jsp");
     });
 
-    var table = $('#dataTable').DataTable({
+    $("#dataTable").DataTable({
         dom: 'Bfrtip',
         buttons: [
             'copy',
@@ -141,8 +195,38 @@
             {
                 extend: 'print',
                 messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'
+            },
+            {
+                text: 'Annuler visite'
             }
         ]
     });
+
+    <%--var table = $('#dataTable').DataTable({--%>
+    <%--dom: 'Bfrtip',--%>
+    <%--buttons: [--%>
+    <%--'copy',--%>
+    <%--'csv',--%>
+    <%--'excel',--%>
+    <%--{--%>
+    <%--extend: 'pdfHtml5',--%>
+    <%--messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'--%>
+    <%--},--%>
+    <%--{--%>
+    <%--extend: 'print',--%>
+    <%--messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'--%>
+    <%--}--%>
+    <%--]--%>
+    <%--});--%>
+
+
+    function getVisiteModifieeId(idtaalavisite, idtaalogement, idtaalaregion, idtaalclient) {
+
+        document.getElementById("visiteModifiee").value = idtaalavisite;
+        document.getElementById("visiteId").value = idtaalavisite;
+        document.getElementById("clientId").value = idtaalclient;
+        document.getElementById("logementId").value = idtaalogement;
+        document.getElementById("regionId").value = idtaalaregion;
+    }
 </script>
 </html>

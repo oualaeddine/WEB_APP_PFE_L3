@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.humans.Employe" %>
@@ -15,7 +16,6 @@
   Time: 10:20 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);

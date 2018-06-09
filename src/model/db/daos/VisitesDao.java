@@ -5,6 +5,7 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.EtatVisite;
+import utils.GoogleMail;
 import utils.Util;
 
 import java.sql.Date;
@@ -55,6 +56,25 @@ public class VisitesDao extends DAO {
             e.printStackTrace();
         }
         return visites;
+    }
+
+    public void reattribuerAgentVisite(Visite visite) {
+        Employe employe = getNewAgentForVisit(visite);
+        if (employe != null) {
+            try {
+                visiteStatement.execute("update visite set agentId=" + employe.getId() + ";");
+                Notification notification = new Notification();
+                notification.setDestinataire(visite.getAgent());
+                notification.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));
+                System.out.println("Notification envoyée à l'agent: " + new EmployeNotificationDAO().add(notification));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            annulerVisite(visite);
+            Util.sendEmail(visite.getClient().getEmail(), "Annulation", "Bonjour " + visite.getClient().getFullName() + ", Nous avons le regret de vous informer que votre visite prévue le: " + visite.getTimestamp() + " à " + visite.getHorraire() + " a été annulée du au suspend de l'agent responsable de cette visite et à l'impossibilité de le remplacer. Nous vous invitons à vous rendre sur notre site pour choisir une nouvelle date. <br>Merci de votre compréhension.<br>L'équipe ERITP");
+            System.out.println("Visite annulée et email envoyé");
+        }
     }
 
     public LinkedList<RDV> getFreeRdvForNext2months(int regionId) {
@@ -171,7 +191,6 @@ public class VisitesDao extends DAO {
         }
         return null;
     }
-
 
     public LinkedList<Visite> getVisitesByAgent(Employe agent) {
         ResultSet result;
@@ -952,4 +971,41 @@ public class VisitesDao extends DAO {
         }
         return result;
     }
+
+    public LinkedList<Visite> getProgrammeesForAgent(int id) {
+        ResultSet result;
+        LinkedList<Visite> visites = new LinkedList<>();
+        try {
+            result = visiteStatement.executeQuery("SELECT * FROM visite WHERE etat='prevue' and agentId=" + id + ";");
+            while (result.next()) {
+                Visite visite = new Visite();
+                visite.setId(result.getInt("id"));
+                visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logementId")));
+                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agentId")));
+                visite.setClient((Client) new ClientDAO().getById(result.getInt("clientId")));
+                visite.setTimestamp(result.getDate("timestamp"));
+                visite.setHorraire(Integer.parseInt(result.getString("horraire")));
+                switch (result.getString("etat")) {
+                    case "terminee":
+                        visite.setEtatVisite(EtatVisite.TERMINEE);
+                        break;
+                    case "prevue":
+                        visite.setEtatVisite(EtatVisite.PROGRAMMEE);
+                        break;
+                    case "reportee":
+                        visite.setEtatVisite(EtatVisite.REPORTEE);
+                        break;
+                    case "annulee":
+                        visite.setEtatVisite(EtatVisite.ANNULEE);
+                        break;
+                }
+                visites.add(visite);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return visites;
+    }
+
+
 }

@@ -13,6 +13,17 @@ import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
 public class AppelsDAO extends DAO {
+
+    public boolean confirmer(Appel appel) {
+        try {
+            statement.execute("update appels set isConfirmed=1");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     public Person getByEmail(String email) {
         return null;
@@ -158,4 +169,6 @@ public class AppelsDAO extends DAO {
     public int countAll() {
         return getAll().size();
     }
+
+
 }

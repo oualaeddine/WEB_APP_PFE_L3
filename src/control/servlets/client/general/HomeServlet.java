@@ -29,9 +29,16 @@ public class HomeServlet extends MyServlet {
                 this.getServletContext().getRequestDispatcher("/jsp/client/home.jsp").forward(request, response);
             } else {
                 switch (what) {
+                    case "404":
+                        this.getServletContext().getRequestDispatcher("/jsp/client/404.jsp").forward(request, response);
+                        break;
                     case "logement":
                         int id = Integer.parseInt(request.getParameter("id"));
-                        this.getServletContext().getRequestDispatcher("/jsp/client/detailsLogement.jsp?id=" + id).forward(request, response);
+                        if (new LogementDAO().getById(id) == null) {
+                            this.getServletContext().getRequestDispatcher("/jsp/client/404.jsp").forward(request, response);
+                        } else {
+                            this.getServletContext().getRequestDispatcher("/jsp/client/detailsLogement.jsp?id=" + id).forward(request, response);
+                        }
                         break;
                     case "contacter":
                         this.getServletContext().getRequestDispatcher("/jsp/client/nousContacter.jsp").forward(request, response);

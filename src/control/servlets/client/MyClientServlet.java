@@ -1,6 +1,7 @@
 package control.servlets.client;
 
 import control.servlets.MyServlet;
+import model.db.daos.LogementDAO;
 import model.enums.UserType;
 import utils.MyConsts;
 
@@ -19,15 +20,22 @@ public class MyClientServlet extends MyServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isLoggedIn(request)) {
-//            if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.CLIENT) {
+            if (request.getSession().getAttribute(LOGGED_IN_USER_TYPE) == UserType.CLIENT) {
                 String action = request.getParameter("what");
                 if (action == null) {
                     redirectToHome(request, response);
                 } else {
                     switch (action) {
+                        case "modifierVisite":
+                            this.getServletContext().getRequestDispatcher("/jsp/client/clientTable.jsp?page=MODIFIER_VISITE_CLIENT").forward(request, response);
+                            break;
                         case "logement":
                             int id = Integer.parseInt(request.getParameter("id"));
-                            this.getServletContext().getRequestDispatcher("/jsp/client/detailsLogement.jsp?id=" + id).forward(request, response);
+                            if (new LogementDAO().getById(id) == null) {
+                                this.getServletContext().getRequestDispatcher("/jsp/client/404.jsp").forward(request, response);
+                            } else {
+                                this.getServletContext().getRequestDispatcher("/jsp/client/detailsLogement.jsp?id=" + id).forward(request, response);
+                            }
                             break;
                         case "myWishes":
                             this.getServletContext().getRequestDispatcher("/jsp/client/liste_souhaits.jsp").forward(request, response);
@@ -64,9 +72,9 @@ public class MyClientServlet extends MyServlet {
                             break;
                     }
                 }
-//            } else {
-//                redirectToDashboard(request, response, ACCESS_DENIED);
-//            }
+            } else {
+                redirectToDashboard(request, response, ACCESS_DENIED);
+            }
         } else redirectToHome(request, response);
     }
 

@@ -1,9 +1,6 @@
 package model.db.daos;
 
-import model.beans.Localite;
-import model.beans.Location;
-import model.beans.Logement;
-import model.beans.Visite;
+import model.beans.*;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.TypeLogement;
@@ -16,6 +13,60 @@ import java.util.LinkedList;
 
 @SuppressWarnings("ALL")
 public class LogementDAO extends DAO {
+
+    public LinkedList<Logement> getRemplacement(Logement myLogement) {
+        LinkedList<Logement> logements = new LinkedList<>();
+        String type = myLogement.getTypeLogement() == TypeLogement.VILLA ? "villa" : "appartement";
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select * from logement where region=" + myLogement.getLocalite().getId() + " " + "and typeLogement='" + type + "' and superficie<=" + (myLogement.getSuperficie() + 25) + " and superficie>=" + (myLogement.getSuperficie() - 25) + " and prix <= " + (myLogement.getPrix() + 500000) + " and prix >= " + (myLogement.getPrix() - 500000) + ";");
+            while (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+                logements.add(logement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return logements;
+    }
+
+    public boolean isFree(int idLogement, RDV rdv) {
+        ResultSet resultSet;
+        try {
+            resultSet = logementStatement.executeQuery("select * from visite where visite.timestamp='" + rdv.getDate() + "' and horraire='" + rdv.getHorraire() + "' and logementId=" + idLogement + " and etat='prevue';");
+            if (resultSet.next()) {
+                return false;
+            } else return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public LinkedList<Logement> getSimilar(Logement heda) {
         LinkedList<Logement> logements = new LinkedList<>();

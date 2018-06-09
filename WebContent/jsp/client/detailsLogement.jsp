@@ -50,11 +50,6 @@
 
 <div id="include_header"></div>
 <%Logement logement = (Logement) new LogementDAO().getById(Integer.parseInt(request.getParameter("id")));%>
-<%
-    if (logement == null) {
-        //Redirect to error page
-    }
-%>
 <div class="page-head">
     <div class="container">
         <div class="row">
@@ -231,7 +226,7 @@
                             <div class="inner-wrapper">
                                 <div class="single-property-header">
                                     <h1 class="property-title"><%out.print(logement.getTitre());%></h1>
-                                    <span class="property-price"><%out.print(logement.getPrix());%> M DA</span>
+                                    <span class="property-price"><%out.print(logement.getPrix() / 1000000);%> M DA</span>
                                 </div>
 
                                 <div class="property-meta entry-meta clearfix ">

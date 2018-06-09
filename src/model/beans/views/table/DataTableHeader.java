@@ -185,6 +185,9 @@ public class DataTableHeader {
             case CONFIRMER_APPEL:
                 setupTableHeaderForConfirmerAppel();
                 break;
+            case MODIFIER_VISITE_CLIENT:
+                setupTableHeaderForModifierVisite();
+                break;
         }
     }
 
@@ -193,7 +196,6 @@ public class DataTableHeader {
                 "<th>ID</th>" +
                 "<th>Numéro de téléphone</th>" +
                 "<th>Logement</th>" +
-                "<th>Agent</th>" +
                 "<th>Date et heure</th>" +
                 "<th>Etat</th>" +
                 "<th>Action</th>" +
@@ -205,7 +207,6 @@ public class DataTableHeader {
                 "<th>ID</th>" +
                 "<th>Numéro de téléphone</th>" +
                 "<th>Logement</th>" +
-                "<th>Agent</th>" +
                 "<th>Date et heure</th>" +
                 "<th>Etat</th>" +
                 "</tr>";

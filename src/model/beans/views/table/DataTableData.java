@@ -212,6 +212,16 @@ public class DataTableData {
             case BANNIR_CLIENT:
                 setupDataBannirClient();
                 break;
+            case MODIFIER_VISITE_CLIENT:
+                setupDataModifierVisiteForClient();
+                break;
+        }
+    }
+
+    private void setupDataModifierVisiteForClient() {
+        LinkedList<Visite> visites = new VisitesDao().getProgrammeesForClient(userId);
+        for (Visite visite : visites) {
+            data.add(new DataTableRow(DataTableRowFormat.MODIFIER_VISITE, visite));
         }
     }
 

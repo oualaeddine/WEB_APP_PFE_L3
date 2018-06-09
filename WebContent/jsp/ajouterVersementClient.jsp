@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.humans.Client" %>
 <%@ page import="model.beans.humans.Employe" %>
@@ -8,7 +9,6 @@
 <%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);

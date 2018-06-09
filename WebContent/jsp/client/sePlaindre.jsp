@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="../../assets_client/css/owl.transitions.css">
     <link rel="stylesheet" href="../../assets_client/css/style.css">
     <link rel="stylesheet" href="../../assets_client/css/responsive.css">
+    <link rel="stylesheet" href="../../css/bootstrapValidator.min.css">
 
 
 </head>
@@ -65,13 +66,13 @@
             <div class="box-for overflow">
                 <div class="col-md-12 col-xs-12 register-blocks">
                     <h2>Dites nous ce que vous pensez : </h2>
-                    <form action="/Contact" method="post">
+                    <form action="/Contact" method="post" id="sePlaindreForm">
                         <input type="hidden" name="plainte" value="true">
-                        <div class="form-row">
+                        <div class="form-group">
                             <label for="content">Entrez le motif de votre plainte ici</label>
                             <textarea class="form-control" name="content" id="content" rows="5"></textarea>
                         </div>
-                        <div class="form-row">
+                        <div class="form-group">
                             <button type="submit" class=" btn btn-primary ">Envoyer</button>
                         </div>
                     </form>
@@ -104,6 +105,7 @@
 <script src="../../assets_client/js/price-range.js"></script>
 
 <script src="../../assets_client/js/main.js"></script>
+<script src="../../js/bootstrapValidator.min.js"></script>
 <script>
 
     $(function () {
@@ -112,6 +114,24 @@
     $(function () {
         $("#footer_include").load("../../jsp/client/footer.jsp");
     });
+
+    $(document).ready(function () {
+        var validator = $("#sePlaindreForm").bootstrapValidator({
+            fields: {
+                content: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer le motif de votre plainte"
+                        },
+                        stringLength: {
+                            max: 200,
+                            message: "Votre message est trop long (plus de 200 caractères)"
+                        }
+                    }
+                }
+            }
+        })
+    })
 </script>
 </body>
 

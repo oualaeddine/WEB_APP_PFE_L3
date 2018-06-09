@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.db.daos.LocaliteDAO" %>
@@ -8,7 +9,6 @@
 <%@ page import="model.beans.views.MyView" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
@@ -146,7 +146,7 @@
                     <div class="form-row">
                         <div class="col-md">
                             <label for="latitude">Latitude</label>
-                            <input class="form-control" id="latitude" name="latitude" type="text"  placeholder="Latitude">
+                            <input class="form-control" id="latitude" name="latitude" type="text" placeholder="Latitude">
                         </div>
                         <div class="col-md">
                             <label for="longitude">Longitude</label>
@@ -182,97 +182,98 @@
 //    });
 
 
-    $(document).ready(function () {
-        var validator = $("#ajouterLogementForm").bootstrapValidator({
-            fields:{
-                titreInput:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer un titre"
-                        }
+$(document).ready(function () {
+    var validator = $("#ajouterLogementForm").bootstrapValidator({
+        fields:{
+            titreInput:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer un titre"
                     }
-                },
-                description:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une description"
-                        }
+                }
+            },
+            description:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer une description"
                     }
-                },
-                adresse:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une adresse"
-                        }
+                }
+            },
+            adresse:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer une adresse"
                     }
-                },
-                superficie:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une adresse"
-                        }
+                }
+            },
+            superficie:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer une adresse"
                     }
-                },
-                nbrPcs:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le nombre de pièces"
-                        },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
-                        }
+                }
+            },
+            nbrPcs:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer le nombre de pièces"
+                    },
+                    integer:{
+                        message:"Veuillez entrer un nombre entier"
                     }
-                },
-                nbrSdb:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le nombre de salles de bain"
-                        },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
-                        }
+                }
+            },
+            nbrSdb:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer le nombre de salles de bain"
+                    },
+                    integer:{
+                        message:"Veuillez entrer un nombre entier"
                     }
-                },
-                etage:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer l'étage"
-                        },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
-                        }
+                }
+            },
+            etage:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer l'étage"
+                    },
+                    integer:{
+                        message:"Veuillez entrer un nombre entier"
                     }
-                },
-                prix:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le prix"
-                        }
+                }
+            },
+            prix:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer le prix"
                     }
-                },
-                latitude:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer la latitude"
-                        }
+                }
+            },
+            latitude:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer la latitude"
                     }
-                },
-                longitude:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer la longitutde"
-                        }
+                }
+            },
+            longitude:{
+                validators:{
+                    notEmpty:{
+                        message:"Veuillez entrer la longitutde"
                     }
                 }
             }
-        })
-    });
+        }
+    })
+});
 
 </script>
 <style>
     .has-error .help-block {
         color: red;
     }
+
     small.help-block {
         color: #F44336 !important;
     }

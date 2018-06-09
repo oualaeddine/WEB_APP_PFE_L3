@@ -1,5 +1,6 @@
 package model.db.daos;
 
+import model.beans.Visite;
 import model.beans.humans.Employe;
 import model.db.DAO;
 import model.enums.UserType;
@@ -265,6 +266,26 @@ public class EmployeDAO extends DAO {
     }
 
     public boolean suspendById(int userId) {
+        Employe employe = (Employe) getById(userId);
+        if (employe.getUserType() == UserType.AGENT) {
+            if (new VisitesDao().getProgrammeesForAgent(employe.getId()).isEmpty()) {
+                //Si l'agent n'a pas de visites prévues
+                try {
+                    statement.execute("UPDATE employe SET isSuspended = 1" +
+                            " WHERE id=" + userId + " ;");
+                    return true;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            } else {
+                //Si l'agent a des visites prévues
+                LinkedList<Visite> visites = new VisitesDao().getProgrammeesForAgent(employe.getId());
+                for (Visite visite : visites) {
+                    new VisitesDao().reattribuerAgentVisite(visite);
+                }
+            }
+        }
         return super.suspendById(userId, "employe");
     }
 

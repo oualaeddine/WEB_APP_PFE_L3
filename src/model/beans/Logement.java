@@ -80,7 +80,7 @@ public class Logement implements Serializable {
 
 
     public double getPrix() {
-        return prix / 1000000;
+        return prix;
     }
 
     public void setPrix(double prix) {

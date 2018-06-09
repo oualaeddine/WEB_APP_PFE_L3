@@ -1,9 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.views.MyView" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
@@ -241,6 +241,7 @@
     .has-error .help-block {
         color: red;
     }
+
     small.help-block {
         color: #F44336 !important;
     }

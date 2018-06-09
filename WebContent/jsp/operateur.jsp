@@ -1,11 +1,17 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.beans.views.MyView" %>
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.enums.UserType" %>
 <%@ page import="model.beans.humans.Employe" %>
+<%@ page import="model.db.daos.AppelsDAO" %>
+<%@ page import="control.statistics.globales.VisitesStats" %>
+<%@ page import="java.time.Month" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="model.db.ContactInfosDAO" %>
+<%@ page import="control.statistics.globales.ClientsStats" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! private TablesView tablesView = new TablesView(); %>
 <%
     UserType userType = (UserType) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE);
@@ -23,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Espace operateur</title>
+    <title><%out.print(new ContactInfosDAO().getNomSociete());%> | Espace operateur</title>
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -77,10 +83,11 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-comments"></i>
                         </div>
-                        <div class="mr-5">26 Nouveaux Messages!</div>
+                        <div class="mr-5"><%out.print(new AppelsDAO().getNonConfirmes().size());%> Nouveaux appels!
+                        </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les messages</span>
+                    <a class="card-footer text-white clearfix small z-1" href="/DashboardServlet?what=confirmerAppel">
+                        <span class="float-left">Afficher les appels</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -93,10 +100,13 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-list"></i>
                         </div>
-                        <div class="mr-5">11 Visites reportées!</div>
+                        <div class="mr-5"><%out.print(new VisitesStats().nbrVisitesPrevuesForMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH))));%>
+                            Visites reportées!
+                        </div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les details</span>
+                    <a class="card-footer text-white clearfix small z-1"
+                       href="/DashboardServlet?what=visitesProgrammees">
+                        <span class="float-left">Afficher les visites prévues</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -109,10 +119,11 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-users"></i>
                         </div>
-                        <div class="mr-5">13 Nouvelles Visites!</div>
+                        <div class="mr-5"><%out.print(new ClientsStats().newClientsThisMonthNbr());%> Nouveaux clients
+                        </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les Details</span>
+                        <span class="float-left">Afficher les clients</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -125,10 +136,12 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-ban"></i>
                         </div>
-                        <div class="mr-5">7 Visites annulées!</div>
+                        <div class="mr-5"><%new VisitesStats().nbrVisitesAnnuleesForMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH)));%>
+                            Visites annulées!
+                        </div>
                     </div>
                     <a class="card-footer text-white clearfix small z-1" href="#">
-                        <span class="float-left">Afficher les Details</span>
+                        <span class="float-left">Afficher les visites annulées</span>
                         <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
@@ -166,12 +179,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Prêt à partir ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selectionnez "Déconnexion" ci dessous si vous êtes prêts à fermer votre
+                    session.
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="/logout">Logout</a>

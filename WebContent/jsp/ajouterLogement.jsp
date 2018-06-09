@@ -1,11 +1,11 @@
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="control.servlets.MyServlet" %>
+<%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.views.MyView" %>
+<%@ page import="model.beans.views.TablesView" %>
+<%@ page import="model.db.daos.LocaliteDAO" %>
+<%@ page import="model.enums.UserType" %>
+<%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,7 +36,8 @@
 <body class="bg-white">
 <nav class="navbar navbar-expand-lg navbar-dark navbar-<%out.print(tablesView.getNav().getCssBackgroundClass());%> sidebar fixed-top fixed-top "
      id="mainNav">
-    <a class="navbar-brand" href="#"><%out.print(tablesView.getNav().getTitle()+": "+employe.getNom()+" "+employe.getPrenom());%></a>
+    <a class="navbar-brand"
+       href="#"><%out.print(tablesView.getNav().getTitle() + ": " + employe.getNom() + " " + employe.getPrenom());%></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -67,16 +68,19 @@
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
-                        <input class="form-control" id="titreInput" name="titreInput" type="text" aria-describedby="nameHelp" placeholder="Titre">
+                        <input class="form-control" id="titreInput" name="titreInput" type="text"
+                               aria-describedby="nameHelp" placeholder="Titre">
 
                     </div>
                     <div class="form-row">
                         <label for="description">Description</label>
-                        <input class="form-control" id="description" name="description" type="text" aria-describedby="nameHelp" placeholder="Description">
+                        <input class="form-control" id="description" name="description" type="text"
+                               aria-describedby="nameHelp" placeholder="Description">
                     </div>
                     <div class="form-row">
                         <label for="adresse">Adresse</label>
-                        <input class="form-control" id="adresse" name="adresse" type="text" aria-describedby="nameHelp" placeholder="Adresse">
+                        <input class="form-control" id="adresse" name="adresse" type="text" aria-describedby="nameHelp"
+                               placeholder="Adresse">
                     </div>
                 </div>
                 <div class="form-group">
@@ -90,7 +94,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="superficie">Superficie</label>
-                            <input class="form-control" id="superficie" name="superficie" type="number" placeholder="Superficie">
+                            <input class="form-control" id="superficie" name="superficie" type="number"
+                                   placeholder="Superficie">
                         </div>
                         <div class="col-md-4">
                             <label for="region">Region</label>
@@ -98,7 +103,7 @@
                                 <%
                                     LinkedList<Localite> list = new LocaliteDAO().getAll();
                                     for (Localite localite : list) {
-                                        out.print("<option value=\""+localite.getId()+"\">"+localite.getNom()+"</option>");
+                                        out.print("<option value=\"" + localite.getId() + "\">" + localite.getNom() + "</option>");
                                     }
                                 %>
                             </select>
@@ -107,34 +112,41 @@
                     <div class="form-row">
                         <div class="col-md">
                             <label for="nbrPcs">Pièces</label>
-                            <input class="form-control" id="nbrPcs" name="nbrPcs" type="number" placeholder="Nombre de pièces">
+                            <input class="form-control" id="nbrPcs" name="nbrPcs" type="number"
+                                   placeholder="Nombre de pièces">
                         </div>
                         <div class="col-md">
                             <label for="nbrSdb">Salles de bain</label>
-                            <input class="form-control" id="nbrSdb" name="nbrSdb" type="number" placeholder="Nombre de sdb">
+                            <input class="form-control" id="nbrSdb" name="nbrSdb" type="number"
+                                   placeholder="Nombre de sdb">
                         </div>
                         <div class="col-md">
                             <label for="etage">Etage</label>
-                            <input class="form-control" id="etage" name="etage" type="number" aria-describedby="emailHelp" placeholder="Etage">
+                            <input class="form-control" id="etage" name="etage" type="number"
+                                   aria-describedby="emailHelp" placeholder="Etage">
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="col-md">
                             <label for="jardin">Avec jardin</label>
-                            <input name="jardin" type="checkbox" class="form-control" id="jardin" value="jardin" placeholder="Avec jardin">
+                            <input name="jardin" type="checkbox" class="form-control" id="jardin" value="jardin"
+                                   placeholder="Avec jardin">
                         </div>
                         <div class="col-md">
                             <label for="garage">Avec garage</label>
-                            <input name="garage" type="checkbox" class="form-control" id="garage" value="garage" placeholder="Avec garage">
+                            <input name="garage" type="checkbox" class="form-control" id="garage" value="garage"
+                                   placeholder="Avec garage">
                         </div>
                         <div class="col-md">
                             <label for="soussol">Avec sous-sol</label>
-                            <input name="soussol" type="checkbox" class="form-control" id="soussol" value="soussol" placeholder="Avec sous-sol">
+                            <input name="soussol" type="checkbox" class="form-control" id="soussol" value="soussol"
+                                   placeholder="Avec sous-sol">
                         </div>
                         <div class="col-md">
                             <label for="meubles">Meublé</label>
-                            <input name="meubles" id="meubles" type="checkbox" class="form-control" value="meublespapapa">
+                            <input name="meubles" id="meubles" type="checkbox" class="form-control"
+                                   value="meublespapapa">
                         </div>
                     </div>
                     <div class="form-row">
@@ -146,21 +158,43 @@
                     <div class="form-row">
                         <div class="col-md">
                             <label for="latitude">Latitude</label>
-                            <input class="form-control" id="latitude" name="latitude" type="text"  placeholder="Latitude">
+                            <input class="form-control" id="latitude" name="latitude" type="text"
+                                   placeholder="Latitude">
                         </div>
                         <div class="col-md">
                             <label for="longitude">Longitude</label>
-                            <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Longitude">
+                            <input class="form-control" id="longitude" name="longitude" type="text"
+                                   placeholder="Longitude">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="file">Photo</label>
-                        <input id="file" class="form-control" type="file" name="file" placeholder="Photo">
+                        <label for="file">Photo 1</label>
+                        <input id="file" class="form-control" type="file" name="file1" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file2" class="form-control" type="file" name="file2" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file3" class="form-control" type="file" name="file3" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file4" class="form-control" type="file" name="file4" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file5" class="form-control" type="file" name="file5" placeholder="Photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photo 1</label>
+                        <input id="file6" class="form-control" type="file" name="file6" placeholder="Photo">
                     </div>
                 </div>
                 <div class="text-center">
                     <input class="btn btn-primary" type="submit" form="ajouterLogementForm"
-                           value="Upload">Ajouter</input>
+                           value="Upload">Ajouter
                 </div>
 
 
@@ -175,92 +209,92 @@
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="../js/bootstrapValidator.min.js"></script>
 <script>
-//    $('#submitBtn').click(function() {
-//        /* when the button in the form, display the entered values in the modal */
-//        $('#lname').text($('#lastname').val());
-//        $('#fname').text($('#firstname').val());
-//    });
+    //    $('#submitBtn').click(function() {
+    //        /* when the button in the form, display the entered values in the modal */
+    //        $('#lname').text($('#lastname').val());
+    //        $('#fname').text($('#firstname').val());
+    //    });
 
 
     $(document).ready(function () {
         var validator = $("#ajouterLogementForm").bootstrapValidator({
-            fields:{
-                titreInput:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer un titre"
+            fields: {
+                titreInput: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer un titre"
                         }
                     }
                 },
-                description:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une description"
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer une description"
                         }
                     }
                 },
-                adresse:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une adresse"
+                adresse: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer une adresse"
                         }
                     }
                 },
-                superficie:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer une adresse"
+                superficie: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer une adresse"
                         }
                     }
                 },
-                nbrPcs:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le nombre de pièces"
+                nbrPcs: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer le nombre de pièces"
                         },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
+                        integer: {
+                            message: "Veuillez entrer un nombre entier"
                         }
                     }
                 },
-                nbrSdb:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le nombre de salles de bain"
+                nbrSdb: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer le nombre de salles de bain"
                         },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
+                        integer: {
+                            message: "Veuillez entrer un nombre entier"
                         }
                     }
                 },
-                etage:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer l'étage"
+                etage: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer l'étage"
                         },
-                        integer:{
-                            message:"Veuillez entrer un nombre entier"
+                        integer: {
+                            message: "Veuillez entrer un nombre entier"
                         }
                     }
                 },
-                prix:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer le prix"
+                prix: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer le prix"
                         }
                     }
                 },
-                latitude:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer la latitude"
+                latitude: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer la latitude"
                         }
                     }
                 },
-                longitude:{
-                    validators:{
-                        notEmpty:{
-                            message:"Veuillez entrer la longitutde"
+                longitude: {
+                    validators: {
+                        notEmpty: {
+                            message: "Veuillez entrer la longitutde"
                         }
                     }
                 }
@@ -273,6 +307,7 @@
     .has-error .help-block {
         color: red;
     }
+
     small.help-block {
         color: #F44336 !important;
     }

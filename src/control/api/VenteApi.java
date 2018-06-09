@@ -23,7 +23,7 @@ public class VenteApi extends API {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String responseBody;
+        String responseBody = "null";
         String action = request.getParameter("action");
 
         LinkedList ventes = new LinkedList();
@@ -45,8 +45,13 @@ public class VenteApi extends API {
                 }
             } else {
                 switch (action) {
+                    case "getById":
+                        Vente vente = (Vente) new VentesDAO().getById(Integer.parseInt(request.getParameter("id")));
+                        responseBody = JsonUtil.objectToJson(vente);
+                        break;
                     case "getAll": {
                         ventes = new VentesDAO().getAll();
+                        responseBody = JsonUtil.ventesListToJsonArray(ventes);
                         break;
                     }
                     case "getVenteByClient": {
@@ -56,6 +61,7 @@ public class VenteApi extends API {
                             client.setId(clientId);
                             ventes = new VentesDAO().getByClient(client);
                         }
+                        responseBody = JsonUtil.ventesListToJsonArray(ventes);
                         break;
                     }
                     case "getEnCoursForClient": {
@@ -65,6 +71,7 @@ public class VenteApi extends API {
                             client.setId(clientId);
                             ventes = new VentesDAO().getEnCoursForClient(client);
                         }
+                        responseBody = JsonUtil.ventesListToJsonArray(ventes);
                         break;
                     }
                     case "getConfirmed": {
@@ -73,10 +80,11 @@ public class VenteApi extends API {
                     }
                     case "getEnCours": {
                         ventes = new VentesDAO().getEnCours();
+                        responseBody = JsonUtil.ventesListToJsonArray(ventes);
                         break;
                     }
                 }
-                responseBody = JsonUtil.ventesListToJsonArray(ventes);
+
                 response.getWriter().append(responseBody);
             }
         }

@@ -4,6 +4,7 @@ public class MyConsts {
     public static final String
 
     /*APIs urls*/
+            APPELS_API_URL = "/api/AppelsApi",
             AGENT_API_URL_PATTERN = "/api/AgentApi",
             CLIENT_API_URL_PATTERN = "/api/clientApi",
             LOGEMENT_API_URL_PATTERN = "/api/logementApi",

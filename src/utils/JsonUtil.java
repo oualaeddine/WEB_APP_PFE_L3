@@ -49,13 +49,13 @@ public class JsonUtil {
             JsonObject jsonObject = new JsonObject();
 
             String id = "" + versement.getId();
-            String date = versement.getDate().toString();
+            String date = "" + versement.getDate().toString();
             String montant = "" + versement.getMontant();
 
-            String venteId = "" + versement.getVente().getLogement().getId();
+            String venteId = "" + versement.getVente().getId();
 
             String clientId = "" + versement.getVente().getClient().getId();
-            String clientName = versement.getVente().getClient().getFullName();
+            String clientName = "" + versement.getVente().getClient().getFullName();
 
             String logementId = "" + versement.getVente().getLogement().getId();
             String logementTitle = "" + versement.getVente().getLogement().getTitre();
@@ -68,7 +68,7 @@ public class JsonUtil {
             jsonObject.addProperty("clientName", clientName);
             jsonObject.addProperty("logementId", logementId);
             jsonObject.addProperty("logementTitle", logementTitle);
-
+            System.out.println(jsonObject.toString());
             result.add(jsonObject);
         }
 

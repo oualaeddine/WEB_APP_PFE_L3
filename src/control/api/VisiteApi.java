@@ -42,6 +42,9 @@ public class VisiteApi extends API {
         String action = request.getParameter("action");
         if (action != null)
             switch (action) {
+                case "getById":
+                    response.getWriter().append(JsonUtil.objectToJson(new VisitesDao().getById(Integer.parseInt(request.getParameter("id")))));
+                    break;
                 case "getTakenDates": {
                     int logementId = Integer.parseInt(request.getParameter("logementId"));
                     int clientId = Integer.parseInt(request.getParameter("clientId"));

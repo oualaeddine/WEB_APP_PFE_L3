@@ -28,6 +28,21 @@ public class SignalementDAO extends DAO {
 
     @Override
     public Object getById(int id) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM signalement where id=" + id + ";");
+            if (result.next()) {
+                Signalement signalement = new Signalement();
+                signalement.setId(result.getInt("id"));
+                signalement.setPlaignant((Employe) new EmployeDAO().getById(result.getInt("idPlaignant")));
+                signalement.setClient((Client) new ClientDAO().getById(result.getInt("idClient")));
+                signalement.setMotif(result.getString("infos"));
+
+                return signalement;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -59,6 +74,7 @@ public class SignalementDAO extends DAO {
             result = statement.executeQuery("SELECT * FROM signalement;");
             while (result.next()) {
                 Signalement signalement = new Signalement();
+                signalement.setId(result.getInt("id"));
                 signalement.setPlaignant((Employe) new EmployeDAO().getById(result.getInt("idPlaignant")));
                 signalement.setClient((Client) new ClientDAO().getById(result.getInt("idClient")));
                 signalement.setMotif(result.getString("infos"));

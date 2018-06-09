@@ -4,11 +4,20 @@ import model.beans.humans.Client;
 import model.beans.humans.Employe;
 
 public class Signalement {
+    private int id;
     private Employe plaignant;
     private Client  client;
     private String motif;
 
     public Signalement() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Employe getPlaignant() {

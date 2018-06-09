@@ -1,10 +1,20 @@
 package model.beans.humans;
 
+import java.sql.Date;
+
 public class Client extends Person {
     private boolean isBanned;
-
+    private Date dateAdded;
 
     public Client() {
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public boolean isBanned() {

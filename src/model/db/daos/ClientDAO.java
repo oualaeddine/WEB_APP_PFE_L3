@@ -51,6 +51,7 @@ public class ClientDAO extends DAO {
                 client.setEmail(result.getString("email"));
                 client.setBanned(result.getInt("isBanned")==1);
                 client.setId(result.getInt("id"));
+                client.setDateAdded(result.getDate("dateAdded"));
                 return client;
             }
         } catch (SQLException e) {
@@ -86,7 +87,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
-
+                client.setDateAdded(result.getDate("dateAdded"));
                 return client;
             }
         } catch (SQLException e) {
@@ -112,7 +113,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
-
+                client.setDateAdded(result.getDate("dateAdded"));
                 return client;
             }
         } catch (SQLException e) {
@@ -227,6 +228,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
+                client.setDateAdded(result.getDate("dateAdded"));
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -266,6 +268,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
+                client.setDateAdded(result.getDate("dateAdded"));
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -304,6 +307,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
+                client.setDateAdded(result.getDate("dateAdded"));
                 list.add(client);
             }
         } catch (SQLException e) {
@@ -329,6 +333,7 @@ public class ClientDAO extends DAO {
                 client.setUsername(result.getString("username"));
                 client.setPassword(result.getString("password"));
                 client.setBanned(result.getInt("isBanned")==1);
+                client.setDateAdded(result.getDate("dateAdded"));
                 list.add(client);
             }
         } catch (SQLException e) {

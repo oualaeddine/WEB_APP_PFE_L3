@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.LinkedList;
 
 @WebServlet(name = "VersementApi", urlPatterns = MyConsts.VERSEMENT_API_URL_PATTERN)
 public class VersementApi extends API {
@@ -61,11 +62,12 @@ public class VersementApi extends API {
                 case "getByVente": {
                     if (request.getParameter("venteId") != null) {
                         int venteId = Integer.parseInt(request.getParameter("venteId"));
-                        responseBody = JsonUtil.objectToJson(new VersementDAO().getByVente(venteId));
+                        LinkedList<Versement> versements = new VersementDAO().getByVente(venteId);
+
+                        responseBody = JsonUtil.versementsListToJsonArray(versements);
                     }
                     break;
                 }
-
             }
             response.getWriter().append(responseBody);
         }

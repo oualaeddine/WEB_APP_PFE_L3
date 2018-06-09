@@ -31,6 +31,7 @@ public class SUServlet extends MyServlet {
                             break;
                         case "listeSignals": {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=SIGNALEMENT").forward(request, response);
+                            break;
                         }
                         case "assignerRegion": {
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=ASSIGNER_REGION").forward(request, response);

@@ -1,5 +1,4 @@
 package control.api;
-/*  todo heda howa le model des API kaml */
 
 import model.beans.humans.Employe;
 import model.db.daos.EmployeDAO;
@@ -84,6 +83,16 @@ public class AgentApi extends API {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append(REQUEST_TYPE_ERROR);
+        String action = request.getParameter("action");
+        if (action != null) {
+            switch (action) {
+                case "getById":
+                    Employe employe = (Employe) new EmployeDAO().getById(Integer.parseInt(request.getParameter("id")));
+                    response.getWriter().append(objectToJson(employe));
+                    break;
+            }
+        } else {
+            response.getWriter().append(REQUEST_TYPE_ERROR);
+        }
     }
 }

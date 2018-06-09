@@ -282,6 +282,7 @@ public class DataTableRow {
     private void setupHtmlForSignals() {
         Signalement signalement = (Signalement) object;
         html = "<tr>" +
+                "<td>" + signalement.getId() + "</td>" +
                 "<td>" + signalement.getPlaignant().getNom() + " " + signalement.getPlaignant().getPrenom() + "</td>" +
                 "<td>" + signalement.getClient().getNom() + " " + signalement.getClient().getPrenom() + "</td>" +
                 "<td>" + signalement.getMotif() + "</td>" +
@@ -330,7 +331,7 @@ public class DataTableRow {
             localite.setNom("Aucune région assignée");
         }
         html = "<tr>" +
-                "<td><b>"
+                "<td>"
                        + agent.getId() + "</td>" +
                 "<td>" + agent.getNom() + " "+ agent.getPrenom()+"</td>" +
                 "<td>" + agent.getTel() + "</td>" +
@@ -344,7 +345,7 @@ public class DataTableRow {
     private void setupHtmlForAdmin() {
         Employe admin = (Employe) object;
         html = "<tr>" +
-                "<td><b>" + admin.getId() + "</td>" +
+                "<td>" + admin.getId() + "</td>" +
                 "<td>" + admin.getNom() + " " + admin.getPrenom() + "</td>" +
                 "<td>" + admin.getTel() + "</td>" +
                 "<td>" + admin.getAdresse() + "</td>" +
@@ -355,7 +356,7 @@ public class DataTableRow {
 
     private void setupHtmlForLocalite() {
         Localite localite = (Localite) object;
-        html = "<tr><td><b>" + localite.getId() + "</td>" +
+        html = "<tr><td>" + localite.getId() + "</td>" +
                 "<td>" + localite.getNom() + "</td></tr>";
     }
 

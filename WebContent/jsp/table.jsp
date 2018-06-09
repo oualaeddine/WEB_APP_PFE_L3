@@ -587,30 +587,562 @@
         </div>
     </div>
 
-    <%--Details modal--%>
-    <div id="detailsModal" class="modal fade" role="dialog">
+    <%--Details appels modal--%>
+    <div id="appelDetails" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Confirmation</h4>
+                    <h4 class="modal-title">Détails de l'appel</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/AjoutServlet?ajouter=annulationVente" id="details">
+                    <table id="example" class="display nowrap" style="width:100%">
 
-                        <p id="test" name="test" type="text"></p>
-
-                    </form>
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="appelIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Numéro de téléphone:</td>
+                            <td><span id="appelNumeroDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Logement:</td>
+                            <td><span id="appelLogementDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><span id="appelDateDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Heure:</td>
+                            <td><span id="appelHorraireDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Confirmé:</td>
+                            <td><span id="appelIsConfirmeDetails"></span></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit" form="annulerVenteForm">Oui</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <%--Details agents modal--%>
+    <div id="agentDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de l'employé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="agentIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom:</td>
+                            <td><span id="agentNomDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                            <td><span id="agentDateNaissanceDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="agentsAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone:</td>
+                            <td><span id="agentTelDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="agentEmailDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Localité:</td>
+                            <td><span id="agentLocaliteDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Ajouté le:</td>
+                            <td><span id="agentDateAjoutDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details res ventes modal--%>
+    <div id="resVenteDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de l'employé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="resVenteIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom:</td>
+                            <td><span id="resVenteNomDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                            <td><span id="resVenteDateNaissanceDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="resVentesAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone:</td>
+                            <td><span id="resVenteTelDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="resVenteEmailDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Suspendu:</td>
+                            <td><span id="resVenteEtatDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Approuvé le:</td>
+                            <td><span id="resVenteDateAjoutDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details opérateur modal--%>
+    <div id="operateurDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de l'employé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="operateurIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom:</td>
+                            <td><span id="operateurNomDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                            <td><span id="operateurDateNaissanceDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="operateursAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone:</td>
+                            <td><span id="operateurTelDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="operateurEmailDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Ajouté le:</td>
+                            <td><span id="operateurDateAjoutDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details Admin modal--%>
+    <div id="adminDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de l'employé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="adminIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom:</td>
+                            <td><span id="adminNomDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                            <td><span id="adminDateNaissanceDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="adminsAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone:</td>
+                            <td><span id="adminTelDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="adminEmailDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Role:</td>
+                            <td><span id="adminRoleDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Ajouté le:</td>
+                            <td><span id="adminDateAjoutDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details signalement modal--%>
+    <div id="signalementDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails du signalement</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>Nom et prénom du plaignant:</td>
+                            <td><span id="plaignantDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Sujet de la plainte:</td>
+                            <td><span id="sujetPlainteDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Motif:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span id="signalementMotifDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details vente modal--%>
+    <div id="venteDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de la vente</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="venteIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom du client:</td>
+                            <td><span id="venteClientDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Logement:</td>
+                            <td><span id="venteLogementDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><span id="venteDateDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Montant restant à payer:</td>
+                            <td><span id="venteRestantDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Etat:</td>
+                            <td><span id="venteEtatDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details logements modal--%>
+    <div id="logementDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails du logement</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="logementIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Titre:</td>
+                            <td><span id="logementTitreDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td><span id="logementDescriptionDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Superficie:</td>
+                            <td><span id="logementSuperficieDetails"></span> m2</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de pièces:</td>
+                            <td><span id="logementNbrPieces"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de salles de bain:</td>
+                            <td><span id="logementNbrSdb"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Avec jardin:</td>
+                            <td><span id="logementJardinDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Avec garage:</td>
+                            <td><span id="logementGarageDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Avec sous-sol:</td>
+                            <td><span id="logementSousSolDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Meublé:</td>
+                            <td><span id="logementMeubleDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="logementAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Localite:</td>
+                            <td><span id="logementLocaliteDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Prix:</td>
+                            <td><span id="logementPrixDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Etage:</td>
+                            <td><span id="logementEtageDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Gelé:</td>
+                            <td><span id="logementEtatDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Latitude:</td>
+                            <td><span id="logementLatitudeDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Longitude:</td>
+                            <td><span id="logementLongitudeDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details visite modal--%>
+    <div id="visiteDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de la visite</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID de la visite:</td>
+                            <td><span id="visiteIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Logement:</td>
+                            <td><span id="visiteLogementDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Agent:</td>
+                            <td><span id="visiteAgentDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Client:</td>
+                            <td><span id="visiteClientDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date et heure:</td>
+                            <td><span id="visiteTimestampDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Etat:</td>
+                            <td><span id="visiteEtatDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details client modal--%>
+    <div id="clientDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Détails de la visite</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+
+                        <tr>
+                            <td>ID:</td>
+                            <td><span id="clientIdDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nom et prénom:</td>
+                            <td><span id="clientNomDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance:</td>
+                            <td><span id="clientDateDeNaissanceDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Téléphone:</td>
+                            <td><span id="clientTelDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td><span id="clientAdresseDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="clientEmailDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Etat:</td>
+                            <td><span id="clientEtatDetails"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Inscription le:</td>
+                            <td><span id="clientDateAddedDetails"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details versements par vente--%>
+    <div id="versementsForVenteDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Versements</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="versementsForVenteTable" class="display nowrap" style="width:100%">
+
+                        <%--<tr><td>ID: </td><td><span id="versementForVenteIdDetails"></span></td></tr>--%>
+                        <%--<tr><td>Montant: </td><td><span id="versementForVenteMontantDetails"></span></td></tr>--%>
+                        <%--<tr><td>Date: </td><td><span id="versementForVenteDateDetails"></span></td></tr>--%>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="./vendor/jquery/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -663,14 +1195,376 @@
             ]
 
         });
+
+
+        function afficherDetailsVersementsForVente(rowData) { // ça me fait chier
+            $.ajax({
+                type: 'GET',
+                url: '/api/versementApi?action=getByVente&venteId=' + rowData[0][0],
+                dataType: 'json',
+                success: function (result) {
+
+                    var jsonData = JSON.parse(result);
+                    for (var i = 0; i < jsonData.length; i++) {
+                        // document.getElementById("versementsForVenteTable").innerHTML += "<tr><td>a</td><td>b</td><tr>";
+                        console.log("aaaaaaa");
+                    }
+                }
+            });
+            $("#versementsForVenteDetails").modal({
+                show: true
+            });
+        }
+
+        function afficherDetailsadmin(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/AgentApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var employe = JSON.parse(result);
+                    document.getElementById("adminIdDetails").innerHTML = employe.id;
+                    document.getElementById("adminNomDetails").innerHTML = employe.nom + ' ' + employe.prenom;
+                    document.getElementById("adminTelDetails").innerHTML = employe.tel;
+                    document.getElementById("adminsAdresseDetails").innerHTML = employe.adresse;
+                    document.getElementById("adminEmailDetails").innerHTML = employe.email;
+                    document.getElementById("adminDateNaissanceDetails").innerHTML = employe.dateNaissance;
+                    document.getElementById("adminRoleDetails").innerHTML = rowData[0][6];
+                    document.getElementById("adminDateAjoutDetails").innerHTML = employe.dateAdded;
+                }
+            });
+            $("#adminDetails").modal({
+                show: true
+            });
+        } // ok
+
+        function afficherDetailsAppels(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/AppelsApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var appel = JSON.parse(result);
+                    var horraire;
+                    switch (appel.visite.horraire) {
+                        case 1:
+                            horraire = '08:00 - 10:00';
+                            break;
+                        case 2:
+                            horraire = '10:00 - 12:00';
+                            break;
+                        case 3:
+                            horraire = '12:00 - 14:00';
+                            break;
+                        case 4:
+                            horraire = '14:00 - 16:00';
+                            break;
+                    }
+                    document.getElementById("appelIdDetails").innerHTML = appel.id;
+                    document.getElementById("appelNumeroDetails").innerHTML = appel.numeroTel;
+                    document.getElementById("appelLogementDetails").innerHTML = appel.visite.logement.titre;
+                    document.getElementById("appelDateDetails").innerHTML = appel.visite.timestamp;
+                    document.getElementById("appelHorraireDetails").innerHTML = horraire;
+                    document.getElementById("appelIsConfirmeDetails").innerHTML = appel.isConfirmed;
+                }
+            });
+            $("#appelDetails").modal({
+                show: true
+            });
+        } //ok
+
+        function afficherDetailsAgent(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/AgentApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var employe = JSON.parse(result);
+                    document.getElementById("agentIdDetails").innerHTML = employe.id;
+                    document.getElementById("agentNomDetails").innerHTML = employe.nom + ' ' + employe.prenom;
+                    document.getElementById("agentTelDetails").innerHTML = employe.tel;
+                    document.getElementById("agentsAdresseDetails").innerHTML = employe.adresse;
+                    document.getElementById("agentEmailDetails").innerHTML = employe.email;
+                    document.getElementById("agentDateNaissanceDetails").innerHTML = employe.dateNaissance;
+                    document.getElementById("agentLocaliteDetails").innerHTML = rowData[0][6];
+                    document.getElementById("agentDateAjoutDetails").innerHTML = employe.dateAdded;
+                }
+            });
+
+            $("#agentDetails").modal({
+                show: true
+            });
+        } //ok
+
+        function afficherDetailsOperateur(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/AgentApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var employe = JSON.parse(result);
+                    document.getElementById("operateurIdDetails").innerHTML = employe.id;
+                    document.getElementById("operateurNomDetails").innerHTML = employe.nom + ' ' + employe.prenom;
+                    document.getElementById("operateurTelDetails").innerHTML = employe.tel;
+                    document.getElementById("operateursAdresseDetails").innerHTML = employe.adresse;
+                    document.getElementById("operateurEmailDetails").innerHTML = employe.email;
+                    document.getElementById("operateurDateNaissanceDetails").innerHTML = employe.dateNaissance;
+                    document.getElementById("operateurDateAjoutDetails").innerHTML = employe.dateAdded;
+                }
+            });
+
+            $("#operateurDetails").modal({
+                show: true
+            });
+        } //ok
+
+        function afficherDetailsResVente(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/AgentApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var employe = JSON.parse(result);
+                    document.getElementById("resVenteIdDetails").innerHTML = employe.id;
+                    document.getElementById("resVenteNomDetails").innerHTML = employe.nom + ' ' + employe.prenom;
+                    document.getElementById("resVenteTelDetails").innerHTML = employe.tel;
+                    document.getElementById("resVentesAdresseDetails").innerHTML = employe.adresse;
+                    document.getElementById("resVenteEmailDetails").innerHTML = employe.email;
+                    document.getElementById("resVenteDateNaissanceDetails").innerHTML = employe.dateNaissance;
+                    document.getElementById("resVenteEtatDetails").innerHTML = employe.isSuspended;
+                    document.getElementById("resVenteDateAjoutDetails").innerHTML = employe.dateAdded;
+                }
+            });
+            $("#resVenteDetails").modal({
+                show: true
+            });
+        } //ok
+
+        function afficherDetailsSignalement(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/clientApi?action=getSignalementById&id=' + rowData[0][0],
+                success: function (result) {
+                    var signalement = JSON.parse(result);
+                    document.getElementById("plaignantDetails").innerHTML = signalement.plaignant.nom + ' ' + signalement.plaignant.prenom;
+                    document.getElementById("sujetPlainteDetails").innerHTML = signalement.client.nom + ' ' + signalement.client.prenom;
+                    document.getElementById("signalementMotifDetails").innerHTML = signalement.motif;
+                }
+            });
+            $("#signalementDetails").modal({
+                show: true
+            });
+        } // ok
+
+        function afficherDetailsVente(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/venteApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var vente = JSON.parse(result);
+                    document.getElementById("venteIdDetails").innerHTML = vente.id;
+                    document.getElementById("venteClientDetails").innerHTML = vente.client.nom + ' ' + vente.client.prenom;
+                    document.getElementById("venteLogementDetails").innerHTML = 'ID:' + vente.logement.id + ' | Titre: ' + vente.logement.titre;
+                    document.getElementById("venteDateDetails").innerHTML = vente.date;
+                    document.getElementById("venteRestantDetails").innerHTML = rowData[0][4] + ' DA';
+                    document.getElementById("venteEtatDetails").innerHTML = vente.etatVente;
+                }
+            });
+            $("#venteDetails").modal({
+                show: true
+            });
+        } // ok
+
+        function afficherDetailsLogement(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/logementApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var logement = JSON.parse(result);
+                    document.getElementById("logementIdDetails").innerHTML = logement.id;
+                    document.getElementById("logementTitreDetails").innerHTML = logement.titre;
+                    document.getElementById("logementDescriptionDetails").innerHTML = logement.description;
+                    document.getElementById("logementSuperficieDetails").innerHTML = logement.superficie;
+                    document.getElementById("logementNbrPieces").innerHTML = logement.nbrPieces;
+                    document.getElementById("logementNbrSdb").innerHTML = logement.nbrSdb;
+                    document.getElementById("logementJardinDetails").innerHTML = logement.avecJardin;
+                    document.getElementById("logementGarageDetails").innerHTML = logement.avecGarage;
+                    document.getElementById("logementSousSolDetails").innerHTML = logement.avecSousSol;
+                    document.getElementById("logementMeubleDetails").innerHTML = logement.meubles;
+                    document.getElementById("logementAdresseDetails").innerHTML = logement.adresse;
+                    document.getElementById("logementLocaliteDetails").innerHTML = logement.localite.nom;
+                    document.getElementById("logementPrixDetails").innerHTML = logement.prix + ' DA';
+                    document.getElementById("logementEtageDetails").innerHTML = logement.etage;
+                    document.getElementById("logementEtatDetails").innerHTML = logement.isGele;
+                    document.getElementById("logementLatitudeDetails").innerHTML = logement.location.latitude;
+                    document.getElementById("logementLongitudeDetails").innerHTML = logement.location.longitude;
+                }
+            });
+            $("#logementDetails").modal({
+                show: true
+            });
+        } // ok
+
+        function afficherDetailsVisite(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/visiteApi?action=getById&id=' + rowData[0][0],
+                success: function (result) {
+                    var visite = JSON.parse(result);
+                    var horraire;
+                    switch (visite.horraire) {
+                        case 1:
+                            horraire = '08:00 - 10:00';
+                            break;
+                        case 2:
+                            horraire = '10:00 - 12:00';
+                            break;
+                        case 3:
+                            horraire = '12:00 - 14:00';
+                            break;
+                        case 4:
+                            horraire = '14:00 - 16:00';
+                            break;
+                    }
+                    document.getElementById("visiteIdDetails").innerHTML = visite.id;
+                    document.getElementById("visiteLogementDetails").innerHTML = 'ID: ' + visite.logement.id + ' | Titre: ' + visite.logement.titre;
+                    document.getElementById("visiteAgentDetails").innerHTML = visite.agent.nom + ' ' + visite.agent.prenom;
+                    document.getElementById("visiteClientDetails").innerHTML = visite.client.nom + ' ' + visite.client.prenom;
+                    document.getElementById("visiteTimestampDetails").innerHTML = visite.timestamp + ' | ' + horraire;
+                    document.getElementById("visiteEtatDetails").innerHTML = visite.etatVisite;
+                }
+            });
+            $("#visiteDetails").modal({
+                show: true
+            });
+        } // ok
+
+        function afficherDetailsClient(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/clientApi?action=getById&clientId=' + rowData[0][0],
+                success: function (result) {
+                    var client = JSON.parse(result);
+                    document.getElementById("clientIdDetails").innerHTML = client.id;
+                    document.getElementById("clientNomDetails").innerHTML = client.nom + ' ' + client.prenom;
+                    document.getElementById("clientTelDetails").innerHTML = client.tel;
+                    document.getElementById("clientAdresseDetails").innerHTML = client.adresse;
+                    document.getElementById("clientEmailDetails").innerHTML = client.email
+                    document.getElementById("clientDateDeNaissanceDetails").innerHTML = client.dateNaissance;
+                    document.getElementById("clientEtatDetails").innerHTML = client.isBanned ? "Non banni" : "Banni";
+                    document.getElementById("clientDateAddedDetails").innerHTML = client.dateAdded;
+                }
+            });
+            $("#clientDetails").modal({
+                show: true
+            });
+        } // ok
+
         table.on('select', function (e, dt, type, indexes) {
             var rowData = table.rows(indexes).data().toArray();
-            $('#selectedRowId').val(rowData[0][0]);
-            var visiteiD = rowData[0][0];
-            $("#test").val(visiteiD);
-            $("#detailsModal").modal({
-                show: true
-            })
+
+            var page = '<%out.print(currentPage);%>';
+            switch (page) {
+                case 'VERSEMENTS_FOR_VENTE':
+                    afficherDetailsVersementsForVente(rowData);
+                    break;
+                case 'APPELS':
+                    afficherDetailsAppels(rowData);
+                    break;
+                case 'APPELS_CONFIRMES':
+                    afficherDetailsAppels(rowData);
+                    break;
+                case 'APPELS_NON_CONFIRMES':
+                    afficherDetailsAppels(rowData);
+                    break;
+                case 'AGENTS':
+                    afficherDetailsAgent(rowData);
+                    break;
+                case 'RESPONSABLES_VENTES':
+                    afficherDetailsResVente(rowData);
+                    break;
+                case 'OPERATEURS':
+                    afficherDetailsOperateur(rowData);
+                    break;
+                case 'ADMINS':
+                    afficherDetailsadmin(rowData);
+                    break;
+                case 'SIGNALEMENT':
+                    afficherDetailsSignalement(rowData);
+                    break;
+                case 'ANNULER_VENTE':
+                    afficherDetailsVente(rowData);
+                    break;
+                case 'VENTES_ANNULEES':
+                    afficherDetailsVente(rowData);
+                    break;
+                case 'VENTES':
+                    afficherDetailsVente(rowData);
+                    break;
+                case 'VENTES_EN_COURS':
+                    afficherDetailsVente(rowData);
+                    break;
+                case 'CONFIRMED_VENTES':
+                    afficherDetailsVente(rowData);
+                    break;
+                case 'LOGEMENTS':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'LOGEMENTS_VENDUS':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'FROZEN_LOGEMENTS':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'GELER_LOGEMENT':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'LOGEMENTS_FOR_USER':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'LOGEMENTS_NON_VENDUS':
+                    afficherDetailsLogement(rowData);
+                    break;
+                case 'VISITES':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'REPORTED_VISITES':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'CANCELED_VISITES':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'AGENT_VISITES':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'PROGRAMMED_VISITES':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'MY_CANCELED_VISITS':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'MODIFIER_VISITE':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'MY_PASSED_VISITS':
+                    afficherDetailsVisite(rowData);
+                    break;
+                case 'CLIENTS':
+                    afficherDetailsClient(rowData);
+                    break;
+                case 'CLIENTS_FOR_USER':
+                    afficherDetailsClient(rowData);
+                    break;
+                case 'BANNED_CLIENTS':
+                    afficherDetailsClient(rowData);
+                    break;
+                case 'BANNIR_CLIENT':
+                    afficherDetailsClient(rowData);
+                    break;
+                case 'CLIENTS_FOR_AGENT':
+                    afficherDetailsClient(rowData);
+                    break;
+                case 'SIGNALER_CLIENT':
+                    afficherDetailsClient(rowData);
+                    break;
+            }
+
+
         });
 
 

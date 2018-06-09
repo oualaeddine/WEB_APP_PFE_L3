@@ -8,6 +8,7 @@ import model.beans.humans.Client;
 import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
+import sun.rmi.runtime.Log;
 import utils.JsonUtil;
 import utils.MyConsts;
 
@@ -24,8 +25,16 @@ public class LogementApi extends API {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String responseBody = "null";
+        System.out.println("ani f l'post");
         if (action != null)
             switch (action) {
+                case "getById":
+                    System.out.println("ani f get by id li f l'post");
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    System.out.println("id: " + id);
+                    Logement logement = (Logement) new LogementDAO().getById(id);
+                    responseBody = JsonUtil.objectToJson(logement);
+                    break;
                 case "getMyLogements":
                     int user = Integer.parseInt(request.getParameter("userId"));
                     LinkedList<Logement> myLogements = new LogementDAO().getLogementsForClient(user);
@@ -44,9 +53,18 @@ public class LogementApi extends API {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String responseBody = "null";
         String action = request.getParameter("action");
+        System.out.println("ani f l'get");
         if (action != null) {
 
             switch (action) {
+                case "getById": {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    System.out.println("id: " + id);
+                    Logement logement = (Logement) new LogementDAO().getById(id);
+                    responseBody = JsonUtil.objectToJson(logement);
+                    break;
+                }
+
                 case "addToWishList":
                     int clientId = Integer.parseInt(request.getParameter("clientId"));
                     int logementId = Integer.parseInt(request.getParameter("logementId"));

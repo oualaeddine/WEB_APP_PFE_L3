@@ -331,6 +331,7 @@ public class DataTableHeader {
 
     private void setupTableHeaderForPlainte() {
         html = "<tr>" +
+                "<th>ID</th>" +
                 "<th>Plaignant</th>" +
                 "<th>Sujet de la plainte</th>" +
                 "<th>Motif</th>" +

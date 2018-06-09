@@ -2,8 +2,10 @@ package control.api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import model.beans.Signalement;
 import model.beans.humans.Client;
 import model.db.daos.ClientDAO;
+import model.db.daos.SignalementDAO;
 import utils.JsonUtil;
 import utils.MyConsts;
 
@@ -32,9 +34,14 @@ public class ClientApi extends API {
         if (request.getParameter("action") != null) {
             String action = request.getParameter("action");
             switch (action) {
+                case "getSignalementById":
+                    int signalementId = Integer.parseInt(request.getParameter("id"));
+                    Signalement signalement = (Signalement) new SignalementDAO().getById(signalementId);
+                    response.getWriter().append(JsonUtil.objectToJson(signalement));
+                    break;
                 case "getById":
                     int clientId = Integer.parseInt(request.getParameter("clientId"));
-                    response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().banById(clientId)));
+                    response.getWriter().append(JsonUtil.objectToJson(new ClientDAO().getById(clientId)));
                     break;
                 case "getAllClients":
                     LinkedList listeDesClients = new ClientDAO().getAll();

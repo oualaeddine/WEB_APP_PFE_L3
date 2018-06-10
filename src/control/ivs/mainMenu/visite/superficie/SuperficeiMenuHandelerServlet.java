@@ -50,18 +50,23 @@ public class SuperficeiMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goToRecap() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.RECAP_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .option("type", type)
-                        .option("superficie", superficie)
+                        .Builder(IVSConsts.RECAP_SERVLET_URL +
+                        "?language=" + language +
+                        "&prix=" + fourchettePrix +
+                        "&region=" + region +
+                        "&type=" + type +
+                        "&superficie=" + superficie)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
 
     private VoiceResponse noLogementsMessage() {
         return getVoiceResponse(language);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

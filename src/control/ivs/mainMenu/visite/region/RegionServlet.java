@@ -67,4 +67,9 @@ public class RegionServlet extends HttpServlet {
                         .build())
                 .build();
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }

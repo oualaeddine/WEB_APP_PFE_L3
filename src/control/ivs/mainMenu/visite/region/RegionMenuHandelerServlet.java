@@ -54,11 +54,8 @@ public class RegionMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goTypeAr() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", "ar")
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL + "?language=ar&prix=" + fourchettePrix + "&region=" + region)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
@@ -66,16 +63,19 @@ public class RegionMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goTypeFr() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", "ar")
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&region=" + region)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
 
     private VoiceResponse noLogementsMessage() {
         return getVoiceResponse(language);
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

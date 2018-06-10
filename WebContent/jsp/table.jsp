@@ -512,8 +512,12 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-info btn-lg" type="submit" form="annulerVenteForm">Oui</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Supprimer</button>");
+                        }
+                    %>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
@@ -679,9 +683,25 @@
                             <td><span id="agentDateAjoutDetails"></span></td>
                         </tr>
                     </table>
+                    <form method="post" action="/SuppressionServlet" id="supprimerEmployeForm">
+                        <input type="hidden" id="supprimer" name="supprimer" value="employe">
+                        <input type="hidden" id="employeId" name="employeId">
+                    </form>
+                    <form method="get" action="/ModifierServlet" id="modifierEmployeForm">
+                        <input type="hidden" id="modifier" name="modifier" value="employe">
+                        <input type="hidden" id="employeModifie" name="employeModifie" value="employe">
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierEmployeForm\" class=\"btn btn-primary\" >Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerEmployeForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
+
                 </div>
             </div>
         </div>
@@ -735,7 +755,14 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierEmployeForm\" class=\"btn btn-primary\">Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerEmployeForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -785,7 +812,14 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierEmployeForm\" class=\"btn btn-primary\" >Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerEmployeForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -839,7 +873,14 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierEmployeForm\" class=\"btn btn-primary\" >Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerEmployeForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -1010,9 +1051,24 @@
                             <td><span id="logementLongitudeDetails"></span></td>
                         </tr>
                     </table>
+                    <form method="post" action="/SuppressionServlet" id="supprimerLogementForm">
+                        <input type="hidden" name="supprimer" value="logement">
+                        <input type="hidden" id="deletedLogementId" name="deletedLogementId">
+                    </form>
+                    <form method="get" action="/ModifierServlet" id="modifierLogementForm">
+                        <input type="hidden" name="modifier" value="logement">
+                        <input type="hidden" id="logementModifie" name="logementModifie">
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierLogementForm\" class=\"btn btn-primary\" >Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerLogementForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -1110,9 +1166,24 @@
                             <td><span id="clientDateAddedDetails"></span></td>
                         </tr>
                     </table>
+                    <form method="post" action="/SuppressionServlet" id="supprimerClientForm">
+                        <input type="hidden" name="supprimer" value="client">
+                        <input type="hidden" id="deletedClient" name="deletedClient">
+                    </form>
+                    <form method="get" action="/ModifierServlet" id="modifierClientForm">
+                        <input type="hidden" name="modifier" value="client">
+                        <input type="hidden" id="clientModifie" name="clientModifie">
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <%
+                        if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                            out.print("<button type=\"submit\" form=\"modifierClientForm\" class=\"btn btn-primary\" >Modifier</button>");
+                            out.print("<button type=\"submit\" form=\"supprimerClientForm\" class=\"btn btn-default\">Supprimer</button>");
+                        } else {
+                            out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -1292,6 +1363,8 @@
                     document.getElementById("adminDateNaissanceDetails").innerHTML = employe.dateNaissance;
                     document.getElementById("adminRoleDetails").innerHTML = rowData[0][6];
                     document.getElementById("adminDateAjoutDetails").innerHTML = employe.dateAdded;
+                    document.getElementById("employeId").value = employe.id;
+                    document.getElementById("employeModifie").value = employe.id;
                 }
             });
             $("#adminDetails").modal({
@@ -1347,6 +1420,8 @@
                     document.getElementById("agentDateNaissanceDetails").innerHTML = employe.dateNaissance;
                     document.getElementById("agentLocaliteDetails").innerHTML = rowData[0][6];
                     document.getElementById("agentDateAjoutDetails").innerHTML = employe.dateAdded;
+                    document.getElementById("employeId").value = employe.id;
+                    document.getElementById("employeModifie").value = employe.id;
                 }
             });
 
@@ -1368,6 +1443,8 @@
                     document.getElementById("operateurEmailDetails").innerHTML = employe.email;
                     document.getElementById("operateurDateNaissanceDetails").innerHTML = employe.dateNaissance;
                     document.getElementById("operateurDateAjoutDetails").innerHTML = employe.dateAdded;
+                    document.getElementById("employeId").value = employe.id;
+                    document.getElementById("employeModifie").value = employe.id;
                 }
             });
 
@@ -1390,6 +1467,8 @@
                     document.getElementById("resVenteDateNaissanceDetails").innerHTML = employe.dateNaissance;
                     document.getElementById("resVenteEtatDetails").innerHTML = employe.isSuspended;
                     document.getElementById("resVenteDateAjoutDetails").innerHTML = employe.dateAdded;
+                    document.getElementById("employeId").value = employe.id;
+                    document.getElementById("employeModifie").value = employe.id;
                 }
             });
             $("#resVenteDetails").modal({
@@ -1455,6 +1534,7 @@
                     document.getElementById("logementEtatDetails").innerHTML = logement.isGele;
                     document.getElementById("logementLatitudeDetails").innerHTML = logement.location.latitude;
                     document.getElementById("logementLongitudeDetails").innerHTML = logement.location.longitude;
+                    document.getElementById("deletedLogementId").value = logement.id;
                 }
             });
             $("#logementDetails").modal({
@@ -1510,6 +1590,8 @@
                     document.getElementById("clientDateDeNaissanceDetails").innerHTML = client.dateNaissance;
                     document.getElementById("clientEtatDetails").innerHTML = client.isBanned ? "Non banni" : "Banni";
                     document.getElementById("clientDateAddedDetails").innerHTML = client.dateAdded;
+                    document.getElementById("deletedClient").value = client.id;
+                    document.getElementById("clientModifie").value = client.id;
                 }
             });
             $("#clientDetails").modal({

@@ -1044,8 +1044,8 @@ public class Util {
         Date date1 = null;
         try {
             java.util.Date date = sdf.parse(dateString);
-            System.out.println("the fufing dateString = " + dateString);
-            System.out.println("the fufing date = " + date.toString());
+            System.out.println("dateString = " + dateString);
+            System.out.println("date = " + date.toString());
             date1 = new Date(date.getTime());
 
         } catch (ParseException e) {

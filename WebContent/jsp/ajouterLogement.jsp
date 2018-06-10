@@ -69,7 +69,8 @@
     <div class="card card-register mx-auto mt-5">
         <div class="card-header">Ajouter un logement</div>
         <div class="card-body">
-            <form method="post" action="/UploadServlet" id="ajouterLogementForm" enctype="multipart/form-data">
+            <form method="post" action="/AjoutServlet?ajouter=logement" id="ajouterLogementForm"
+                  enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="form-row">
                         <label for="titreInput">Titre</label>
@@ -162,34 +163,35 @@
                             <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Longitude">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file" class="form-control" type="file" name="file1" placeholder="Photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file2" class="form-control" type="file" name="file2" placeholder="Photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file3" class="form-control" type="file" name="file3" placeholder="Photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file4" class="form-control" type="file" name="file4" placeholder="Photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file5" class="form-control" type="file" name="file5" placeholder="Photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Photo 1</label>
-                        <input id="file6" class="form-control" type="file" name="file6" placeholder="Photo">
-                    </div>
-                </div>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file" class="form-control" type="file" name="file1" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file2" class="form-control" type="file" name="file2" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file3" class="form-control" type="file" name="file3" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file4" class="form-control" type="file" name="file4" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file5" class="form-control" type="file" name="file5" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--<div class="form-group">--%>
+                    <%--<label for="file">Photo 1</label>--%>
+                    <%--<input id="file6" class="form-control" type="file" name="file6" placeholder="Photo">--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
                 <div class="text-center">
-                    <input class="btn btn-primary" type="submit" form="ajouterLogementForm"
-                           value="Upload">Ajouter
+                    <button type="submit" form="ajouterLogementForm" class="btn btn-primary">Ajouter</button>
+                    <%--<input class="btn btn-primary" type="submit" form="ajouterLogementForm"--%>
+                    <%--value="Upload">Ajouter--%>
                 </div>
 
 

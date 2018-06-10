@@ -484,6 +484,19 @@ public class LogementDAO extends DAO {
 
     @Override
     public boolean update(Object object) {
+        Logement logement = (Logement) object;
+        try {
+            int
+                    jardin = logement.isAvecJardin() ? 1 : 0,
+                    garage = logement.isAvecGarage() ? 1 : 0,
+                    sousSol = logement.isAvecSousSol() ? 1 : 0,
+                    meubles = logement.isMeubles() ? 1 : 0;
+            String type = (logement.getTypeLogement() == TypeLogement.VILLA) ? "villa" : "appartement";
+            logementStatement.execute("update logement set typeLogement='" + type + "', titre='" + logement.getTitre() + "', description='" + logement.getDescription() + "', superficie=" + logement.getSuperficie() + ", region=" + logement.getLocalite().getId() + ", adresse='" + logement.getAdresse() + "', nbrPieces=" + logement.getNbrPieces() + ", nbrSdb=" + logement.getNbrSdb() + ", avecJardin=" + jardin + ", avecGarage=" + garage + ", avecSousSol=" + sousSol + ", avecMeubles=" + meubles + ", etage=" + logement.getEtage() + ", prix=" + logement.getPrix() + ", latitude=" + logement.getLocation().getLatitude() + ", longitude=" + logement.getLocation().getLongitude() + ";");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -531,10 +544,10 @@ public class LogementDAO extends DAO {
 
     @Override
     public boolean delete(Object object) {
-        Logement logement = (Logement) object;
+        int logement = (int) object;
         try {
             logementStatement.execute("DELETE FROM logement " +
-                    "WHERE id='" + logement.getId() + "';");
+                    "WHERE id=" + logement + ";");
             try {
                 logementStatement.close();
             } catch (SQLException e) {

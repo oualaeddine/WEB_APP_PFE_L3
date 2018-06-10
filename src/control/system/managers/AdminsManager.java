@@ -66,7 +66,8 @@ public class AdminsManager {
         return new ClientDAO().add(client);
     }
 
-    public boolean deleteClient(Client client){
+    public boolean deleteClient(HttpServletRequest request) {
+        int client = Integer.parseInt(request.getParameter("deletedClient"));
         return new ClientDAO().delete(client);
     }
 
@@ -107,8 +108,9 @@ public class AdminsManager {
         return new LogementDAO().add(logement);
     }
 
-    public boolean deleteLogement(Logement logement){
-        return new LogementDAO().delete(logement);
+    public boolean deleteLogement(HttpServletRequest request) {
+        int logementId = Integer.parseInt(request.getParameter("deletedLogementId"));
+        return new LogementDAO().delete(logementId);
     }
 
     public boolean createLocalite(Localite localite){
@@ -192,5 +194,72 @@ public class AdminsManager {
         String description = request.getParameter("descriptionInput");
 
         return new ContactInfosDAO().update(nomSociete, email, tel, adresse, description);
+    }
+
+    public boolean deleteEmploye(HttpServletRequest request) {
+        int employeId = Integer.parseInt(request.getParameter("employeId"));
+        return new EmployeDAO().deleteById(employeId);
+    }
+
+    public boolean modifierEmploye(HttpServletRequest request) {
+        int employeId = Integer.parseInt(request.getParameter("employeModifie"));
+        String prenom = request.getParameter("prenomInput");
+        String nom = request.getParameter("nomInput");
+        String tel = request.getParameter("inputTel");
+        String date = request.getParameter("dateNaissance");
+        String adresse = request.getParameter("adresseInput");
+        String email = request.getParameter("emailInput");
+        Employe employe = new Employe();
+        employe.setId(employeId);
+        employe.setPrenom(prenom);
+        employe.setNom(nom);
+        employe.setTel(tel);
+        employe.setDateNaissance(Util.getDateFromString(date));
+        employe.setAdresse(adresse);
+        employe.setEmail(email);
+
+        return new EmployeDAO().update(employe);
+    }
+
+    public boolean modifierLogement(HttpServletRequest request) {
+        Logement logement = new Logement();
+        logement.setTitre(request.getParameter("titreInput"));
+        logement.setDescription(request.getParameter("description"));
+        logement.setAdresse(request.getParameter("adresse"));
+        logement.setSuperficie(Double.parseDouble(request.getParameter("superficie")));
+        logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region"))));
+        logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
+        logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
+        logement.setAvecJardin(!(request.getParameter("jardin") == null));
+        logement.setAvecGarage(!(request.getParameter("garage") == null));
+        logement.setAvecSousSol(!(request.getParameter("soussol") == null));
+        logement.setMeubles(!(request.getParameter("meubles") == null));
+        logement.setEtage(Integer.parseInt(request.getParameter("etage")));
+        logement.setPrix(Double.parseDouble(request.getParameter("prix")));
+        Location location = new Location();
+        location.setLatitude(Double.parseDouble(request.getParameter("latitude")));
+        location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
+        logement.setLocation(location);
+        logement.setTypeLogement(request.getParameter("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+        return new LogementDAO().update(logement);
+    }
+
+    public boolean modifierClient(HttpServletRequest request) {
+        String prenom = request.getParameter("clientprenomInput");
+        String nom = request.getParameter("clientnomInput");
+        String email = request.getParameter("clientemailInput");
+        String tel = request.getParameter("clientinputTel");
+        String adresse = request.getParameter("clientadresseInput");
+
+        Client client = new Client();
+        client.setId(Integer.parseInt(request.getParameter("clientModifie")));
+        client.setPrenom(prenom);
+        client.setNom(nom);
+        client.setEmail(email);
+        client.setTel(tel);
+        client.setAdresse(adresse);
+        client.setDateNaissance(Util.getDateFromString(request.getParameter("dateNaissance")));
+
+        return new ClientDAO().update(client);
     }
 }

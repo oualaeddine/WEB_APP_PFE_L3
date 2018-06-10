@@ -197,11 +197,9 @@ public class ClientDAO extends DAO {
 
     @Override
     public boolean delete(Object object) {
-        Client client = (Client) object;
+        int id = (int) object;
         try {
-            String username = client.getUsername();
-            String password = client.getPassword();
-            clientStatement.executeQuery("DELETE FROM client WHERE username='" + username + "' AND password='" + password + "';");
+            clientStatement.execute("DELETE FROM client WHERE id=" + id + ";");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -139,6 +139,200 @@
 
     </div>
 </div>
+
+
+<%--Details vente modal--%>
+<div id="venteDetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Détails de la vente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="display nowrap" style="width:100%">
+
+                    <tr>
+                        <td>ID:</td>
+                        <td><span id="venteIdDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nom et prénom du client:</td>
+                        <td><span id="venteClientDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Logement:</td>
+                        <td><span id="venteLogementDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td><span id="venteDateDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Montant restant à payer:</td>
+                        <td><span id="venteRestantDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Etat:</td>
+                        <td><span id="venteEtatDetails"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%--Details visite modal--%>
+<div id="visiteDetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Détails de la visite</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="display nowrap" style="width:100%">
+
+                    <tr>
+                        <td>ID de la visite:</td>
+                        <td><span id="visiteIdDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Logement:</td>
+                        <td><span id="visiteLogementDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Agent:</td>
+                        <td><span id="visiteAgentDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Client:</td>
+                        <td><span id="visiteClientDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Date et heure:</td>
+                        <td><span id="visiteTimestampDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Etat:</td>
+                        <td><span id="visiteEtatDetails"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%--Details logements modal--%>
+<div id="logementDetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Détails du logement</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="display nowrap" style="width:100%">
+
+                    <tr>
+                        <td>ID:</td>
+                        <td><span id="logementIdDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Titre:</td>
+                        <td><span id="logementTitreDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td><span id="logementDescriptionDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Superficie:</td>
+                        <td><span id="logementSuperficieDetails"></span> m2</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre de pièces:</td>
+                        <td><span id="logementNbrPieces"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre de salles de bain:</td>
+                        <td><span id="logementNbrSdb"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Avec jardin:</td>
+                        <td><span id="logementJardinDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Avec garage:</td>
+                        <td><span id="logementGarageDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Avec sous-sol:</td>
+                        <td><span id="logementSousSolDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Meublé:</td>
+                        <td><span id="logementMeubleDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Adresse:</td>
+                        <td><span id="logementAdresseDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Localite:</td>
+                        <td><span id="logementLocaliteDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Prix:</td>
+                        <td><span id="logementPrixDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Etage:</td>
+                        <td><span id="logementEtageDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Gelé:</td>
+                        <td><span id="logementEtatDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Latitude:</td>
+                        <td><span id="logementLatitudeDetails"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Longitude:</td>
+                        <td><span id="logementLongitudeDetails"></span></td>
+                    </tr>
+                </table>
+                <form method="post" action="/SuppressionServlet" id="supprimerLogementForm">
+                    <input type="hidden" name="supprimer" value="logement">
+                    <input type="hidden" id="deletedLogementId" name="deletedLogementId">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <%
+                    if (request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.ADMIN || request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_TYPE) == UserType.SU) {
+                        out.print("<a href=\"\"><button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Modifier</button></a>");
+                        out.print("<button type=\"submit\" form=\"supprimerLogementForm\" class=\"btn btn-default\">Supprimer</button>");
+                    } else {
+                        out.print("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fermer</button>");
+                    }
+                %>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script>
     $(function () {
@@ -182,7 +376,9 @@
         $("#include_html").load("../../jsp/client/entete.jsp");
     });
 
-    $("#dataTable").DataTable({
+    var table = $('#dataTable').DataTable({
+        processing: true,
+        select: true,
         dom: 'Bfrtip',
         buttons: [
             'copy',
@@ -195,11 +391,111 @@
             {
                 extend: 'print',
                 messageTop: 'Ce fichier est créé pour : <%out.print(client.getFullName());%>'
-            },
-            {
-                text: 'Annuler visite'
             }
         ]
+
+    });
+
+    function afficherDetailsVente(rowData) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/venteApi?action=getById&id=' + rowData[0][0],
+            success: function (result) {
+                var vente = JSON.parse(result);
+                document.getElementById("venteIdDetails").innerHTML = vente.id;
+                document.getElementById("venteClientDetails").innerHTML = vente.client.nom + ' ' + vente.client.prenom;
+                document.getElementById("venteLogementDetails").innerHTML = 'ID:' + vente.logement.id + ' | Titre: ' + vente.logement.titre;
+                document.getElementById("venteDateDetails").innerHTML = vente.date;
+                document.getElementById("venteRestantDetails").innerHTML = rowData[0][4] + ' DA';
+                document.getElementById("venteEtatDetails").innerHTML = vente.etatVente;
+            }
+        });
+        $("#venteDetails").modal({
+            show: true
+        });
+    } // ok
+
+    function afficherDetailsVisite(rowData) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/visiteApi?action=getById&id=' + rowData[0][0],
+            success: function (result) {
+                var visite = JSON.parse(result);
+                var horraire;
+                switch (visite.horraire) {
+                    case 1:
+                        horraire = '08:00 - 10:00';
+                        break;
+                    case 2:
+                        horraire = '10:00 - 12:00';
+                        break;
+                    case 3:
+                        horraire = '12:00 - 14:00';
+                        break;
+                    case 4:
+                        horraire = '14:00 - 16:00';
+                        break;
+                }
+                document.getElementById("visiteIdDetails").innerHTML = visite.id;
+                document.getElementById("visiteLogementDetails").innerHTML = 'ID: ' + visite.logement.id + ' | Titre: ' + visite.logement.titre;
+                document.getElementById("visiteAgentDetails").innerHTML = visite.agent.nom + ' ' + visite.agent.prenom;
+                document.getElementById("visiteClientDetails").innerHTML = visite.client.nom + ' ' + visite.client.prenom;
+                document.getElementById("visiteTimestampDetails").innerHTML = visite.timestamp + ' | ' + horraire;
+                document.getElementById("visiteEtatDetails").innerHTML = visite.etatVisite;
+            }
+        });
+        $("#visiteDetails").modal({
+            show: true
+        });
+    } // ok
+
+    function afficherDetailsLogement(rowData) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/logementApi?action=getById&id=' + rowData[0][0],
+            success: function (result) {
+                var logement = JSON.parse(result);
+                document.getElementById("logementIdDetails").innerHTML = logement.id;
+                document.getElementById("logementTitreDetails").innerHTML = logement.titre;
+                document.getElementById("logementDescriptionDetails").innerHTML = logement.description;
+                document.getElementById("logementSuperficieDetails").innerHTML = logement.superficie;
+                document.getElementById("logementNbrPieces").innerHTML = logement.nbrPieces;
+                document.getElementById("logementNbrSdb").innerHTML = logement.nbrSdb;
+                document.getElementById("logementJardinDetails").innerHTML = logement.avecJardin;
+                document.getElementById("logementGarageDetails").innerHTML = logement.avecGarage;
+                document.getElementById("logementSousSolDetails").innerHTML = logement.avecSousSol;
+                document.getElementById("logementMeubleDetails").innerHTML = logement.meubles;
+                document.getElementById("logementAdresseDetails").innerHTML = logement.adresse;
+                document.getElementById("logementLocaliteDetails").innerHTML = logement.localite.nom;
+                document.getElementById("logementPrixDetails").innerHTML = logement.prix + ' DA';
+                document.getElementById("logementEtageDetails").innerHTML = logement.etage;
+                document.getElementById("logementEtatDetails").innerHTML = logement.isGele;
+                document.getElementById("logementLatitudeDetails").innerHTML = logement.location.latitude;
+                document.getElementById("logementLongitudeDetails").innerHTML = logement.location.longitude;
+                document.getElementById("deletedLogementId").value = logement.id;
+            }
+        });
+        $("#logementDetails").modal({
+            show: true
+        });
+    } // ok
+
+
+    table.on('select', function (e, dt, type, indexes) {
+        var rowData = table.rows(indexes).data().toArray();
+
+        var page = '<%out.print(currentPage);%>';
+        switch (page) {
+            case 'CLIENT_MES_VENTES_EN_COURS':
+                afficherDetailsVente(rowData);
+                break;
+            case 'CLIENT_MY_VISITS':
+                afficherDetailsVisite(rowData);
+                break;
+            case 'CLIENT_MES_LOGEMENT_VISITES':
+                afficherDetailsLogement(rowData);
+                break;
+        }
     });
 
     <%--var table = $('#dataTable').DataTable({--%>

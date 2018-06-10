@@ -1,7 +1,6 @@
 package control.ivs;
 
 import com.twilio.twiml.VoiceResponse;
-import com.twilio.twiml.voice.Play;
 import com.twilio.twiml.voice.Say;
 
 public class IVSConsts {
@@ -54,15 +53,15 @@ public class IVSConsts {
             case "fr":
                 return new VoiceResponse.Builder()
                         //    .play(new Play.Builder(IVSConsts.FR_NO_LOGEMENTS_MP3_URL).build())
-                        .say(new Say.Builder("désolé, il n'y a pas de logements pour qui satisfaient vos criteres !").language(Say.Language.FR_FR).build())
+                        .say(new Say.Builder("il n'y a pas de logement !").language(Say.Language.FR_FR).build())
                         .build();
             case "ar":
                 return new VoiceResponse.Builder()
-                        .play(new Play.Builder(IVSConsts.AR_NO_LOGEMENTS_MP3_URL).build())
+                        .say(new Say.Builder("il n'y a pas de logement !").language(Say.Language.FR_FR).build())
                         .build();
             default:
                 return new VoiceResponse.Builder()
-                        .play(new Play.Builder(IVSConsts.FR_NO_LOGEMENTS_MP3_URL).build())
+                        .say(new Say.Builder("il n'y a pas de logement !").language(Say.Language.FR_FR).build())
                         .build();
         }
     }

@@ -60,7 +60,7 @@ public class TypeMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goNbrPieces() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.ROOMS_NUMBER_SERVLET_URL + "?language=ar&prix=" + fourchettePrix + "&region=" + region + "&type=" + type)
+                        .Builder(IVSConsts.ROOMS_NUMBER_SERVLET_URL + "?language=" + language + "&prix=" + fourchettePrix + "&region=" + region + "&type=" + type)
                         .method(HttpMethod.GET)
                         .build())
                 .build();
@@ -69,7 +69,7 @@ public class TypeMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goSuperficie() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.SUPERFICIE_SERVLET_URL + "?language=ar&prix=" + fourchettePrix + "&region=" + region + "&type=" + type)
+                        .Builder(IVSConsts.SUPERFICIE_SERVLET_URL + "?language=" + language + "&prix=" + fourchettePrix + "&region=" + region + "&type=" + type)
                         .method(HttpMethod.GET)
                         .build())
                 .build();

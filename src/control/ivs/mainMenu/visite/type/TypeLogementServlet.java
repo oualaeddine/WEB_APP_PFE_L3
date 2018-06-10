@@ -49,9 +49,9 @@ public class TypeLogementServlet extends HttpServlet {
 
     private VoiceResponse handleChoiceAr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.FR_TYPE_MENU_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.AR_TYPE_MENU_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&region=" + region)
+                        .action(IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL + "?language=ar&prix=" + fourchettePrix + "&region=" + region)
                         .method(HttpMethod.GET)
                         .numDigits(1)
                         .build())
@@ -60,7 +60,7 @@ public class TypeLogementServlet extends HttpServlet {
 
     private VoiceResponse handleChoiceFr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.AR_TYPE_MENU_MP3_URL).build())
+                .play(new Play.Builder(IVSConsts.FR_TYPE_MENU_MP3_URL).build())
                 .gather(new Gather.Builder()
                         .action(IVSConsts.TYPE_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&region=" + region)
                         .method(HttpMethod.GET)

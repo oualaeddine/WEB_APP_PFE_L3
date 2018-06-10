@@ -1,6 +1,7 @@
 package control.ivs.mainMenu.visite.recap;
 
 import com.twilio.twiml.VoiceResponse;
+import control.ivs.IVSConsts;
 import model.beans.Appel;
 import model.beans.Logement;
 import model.beans.Visite;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "RecapServlet")
+@WebServlet(name = "RecapServlet", urlPatterns = IVSConsts.RECAP_SERVLET_URL)
 public class RecapServlet extends HttpServlet {
 
     private String

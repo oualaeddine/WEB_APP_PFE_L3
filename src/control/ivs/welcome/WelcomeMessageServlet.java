@@ -55,18 +55,16 @@ public class WelcomeMessageServlet extends HttpServlet {
             return new VoiceResponse.Builder()
                     .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL)
-                            .method(HttpMethod.POST)
-                            .option("language", "ar")
+                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL + "?language=ar")
+                            .method(HttpMethod.GET)
                             .build())
                     .build();
         else
             return new VoiceResponse.Builder()
                     .play(new Play.Builder(IVSConsts.AR_STANDARD_WELCOME_MESSAGE_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL)
-                            .method(HttpMethod.POST)
-                            .option("language", "ar")
+                            .Builder(IVSConsts.WELCOME_HANDELER_SERVLET_URL + "?language=ar")
+                            .method(HttpMethod.GET)
                             .build())
                     .build();
     }
@@ -74,20 +72,18 @@ public class WelcomeMessageServlet extends HttpServlet {
     private VoiceResponse doWelcomeFr() {
         if (isClient)
             return new VoiceResponse.Builder()
-                    .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())
+                    //   .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL)
-                            .method(HttpMethod.POST)
-                            .option("language", "fr")
+                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=fr")
+                            .method(HttpMethod.GET)
                             .build())
                     .build();
         else
             return new VoiceResponse.Builder()
-                    .play(new Play.Builder(IVSConsts.FR_STANDARD_WELCOME_MESSAGE_MP3_URL).build())
+                    // .play(new Play.Builder(IVSConsts.FR_STANDARD_WELCOME_MESSAGE_MP3_URL).build())
                     .redirect(new Redirect
-                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL)
-                            .method(HttpMethod.POST)
-                            .option("language", "fr")
+                            .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=fr")
+                            .method(HttpMethod.GET)
                             .build())
                     .build();
     }

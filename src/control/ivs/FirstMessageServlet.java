@@ -16,7 +16,7 @@ import java.io.IOException;
 public class FirstMessageServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        System.out.println("first message");
         // Create a TwiML response and add our friendly message.
         VoiceResponse voiceResponse = new VoiceResponse.Builder()
                 .play(new Play.Builder(IVSConsts.WELCOME_MP3_URL).build())

@@ -20,6 +20,8 @@ public class ProgrammerVisiteMenuServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.language = request.getParameter("language");
+        System.out.println("ProgrammerVisiteMenuServlet ");
+
         VoiceResponse voiceResponse;
         switch (language) {
             case "fr":
@@ -46,22 +48,28 @@ public class ProgrammerVisiteMenuServlet extends HttpServlet {
         return new VoiceResponse.Builder()
                 .play(new Play.Builder(IVSConsts.AR_PROGRAMMER_VISITE_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
 
     private VoiceResponse fourchettePrixFr() {
+        System.out.println("fourchettePrixFr");
+
+
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.FR_PROGRAMMER_VISITE_MP3_URL).build())
+                // TODO: 6/10/2018
+                // .play(new Play.Builder(IVSConsts.FR_PROGRAMMER_VISITE_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.FOURCHETTE_PRIX_MENU_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 }

@@ -19,6 +19,7 @@ public class MainMenuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String language = request.getParameter("language");
+        System.out.println("main menu ");
 
         VoiceResponse voiceResponse;
         switch (language) {
@@ -45,6 +46,9 @@ public class MainMenuServlet extends HttpServlet {
     }
 
     private VoiceResponse doMainFr() {
+
+        System.out.println("doMainFr ");
+
         return new VoiceResponse.Builder()
                 .play(new Play.Builder(IVSConsts.FR_MAIN_MENU_MP3_URL).build())
                 .gather(new Gather.Builder()
@@ -59,11 +63,14 @@ public class MainMenuServlet extends HttpServlet {
         return new VoiceResponse.Builder()
                 .play(new Play.Builder(IVSConsts.AR_MAIN_MENU_MP3_URL).build())
                 .gather(new Gather.Builder()
-                        .action(IVSConsts.MAIN_MENU_HANDELER_SERVLET_URL + "?language=fr")
+                        .action(IVSConsts.MAIN_MENU_HANDELER_SERVLET_URL + "?language=ar")
                         .method(HttpMethod.GET)
-                        .numDigits(1)
                         .build())
                 .build();
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 }

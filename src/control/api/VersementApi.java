@@ -55,7 +55,7 @@ public class VersementApi extends API {
                 case "getByClient": {
                     if (request.getParameter("clientId") != null) {
                         int clientId = Integer.parseInt(request.getParameter("clientId"));
-                        responseBody = JsonUtil.objectToJson(new VersementDAO().getByClient(clientId));
+                        responseBody = JsonUtil.versementsListToJsonArray(new VersementDAO().getByClient(clientId));
                     }
                     break;
                 }

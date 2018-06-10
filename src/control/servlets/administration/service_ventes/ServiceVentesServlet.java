@@ -70,7 +70,6 @@ public class ServiceVentesServlet extends MyServlet {
                         case MyConsts.LOGOUT_SERVLET_URL:
                             this.getServletContext().getRequestDispatcher("/logout").forward(request, response);
                             break;
-
                     }
                 }
             } else redirectToDashboard(request, response);

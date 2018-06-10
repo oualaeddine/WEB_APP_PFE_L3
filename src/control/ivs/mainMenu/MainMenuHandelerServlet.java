@@ -18,10 +18,15 @@ public class MainMenuHandelerServlet extends HttpServlet {
 
     private String language;
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         language = request.getParameter("language");
         String action = request.getParameter("Digits");
-
+        System.out.println("main menu handeler action = " + action);
         VoiceResponse voiceResponse;
         switch (action) {
             case "1":
@@ -34,7 +39,7 @@ public class MainMenuHandelerServlet extends HttpServlet {
                 voiceResponse = changeLanguage();
                 break;
             default:
-                voiceResponse = goMain();
+                voiceResponse = goProgramVisit();
                 break;
         }
         response.setContentType("application/xml");
@@ -51,9 +56,8 @@ public class MainMenuHandelerServlet extends HttpServlet {
         return new VoiceResponse
                 .Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
@@ -61,9 +65,8 @@ public class MainMenuHandelerServlet extends HttpServlet {
     private VoiceResponse changeLanguage() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.CHANGE_LANGUAGE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.CHANGE_LANGUAGE_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
@@ -71,20 +74,21 @@ public class MainMenuHandelerServlet extends HttpServlet {
     private VoiceResponse callOperator() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.CALL_OPERATOR_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.CALL_OPERATOR_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
 
     private VoiceResponse goProgramVisit() {
+        System.out.println("goProgramVisit");
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.PROGRAM_VISIT_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
+                        .Builder(IVSConsts.PROGRAM_VISIT_SERVLET_URL + "?language=" + language)
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
+
+
 }

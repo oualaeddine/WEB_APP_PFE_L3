@@ -18,6 +18,9 @@ import java.io.IOException;
 public class WelcomeHandelerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String selectedOption = request.getParameter("Digits");
+
+        System.out.println("welcome handeler");
+
         VoiceResponse voiceResponse;
         switch (selectedOption) {
             case "1":
@@ -45,9 +48,8 @@ public class WelcomeHandelerServlet extends HttpServlet {
                 .Builder()
                 .play(new Play.Builder(IVSConsts.YOU_CHOOSED_ARABIC_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", "ar")
+                        .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=ar")
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }
@@ -57,9 +59,8 @@ public class WelcomeHandelerServlet extends HttpServlet {
                 .Builder()
                 .play(new Play.Builder(IVSConsts.YOU_CHOOSED_FRENCH_MP3_URL).build())
                 .redirect(new Redirect
-                        .Builder(IVSConsts.WELCOME_MESSAGE_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", "fr")
+                        .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=fr")
+                        .method(HttpMethod.GET)
                         .build())
                 .build();
     }

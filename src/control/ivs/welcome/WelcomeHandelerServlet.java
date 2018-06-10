@@ -3,7 +3,6 @@ package control.ivs.welcome;
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
-import com.twilio.twiml.voice.Play;
 import com.twilio.twiml.voice.Redirect;
 import control.ivs.IVSConsts;
 
@@ -46,7 +45,7 @@ public class WelcomeHandelerServlet extends HttpServlet {
     private VoiceResponse goArab() {
         return new VoiceResponse
                 .Builder()
-                .play(new Play.Builder(IVSConsts.YOU_CHOOSED_ARABIC_MP3_URL).build())
+                //     .play(new Play.Builder(IVSConsts.YOU_CHOOSED_ARABIC_MP3_URL).build())
                 .redirect(new Redirect
                         .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=ar")
                         .method(HttpMethod.GET)
@@ -57,7 +56,7 @@ public class WelcomeHandelerServlet extends HttpServlet {
     private VoiceResponse goFrench() {
         return new VoiceResponse
                 .Builder()
-                .play(new Play.Builder(IVSConsts.YOU_CHOOSED_FRENCH_MP3_URL).build())
+                //.play(new Play.Builder(IVSConsts.YOU_CHOOSED_FRENCH_MP3_URL).build())
                 .redirect(new Redirect
                         .Builder(IVSConsts.MAIN_MENU_SERVLET_URL + "?language=fr")
                         .method(HttpMethod.GET)

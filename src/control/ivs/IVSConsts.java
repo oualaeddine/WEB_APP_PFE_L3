@@ -2,8 +2,12 @@ package control.ivs;
 
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Play;
+import com.twilio.twiml.voice.Say;
 
 public class IVSConsts {
+    private static String url = "http://ivspfe.ddns.net:81/ivs/";
+
+
     public static final String FOURCHETTE_PRIX_MENU_SERVLET_URL = "/ivs_FOURCHETTE_PRIX",
             REGION_MENU_SERVLET_URL = "/ivs_REGION_MENU",
             REGION_MENU_HANDELER_SERVLET_URL = "/ivs_REGION_MENU_HANDELER",
@@ -31,7 +35,6 @@ public class IVSConsts {
             FR_MAIN_MENU_MP3_URL = url + "Main_menu_FR.mp3";
     public static final String WELCOME_HANDELER_SERVLET_URL = "/ivs_WELCOME_HANDELER",
             WELCOME_MENU_SERVLET_URL = "/ivs_WELCOME_MENU";
-    private static String url = "http://ivspfe.ddns.net:81/ivs/";
     public static final String WELCOME_MP3_URL = url + "Bienvenue_choix_langue_FR_AR.mp3";
     public static final String AR_PROGRAMMER_VISITE_MP3_URL = url + "",
             AR_FOURCHETTE_PRIX_MP3_URL = url + "Fourchette_AR.mp3",
@@ -50,7 +53,8 @@ public class IVSConsts {
         switch (language) {
             case "fr":
                 return new VoiceResponse.Builder()
-                        .play(new Play.Builder(IVSConsts.FR_NO_LOGEMENTS_MP3_URL).build())
+                        //    .play(new Play.Builder(IVSConsts.FR_NO_LOGEMENTS_MP3_URL).build())
+                        .say(new Say.Builder("désolé, il n'y a pas de logements pour qui satisfaient vos criteres !").language(Say.Language.FR_FR).build())
                         .build();
             case "ar":
                 return new VoiceResponse.Builder()

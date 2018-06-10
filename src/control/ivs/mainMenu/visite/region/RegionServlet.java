@@ -6,6 +6,7 @@ import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Gather;
 import com.twilio.twiml.voice.Play;
+import com.twilio.twiml.voice.Say;
 import control.ivs.IVSConsts;
 
 import javax.servlet.ServletException;
@@ -57,7 +58,8 @@ public class RegionServlet extends HttpServlet {
 
     private VoiceResponse handleChoicesFr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.FR_REGION_MENU_MP3_URL).build())
+                //.play(new Play.Builder(IVSConsts.FR_REGION_MENU_MP3_URL).build())
+                .say(new Say.Builder("veuillez introduir le numero de la region").language(Say.Language.FR_FR).build())
                 .gather(new Gather.Builder()
                         .action(IVSConsts.REGION_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix)
                         .method(HttpMethod.GET)

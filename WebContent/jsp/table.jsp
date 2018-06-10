@@ -1201,15 +1201,21 @@
             $.ajax({
                 type: 'GET',
                 url: '/api/versementApi?action=getByVente&venteId=' + rowData[0][0],
-                dataType: 'json',
+                //dataType: 'json',
                 success: function (result) {
+                    console.log(result);
 
                     var jsonData = JSON.parse(result);
+                    console.log(result);
                     for (var i = 0; i < jsonData.length; i++) {
-                        // document.getElementById("versementsForVenteTable").innerHTML += "<tr><td>a</td><td>b</td><tr>";
+                        document.getElementById("versementsForVenteTable").innerHTML += "<tr><td>a</td><td>b</td><tr>";
                         console.log("aaaaaaa");
                     }
+                },
+                error: function (result) {
+                    console.log(result);
                 }
+
             });
             $("#versementsForVenteDetails").modal({
                 show: true
@@ -1444,7 +1450,7 @@
                     document.getElementById("clientNomDetails").innerHTML = client.nom + ' ' + client.prenom;
                     document.getElementById("clientTelDetails").innerHTML = client.tel;
                     document.getElementById("clientAdresseDetails").innerHTML = client.adresse;
-                    document.getElementById("clientEmailDetails").innerHTML = client.email
+                    document.getElementById("clientEmailDetails").innerHTML = client.email;
                     document.getElementById("clientDateDeNaissanceDetails").innerHTML = client.dateNaissance;
                     document.getElementById("clientEtatDetails").innerHTML = client.isBanned ? "Non banni" : "Banni";
                     document.getElementById("clientDateAddedDetails").innerHTML = client.dateAdded;

@@ -147,6 +147,84 @@ public class LogementDAO extends DAO {
         return false;
     }
 
+    public Logement getLogement(String fourchettePrix, String region, String type, String superficie) {
+        int prixMin = 0, prixMax = 0, supMin = 0, supMax = 0;
+        String typeLogement = "";
+        switch (fourchettePrix) {
+            case "1":
+                prixMin = 0;
+                prixMax = 1000000;
+                break;
+            case "2":
+                prixMin = 1000000;
+                prixMax = 10000000;
+                break;
+            case "3":
+                prixMin = 10000000;
+                prixMax = 1999999999;
+                break;
+        }
+        switch (type) {
+            case "1":
+                typeLogement = "villa";
+                break;
+            case "2":
+                typeLogement = "appartement";
+                break;
+        }
+        switch (superficie) {
+            case "1":
+                supMin = 0;
+                supMax = 200;
+                break;
+            case "2":
+                supMin = 200;
+                supMax = 300;
+                break;
+            case "3":
+                supMin = 300;
+                supMax = 1000;
+                break;
+        }
+        ResultSet result;
+        try {
+            result = logementStatement.executeQuery("select * from logement where prix<=" + prixMax + " and prix>=" + prixMin + " and superficie<=" + supMax + " and superficie>=" + supMin + " and typeLogement='" + typeLogement + "' and region=2;");
+            if (result.next()) {
+                Logement logement = new Logement();
+
+                logement.setId(result.getInt("id"));
+                logement.setTitre(result.getString("titre"));
+                logement.setDescription(result.getString("description"));
+                logement.setSuperficie(result.getDouble("superficie"));
+                logement.setGele(result.getBoolean("gele"));
+                Localite localite = (Localite) new LocaliteDAO().getById(result.getInt("region"));
+                logement.setLocalite(localite);
+                logement.setAdresse(result.getString("adresse"));
+                logement.setNbrPieces(result.getInt("nbrPieces"));
+                logement.setNbrSdb(result.getInt("nbrSdb"));
+                logement.setAvecJardin(result.getBoolean("avecJardin"));
+                logement.setAvecGarage(result.getBoolean("avecGarage"));
+                logement.setAvecSousSol(result.getBoolean("avecSousSol"));
+                logement.setMeubles(result.getBoolean("avecMeubles"));
+                logement.setEtage(result.getInt("etage"));
+                logement.setPrix(result.getDouble("prix"));
+                Location location = new Location();
+                location.setLatitude(result.getDouble("latitude"));
+                location.setLongitude(result.getDouble("longitude"));
+                logement.setLocation(location);
+                logement.setPrix(result.getDouble("prix"));
+
+                logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+                System.out.println("Lguit: " + logement.getTitre());
+                return logement;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public LinkedList<Logement> getLogementsSelonCriteres(Logement criteres, Double prixMax, Double prixMin, Double supMax, Double supMin) {
         System.out.println("" +
                 "criteres = " + criteres.toString() + "," +
@@ -1112,8 +1190,4 @@ public class LogementDAO extends DAO {
     }
 
 
-    public Logement getLogement(String fourchettePrix, String region, String type, String superficie) {
-// TODO: 6/9/2018
-        return null;
-    }
 }

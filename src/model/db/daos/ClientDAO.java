@@ -441,7 +441,29 @@ public class ClientDAO extends DAO {
     }
 
     public Client getByPhone(String callerNumber) {
-        // TODO: 6/9/2018
+        ResultSet result;
+        try {
+            result = clientStatement.executeQuery("select * from client where tel='" + callerNumber + "' and isBanned=0;");
+            if (result.next()) {
+                Client client = new Client();
+                client.setId(result.getInt("id"));
+                client.setNom(result.getString("nom"));
+                client.setPrenom(result.getString("prenom"));
+                client.setDateNaissance(result.getDate("dateNaiss"));
+                client.setAdresse(result.getString("adresse"));
+                client.setTel(result.getString("tel"));
+                client.setEmail(result.getString("email"));
+                client.setUsername(result.getString("username"));
+                client.setPassword(result.getString("password"));
+                client.setBanned(result.getInt("isBanned") == 1);
+                client.setDateAdded(result.getDate("dateAdded"));
+
+                return client;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

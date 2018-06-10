@@ -778,7 +778,7 @@ public class Util {
             case EMPLOYES:
                 return "Employés";
             case VERSEMENTS_FOR_USER:
-                return "Versements";
+                return "Clients";
             case ANNULER_VENTE:
                 return "Ventes en cours";
             case VENTES_EN_COURS:
@@ -897,6 +897,8 @@ public class Util {
 
     public static TablePage getPageFromString(String tablePage) {
         switch (tablePage) {
+            case "VERSEMENTS_FOR_USER":
+                return VERSEMENTS_FOR_USER;
             case "MODIFIER_VISITE_CLIENT":
                 return MODIFIER_VISITE_CLIENT;
             case "CONFIRMER_APPEL":

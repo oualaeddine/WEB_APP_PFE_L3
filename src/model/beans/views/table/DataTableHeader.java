@@ -14,6 +14,9 @@ public class DataTableHeader {
 
     private void setupTableHeader() {
         switch (currentPage) {
+            case VERSEMENTS_FOR_USER:
+                setupTableHeaderForClients();
+                break;
             case APPELS:
                 setupTableHeaderForAppels();
                 break;

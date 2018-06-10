@@ -1008,7 +1008,21 @@ public class VisitesDao extends DAO {
 
 
     public boolean add(Logement logement, Client client, RDV rdv) {
-        // TODO: 6/9/2018
+        Employe agent = getFreeAgentsForVisite(rdv, logement.getLocalite().getId());
+        if (agent != null) {
+            try {
+                visiteStatement.execute("insert into visite (logementId, agentId, clientId, `timestamp`, horraire) values (" +
+                        logement.getId() + ", " +
+                        agent.getId() + ", " +
+                        client.getId() + ", " +
+                        "'" + rdv.getDate() + "', " +
+                        rdv.getHorraire() +
+                        ")");
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return false;
     }
 }

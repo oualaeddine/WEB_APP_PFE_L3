@@ -196,6 +196,7 @@ public class DataTableData {
                 setupDataVentes();
                 break;
             case VERSEMENTS_FOR_USER:
+                setupDataClientsList();
                 break;
             case CLIENT_MY_NOTIFICATIONS:
                 setupDataClientNotifications();

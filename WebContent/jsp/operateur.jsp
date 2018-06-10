@@ -136,7 +136,7 @@
                         <div class="card-body-icon">
                             <i class="fa fa-fw fa-ban"></i>
                         </div>
-                        <div class="mr-5"><%new VisitesStats().nbrVisitesAnnuleesForMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH)));%>
+                        <div class="mr-5"><%out.print(new VisitesStats().nbrVisitesAnnuleesForMonth(Month.of(Calendar.getInstance().get(Calendar.MONTH))));%>
                             Visites annulées!
                         </div>
                     </div>

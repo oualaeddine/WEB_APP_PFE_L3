@@ -1129,11 +1129,47 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <table id="versementsForVenteTable" class="display nowrap" style="width:100%">
+                    <table class="display nowrap" style="width:100%">
+                        <thead>
+                        <th>ID</th>
+                        <th>Montant</th>
+                        <th>Date</th>
+                        </thead>
+                        <tbody id="versementsForVenteTable">
 
-                        <%--<tr><td>ID: </td><td><span id="versementForVenteIdDetails"></span></td></tr>--%>
-                        <%--<tr><td>Montant: </td><td><span id="versementForVenteMontantDetails"></span></td></tr>--%>
-                        <%--<tr><td>Date: </td><td><span id="versementForVenteDateDetails"></span></td></tr>--%>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%--Details versement par client--%>
+    <div id="versementsForClientDetails" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Versements</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="display nowrap" style="width:100%">
+                        <thead>
+                        <th>ID versement</th>
+                        <th>ID vente</th>
+                        <th>Montant</th>
+                        <th>Date</th>
+                        </thead>
+                        <tbody id="versementsForClientTable">
+
+                        </tbody>
+
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -1196,8 +1232,29 @@
 
         });
 
+        function afficherDetailsVersementsForClient(rowData) {
+            $.ajax({
+                type: 'GET',
+                url: '/api/versementApi?action=getByClient&clientId=' + rowData[0][0],
+                success: function (result) {
+                    console.log(result);
 
-        function afficherDetailsVersementsForVente(rowData) { // ça me fait chier
+                    var jsonData = JSON.parse(result);
+                    console.log(result);
+                    for (var i = 0; i < jsonData.length; i++) {
+                        document.getElementById("versementsForClientTable").innerHTML += '<tr><td>' + jsonData[i].id + '</td><td>' + jsonData[i].venteId + '</td><td>' + jsonData[i].montant + '</td><td>' + jsonData[i].date + '</td></tr>';
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+            $("#versementsForClientDetails").modal({
+                show: true
+            });
+        }
+
+        function afficherDetailsVersementsForVente(rowData) {
             $.ajax({
                 type: 'GET',
                 url: '/api/versementApi?action=getByVente&venteId=' + rowData[0][0],
@@ -1208,8 +1265,7 @@
                     var jsonData = JSON.parse(result);
                     console.log(result);
                     for (var i = 0; i < jsonData.length; i++) {
-                        document.getElementById("versementsForVenteTable").innerHTML += "<tr><td>a</td><td>b</td><tr>";
-                        console.log("aaaaaaa");
+                        document.getElementById("versementsForVenteTable").innerHTML += '<tr><td>' + jsonData[i].id + '</td><td>' + jsonData[i].montant + '</td><td>' + jsonData[i].date + '</td></tr>';
                     }
                 },
                 error: function (result) {
@@ -1466,6 +1522,9 @@
 
             var page = '<%out.print(currentPage);%>';
             switch (page) {
+                case 'VERSEMENTS_FOR_USER':
+                    afficherDetailsVersementsForClient(rowData);
+                    break;
                 case 'VERSEMENTS_FOR_VENTE':
                     afficherDetailsVersementsForVente(rowData);
                     break;

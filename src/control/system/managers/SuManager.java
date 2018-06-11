@@ -90,9 +90,5 @@ public class SuManager extends AdminsManager{
         return new LogementDAO().geler(logement.getId());
     }
 
-    public void imprimerFacture(int numVente){
-        //TODO:Imprimer facture
-    }
-
 
 }

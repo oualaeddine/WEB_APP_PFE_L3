@@ -93,9 +93,9 @@
             <div class="search-form wow pulse">
                 <form action="#" method="get" class=" form-inline">
                     <div class="col-md-12">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Mots clés">
-                        </div>
+                        <%--<div class="col-md-4">--%>
+                        <%--<input type="text" class="form-control" placeholder="Mots clés">--%>
+                        <%--</div>--%>
                         <div class="col-md-4">
                             <select name="localiteSearch" id="localiteSearch" class="form-control"
                                     data-live-search="false" title="Selectionnez votre la région">

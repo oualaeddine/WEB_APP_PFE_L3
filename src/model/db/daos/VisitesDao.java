@@ -1027,7 +1027,14 @@ public class VisitesDao extends DAO {
     }
 
     public boolean isFree(int h, int j, int m, int y, int logementId) {
-        // TODO: 6/11/2018
-        return false;
+        String jour, mois;
+        jour = j < 10 ? "0" + j : "" + j;
+        mois = m < 10 ? "0" + m : "" + m;
+        String dateString = "" + y + "-" + mois + "-" + jour;
+        Date date = Util.getDateFromString(dateString);
+        RDV rdv = new RDV();
+        rdv.setHorraire(h);
+        rdv.setDate(date);
+        return new LogementDAO().isFree(logementId, rdv);
     }
 }

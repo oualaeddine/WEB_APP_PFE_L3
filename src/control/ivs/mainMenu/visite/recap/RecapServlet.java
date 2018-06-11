@@ -7,8 +7,10 @@ import com.twilio.twiml.voice.Say;
 import control.ivs.IVSConsts;
 import model.beans.Appel;
 import model.beans.Logement;
+import model.beans.RDV;
 import model.beans.Visite;
 import model.beans.humans.Client;
+import model.beans.humans.Employe;
 import model.db.daos.AppelsDAO;
 import model.db.daos.ClientDAO;
 import model.db.daos.LogementDAO;
@@ -55,8 +57,12 @@ public class RecapServlet extends HttpServlet {
 
         if (client != null) {
             Visite rdv = getVisiteLaPlusProche(logement);
+            RDV rdv1 = new RDV();
+            rdv1.setDate(rdv.getTimestamp());
+            rdv1.setHorraire(rdv.getHorraire());
+
             // TODO: 6/11/2018 jibili agent libre w 7atih f rdv
-            rdv.setAgent(new VisitesDao().getFreeAgentsForVisite());
+            rdv.setAgent(new VisitesDao().getFreeAgentsForVisite(rdv1, Integer.parseInt(region)));
             added = new VisitesDao().add(rdv);
         } else {
             Visite rdv = getVisiteLaPlusProche(logement);

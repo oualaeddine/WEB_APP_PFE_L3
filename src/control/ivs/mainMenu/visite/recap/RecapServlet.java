@@ -64,8 +64,9 @@ public class RecapServlet extends HttpServlet {
             rdv.setAgent(new VisitesDao().getFreeAgentsForVisite(rdv1, Integer.parseInt(region)));
             added = new VisitesDao().add(rdv);
         } else {
+            System.out.println("mahouch client whab yreserver " + callerNumber);
             Visite rdv = getVisiteLaPlusProche(logement);
-
+            rdv.setLogement(logement);
             Appel appel = new Appel();
             appel.setNumeroTel(callerNumber);
             appel.setVisite(rdv);
@@ -99,15 +100,12 @@ public class RecapServlet extends HttpServlet {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
-        String currentDate = dtf.format(localDate);
 
-        String currentDay = currentDate.substring(7, 8);
-        String currentMonth = currentDate.substring(5, 6);
 
-        int startDay = Integer.parseInt(currentDay);
-        int startMonth = Integer.parseInt(currentMonth);
+        int startDay = localDate.getDayOfMonth();
+        int startMonth = localDate.getMonthValue();
 
-        for (int m = startMonth; m <= 12; m++) {
+        for (int m = startMonth - 1; m <= 12; m++) {
             for (int j = startDay; j < 32; j++) {
                 Visite visite = new Visite();
                 visite.setTimestamp(new Date(2018, m, j));

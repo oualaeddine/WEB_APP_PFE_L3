@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.Month;
 import java.util.LinkedList;
 
+@SuppressWarnings("ALL")
 public class VersementDAO extends DAO {
 
 
@@ -152,8 +153,24 @@ public class VersementDAO extends DAO {
     }
 
     public LinkedList<Versement> getByClient(int clientId) {
+        ResultSet result;
+        LinkedList<Versement> versements = new LinkedList<>();
+        try {
+            result = versementStatement.executeQuery("SELECT versement.* FROM versement,vente WHERE vente.id=versement.venteId and vente.clientId=" + clientId + ";");
+            while (result.next()) {
+                Versement versement = new Versement();
+                versement.setId(result.getInt("id"));
+                versement.setMontant(result.getDouble("montant"));
+                versement.setDate(result.getDate("date"));
+                Vente vente = (Vente) new VentesDAO().getById(result.getInt("venteId"));
+                versement.setVente(vente);
 
-        return null;
+                versements.add(versement);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return versements;
     }
 
     public LinkedList<Versement> getByVente(int venteId) {

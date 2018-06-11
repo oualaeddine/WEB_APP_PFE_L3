@@ -255,7 +255,7 @@
                                                     <div class="col-sm-2 col-sm-offset-2">
                                                         <div class="form-group">
                                                             <label>nbr de: pieces </label>
-                                                            <input name="nbrPieces" id="nbrPieces" type="number"
+                                                            <input name="nbrPieces" id="nbrPieces" type="number" min="0"
                                                                    class="form-control"
                                                                    placeholder="4" value="1">
                                                         </div>
@@ -263,7 +263,7 @@
                                                     <div class="col-sm-2 col-sm-offset-1">
                                                         <div class="form-group">
                                                             <label>nbr de: SDBs</label>
-                                                            <input name="nbrSdb" id="nbrSdb" type="number"
+                                                            <input name="nbrSdb" id="nbrSdb" type="number" min="0"
                                                                    class="form-control"
                                                                    placeholder="1" value="1">
                                                         </div>
@@ -271,7 +271,7 @@
                                                     <div class="col-sm-2 col-sm-offset-1">
                                                         <div class="form-group">
                                                             <label>nbr d'etages </label>
-                                                            <input name="nbrEtages" id="nbrEtages" type="number"
+                                                            <input name="nbrEtages" id="nbrEtages" type="number" min="0"
                                                                    class="form-control"
                                                                    placeholder="1" value="1">
                                                         </div>

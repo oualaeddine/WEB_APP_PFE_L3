@@ -9,6 +9,7 @@
 <%@ page import="model.db.daos.LocaliteDAO" %>
 <%@ page import="model.db.daos.LogementDAO" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.beans.Localite" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%--
   Created by IntelliJ IDEA.
@@ -93,22 +94,23 @@
                 <form action="#" method="get" class=" form-inline">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Key word">
+                            <input type="text" class="form-control" placeholder="Mots clés">
                         </div>
                         <div class="col-md-4">
-                            <select id="lunchBegins" class="selectpicker" data-live-search="true"
-                                    data-live-search-style="begins" title="Select your city">
-
-
+                            <select name="localiteSearch" id="localiteSearch" class="form-control"
+                                    data-live-search="false" title="Selectionnez votre la région">
+                                <%
+                                    LinkedList<Localite> localites = new LocaliteDAO().getAll();
+                                    for (Localite localite : localites) {
+                                        out.print("<option value=\"" + localite.getId() + "\">" + localite.getNom() + "</option>");
+                                    }
+                                %>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select id="basic" class="selectpicker show-tick form-control">
-                                <option> -Status-</option>
-                                <option>Rent</option>
-                                <option>Boy</option>
-                                <option>used</option>
-
+                            <select id="typeLogementSearch" name="typeLogementSearch" class="form-control">
+                                <option value="villa">Villa</option>
+                                <option value="appartement">Appartement</option>
                             </select>
                         </div>
                     </div>
@@ -116,124 +118,73 @@
                         <div class="search-row">
 
                             <div class="col-sm-3">
-                                <label for="price-range">Price range ($):</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[0,450]" id="price-range"><br/>
-                                <b class="pull-left color">2000$</b>
-                                <b class="pull-right color">100000$</b>
+                                <label for="price-range">Fourchette de prix (Million DA):</label>
+                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="900"
+                                       data-slider-step="10" data-slider-value="[0,500]" id="price-range"
+                                       name="prix"><br/>
+                                <b class="pull-left color">0 DA</b>
+                                <b class="pull-right color">900 m DA</b>
                             </div>
                             <!-- End of  -->
 
                             <div class="col-sm-3">
-                                <label for="property-geo">Property geo (m2) :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[50,450]" id="property-geo"><br/>
-                                <b class="pull-left color">40m</b>
-                                <b class="pull-right color">12000m</b>
+                                <label for="property-geo">Superficie (m2) :</label>
+                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="1000"
+                                       data-slider-step="5" data-slider-value="[50,450]" id="property-geo"
+                                       name="superficie"><br/>
+                                <b class="pull-left color">0 m2</b>
+                                <b class="pull-right color">1000 m2</b>
                             </div>
                             <!-- End of  -->
 
                             <div class="col-sm-3">
-                                <label for="price-range">Min baths :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[250,450]" id="min-baths"><br/>
-                                <b class="pull-left color">1</b>
-                                <b class="pull-right color">120</b>
+                                <label for="nbrSdbSearch">Nombre min de sdb :</label>
+                                <input type="number" min="0" class="form-control" id="nbrSdbSearch" name="nbrSdbSearch"><br/>
+
                             </div>
                             <!-- End of  -->
 
                             <div class="col-sm-3">
-                                <label for="property-geo">Min bed :</label>
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                       data-slider-step="5" data-slider-value="[250,450]" id="min-bed"><br/>
-                                <b class="pull-left color">1</b>
-                                <b class="pull-right color">120</b>
+                                <label for="property-geo">Nombre min de pièces :</label>
+                                <input type="number" min="0" class="form-control" id="nbrPiecesSearch"
+                                       name="nbrPiecesSearch"><br/>
                             </div>
                             <!-- End of  -->
 
                         </div>
 
                         <div class="search-row">
-
                             <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Fire Place(3100)
-                                    </label>
-                                </div>
+                                <label for="jardin">Avec jardin</label>
+                                <select class="form-control" id="jardin" name="jardin">
+                                    <option value="false">Sans</option>
+                                    <option value="true">Avec</option>
+                                </select>
                             </div>
                             <!-- End of  -->
-
                             <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Dual Sinks(500)
-                                    </label>
-                                </div>
+                                <label for="garage">Avec garage</label>
+                                <select class="form-control" id="garage" name="garage">
+                                    <option value="false">Sans</option>
+                                    <option value="true">Avec</option>
+                                </select>
                             </div>
-                            <!-- End of  -->
-
                             <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Hurricane Shutters(99)
-                                    </label>
-                                </div>
+                                <label for="sousSol">Avec sous-sol</label>
+                                <select class="form-control" id="sousSol" name="sousSol">
+                                    <option value="false">Sans</option>
+                                    <option value="true">Avec</option>
+                                </select>
                             </div>
-                            <!-- End of  -->
-
                             <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Swimming Pool(1190)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
+                                <label for="meubles">Meubles</label>
+                                <select class="form-control" id="meubles" name="meubles">
+                                    <option value="false">Sans</option>
+                                    <option value="true">Avec</option>
 
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 2 Stories(4600)
-                                    </label>
-                                </div>
+                                </select>
                             </div>
-                            <!-- End of  -->
 
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Emergency Exit(200)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Laundry Room(10073)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Jog Path(1503)
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- End of  -->
-
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 26' Ceilings(1200)
-                                    </label>
-                                </div>
-                            </div>
                             <!-- End of  -->
                         </div>
                     </div>
@@ -270,20 +221,13 @@
             <div id="list-type" class="property-th">
                 <%
                     LinkedList<Logement> logements = (LinkedList<Logement>) request.getAttribute("logements");
-                    Client loggedIdClient = new Client();
-                    String href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                    if (isLoggedIn) {
-                        loggedIdClient = (Client) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER);
-                    }
                     for (Logement logement : logements) {
                         String button = "";
                         if (isLoggedIn) {
-                            int client = Integer.parseInt(String.valueOf(request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID)));
-                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span>" : "<span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span>";
-                            href = "href=\"/ProgrammerVisiteClient?logementId=" + logement.getId() + "&region=" + logement.getLocalite().getId() + "&clientId=" + loggedIdClient.getId() + "\"";
+                            int client = (int) request.getSession().getAttribute(MyServlet.LOGGED_IN_USER_ID);
+                            button = new LogementDAO().isInWishList(client, logement.getId()) ? "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Retirer de la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>" : "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" onclick=\"getLogementId(" + logement.getId() + ")\">Ajouter à la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>";
                         } else {
-                            href = "data-toggle=\"modal\" data-target=\"#loginRequiredModal\"";
-                            button = "<span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span>";
+                            button = "<table><td><span class=\"pull-right\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginRequiredModal\">Ajouter à la liste de souhaits</button></span></td><td><a href=\"\">Afficher details</a></td></table>";
                         }
                         out.print("<div class=\"col-sm-6 col-md-4 p0\">\n" +
                                 "                            <div class=\"box-two proerty-item\">\n" +
@@ -315,9 +259,9 @@
                             <i class="fa fa-th"></i>
                         </div>
                         <div class="more-entry overflow">
-                            <h5><a href="/DashboardServlet?what=logements">IMPOSSIBLE DE SE DECIDER ? </a></h5>
+                            <h5><a href="/home?what=logements">IMPOSSIBLE DE SE DECIDER ? </a></h5>
                             <h5 class="tree-sub-ttl">Voir tous les logements</h5>
-                            <a href="/DashboardServlet?what=logements">
+                            <a href="/home?what=logements">
                                 <button class="btn border-btn more-black" value="All properties">TOUS LES LOGEMENTS
                                 </button>
                             </a>

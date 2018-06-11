@@ -24,6 +24,9 @@ public class AdminServlet extends MyServlet {
                     this.getServletContext().getRequestDispatcher("/jsp/admin.jsp").forward(request, response);
                 } else {
                     switch (what) {
+                        case "imprimerRecuVersement":
+                            this.getServletContext().getRequestDispatcher("/statistics/recuVersement.jsp").forward(request, response);
+                            break;
                         case "allAppels":
                             this.getServletContext().getRequestDispatcher("/jsp/table.jsp?page=APPELS").forward(request, response);
                             break;

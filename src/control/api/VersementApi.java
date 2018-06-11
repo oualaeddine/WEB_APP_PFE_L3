@@ -31,8 +31,6 @@ public class VersementApi extends API {
             System.out.println("Ajout versement: " + new VersementDAO().add(versement));
 
         } else {
-
-
             switch (action) {
                 case "getAll": {
                     responseBody = JsonUtil.versementsListToJsonArray(new VersementDAO().getAll());
@@ -55,6 +53,7 @@ public class VersementApi extends API {
                 case "getByClient": {
                     if (request.getParameter("clientId") != null) {
                         int clientId = Integer.parseInt(request.getParameter("clientId"));
+                        LinkedList<Versement> versements = new VersementDAO().getByClient(clientId);
                         responseBody = JsonUtil.versementsListToJsonArray(new VersementDAO().getByClient(clientId));
                     }
                     break;

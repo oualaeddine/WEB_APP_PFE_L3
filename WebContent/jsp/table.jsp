@@ -1213,6 +1213,9 @@
                     </table>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="imprimerRecuVersementForm">Imprimer reçu
+                        versements
+                    </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
@@ -1240,10 +1243,18 @@
                         <tbody id="versementsForClientTable">
 
                         </tbody>
-
                     </table>
+                    <form method="post" action="/DashboardServlet?what=imprimerRecuVersement"
+                          id="imprimerRecuVersementForm">
+                        <input type="hidden" id="byWech" name="byWech">
+                        <input type="hidden" id="versementByClientId" name="versementByClientId">
+                        <input type="hidden" id="versementByVenteId" name="versementByVenteId">
+                    </form>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" form="imprimerRecuVersementForm">Imprimer reçu
+                        versements
+                    </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
@@ -1308,13 +1319,15 @@
                 type: 'GET',
                 url: '/api/versementApi?action=getByClient&clientId=' + rowData[0][0],
                 success: function (result) {
-                    console.log(result);
+
 
                     var jsonData = JSON.parse(result);
                     console.log(result);
                     for (var i = 0; i < jsonData.length; i++) {
                         document.getElementById("versementsForClientTable").innerHTML += '<tr><td>' + jsonData[i].id + '</td><td>' + jsonData[i].venteId + '</td><td>' + jsonData[i].montant + '</td><td>' + jsonData[i].date + '</td></tr>';
                     }
+                    document.getElementById("versementByClientId").value = "" + rowData[0][0] + "";
+                    document.getElementById("byWech").value = "client";
                 },
                 error: function (result) {
                     console.log(result);
@@ -1338,6 +1351,8 @@
                     for (var i = 0; i < jsonData.length; i++) {
                         document.getElementById("versementsForVenteTable").innerHTML += '<tr><td>' + jsonData[i].id + '</td><td>' + jsonData[i].montant + '</td><td>' + jsonData[i].date + '</td></tr>';
                     }
+                    document.getElementById("versementByVenteId").value = "" + rowData[0][0] + "";
+                    document.getElementById("byWech").value = "vente";
                 },
                 error: function (result) {
                     console.log(result);

@@ -3,6 +3,7 @@ package control.servlets.client.general;
 import control.servlets.MyServlet;
 import model.beans.Localite;
 import model.beans.Logement;
+import model.db.daos.LocaliteDAO;
 import model.db.daos.LogementDAO;
 import model.enums.TypeLogement;
 
@@ -59,15 +60,14 @@ public class HomeServlet extends MyServlet {
 
                     Logement logement = new Logement();
 
-                    String type = request.getParameter("type");
+                    String type = request.getParameter("typeLogementSearch");
                     TypeLogement typeLogement = type.equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT;
                     logement.setTypeLogement(typeLogement);
 
                     int idLocal = 0;
-                    if (!request.getParameter("region").equals("null"))
-                        idLocal = Integer.parseInt(request.getParameter("region"));
-                    Localite localite = new Localite();
-                    localite.setId(idLocal);
+                    if (!request.getParameter("localiteSearch").equals("null"))
+                        idLocal = Integer.parseInt(request.getParameter("localiteSearch"));
+                    Localite localite = (Localite) new LocaliteDAO().getById(idLocal);
                     logement.setLocalite(localite);
 
                     String[] prix = (request.getParameter("prix")).split(",");
@@ -76,16 +76,13 @@ public class HomeServlet extends MyServlet {
                     String[] superficies = (request.getParameter("superficie")).split(",");
                     double sMin = Double.parseDouble(superficies[0]), sMax = Double.parseDouble(superficies[1]);
 
-                    int nbrPieces = Integer.parseInt(request.getParameter("nbrPieces"));
+                    int nbrPieces = Integer.parseInt(request.getParameter("nbrPiecesSearch"));
                     logement.setNbrPieces(nbrPieces);
 
-                    int nbrSdb = Integer.parseInt(request.getParameter("nbrSdb"));
+                    int nbrSdb = Integer.parseInt(request.getParameter("nbrSdbSearch"));
                     logement.setNbrSdb(nbrSdb);
 
-                    int nbrEtages = Integer.parseInt(request.getParameter("nbrEtages"));
-                    logement.setEtage(nbrEtages);
-
-                    boolean meuble = request.getParameter("meuble").equals("true");
+                    boolean meuble = request.getParameter("meubles").equals("true");
                     logement.setMeubles(meuble);
 
                     boolean garage = request.getParameter("garage").equals("true");
@@ -94,10 +91,10 @@ public class HomeServlet extends MyServlet {
                     boolean jardin = request.getParameter("jardin").equals("true");
                     logement.setAvecJardin(jardin);
 
-                    boolean soussol = request.getParameter("soussol").equals("true");
+                    boolean soussol = request.getParameter("sousSol").equals("true");
                     logement.setAvecSousSol(soussol);
 
-                    logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax * 1000, pMin * 1000, sMax, sMin);
+                    logements = new LogementDAO().getLogementsSelonCriteres(logement, pMax * 1000000, pMin * 1000000, sMax, sMin);
 
 
                 }

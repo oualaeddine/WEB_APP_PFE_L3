@@ -1035,6 +1035,7 @@ public class VisitesDao extends DAO {
         RDV rdv = new RDV();
         rdv.setHorraire(h);
         rdv.setDate(date);
-        return new LogementDAO().isFree(logementId, rdv);
+        Logement logement = (Logement) new LogementDAO().getById(logementId);
+        return (new LogementDAO().isFree(logementId, rdv)) && (getFreeAgentsForVisite(rdv, logement.getLocalite().getId())) != null;
     }
 }

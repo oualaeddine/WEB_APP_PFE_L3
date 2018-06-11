@@ -2,6 +2,7 @@ package model.beans;
 
 import model.enums.TypeLogement;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -17,17 +18,17 @@ public class Logement implements Serializable {
     private Location location;
     private boolean isGele;
     private double superficie, prix;
-    private LinkedList<String> pictures;
+    private InputStream picture;
 
     public Logement() {
     }
 
-    public LinkedList<String> getPictures() {
-        return pictures;
+    public InputStream getPicture() {
+        return picture;
     }
 
-    public void setPictures(LinkedList<String> pictures) {
-        this.pictures = pictures;
+    public void setPicture(InputStream picture) {
+        this.picture = picture;
     }
 
     public boolean isGele() {

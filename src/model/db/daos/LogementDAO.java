@@ -17,7 +17,7 @@ public class LogementDAO extends DAO {
     public LinkedList<Logement> getRemplacement(Logement myLogement) {
         LinkedList<Logement> logements = new LinkedList<>();
         String type = myLogement.getTypeLogement() == TypeLogement.VILLA ? "villa" : "appartement";
-        ResultSet result, result2;
+        ResultSet result;
         try {
             result = logementStatement.executeQuery("select * from logement where region=" + myLogement.getLocalite().getId() + " " + "and typeLogement='" + type + "' and superficie<=" + (myLogement.getSuperficie() + 25) + " and superficie>=" + (myLogement.getSuperficie() - 25) + " and prix <= " + (myLogement.getPrix() + 500000) + " and prix >= " + (myLogement.getPrix() - 500000) + ";");
             while (result.next()) {
@@ -46,12 +46,8 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
-                result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
+
                 logements.add(logement);
             }
         } catch (SQLException e) {
@@ -104,12 +100,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 logements.add(logement);
             }
         } catch (SQLException e) {
@@ -225,12 +216,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 System.out.println("Lguit: " + logement.getTitre());
                 return logement;
             }
@@ -295,12 +281,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 System.out.println("Lguit: " + logement.getTitre());
 
                 logements.add(logement);
@@ -351,12 +332,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -438,12 +414,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -494,12 +465,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 return logement;
             }
             try {
@@ -643,12 +609,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -709,12 +670,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -760,12 +716,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -805,12 +756,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -850,12 +796,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1002,12 +943,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1076,12 +1012,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1123,12 +1054,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                ResultSet result2 = statement.executeQuery("select path from logement_pictures where idLogement=" + logement.getId() + ";");
-                LinkedList<String> pictures = new LinkedList<>();
-                while (result2.next()) {
-                    pictures.add(result2.getString("path"));
-                }
-                logement.setPictures(pictures);
+                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }

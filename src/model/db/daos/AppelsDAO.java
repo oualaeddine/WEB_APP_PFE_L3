@@ -42,7 +42,6 @@ public class AppelsDAO extends DAO {
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logement")));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 visite.setTimestamp(result.getDate("date"));
-                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agent")));
                 appel.setVisite(visite);
                 appel.setConfirmed(result.getBoolean("isConfirmed"));
 
@@ -69,12 +68,11 @@ public class AppelsDAO extends DAO {
         Appel appel = (Appel) object;
         int isConfirmed = appel.isConfirmed() ? 1 : 0;
         try {
-            statement.execute("INSERT INTO appels(numeroTel, logement, horraire, `date`, agent, isConfirmed) VALUES (" +
+            statement.execute("INSERT INTO appels(numeroTel, logement, horraire, `date`, isConfirmed) VALUES (" +
                     "'" + appel.getNumeroTel() + "'," +
                     appel.getVisite().getLogement().getId() + ", " +
                     "'" + appel.getVisite().getHorraire() + "'," +
                     "'" + appel.getVisite().getTimestamp() + "'," +
-                    appel.getVisite().getAgent().getId() + "," +
                     isConfirmed +
                     ");");
             return true;
@@ -103,7 +101,6 @@ public class AppelsDAO extends DAO {
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logement")));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 visite.setTimestamp(result.getDate("date"));
-                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agent")));
                 appel.setVisite(visite);
                 appel.setConfirmed(result.getBoolean("isConfirmed"));
 
@@ -128,7 +125,6 @@ public class AppelsDAO extends DAO {
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logement")));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 visite.setTimestamp(result.getDate("date"));
-                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agent")));
                 appel.setVisite(visite);
                 appel.setConfirmed(result.getBoolean("isConfirmed"));
 
@@ -153,7 +149,6 @@ public class AppelsDAO extends DAO {
                 visite.setLogement((Logement) new LogementDAO().getById(result.getInt("logement")));
                 visite.setHorraire(Integer.parseInt(result.getString("horraire")));
                 visite.setTimestamp(result.getDate("date"));
-                visite.setAgent((Employe) new EmployeDAO().getById(result.getInt("agent")));
                 appel.setVisite(visite);
                 appel.setConfirmed(result.getBoolean("isConfirmed"));
 

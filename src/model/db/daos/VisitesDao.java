@@ -1025,4 +1025,9 @@ public class VisitesDao extends DAO {
         }
         return false;
     }
+
+    public boolean isFree(int h, int j, int m, int y, int logementId) {
+        // TODO: 6/11/2018
+        return false;
+    }
 }

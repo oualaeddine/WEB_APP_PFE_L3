@@ -87,4 +87,9 @@ public class WelcomeMessageServlet extends HttpServlet {
                             .build())
                     .build();
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 }

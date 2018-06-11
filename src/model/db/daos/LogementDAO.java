@@ -1111,7 +1111,7 @@ public class LogementDAO extends DAO {
                 prixMax = 1000000000;
                 break;
         }
-        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+        String typeLogement = type.equals("1") ? "villa" : "appartement";
         try {
             result = logementStatement.executeQuery("select * from logement where " +
                     "prix > " + prixMin + " and prix < " + prixMax + "" +
@@ -1141,7 +1141,7 @@ public class LogementDAO extends DAO {
                 prixMax = 1000000000;
                 break;
         }
-        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+        String typeLogement = type.equals("1") ? "villa" : "appartement";
         long supMin = 0, supMax = 0;
         switch (superficie) {
             case "1":

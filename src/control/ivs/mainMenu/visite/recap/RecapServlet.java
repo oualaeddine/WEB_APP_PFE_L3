@@ -1,6 +1,7 @@
 package control.ivs.mainMenu.visite.recap;
 
 import com.twilio.twiml.VoiceResponse;
+import control.ivs.IVSConsts;
 import model.beans.Appel;
 import model.beans.Logement;
 import model.beans.Visite;
@@ -16,8 +17,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "RecapServlet")
+@WebServlet(name = "RecapServlet", urlPatterns = IVSConsts.RECAP_SERVLET_URL)
 public class RecapServlet extends HttpServlet {
 
     private String
@@ -47,10 +51,10 @@ public class RecapServlet extends HttpServlet {
         boolean added = false;
 
         if (client != null) {
-            Visite rdv = getVisiteLaPlusProche(logement, client);
+            Visite rdv = getVisiteLaPlusProche(logement);
             added = new VisitesDao().add(rdv);
         } else {
-            Visite rdv = getVisiteLaPlusProche(logement, callerNumber);
+            Visite rdv = getVisiteLaPlusProche(logement);
 
             Appel appel = new Appel();
             appel.setNumeroTel(callerNumber);
@@ -63,7 +67,41 @@ public class RecapServlet extends HttpServlet {
         VoiceResponse voiceResponse;
     }
 
-    private Visite getVisiteLaPlusProche(Logement logement, Client client) {
+    private Visite getVisiteLaPlusProche(Logement logement) {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        String currentDate = dtf.format(localDate);
+
+        String currentDay = currentDate.substring(7, 8);
+        String currentMonth = currentDate.substring(5, 6);
+
+        int startDay = Integer.parseInt(currentDay);
+        int startMonth = Integer.parseInt(currentMonth);
+
+        for (int m = startMonth; m <= 12; m++) {
+            for (int j = startDay; j < 32; j++) {
+                Visite visite = new Visite();
+                visite.setTimestamp(new Date(2018, m, j));
+                if (new VisitesDao().isFree(1, j, m, 2018, logement.getId())) {
+                    visite.setHorraire(1);
+                    return visite;
+                }
+                if (new VisitesDao().isFree(2, j, m, 2018, logement.getId())) {
+                    visite.setHorraire(1);
+                    return visite;
+                }
+                if (new VisitesDao().isFree(3, j, m, 2018, logement.getId())) {
+                    visite.setHorraire(1);
+                    return visite;
+                }
+                if (new VisitesDao().isFree(4, j, m, 2018, logement.getId())) {
+                    visite.setHorraire(1);
+                    return visite;
+                }
+            }
+        }
+
         return null;
     }
 
@@ -72,6 +110,6 @@ public class RecapServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }

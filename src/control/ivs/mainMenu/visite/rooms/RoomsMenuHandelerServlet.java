@@ -50,13 +50,13 @@ public class RoomsMenuHandelerServlet extends HttpServlet {
     private VoiceResponse goToRecap() {
         return new VoiceResponse.Builder()
                 .redirect(new Redirect
-                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL)
-                        .method(HttpMethod.POST)
-                        .option("language", language)
-                        .option("prix", fourchettePrix)
-                        .option("region", region)
-                        .option("type", type)
-                        .option("rooms", rooms)
+                        .Builder(IVSConsts.TYPE_MENU_SERVLET_URL +
+                        "?language=" + language +
+                        "&prix=" + fourchettePrix +
+                        "&region=" + region +
+                        "&type=" + type +
+                        "&rooms=" + rooms)
+                        .method(HttpMethod.GET)
                         .build()
                 )
                 .build();
@@ -64,5 +64,12 @@ public class RoomsMenuHandelerServlet extends HttpServlet {
 
     private VoiceResponse noLogementsMessage() {
         return getVoiceResponse(language);
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        doGet(req, resp);
     }
 }

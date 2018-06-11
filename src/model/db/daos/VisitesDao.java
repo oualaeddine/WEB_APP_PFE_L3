@@ -425,6 +425,8 @@ public class VisitesDao extends DAO {
                     visite.getClient().getId() + ",  'prevue' , " + visite.getHorraire() + ",'" + visite.getTimestamp() + "'" +
 
                     ");");
+            Client client = (Client) new ClientDAO().getById(visite.getClient().getId());
+            Util.sendSms(client.getTel(), "Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à: " + Util.getStringFromHorraire(visite.getHorraire()));
             Notification notification = new Notification();
             notification.setDestinataire(visite.getAgent());
             notification.setContent("Vous avez une nouvelle visite programmée pour le: " + visite.getTimestamp() + " à " + Util.getStringFromHorraire(visite.getHorraire()));

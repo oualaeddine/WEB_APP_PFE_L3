@@ -4,7 +4,7 @@ import com.twilio.twiml.VoiceResponse;
 import com.twilio.twiml.voice.Say;
 
 public class IVSConsts {
-    private static String url = "http://ivspfe.ddns.net:81/ivs/";
+    private static String url = "http://in-fashion-app.com/ivs/";
 
 
     public static final String FOURCHETTE_PRIX_MENU_SERVLET_URL = "/ivs_FOURCHETTE_PRIX",

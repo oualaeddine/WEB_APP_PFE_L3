@@ -1,6 +1,9 @@
 package control.ivs.mainMenu.visite.recap;
 
+import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
+import com.twilio.twiml.voice.Hangup;
+import com.twilio.twiml.voice.Say;
 import control.ivs.IVSConsts;
 import model.beans.Appel;
 import model.beans.Logement;
@@ -52,6 +55,8 @@ public class RecapServlet extends HttpServlet {
 
         if (client != null) {
             Visite rdv = getVisiteLaPlusProche(logement);
+            // TODO: 6/11/2018 jibili agent libre w 7atih f rdv
+            rdv.setAgent(new VisitesDao().getFreeAgentsForVisite());
             added = new VisitesDao().add(rdv);
         } else {
             Visite rdv = getVisiteLaPlusProche(logement);
@@ -64,7 +69,25 @@ public class RecapServlet extends HttpServlet {
         }
 
 
-        VoiceResponse voiceResponse;
+        VoiceResponse voiceResponse = getVisiteProgrammedMsg();
+
+
+        response.setContentType("application/xml");
+        try {
+            String resp = voiceResponse.toXml();
+            response.getWriter().print(resp);
+        } catch (TwiMLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private VoiceResponse getVisiteProgrammedMsg() {
+        return new VoiceResponse.Builder()
+                .say(new Say.Builder("vous avez pris un rendez vous")
+                        .language(Say.Language.FR_FR)
+                        .build())
+                .hangup(new Hangup.Builder().build())
+                .build();
     }
 
     private Visite getVisiteLaPlusProche(Logement logement) {

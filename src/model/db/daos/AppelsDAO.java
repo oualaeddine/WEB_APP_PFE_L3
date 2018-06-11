@@ -7,6 +7,7 @@ import model.beans.humans.Employe;
 import model.beans.humans.Person;
 import model.db.DAO;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -67,6 +68,8 @@ public class AppelsDAO extends DAO {
     public boolean add(Object object) {
         Appel appel = (Appel) object;
         int isConfirmed = appel.isConfirmed() ? 1 : 0;
+        Date date = appel.getVisite().getTimestamp();
+        
         try {
             statement.execute("INSERT INTO appels(numeroTel, logement, horraire, `date`, isConfirmed) VALUES (" +
                     "'" + appel.getNumeroTel() + "'," +

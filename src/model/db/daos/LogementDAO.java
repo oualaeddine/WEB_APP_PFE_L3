@@ -46,7 +46,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
 
-                logement.setPicture(result.getBinaryStream("picture"));
+                //  logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -100,7 +100,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //      logement.setPicture(result.getBinaryStream("picture"));
                 logements.add(logement);
             }
         } catch (SQLException e) {
@@ -216,7 +216,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //    logement.setPicture(result.getBinaryStream("picture"));
                 System.out.println("Lguit: " + logement.getTitre());
                 return logement;
             }
@@ -281,7 +281,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //     logement.setPicture(result.getBinaryStream("picture"));
                 System.out.println("Lguit: " + logement.getTitre());
 
                 logements.add(logement);
@@ -332,7 +332,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //     logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -414,7 +414,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //       logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -465,7 +465,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+//                logement.setPicture(result.getBinaryStream("picture"));
                 return logement;
             }
             try {
@@ -609,7 +609,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //  logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -670,7 +670,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //     logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
             try {
@@ -716,7 +716,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //      logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -756,7 +756,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //   logement.setPicture(result.getBinaryStream("picture"));
                 list.add(logement);
             }
         } catch (SQLException e) {
@@ -796,7 +796,7 @@ public class LogementDAO extends DAO {
                 logement.setPrix(result.getDouble("prix"));
 
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                //  logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -943,7 +943,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+//                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1012,7 +1012,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+                // logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1054,7 +1054,7 @@ public class LogementDAO extends DAO {
                 logement.setLocation(location);
                 logement.setPrix(result.getDouble("prix"));
                 logement.setTypeLogement(result.getString("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
-                logement.setPicture(result.getBinaryStream("picture"));
+//                logement.setPicture(result.getBinaryStream("picture"));
 
                 logements.add(logement);
             }
@@ -1197,7 +1197,7 @@ public class LogementDAO extends DAO {
                 prixMax = 1000000000;
                 break;
         }
-        String typeLogement = type.equals("1") ? "VILLA" : "APPARTEMENT";
+        String typeLogement = type.equals("1") ? "villa" : "appartement";
 
         try {
             result = logementStatement.executeQuery("select * from logement where " +

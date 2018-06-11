@@ -4,8 +4,7 @@ package control.ivs.mainMenu.visite.region;
 import com.twilio.http.HttpMethod;
 import com.twilio.twiml.TwiMLException;
 import com.twilio.twiml.VoiceResponse;
-import com.twilio.twiml.voice.Gather;
-import com.twilio.twiml.voice.Play;
+import com.twilio.twiml.voice.Redirect;
 import com.twilio.twiml.voice.Say;
 import control.ivs.IVSConsts;
 
@@ -47,11 +46,10 @@ public class RegionServlet extends HttpServlet {
 
     private VoiceResponse handleChoicesAr() {
         return new VoiceResponse.Builder()
-                .play(new Play.Builder(IVSConsts.AR_REGION_MENU_MP3_URL).build())
-                .gather(new Gather.Builder()
-                        .action(IVSConsts.REGION_MENU_HANDELER_SERVLET_URL + "?language=ar&prix=" + fourchettePrix)
+                .say(new Say.Builder("seules les logements dans la region de constantine sont pris en charge par ce systeme").language(Say.Language.FR_FR).build())
+                .redirect(new Redirect
+                        .Builder(IVSConsts.REGION_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&Digits=" + 2)
                         .method(HttpMethod.GET)
-                        .numDigits(1)
                         .build())
                 .build();
     }
@@ -59,11 +57,10 @@ public class RegionServlet extends HttpServlet {
     private VoiceResponse handleChoicesFr() {
         return new VoiceResponse.Builder()
                 //.play(new Play.Builder(IVSConsts.FR_REGION_MENU_MP3_URL).build())
-                .say(new Say.Builder("veuillez introduir le numero de la region").language(Say.Language.FR_FR).build())
-                .gather(new Gather.Builder()
-                        .action(IVSConsts.REGION_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix)
+                .say(new Say.Builder("seules les logements dans la region de constantine sont pris en charge par ce systeme").language(Say.Language.FR_FR).build())
+                .redirect(new Redirect
+                        .Builder(IVSConsts.REGION_MENU_HANDELER_SERVLET_URL + "?language=fr&prix=" + fourchettePrix + "&Digits=" + 2)
                         .method(HttpMethod.GET)
-                        .numDigits(1)
                         .build())
                 .build();
     }

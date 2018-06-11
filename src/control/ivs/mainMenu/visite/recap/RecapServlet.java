@@ -10,7 +10,6 @@ import model.beans.Logement;
 import model.beans.RDV;
 import model.beans.Visite;
 import model.beans.humans.Client;
-import model.beans.humans.Employe;
 import model.db.daos.AppelsDAO;
 import model.db.daos.ClientDAO;
 import model.db.daos.LogementDAO;
@@ -46,7 +45,7 @@ public class RecapServlet extends HttpServlet {
         superficie = request.getParameter("superficie");
         rooms = request.getParameter("rooms");
 
-        callerNumber = request.getParameter("number");
+        callerNumber = request.getParameter("From");
 
         Logement logement = new LogementDAO().getLogement(fourchettePrix, region, type, superficie);
         ClientDAO clientDAO = new ClientDAO();

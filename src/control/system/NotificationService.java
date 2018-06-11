@@ -1,14 +1,14 @@
 package control.system;
 
+import com.mysql.jdbc.PreparedStatement;
 import model.beans.Notification;
 import model.beans.humans.Person;
+import model.db.DbConnector;
 import model.db.daos.ClientDAO;
-import model.db.daos.ClientNotificationDAO;
 import model.db.daos.EmployeDAO;
-import model.db.daos.EmployeNotificationDAO;
 import utils.Util;
 
-import java.util.LinkedList;
+import java.sql.SQLException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -24,9 +24,9 @@ public class NotificationService {
      */
     void initService() {
         scheduleNotifs(8);
-        scheduleNotifs(10);
-        scheduleNotifs(12);
-        scheduleNotifs(14);
+        //   scheduleNotifs(10);
+        //  scheduleNotifs(12);
+        //scheduleNotifs(14);
     }
 
 
@@ -45,8 +45,8 @@ public class NotificationService {
         System.out.println("scheduling notifications send for horraire = " + horraire);
 
         int currentTime = 0;
-        int initialDelay = currentTime - horraire;
-        int repeatDelay = 60 * 60 * 24; //24h in seconds
+        int initialDelay = 5;
+        int repeatDelay = 5; //24h in seconds
 
         initScheduler(initialDelay, repeatDelay, horraire);
     }
@@ -74,7 +74,7 @@ public class NotificationService {
     private void checkAndSend(int horraire) {
         // TODO: 5/29/2018 get list of scheduled notifs of tomorrow at horraire
         // TODO: 5/29/2018 send notifs
-        LinkedList<Notification> ClientsNotifsToSend = new ClientNotificationDAO().getTomorrowsScheduledNotifs(horraire);
+/*        LinkedList<Notification> ClientsNotifsToSend = new ClientNotificationDAO().getTomorrowsScheduledNotifs(horraire);
         LinkedList<Notification> EmployeesNotifsToSend = new EmployeNotificationDAO().getTomorrowsScheduledNotifs(horraire);
         System.out.println("checking and sending notifications for horraire = " + horraire);
 
@@ -83,6 +83,16 @@ public class NotificationService {
         }
         for (Notification notification : EmployeesNotifsToSend) {
             sendNotif(notification);
+        }*/
+        System.out.println("keep sql alive");
+
+
+        try {
+            DbConnector.createConnexion();
+            PreparedStatement keepAlive = (PreparedStatement) DbConnector.getStatment();
+            keepAlive.execute("select * from contact_infos");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

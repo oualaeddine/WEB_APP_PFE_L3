@@ -25,9 +25,10 @@ public class ContextListener implements ServletContextListener {
          initialized(when the Web application is deployed).
          You can initialize servlet context related data here.
       */
-//        initializeNotificationsService();
+        initializeNotificationsService();
         initializeTwilio();
         //  Util.sendSms("+213696689498", "test ta3 sms");
+
 
     }
 

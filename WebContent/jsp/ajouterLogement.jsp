@@ -1,10 +1,5 @@
 <%@ page import="control.servlets.MyServlet" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.LinkedList" %>
-<%@ page import="model.beans.Localite" %>
-<%@ page import="model.db.daos.LocaliteDAO" %>
-<%@ page import="model.enums.UserType" %>
-<%@ page import="model.beans.views.TablesView" %>
 <%@ page import="model.beans.Localite" %>
 <%@ page import="model.beans.humans.Employe" %>
 <%@ page import="model.beans.views.MyView" %>
@@ -163,6 +158,7 @@
                             <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Longitude">
                         </div>
                     </div>
+                    <input type="file" name="photo" size="50"/>
                     <%--<div class="form-group">--%>
                     <%--<label for="file">Photo 1</label>--%>
                     <%--<input id="file" class="form-control" type="file" name="file1" placeholder="Photo">--%>

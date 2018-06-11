@@ -6,43 +6,39 @@ import java.sql.Statement;
 
 public class DbConnector {
 
-   /* private static final String
-            db_name = "heroku_405ddb6fa8921ad",
-            host = "us-cdbr-iron-east-04.cleardb.net",
-            port = "3306",
-            user = "b1155db24dac1b",
-            pass = "cdafe6b2f76bc16";*/
-
-    /*private static final String
-            db_name = "soc_imm",
-            host = "db4free.net",
-            port = "3306",
-            user = "soc_imm_root",
-            pass = "soc_imm_root";*/
     private static final String
+            db_name = "r2i5507sdonfc3x9",
+            host = "qzkp8ry756433yd4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+            port = "3306",
+            user = "yuj6nky2uwoyqknc",
+            pass = "yyo4sh8elx1ecd2l";
+
+ /*  private static final String
             db_name = "soc_imm",
             host = "localhost",
-            port = "124",
+            port = "3306",
             user = "root",
-            pass = "1234";
+            pass = "";*/
 
-    private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name;
+    private static final String conn = "jdbc:mysql://" + host + ":" + port + "/" + db_name + "?autoReconnect=true&useUnicode=yes";
     private static Connection connexion;
 
     DbConnector() {
     }
 
-    static void createConnexion() {
+    public static void createConnexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             if (connexion == null)
                 connexion = DriverManager.getConnection(conn, user, pass);
+
         } catch (Exception e) {
             e.printStackTrace();
+            connexion = null;
         }
     }
 
-    static Statement getStatment() {
+    public static Statement getStatment() {
         try {
             return connexion.createStatement();
         } catch (Exception e) {

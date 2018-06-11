@@ -12,8 +12,12 @@ import model.enums.TypeLogement;
 import model.enums.UserType;
 import utils.Util;
 
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.text.ParseException;
 
@@ -26,7 +30,7 @@ public class AdminsManager {
     }
 
 
-    public Employe creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended, AdminRole role){
+    public Employe creerCompte(String nom, String prenom, Date dateNaiss, String adresse, String tel, String email, String username, String password, int addedBy, boolean isSuspended, AdminRole role) {
         Employe admin = new Employe();
         admin.setNom(nom);
         admin.setPrenom(prenom);
@@ -37,16 +41,18 @@ public class AdminsManager {
         admin.setUsername(username);
         admin.setPassword(password);
         admin.setSuspended(isSuspended);
-        switch (role){
+        switch (role) {
             case SUPER_USER:
-                admin.setUserType(UserType.SU); break;
+                admin.setUserType(UserType.SU);
+                break;
             case ADMIN:
-                admin.setUserType(UserType.ADMIN); break;
+                admin.setUserType(UserType.ADMIN);
+                break;
         }
         return admin;
     }
 
-    public boolean reintegrerEmploye(int userId){
+    public boolean reintegrerEmploye(int userId) {
         return new EmployeDAO().reintegrerById(userId);
     }
 
@@ -62,7 +68,7 @@ public class AdminsManager {
         }
     }
 
-    public boolean createClient(Client client){
+    public boolean createClient(Client client) {
         return new ClientDAO().add(client);
     }
 
@@ -85,7 +91,7 @@ public class AdminsManager {
         return false;
     }
 
-    public boolean createLogement(ServletRequest request){
+    public boolean createLogement(HttpServletRequest request) {
         Logement logement = new Logement();
         logement.setTitre(request.getParameter("titreInput"));
         logement.setDescription(request.getParameter("description"));
@@ -94,7 +100,7 @@ public class AdminsManager {
         logement.setLocalite((Localite) new LocaliteDAO().getById(Integer.parseInt(request.getParameter("region"))));
         logement.setNbrPieces(Integer.parseInt(request.getParameter("nbrPcs")));
         logement.setNbrSdb(Integer.parseInt(request.getParameter("nbrSdb")));
-        logement.setAvecJardin(!(request.getParameter("jardin")==null));
+        logement.setAvecJardin(!(request.getParameter("jardin") == null));
         logement.setAvecGarage(!(request.getParameter("garage") == null));
         logement.setAvecSousSol(!(request.getParameter("soussol") == null));
         logement.setMeubles(!(request.getParameter("meubles") == null));
@@ -105,6 +111,37 @@ public class AdminsManager {
         location.setLongitude(Double.parseDouble(request.getParameter("longitude")));
         logement.setLocation(location);
         logement.setTypeLogement(request.getParameter("typeLogement").equals("villa") ? TypeLogement.VILLA : TypeLogement.APPARTEMENT);
+
+
+        InputStream inputStream = null; // input stream of the upload file
+
+        // obtains the upload file part in this multipart request
+        Part filePart = null;
+        try {
+            filePart = request.getPart("photo");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+
+            // obtains input stream of the upload file
+            try {
+                inputStream = filePart.getInputStream();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        logement.setPicture(inputStream);
+
+
         return new LogementDAO().add(logement);
     }
 
@@ -113,11 +150,11 @@ public class AdminsManager {
         return new LogementDAO().delete(logementId);
     }
 
-    public boolean createLocalite(Localite localite){
+    public boolean createLocalite(Localite localite) {
         return new LocaliteDAO().add(localite);
     }
 
-    public boolean deleteLocalite(Localite localite){
+    public boolean deleteLocalite(Localite localite) {
         return new LocaliteDAO().delete(localite);
     }
 
@@ -132,10 +169,9 @@ public class AdminsManager {
 
     }
 
-    public boolean approuverEmploye(ServletRequest request){
+    public boolean approuverEmploye(ServletRequest request) {
         return new EmployeDAO().approuverEmploye(Integer.parseInt(request.getParameter("employeApprouve")), loggedInAdmin.getId(), request.getParameter("userTypeInput"));
     }
-
 
 
     public boolean assigner(HttpServletRequest request) {
